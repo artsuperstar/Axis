@@ -1,14 +1,10 @@
-import { priorities, type Task, type TaskDraft } from './types';
+import { localDateString, localTimeString, validDate } from './calendar';
+import { recurrenceError, recurrenceStopped } from './recurrence';
+import { priorities, type Task, type TaskDraft, type TaskRecurrence } from './types';
+
+export { localDateString, localTimeString };
 
 export class TaskValidationError extends Error {}
-
-export function localDateString(value: Date) {
-  return `${String(value.getFullYear()).padStart(4, '0')}-${String(value.getMonth() + 1).padStart(2, '0')}-${String(value.getDate()).padStart(2, '0')}`;
-}
-
-export function localTimeString(value: Date) {
-  return `${String(value.getHours()).padStart(2, '0')}:${String(value.getMinutes()).padStart(2, '0')}`;
-}
 
 export function pickerValue(date: string, time = '') {
   const value = new Date();
@@ -25,7 +21,7 @@ export function dateLabel(date: string) {
   return pickerValue(date).toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' });
 }
 
-export function taskDraft(task?: Task | null): TaskDraft {
+export function taskDraft(task?: Task | null, recurrence?: TaskRecurrence | null): TaskDraft {
   return {
     title: task?.title ?? '',
     description: task?.description ?? '',
@@ -33,16 +29,12 @@ export function taskDraft(task?: Task | null): TaskDraft {
     time: task?.time ?? '',
     priority: task?.priority ?? 'none',
     categoryId: task?.categoryId ?? null,
+    recurrence: recurrence && !recurrenceStopped(recurrence) ? {
+      frequency: recurrence.frequency, interval: recurrence.interval,
+      weekdayMask: recurrence.weekdayMask ?? 1, monthDay: recurrence.monthDay ?? 1,
+      month: recurrence.month ?? 1, endDate: recurrence.endDate ?? '',
+    } : null,
   };
-}
-
-function validDate(date: string) {
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return false;
-  const [year, month, day] = date.split('-').map(Number);
-  if (year < 1 || month < 1 || month > 12) return false;
-  const leapYear = year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0);
-  const days = [31, leapYear ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-  return day >= 1 && day <= days[month - 1];
 }
 
 export function validateTaskDraft(draft: TaskDraft) {
@@ -59,7 +51,12 @@ export function validateTaskDraft(draft: TaskDraft) {
   if (time && !/^([01]\d|2[0-3]):[0-5]\d$/.test(time)) {
     throw new TaskValidationError('Choose a valid time.');
   }
-  return { title, description, date, time, priority: draft.priority, categoryId: draft.categoryId || null };
+  const recurrence = draft.recurrence ?? null;
+  if (recurrence) {
+    const message = recurrenceError(recurrence, date ?? '');
+    if (message) throw new TaskValidationError(message);
+  }
+  return { title, description, date, time, priority: draft.priority, categoryId: draft.categoryId || null, recurrence };
 }
 
 export function userError(error: unknown, fallback: string) {

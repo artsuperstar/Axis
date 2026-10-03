@@ -89,6 +89,17 @@ export function TaskChoice({ label, selected, onPress }: {
   );
 }
 
+export function TaskWeekday({ label, checked, onPress }: { label: string; checked: boolean; onPress: () => void }) {
+  const colors = useTheme();
+  return (
+    <Pressable accessibilityRole="checkbox" accessibilityLabel={label} accessibilityState={{ checked }} onPress={onPress}
+      style={({ pressed }) => [styles.button, { borderColor: checked ? colors.text : colors.textSecondary,
+        backgroundColor: checked ? colors.backgroundSelected : colors.backgroundElement, opacity: pressed ? 0.7 : 1 }]}>
+      <ThemedText type="smallBold">{label.slice(0, 3)}{checked ? ' ✓' : ''}</ThemedText>
+    </Pressable>
+  );
+}
+
 export function TaskField({ label, style, ...props }: TextInputProps & { label: string }) {
   const colors = useTheme();
   return (

@@ -1,8 +1,21 @@
-import type { taskCategories, tasks } from '@/database/schema';
+import type { taskCategories, taskOccurrences, taskRecurrences, tasks } from '@/database/schema';
 
 export type Task = typeof tasks.$inferSelect;
 export type TaskCategory = typeof taskCategories.$inferSelect;
 export type TaskPriority = Task['priority'];
+export type TaskRecurrence = typeof taskRecurrences.$inferSelect;
+export type TaskOccurrence = typeof taskOccurrences.$inferSelect;
+export type RecurrenceFrequency = TaskRecurrence['frequency'];
+export type OccurrenceStatus = TaskOccurrence['status'];
+export type RecurrenceDraft = {
+  frequency: RecurrenceFrequency;
+  interval: number;
+  weekdayMask: number;
+  monthDay: number;
+  month: number;
+  endDate: string;
+};
+export type TaskListItem = { key: string; task: Task; occurrence: TaskOccurrence | null };
 
 export type TaskDraft = {
   title: string;
@@ -11,6 +24,7 @@ export type TaskDraft = {
   time: string;
   priority: TaskPriority;
   categoryId: string | null;
+  recurrence?: RecurrenceDraft | null;
 };
 
 export const priorities: readonly TaskPriority[] = ['none', 'low', 'medium', 'high'];

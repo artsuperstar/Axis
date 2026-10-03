@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import { ActivityIndicator, Alert, Platform, SectionList, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -9,20 +9,43 @@ import { useTheme } from '@/hooks/use-theme';
 import { CategoryManager } from './components/category-manager';
 import { TaskButton, TaskError } from './components/controls';
 import { TaskEditor } from './components/task-editor';
+import { OccurrenceHistory } from './components/occurrence-history';
+import { RecurringTasks } from './components/recurring-tasks';
 import { TaskRow } from './components/task-row';
 import { userError } from './form';
 import { groupTasks } from './grouping';
+import { localDateString } from './calendar';
+import { latestRecurrence } from './recurrence';
 import type { Task } from './types';
 import { useTasks } from './use-tasks';
 
 export function TasksScreen() {
   const colors = useTheme();
   const insets = useSafeAreaInsets();
-  const { access, snapshot, error, reload, mutate } = useTasks();
+  const { access, snapshot, error, reload, mutate, presentationNow } = useTasks();
   const [editor, setEditor] = useState<{ task: Task | null } | null>(null);
   const [categoriesOpen, setCategoriesOpen] = useState(false);
+  const [seriesOpen, setSeriesOpen] = useState(false);
+  const [historyId, setHistoryId] = useState<string | null>(null);
+  const pendingSeriesAction = useRef<(() => void) | null>(null);
   const [actionError, setActionError] = useState<string | null>(null);
   const categories = snapshot?.categories ?? [];
+  const recurrences = snapshot?.recurrences ?? [];
+  const historyTask = snapshot?.tasks.find((task) => task.id === historyId);
+  const readHistory = useCallback((before?: string) => access.readHistory(historyId!, before), [access, historyId]);
+
+  function seriesClosed() {
+    const action = pendingSeriesAction.current;
+    pendingSeriesAction.current = null;
+    action?.();
+  }
+
+  function fromSeries(action: () => void) {
+    pendingSeriesAction.current = action;
+    setSeriesOpen(false);
+    // iOS must finish dismissing its sheet before presenting another one.
+    if (Platform.OS !== 'ios') requestAnimationFrame(seriesClosed);
+  }
 
   function perform(action: () => void) {
     try {
@@ -34,7 +57,8 @@ export function TasksScreen() {
   }
 
   function deleteTask(task: Task) {
-    Alert.alert('Delete task?', `Delete “${task.title}”?`, [
+    const series = recurrences.some((rule) => rule.taskId === task.id);
+    Alert.alert(series ? 'Delete repeating task?' : 'Delete task?', series ? `Delete “${task.title}” and hide all its occurrences? History will remain stored.` : `Delete “${task.title}”?`, [
       { text: 'Cancel', style: 'cancel' },
       { text: 'Delete', style: 'destructive', onPress: () => perform(() => access.deleteTask(task.id)) },
     ]);
@@ -50,8 +74,8 @@ export function TasksScreen() {
           paddingLeft: Math.max(insets.left, Spacing.three),
           paddingRight: Math.max(insets.right, Spacing.three),
         }]}
-        sections={groupTasks(snapshot?.tasks ?? [])}
-        keyExtractor={(task) => task.id}
+        sections={groupTasks(snapshot?.items ?? [], localDateString(new Date(presentationNow)))}
+        keyExtractor={(item) => item.key}
         stickySectionHeadersEnabled={false}
         ListHeaderComponent={(
           <View style={styles.header}>
@@ -59,6 +83,7 @@ export function TasksScreen() {
             <View style={styles.buttons}>
               <TaskButton label="Add task" disabled={!snapshot} onPress={() => { setActionError(null); setEditor({ task: null }); }} />
               <TaskButton label="Categories" disabled={!snapshot} onPress={() => setCategoriesOpen(true)} />
+              <TaskButton label="Repeating tasks" disabled={!snapshot} onPress={() => setSeriesOpen(true)} />
             </View>
             <TaskError message={error || actionError} />
             {!!error && <TaskButton label="Retry" onPress={reload} />}
@@ -66,30 +91,44 @@ export function TasksScreen() {
         )}
         ListEmptyComponent={!snapshot ? (error ? null : <ActivityIndicator color={colors.text} accessibilityLabel="Loading tasks" />) : (
           <View style={styles.empty}>
-            <ThemedText>No tasks yet</ThemedText>
-            <ThemedText themeColor="textSecondary">Add a task with only a title.</ThemedText>
+            <ThemedText>{snapshot.tasks.length ? 'No tasks in this window' : 'No tasks yet'}</ThemedText>
+            <ThemedText themeColor="textSecondary">{snapshot.tasks.length ? 'Use Repeating tasks to edit schedules or inspect older history.' : 'Add a task with only a title.'}</ThemedText>
           </View>
         )}
         renderSectionHeader={({ section }) => <ThemedText type="smallBold" accessibilityRole="header" style={styles.section}>{section.title}</ThemedText>}
         renderItem={({ item }) => (
           <TaskRow
-            task={item}
+            task={item.task}
+            occurrence={item.occurrence}
+            recurrence={item.occurrence ? latestRecurrence(recurrences, item.task.id) : null}
+            now={presentationNow}
             categories={categories}
-            onEdit={() => { setActionError(null); setEditor({ task: item }); }}
-            onComplete={() => perform(() => access.setCompleted(item.id, item.completedAt === null))}
-            onDelete={() => deleteTask(item)}
+            onEdit={() => { setActionError(null); setEditor({ task: item.task }); }}
+            onComplete={() => perform(() => item.occurrence
+              ? access.setOccurrenceStatus(item.occurrence.id, item.occurrence.status === 'completed' ? 'pending' : 'completed')
+              : access.setCompleted(item.task.id, item.task.completedAt === null))}
+            onSkip={item.occurrence && item.occurrence.status !== 'completed' ? () => perform(() => access.setOccurrenceStatus(item.occurrence!.id, item.occurrence!.status === 'skipped' ? 'pending' : 'skipped')) : undefined}
+            onHistory={item.occurrence ? () => setHistoryId(item.task.id) : undefined}
+            onDelete={() => deleteTask(item.task)}
           />
         )}
       />
       {editor && (
         <TaskEditor
           task={editor.task}
+          recurrence={editor.task ? latestRecurrence(recurrences, editor.task.id) : null}
           categories={categories}
           onSave={(draft) => mutate(() => editor.task ? access.editTask(editor.task.id, draft) : access.createTask(draft))}
           onCreateCategory={(name) => mutate(() => access.createCategory(name))}
           onDismiss={() => setEditor(null)}
         />
       )}
+      <RecurringTasks visible={seriesOpen} tasks={snapshot?.tasks ?? []} recurrences={recurrences}
+        onDismiss={() => setSeriesOpen(false)} onClosed={seriesClosed}
+        onEdit={(task) => fromSeries(() => setEditor({ task }))}
+        onHistory={(task) => fromSeries(() => setHistoryId(task.id))} />
+      {historyTask && <OccurrenceHistory task={historyTask} now={presentationNow} readPage={readHistory}
+        onStatus={(id, status) => mutate(() => access.setOccurrenceStatus(id, status))} onDismiss={() => setHistoryId(null)} />}
       {categoriesOpen && (
         <CategoryManager
           categories={categories}

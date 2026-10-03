@@ -1,12 +1,72 @@
-import { and, asc, desc, eq, isNull, sql } from 'drizzle-orm';
+import { and, asc, desc, eq, gte, gt, isNull, lte, ne, or, sql } from 'drizzle-orm';
 
 import type { AxisDatabase } from '@/database/client';
-import { taskCategories, tasks } from '@/database/schema';
+import { taskCategories, taskOccurrences, taskRecurrences, tasks } from '@/database/schema';
 
 import { TaskValidationError, validateTaskDraft } from './form';
-import type { TaskDraft } from './types';
+import { addDays, localDateString } from './calendar';
+import { latestRecurrence, recurrenceDates, recurrenceStopped } from './recurrence';
+import type { OccurrenceStatus, RecurrenceDraft, Task, TaskDraft, TaskListItem, TaskRecurrence } from './types';
+
+type TaskDb = Pick<AxisDatabase, 'select' | 'insert' | 'update'>;
+export const occurrenceWindowDays = 30;
 
 export function createTaskDataAccess(db: AxisDatabase, newId: () => string, now = Date.now) {
+  function rulesForTask(id: string, query: TaskDb = db) {
+    return query.select().from(taskRecurrences).where(eq(taskRecurrences.taskId, id)).all();
+  }
+
+  function insertRule(query: TaskDb, taskId: string, draft: RecurrenceDraft, date: string, time: string | null, effectiveFrom: string, timestamp: number) {
+    query.insert(taskRecurrences).values({
+      id: newId(), taskId, frequency: draft.frequency, interval: draft.interval,
+      weekdayMask: draft.frequency === 'weekly' ? draft.weekdayMask : null,
+      monthDay: ['monthly', 'yearly'].includes(draft.frequency) ? draft.monthDay : null,
+      month: draft.frequency === 'yearly' ? draft.month : null,
+      startDate: date, scheduledTime: time, endDate: draft.endDate || null, effectiveFrom,
+      createdAt: timestamp, updatedAt: timestamp,
+    }).run();
+  }
+
+  function materialize(query: TaskDb, rules: TaskRecurrence[], from: string, to: string, timestamp: number) {
+    const existing = query.select({ recurrenceId: taskOccurrences.recurrenceId, date: taskOccurrences.scheduledDate })
+      .from(taskOccurrences).where(and(gte(taskOccurrences.scheduledDate, from), lte(taskOccurrences.scheduledDate, to))).all();
+    const identities = new Set(existing.map((row) => `${row.recurrenceId}:${row.date}`));
+    for (const rule of rules) {
+      for (const date of recurrenceDates(rule, from, to)) {
+        if (identities.has(`${rule.id}:${date}`)) continue;
+        query.insert(taskOccurrences).values({ id: newId(), taskId: rule.taskId, recurrenceId: rule.id,
+          scheduledDate: date, scheduledTime: rule.scheduledTime, createdAt: timestamp, updatedAt: timestamp })
+          .onConflictDoNothing().run();
+      }
+    }
+  }
+
+  function replaceSchedule(query: TaskDb, task: Task, recurrence: RecurrenceDraft | null, date: string | null, time: string | null, timestamp: number) {
+    const rules = rulesForTask(task.id, query);
+    const current = latestRecurrence(rules, task.id);
+    const unchanged = recurrence && current && !recurrenceStopped(current)
+      && current.frequency === recurrence.frequency && current.interval === recurrence.interval
+      && current.startDate === date && current.scheduledTime === time && current.endDate === (recurrence.endDate || null)
+      && current.weekdayMask === (recurrence.frequency === 'weekly' ? recurrence.weekdayMask : null)
+      && current.monthDay === (['monthly', 'yearly'].includes(recurrence.frequency) ? recurrence.monthDay : null)
+      && current.month === (recurrence.frequency === 'yearly' ? recurrence.month : null);
+    if (unchanged || (!recurrence && (!current || recurrenceStopped(current)))) return;
+    const today = localDateString(new Date(now()));
+    // Today's schedule is frozen; edited schedules and explicit stops begin tomorrow.
+    const boundary = addDays(today, 1);
+    materialize(query, rules, addDays(today, -occurrenceWindowDays), today, timestamp);
+    for (const rule of rules.filter((item) => item.deletedAt === null)) {
+      if (rule.effectiveFrom >= boundary) {
+        query.update(taskRecurrences).set({ deletedAt: timestamp, updatedAt: Math.max(timestamp, rule.updatedAt + 1) }).where(eq(taskRecurrences.id, rule.id)).run();
+      } else if (rule.effectiveUntil === null || rule.effectiveUntil > boundary) {
+        query.update(taskRecurrences).set({ effectiveUntil: boundary, updatedAt: Math.max(timestamp, rule.updatedAt + 1) }).where(eq(taskRecurrences.id, rule.id)).run();
+      }
+    }
+    // Keep future rows as tombstones, including any early outcomes. Past rows are untouched.
+    query.update(taskOccurrences).set({ deletedAt: timestamp, updatedAt: sql`max(${timestamp}, ${taskOccurrences.updatedAt} + 1)` })
+      .where(and(eq(taskOccurrences.taskId, task.id), gte(taskOccurrences.scheduledDate, boundary), isNull(taskOccurrences.deletedAt))).run();
+    if (recurrence) insertRule(query, task.id, recurrence, date!, time, rules.length ? boundary : [today, date!].sort()[1], timestamp);
+  }
   function activeTask(id: string) {
     const task = db.select().from(tasks).where(and(eq(tasks.id, id), isNull(tasks.deletedAt))).get();
     if (!task) throw new TaskValidationError('This task is no longer available.');
@@ -25,31 +85,92 @@ export function createTaskDataAccess(db: AxisDatabase, newId: () => string, now 
 
   return {
     read() {
+      const today = localDateString(new Date(now()));
+      const from = addDays(today, -occurrenceWindowDays);
+      const to = addDays(today, occurrenceWindowDays);
+      const activeTasks = db.select().from(tasks).where(isNull(tasks.deletedAt))
+        .orderBy(asc(tasks.date), asc(tasks.time), desc(tasks.createdAt)).all();
+      const recurrences = db.select({ rule: taskRecurrences }).from(taskRecurrences)
+        .innerJoin(tasks, eq(taskRecurrences.taskId, tasks.id)).where(isNull(tasks.deletedAt)).all().map((row) => row.rule);
+      db.transaction((query) => materialize(query, recurrences, from, to, now()));
+      const occurrences = db.select({ occurrence: taskOccurrences }).from(taskOccurrences)
+        .innerJoin(tasks, eq(taskOccurrences.taskId, tasks.id))
+        .where(and(isNull(tasks.deletedAt), isNull(taskOccurrences.deletedAt), gte(taskOccurrences.scheduledDate, from), lte(taskOccurrences.scheduledDate, to)))
+        .orderBy(asc(taskOccurrences.scheduledDate), asc(taskOccurrences.scheduledTime)).all().map((row) => row.occurrence);
+      const series = new Set(recurrences.map((rule) => rule.taskId));
+      const byId = new Map(activeTasks.map((task) => [task.id, task]));
+      const items: TaskListItem[] = activeTasks.filter((task) => !series.has(task.id)).map((task) => ({ key: task.id, task, occurrence: null }));
+      for (const occurrence of occurrences) items.push({ key: occurrence.id, task: byId.get(occurrence.taskId)!, occurrence });
       return {
-        tasks: db.select().from(tasks).where(isNull(tasks.deletedAt))
-          .orderBy(asc(tasks.date), asc(tasks.time), desc(tasks.createdAt)).all(),
+        tasks: activeTasks, recurrences, occurrences, items,
         categories: db.select().from(taskCategories).where(isNull(taskCategories.deletedAt))
           .orderBy(desc(taskCategories.isDefault), asc(taskCategories.name)).all(),
       };
     },
 
     createTask(draft: TaskDraft) {
-      const values = taskValues(draft);
+      const { recurrence, ...values } = taskValues(draft);
       const timestamp = now();
       const id = newId();
-      db.insert(tasks).values({ ...values, id, createdAt: timestamp, updatedAt: timestamp }).run();
+      db.transaction((query) => {
+        query.insert(tasks).values({ ...values, id, createdAt: timestamp, updatedAt: timestamp }).run();
+        if (recurrence) insertRule(query, id, recurrence, values.date!, values.time, values.date!, timestamp);
+      });
       return id;
     },
 
     editTask(id: string, draft: TaskDraft) {
       const task = activeTask(id);
-      const values = taskValues(draft);
-      db.update(tasks).set({ ...values, updatedAt: Math.max(now(), task.updatedAt + 1) })
-        .where(and(eq(tasks.id, id), isNull(tasks.deletedAt))).run();
+      const { recurrence, ...values } = taskValues(draft);
+      const timestamp = Math.max(now(), task.updatedAt + 1);
+      db.transaction((query) => {
+        replaceSchedule(query, task, recurrence, values.date, values.time, timestamp);
+        query.update(tasks).set({ ...values, ...(recurrence ? { completedAt: null } : {}), updatedAt: timestamp })
+          .where(and(eq(tasks.id, id), isNull(tasks.deletedAt))).run();
+      });
+    },
+
+    stopRepeating(id: string) {
+      const task = activeTask(id);
+      if (!rulesForTask(id).length) throw new TaskValidationError('This task does not repeat.');
+      const timestamp = Math.max(now(), task.updatedAt + 1);
+      db.transaction((query) => {
+        replaceSchedule(query, task, null, task.date, task.time, timestamp);
+        query.update(tasks).set({ updatedAt: timestamp }).where(eq(tasks.id, id)).run();
+      });
+    },
+
+    setOccurrenceStatus(id: string, status: OccurrenceStatus) {
+      if (!['pending', 'completed', 'skipped'].includes(status)) throw new TaskValidationError('Choose a valid occurrence status.');
+      const occurrence = db.select().from(taskOccurrences).where(and(eq(taskOccurrences.id, id), isNull(taskOccurrences.deletedAt))).get();
+      if (!occurrence) throw new TaskValidationError('This occurrence is no longer available.');
+      activeTask(occurrence.taskId);
+      const timestamp = Math.max(now(), occurrence.updatedAt + 1);
+      db.update(taskOccurrences).set({ status, completedAt: status === 'completed' ? timestamp : null, updatedAt: timestamp })
+        .where(eq(taskOccurrences.id, id)).run();
+      return db.select().from(taskOccurrences).where(eq(taskOccurrences.id, id)).get()!;
+    },
+
+    readHistory(id: string, before?: string) {
+      activeTask(id);
+      const rules = rulesForTask(id);
+      if (!rules.length) throw new TaskValidationError('This task does not repeat.');
+      const today = localDateString(new Date(now()));
+      const to = before ? addDays(before, -1) : today;
+      const oldest = rules.map((rule) => [rule.startDate, rule.effectiveFrom].sort()[1]).sort()[0];
+      const from = [addDays(to, -occurrenceWindowDays + 1), oldest].sort()[1];
+      db.transaction((query) => materialize(query, rules, from, to, now()));
+      const range = and(gte(taskOccurrences.scheduledDate, from), lte(taskOccurrences.scheduledDate, to));
+      const earlyOutcomes = !before ? and(gt(taskOccurrences.scheduledDate, today), ne(taskOccurrences.status, 'pending')) : undefined;
+      const occurrences = db.select().from(taskOccurrences).where(and(eq(taskOccurrences.taskId, id),
+        or(isNull(taskOccurrences.deletedAt), ne(taskOccurrences.status, 'pending')), earlyOutcomes ? or(range, earlyOutcomes) : range))
+        .orderBy(desc(taskOccurrences.scheduledDate), desc(taskOccurrences.createdAt)).all();
+      return { occurrences, nextBefore: from > oldest ? from : null };
     },
 
     setCompleted(id: string, completed: boolean) {
       const task = activeTask(id);
+      if (rulesForTask(id).length) throw new TaskValidationError('Complete or reopen an individual occurrence instead.');
       const timestamp = Math.max(now(), task.updatedAt + 1);
       db.update(tasks).set({ completedAt: completed ? timestamp : null, updatedAt: timestamp })
         .where(and(eq(tasks.id, id), isNull(tasks.deletedAt))).run();
