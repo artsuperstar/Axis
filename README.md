@@ -1,56 +1,31 @@
-# Welcome to your Expo app 👋
+# Axis
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Axis is a personal organization application for iOS and Android, built with React Native, TypeScript, Expo SDK 57, and Expo Router.
 
-## Get started
+## Development status
 
-1. Install dependencies
+The application shell contains five tabs: Home, Tasks, Calendar, Finance, and Fitness. Each screen currently displays its name. Product features and persistence have not been implemented.
 
-   ```bash
-   npm install
-   ```
+The main tabs live in `src/app/(tabs)/`. The root stack in `src/app/_layout.tsx` can host future detail screens outside the tabs. Shared UI lives in `src/components/`, with device-aware light/dark colors in `src/constants/theme.ts`.
 
-2. Start the app
+## Run locally
 
-   ```bash
-   npx expo start
-   ```
+Use Node.js 22.13 or later and npm.
 
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+```sh
+npm ci
+npm start
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+Open the development server in a compatible Expo Go app on an iPhone or Android device. Expo Go on iOS may require signing in to the same Expo account in the CLI and Expo Go. This is a development-tool requirement; Axis has no account flow.
 
-### Other setup steps
+```sh
+npm run android  # Open an Android emulator or connected device
+npm run ios      # Open the iOS simulator (requires macOS)
+npm run lint     # Run ESLint
+npx tsc --noEmit # Check TypeScript
+```
 
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
+Web is not a current product target. The existing `npm run web` command remains available using Expo Router's default web tab fallback.
 
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+The configured app icons remain temporary Expo starter artwork pending a dedicated design stage.
