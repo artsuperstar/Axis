@@ -1,5 +1,1 @@
-import { TabScreen } from '@/components/tab-screen';
-
-export default function FinanceScreen() {
-  return <TabScreen title="Finance" />;
-}
+export { FinanceScreen as default } from '@/features/finance/finance-screen';

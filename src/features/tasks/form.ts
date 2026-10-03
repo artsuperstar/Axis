@@ -1,25 +1,10 @@
-import { localDateString, localTimeString, validDate } from './calendar';
+import { validDate } from './calendar';
 import { recurrenceError, recurrenceStopped } from './recurrence';
 import { priorities, type Task, type TaskDraft, type TaskRecurrence } from './types';
 
-export { localDateString, localTimeString };
+export { dateLabel, localDateString, localTimeString, pickerValue } from './calendar';
 
 export class TaskValidationError extends Error {}
-
-export function pickerValue(date: string, time = '') {
-  const value = new Date();
-  if (date) {
-    const [year, month, day] = date.split('-').map(Number);
-    value.setFullYear(year, month - 1, day);
-  }
-  const [hours, minutes] = time ? time.split(':').map(Number) : [12, 0];
-  value.setHours(hours, minutes, 0, 0);
-  return value;
-}
-
-export function dateLabel(date: string) {
-  return pickerValue(date).toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' });
-}
 
 export function taskDraft(task?: Task | null, recurrence?: TaskRecurrence | null): TaskDraft {
   return {

@@ -1,5 +1,5 @@
 import { sql } from 'drizzle-orm';
-import { check, index, integer, sqliteTable, text, uniqueIndex } from 'drizzle-orm/sqlite-core';
+import { check, foreignKey, index, integer, sqliteTable, text, uniqueIndex } from 'drizzle-orm/sqlite-core';
 
 export const taskCategories = sqliteTable('task_categories', {
   id: text('id').primaryKey().notNull(),
@@ -110,4 +110,47 @@ export const taskOccurrences = sqliteTable('task_occurrences', {
   check('occurrence_date_valid', sql`${table.scheduledDate} GLOB '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]' AND substr(${table.scheduledDate}, 1, 4) >= '0001' AND coalesce(strftime('%Y-%m-%d', ${table.scheduledDate}, '+0 days') = ${table.scheduledDate}, 0)`),
   check('occurrence_time_valid', sql`${table.scheduledTime} IS NULL OR (${table.scheduledTime} GLOB '[0-2][0-9]:[0-5][0-9]' AND substr(${table.scheduledTime}, 1, 2) < '24')`),
   check('occurrence_updated_after_created', sql`${table.updatedAt} >= ${table.createdAt}`),
+]);
+
+export const financeCategories = sqliteTable('finance_categories', {
+  id: text('id').primaryKey().notNull(),
+  name: text('name').notNull(),
+  type: text('type', { enum: ['income', 'expense'] }).notNull(),
+  isBuiltIn: integer('is_built_in', { mode: 'boolean' }).notNull().default(false),
+  createdAt: integer('created_at').notNull(),
+  updatedAt: integer('updated_at').notNull(),
+  deletedAt: integer('deleted_at'),
+}, (table) => [
+  check('finance_category_name_not_empty', sql`length(trim(${table.name})) > 0`),
+  check('finance_category_type_valid', sql`${table.type} IN ('income', 'expense')`),
+  check('finance_category_builtin_valid', sql`${table.isBuiltIn} IN (0, 1)`),
+  check('finance_category_updated_after_created', sql`${table.updatedAt} >= ${table.createdAt}`),
+  uniqueIndex('finance_categories_id_type_unique').on(table.id, table.type),
+  uniqueIndex('finance_categories_active_type_name_unique').on(table.type, sql`lower(${table.name})`).where(sql`${table.deletedAt} IS NULL`),
+]);
+
+export const financeTransactions = sqliteTable('finance_transactions', {
+  id: text('id').primaryKey().notNull(),
+  type: text('type', { enum: ['income', 'expense'] }).notNull(),
+  amountMinor: integer('amount_minor').notNull(),
+  description: text('description').notNull(),
+  note: text('note'),
+  transactionDate: text('transaction_date').notNull(),
+  categoryId: text('category_id'),
+  createdAt: integer('created_at').notNull(),
+  updatedAt: integer('updated_at').notNull(),
+  deletedAt: integer('deleted_at'),
+}, (table) => [
+  // A composite FK enforces category direction while allowing category tombstones to stay referenced.
+  foreignKey({ name: 'finance_transaction_category_type_fk', columns: [table.categoryId, table.type],
+    foreignColumns: [financeCategories.id, financeCategories.type] }).onDelete('restrict').onUpdate('restrict'),
+  check('finance_transaction_type_valid', sql`${table.type} IN ('income', 'expense')`),
+  check('finance_transaction_amount_valid', sql`typeof(${table.amountMinor}) = 'integer' AND ${table.amountMinor} BETWEEN 1 AND 9007199254740991`),
+  check('finance_transaction_description_not_empty', sql`length(trim(${table.description})) > 0`),
+  check('finance_transaction_date_valid', sql`${table.transactionDate} GLOB '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]'
+    AND substr(${table.transactionDate}, 1, 4) >= '0001'
+    AND coalesce(strftime('%Y-%m-%d', ${table.transactionDate}, '+0 days') = ${table.transactionDate}, 0)`),
+  check('finance_transaction_updated_after_created', sql`${table.updatedAt} >= ${table.createdAt}`),
+  index('finance_transactions_active_date_idx').on(table.transactionDate, table.createdAt, table.id).where(sql`${table.deletedAt} IS NULL`),
+  index('finance_transactions_category_idx').on(table.categoryId),
 ]);

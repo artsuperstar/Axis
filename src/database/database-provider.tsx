@@ -45,7 +45,7 @@ export function DatabaseProvider({ children }: PropsWithChildren) {
     return (
       <ThemedView style={styles.message}>
         <ActivityIndicator color={colors.text} accessibilityLabel="Preparing local data" />
-        <ThemedText>Preparing your tasks…</ThemedText>
+        <ThemedText>Preparing local data…</ThemedText>
       </ThemedView>
     );
   }

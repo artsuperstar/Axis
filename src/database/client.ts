@@ -2,6 +2,8 @@ import { drizzle } from 'drizzle-orm/expo-sqlite';
 import { migrate } from 'drizzle-orm/expo-sqlite/migrator';
 import { openDatabaseAsync } from 'expo-sqlite';
 
+import { seedFinanceCategories } from '@/features/finance/seed';
+
 import migrations from './migrations/migrations';
 import * as schema from './schema';
 import { seedDefaultCategories } from './seed';
@@ -22,6 +24,7 @@ export function initializeDatabase(): Promise<AxisDatabase> {
         const db = createDatabase(sqlite);
         await migrate(db, migrations);
         seedDefaultCategories(db);
+        seedFinanceCategories(db);
         return db;
       } catch (error) {
         await sqlite.closeAsync().catch((closeError) => console.error('Database close failed', closeError));

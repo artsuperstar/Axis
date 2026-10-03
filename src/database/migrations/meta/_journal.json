@@ -15,6 +15,13 @@
       "when": 1790996382536,
       "tag": "0001_recurring_tasks",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1791050932215,
+      "tag": "0002_finance_ledger",
+      "breakpoints": true
     }
   ]
 }

@@ -2,15 +2,14 @@
 
 import assert from 'node:assert/strict';
 import { randomUUID } from 'node:crypto';
-import { mkdtempSync, readFileSync, rmdirSync, unlinkSync } from 'node:fs';
+import { mkdtempSync, rmdirSync, unlinkSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { DatabaseSync, type SQLInputValue } from 'node:sqlite';
 import { test } from 'node:test';
 import { eq } from 'drizzle-orm';
-import { drizzle } from 'drizzle-orm/expo-sqlite/driver';
 import { migrate } from 'drizzle-orm/expo-sqlite/migrator';
-import type { SQLiteDatabase } from 'expo-sqlite';
+
+import { bundledMigrations, database, journal } from './helpers/database';
 
 import * as schema from '../src/database/schema';
 import { seedDefaultCategories } from '../src/database/seed';
@@ -20,43 +19,6 @@ import { categoryName, groupTasks } from '../src/features/tasks/grouping';
 import { addDays, dateOrdinal } from '../src/features/tasks/calendar';
 import { latestRecurrence, occurrenceState, recurrenceDates, recurrencePatternSummary, recurrenceStopped, recurrenceSummary } from '../src/features/tasks/recurrence';
 import type { RecurrenceDraft, TaskListItem, TaskOccurrence, TaskRecurrence } from '../src/features/tasks/types';
-
-const migrationDirectory = join(process.cwd(), 'src/database/migrations');
-const journal = JSON.parse(readFileSync(join(migrationDirectory, 'meta/_journal.json'), 'utf8'));
-const bundledMigrations = {
-  journal,
-  migrations: Object.fromEntries(journal.entries.map((entry: { idx: number; tag: string }) => [
-    `m${String(entry.idx).padStart(4, '0')}`,
-    readFileSync(join(migrationDirectory, `${entry.tag}.sql`), 'utf8'),
-  ])),
-};
-
-// Adapt only the Expo statement boundary. Migrations, Drizzle, feature queries, and SQLite are real.
-function database(filename = ':memory:') {
-  const sqlite = new DatabaseSync(filename);
-  sqlite.exec('PRAGMA foreign_keys = ON; PRAGMA journal_mode = WAL;');
-  const client = {
-    prepareSync(query: string) {
-      const statement = sqlite.prepare(query);
-      return {
-        executeSync(params: SQLInputValue[]) {
-          if (statement.columns().length) {
-            const rows = statement.all(...params);
-            return { getAllSync: () => rows, getFirstSync: () => rows[0], changes: 0, lastInsertRowId: 0 };
-          }
-          const result = statement.run(...params);
-          return { changes: Number(result.changes), lastInsertRowId: Number(result.lastInsertRowid) };
-        },
-        executeForRawResultSync(params: SQLInputValue[]) {
-          statement.setReturnArrays(true);
-          const rows = statement.all(...params);
-          return { getAllSync: () => rows };
-        },
-      };
-    },
-  } as unknown as SQLiteDatabase;
-  return { sqlite, db: drizzle(client, { schema }) };
-}
 
 async function initialized(filename = ':memory:') {
   const result = database(filename);

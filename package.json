@@ -49,7 +49,7 @@
     "lint": "expo lint",
     "db:generate": "drizzle-kit generate",
     "db:check": "drizzle-kit check",
-    "test": "tsx --test tests/tasks.test.ts"
+    "test": "tsx --test tests/*.test.ts"
   },
   "private": true
 }
