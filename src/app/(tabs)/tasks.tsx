@@ -1,5 +1,1 @@
-import { TabScreen } from '@/components/tab-screen';
-
-export default function TasksScreen() {
-  return <TabScreen title="Tasks" />;
-}
+export { TasksScreen as default } from '@/features/tasks/tasks-screen';

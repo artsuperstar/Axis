@@ -17,7 +17,7 @@ export default function AppTabs() {
         <NativeTabs.Trigger.Icon sf="house.fill" md="home" />
       </NativeTabs.Trigger>
 
-      <NativeTabs.Trigger name="tasks">
+      <NativeTabs.Trigger name="tasks" disableTransparentOnScrollEdge>
         <NativeTabs.Trigger.Label>Tasks</NativeTabs.Trigger.Label>
         <NativeTabs.Trigger.Icon sf="checkmark.circle.fill" md="check_circle" />
       </NativeTabs.Trigger>
