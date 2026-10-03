@@ -25,11 +25,19 @@ export function parseBrlAmount(input: string) {
 
 /** Integer digit formatting preserves the last centavo even at MAX_SAFE_INTEGER. */
 export function formatBrlInput(amountMinor: number) {
-  const digits = String(validateAmountMinor(amountMinor)).padStart(3, '0');
+  return formatMinorDigits(BigInt(validateAmountMinor(amountMinor)));
+}
+
+function formatMinorDigits(amountMinor: bigint) {
+  const digits = String(amountMinor).padStart(3, '0');
   const whole = digits.slice(0, -2).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
   return `${whole},${digits.slice(-2)}`;
 }
 
-export function formatBrlAmount(amountMinor: number) {
-  return `R$ ${formatBrlInput(amountMinor)}`;
+export function formatBrlAmount(amountMinor: number | bigint) {
+  if (typeof amountMinor === 'number' && !Number.isSafeInteger(amountMinor)) {
+    throw new FinanceValidationError('Use integer centavos for currency formatting.');
+  }
+  const minor = BigInt(amountMinor);
+  return `${minor < 0n ? '-' : ''}R$ ${formatMinorDigits(minor < 0n ? -minor : minor)}`;
 }

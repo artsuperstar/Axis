@@ -5,10 +5,18 @@ import { financeCategories, financeTransactions } from '@/database/schema';
 import { localDateString } from '@/utils/calendar';
 
 import { FinanceValidationError } from './errors';
+import { readFinanceAnalytics } from './analytics';
 import { validateTransactionDraft } from './form';
+import type { FinancePeriod } from './periods';
 import { transactionTypes, type FinanceTransaction, type TransactionDraft, type TransactionType } from './types';
 
 export function createFinanceDataAccess(db: AxisDatabase, newId: () => string, now = Date.now) {
+  function readCategories() {
+    // Historical display and analytics resolve archived categories; selectors filter them separately.
+    return db.select().from(financeCategories)
+      .orderBy(asc(financeCategories.type), desc(financeCategories.isBuiltIn), asc(financeCategories.name), asc(financeCategories.id)).all();
+  }
+
   function activeTransaction(id: string) {
     const transaction = db.select().from(financeTransactions).where(and(eq(financeTransactions.id, id), isNull(financeTransactions.deletedAt))).get();
     if (!transaction) throw new FinanceValidationError('This transaction is no longer available.');
@@ -32,10 +40,12 @@ export function createFinanceDataAccess(db: AxisDatabase, newId: () => string, n
       return {
         transactions: db.select().from(financeTransactions).where(isNull(financeTransactions.deletedAt))
           .orderBy(desc(financeTransactions.transactionDate), desc(financeTransactions.createdAt), asc(financeTransactions.id)).all(),
-        // Historical transaction display resolves archived categories; selectors filter them separately.
-        categories: db.select().from(financeCategories)
-          .orderBy(asc(financeCategories.type), desc(financeCategories.isBuiltIn), asc(financeCategories.name), asc(financeCategories.id)).all(),
+        categories: readCategories(),
       };
+    },
+
+    readDashboard(period: FinancePeriod) {
+      return { analytics: readFinanceAnalytics(db, period), categories: readCategories() };
     },
 
     createTransaction(draft: TransactionDraft) {

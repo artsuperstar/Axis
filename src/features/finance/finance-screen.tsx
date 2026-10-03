@@ -8,6 +8,7 @@ import { Spacing } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
 
 import { FinanceCategoryManager } from './components/category-manager';
+import { FinanceDashboard, FinancePeriodControls } from './components/finance-dashboard';
 import { TransactionEditor } from './components/transaction-editor';
 import { TransactionRow } from './components/transaction-row';
 import { financeError } from './errors';
@@ -17,7 +18,7 @@ import { useFinance } from './use-finance';
 export function FinanceScreen() {
   const colors = useTheme();
   const insets = useSafeAreaInsets();
-  const { access, snapshot, error, reload, mutate } = useFinance();
+  const { access, snapshot, error, reload, mutate, selection, today, setView, setPeriodKind, navigatePeriod, returnToCurrent } = useFinance();
   const [editor, setEditor] = useState<{ transaction: FinanceTransaction | null } | null>(null);
   const [categoriesOpen, setCategoriesOpen] = useState(false);
   const [actionError, setActionError] = useState<string | null>(null);
@@ -49,10 +50,18 @@ export function FinanceScreen() {
           <FormButton label="Add transaction" disabled={!snapshot} onPress={() => { setActionError(null); setEditor({ transaction: null }); }} />
           <FormButton label="Categories" disabled={!snapshot} onPress={() => setCategoriesOpen(true)} />
         </View>
+        <View style={styles.buttons} accessibilityLabel="Finance view">
+          <FormButton label="Dashboard" selected={selection.view === 'dashboard'} onPress={() => setView('dashboard')} />
+          <FormButton label="Transactions" selected={selection.view === 'transactions'} onPress={() => setView('transactions')} />
+        </View>
         <FormError message={error || actionError} />
         {!!error && <FormButton label="Retry" onPress={reload} />}
+        {selection.view === 'dashboard' && <>
+          <FinancePeriodControls period={selection.period} today={today} onKind={setPeriodKind} onMove={navigatePeriod} onCurrent={returnToCurrent} />
+          {snapshot?.analytics && <FinanceDashboard analytics={snapshot.analytics} />}
+        </>}
       </View>}
-      ListEmptyComponent={!snapshot ? (error ? null : <ActivityIndicator color={colors.text} accessibilityLabel="Loading transactions" />) : <View style={styles.empty}>
+      ListEmptyComponent={!snapshot ? (error ? null : <ActivityIndicator color={colors.text} accessibilityLabel="Loading Finance" />) : selection.view === 'dashboard' ? null : <View style={styles.empty}>
         <ThemedText>No transactions yet</ThemedText>
         <ThemedText themeColor="textSecondary">Record income received or an expense paid.</ThemedText>
       </View>}

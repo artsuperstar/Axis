@@ -12,10 +12,12 @@ import { migrate } from 'drizzle-orm/expo-sqlite/migrator';
 import * as schema from '../src/database/schema';
 import { seedDefaultCategories } from '../src/database/seed';
 import { createFinanceDataAccess } from '../src/features/finance/data';
+import { aggregateFinance, spendingBarPercent, type AnalyticsTransaction } from '../src/features/finance/analytics';
 import { FinanceValidationError } from '../src/features/finance/errors';
 import { categoriesForType, changeTransactionType, financeCategoryForTransaction, financeCategoryName, transactionDraft, validateTransactionDraft } from '../src/features/finance/form';
 import { formatBrlAmount, formatBrlInput, maxAmountMinor, parseBrlAmount, validateAmountMinor } from '../src/features/finance/money';
 import { builtInFinanceCategories, seedFinanceCategories } from '../src/features/finance/seed';
+import { canMovePeriod, movePeriod, periodBounds, refreshPeriod, type PeriodKind } from '../src/features/finance/periods';
 import type { FinanceTransaction, TransactionDraft } from '../src/features/finance/types';
 import { createTaskDataAccess } from '../src/features/tasks/data';
 import { taskDraft } from '../src/features/tasks/form';
@@ -68,13 +70,246 @@ test('BRL handling rejects zero, negatives and unsafe integers while preserving 
   }
   for (const value of [0, -1, 1.5, NaN, Infinity, maxAmountMinor + 1]) {
     assert.throws(() => validateAmountMinor(value), FinanceValidationError);
-    assert.throws(() => formatBrlAmount(value), FinanceValidationError);
+    if (!Number.isSafeInteger(value)) assert.throws(() => formatBrlAmount(value), FinanceValidationError);
   }
   assert.equal(parseBrlAmount('90.071.992.547.409,91'), maxAmountMinor);
   assert.equal(formatBrlAmount(maxAmountMinor), 'R$ 90.071.992.547.409,91');
   for (const value of [1, 10, 99, 100, 2590, maxAmountMinor - 2, maxAmountMinor - 1, maxAmountMinor]) {
     assert.equal(parseBrlAmount(formatBrlInput(value)), value);
   }
+});
+
+test('BRL display formats zero, signed Net Flow and arbitrarily large integer aggregate totals exactly', () => {
+  assert.equal(formatBrlAmount(0), 'R$ 0,00');
+  assert.equal(formatBrlAmount(0n), 'R$ 0,00');
+  assert.equal(formatBrlAmount(-35000), '-R$ 350,00');
+  assert.equal(formatBrlAmount(-1n), '-R$ 0,01');
+  assert.equal(formatBrlAmount(BigInt(maxAmountMinor) * 2n + 1n), 'R$ 180.143.985.094.819,83');
+  assert.throws(() => formatBrlInput(0), FinanceValidationError, 'transaction-entry formatting remains positive');
+  assert.throws(() => formatBrlInput(-1), FinanceValidationError);
+});
+
+const boundaryCases: [string, PeriodKind, string, string, string][] = [
+  ['Monday–Sunday week', 'week', '2026-10-07', '2026-10-05', '2026-10-11'],
+  ['week containing Sunday', 'week', '2026-10-11', '2026-10-05', '2026-10-11'],
+  ['week spanning months', 'week', '2026-10-01', '2026-09-28', '2026-10-04'],
+  ['week spanning years', 'week', '2026-01-01', '2025-12-29', '2026-01-04'],
+  ['31-day calendar month', 'month', '2026-10-31', '2026-10-01', '2026-10-31'],
+  ['30-day calendar month', 'month', '2026-09-30', '2026-09-01', '2026-09-30'],
+  ['non-leap February', 'month', '2026-02-15', '2026-02-01', '2026-02-28'],
+  ['leap-year February', 'month', '2024-02-29', '2024-02-01', '2024-02-29'],
+  ['leap-century February', 'month', '2000-02-01', '2000-02-01', '2000-02-29'],
+  ['non-leap-century February', 'month', '1900-02-01', '1900-02-01', '1900-02-28'],
+  ['calendar year', 'year', '2026-10-03', '2026-01-01', '2026-12-31'],
+  ['leap calendar year', 'year', '2024-02-29', '2024-01-01', '2024-12-31'],
+];
+for (const [label, kind, reference, startDate, endDate] of boundaryCases) {
+  test(`Finance period bounds: ${label}`, () => {
+    assert.deepEqual(periodBounds(kind, reference), { kind, startDate, endDate });
+  });
+}
+
+for (const kind of ['week', 'month', 'year'] as const) {
+  test(`historical ${kind} navigation goes backward and returns to current without entering a future period`, () => {
+    const reference = '2026-10-14';
+    const current = periodBounds(kind, reference);
+    const previous = movePeriod(current, -1, reference);
+    const expected = kind === 'week' ? '2026-10-05' : kind === 'month' ? '2026-09-01' : '2025-01-01';
+    assert.equal(previous.startDate, expected);
+    assert.equal(canMovePeriod(current, 1, reference), false);
+    assert.equal(canMovePeriod(previous, 1, reference), true);
+    assert.deepEqual(movePeriod(previous, 1, reference), current);
+    assert.deepEqual(movePeriod(current, 1, reference), current);
+    const older = movePeriod(previous, -1, reference);
+    assert.deepEqual(movePeriod(movePeriod(older, 1, reference), 1, reference), current);
+    assert.deepEqual(movePeriod(periodBounds(kind, '0001-01-01'), -1, reference), periodBounds(kind, '0001-01-01'));
+  });
+}
+
+test('month/year navigation crosses calendar boundaries without date overflow', () => {
+  assert.deepEqual(movePeriod(periodBounds('month', '2024-03-31'), -1, '2026-10-03'), periodBounds('month', '2024-02-29'));
+  assert.deepEqual(movePeriod(periodBounds('month', '2026-01-31'), -1, '2026-10-03'), periodBounds('month', '2025-12-01'));
+  assert.deepEqual(movePeriod(periodBounds('year', '2026-01-01'), -1, '2026-10-03'), periodBounds('year', '2025-01-01'));
+});
+
+test('day rollover advances current selections and preserves historical periods', () => {
+  assert.deepEqual(refreshPeriod(periodBounds('month', '2026-10-31'), '2026-10-31', '2026-11-01'), periodBounds('month', '2026-11-01'));
+  const historical = periodBounds('month', '2026-09-15');
+  assert.deepEqual(refreshPeriod(historical, '2026-10-31', '2026-11-01'), historical);
+  assert.deepEqual(refreshPeriod(periodBounds('week', '2026-10-11'), '2026-10-11', '2026-10-12'), periodBounds('week', '2026-10-12'));
+  assert.deepEqual(refreshPeriod(periodBounds('year', '2026-12-31'), '2026-12-31', '2027-01-01'), periodBounds('year', '2027-01-01'));
+  assert.deepEqual(refreshPeriod(periodBounds('month', '2026-10-01'), '2026-10-01', '2026-09-30'), periodBounds('month', '2026-09-30'));
+});
+
+test('period bounds reject unsupported periods and malformed dates and stay independent of time zones', () => {
+  assert.throws(() => periodBounds('day' as never, today), FinanceValidationError);
+  assert.throws(() => periodBounds('month', '2026-02-30'), FinanceValidationError);
+  const originalZone = process.env.TZ;
+  try {
+    for (const zone of ['America/Sao_Paulo', 'America/New_York', 'Asia/Tokyo']) {
+      process.env.TZ = zone;
+      assert.deepEqual(periodBounds('week', '2026-03-08'), { kind: 'week', startDate: '2026-03-02', endDate: '2026-03-08' });
+    }
+  } finally {
+    if (originalZone === undefined) delete process.env.TZ;
+    else process.env.TZ = originalZone;
+  }
+});
+
+function analyticsRow(type: AnalyticsTransaction['type'], amountMinor: number, categoryId: string | null = null, categoryName: string | null = null): AnalyticsTransaction {
+  return { type, amountMinor, categoryId, categoryName };
+}
+
+const totalCases: [string, AnalyticsTransaction[], bigint, bigint, bigint][] = [
+  ['empty period', [], 0n, 0n, 0n],
+  ['income only', [analyticsRow('income', 520000)], 520000n, 0n, 520000n],
+  ['expenses only', [analyticsRow('expense', 35000)], 0n, 35000n, -35000n],
+  ['mixed with positive Net Flow', [analyticsRow('income', 520000), analyticsRow('expense', 285000)], 520000n, 285000n, 235000n],
+  ['mixed with negative Net Flow', [analyticsRow('income', 20000), analyticsRow('expense', 25000)], 20000n, 25000n, -5000n],
+  ['mixed with zero Net Flow', [analyticsRow('income', 100), analyticsRow('expense', 1), analyticsRow('expense', 29), analyticsRow('expense', 70)], 100n, 100n, 0n],
+];
+for (const [label, rows, income, expenses, net] of totalCases) {
+  test(`Finance integer totals: ${label}`, () => {
+    const result = aggregateFinance(rows, periodBounds('month', today));
+    assert.equal(result.incomeMinor, income);
+    assert.equal(result.expensesMinor, expenses);
+    assert.equal(result.netFlowMinor, net);
+    assert.equal(result.spending.reduce((sum, category) => sum + category.amountMinor, 0n), expenses);
+    assert.equal(result.transactionCount, rows.length);
+    if (expenses === 0n) assert.deepEqual(result.spending, []);
+  });
+}
+
+test('category bar ratios are display-only and remain finite for zero or very large expenses', () => {
+  assert.equal(spendingBarPercent(0n, 0n), 0);
+  assert.equal(spendingBarPercent(1n, 0n), 0);
+  assert.equal(spendingBarPercent(1n, 4n), 25);
+  assert.equal(spendingBarPercent(4n, 4n), 100);
+  const large = 10n ** 40n;
+  assert.equal(spendingBarPercent(large, large * 2n), 50);
+  assert.ok(Number.isFinite(spendingBarPercent(1n, large)));
+});
+
+test('pure analytics remain exact even beyond SQLite signed-64-bit aggregate totals', () => {
+  const rows = Array.from({ length: 1025 }, () => analyticsRow('income', maxAmountMinor));
+  const result = aggregateFinance(rows, periodBounds('year', today));
+  assert.equal(result.incomeMinor, BigInt(maxAmountMinor) * 1025n);
+  assert.ok(result.incomeMinor > 9223372036854775807n);
+  assert.equal(result.netFlowMinor, result.incomeMinor);
+  assert.match(formatBrlAmount(result.incomeMinor), /^R\$ [\d.]+,\d{2}$/);
+});
+
+test('SQLite analytics include exact inclusive period boundaries and exclude deleted and outside-period rows', async (t) => {
+  const { sqlite, db, access, setNow } = await initialized();
+  t.after(() => sqlite.close());
+  setNow(new Date(2027, 0, 4, 12).getTime());
+  access.createTransaction(draft({ amount: '0,01', transactionDate: '2026-10-05' }));
+  access.createTransaction(draft({ amount: '0,99', transactionDate: '2026-10-11' }));
+  access.createTransaction(draft({ type: 'income', amount: '1,00', transactionDate: '2026-10-08' }));
+  access.createTransaction(draft({ amount: '999,00', transactionDate: '2026-10-04' }));
+  access.createTransaction(draft({ type: 'income', amount: '999,00', transactionDate: '2026-10-12' }));
+  const deleted = access.createTransaction(draft({ amount: '999,00', transactionDate: '2026-10-07' }));
+  access.deleteTransaction(deleted);
+  const stored = db.select().from(schema.financeTransactions).all();
+  const period = periodBounds('week', '2026-10-07');
+  const result = access.readDashboard(period).analytics;
+  assert.deepEqual(result.period, period);
+  assert.equal(result.transactionCount, 3);
+  assert.equal(result.incomeMinor, 100n);
+  assert.equal(result.expensesMinor, 100n);
+  assert.equal(result.netFlowMinor, 0n);
+  assert.deepEqual(result.spending, [{ categoryId: null, name: 'No category', amountMinor: 100n }]);
+  assert.deepEqual(db.select().from(schema.financeTransactions).all(), stored, 'reading analytics does not persist summaries or modify transactions');
+});
+
+test('Week, Month and Year summaries each use their own coherent range across historical navigation', async (t) => {
+  const { sqlite, access, setNow } = await initialized();
+  t.after(() => sqlite.close());
+  setNow(new Date(2027, 0, 4, 12).getTime());
+  for (const [type, amount, transactionDate] of [
+    ['income', '20,00', '2026-01-15'], ['income', '50,00', '2026-09-15'],
+    ['income', '12,50', '2026-10-05'], ['expense', '3,00', '2026-10-06'],
+    ['expense', '1,40', '2026-10-31'], ['expense', '9,00', '2027-01-01'],
+  ] as const) access.createTransaction(draft({ type, amount, transactionDate }));
+  const week = access.readDashboard(periodBounds('week', '2026-10-07')).analytics;
+  const month = access.readDashboard(periodBounds('month', '2026-10-07')).analytics;
+  const year = access.readDashboard(periodBounds('year', '2026-10-07')).analytics;
+  assert.deepEqual([week.incomeMinor, week.expensesMinor, week.netFlowMinor], [1250n, 300n, 950n]);
+  assert.deepEqual([month.incomeMinor, month.expensesMinor, month.netFlowMinor], [1250n, 440n, 810n]);
+  assert.deepEqual([year.incomeMinor, year.expensesMinor, year.netFlowMinor], [8250n, 440n, 7810n]);
+  const previous = movePeriod(month.period, -1, '2026-10-07');
+  const september = access.readDashboard(previous).analytics;
+  assert.deepEqual([september.incomeMinor, september.expensesMinor, september.netFlowMinor], [5000n, 0n, 5000n]);
+  assert.deepEqual(access.readDashboard(movePeriod(previous, 1, '2026-10-07')).analytics, month);
+});
+
+test('category spending sorts expenses only, keeps custom/archived identities and reconciles with period Expenses', async (t) => {
+  const { sqlite, access, setNow } = await initialized();
+  t.after(() => sqlite.close());
+  setNow(new Date(2027, 0, 4, 12).getTime());
+  const categories = access.read().categories;
+  const food = categories.find((category) => category.name === 'Food')!;
+  const housing = categories.find((category) => category.name === 'Housing')!;
+  const salary = categories.find((category) => category.name === 'Salary')!;
+  const archived = access.createCategory('Pet care', 'expense');
+  for (const [categoryId, amount] of [[food.id, '500,00'], [food.id, '320,00'], [housing.id, '650,00'], [archived.id, '280,00'], [null, '190,00']] as const) {
+    access.createTransaction(draft({ categoryId, amount }));
+  }
+  access.createTransaction(draft({ type: 'income', categoryId: salary.id, amount: '5.200,00' }));
+  access.createTransaction(draft({ categoryId: food.id, amount: '9.999,00', transactionDate: '2026-09-30' }));
+  const deleted = access.createTransaction(draft({ categoryId: food.id, amount: '9.999,00' }));
+  access.deleteTransaction(deleted);
+  const period = periodBounds('month', today);
+  const beforeArchive = access.readDashboard(period).analytics;
+  access.deleteCategory(archived.id);
+  assert.deepEqual(access.readDashboard(period).analytics, beforeArchive, 'archival does not alter historical analytics');
+  const replacement = access.createCategory('Pet care', 'expense');
+  access.createTransaction(draft({ categoryId: replacement.id, amount: '100,00' }));
+  const result = access.readDashboard(period).analytics;
+  assert.equal(result.incomeMinor, 520000n);
+  assert.equal(result.expensesMinor, 204000n);
+  assert.deepEqual(result.spending, [
+    { categoryId: food.id, name: 'Food', amountMinor: 82000n },
+    { categoryId: housing.id, name: 'Housing', amountMinor: 65000n },
+    { categoryId: archived.id, name: 'Pet care', amountMinor: 28000n },
+    { categoryId: null, name: 'No category', amountMinor: 19000n },
+    { categoryId: replacement.id, name: 'Pet care', amountMinor: 10000n },
+  ]);
+  assert.equal(result.spending.reduce((sum, category) => sum + category.amountMinor, 0n), result.expensesMinor);
+});
+
+test('category spending has deterministic ordering for equal amounts and never changes source rows', () => {
+  const rows = [analyticsRow('expense', 100, 'b', 'Same'), analyticsRow('expense', 100, 'a', 'Same'), analyticsRow('expense', 100, 'c', 'Another')];
+  const original = rows.map((row) => ({ ...row }));
+  assert.deepEqual(aggregateFinance(rows, periodBounds('month', today)).spending.map((category) => category.categoryId), ['c', 'a', 'b']);
+  assert.deepEqual(rows, original);
+});
+
+test('SQLite dashboard totals above the safe Number range preserve every centavo and formatted Net Flow', async (t) => {
+  const { sqlite, access } = await initialized();
+  t.after(() => sqlite.close());
+  access.createTransaction(draft({ type: 'income', amount: formatBrlInput(maxAmountMinor) }));
+  access.createTransaction(draft({ type: 'income', amount: formatBrlInput(maxAmountMinor) }));
+  access.createTransaction(draft({ amount: '0,01' }));
+  const result = access.readDashboard(periodBounds('month', today)).analytics;
+  assert.equal(result.incomeMinor, BigInt(maxAmountMinor) * 2n);
+  assert.equal(result.expensesMinor, 1n);
+  assert.equal(result.netFlowMinor, BigInt(maxAmountMinor) * 2n - 1n);
+  assert.equal(formatBrlAmount(result.netFlowMinor), 'R$ 180.143.985.094.819,81');
+});
+
+test('empty and income-only SQLite periods return zero expenses without invalid bars', async (t) => {
+  const { sqlite, access } = await initialized();
+  t.after(() => sqlite.close());
+  const period = periodBounds('month', today);
+  const empty = access.readDashboard(period).analytics;
+  assert.deepEqual([empty.incomeMinor, empty.expensesMinor, empty.netFlowMinor], [0n, 0n, 0n]);
+  assert.deepEqual(empty.spending, []);
+  access.createTransaction(draft({ type: 'income', amount: '123,45' }));
+  const incomeOnly = access.readDashboard(period).analytics;
+  assert.deepEqual([incomeOnly.incomeMinor, incomeOnly.expensesMinor, incomeOnly.netFlowMinor], [12345n, 0n, 12345n]);
+  assert.deepEqual(incomeOnly.spending, []);
+  assert.equal(spendingBarPercent(0n, incomeOnly.expensesMinor), 0);
 });
 
 test('Finance seeds all thirteen typed built-ins including Pets, without duplicates or Task-category reuse', async (t) => {
