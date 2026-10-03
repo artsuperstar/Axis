@@ -19,6 +19,8 @@ export function TaskRow({ task, categories, onEdit, onComplete, onDelete }: {
   const colors = useTheme();
   const completed = task.completedAt !== null;
   const date = task.date ? `${dateLabel(task.date)}${task.time ? ` at ${task.time}` : ''}` : 'No date';
+  const metadata = [categoryName(task, categories), task.priority !== 'none' ? `${priorityLabels[task.priority]} priority` : null]
+    .filter(Boolean).join(' · ');
   return (
     <View style={[styles.row, { borderColor: colors.backgroundSelected }]}>
       <Pressable
@@ -33,7 +35,7 @@ export function TaskRow({ task, categories, onEdit, onComplete, onDelete }: {
         <ThemedText style={completed && styles.completed}>{task.title}</ThemedText>
         {!!task.description && <ThemedText type="small" themeColor="textSecondary" numberOfLines={2}>{task.description}</ThemedText>}
         <ThemedText type="small" themeColor="textSecondary">{date}</ThemedText>
-        <ThemedText type="small" themeColor="textSecondary">{categoryName(task, categories)}{task.priority !== 'none' ? ` · ${priorityLabels[task.priority]} priority` : ''}</ThemedText>
+        {!!metadata && <ThemedText type="small" themeColor="textSecondary">{metadata}</ThemedText>}
       </Pressable>
       <TaskButton label="Delete" onPress={onDelete} />
     </View>

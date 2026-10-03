@@ -30,7 +30,7 @@ export function CategoryManager({ categories, onCreate, onDelete, onDismiss }: {
   }
 
   function remove(category: TaskCategory) {
-    Alert.alert('Delete category?', `Tasks in “${category.name}” will stay and appear uncategorized.`, [
+    Alert.alert('Delete category?', `Tasks in “${category.name}” will stay, without a category label.`, [
       { text: 'Cancel', style: 'cancel' },
       { text: 'Delete', style: 'destructive', onPress: () => {
         try {

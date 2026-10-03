@@ -43,7 +43,7 @@ export function TaskEditor({ task, categories, onSave, onCreateCategory, onDismi
   const returnFocus = useRef<'priority' | 'category' | null>(null);
   // Measure the actual sheet content, which may be narrower than the device window.
   const dateTimeInRow = dateTimeWidth >= 2 * 160 * Math.max(1, fontScale) + Spacing.three;
-  const categoryLabel = categories.find((category) => category.id === draft.categoryId)?.name ?? 'Uncategorized';
+  const categoryLabel = categories.find((category) => category.id === draft.categoryId)?.name ?? 'No category';
 
   useEffect(() => {
     if (Platform.OS === 'web' || panel === 'new-category') return;
@@ -211,7 +211,7 @@ export function TaskEditor({ task, categories, onSave, onCreateCategory, onDismi
                     ) : panel === 'category' ? (
                       <>
                         <View accessibilityRole="radiogroup" accessibilityLabel="Category" style={styles.options}>
-                          <TaskChoice label="Uncategorized" selected={!draft.categoryId} onPress={() => { change('categoryId', null); closePanel(); }} />
+                          <TaskChoice label="No category" selected={!draft.categoryId} onPress={() => { change('categoryId', null); closePanel(); }} />
                           {categories.map((category) => <TaskChoice key={category.id} label={category.name} selected={draft.categoryId === category.id} onPress={() => { change('categoryId', category.id); closePanel(); }} />)}
                         </View>
                         <TaskButton label="+ New category" accessibilityLabel="Create new category" onPress={() => openPanel('new-category')} />

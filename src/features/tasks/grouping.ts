@@ -2,7 +2,7 @@ import { localDateString } from './form';
 import type { Task, TaskCategory } from './types';
 
 export function categoryName(task: Task, categories: TaskCategory[]) {
-  return categories.find((category) => category.id === task.categoryId && category.deletedAt === null)?.name ?? 'Uncategorized';
+  return categories.find((category) => category.id === task.categoryId && category.deletedAt === null)?.name ?? null;
 }
 
 export function groupTasks(tasks: Task[], today = localDateString(new Date())) {

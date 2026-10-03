@@ -92,6 +92,7 @@ test('task create, edit, complete/reopen, and soft deletion persist across a con
     assert.equal(original.time, null);
     assert.equal(original.description, null);
     assert.equal(original.categoryId, null);
+    assert.equal(categoryName(original, current.access.read().categories), null);
     assert.equal(original.completedAt, null);
 
     current.sqlite.close();
@@ -108,6 +109,7 @@ test('task create, edit, complete/reopen, and soft deletion persist across a con
     assert.equal(edited.time, '18:30');
     assert.equal(edited.priority, 'high');
     assert.equal(edited.categoryId, category.id);
+    assert.equal(categoryName(edited, current.access.read().categories), category.name);
     current.access.setCompleted(id, true);
     const completed = current.access.read().tasks[0];
     assert.ok(completed.completedAt !== null);
@@ -145,14 +147,15 @@ test('custom-category deletion preserves task references and allows a new catego
   const snapshot = access.read();
   const task = snapshot.tasks.find((item) => item.id === id)!;
   assert.equal(task.categoryId, category.id);
-  assert.equal(categoryName(task, snapshot.categories), 'Uncategorized');
+  assert.equal(categoryName(task, snapshot.categories), null);
   const deletedCategory = db.select().from(schema.taskCategories).where(eq(schema.taskCategories.id, category.id)).get();
   assert.ok(deletedCategory);
   assert.equal(typeof deletedCategory.deletedAt, 'number');
+  assert.equal(categoryName(task, [deletedCategory]), null);
   assert.throws(() => access.createTask({ ...taskDraft(), title: 'Old category', categoryId: category.id }), /no longer available/);
   const replacement = access.createCategory('Pet care');
   assert.notEqual(replacement.id, category.id);
-  assert.equal(categoryName(task, access.read().categories), 'Uncategorized');
+  assert.equal(categoryName(task, access.read().categories), null);
   assert.throws(() => access.deleteCategory(snapshot.categories.find((item) => item.isDefault)!.id), /cannot be deleted/);
   assert.throws(() => sqlite.prepare('DELETE FROM task_categories WHERE id = ?').run(category.id), /FOREIGN KEY/);
 });

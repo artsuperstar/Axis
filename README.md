@@ -43,7 +43,7 @@ Review and keep the SQL, journal, snapshot, and generated migration bundle toget
 
 Tasks and categories use UUIDs and Unix timestamps in milliseconds. Dates use `YYYY-MM-DD` and times use `HH:MM`, preserving local calendar values rather than converting them to UTC. Time requires a date; clearing a date also clears its time. Priority defaults to `none`.
 
-Deleting a custom category leaves its row and existing task references intact. It disappears from category choices, and its tasks display as uncategorized. Built-in categories have fixed IDs, are seeded without duplication or timestamp changes, and cannot be deleted through the feature.
+Deleting a custom category leaves its row and existing task references intact. It disappears from category choices, and its tasks display no category label. Tasks with no category also omit the label; the editor uses `No category` to select this empty state. Built-in categories have fixed IDs, are seeded without duplication or timestamp changes, and cannot be deleted through the feature.
 
 ## Validation
 
@@ -57,7 +57,7 @@ npm run db:check
 npx expo install --check
 ```
 
-For iPhone/Android validation: create a title-only task, restart the app, edit every field, complete/reopen it, and delete it. Create and assign a custom category, delete that category, and confirm its task remains uncategorized. Repeat with airplane mode and both device themes.
+For iPhone/Android validation: create a title-only task, restart the app, edit every field, complete/reopen it, and delete it. Create and assign a custom category, delete that category, and confirm its task remains visible without a category label. Repeat with airplane mode and both device themes.
 
 The task editor uses compact Priority and Category selectors. Category creation is available through `+ New category` in the category selector and automatically selects the saved category. Check selection/cancellation, duplicate-name errors, and category creation with the keyboard open. Verify Date and Time share a row at normal phone widths and stack on narrow screens or with larger accessibility text. Long values should wrap without clipping. With VoiceOver or TalkBack, check selector values, selected choices, the required Title label, and focus when returning to the editor.
 
