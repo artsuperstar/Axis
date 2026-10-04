@@ -1,0 +1,1285 @@
+{
+  "version": "6",
+  "dialect": "sqlite",
+  "id": "96fbb720-b7e4-4c52-b461-7d9b6a9ffb05",
+  "prevId": "d794fb86-2397-46ca-9b8b-2e5be917aa8a",
+  "tables": {
+    "finance_commitment_occurrences": {
+      "name": "finance_commitment_occurrences",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "commitment_id": {
+          "name": "commitment_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "schedule_id": {
+          "name": "schedule_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "due_date": {
+          "name": "due_date",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "expected_amount_minor": {
+          "name": "expected_amount_minor",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "installment_index": {
+          "name": "installment_index",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "status": {
+          "name": "status",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "'pending'"
+        },
+        "paid_transaction_id": {
+          "name": "paid_transaction_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "payment_type": {
+          "name": "payment_type",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "'expense'"
+        },
+        "resolved_at": {
+          "name": "resolved_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "deleted_at": {
+          "name": "deleted_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "commitment_occurrences_parent_date_unique": {
+          "name": "commitment_occurrences_parent_date_unique",
+          "columns": [
+            "commitment_id",
+            "due_date"
+          ],
+          "isUnique": true
+        },
+        "commitment_occurrences_installment_unique": {
+          "name": "commitment_occurrences_installment_unique",
+          "columns": [
+            "commitment_id",
+            "installment_index"
+          ],
+          "isUnique": true
+        },
+        "commitment_occurrences_payment_unique": {
+          "name": "commitment_occurrences_payment_unique",
+          "columns": [
+            "paid_transaction_id"
+          ],
+          "isUnique": true
+        },
+        "commitment_occurrences_due_idx": {
+          "name": "commitment_occurrences_due_idx",
+          "columns": [
+            "due_date",
+            "status"
+          ],
+          "isUnique": false,
+          "where": "\"finance_commitment_occurrences\".\"deleted_at\" IS NULL"
+        }
+      },
+      "foreignKeys": {
+        "finance_commitment_occurrences_commitment_id_finance_commitments_id_fk": {
+          "name": "finance_commitment_occurrences_commitment_id_finance_commitments_id_fk",
+          "tableFrom": "finance_commitment_occurrences",
+          "tableTo": "finance_commitments",
+          "columnsFrom": [
+            "commitment_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "restrict",
+          "onUpdate": "no action"
+        },
+        "finance_commitment_occurrences_schedule_id_commitment_id_finance_commitment_schedules_id_commitment_id_fk": {
+          "name": "finance_commitment_occurrences_schedule_id_commitment_id_finance_commitment_schedules_id_commitment_id_fk",
+          "tableFrom": "finance_commitment_occurrences",
+          "tableTo": "finance_commitment_schedules",
+          "columnsFrom": [
+            "schedule_id",
+            "commitment_id"
+          ],
+          "columnsTo": [
+            "id",
+            "commitment_id"
+          ],
+          "onDelete": "restrict",
+          "onUpdate": "no action"
+        },
+        "finance_commitment_occurrences_paid_transaction_id_payment_type_finance_transactions_id_type_fk": {
+          "name": "finance_commitment_occurrences_paid_transaction_id_payment_type_finance_transactions_id_type_fk",
+          "tableFrom": "finance_commitment_occurrences",
+          "tableTo": "finance_transactions",
+          "columnsFrom": [
+            "paid_transaction_id",
+            "payment_type"
+          ],
+          "columnsTo": [
+            "id",
+            "type"
+          ],
+          "onDelete": "restrict",
+          "onUpdate": "restrict"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "commitment_occurrence_status_valid": {
+          "name": "commitment_occurrence_status_valid",
+          "value": "\"finance_commitment_occurrences\".\"status\" IN ('pending', 'paid', 'skipped')"
+        },
+        "commitment_occurrence_payment_valid": {
+          "name": "commitment_occurrence_payment_valid",
+          "value": "\"finance_commitment_occurrences\".\"payment_type\" = 'expense' AND\n    ((\"finance_commitment_occurrences\".\"status\" = 'paid' AND \"finance_commitment_occurrences\".\"paid_transaction_id\" IS NOT NULL AND \"finance_commitment_occurrences\".\"resolved_at\" IS NOT NULL)\n    OR (\"finance_commitment_occurrences\".\"status\" = 'skipped' AND \"finance_commitment_occurrences\".\"paid_transaction_id\" IS NULL AND \"finance_commitment_occurrences\".\"resolved_at\" IS NOT NULL)\n    OR (\"finance_commitment_occurrences\".\"status\" = 'pending' AND \"finance_commitment_occurrences\".\"paid_transaction_id\" IS NULL AND \"finance_commitment_occurrences\".\"resolved_at\" IS NULL))"
+        },
+        "commitment_occurrence_amount_valid": {
+          "name": "commitment_occurrence_amount_valid",
+          "value": "typeof(\"finance_commitment_occurrences\".\"expected_amount_minor\") = 'integer' AND \"finance_commitment_occurrences\".\"expected_amount_minor\" BETWEEN 1 AND 9007199254740991"
+        },
+        "commitment_occurrence_index_valid": {
+          "name": "commitment_occurrence_index_valid",
+          "value": "\"finance_commitment_occurrences\".\"installment_index\" IS NULL OR (typeof(\"finance_commitment_occurrences\".\"installment_index\") = 'integer' AND \"finance_commitment_occurrences\".\"installment_index\" BETWEEN 1 AND 1200)"
+        },
+        "commitment_occurrence_date_valid": {
+          "name": "commitment_occurrence_date_valid",
+          "value": "\"finance_commitment_occurrences\".\"due_date\" GLOB '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]' AND substr(\"finance_commitment_occurrences\".\"due_date\", 1, 4) >= '0001'\n    AND coalesce(strftime('%Y-%m-%d', \"finance_commitment_occurrences\".\"due_date\", '+0 days') = \"finance_commitment_occurrences\".\"due_date\", 0)"
+        },
+        "commitment_occurrence_updated_valid": {
+          "name": "commitment_occurrence_updated_valid",
+          "value": "\"finance_commitment_occurrences\".\"updated_at\" >= \"finance_commitment_occurrences\".\"created_at\""
+        }
+      }
+    },
+    "finance_commitment_schedules": {
+      "name": "finance_commitment_schedules",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "commitment_id": {
+          "name": "commitment_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "start_date": {
+          "name": "start_date",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "billing_day": {
+          "name": "billing_day",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "first_installment_index": {
+          "name": "first_installment_index",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": 1
+        },
+        "expected_amount_minor": {
+          "name": "expected_amount_minor",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "effective_from": {
+          "name": "effective_from",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "effective_until": {
+          "name": "effective_until",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "commitment_schedules_id_parent_unique": {
+          "name": "commitment_schedules_id_parent_unique",
+          "columns": [
+            "id",
+            "commitment_id"
+          ],
+          "isUnique": true
+        },
+        "commitment_schedules_parent_idx": {
+          "name": "commitment_schedules_parent_idx",
+          "columns": [
+            "commitment_id",
+            "effective_from"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "finance_commitment_schedules_commitment_id_finance_commitments_id_fk": {
+          "name": "finance_commitment_schedules_commitment_id_finance_commitments_id_fk",
+          "tableFrom": "finance_commitment_schedules",
+          "tableTo": "finance_commitments",
+          "columnsFrom": [
+            "commitment_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "restrict",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "commitment_schedule_day_valid": {
+          "name": "commitment_schedule_day_valid",
+          "value": "\"finance_commitment_schedules\".\"billing_day\" BETWEEN 1 AND 31 AND typeof(\"finance_commitment_schedules\".\"billing_day\") = 'integer'"
+        },
+        "commitment_schedule_index_valid": {
+          "name": "commitment_schedule_index_valid",
+          "value": "\"finance_commitment_schedules\".\"first_installment_index\" BETWEEN 1 AND 1200 AND typeof(\"finance_commitment_schedules\".\"first_installment_index\") = 'integer'"
+        },
+        "commitment_schedule_amount_valid": {
+          "name": "commitment_schedule_amount_valid",
+          "value": "typeof(\"finance_commitment_schedules\".\"expected_amount_minor\") = 'integer' AND \"finance_commitment_schedules\".\"expected_amount_minor\" BETWEEN 1 AND 9007199254740991"
+        },
+        "commitment_schedule_dates_valid": {
+          "name": "commitment_schedule_dates_valid",
+          "value": "\"finance_commitment_schedules\".\"start_date\" GLOB '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]' AND substr(\"finance_commitment_schedules\".\"start_date\", 1, 4) >= '0001'\n    AND coalesce(strftime('%Y-%m-%d', \"finance_commitment_schedules\".\"start_date\", '+0 days') = \"finance_commitment_schedules\".\"start_date\", 0) AND \"finance_commitment_schedules\".\"effective_from\" GLOB '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]' AND substr(\"finance_commitment_schedules\".\"effective_from\", 1, 4) >= '0001'\n    AND coalesce(strftime('%Y-%m-%d', \"finance_commitment_schedules\".\"effective_from\", '+0 days') = \"finance_commitment_schedules\".\"effective_from\", 0)\n    AND (\"finance_commitment_schedules\".\"effective_until\" IS NULL OR (\"finance_commitment_schedules\".\"effective_until\" >= \"finance_commitment_schedules\".\"effective_from\" AND \"finance_commitment_schedules\".\"effective_until\" GLOB '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]' AND substr(\"finance_commitment_schedules\".\"effective_until\", 1, 4) >= '0001'\n    AND coalesce(strftime('%Y-%m-%d', \"finance_commitment_schedules\".\"effective_until\", '+0 days') = \"finance_commitment_schedules\".\"effective_until\", 0)))"
+        },
+        "commitment_schedule_updated_valid": {
+          "name": "commitment_schedule_updated_valid",
+          "value": "\"finance_commitment_schedules\".\"updated_at\" >= \"finance_commitment_schedules\".\"created_at\""
+        }
+      }
+    },
+    "finance_categories": {
+      "name": "finance_categories",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "type": {
+          "name": "type",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "is_built_in": {
+          "name": "is_built_in",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "deleted_at": {
+          "name": "deleted_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "finance_categories_id_type_unique": {
+          "name": "finance_categories_id_type_unique",
+          "columns": [
+            "id",
+            "type"
+          ],
+          "isUnique": true
+        },
+        "finance_categories_active_type_name_unique": {
+          "name": "finance_categories_active_type_name_unique",
+          "columns": [
+            "type",
+            "lower(\"name\")"
+          ],
+          "isUnique": true,
+          "where": "\"finance_categories\".\"deleted_at\" IS NULL"
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "finance_category_name_not_empty": {
+          "name": "finance_category_name_not_empty",
+          "value": "length(trim(\"finance_categories\".\"name\")) > 0"
+        },
+        "finance_category_type_valid": {
+          "name": "finance_category_type_valid",
+          "value": "\"finance_categories\".\"type\" IN ('income', 'expense')"
+        },
+        "finance_category_builtin_valid": {
+          "name": "finance_category_builtin_valid",
+          "value": "\"finance_categories\".\"is_built_in\" IN (0, 1)"
+        },
+        "finance_category_updated_after_created": {
+          "name": "finance_category_updated_after_created",
+          "value": "\"finance_categories\".\"updated_at\" >= \"finance_categories\".\"created_at\""
+        }
+      }
+    },
+    "finance_commitments": {
+      "name": "finance_commitments",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "kind": {
+          "name": "kind",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "title": {
+          "name": "title",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "category_id": {
+          "name": "category_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "category_type": {
+          "name": "category_type",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "'expense'"
+        },
+        "expected_amount_minor": {
+          "name": "expected_amount_minor",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "installment_count": {
+          "name": "installment_count",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "status": {
+          "name": "status",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "'active'"
+        },
+        "completed_at": {
+          "name": "completed_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "deleted_at": {
+          "name": "deleted_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "finance_commitments_status_idx": {
+          "name": "finance_commitments_status_idx",
+          "columns": [
+            "status"
+          ],
+          "isUnique": false,
+          "where": "\"finance_commitments\".\"deleted_at\" IS NULL"
+        }
+      },
+      "foreignKeys": {
+        "finance_commitments_category_id_category_type_finance_categories_id_type_fk": {
+          "name": "finance_commitments_category_id_category_type_finance_categories_id_type_fk",
+          "tableFrom": "finance_commitments",
+          "tableTo": "finance_categories",
+          "columnsFrom": [
+            "category_id",
+            "category_type"
+          ],
+          "columnsTo": [
+            "id",
+            "type"
+          ],
+          "onDelete": "restrict",
+          "onUpdate": "restrict"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "commitment_kind_valid": {
+          "name": "commitment_kind_valid",
+          "value": "\"finance_commitments\".\"kind\" IN ('bill', 'subscription', 'installment')"
+        },
+        "commitment_title_valid": {
+          "name": "commitment_title_valid",
+          "value": "length(trim(\"finance_commitments\".\"title\")) > 0"
+        },
+        "commitment_category_expense": {
+          "name": "commitment_category_expense",
+          "value": "\"finance_commitments\".\"category_type\" = 'expense'"
+        },
+        "commitment_amount_valid": {
+          "name": "commitment_amount_valid",
+          "value": "typeof(\"finance_commitments\".\"expected_amount_minor\") = 'integer' AND \"finance_commitments\".\"expected_amount_minor\" BETWEEN 1 AND 9007199254740991"
+        },
+        "commitment_installments_valid": {
+          "name": "commitment_installments_valid",
+          "value": "(\"finance_commitments\".\"kind\" = 'installment' AND \"finance_commitments\".\"installment_count\" IS NOT NULL AND typeof(\"finance_commitments\".\"installment_count\") = 'integer' AND \"finance_commitments\".\"installment_count\" BETWEEN 1 AND 1200)\n    OR (\"finance_commitments\".\"kind\" != 'installment' AND \"finance_commitments\".\"installment_count\" IS NULL)"
+        },
+        "commitment_status_valid": {
+          "name": "commitment_status_valid",
+          "value": "\"finance_commitments\".\"status\" IN ('active', 'paused', 'ended', 'completed') AND (\"finance_commitments\".\"status\" != 'completed' OR \"finance_commitments\".\"kind\" = 'installment')"
+        },
+        "commitment_completion_valid": {
+          "name": "commitment_completion_valid",
+          "value": "(\"finance_commitments\".\"status\" = 'completed' AND \"finance_commitments\".\"completed_at\" IS NOT NULL) OR (\"finance_commitments\".\"status\" != 'completed' AND \"finance_commitments\".\"completed_at\" IS NULL)"
+        },
+        "commitment_updated_valid": {
+          "name": "commitment_updated_valid",
+          "value": "\"finance_commitments\".\"updated_at\" >= \"finance_commitments\".\"created_at\""
+        }
+      }
+    },
+    "finance_transactions": {
+      "name": "finance_transactions",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "type": {
+          "name": "type",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "amount_minor": {
+          "name": "amount_minor",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "note": {
+          "name": "note",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "transaction_date": {
+          "name": "transaction_date",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "category_id": {
+          "name": "category_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "deleted_at": {
+          "name": "deleted_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "finance_transactions_id_type_unique": {
+          "name": "finance_transactions_id_type_unique",
+          "columns": [
+            "id",
+            "type"
+          ],
+          "isUnique": true
+        },
+        "finance_transactions_active_date_idx": {
+          "name": "finance_transactions_active_date_idx",
+          "columns": [
+            "transaction_date",
+            "created_at",
+            "id"
+          ],
+          "isUnique": false,
+          "where": "\"finance_transactions\".\"deleted_at\" IS NULL"
+        },
+        "finance_transactions_category_idx": {
+          "name": "finance_transactions_category_idx",
+          "columns": [
+            "category_id"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "finance_transaction_category_type_fk": {
+          "name": "finance_transaction_category_type_fk",
+          "tableFrom": "finance_transactions",
+          "tableTo": "finance_categories",
+          "columnsFrom": [
+            "category_id",
+            "type"
+          ],
+          "columnsTo": [
+            "id",
+            "type"
+          ],
+          "onDelete": "restrict",
+          "onUpdate": "restrict"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "finance_transaction_type_valid": {
+          "name": "finance_transaction_type_valid",
+          "value": "\"finance_transactions\".\"type\" IN ('income', 'expense')"
+        },
+        "finance_transaction_amount_valid": {
+          "name": "finance_transaction_amount_valid",
+          "value": "typeof(\"finance_transactions\".\"amount_minor\") = 'integer' AND \"finance_transactions\".\"amount_minor\" BETWEEN 1 AND 9007199254740991"
+        },
+        "finance_transaction_description_not_empty": {
+          "name": "finance_transaction_description_not_empty",
+          "value": "length(trim(\"finance_transactions\".\"description\")) > 0"
+        },
+        "finance_transaction_date_valid": {
+          "name": "finance_transaction_date_valid",
+          "value": "\"finance_transactions\".\"transaction_date\" GLOB '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]'\n    AND substr(\"finance_transactions\".\"transaction_date\", 1, 4) >= '0001'\n    AND coalesce(strftime('%Y-%m-%d', \"finance_transactions\".\"transaction_date\", '+0 days') = \"finance_transactions\".\"transaction_date\", 0)"
+        },
+        "finance_transaction_updated_after_created": {
+          "name": "finance_transaction_updated_after_created",
+          "value": "\"finance_transactions\".\"updated_at\" >= \"finance_transactions\".\"created_at\""
+        }
+      }
+    },
+    "task_categories": {
+      "name": "task_categories",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "is_default": {
+          "name": "is_default",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "deleted_at": {
+          "name": "deleted_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "task_categories_active_name_unique": {
+          "name": "task_categories_active_name_unique",
+          "columns": [
+            "lower(\"name\")"
+          ],
+          "isUnique": true,
+          "where": "\"task_categories\".\"deleted_at\" IS NULL"
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "category_name_not_empty": {
+          "name": "category_name_not_empty",
+          "value": "length(trim(\"task_categories\".\"name\")) > 0"
+        },
+        "category_updated_after_created": {
+          "name": "category_updated_after_created",
+          "value": "\"task_categories\".\"updated_at\" >= \"task_categories\".\"created_at\""
+        }
+      }
+    },
+    "task_occurrences": {
+      "name": "task_occurrences",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "task_id": {
+          "name": "task_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "recurrence_id": {
+          "name": "recurrence_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "scheduled_date": {
+          "name": "scheduled_date",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "scheduled_time": {
+          "name": "scheduled_time",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "status": {
+          "name": "status",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "'pending'"
+        },
+        "completed_at": {
+          "name": "completed_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "deleted_at": {
+          "name": "deleted_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "task_occurrences_rule_date_unique": {
+          "name": "task_occurrences_rule_date_unique",
+          "columns": [
+            "recurrence_id",
+            "scheduled_date"
+          ],
+          "isUnique": true
+        },
+        "task_occurrences_active_task_date_unique": {
+          "name": "task_occurrences_active_task_date_unique",
+          "columns": [
+            "task_id",
+            "scheduled_date"
+          ],
+          "isUnique": true,
+          "where": "\"task_occurrences\".\"deleted_at\" IS NULL"
+        },
+        "task_occurrences_history_idx": {
+          "name": "task_occurrences_history_idx",
+          "columns": [
+            "task_id",
+            "scheduled_date"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "task_occurrences_task_id_tasks_id_fk": {
+          "name": "task_occurrences_task_id_tasks_id_fk",
+          "tableFrom": "task_occurrences",
+          "tableTo": "tasks",
+          "columnsFrom": [
+            "task_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "restrict",
+          "onUpdate": "no action"
+        },
+        "task_occurrences_recurrence_id_task_recurrences_id_fk": {
+          "name": "task_occurrences_recurrence_id_task_recurrences_id_fk",
+          "tableFrom": "task_occurrences",
+          "tableTo": "task_recurrences",
+          "columnsFrom": [
+            "recurrence_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "restrict",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "occurrence_status_valid": {
+          "name": "occurrence_status_valid",
+          "value": "\"task_occurrences\".\"status\" IN ('pending', 'completed', 'skipped')"
+        },
+        "occurrence_completion_valid": {
+          "name": "occurrence_completion_valid",
+          "value": "(\"task_occurrences\".\"status\" = 'completed' AND \"task_occurrences\".\"completed_at\" IS NOT NULL) OR (\"task_occurrences\".\"status\" != 'completed' AND \"task_occurrences\".\"completed_at\" IS NULL)"
+        },
+        "occurrence_date_valid": {
+          "name": "occurrence_date_valid",
+          "value": "\"task_occurrences\".\"scheduled_date\" GLOB '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]' AND substr(\"task_occurrences\".\"scheduled_date\", 1, 4) >= '0001' AND coalesce(strftime('%Y-%m-%d', \"task_occurrences\".\"scheduled_date\", '+0 days') = \"task_occurrences\".\"scheduled_date\", 0)"
+        },
+        "occurrence_time_valid": {
+          "name": "occurrence_time_valid",
+          "value": "\"task_occurrences\".\"scheduled_time\" IS NULL OR (\"task_occurrences\".\"scheduled_time\" GLOB '[0-2][0-9]:[0-5][0-9]' AND substr(\"task_occurrences\".\"scheduled_time\", 1, 2) < '24')"
+        },
+        "occurrence_updated_after_created": {
+          "name": "occurrence_updated_after_created",
+          "value": "\"task_occurrences\".\"updated_at\" >= \"task_occurrences\".\"created_at\""
+        }
+      }
+    },
+    "task_recurrences": {
+      "name": "task_recurrences",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "task_id": {
+          "name": "task_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "frequency": {
+          "name": "frequency",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "interval": {
+          "name": "interval",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": 1
+        },
+        "weekday_mask": {
+          "name": "weekday_mask",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "month_day": {
+          "name": "month_day",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "month": {
+          "name": "month",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "start_date": {
+          "name": "start_date",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "scheduled_time": {
+          "name": "scheduled_time",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "end_date": {
+          "name": "end_date",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "effective_from": {
+          "name": "effective_from",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "effective_until": {
+          "name": "effective_until",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "deleted_at": {
+          "name": "deleted_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "task_recurrences_task_idx": {
+          "name": "task_recurrences_task_idx",
+          "columns": [
+            "task_id",
+            "effective_from"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "task_recurrences_task_id_tasks_id_fk": {
+          "name": "task_recurrences_task_id_tasks_id_fk",
+          "tableFrom": "task_recurrences",
+          "tableTo": "tasks",
+          "columnsFrom": [
+            "task_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "restrict",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "recurrence_frequency_valid": {
+          "name": "recurrence_frequency_valid",
+          "value": "\"task_recurrences\".\"frequency\" IN ('daily', 'weekly', 'monthly', 'yearly')"
+        },
+        "recurrence_interval_valid": {
+          "name": "recurrence_interval_valid",
+          "value": "\"task_recurrences\".\"interval\" >= 1 AND (\"task_recurrences\".\"frequency\" != 'yearly' OR \"task_recurrences\".\"interval\" = 1)"
+        },
+        "recurrence_pattern_valid": {
+          "name": "recurrence_pattern_valid",
+          "value": "CASE \"task_recurrences\".\"frequency\"\n    WHEN 'weekly' THEN \"task_recurrences\".\"weekday_mask\" BETWEEN 1 AND 127 AND \"task_recurrences\".\"month_day\" IS NULL AND \"task_recurrences\".\"month\" IS NULL\n    WHEN 'monthly' THEN \"task_recurrences\".\"weekday_mask\" IS NULL AND \"task_recurrences\".\"month_day\" BETWEEN 1 AND 31 AND \"task_recurrences\".\"month\" IS NULL\n    WHEN 'yearly' THEN \"task_recurrences\".\"weekday_mask\" IS NULL AND \"task_recurrences\".\"month\" BETWEEN 1 AND 12 AND \"task_recurrences\".\"month_day\" BETWEEN 1 AND\n      CASE \"task_recurrences\".\"month\" WHEN 2 THEN 29 WHEN 4 THEN 30 WHEN 6 THEN 30 WHEN 9 THEN 30 WHEN 11 THEN 30 ELSE 31 END\n    ELSE \"task_recurrences\".\"weekday_mask\" IS NULL AND \"task_recurrences\".\"month_day\" IS NULL AND \"task_recurrences\".\"month\" IS NULL\n  END AND CASE \"task_recurrences\".\"frequency\" WHEN 'weekly' THEN \"task_recurrences\".\"weekday_mask\" IS NOT NULL\n    WHEN 'monthly' THEN \"task_recurrences\".\"month_day\" IS NOT NULL\n    WHEN 'yearly' THEN \"task_recurrences\".\"month\" IS NOT NULL AND \"task_recurrences\".\"month_day\" IS NOT NULL ELSE 1 END"
+        },
+        "recurrence_dates_valid": {
+          "name": "recurrence_dates_valid",
+          "value": "\n    \"task_recurrences\".\"start_date\" GLOB '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]' AND substr(\"task_recurrences\".\"start_date\", 1, 4) >= '0001'\n    AND coalesce(strftime('%Y-%m-%d', \"task_recurrences\".\"start_date\", '+0 days') = \"task_recurrences\".\"start_date\", 0)\n    AND \"task_recurrences\".\"effective_from\" GLOB '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]' AND substr(\"task_recurrences\".\"effective_from\", 1, 4) >= '0001'\n    AND coalesce(strftime('%Y-%m-%d', \"task_recurrences\".\"effective_from\", '+0 days') = \"task_recurrences\".\"effective_from\", 0)\n    AND (\"task_recurrences\".\"end_date\" IS NULL OR (\"task_recurrences\".\"end_date\" >= \"task_recurrences\".\"start_date\"\n      AND \"task_recurrences\".\"end_date\" GLOB '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]'\n      AND coalesce(strftime('%Y-%m-%d', \"task_recurrences\".\"end_date\", '+0 days') = \"task_recurrences\".\"end_date\", 0)))\n    AND (\"task_recurrences\".\"effective_until\" IS NULL OR (\"task_recurrences\".\"effective_until\" > \"task_recurrences\".\"effective_from\"\n      AND \"task_recurrences\".\"effective_until\" GLOB '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]'\n      AND coalesce(strftime('%Y-%m-%d', \"task_recurrences\".\"effective_until\", '+0 days') = \"task_recurrences\".\"effective_until\", 0)))"
+        },
+        "recurrence_time_valid": {
+          "name": "recurrence_time_valid",
+          "value": "\"task_recurrences\".\"scheduled_time\" IS NULL OR (\"task_recurrences\".\"scheduled_time\" GLOB '[0-2][0-9]:[0-5][0-9]' AND substr(\"task_recurrences\".\"scheduled_time\", 1, 2) < '24')"
+        },
+        "recurrence_updated_after_created": {
+          "name": "recurrence_updated_after_created",
+          "value": "\"task_recurrences\".\"updated_at\" >= \"task_recurrences\".\"created_at\""
+        }
+      }
+    },
+    "tasks": {
+      "name": "tasks",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "title": {
+          "name": "title",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "date": {
+          "name": "date",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "time": {
+          "name": "time",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "priority": {
+          "name": "priority",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "'none'"
+        },
+        "category_id": {
+          "name": "category_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "completed_at": {
+          "name": "completed_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "deleted_at": {
+          "name": "deleted_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "tasks_active_date_idx": {
+          "name": "tasks_active_date_idx",
+          "columns": [
+            "date"
+          ],
+          "isUnique": false,
+          "where": "\"tasks\".\"deleted_at\" IS NULL"
+        }
+      },
+      "foreignKeys": {
+        "tasks_category_id_task_categories_id_fk": {
+          "name": "tasks_category_id_task_categories_id_fk",
+          "tableFrom": "tasks",
+          "tableTo": "task_categories",
+          "columnsFrom": [
+            "category_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "restrict",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "task_title_not_empty": {
+          "name": "task_title_not_empty",
+          "value": "length(trim(\"tasks\".\"title\")) > 0"
+        },
+        "task_priority_valid": {
+          "name": "task_priority_valid",
+          "value": "\"tasks\".\"priority\" IN ('none', 'low', 'medium', 'high')"
+        },
+        "task_date_valid": {
+          "name": "task_date_valid",
+          "value": "\"tasks\".\"date\" IS NULL OR (\n    \"tasks\".\"date\" GLOB '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]'\n    AND substr(\"tasks\".\"date\", 1, 4) >= '0001'\n    AND coalesce(strftime('%Y-%m-%d', \"tasks\".\"date\", '+0 days') = \"tasks\".\"date\", 0)\n  )"
+        },
+        "task_time_valid": {
+          "name": "task_time_valid",
+          "value": "\"tasks\".\"time\" IS NULL OR (\n    \"tasks\".\"date\" IS NOT NULL\n    AND \"tasks\".\"time\" GLOB '[0-2][0-9]:[0-5][0-9]'\n    AND substr(\"tasks\".\"time\", 1, 2) < '24'\n  )"
+        },
+        "task_updated_after_created": {
+          "name": "task_updated_after_created",
+          "value": "\"tasks\".\"updated_at\" >= \"tasks\".\"created_at\""
+        }
+      }
+    }
+  },
+  "views": {},
+  "enums": {},
+  "_meta": {
+    "schemas": {},
+    "tables": {},
+    "columns": {}
+  },
+  "internal": {
+    "indexes": {
+      "finance_categories_active_type_name_unique": {
+        "columns": {
+          "lower(\"name\")": {
+            "isExpression": true
+          }
+        }
+      },
+      "task_categories_active_name_unique": {
+        "columns": {
+          "lower(\"name\")": {
+            "isExpression": true
+          }
+        }
+      }
+    }
+  }
+}

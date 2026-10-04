@@ -7,18 +7,21 @@ import { useDatabase } from '@/database/database-provider';
 import { localDateString } from '@/utils/calendar';
 
 import { createFinanceDataAccess } from './data';
+import { createCommitmentDataAccess } from './commitments/data';
+import type { CommitmentItem } from './commitments/types';
 import { financeError } from './errors';
 import type { FinanceAnalytics } from './analytics';
 import { movePeriod, periodBounds, refreshPeriod, type FinancePeriod, type PeriodKind } from './periods';
 import type { FinanceCategory, FinanceTransaction } from './types';
 
-export type FinanceView = 'dashboard' | 'transactions';
+export type FinanceView = 'dashboard' | 'transactions' | 'commitments';
 type Selection = { view: FinanceView; period: FinancePeriod };
-type Snapshot = { transactions: FinanceTransaction[]; categories: FinanceCategory[]; analytics: FinanceAnalytics | null };
+type Snapshot = { transactions: FinanceTransaction[]; categories: FinanceCategory[]; analytics: FinanceAnalytics | null; items: CommitmentItem[]; paymentTransactionIds: string[] };
 
 export function useFinance() {
   const db = useDatabase();
   const access = useMemo(() => createFinanceDataAccess(db, randomUUID), [db]);
+  const commitmentAccess = useMemo(() => createCommitmentDataAccess(db, randomUUID), [db]);
   const [today, setToday] = useState(() => localDateString(new Date()));
   const todayRef = useRef(today);
   const [selection, setSelection] = useState<Selection>(() => ({ view: 'dashboard', period: periodBounds('month', today) }));
@@ -29,15 +32,16 @@ export function useFinance() {
   const load = useCallback((next: Selection) => {
     try {
       if (next.view === 'dashboard') {
-        setSnapshot({ ...access.readDashboard(next.period), transactions: [] });
-      } else setSnapshot({ ...access.read(), analytics: null });
+        setSnapshot({ ...access.readDashboard(next.period), transactions: [], items: [], paymentTransactionIds: [] });
+      } else if (next.view === 'transactions') setSnapshot({ ...access.read(), analytics: null, items: [] });
+      else setSnapshot({ ...commitmentAccess.read(), categories: access.readCategories(), transactions: [], analytics: null, paymentTransactionIds: [] });
       setError(null);
     } catch (cause) {
       // Clear prior values so a failed period change never shows totals for a different period.
       setSnapshot(null);
       setError(financeError(cause, 'Unable to load Finance. Please try again.'));
     }
-  }, [access]);
+  }, [access, commitmentAccess]);
 
   const select = useCallback((next: Selection) => {
     selectionRef.current = next;
@@ -93,5 +97,5 @@ export function useFinance() {
     return result;
   }
 
-  return { access, snapshot, error, reload, mutate, selection, today, setView, setPeriodKind, navigatePeriod, returnToCurrent };
+  return { access, commitmentAccess, snapshot, error, reload, mutate, selection, today, setView, setPeriodKind, navigatePeriod, returnToCurrent };
 }

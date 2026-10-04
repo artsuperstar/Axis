@@ -1,7 +1,7 @@
 import { and, asc, desc, eq, isNull, sql } from 'drizzle-orm';
 
 import type { AxisDatabase } from '@/database/client';
-import { financeCategories, financeTransactions } from '@/database/schema';
+import { commitmentOccurrences, financeCategories, financeTransactions } from '@/database/schema';
 import { localDateString } from '@/utils/calendar';
 
 import { FinanceValidationError } from './errors';
@@ -23,6 +23,11 @@ export function createFinanceDataAccess(db: AxisDatabase, newId: () => string, n
     return transaction;
   }
 
+  function linkedPayment(id: string) {
+    return db.select({ id: commitmentOccurrences.id }).from(commitmentOccurrences)
+      .where(and(eq(commitmentOccurrences.paidTransactionId, id), eq(commitmentOccurrences.status, 'paid'), isNull(commitmentOccurrences.deletedAt))).get();
+  }
+
   function transactionValues(draft: TransactionDraft, existing?: FinanceTransaction) {
     const values = validateTransactionDraft(draft, localDateString(new Date(now())));
     if (values.categoryId) {
@@ -36,11 +41,14 @@ export function createFinanceDataAccess(db: AxisDatabase, newId: () => string, n
   }
 
   return {
+    readCategories,
     read() {
       return {
         transactions: db.select().from(financeTransactions).where(isNull(financeTransactions.deletedAt))
           .orderBy(desc(financeTransactions.transactionDate), desc(financeTransactions.createdAt), asc(financeTransactions.id)).all(),
         categories: readCategories(),
+        paymentTransactionIds: db.select({ id: commitmentOccurrences.paidTransactionId }).from(commitmentOccurrences)
+          .where(and(eq(commitmentOccurrences.status, 'paid'), isNull(commitmentOccurrences.deletedAt))).all().map((row) => row.id!),
       };
     },
 
@@ -58,6 +66,7 @@ export function createFinanceDataAccess(db: AxisDatabase, newId: () => string, n
 
     editTransaction(id: string, draft: TransactionDraft) {
       const existing = activeTransaction(id);
+      if (linkedPayment(id) && draft.type !== 'expense') throw new FinanceValidationError('A commitment payment must remain an Expense. Undo payment in Commitments to remove it.');
       const values = transactionValues(draft, existing);
       const timestamp = Math.max(now(), existing.updatedAt + 1);
       db.update(financeTransactions).set({ ...values, updatedAt: timestamp }).where(eq(financeTransactions.id, id)).run();
@@ -65,6 +74,7 @@ export function createFinanceDataAccess(db: AxisDatabase, newId: () => string, n
 
     deleteTransaction(id: string) {
       const existing = activeTransaction(id);
+      if (linkedPayment(id)) throw new FinanceValidationError('This is a commitment payment. Use Undo payment in Commitments history to remove it.');
       const timestamp = Math.max(now(), existing.updatedAt + 1);
       db.update(financeTransactions).set({ deletedAt: timestamp, updatedAt: timestamp }).where(eq(financeTransactions.id, id)).run();
     },

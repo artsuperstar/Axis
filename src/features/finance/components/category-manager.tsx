@@ -2,14 +2,15 @@ import { useState } from 'react';
 import { Alert, KeyboardAvoidingView, Modal, Platform, ScrollView, StyleSheet, View } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
-import { FormButton, FormChoice, FormError, FormField } from '@/components/form-controls';
+import { FormButton, FormError, FormField, SegmentedControl } from '@/components/form-controls';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { Spacing } from '@/constants/theme';
 
 import { financeError } from '../errors';
 import { categoriesForType } from '../form';
-import { transactionTypeLabels, transactionTypes, type FinanceCategory, type TransactionType } from '../types';
+import { transactionTypeOptions } from '../form-options';
+import { type FinanceCategory, type TransactionType } from '../types';
 
 export function FinanceCategoryManager({ categories, onCreate, onDelete, onDismiss }: {
   categories: FinanceCategory[];
@@ -48,12 +49,7 @@ export function FinanceCategoryManager({ categories, onCreate, onDelete, onDismi
               </View>
               <ScrollView keyboardShouldPersistTaps="handled" contentContainerStyle={styles.content}>
                 <FormError message={error} />
-                <ThemedText type="smallBold">Type *</ThemedText>
-                <View accessibilityRole="radiogroup" accessibilityLabel="Category type" style={styles.choices}>
-                  {transactionTypes.map((value) => <View key={value} style={{ flex: 1 }}>
-                    <FormChoice label={transactionTypeLabels[value]} selected={type === value} onPress={() => { setType(value); setError(null); }} />
-                  </View>)}
-                </View>
+                <SegmentedControl label="Type *" value={type} options={transactionTypeOptions} onChange={(value) => { setType(value); setError(null); }} />
                 <FormField label="Category name *" value={name} onChangeText={(value) => { setName(value); setError(null); }} returnKeyType="done" onSubmitEditing={create} />
                 <FormButton label="Create category" onPress={create} disabled={!name.trim()} />
                 {categoriesForType(categories, type).map((category) => <View key={category.id} style={styles.row}>
@@ -76,6 +72,5 @@ const styles = StyleSheet.create({
   container: { flex: 1 },
   header: { flexDirection: 'row', alignItems: 'center', gap: Spacing.two, padding: Spacing.three },
   content: { padding: Spacing.three, gap: Spacing.three },
-  choices: { flexDirection: 'row', gap: Spacing.two },
   row: { flexDirection: 'row', alignItems: 'center', gap: Spacing.two },
 });

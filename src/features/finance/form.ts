@@ -37,6 +37,6 @@ export function financeCategoryForTransaction(transaction: Pick<FinanceTransacti
   return categories.find((category) => category.id === transaction.categoryId && category.type === transaction.type) ?? null;
 }
 
-export function financeCategoryName(transaction: FinanceTransaction, categories: FinanceCategory[]) {
+export function financeCategoryName(transaction: Pick<FinanceTransaction, 'categoryId' | 'type'>, categories: FinanceCategory[]) {
   return financeCategoryForTransaction(transaction, categories)?.name ?? null;
 }

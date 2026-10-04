@@ -1,21 +1,24 @@
 import DateTimePicker, { DateTimePickerAndroid } from '@react-native-community/datetimepicker';
-import { useEffect, useRef, useState } from 'react';
-import { AccessibilityInfo, Alert, Keyboard, KeyboardAvoidingView, Modal, Platform, ScrollView, StyleSheet, View, useWindowDimensions } from 'react-native';
+import { useRef, useState } from 'react';
+import { Alert, Keyboard, KeyboardAvoidingView, Modal, Platform, StyleSheet, View, useWindowDimensions } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { Spacing } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
+import { FormScrollView, FormSelectionHost, InlineNameForm, SelectField, type FormSelectionHandle } from '@/components/form-controls';
 
 import { dateLabel, localDateString, localTimeString, pickerValue, taskDraft, userError, validateTaskDraft } from '../form';
 import { weekdayIndex } from '../calendar';
 import { frequencyLabels, monthNames, recurrenceStopped, weekdays } from '../recurrence';
-import { priorities, priorityLabels, type RecurrenceDraft, type RecurrenceFrequency, type Task, type TaskCategory, type TaskDraft, type TaskRecurrence } from '../types';
-import { TaskButton, TaskChoice, TaskError, TaskField, TaskSelect, TaskWeekday } from './controls';
+import { createTaskCategorySelection, taskCategoryOptions, taskPriorityOptions } from '../form-options';
+import { type RecurrenceDraft, type RecurrenceFrequency, type Task, type TaskCategory, type TaskDraft, type TaskRecurrence } from '../types';
+import { TaskButton, TaskError, TaskField, TaskSelect, TaskWeekday } from './controls';
 
-type EditorPanel = 'priority' | 'category' | 'new-category' | 'repeat' | 'ends' | 'month';
-const panelTitles: Record<EditorPanel, string> = { priority: 'Priority', category: 'Category', 'new-category': 'New Category', repeat: 'Repeats', ends: 'Ends', month: 'Month' };
+const repeatOptions = [{ value: 'none' as const, label: 'Does not repeat' },
+  ...(Object.keys(frequencyLabels) as RecurrenceFrequency[]).map((value) => ({ value, label: frequencyLabels[value] }))];
+const monthOptions = monthNames.map((label, index) => ({ value: index + 1, label }));
 
 type Props = {
   task: Task | null;
@@ -36,27 +39,12 @@ export function TaskEditor({ task, recurrence, categories, onSave, onCreateCateg
     return initial;
   });
   const [picker, setPicker] = useState<'date' | 'time' | 'end' | null>(null);
-  const [panel, setPanel] = useState<EditorPanel | null>(null);
-  const [categoryName, setCategoryName] = useState('');
-  const [categoryError, setCategoryError] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const saving = useRef(false);
-  const selectorControls = useRef<Partial<Record<EditorPanel, View | null>>>({});
-  const panelHeading = useRef<View>(null);
-  const returnFocus = useRef<EditorPanel | null>(null);
+  const menu = useRef<FormSelectionHandle>(null);
   // Measure the actual sheet content, which may be narrower than the device window.
   const dateTimeInRow = dateTimeWidth >= 2 * 160 * Math.max(1, fontScale) + Spacing.three;
   const categoryLabel = categories.find((category) => category.id === draft.categoryId)?.name ?? 'No category';
-
-  useEffect(() => {
-    if (Platform.OS === 'web' || panel === 'new-category') return;
-    const frame = requestAnimationFrame(() => {
-      const target = panel ? panelHeading.current : returnFocus.current ? selectorControls.current[returnFocus.current] : null;
-      if (target) AccessibilityInfo.sendAccessibilityEvent(target, 'focus');
-      if (!panel) returnFocus.current = null;
-    });
-    return () => cancelAnimationFrame(frame);
-  }, [panel]);
 
   function change<K extends keyof TaskDraft>(key: K, value: TaskDraft[K]) {
     setDraft((current) => ({ ...current, [key]: value }));
@@ -78,7 +66,6 @@ export function TaskEditor({ task, recurrence, categories, onSave, onCreateCateg
         monthDay: draft.recurrence?.monthDay ?? day, month: draft.recurrence?.month ?? month,
         endDate: draft.recurrence?.endDate ?? '' });
     }
-    closePanel();
   }
 
   function pickerChange(mode: 'date' | 'time' | 'end', selected: Date) {
@@ -109,32 +96,9 @@ export function TaskEditor({ task, recurrence, categories, onSave, onCreateCateg
     }
   }
 
-  function openPanel(next: EditorPanel) {
-    Keyboard.dismiss();
-    setPicker(null);
-    if (next === 'new-category') {
-      setCategoryName('');
-      setCategoryError(null);
-    }
-    setPanel(next);
-  }
-
-  function closePanel() {
-    Keyboard.dismiss();
-    returnFocus.current = panel === 'new-category' ? 'category' : panel;
-    setPanel(null);
-  }
-
-  function cancelNewCategory() {
-    Keyboard.dismiss();
-    setCategoryError(null);
-    setPanel('category');
-  }
-
   function requestClose() {
-    if (panel === 'new-category') cancelNewCategory();
-    else if (panel) closePanel();
-    else onDismiss();
+    if (menu.current?.dismiss()) return;
+    onDismiss();
   }
 
   function save() {
@@ -161,37 +125,28 @@ export function TaskEditor({ task, recurrence, categories, onSave, onCreateCateg
     ]);
   }
 
-  function createCategory() {
-    try {
-      const category = onCreateCategory(categoryName);
-      change('categoryId', category.id);
-      setCategoryName('');
-      setCategoryError(null);
-      closePanel();
-    } catch (cause) {
-      setCategoryError(userError(cause, 'Unable to create this category. Please try again.'));
-    }
-  }
-
   return (
     <Modal visible presentationStyle="pageSheet" onRequestClose={requestClose}>
       <SafeAreaProvider>
         <ThemedView style={styles.container} accessibilityViewIsModal onAccessibilityEscape={requestClose}>
           <SafeAreaView style={styles.container}>
             <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+              <FormSelectionHost ref={menu}>
               {/* Keep the form mounted so opening a selector preserves the draft and scroll position. */}
-              <View style={[styles.container, panel && styles.hidden]} pointerEvents={panel ? 'none' : 'auto'} accessibilityElementsHidden={!!panel} importantForAccessibility={panel ? 'no-hide-descendants' : 'auto'}>
+              <View style={styles.container}>
                 <View style={styles.header}>
                   <TaskButton label="Cancel" onPress={onDismiss} />
                   <ThemedText type="smallBold" accessibilityRole="header" style={[styles.heading, styles.headingText]}>{task ? 'Edit task' : 'New task'}</ThemedText>
                   <TaskButton label="Save" onPress={save} />
                 </View>
                 <View style={styles.error}><TaskError message={error} /></View>
-                <ScrollView keyboardShouldPersistTaps="handled" contentContainerStyle={styles.form}>
+                <FormScrollView keyboardShouldPersistTaps="handled" contentContainerStyle={styles.form}>
                   <TaskField label="Title *" accessibilityLabel="Title, required" value={draft.title} onChangeText={(value) => change('title', value)} autoFocus returnKeyType="done" />
                   <TaskField label="Description" value={draft.description} onChangeText={(value) => change('description', value)} multiline textAlignVertical="top" style={styles.description} />
 
-                  <TaskSelect ref={(node) => { selectorControls.current.repeat = node; }} label="Repeats" value={draft.recurrence ? frequencyLabels[draft.recurrence.frequency] : recurrence ? 'Stopped' : 'Does not repeat'} expanded={panel === 'repeat'} onPress={() => openPanel('repeat')} />
+                  <SelectField label="Repeats" value={draft.recurrence?.frequency ?? 'none'} options={repeatOptions}
+                    displayValue={draft.recurrence ? frequencyLabels[draft.recurrence.frequency] : recurrence ? 'Stopped' : 'Does not repeat'}
+                    onOpen={() => setPicker(null)} onChange={(value) => chooseFrequency(value === 'none' ? null : value)} />
 
                   {(!recurrence || draft.recurrence) && <View
                     onLayout={({ nativeEvent }) => setDateTimeWidth(nativeEvent.layout.width)}
@@ -224,10 +179,12 @@ export function TaskEditor({ task, recurrence, categories, onSave, onCreateCateg
                           </View>
                         </>
                       )}
-                      {draft.recurrence.frequency === 'yearly' && <TaskSelect ref={(node) => { selectorControls.current.month = node; }} label="Month" value={monthNames[draft.recurrence.month - 1]} expanded={panel === 'month'} onPress={() => openPanel('month')} />}
+                      {draft.recurrence.frequency === 'yearly' && <SelectField label="Month" value={draft.recurrence.month} options={monthOptions}
+                        onOpen={() => setPicker(null)} onChange={(value) => changeRecurrence('month', value)} />}
                       {['monthly', 'yearly'].includes(draft.recurrence.frequency) && <TaskField label="Day of month" keyboardType="number-pad" value={Number.isNaN(draft.recurrence.monthDay) ? '' : String(draft.recurrence.monthDay)} onChangeText={(value) => changeRecurrence('monthDay', value ? Number(value) : NaN)} />}
                       {['monthly', 'yearly'].includes(draft.recurrence.frequency) && <ThemedText type="small" themeColor="textSecondary">Shorter months use their last valid day.</ThemedText>}
-                      <TaskSelect ref={(node) => { selectorControls.current.ends = node; }} label="Ends" value={draft.recurrence.endDate ? 'On date' : 'Never'} expanded={panel === 'ends'} onPress={() => openPanel('ends')} />
+                      <SelectField label="Ends" value={draft.recurrence.endDate ? 'date' : 'never'} options={[{ value: 'never', label: 'Never' }, { value: 'date', label: 'On date' }]}
+                        onOpen={() => setPicker(null)} onChange={(value) => changeRecurrence('endDate', value === 'never' ? '' : draft.recurrence?.endDate || draft.date || localDateString(new Date()))} />
                       {!!draft.recurrence.endDate && (Platform.OS === 'web'
                         ? <TaskField label="End date" placeholder="YYYY-MM-DD" value={draft.recurrence.endDate} onChangeText={(value) => changeRecurrence('endDate', value)} />
                         : <TaskSelect label="End date" value={dateLabel(draft.recurrence.endDate)} expanded={picker === 'end'} onPress={() => openPicker('end')} />)}
@@ -248,56 +205,17 @@ export function TaskEditor({ task, recurrence, categories, onSave, onCreateCateg
                     </>
                   )}
 
-                  <TaskSelect ref={(node) => { selectorControls.current.priority = node; }} label="Priority" value={priorityLabels[draft.priority]} expanded={panel === 'priority'} onPress={() => openPanel('priority')} />
-                  <TaskSelect ref={(node) => { selectorControls.current.category = node; }} label="Category" value={categoryLabel} expanded={panel === 'category' || panel === 'new-category'} onPress={() => openPanel('category')} />
-                </ScrollView>
+                  <SelectField label="Priority" value={draft.priority} options={taskPriorityOptions} onOpen={() => setPicker(null)} onChange={(value) => change('priority', value)} />
+                  <SelectField label="Category" value={draft.categoryId} displayValue={categoryLabel} options={taskCategoryOptions(categories)}
+                    onOpen={() => setPicker(null)} onChange={(value) => change('categoryId', value)}
+                    action={{ label: '+ New category', title: 'New task category', accessibilityLabel: 'Create new task category',
+                      render: (controls) => <InlineNameForm {...controls}
+                        onSubmit={(name, complete) => createTaskCategorySelection(name, onCreateCategory, (id) => change('categoryId', id), complete)}
+                        formatError={(cause) => userError(cause, 'Unable to create this category. Please try again.')} /> }} />
+                </FormScrollView>
               </View>
 
-              {panel && (
-                <View style={[styles.container, styles.panel]} key={panel}>
-                  <View style={styles.header}>
-                    <TaskButton label="Cancel" onPress={panel === 'new-category' ? cancelNewCategory : closePanel} />
-                    <View ref={panelHeading} accessible accessibilityRole="header" accessibilityLabel={panelTitles[panel]} style={styles.heading}>
-                      <ThemedText type="smallBold" style={styles.headingText}>{panelTitles[panel]}</ThemedText>
-                    </View>
-                    {panel === 'new-category' && <TaskButton label="Create" onPress={createCategory} disabled={!categoryName.trim()} />}
-                  </View>
-                  <ScrollView keyboardShouldPersistTaps="handled" contentContainerStyle={styles.form}>
-                    {panel === 'priority' ? (
-                      <View accessibilityRole="radiogroup" accessibilityLabel="Priority" style={styles.options}>
-                        {priorities.map((priority) => <TaskChoice key={priority} label={priorityLabels[priority]} selected={draft.priority === priority} onPress={() => { change('priority', priority); closePanel(); }} />)}
-                      </View>
-                    ) : panel === 'repeat' ? (
-                      <View accessibilityRole="radiogroup" accessibilityLabel="Repeats" style={styles.options}>
-                        <TaskChoice label="Does not repeat" selected={!draft.recurrence} onPress={() => chooseFrequency(null)} />
-                        {(Object.keys(frequencyLabels) as RecurrenceFrequency[]).map((frequency) => <TaskChoice key={frequency} label={frequencyLabels[frequency]} selected={draft.recurrence?.frequency === frequency} onPress={() => chooseFrequency(frequency)} />)}
-                      </View>
-                    ) : panel === 'ends' ? (
-                      <View accessibilityRole="radiogroup" accessibilityLabel="Ends" style={styles.options}>
-                        <TaskChoice label="Never" selected={!draft.recurrence?.endDate} onPress={() => { changeRecurrence('endDate', ''); closePanel(); }} />
-                        <TaskChoice label="On date" selected={!!draft.recurrence?.endDate} onPress={() => { changeRecurrence('endDate', draft.recurrence?.endDate || draft.date || localDateString(new Date())); closePanel(); }} />
-                      </View>
-                    ) : panel === 'month' ? (
-                      <View accessibilityRole="radiogroup" accessibilityLabel="Month" style={styles.options}>
-                        {monthNames.map((month, index) => <TaskChoice key={month} label={month} selected={draft.recurrence?.month === index + 1} onPress={() => { changeRecurrence('month', index + 1); closePanel(); }} />)}
-                      </View>
-                    ) : panel === 'category' ? (
-                      <>
-                        <View accessibilityRole="radiogroup" accessibilityLabel="Category" style={styles.options}>
-                          <TaskChoice label="No category" selected={!draft.categoryId} onPress={() => { change('categoryId', null); closePanel(); }} />
-                          {categories.map((category) => <TaskChoice key={category.id} label={category.name} selected={draft.categoryId === category.id} onPress={() => { change('categoryId', category.id); closePanel(); }} />)}
-                        </View>
-                        <TaskButton label="+ New category" accessibilityLabel="Create new category" onPress={() => openPanel('new-category')} />
-                      </>
-                    ) : (
-                      <>
-                        <TaskError message={categoryError} />
-                        <TaskField label="Category name" value={categoryName} onChangeText={(value) => { setCategoryName(value); setCategoryError(null); }} autoFocus returnKeyType="done" onSubmitEditing={createCategory} />
-                      </>
-                    )}
-                  </ScrollView>
-                </View>
-              )}
+              </FormSelectionHost>
             </KeyboardAvoidingView>
           </SafeAreaView>
         </ThemedView>
@@ -308,8 +226,6 @@ export function TaskEditor({ task, recurrence, categories, onSave, onCreateCateg
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
-  hidden: { opacity: 0 },
-  panel: { position: 'absolute', top: 0, right: 0, bottom: 0, left: 0 },
   header: { flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', padding: Spacing.three, gap: Spacing.two },
   heading: { flex: 1, minWidth: 80 },
   headingText: { textAlign: 'center' },

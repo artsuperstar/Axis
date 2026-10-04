@@ -1,6 +1,5 @@
 export {
   FormButton as TaskButton,
-  FormChoice as TaskChoice,
   FormError as TaskError,
   FormField as TaskField,
   FormSelect as TaskSelect,

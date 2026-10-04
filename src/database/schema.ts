@@ -1,4 +1,4 @@
-import { sql } from 'drizzle-orm';
+import { sql, type SQLWrapper } from 'drizzle-orm';
 import { check, foreignKey, index, integer, sqliteTable, text, uniqueIndex } from 'drizzle-orm/sqlite-core';
 
 export const taskCategories = sqliteTable('task_categories', {
@@ -141,6 +141,7 @@ export const financeTransactions = sqliteTable('finance_transactions', {
   updatedAt: integer('updated_at').notNull(),
   deletedAt: integer('deleted_at'),
 }, (table) => [
+  uniqueIndex('finance_transactions_id_type_unique').on(table.id, table.type),
   // A composite FK enforces category direction while allowing category tombstones to stay referenced.
   foreignKey({ name: 'finance_transaction_category_type_fk', columns: [table.categoryId, table.type],
     foreignColumns: [financeCategories.id, financeCategories.type] }).onDelete('restrict').onUpdate('restrict'),
@@ -153,4 +154,90 @@ export const financeTransactions = sqliteTable('finance_transactions', {
   check('finance_transaction_updated_after_created', sql`${table.updatedAt} >= ${table.createdAt}`),
   index('finance_transactions_active_date_idx').on(table.transactionDate, table.createdAt, table.id).where(sql`${table.deletedAt} IS NULL`),
   index('finance_transactions_category_idx').on(table.categoryId),
+]);
+
+function civilDate(column: SQLWrapper) {
+  return sql`${column} GLOB '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]' AND substr(${column}, 1, 4) >= '0001'
+    AND coalesce(strftime('%Y-%m-%d', ${column}, '+0 days') = ${column}, 0)`;
+}
+
+export const financeCommitments = sqliteTable('finance_commitments', {
+  id: text('id').primaryKey().notNull(),
+  kind: text('kind', { enum: ['bill', 'subscription', 'installment'] }).notNull(),
+  title: text('title').notNull(),
+  categoryId: text('category_id'),
+  categoryType: text('category_type', { enum: ['expense'] }).notNull().default('expense'),
+  expectedAmountMinor: integer('expected_amount_minor').notNull(),
+  installmentCount: integer('installment_count'),
+  status: text('status', { enum: ['active', 'paused', 'ended', 'completed'] }).notNull().default('active'),
+  completedAt: integer('completed_at'),
+  createdAt: integer('created_at').notNull(),
+  updatedAt: integer('updated_at').notNull(),
+  deletedAt: integer('deleted_at'),
+}, (table) => [
+  foreignKey({ columns: [table.categoryId, table.categoryType], foreignColumns: [financeCategories.id, financeCategories.type] }).onDelete('restrict').onUpdate('restrict'),
+  check('commitment_kind_valid', sql`${table.kind} IN ('bill', 'subscription', 'installment')`),
+  check('commitment_title_valid', sql`length(trim(${table.title})) > 0`),
+  check('commitment_category_expense', sql`${table.categoryType} = 'expense'`),
+  check('commitment_amount_valid', sql`typeof(${table.expectedAmountMinor}) = 'integer' AND ${table.expectedAmountMinor} BETWEEN 1 AND 9007199254740991`),
+  check('commitment_installments_valid', sql`(${table.kind} = 'installment' AND ${table.installmentCount} IS NOT NULL AND typeof(${table.installmentCount}) = 'integer' AND ${table.installmentCount} BETWEEN 1 AND 1200)
+    OR (${table.kind} != 'installment' AND ${table.installmentCount} IS NULL)`),
+  check('commitment_status_valid', sql`${table.status} IN ('active', 'paused', 'ended', 'completed') AND (${table.status} != 'completed' OR ${table.kind} = 'installment')`),
+  check('commitment_completion_valid', sql`(${table.status} = 'completed' AND ${table.completedAt} IS NOT NULL) OR (${table.status} != 'completed' AND ${table.completedAt} IS NULL)`),
+  check('commitment_updated_valid', sql`${table.updatedAt} >= ${table.createdAt}`),
+  index('finance_commitments_status_idx').on(table.status).where(sql`${table.deletedAt} IS NULL`),
+]);
+
+export const commitmentSchedules = sqliteTable('finance_commitment_schedules', {
+  id: text('id').primaryKey().notNull(),
+  commitmentId: text('commitment_id').notNull().references(() => financeCommitments.id, { onDelete: 'restrict' }),
+  startDate: text('start_date').notNull(),
+  billingDay: integer('billing_day').notNull(),
+  firstInstallmentIndex: integer('first_installment_index').notNull().default(1),
+  expectedAmountMinor: integer('expected_amount_minor').notNull(),
+  effectiveFrom: text('effective_from').notNull(),
+  effectiveUntil: text('effective_until'), // Exclusive. Empty versions allow same-day pause/resume/edit.
+  createdAt: integer('created_at').notNull(),
+  updatedAt: integer('updated_at').notNull(),
+}, (table) => [
+  uniqueIndex('commitment_schedules_id_parent_unique').on(table.id, table.commitmentId),
+  index('commitment_schedules_parent_idx').on(table.commitmentId, table.effectiveFrom),
+  check('commitment_schedule_day_valid', sql`${table.billingDay} BETWEEN 1 AND 31 AND typeof(${table.billingDay}) = 'integer'`),
+  check('commitment_schedule_index_valid', sql`${table.firstInstallmentIndex} BETWEEN 1 AND 1200 AND typeof(${table.firstInstallmentIndex}) = 'integer'`),
+  check('commitment_schedule_amount_valid', sql`typeof(${table.expectedAmountMinor}) = 'integer' AND ${table.expectedAmountMinor} BETWEEN 1 AND 9007199254740991`),
+  check('commitment_schedule_dates_valid', sql`${civilDate(table.startDate)} AND ${civilDate(table.effectiveFrom)}
+    AND (${table.effectiveUntil} IS NULL OR (${table.effectiveUntil} >= ${table.effectiveFrom} AND ${civilDate(table.effectiveUntil)}))`),
+  check('commitment_schedule_updated_valid', sql`${table.updatedAt} >= ${table.createdAt}`),
+]);
+
+export const commitmentOccurrences = sqliteTable('finance_commitment_occurrences', {
+  id: text('id').primaryKey().notNull(),
+  commitmentId: text('commitment_id').notNull().references(() => financeCommitments.id, { onDelete: 'restrict' }),
+  scheduleId: text('schedule_id').notNull(),
+  dueDate: text('due_date').notNull(),
+  expectedAmountMinor: integer('expected_amount_minor').notNull(),
+  installmentIndex: integer('installment_index'),
+  status: text('status', { enum: ['pending', 'paid', 'skipped'] }).notNull().default('pending'),
+  paidTransactionId: text('paid_transaction_id'),
+  paymentType: text('payment_type', { enum: ['expense'] }).notNull().default('expense'),
+  resolvedAt: integer('resolved_at'),
+  createdAt: integer('created_at').notNull(),
+  updatedAt: integer('updated_at').notNull(),
+  deletedAt: integer('deleted_at'),
+}, (table) => [
+  foreignKey({ columns: [table.scheduleId, table.commitmentId], foreignColumns: [commitmentSchedules.id, commitmentSchedules.commitmentId] }).onDelete('restrict'),
+  foreignKey({ columns: [table.paidTransactionId, table.paymentType], foreignColumns: [financeTransactions.id, financeTransactions.type] }).onDelete('restrict').onUpdate('restrict'),
+  uniqueIndex('commitment_occurrences_parent_date_unique').on(table.commitmentId, table.dueDate),
+  uniqueIndex('commitment_occurrences_installment_unique').on(table.commitmentId, table.installmentIndex),
+  uniqueIndex('commitment_occurrences_payment_unique').on(table.paidTransactionId),
+  index('commitment_occurrences_due_idx').on(table.dueDate, table.status).where(sql`${table.deletedAt} IS NULL`),
+  check('commitment_occurrence_status_valid', sql`${table.status} IN ('pending', 'paid', 'skipped')`),
+  check('commitment_occurrence_payment_valid', sql`${table.paymentType} = 'expense' AND
+    ((${table.status} = 'paid' AND ${table.paidTransactionId} IS NOT NULL AND ${table.resolvedAt} IS NOT NULL)
+    OR (${table.status} = 'skipped' AND ${table.paidTransactionId} IS NULL AND ${table.resolvedAt} IS NOT NULL)
+    OR (${table.status} = 'pending' AND ${table.paidTransactionId} IS NULL AND ${table.resolvedAt} IS NULL))`),
+  check('commitment_occurrence_amount_valid', sql`typeof(${table.expectedAmountMinor}) = 'integer' AND ${table.expectedAmountMinor} BETWEEN 1 AND 9007199254740991`),
+  check('commitment_occurrence_index_valid', sql`${table.installmentIndex} IS NULL OR (typeof(${table.installmentIndex}) = 'integer' AND ${table.installmentIndex} BETWEEN 1 AND 1200)`),
+  check('commitment_occurrence_date_valid', civilDate(table.dueDate)),
+  check('commitment_occurrence_updated_valid', sql`${table.updatedAt} >= ${table.createdAt}`),
 ]);
