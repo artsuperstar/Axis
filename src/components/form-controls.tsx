@@ -6,6 +6,7 @@ import { Spacing } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
 
 import { submitInlineName, type SelectionOption, type SelectionValue } from './form-selection';
+import { useFormFocus } from './form-focus';
 import { focusFormControl, useFormSelection, type InlineActionControls, type SelectionInlineAction } from './form-selection-host';
 
 export { FormScrollView, FormSelectionHost, focusFormControl, type FormSelectionHandle } from './form-selection-host';
@@ -222,19 +223,33 @@ export function FormWeekday({ label, checked, onPress }: { label: string; checke
   );
 }
 
-export function FormField({ label, style, ref, ...props }: TextInputProps & { label: string; ref?: Ref<TextInput> }) {
+export function FormField({ label, style, ref, helperText, editable = true, accessibilityState, onFocus, onBlur, ...props }: TextInputProps & { label: string; helperText?: string; ref?: Ref<TextInput> }) {
   const colors = useTheme();
+  const input = useRef<TextInput>(null);
+  const focus = useFormFocus();
   return (
     <View style={styles.field}>
       <ThemedText type="smallBold">{label}</ThemedText>
       <TextInput
-        ref={ref}
+        ref={(node) => {
+          input.current = node;
+          if (typeof ref === 'function') ref(node);
+          else if (ref) ref.current = node;
+        }}
         accessibilityLabel={label}
+        editable={editable}
+        accessibilityState={{ ...accessibilityState, disabled: !editable || accessibilityState?.disabled }}
+        aria-disabled={!editable || accessibilityState?.disabled}
+        accessibilityHint={helperText}
         placeholderTextColor={colors.textSecondary}
         selectionColor={colors.text}
-        style={[styles.input, { color: colors.text, backgroundColor: colors.backgroundElement, borderColor: colors.textSecondary }, style]}
+        style={[styles.input, { color: editable ? colors.text : colors.textSecondary, backgroundColor: colors.backgroundElement, borderColor: colors.textSecondary,
+          opacity: editable ? 1 : 0.45 }, style]}
+        onFocus={(event) => { focus?.focus(input.current); onFocus?.(event); }}
+        onBlur={(event) => { focus?.blur(input.current); onBlur?.(event); }}
         {...props}
       />
+      {!!helperText && <ThemedText type="small" themeColor="textSecondary">{helperText}</ThemedText>}
     </View>
   );
 }

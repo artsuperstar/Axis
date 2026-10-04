@@ -10,12 +10,13 @@ import { financeCategoryName } from '../form';
 import { formatBrlAmount } from '../money';
 import { transactionTypeLabels, type FinanceCategory, type FinanceTransaction } from '../types';
 
-export function TransactionRow({ transaction, categories, onEdit, onDelete, commitmentPayment = false }: {
+export function TransactionRow({ transaction, categories, onEdit, onDelete, commitmentPayment = false, workPayment = false }: {
   transaction: FinanceTransaction;
   categories: FinanceCategory[];
   onEdit: () => void;
   onDelete: () => void;
   commitmentPayment?: boolean;
+  workPayment?: boolean;
 }) {
   const colors = useTheme();
   const category = financeCategoryName(transaction, categories);
@@ -26,9 +27,10 @@ export function TransactionRow({ transaction, categories, onEdit, onDelete, comm
         <ThemedText type="smallBold">{transactionTypeLabels[transaction.type]} · {formatBrlAmount(transaction.amountMinor)}</ThemedText>
         <ThemedText type="small" themeColor="textSecondary">{dateLabel(transaction.transactionDate)}{category ? ` · ${category}` : ''}</ThemedText>
         {commitmentPayment && <ThemedText type="small" themeColor="textSecondary">Commitment payment · Undo in Commitments history</ThemedText>}
+        {workPayment && <ThemedText type="small" themeColor="textSecondary">Work payment · Undo in Work</ThemedText>}
         {!!transaction.note && <ThemedText type="small" themeColor="textSecondary" numberOfLines={2}>{transaction.note}</ThemedText>}
       </Pressable>
-      {!commitmentPayment && <FormButton label="Delete" accessibilityLabel={`Delete ${transaction.description}`} onPress={onDelete} />}
+      {!commitmentPayment && !workPayment && <FormButton label="Delete" accessibilityLabel={`Delete ${transaction.description}`} onPress={onDelete} />}
     </View>
   );
 }

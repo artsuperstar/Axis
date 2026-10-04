@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
-import { KeyboardAvoidingView, Modal, Platform, ScrollView, StyleSheet, View } from 'react-native';
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { StyleSheet, View } from 'react-native';
 
 import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
+import { AdaptiveModal, AdaptiveSheet } from '@/components/adaptive-sheet';
 import { Spacing } from '@/constants/theme';
 
 import { dateLabel, userError } from '../form';
@@ -55,43 +54,33 @@ export function OccurrenceHistory({ task, readPage, onStatus, onDismiss, now }: 
   }
 
   return (
-    <Modal visible presentationStyle="pageSheet" onRequestClose={onDismiss}>
-      <SafeAreaProvider>
-        <ThemedView style={styles.container} accessibilityViewIsModal onAccessibilityEscape={onDismiss}>
-          <SafeAreaView style={styles.container}>
-            <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
-              <View style={styles.header}>
-                <ThemedText type="smallBold" accessibilityRole="header" style={styles.title}>{task.title} · History</ThemedText>
-                <TaskButton label="Done" onPress={onDismiss} />
+    <AdaptiveModal onDismiss={onDismiss}>
+      <AdaptiveSheet contentContainerStyle={styles.content} header={<View style={styles.header}>
+        <ThemedText type="smallBold" accessibilityRole="header" style={styles.title}>{task.title} · History</ThemedText>
+        <TaskButton label="Done" onPress={onDismiss} />
+              </View>}>
+        <TaskError message={error} />
+        {!!error && <TaskButton label="Retry" onPress={older} />}
+        {!entries.length && !error && <ThemedText>No past occurrences yet.</ThemedText>}
+        {entries.map((entry) => (
+          <View key={entry.id} style={styles.entry}>
+            <ThemedText>{dateLabel(entry.scheduledDate)}{entry.scheduledTime ? ` at ${entry.scheduledTime}` : ''}</ThemedText>
+            <ThemedText type="small">{occurrenceLabels[occurrenceState(entry, new Date(now))]}{entry.deletedAt !== null ? ' · Previous schedule' : ''}</ThemedText>
+            {entry.deletedAt === null && (
+              <View style={styles.buttons}>
+                <TaskButton label={entry.status === 'completed' ? 'Reopen' : 'Complete'} accessibilityLabel={`${entry.status === 'completed' ? 'Reopen' : 'Complete'} occurrence on ${dateLabel(entry.scheduledDate)}`} onPress={() => change(entry, entry.status === 'completed' ? 'pending' : 'completed')} />
+                {entry.status !== 'completed' && <TaskButton label={entry.status === 'skipped' ? 'Return to pending' : 'Skip'} accessibilityLabel={`${entry.status === 'skipped' ? 'Return to pending' : 'Skip'} occurrence on ${dateLabel(entry.scheduledDate)}`} onPress={() => change(entry, entry.status === 'skipped' ? 'pending' : 'skipped')} />}
               </View>
-              <ScrollView contentContainerStyle={styles.content}>
-                <TaskError message={error} />
-                {!!error && <TaskButton label="Retry" onPress={older} />}
-                {!entries.length && !error && <ThemedText>No past occurrences yet.</ThemedText>}
-                {entries.map((entry) => (
-                  <View key={entry.id} style={styles.entry}>
-                    <ThemedText>{dateLabel(entry.scheduledDate)}{entry.scheduledTime ? ` at ${entry.scheduledTime}` : ''}</ThemedText>
-                    <ThemedText type="small">{occurrenceLabels[occurrenceState(entry, new Date(now))]}{entry.deletedAt !== null ? ' · Previous schedule' : ''}</ThemedText>
-                    {entry.deletedAt === null && (
-                      <View style={styles.buttons}>
-                        <TaskButton label={entry.status === 'completed' ? 'Reopen' : 'Complete'} accessibilityLabel={`${entry.status === 'completed' ? 'Reopen' : 'Complete'} occurrence on ${dateLabel(entry.scheduledDate)}`} onPress={() => change(entry, entry.status === 'completed' ? 'pending' : 'completed')} />
-                        {entry.status !== 'completed' && <TaskButton label={entry.status === 'skipped' ? 'Return to pending' : 'Skip'} accessibilityLabel={`${entry.status === 'skipped' ? 'Return to pending' : 'Skip'} occurrence on ${dateLabel(entry.scheduledDate)}`} onPress={() => change(entry, entry.status === 'skipped' ? 'pending' : 'skipped')} />}
-                      </View>
-                    )}
-                  </View>
-                ))}
-                {nextBefore && <TaskButton label="Load older history" onPress={older} />}
-              </ScrollView>
-            </KeyboardAvoidingView>
-          </SafeAreaView>
-        </ThemedView>
-      </SafeAreaProvider>
-    </Modal>
+            )}
+          </View>
+        ))}
+        {nextBefore && <TaskButton label="Load older history" onPress={older} />}
+      </AdaptiveSheet>
+    </AdaptiveModal>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1 },
   header: { padding: Spacing.three, flexDirection: 'row', alignItems: 'center', gap: Spacing.two },
   title: { flex: 1 },
   content: { padding: Spacing.three, gap: Spacing.three },

@@ -137,7 +137,7 @@ for (const domain of ['task', 'expense', 'income', 'commitment'] as const) test(
     assert.equal(commitments.read().items.find((item) => item.commitment.id === id)!.commitment.categoryId, categoryId);
   } else {
     assert.equal(finance.read().categories.find((category) => category.id === categoryId)!.type, type);
-    const id = finance.createTransaction({ ...transactionDraft(), type, amount: '20', description: 'Transaction with new category', categoryId });
+    const id = finance.createTransaction({ ...transactionDraft(null, pickerValue(today)), type, amount: '20', description: 'Transaction with new category', categoryId });
     assert.equal(finance.read().transactions.find((transaction) => transaction.id === id)!.categoryId, categoryId);
   }
 });

@@ -1,10 +1,9 @@
 import { useState } from 'react';
-import { Alert, KeyboardAvoidingView, Modal, Platform, ScrollView, StyleSheet, View } from 'react-native';
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { Alert, StyleSheet, View } from 'react-native';
 
 import { FormButton, FormError, FormField, SegmentedControl } from '@/components/form-controls';
 import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
+import { AdaptiveModal, AdaptiveSheet } from '@/components/adaptive-sheet';
 import { Spacing } from '@/constants/theme';
 
 import { financeError } from '../errors';
@@ -38,38 +37,28 @@ export function FinanceCategoryManager({ categories, onCreate, onDelete, onDismi
   }
 
   return (
-    <Modal visible presentationStyle="pageSheet" onRequestClose={onDismiss}>
-      <SafeAreaProvider>
-        <ThemedView style={styles.container} accessibilityViewIsModal onAccessibilityEscape={onDismiss}>
-          <SafeAreaView style={styles.container}>
-            <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
-              <View style={styles.header}>
-                <ThemedText type="smallBold" accessibilityRole="header" style={{ flex: 1 }}>Finance categories</ThemedText>
-                <FormButton label="Done" onPress={onDismiss} />
-              </View>
-              <ScrollView keyboardShouldPersistTaps="handled" contentContainerStyle={styles.content}>
-                <FormError message={error} />
-                <SegmentedControl label="Type *" value={type} options={transactionTypeOptions} onChange={(value) => { setType(value); setError(null); }} />
-                <FormField label="Category name *" value={name} onChangeText={(value) => { setName(value); setError(null); }} returnKeyType="done" onSubmitEditing={create} />
-                <FormButton label="Create category" onPress={create} disabled={!name.trim()} />
-                {categoriesForType(categories, type).map((category) => <View key={category.id} style={styles.row}>
-                  <View style={{ flex: 1 }}>
-                    <ThemedText>{category.name}</ThemedText>
-                    <ThemedText type="small" themeColor="textSecondary">{category.isBuiltIn ? 'Built-in' : 'Custom'}</ThemedText>
-                  </View>
-                  {!category.isBuiltIn && <FormButton label="Archive" accessibilityLabel={`Archive ${category.name} category`} onPress={() => remove(category)} />}
-                </View>)}
-              </ScrollView>
-            </KeyboardAvoidingView>
-          </SafeAreaView>
-        </ThemedView>
-      </SafeAreaProvider>
-    </Modal>
+    <AdaptiveModal onDismiss={onDismiss}>
+      <AdaptiveSheet contentContainerStyle={styles.content} header={<View style={styles.header}>
+        <ThemedText type="smallBold" accessibilityRole="header" style={{ flex: 1 }}>Finance categories</ThemedText>
+        <FormButton label="Done" onPress={onDismiss} />
+              </View>}>
+        <FormError message={error} />
+        <SegmentedControl label="Type *" value={type} options={transactionTypeOptions} onChange={(value) => { setType(value); setError(null); }} />
+        <FormField label="Category name *" value={name} onChangeText={(value) => { setName(value); setError(null); }} returnKeyType="done" onSubmitEditing={create} />
+        <FormButton label="Create category" onPress={create} disabled={!name.trim()} />
+        {categoriesForType(categories, type).map((category) => <View key={category.id} style={styles.row}>
+          <View style={{ flex: 1 }}>
+            <ThemedText>{category.name}</ThemedText>
+            <ThemedText type="small" themeColor="textSecondary">{category.isBuiltIn ? 'Built-in' : 'Custom'}</ThemedText>
+          </View>
+          {!category.isBuiltIn && <FormButton label="Archive" accessibilityLabel={`Archive ${category.name} category`} onPress={() => remove(category)} />}
+        </View>)}
+      </AdaptiveSheet>
+    </AdaptiveModal>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1 },
   header: { flexDirection: 'row', alignItems: 'center', gap: Spacing.two, padding: Spacing.three },
   content: { padding: Spacing.three, gap: Spacing.three },
   row: { flexDirection: 'row', alignItems: 'center', gap: Spacing.two },

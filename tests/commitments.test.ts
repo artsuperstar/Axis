@@ -660,26 +660,28 @@ async function existingStage6() {
   return { ...result, snapshot, before: snapshot() };
 }
 
+const stage7Migrations = { ...bundledMigrations, journal: { ...journal, entries: journal.entries.slice(0, 4) } };
+
 test('additive Stage 7 migration preserves every previous Task, schedule, occurrence, transaction and archived category', async (t) => {
   const { sqlite, db, snapshot, before } = await existingStage6(); t.after(() => sqlite.close());
   const oldTables = sqlite.prepare("SELECT name, sql FROM sqlite_master WHERE type = 'table' AND name != '__drizzle_migrations' ORDER BY name").all();
-  await migrate(db, bundledMigrations); seedDefaultCategories(db, 2000); seedFinanceCategories(db, 2000);
+  await migrate(db, stage7Migrations); seedDefaultCategories(db, 2000); seedFinanceCategories(db, 2000);
   assert.deepEqual(snapshot(), before);
   const newTables = sqlite.prepare("SELECT name, sql FROM sqlite_master WHERE type = 'table' AND name != '__drizzle_migrations' ORDER BY name").all();
   for (const old of oldTables) assert.deepEqual(newTables.find((row) => row.name === old.name), old);
   assert.equal(newTables.length, oldTables.length + 3);
-  await migrate(db, bundledMigrations); assert.deepEqual(snapshot(), before);
+  await migrate(db, stage7Migrations); assert.deepEqual(snapshot(), before);
   assert.equal(sqlite.prepare('SELECT count(*) AS count FROM __drizzle_migrations').get()!.count, 4);
   assert.deepEqual(sqlite.prepare('PRAGMA foreign_key_check').all(), []);
 });
 
 test('failed Stage 7 migration rolls back new tables/indexes and retries without losing previous data', async (t) => {
   const { sqlite, db, snapshot, before } = await existingStage6(); t.after(() => sqlite.close());
-  const broken = { ...bundledMigrations, migrations: { ...bundledMigrations.migrations, m0003: `${bundledMigrations.migrations.m0003}\n--> statement-breakpoint\nINVALID SQL;` } };
+  const broken = { ...stage7Migrations, migrations: { ...stage7Migrations.migrations, m0003: `${stage7Migrations.migrations.m0003}\n--> statement-breakpoint\nINVALID SQL;` } };
   await assert.rejects(migrate(db, broken));
   assert.deepEqual(snapshot(), before);
   assert.equal(sqlite.prepare("SELECT count(*) AS count FROM sqlite_master WHERE name LIKE 'finance_commitment%' OR name = 'finance_transactions_id_type_unique'").get()!.count, 0);
   assert.equal(sqlite.prepare('SELECT count(*) AS count FROM __drizzle_migrations').get()!.count, 3);
-  await migrate(db, bundledMigrations); assert.deepEqual(snapshot(), before);
+  await migrate(db, stage7Migrations); assert.deepEqual(snapshot(), before);
   assert.equal(sqlite.prepare('SELECT count(*) AS count FROM __drizzle_migrations').get()!.count, 4);
 });

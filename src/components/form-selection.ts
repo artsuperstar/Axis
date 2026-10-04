@@ -50,3 +50,8 @@ export function submitInlineName(name: string, submit: (name: string, complete: 
   try { submit(name, complete); return null; }
   catch (cause) { return formatError(cause); }
 }
+
+export function submitAutocompleteSelection<T extends SelectionValue>(query: string, create: (name: string) => T, select: (value: T) => void,
+  close: () => void, formatError: (cause: unknown) => string) {
+  return submitInlineName(query, (name, complete) => { select(create(name)); complete(); }, close, formatError);
+}

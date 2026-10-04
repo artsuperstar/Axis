@@ -241,3 +241,49 @@ export const commitmentOccurrences = sqliteTable('finance_commitment_occurrences
   check('commitment_occurrence_date_valid', civilDate(table.dueDate)),
   check('commitment_occurrence_updated_valid', sql`${table.updatedAt} >= ${table.createdAt}`),
 ]);
+
+export const workCounterparties = sqliteTable('work_counterparties', {
+  id: text('id').primaryKey().notNull(), name: text('name').notNull(),
+  createdAt: integer('created_at').notNull(), updatedAt: integer('updated_at').notNull(), deletedAt: integer('deleted_at'),
+}, (table) => [
+  check('work_counterparty_name_valid', sql`length(trim(${table.name})) > 0`),
+  check('work_counterparty_updated_valid', sql`${table.updatedAt} >= ${table.createdAt}`),
+  uniqueIndex('work_counterparties_active_name_unique').on(sql`lower(${table.name})`).where(sql`${table.deletedAt} IS NULL`),
+]);
+
+export const workEntries = sqliteTable('work_entries', {
+  id: text('id').primaryKey().notNull(),
+  counterpartyId: text('counterparty_id').notNull().references(() => workCounterparties.id, { onDelete: 'restrict' }),
+  description: text('description').notNull(), compensationType: text('compensation_type', { enum: ['hourly', 'fixed'] }).notNull(),
+  workDate: text('work_date').notNull(), durationMinutes: integer('duration_minutes'), hourlyRateMinor: integer('hourly_rate_minor'), fixedAmountMinor: integer('fixed_amount_minor'),
+  expectedPaymentDate: text('expected_payment_date'),
+  createdAt: integer('created_at').notNull(), updatedAt: integer('updated_at').notNull(), deletedAt: integer('deleted_at'),
+}, (table) => [
+  check('work_description_valid', sql`length(trim(${table.description})) > 0`),
+  check('work_compensation_valid', sql`(${table.compensationType} = 'hourly' AND ${table.durationMinutes} IS NOT NULL AND ${table.hourlyRateMinor} IS NOT NULL
+    AND typeof(${table.durationMinutes}) = 'integer' AND ${table.durationMinutes} BETWEEN 1 AND 9007199254740991
+    AND typeof(${table.hourlyRateMinor}) = 'integer' AND ${table.hourlyRateMinor} BETWEEN 1 AND 9007199254740991 AND ${table.fixedAmountMinor} IS NULL)
+    OR (${table.compensationType} = 'fixed' AND ${table.fixedAmountMinor} IS NOT NULL AND typeof(${table.fixedAmountMinor}) = 'integer'
+    AND ${table.fixedAmountMinor} BETWEEN 1 AND 9007199254740991 AND ${table.durationMinutes} IS NULL AND ${table.hourlyRateMinor} IS NULL)`),
+  check('work_dates_valid', sql`${civilDate(table.workDate)} AND (${table.expectedPaymentDate} IS NULL OR ${civilDate(table.expectedPaymentDate)})`),
+  check('work_updated_valid', sql`${table.updatedAt} >= ${table.createdAt}`),
+  index('work_entries_counterparty_idx').on(table.counterpartyId),
+  index('work_entries_date_idx').on(table.workDate).where(sql`${table.deletedAt} IS NULL`),
+  index('work_entries_expected_date_idx').on(table.expectedPaymentDate).where(sql`${table.deletedAt} IS NULL`),
+]);
+
+export const workPaymentAllocations = sqliteTable('work_payment_allocations', {
+  id: text('id').primaryKey().notNull(),
+  workEntryId: text('work_entry_id').notNull().references(() => workEntries.id, { onDelete: 'restrict' }),
+  financeTransactionId: text('finance_transaction_id').notNull(),
+  transactionType: text('transaction_type', { enum: ['income'] }).notNull().default('income'),
+  amountMinor: integer('amount_minor').notNull(), createdAt: integer('created_at').notNull(), deletedAt: integer('deleted_at'),
+}, (table) => [
+  foreignKey({ columns: [table.financeTransactionId, table.transactionType], foreignColumns: [financeTransactions.id, financeTransactions.type] }).onDelete('restrict').onUpdate('restrict'),
+  check('work_allocation_income_valid', sql`${table.transactionType} = 'income'`),
+  check('work_allocation_amount_valid', sql`typeof(${table.amountMinor}) = 'integer' AND ${table.amountMinor} BETWEEN 1 AND 9007199254740991`),
+  check('work_allocation_deleted_valid', sql`${table.deletedAt} IS NULL OR ${table.deletedAt} >= ${table.createdAt}`),
+  uniqueIndex('work_allocations_entry_transaction_unique').on(table.workEntryId, table.financeTransactionId),
+  index('work_allocations_entry_idx').on(table.workEntryId),
+  index('work_allocations_transaction_idx').on(table.financeTransactionId),
+]);

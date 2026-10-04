@@ -1,9 +1,8 @@
 import { useState } from 'react';
-import { Alert, KeyboardAvoidingView, Modal, Platform, ScrollView, StyleSheet, View } from 'react-native';
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { Alert, StyleSheet, View } from 'react-native';
 
 import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
+import { AdaptiveModal, AdaptiveSheet } from '@/components/adaptive-sheet';
 import { Spacing } from '@/constants/theme';
 
 import { userError } from '../form';
@@ -44,39 +43,29 @@ export function CategoryManager({ categories, onCreate, onDelete, onDismiss }: {
   }
 
   return (
-    <Modal visible presentationStyle="pageSheet" onRequestClose={onDismiss}>
-      <SafeAreaProvider>
-        <ThemedView style={styles.container}>
-          <SafeAreaView style={styles.container}>
-            <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
-              <View style={styles.header}>
-                <ThemedText type="subtitle">Categories</ThemedText>
-                <TaskButton label="Done" onPress={onDismiss} />
-              </View>
-              <ScrollView keyboardShouldPersistTaps="handled" contentContainerStyle={styles.content}>
-                <TaskError message={error} />
-                <TaskField label="Category name" value={name} onChangeText={setName} returnKeyType="done" onSubmitEditing={create} />
-                <TaskButton label="Create category" onPress={create} disabled={!name.trim()} />
-                {categories.map((category) => (
-                  <View key={category.id} style={styles.row}>
-                    <View style={styles.name}>
-                      <ThemedText>{category.name}</ThemedText>
-                      <ThemedText type="small" themeColor="textSecondary">{category.isDefault ? 'Built-in' : 'Custom'}</ThemedText>
-                    </View>
-                    {!category.isDefault && <TaskButton label="Delete" onPress={() => remove(category)} />}
-                  </View>
-                ))}
-              </ScrollView>
-            </KeyboardAvoidingView>
-          </SafeAreaView>
-        </ThemedView>
-      </SafeAreaProvider>
-    </Modal>
+    <AdaptiveModal onDismiss={onDismiss}>
+      <AdaptiveSheet contentContainerStyle={styles.content} header={<View style={styles.header}>
+        <ThemedText type="subtitle">Categories</ThemedText>
+        <TaskButton label="Done" onPress={onDismiss} />
+              </View>}>
+        <TaskError message={error} />
+        <TaskField label="Category name" value={name} onChangeText={setName} returnKeyType="done" onSubmitEditing={create} />
+        <TaskButton label="Create category" onPress={create} disabled={!name.trim()} />
+        {categories.map((category) => (
+          <View key={category.id} style={styles.row}>
+            <View style={styles.name}>
+              <ThemedText>{category.name}</ThemedText>
+              <ThemedText type="small" themeColor="textSecondary">{category.isDefault ? 'Built-in' : 'Custom'}</ThemedText>
+            </View>
+            {!category.isDefault && <TaskButton label="Delete" onPress={() => remove(category)} />}
+          </View>
+        ))}
+      </AdaptiveSheet>
+    </AdaptiveModal>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1 },
   header: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', padding: Spacing.three },
   content: { padding: Spacing.three, gap: Spacing.three },
   row: { flexDirection: 'row', alignItems: 'center', gap: Spacing.two },

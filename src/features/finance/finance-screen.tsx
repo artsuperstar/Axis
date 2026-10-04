@@ -15,11 +15,12 @@ import { TransactionRow } from './components/transaction-row';
 import { financeError } from './errors';
 import type { FinanceTransaction } from './types';
 import { useFinance } from './use-finance';
+import { WorkView } from './work/components/work-view';
 
 export function FinanceScreen() {
   const colors = useTheme();
   const insets = useSafeAreaInsets();
-  const { access, commitmentAccess, snapshot, error, reload, mutate, selection, today, setView, setPeriodKind, navigatePeriod, returnToCurrent } = useFinance();
+  const { access, commitmentAccess, workAccess, snapshot, error, reload, mutate, selection, today, setView, setPeriodKind, navigatePeriod, returnToCurrent } = useFinance();
   const [editor, setEditor] = useState<{ transaction: FinanceTransaction | null } | null>(null);
   const [categoriesOpen, setCategoriesOpen] = useState(false);
   const [actionError, setActionError] = useState<string | null>(null);
@@ -55,6 +56,7 @@ export function FinanceScreen() {
           <FormButton label="Dashboard" selected={selection.view === 'dashboard'} onPress={() => setView('dashboard')} />
           <FormButton label="Transactions" selected={selection.view === 'transactions'} onPress={() => setView('transactions')} />
           <FormButton label="Commitments" selected={selection.view === 'commitments'} onPress={() => setView('commitments')} />
+          <FormButton label="Work" selected={selection.view === 'work'} onPress={() => setView('work')} />
         </View>
         <FormError message={error || actionError} />
         {!!error && <FormButton label="Retry" onPress={reload} />}
@@ -64,15 +66,19 @@ export function FinanceScreen() {
         </>}
         {selection.view === 'commitments' && snapshot && <CommitmentsView items={snapshot.items} categories={categories} access={commitmentAccess} today={today} mutate={mutate}
           onCreateCategory={(name) => mutate(() => access.createCategory(name, 'expense'))} />}
+        {selection.view === 'work' && snapshot?.work && <WorkView data={snapshot.work} categories={categories} access={workAccess} mutate={mutate}
+          onCreateCategory={(name) => mutate(() => access.createCategory(name, 'income'))} />}
       </View>}
       ListEmptyComponent={!snapshot ? (error ? null : <ActivityIndicator color={colors.text} accessibilityLabel="Loading Finance" />) : selection.view !== 'transactions' ? null : <View style={styles.empty}>
         <ThemedText>No transactions yet</ThemedText>
         <ThemedText themeColor="textSecondary">Record income received or an expense paid.</ThemedText>
       </View>}
-      renderItem={({ item }) => <TransactionRow transaction={item} categories={categories} commitmentPayment={snapshot?.paymentTransactionIds.includes(item.id)} onEdit={() => { setActionError(null); setEditor({ transaction: item }); }} onDelete={() => remove(item)} />}
+      renderItem={({ item }) => <TransactionRow transaction={item} categories={categories} commitmentPayment={snapshot?.paymentTransactionIds.includes(item.id)}
+        workPayment={snapshot?.workPaymentTransactionIds.includes(item.id)} onEdit={() => { setActionError(null); setEditor({ transaction: item }); }} onDelete={() => remove(item)} />}
     />
     {editor && <TransactionEditor transaction={editor.transaction} categories={categories}
       commitmentPayment={!!editor.transaction && snapshot?.paymentTransactionIds.includes(editor.transaction.id)}
+      workPayment={!!editor.transaction && snapshot?.workPaymentTransactionIds.includes(editor.transaction.id)}
       onSave={(draft) => mutate(() => editor.transaction ? access.editTransaction(editor.transaction.id, draft) : access.createTransaction(draft))}
       onCreateCategory={(name, type) => mutate(() => access.createCategory(name, type))} onDismiss={() => setEditor(null)} />}
     {categoriesOpen && <FinanceCategoryManager categories={categories}

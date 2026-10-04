@@ -1,5 +1,6 @@
 import { createContext, useCallback, useContext, useEffect, useImperativeHandle, useLayoutEffect, useMemo, useReducer, useRef, useState, type ReactNode, type Ref } from 'react';
 import { AccessibilityInfo, Keyboard, Platform, Pressable, ScrollView, StyleSheet, View, useWindowDimensions, type KeyboardEvent as NativeKeyboardEvent, type ScrollViewProps, type TextInput } from 'react-native';
+import { SafeAreaInsetsContext } from 'react-native-safe-area-context';
 
 import { ThemedText } from '@/components/themed-text';
 import { Spacing } from '@/constants/theme';
@@ -8,12 +9,13 @@ import { useTheme } from '@/hooks/use-theme';
 import { selectionMenuLayout, selectionOverlayReducer, type SelectionOverlayState } from './form-selection';
 
 type CloseMenu = (restoreFocus?: boolean) => boolean;
-type MenuRequest = { id: string; label: string; trigger: View; estimatedHeight: number; content: ReactNode };
+type MenuRequest = { id: string; label: string; trigger: View; estimatedHeight: number; content: ReactNode; keyboardInput?: boolean };
 export type InlineActionControls = { title: string; onCancel: () => void; onComplete: () => void; onSize: (height: number) => void };
 export type SelectionInlineAction = { label: string; title: string; accessibilityLabel?: string; render: (controls: InlineActionControls) => ReactNode };
 type InlineRequest = { title: string; content: ReactNode };
 type FormSelectionContextValue = { activeId: string | null; open: (menu: MenuRequest) => void; close: CloseMenu; beginInline: (action: SelectionInlineAction) => void; reposition: () => void };
 const SelectionContext = createContext<FormSelectionContextValue | null>(null);
+const zeroInsets = { top: 0, left: 0, right: 0, bottom: 0 };
 export type FormSelectionHandle = { dismiss: CloseMenu };
 
 export function useFormSelection() {
@@ -31,6 +33,7 @@ export function focusFormControl(target: View | TextInput | null) {
 /** One overlay per editor, inside the existing native modal and outside its ScrollViews. */
 export function FormSelectionHost({ children, ref }: { children: ReactNode; ref?: Ref<FormSelectionHandle> }) {
   const { width, height, fontScale } = useWindowDimensions();
+  const insets = useContext(SafeAreaInsetsContext) ?? zeroInsets;
   const host = useRef<View>(null);
   const heading = useRef<View>(null);
   const panel = useRef<View>(null);
@@ -67,23 +70,24 @@ export function FormSelectionHost({ children, ref }: { children: ReactNode; ref?
         if (request.current !== current || measurement.current !== revision) return;
         // Native measurements can be transiently empty during modal/keyboard layout. Preserve the current form.
         if (anchorWidth <= 0 || anchorHeight <= 0 || measuredWidth <= 16 || measuredHeight <= 16) return;
-        // KeyboardAvoidingView may already have shrunk the host. Use the smaller bound, never subtract twice.
-        const usableHeight = keyboardTop.current == null ? measuredHeight : Math.min(measuredHeight, Math.max(0, keyboardTop.current - y));
+        // The host now reaches the physical bottom for sheet coverage; menus still respect all safe-area edges.
+        const usableBottom = keyboardTop.current == null ? measuredHeight - insets.bottom : Math.min(measuredHeight, Math.max(0, keyboardTop.current - y));
         const next = selectionMenuLayout({ x: anchorX, y: anchorY, width: anchorWidth, height: anchorHeight },
-          { x, y, width: measuredWidth, height: usableHeight }, Math.min(contentHeight.current, 360 * Math.max(1, fontScale)), retainCoveredAnchor.current);
+          { x: x + insets.left, y: y + insets.top, width: measuredWidth - insets.left - insets.right, height: usableBottom - insets.top },
+          Math.min(contentHeight.current, 360 * Math.max(1, fontScale)), retainCoveredAnchor.current);
         if (!next && !retainCoveredAnchor.current) close();
         else if (!next) return;
-        else setLayout(next);
+        else setLayout({ ...next, left: next.left + insets.left, top: next.top + insets.top });
       });
     });
-  }, [close, fontScale]);
+  }, [close, fontScale, insets]);
 
   const open = useCallback((next: MenuRequest) => {
-    Keyboard.dismiss();
+    if (!next.keyboardInput) Keyboard.dismiss();
     returnFocus.current = null;
     request.current = next;
-    keyboardTop.current = null;
-    retainCoveredAnchor.current = false;
+    keyboardTop.current = next.keyboardInput ? Keyboard.metrics?.()?.screenY ?? null : null;
+    retainCoveredAnchor.current = !!next.keyboardInput;
     contentHeight.current = next.estimatedHeight;
     measurement.current++;
     inlineRevision.current++;
@@ -190,9 +194,9 @@ export function SelectionOverlay({ label, content, inline, layout, panelRef, hea
 }
 
 /** Stop underlying form gestures while a menu is open; remeasure if scrolling was already in flight. */
-export function FormScrollView({ onScroll, scrollEnabled = true, ...props }: ScrollViewProps) {
+export function FormScrollView({ onScroll, scrollEnabled = true, ref, ...props }: ScrollViewProps & { ref?: Ref<ScrollView> }) {
   const selection = useFormSelection();
-  return <ScrollView {...props} scrollEnabled={scrollEnabled && !selection.activeId} scrollEventThrottle={16}
+  return <ScrollView {...props} ref={ref} scrollEnabled={scrollEnabled && !selection.activeId} scrollEventThrottle={16}
     onScroll={(event) => { selection.reposition(); onScroll?.(event); }} />;
 }
 

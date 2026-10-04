@@ -1,12 +1,9 @@
 import DateTimePicker, { DateTimePickerAndroid } from '@react-native-community/datetimepicker';
-import { useRef, useState, type ReactNode } from 'react';
-import { Keyboard, KeyboardAvoidingView, Modal, Platform, StyleSheet, View } from 'react-native';
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { useRef, useState } from 'react';
+import { Keyboard, Platform } from 'react-native';
 
-import { FormButton, FormError, FormField, FormScrollView, FormSelect, FormSelectionHost, InlineNameForm, SegmentedControl, SelectField, type FormSelectionHandle } from '@/components/form-controls';
+import { FormButton, FormError, FormField, FormSelect, InlineNameForm, SegmentedControl, SelectField } from '@/components/form-controls';
 import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { Spacing } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { dateLabel, localDateString, pickerValue } from '@/utils/calendar';
 
@@ -18,32 +15,8 @@ import type { FinanceCategory } from '../../types';
 import { commitmentDraft, validateCommitmentDraft, validatePayment } from '../form';
 import { type CommitmentDraft, type CommitmentItem, type OccurrenceTarget } from '../types';
 
-export function CommitmentModal({ children, onDismiss }: {
-  children: ReactNode; onDismiss: () => void;
-}) {
-  const menu = useRef<FormSelectionHandle>(null);
-  function requestClose() { if (!menu.current?.dismiss()) onDismiss(); }
-  return <Modal visible presentationStyle="pageSheet" onRequestClose={requestClose}>
-    <SafeAreaProvider><ThemedView style={styles.container} accessibilityViewIsModal onAccessibilityEscape={requestClose}>
-      <SafeAreaView style={styles.container}><KeyboardAvoidingView style={styles.container} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
-        <FormSelectionHost ref={menu}>{children}</FormSelectionHost>
-      </KeyboardAvoidingView></SafeAreaView>
-    </ThemedView></SafeAreaProvider>
-  </Modal>;
-}
-
-export function CommitmentSheet({ title, children, onDismiss, action, onConfirm }: {
-  title: string; children: ReactNode; onDismiss: () => void; action?: string; onConfirm?: () => void;
-}) {
-  return <View style={styles.container}>
-    <View style={styles.header}>
-      <FormButton label={action ? 'Cancel' : 'Done'} onPress={onDismiss} />
-      <ThemedText type="smallBold" accessibilityRole="header" style={styles.heading}>{title}</ThemedText>
-      {action && onConfirm && <FormButton label={action} onPress={onConfirm} />}
-    </View>
-    <FormScrollView keyboardShouldPersistTaps="handled" contentContainerStyle={styles.content}>{children}</FormScrollView>
-  </View>;
-}
+import { AdaptiveSheet as CommitmentSheet } from '@/components/adaptive-sheet';
+export { AdaptiveModal as CommitmentModal, AdaptiveSheet as CommitmentSheet } from '@/components/adaptive-sheet';
 
 function CommitmentDate({ label, value, onChange, minimumDate, maximumDate }: {
   label: string; value: string; onChange: (date: string) => void; minimumDate?: Date; maximumDate?: Date;
@@ -146,8 +119,3 @@ export function CommitmentResume({ title, proposedDate, onResume, onDismiss }: {
     <ThemedText type="small" themeColor="textSecondary">Keep the proposed date to retain the previous billing day. Choosing another date sets a new monthly anchor. Retained occurrences keep their dates and still need to be resolved. Paused months are not backfilled.</ThemedText>
   </CommitmentSheet>;
 }
-
-const styles = StyleSheet.create({
-  container: { flex: 1 }, header: { flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', gap: Spacing.two, padding: Spacing.three },
-  heading: { flex: 1, minWidth: 80, textAlign: 'center' }, content: { padding: Spacing.three, gap: Spacing.three },
-});
