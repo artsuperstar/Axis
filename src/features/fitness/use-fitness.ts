@@ -9,12 +9,12 @@ import { createFitnessDataAccess } from './data';
 import { fitnessError } from './form';
 import type { FitnessSnapshot, SessionDetail } from './types';
 
-export function useFitness() {
+export function useFitness(initialSessionId?: string) {
   const db = useDatabase();
   const access = useMemo(() => createFitnessDataAccess(db, randomUUID), [db]);
   const [snapshot, setSnapshot] = useState<FitnessSnapshot | null>(null);
   const [detail, setDetail] = useState<SessionDetail | null>(null);
-  const selected = useRef<string | null>(null);
+  const selected = useRef<string | null>(initialSessionId ?? null);
   const historyLimit = useRef(20);
   const [error, setError] = useState<string | null>(null);
   const reload = useCallback(() => {

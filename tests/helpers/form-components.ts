@@ -36,6 +36,7 @@ export const commitmentViews = require('../../src/features/finance/commitments/c
 export const theme = require('../../src/constants/theme') as typeof import('../../src/constants/theme');
 export const fitnessForms = require('../../src/features/fitness/components/fitness-forms') as typeof import('../../src/features/fitness/components/fitness-forms');
 export const fitnessWorkout = require('../../src/features/fitness/components/workout-sheet') as typeof import('../../src/features/fitness/components/workout-sheet');
+export const homeContent = require('../../src/features/home/components/home-content') as typeof import('../../src/features/home/components/home-content');
 
 export function renderControl(render: () => ReactNode) {
   let tree: ReactNode;

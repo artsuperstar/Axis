@@ -22,17 +22,19 @@ const views: { value: FitnessView; label: string }[] = [
 ];
 const archiveOptions = [{ value: 0, label: 'Active' }, { value: 1, label: 'Archived' }];
 
-export function FitnessScreen() {
+export function FitnessScreen({ initialSessionId }: { initialSessionId?: string } = {}) {
   const colors = useTheme(); const insets = useSafeAreaInsets();
-  const fitness = useFitness(); const { snapshot, detail, access, mutate } = fitness;
+  const fitness = useFitness(initialSessionId); const { snapshot, detail, access, mutate } = fitness;
   const [view, setView] = useState<FitnessView>('workout');
-  const [dialog, setDialog] = useState<Dialog | null>(null);
+  const [editor, setDialog] = useState<Dialog | null>(null);
+  const [initialSessionOpen, setInitialSessionOpen] = useState(!!initialSessionId);
+  const dialog = editor ?? (initialSessionOpen && detail ? { kind: 'session' as const } : null);
   const [archivedExercises, setArchivedExercises] = useState(false);
   const [archivedRoutines, setArchivedRoutines] = useState(false);
   const [search, setSearch] = useState('');
   const [routineId, setRoutineId] = useState<string | null>(null);
   const [actionError, setActionError] = useState<string | null>(null);
-  function close() { setDialog(null); fitness.closeSession(); setActionError(null); }
+  function close() { setDialog(null); setInitialSessionOpen(false); fitness.closeSession(); setActionError(null); }
   function perform(action: () => void) {
     try { mutate(action); setActionError(null); } catch (cause) { setActionError(fitnessError(cause, 'Unable to update Fitness. Please try again.')); }
   }
