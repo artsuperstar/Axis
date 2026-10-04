@@ -1,6 +1,7 @@
-import { and, asc, desc, eq, inArray, isNotNull, isNull, ne, sql } from 'drizzle-orm';
+import { and, asc, desc, eq, gte, inArray, isNotNull, isNull, lt, ne, sql } from 'drizzle-orm';
 
 import type { AxisDatabase } from '@/database/client';
+import { localDayBounds } from '@/utils/calendar';
 import { fitnessExercises as exercises, fitnessRoutines as routines, fitnessRoutineExercises as routineExercises,
   fitnessSessions as sessions, fitnessSessionExercises as sessionExercises, fitnessSets as sets } from '@/database/schema';
 
@@ -109,6 +110,12 @@ export function createFitnessDataAccess(db: AxisDatabase, newId: () => string, n
     return next;
   }
   return {
+    readCompletedOnDate(date: string): SessionSummary[] {
+      const { from, until } = localDayBounds(date);
+      return db.select({ session: sessions, ...counts }).from(sessions)
+        .where(and(isNull(sessions.deletedAt), gte(sessions.completedAt, from), lt(sessions.completedAt, until)))
+        .orderBy(desc(sessions.completedAt), asc(sessions.id)).all().map(summary);
+    },
     read(historyLimit = 20): FitnessSnapshot {
       if (!Number.isSafeInteger(historyLimit) || historyLimit < 1) throw new FitnessValidationError('Invalid history page size.');
       return db.transaction((query) => {

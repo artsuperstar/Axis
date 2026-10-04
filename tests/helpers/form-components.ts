@@ -37,6 +37,11 @@ export const theme = require('../../src/constants/theme') as typeof import('../.
 export const fitnessForms = require('../../src/features/fitness/components/fitness-forms') as typeof import('../../src/features/fitness/components/fitness-forms');
 export const fitnessWorkout = require('../../src/features/fitness/components/workout-sheet') as typeof import('../../src/features/fitness/components/workout-sheet');
 export const homeContent = require('../../src/features/home/components/home-content') as typeof import('../../src/features/home/components/home-content');
+export const journalEditor = require('../../src/features/journal/components/journal-editor') as typeof import('../../src/features/journal/components/journal-editor');
+export const journalHistory = require('../../src/features/journal/components/journal-history') as typeof import('../../src/features/journal/components/journal-history');
+export const journalContext = require('../../src/features/journal/components/journal-context') as typeof import('../../src/features/journal/components/journal-context');
+export const journalDate = require('../../src/features/journal/components/journal-date') as typeof import('../../src/features/journal/components/journal-date');
+export const journalLeave = require('../../src/features/journal/components/journal-leave') as typeof import('../../src/features/journal/components/journal-leave');
 
 export function renderControl(render: () => ReactNode) {
   let tree: ReactNode;

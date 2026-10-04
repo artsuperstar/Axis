@@ -5,7 +5,7 @@ export type SourceRequest =
   | { source: 'commitment' | 'work'; recordId?: string; date?: string }
   | { source: 'fitness'; recordId: string };
 export type SourceTarget = { pathname: '/home-source'; params: SourceRequest };
-export type HomeNavigation = SourceTarget | { pathname: '/(tabs)/tasks' | '/(tabs)/calendar' | '/(tabs)/finance' | '/(tabs)/fitness' };
+export type HomeNavigation = SourceTarget | { pathname: '/(tabs)/tasks' | '/(tabs)/calendar' | '/(tabs)/finance' | '/(tabs)/fitness' | '/journal' };
 export function sourceRequest(params: { source?: unknown; recordId?: unknown; date?: unknown }, origin: 'Home' | 'Calendar'): SourceRequest | null {
   const { source, recordId, date } = params;
   if (recordId !== undefined && (typeof recordId !== 'string' || !recordId)) return null;

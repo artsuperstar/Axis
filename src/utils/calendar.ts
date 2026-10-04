@@ -37,6 +37,19 @@ export function validDate(date: string) {
   return year >= 1 && month >= 1 && month <= 12 && day >= 1 && day <= daysInMonth(year, month);
 }
 
+/** Half-open local-day timestamps; the next midnight respects local daylight-saving changes. */
+export function localDayBounds(date: string) {
+  if (!validDate(date)) throw new Error('Choose a valid calendar date.');
+  const start = pickerValue(date);
+  start.setHours(0, 0, 0, 0);
+  // Some historic time-zone changes skipped a whole civil day; it has no completion instants.
+  if (localDateString(start) !== date) return { from: start.getTime(), until: start.getTime() };
+  const end = new Date(start);
+  end.setDate(end.getDate() + 1);
+  end.setHours(0, 0, 0, 0);
+  return { from: start.getTime(), until: end.getTime() };
+}
+
 export function dateOrdinal(date: string) {
   const [year, month, day] = date.split('-').map(Number);
   const calculator = new Date(0);

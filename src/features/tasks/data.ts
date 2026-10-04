@@ -1,4 +1,4 @@
-import { and, asc, desc, eq, gte, gt, isNull, lte, ne, notExists, or, sql } from 'drizzle-orm';
+import { and, asc, desc, eq, gte, gt, isNull, lt, lte, ne, notExists, or, sql } from 'drizzle-orm';
 
 import type { AxisDatabase } from '@/database/client';
 import { taskCategories, taskOccurrences, taskRecurrences, tasks } from '@/database/schema';
@@ -7,7 +7,7 @@ import { TaskValidationError, validateTaskDraft } from './form';
 import { addDays, localDateString } from './calendar';
 import { latestRecurrence, recurrenceDates, recurrenceStopped } from './recurrence';
 import type { OccurrenceStatus, RecurrenceDraft, Task, TaskDraft, TaskListItem, TaskRecurrence } from './types';
-import { validateDateRange, type DateRange } from '@/utils/calendar';
+import { localDayBounds, validateDateRange, type DateRange } from '@/utils/calendar';
 
 type TaskDb = Pick<AxisDatabase, 'select' | 'insert' | 'update'>;
 export const occurrenceWindowDays = 30;
@@ -85,6 +85,20 @@ export function createTaskDataAccess(db: AxisDatabase, newId: () => string, now 
   }
 
   return {
+    /** Actual completion day, independent of due dates and occurrence generation windows. */
+    readCompletedOnDate(date: string) {
+      const { from, until } = localDayBounds(date);
+      const oneTime = db.select({ id: tasks.id, title: tasks.title }).from(tasks)
+        .where(and(isNull(tasks.deletedAt), gte(tasks.completedAt, from), lt(tasks.completedAt, until),
+          notExists(db.select({ id: taskRecurrences.id }).from(taskRecurrences).where(eq(taskRecurrences.taskId, tasks.id))))).all();
+      // Resolved previous-schedule occurrences remain real completion history even when retired.
+      const recurring = db.select({ id: taskOccurrences.id, title: tasks.title }).from(taskOccurrences)
+        .innerJoin(tasks, eq(tasks.id, taskOccurrences.taskId))
+        .where(and(isNull(tasks.deletedAt), eq(taskOccurrences.status, 'completed'),
+          gte(taskOccurrences.completedAt, from), lt(taskOccurrences.completedAt, until))).all();
+      return [...oneTime.map((row) => ({ ...row, source: 'task' as const })),
+        ...recurring.map((row) => ({ ...row, source: 'occurrence' as const }))];
+    },
     /** Calendar requests actual occurrences for one visible range, independent of the Tasks list window. */
     readRange(range: DateRange) {
       validateDateRange(range);

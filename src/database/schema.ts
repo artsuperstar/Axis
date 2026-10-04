@@ -387,3 +387,39 @@ export const fitnessSets = sqliteTable('fitness_sets', {
   check('fitness_set_updated_valid', sql`${table.updatedAt} >= ${table.createdAt}`),
   uniqueIndex('fitness_set_position_unique').on(table.sessionExerciseId, table.position).where(sql`${table.deletedAt} IS NULL`),
 ]);
+
+export const journalEntries = sqliteTable('journal_entries', {
+  id: text('id').primaryKey().notNull(),
+  entryDate: text('entry_date').notNull(),
+  content: text('content').notNull(),
+  mood: text('mood', { enum: ['great', 'good', 'okay', 'low', 'bad'] }),
+  createdAt: integer('created_at').notNull(),
+  updatedAt: integer('updated_at').notNull(),
+  deletedAt: integer('deleted_at'),
+}, (table) => [
+  check('journal_date_valid', civilDate(table.entryDate)),
+  check('journal_mood_valid', sql`${table.mood} IS NULL OR ${table.mood} IN ('great', 'good', 'okay', 'low', 'bad')`),
+  check('journal_content_valid', sql`typeof(${table.content}) = 'text' AND (length(trim(${table.content}, ' ' || char(9) || char(10) || char(13))) > 0 OR ${table.mood} IS NOT NULL OR ${table.deletedAt} IS NOT NULL)`),
+  check('journal_timestamps_valid', sql`typeof(${table.createdAt}) = 'integer' AND ${table.createdAt} BETWEEN 0 AND 9007199254740991
+    AND typeof(${table.updatedAt}) = 'integer' AND ${table.updatedAt} BETWEEN ${table.createdAt} AND 9007199254740991
+    AND (${table.deletedAt} IS NULL OR (typeof(${table.deletedAt}) = 'integer' AND ${table.deletedAt} BETWEEN ${table.createdAt} AND ${table.updatedAt}))`),
+  uniqueIndex('journal_active_date_unique').on(table.entryDate).where(sql`${table.deletedAt} IS NULL`),
+]);
+
+// Recovery state is separate from authoritative entries and survives saved-entry deletion/recreation.
+export const journalDrafts = sqliteTable('journal_drafts', {
+  entryDate: text('entry_date').primaryKey().notNull(),
+  content: text('content').notNull(),
+  mood: text('mood', { enum: ['great', 'good', 'okay', 'low', 'bad'] }),
+  updatedAt: integer('updated_at').notNull(),
+  baseEntryId: text('base_entry_id'),
+  baseEntryUpdatedAt: integer('base_entry_updated_at'),
+}, (table) => [
+  check('journal_draft_date_valid', civilDate(table.entryDate)),
+  check('journal_draft_mood_valid', sql`${table.mood} IS NULL OR ${table.mood} IN ('great', 'good', 'okay', 'low', 'bad')`),
+  check('journal_draft_content_valid', sql`typeof(${table.content}) = 'text' AND (length(trim(${table.content}, ' ' || char(9) || char(10) || char(13))) > 0 OR ${table.mood} IS NOT NULL OR ${table.baseEntryId} IS NOT NULL)`),
+  check('journal_draft_updated_valid', sql`typeof(${table.updatedAt}) = 'integer' AND ${table.updatedAt} BETWEEN 0 AND 9007199254740991`),
+  check('journal_draft_base_valid', sql`(${table.baseEntryId} IS NULL AND ${table.baseEntryUpdatedAt} IS NULL)
+    OR (${table.baseEntryId} IS NOT NULL AND length(trim(${table.baseEntryId})) > 0 AND ${table.baseEntryUpdatedAt} IS NOT NULL
+      AND typeof(${table.baseEntryUpdatedAt}) = 'integer' AND ${table.baseEntryUpdatedAt} BETWEEN 0 AND 9007199254740991)`),
+]);

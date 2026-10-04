@@ -58,6 +58,7 @@ export function HomeContent({ snapshot, onOpen, onComplete }: Actions & { snapsh
       <FormButton label="View workout" accessibilityLabel={`View ${completed.session.name}, completed today`} onPress={() => onOpen(completed.target)} />
     </View>}
     <FormButton label="View Calendar" onPress={() => onOpen({ pathname: '/(tabs)/calendar' })} />
+    <FormButton label="Today's journal" onPress={() => onOpen({ pathname: '/journal' })} />
   </View>;
 }
 

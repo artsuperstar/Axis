@@ -9,8 +9,8 @@ import type { FinanceTransaction } from './types';
 
 export type AnalyticsTransaction = Pick<FinanceTransaction, 'type' | 'amountMinor' | 'categoryId'> & { categoryName: string | null };
 export type CategorySpending = { categoryId: string | null; name: string; amountMinor: bigint };
-export type FinanceAnalytics = {
-  period: FinancePeriod;
+export type FinanceAnalytics<T extends Pick<FinancePeriod, 'startDate' | 'endDate'> = FinancePeriod> = {
+  period: T;
   incomeMinor: bigint;
   expensesMinor: bigint;
   netFlowMinor: bigint;
@@ -19,7 +19,7 @@ export type FinanceAnalytics = {
 };
 
 /** Only eligible rows enter this reducer. Money stays integer even above Number's safe total. */
-export function aggregateFinance(rows: AnalyticsTransaction[], period: FinancePeriod): FinanceAnalytics {
+export function aggregateFinance<T extends Pick<FinancePeriod, 'startDate' | 'endDate'>>(rows: AnalyticsTransaction[], period: T): FinanceAnalytics<T> {
   let incomeMinor = 0n;
   let expensesMinor = 0n;
   const categories = new Map<string | null, CategorySpending>();
@@ -40,7 +40,7 @@ export function aggregateFinance(rows: AnalyticsTransaction[], period: FinancePe
 }
 
 /** The existing partial date index filters SQLite rows before any JS monetary arithmetic. */
-export function readFinanceAnalytics(db: AxisDatabase, period: FinancePeriod) {
+export function readFinanceAnalytics<T extends Pick<FinancePeriod, 'startDate' | 'endDate'>>(db: AxisDatabase, period: T) {
   const rows = db.select({ type: financeTransactions.type, amountMinor: financeTransactions.amountMinor,
     categoryId: financeTransactions.categoryId, categoryName: financeCategories.name })
     .from(financeTransactions).leftJoin(financeCategories, eq(financeTransactions.categoryId, financeCategories.id))
