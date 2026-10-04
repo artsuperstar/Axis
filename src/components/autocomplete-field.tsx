@@ -13,6 +13,8 @@ type AutocompleteProps<T extends SelectionValue> = {
   label: string; value: T; displayValue: string; disabled?: boolean; description?: string;
   getResults: (query: string) => AutocompleteResults<T>; onSelect: (value: T) => void;
   onCreate?: (query: string) => T; formatError?: (cause: unknown) => string;
+  /** Richer creation can hand off to a feature-owned sheet in the same modal. */
+  onRequestCreate?: (query: string) => void;
 };
 
 /** Search and persistence are feature callbacks. The field only owns the overlay interaction. */
@@ -31,7 +33,7 @@ export function AutocompleteField<T extends SelectionValue>(props: AutocompleteP
     }} />;
 }
 
-export function AutocompletePanel<T extends SelectionValue>({ label, value, getResults, onSelect, onCreate, formatError, description, onClose, onSize }: AutocompleteProps<T> & {
+export function AutocompletePanel<T extends SelectionValue>({ label, value, getResults, onSelect, onCreate, onRequestCreate, formatError, description, onClose, onSize }: AutocompleteProps<T> & {
   onClose: () => void; onSize: (height: number) => void;
 }) {
   const [query, setQuery] = useState('');
@@ -47,8 +49,10 @@ export function AutocompletePanel<T extends SelectionValue>({ label, value, getR
   }, []);
   function select(next: T) { onSelect(next); onClose(); }
   function create() {
-    if (!onCreate || !results.createLabel || creating.current) return;
+    if ((!onCreate && !onRequestCreate) || !results.createLabel || creating.current) return;
     creating.current = true;
+    if (onRequestCreate) { onClose(); onRequestCreate(query); return; }
+    if (!onCreate) return;
     const message = submitAutocompleteSelection(query, onCreate, onSelect, onClose, formatError ?? (() => 'Unable to create this option.'));
     if (message) { creating.current = false; setError(message); }
   }
@@ -66,7 +70,7 @@ export function AutocompletePanel<T extends SelectionValue>({ label, value, getR
       <ThemedText type="small" themeColor="textSecondary" accessibilityLiveRegion="polite">
         {query.trim() ? `${results.suggestions.length} match${results.suggestions.length === 1 ? '' : 'es'}` : 'Type to find a match.'}
       </ThemedText>
-      <AutocompleteOptions value={value} results={results} onSelect={select} onCreate={onCreate ? create : undefined} />
+      <AutocompleteOptions value={value} results={results} onSelect={select} onCreate={onCreate || onRequestCreate ? create : undefined} />
     </ScrollView>
   </View>;
 }

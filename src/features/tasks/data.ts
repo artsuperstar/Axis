@@ -1,4 +1,4 @@
-import { and, asc, desc, eq, gte, gt, isNull, lte, ne, or, sql } from 'drizzle-orm';
+import { and, asc, desc, eq, gte, gt, isNull, lte, ne, notExists, or, sql } from 'drizzle-orm';
 
 import type { AxisDatabase } from '@/database/client';
 import { taskCategories, taskOccurrences, taskRecurrences, tasks } from '@/database/schema';
@@ -7,6 +7,7 @@ import { TaskValidationError, validateTaskDraft } from './form';
 import { addDays, localDateString } from './calendar';
 import { latestRecurrence, recurrenceDates, recurrenceStopped } from './recurrence';
 import type { OccurrenceStatus, RecurrenceDraft, Task, TaskDraft, TaskListItem, TaskRecurrence } from './types';
+import { validateDateRange, type DateRange } from '@/utils/calendar';
 
 type TaskDb = Pick<AxisDatabase, 'select' | 'insert' | 'update'>;
 export const occurrenceWindowDays = 30;
@@ -84,6 +85,27 @@ export function createTaskDataAccess(db: AxisDatabase, newId: () => string, now 
   }
 
   return {
+    /** Calendar requests actual occurrences for one visible range, independent of the Tasks list window. */
+    readRange(range: DateRange) {
+      validateDateRange(range);
+      return db.transaction((query) => {
+        const recurrences = query.select({ rule: taskRecurrences }).from(taskRecurrences)
+          .innerJoin(tasks, eq(tasks.id, taskRecurrences.taskId))
+          .where(and(isNull(tasks.deletedAt), isNull(taskRecurrences.deletedAt), lte(taskRecurrences.effectiveFrom, range.to),
+            or(isNull(taskRecurrences.effectiveUntil), gt(taskRecurrences.effectiveUntil, range.from)))).all().map(({ rule }) => rule);
+        materialize(query, recurrences, range.from, range.to, now());
+        const categories = and(eq(tasks.categoryId, taskCategories.id), isNull(taskCategories.deletedAt));
+        const oneTime = query.select({ task: tasks, category: taskCategories }).from(tasks).leftJoin(taskCategories, categories)
+          .where(and(isNull(tasks.deletedAt), gte(tasks.date, range.from), lte(tasks.date, range.to),
+            notExists(query.select({ id: taskRecurrences.id }).from(taskRecurrences).where(eq(taskRecurrences.taskId, tasks.id))))).all();
+        const recurring = query.select({ task: tasks, occurrence: taskOccurrences, recurrence: taskRecurrences, category: taskCategories })
+          .from(taskOccurrences).innerJoin(tasks, eq(tasks.id, taskOccurrences.taskId))
+          .innerJoin(taskRecurrences, eq(taskRecurrences.id, taskOccurrences.recurrenceId)).leftJoin(taskCategories, categories)
+          .where(and(isNull(tasks.deletedAt), isNull(taskOccurrences.deletedAt), gte(taskOccurrences.scheduledDate, range.from), lte(taskOccurrences.scheduledDate, range.to))).all();
+        return [...oneTime.map((row) => ({ ...row, occurrence: null, recurrence: null })), ...recurring];
+      });
+    },
+
     read() {
       const today = localDateString(new Date(now()));
       const from = addDays(today, -occurrenceWindowDays);

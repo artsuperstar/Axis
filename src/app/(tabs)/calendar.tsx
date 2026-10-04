@@ -1,5 +1,1 @@
-import { TabScreen } from '@/components/tab-screen';
-
-export default function CalendarScreen() {
-  return <TabScreen title="Calendar" />;
-}
+export { CalendarScreen as default } from '@/features/calendar/calendar-screen';

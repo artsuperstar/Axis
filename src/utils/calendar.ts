@@ -55,3 +55,32 @@ export function addDays(date: string, days: number) {
 export function weekdayIndex(date: string) {
   return ((dateOrdinal(date) + 3) % 7 + 7) % 7; // Monday = 0.
 }
+
+export type DateRange = { from: string; to: string };
+
+export function startOfMonth(date: string) { return `${date.slice(0, 7)}-01`; }
+
+export function endOfMonth(date: string) {
+  const [year, month] = date.split('-').map(Number);
+  return formatDate(year, month, daysInMonth(year, month));
+}
+
+/** Keep the selected day number where possible, including across year boundaries. */
+export function addMonths(date: string, months: number) {
+  const [year, month, day] = date.split('-').map(Number);
+  const ordinal = Math.max(0, Math.min(9999 * 12 - 1, (year - 1) * 12 + month - 1 + months));
+  const nextYear = Math.floor(ordinal / 12) + 1;
+  const nextMonth = ordinal % 12 + 1;
+  return formatDate(nextYear, nextMonth, Math.min(day, daysInMonth(nextYear, nextMonth)));
+}
+
+export function monthGridRange(date: string): DateRange {
+  const first = startOfMonth(date); const last = endOfMonth(date);
+  return { from: addDays(first, -weekdayIndex(first)), to: addDays(last, 6 - weekdayIndex(last)) };
+}
+
+/** Public range queries are deliberately bounded, including adjacent grid days. */
+export function validateDateRange(range: DateRange) {
+  if (!validDate(range.from) || !validDate(range.to) || range.from > range.to
+    || dateOrdinal(range.to) - dateOrdinal(range.from) > 61) throw new Error('Choose a calendar range of at most 62 days.');
+}

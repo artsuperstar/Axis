@@ -287,3 +287,103 @@ export const workPaymentAllocations = sqliteTable('work_payment_allocations', {
   index('work_allocations_entry_idx').on(table.workEntryId),
   index('work_allocations_transaction_idx').on(table.financeTransactionId),
 ]);
+
+// Fitness plans and actual performance have separate identities and lifecycles.
+const fitnessTypes = ['strength', 'bodyweight', 'duration', 'distance'] as const;
+const fitnessLifecycle = () => ({
+  createdAt: integer('created_at').notNull(), updatedAt: integer('updated_at').notNull(), deletedAt: integer('deleted_at'),
+});
+const fitnessTargets = () => ({
+  targetSetCount: integer('target_set_count'), targetRepMin: integer('target_rep_min'), targetRepMax: integer('target_rep_max'),
+  targetDurationSeconds: integer('target_duration_seconds'), targetDistanceMeters: integer('target_distance_meters'),
+});
+const positiveFitnessInteger = (column: SQLWrapper) => sql`typeof(${column}) = 'integer' AND ${column} BETWEEN 1 AND 9007199254740991`;
+const fitnessTargetCheck = (table: {
+  measurementType: SQLWrapper; targetSetCount: SQLWrapper; targetRepMin: SQLWrapper; targetRepMax: SQLWrapper;
+  targetDurationSeconds: SQLWrapper; targetDistanceMeters: SQLWrapper;
+}) => sql`(${table.targetSetCount} IS NULL OR (typeof(${table.targetSetCount}) = 'integer' AND ${table.targetSetCount} BETWEEN 1 AND 100))
+  AND ((${table.targetRepMin} IS NULL AND ${table.targetRepMax} IS NULL)
+    OR (${table.measurementType} IN ('strength', 'bodyweight') AND ${table.targetRepMin} IS NOT NULL AND ${table.targetRepMax} IS NOT NULL
+      AND ${positiveFitnessInteger(table.targetRepMin)} AND ${positiveFitnessInteger(table.targetRepMax)} AND ${table.targetRepMax} >= ${table.targetRepMin}))
+  AND (${table.targetDurationSeconds} IS NULL OR (${table.measurementType} = 'duration' AND ${positiveFitnessInteger(table.targetDurationSeconds)}))
+  AND (${table.targetDistanceMeters} IS NULL OR (${table.measurementType} = 'distance' AND ${positiveFitnessInteger(table.targetDistanceMeters)}))`;
+
+export const fitnessExercises = sqliteTable('fitness_exercises', {
+  id: text('id').primaryKey().notNull(), name: text('name').notNull(),
+  measurementType: text('measurement_type', { enum: fitnessTypes }).notNull(),
+  isBuiltIn: integer('is_built_in', { mode: 'boolean' }).notNull().default(false), ...fitnessLifecycle(),
+}, (table) => [
+  check('fitness_exercise_name_valid', sql`length(trim(${table.name})) BETWEEN 1 AND 120`),
+  check('fitness_exercise_type_valid', sql`${table.measurementType} IN ('strength', 'bodyweight', 'duration', 'distance')`),
+  check('fitness_exercise_builtin_valid', sql`${table.isBuiltIn} IN (0, 1)`),
+  check('fitness_exercise_updated_valid', sql`${table.updatedAt} >= ${table.createdAt}`),
+  uniqueIndex('fitness_exercise_id_type_unique').on(table.id, table.measurementType),
+  uniqueIndex('fitness_exercise_active_name_unique').on(sql`lower(${table.name})`).where(sql`${table.deletedAt} IS NULL`),
+]);
+
+export const fitnessRoutines = sqliteTable('fitness_routines', {
+  id: text('id').primaryKey().notNull(), name: text('name').notNull(), ...fitnessLifecycle(),
+}, (table) => [
+  check('fitness_routine_name_valid', sql`length(trim(${table.name})) BETWEEN 1 AND 120`),
+  check('fitness_routine_updated_valid', sql`${table.updatedAt} >= ${table.createdAt}`),
+  uniqueIndex('fitness_routine_active_name_unique').on(sql`lower(${table.name})`).where(sql`${table.deletedAt} IS NULL`),
+]);
+
+export const fitnessRoutineExercises = sqliteTable('fitness_routine_exercises', {
+  id: text('id').primaryKey().notNull(), routineId: text('routine_id').notNull().references(() => fitnessRoutines.id, { onDelete: 'restrict' }),
+  exerciseId: text('exercise_id').notNull(), measurementType: text('measurement_type', { enum: fitnessTypes }).notNull(),
+  position: integer('position').notNull(), ...fitnessTargets(), ...fitnessLifecycle(),
+}, (table) => [
+  foreignKey({ columns: [table.exerciseId, table.measurementType], foreignColumns: [fitnessExercises.id, fitnessExercises.measurementType] }).onDelete('restrict').onUpdate('restrict'),
+  check('fitness_routine_exercise_position_valid', sql`typeof(${table.position}) = 'integer' AND ${table.position} BETWEEN 0 AND 9007199254740991`),
+  check('fitness_routine_targets_valid', fitnessTargetCheck(table)),
+  check('fitness_routine_exercise_updated_valid', sql`${table.updatedAt} >= ${table.createdAt}`),
+  uniqueIndex('fitness_routine_exercise_position_unique').on(table.routineId, table.position).where(sql`${table.deletedAt} IS NULL`),
+]);
+
+export const fitnessSessions = sqliteTable('fitness_workout_sessions', {
+  id: text('id').primaryKey().notNull(), routineId: text('routine_id').references(() => fitnessRoutines.id, { onDelete: 'restrict' }),
+  name: text('name').notNull(), startedAt: integer('started_at').notNull(), completedAt: integer('completed_at'), note: text('note'), ...fitnessLifecycle(),
+}, (table) => [
+  check('fitness_session_name_valid', sql`length(trim(${table.name})) BETWEEN 1 AND 120`),
+  check('fitness_session_completed_valid', sql`${table.completedAt} IS NULL OR ${table.completedAt} >= ${table.startedAt}`),
+  check('fitness_session_updated_valid', sql`${table.updatedAt} >= ${table.createdAt}`),
+  uniqueIndex('fitness_one_active_session').on(sql`(1)`).where(sql`${table.completedAt} IS NULL AND ${table.deletedAt} IS NULL`),
+  index('fitness_session_history_idx').on(table.completedAt, table.id).where(sql`${table.deletedAt} IS NULL AND ${table.completedAt} IS NOT NULL`),
+]);
+
+export const fitnessSessionExercises = sqliteTable('fitness_session_exercises', {
+  id: text('id').primaryKey().notNull(), sessionId: text('session_id').notNull().references(() => fitnessSessions.id, { onDelete: 'restrict' }),
+  exerciseId: text('exercise_id').notNull(), exerciseName: text('exercise_name').notNull(),
+  measurementType: text('measurement_type', { enum: fitnessTypes }).notNull(), position: integer('position').notNull(), note: text('note'),
+  ...fitnessTargets(), ...fitnessLifecycle(),
+}, (table) => [
+  foreignKey({ columns: [table.exerciseId, table.measurementType], foreignColumns: [fitnessExercises.id, fitnessExercises.measurementType] }).onDelete('restrict').onUpdate('restrict'),
+  check('fitness_session_exercise_name_valid', sql`length(trim(${table.exerciseName})) BETWEEN 1 AND 120`),
+  check('fitness_session_exercise_position_valid', sql`typeof(${table.position}) = 'integer' AND ${table.position} BETWEEN 0 AND 9007199254740991`),
+  check('fitness_session_targets_valid', fitnessTargetCheck(table)),
+  check('fitness_session_exercise_updated_valid', sql`${table.updatedAt} >= ${table.createdAt}`),
+  uniqueIndex('fitness_session_exercise_id_type_unique').on(table.id, table.measurementType),
+  uniqueIndex('fitness_session_exercise_position_unique').on(table.sessionId, table.position).where(sql`${table.deletedAt} IS NULL`),
+]);
+
+export const fitnessSets = sqliteTable('fitness_sets', {
+  id: text('id').primaryKey().notNull(), sessionExerciseId: text('session_exercise_id').notNull(),
+  measurementType: text('measurement_type', { enum: fitnessTypes }).notNull(), position: integer('position').notNull(),
+  weightGrams: integer('weight_grams'), reps: integer('reps'), durationSeconds: integer('duration_seconds'), distanceMeters: integer('distance_meters'),
+  ...fitnessLifecycle(),
+}, (table) => [
+  foreignKey({ columns: [table.sessionExerciseId, table.measurementType], foreignColumns: [fitnessSessionExercises.id, fitnessSessionExercises.measurementType] }).onDelete('restrict').onUpdate('restrict'),
+  check('fitness_set_position_valid', sql`typeof(${table.position}) = 'integer' AND ${table.position} BETWEEN 0 AND 9007199254740991`),
+  check('fitness_set_values_valid', sql`
+    (${table.measurementType} = 'strength' AND ${table.weightGrams} IS NOT NULL AND typeof(${table.weightGrams}) = 'integer' AND ${table.weightGrams} BETWEEN 0 AND 9007199254740991
+      AND ${table.reps} IS NOT NULL AND ${positiveFitnessInteger(table.reps)} AND ${table.durationSeconds} IS NULL AND ${table.distanceMeters} IS NULL)
+    OR (${table.measurementType} = 'bodyweight' AND ${table.reps} IS NOT NULL AND ${positiveFitnessInteger(table.reps)}
+      AND (${table.weightGrams} IS NULL OR ${positiveFitnessInteger(table.weightGrams)}) AND ${table.durationSeconds} IS NULL AND ${table.distanceMeters} IS NULL)
+    OR (${table.measurementType} = 'duration' AND ${table.durationSeconds} IS NOT NULL AND ${positiveFitnessInteger(table.durationSeconds)}
+      AND ${table.weightGrams} IS NULL AND ${table.reps} IS NULL AND ${table.distanceMeters} IS NULL)
+    OR (${table.measurementType} = 'distance' AND ${table.distanceMeters} IS NOT NULL AND ${positiveFitnessInteger(table.distanceMeters)}
+      AND (${table.durationSeconds} IS NULL OR ${positiveFitnessInteger(table.durationSeconds)}) AND ${table.weightGrams} IS NULL AND ${table.reps} IS NULL)`),
+  check('fitness_set_updated_valid', sql`${table.updatedAt} >= ${table.createdAt}`),
+  uniqueIndex('fitness_set_position_unique').on(table.sessionExerciseId, table.position).where(sql`${table.deletedAt} IS NULL`),
+]);

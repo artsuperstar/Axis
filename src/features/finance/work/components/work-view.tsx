@@ -18,11 +18,12 @@ import { WorkEditor, WorkModal, WorkPaymentEditor, WorkSheet } from './work-form
 import { WorkRow } from './work-row';
 
 type Dialog = { kind: 'edit'; id: string | null } | { kind: 'details'; id: string } | { kind: 'payment'; id?: string } | { kind: 'counterparties' } | { kind: 'history' };
-export function WorkView({ data, categories, access, mutate, onCreateCategory }: {
+export function WorkView({ data, categories, access, mutate, onCreateCategory, initialEntryId }: {
   data: WorkSnapshot; categories: FinanceCategory[]; access: WorkDataAccess; mutate: <T>(action: () => T) => T; onCreateCategory: (name: string) => FinanceCategory;
+  initialEntryId?: string;
 }) {
   const colors = useTheme();
-  const [dialog, setDialog] = useState<Dialog | null>(null);
+  const [dialog, setDialog] = useState<Dialog | null>(() => initialEntryId ? { kind: 'details', id: initialEntryId } : null);
   const [error, setError] = useState<string | null>(null);
   const [name, setName] = useState('');
   const [historyLimit, setHistoryLimit] = useState(20);

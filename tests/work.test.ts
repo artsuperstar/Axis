@@ -309,7 +309,7 @@ test('additive Stage 8 migration preserves all Tasks, Finance/dashboard facts, c
   const after = sqlite.prepare("SELECT name, sql FROM sqlite_master WHERE name NOT LIKE 'sqlite_%' ORDER BY name").all();
   for (const old of definitions) assert.deepEqual(after.find((row) => row.name === old.name), old);
   assert.equal(createWorkDataAccess(db, randomUUID, now).read().items.length, 0);
-  await migrate(db, bundledMigrations); assert.deepEqual(snapshot(), before); assert.equal(sqlite.prepare('SELECT count(*) AS count FROM __drizzle_migrations').get()!.count, 5);
+  await migrate(db, bundledMigrations); assert.deepEqual(snapshot(), before); assert.equal(sqlite.prepare('SELECT count(*) AS count FROM __drizzle_migrations').get()!.count, journal.entries.length);
   assert.deepEqual(sqlite.prepare('PRAGMA foreign_key_check').all(), []); assert.equal(sqlite.prepare('PRAGMA integrity_check').get()!.integrity_check, 'ok');
 });
 test('failed Stage 8 migration rolls back only new Work tables and safely retries', async (t) => {

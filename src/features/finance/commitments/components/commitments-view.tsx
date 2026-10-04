@@ -21,13 +21,15 @@ type Dialog = { kind: 'edit'; item: CommitmentItem | null }
   | { kind: 'payment'; item: CommitmentItem; occurrence: DisplayOccurrence }
   | { kind: 'resume'; item: CommitmentItem; date: string };
 
-export function CommitmentsView({ items, categories, access, today, mutate, onCreateCategory }: {
+export function CommitmentsView({ items, categories, access, today, mutate, onCreateCategory, initialDetail }: {
   items: CommitmentItem[]; categories: FinanceCategory[]; access: CommitmentDataAccess; today: string; mutate: <T>(action: () => T) => T;
   onCreateCategory: (name: string) => FinanceCategory;
+  initialDetail?: { data: CommitmentHistory; occurrence: DisplayOccurrence | null };
 }) {
   const colors = useTheme();
-  const [dialog, setDialog] = useState<Dialog | null>(null);
+  const [dialog, setDialog] = useState<Dialog | null>(() => initialDetail ? { kind: 'history', data: initialDetail.data } : null);
   const [error, setError] = useState<string | null>(null);
+  const [focusedOccurrence] = useState(initialDetail?.occurrence ?? null);
   const active = items.filter((item) => item.commitment.status === 'active');
   const paused = items.filter((item) => item.commitment.status === 'paused');
   const historical = items.filter((item) => ['ended', 'completed'].includes(item.commitment.status));
@@ -96,6 +98,11 @@ export function CommitmentsView({ items, categories, access, today, mutate, onCr
   }
 
   const detail = dialog?.kind === 'history' ? dialog.data : null;
+  // Put the Calendar-selected obligation first, including old unresolved dates, without duplicating it in history.
+  const focused = detail && focusedOccurrence?.commitmentId === detail.commitment.id
+    ? detail.history.find(({ occurrence }) => occurrence.dueDate === focusedOccurrence.dueDate && occurrence.status === 'pending')?.occurrence
+      ?? (detail.commitment.status === 'active' && !detail.history.some(({ occurrence }) => occurrence.dueDate === focusedOccurrence.dueDate) ? focusedOccurrence : null)
+    : null;
   return <View style={styles.section}>
     <FormButton label="Add commitment" onPress={() => { setError(null); setDialog({ kind: 'edit', item: null }); }} />
     <FormError message={error} />
@@ -145,8 +152,9 @@ export function CommitmentsView({ items, categories, access, today, mutate, onCr
         </ThemedText>)}
       </>}
       <ThemedText type="smallBold" accessibilityRole="header">Occurrence history</ThemedText>
+      {focused && pending(detail, focused, true)}
       {!detail.history.length && <ThemedText themeColor="textSecondary">No due or resolved occurrences yet.</ThemedText>}
-      {detail.history.map(({ occurrence: row, payment }) => row.status === 'pending' ? pending(detail, row, true) : <View key={row.id} style={[styles.card, { backgroundColor: colors.backgroundElement }]}>
+      {detail.history.filter(({ occurrence }) => occurrence.dueDate !== focused?.dueDate).map(({ occurrence: row, payment }) => row.status === 'pending' ? pending(detail, row, true) : <View key={row.id} style={[styles.card, { backgroundColor: colors.backgroundElement }]}>
         <ThemedText type="smallBold">{occurrenceLabel(row.status, row.dueDate, today)} · {dateLabel(row.dueDate)}{row.installmentIndex ? ` · ${row.installmentIndex} / ${detail.commitment.installmentCount}` : ''}</ThemedText>
         <ThemedText type="small">Expected {formatBrlAmount(row.expectedAmountMinor)}</ThemedText>
         {payment && <ThemedText type="small">Paid {formatBrlAmount(payment.amountMinor)} · {dateLabel(payment.transactionDate)}</ThemedText>}

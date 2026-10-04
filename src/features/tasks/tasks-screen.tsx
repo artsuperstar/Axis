@@ -19,11 +19,12 @@ import { latestRecurrence } from './recurrence';
 import type { Task } from './types';
 import { useTasks } from './use-tasks';
 
-export function TasksScreen() {
+export function TasksScreen({ initialTaskId }: { initialTaskId?: string } = {}) {
   const colors = useTheme();
   const insets = useSafeAreaInsets();
   const { access, snapshot, error, reload, mutate, presentationNow } = useTasks();
   const [editor, setEditor] = useState<{ task: Task | null } | null>(null);
+  const [initialEditorOpen, setInitialEditorOpen] = useState(!!initialTaskId);
   const [categoriesOpen, setCategoriesOpen] = useState(false);
   const [seriesOpen, setSeriesOpen] = useState(false);
   const [historyId, setHistoryId] = useState<string | null>(null);
@@ -33,6 +34,8 @@ export function TasksScreen() {
   const recurrences = snapshot?.recurrences ?? [];
   const historyTask = snapshot?.tasks.find((task) => task.id === historyId);
   const readHistory = useCallback((before?: string) => access.readHistory(historyId!, before), [access, historyId]);
+  const initialTask = snapshot?.tasks.find((row) => row.id === initialTaskId);
+  const shownEditor = editor ?? (initialEditorOpen && initialTask ? { task: initialTask } : null);
 
   function seriesClosed() {
     const action = pendingSeriesAction.current;
@@ -85,7 +88,7 @@ export function TasksScreen() {
               <TaskButton label="Categories" disabled={!snapshot} onPress={() => setCategoriesOpen(true)} />
               <TaskButton label="Repeating tasks" disabled={!snapshot} onPress={() => setSeriesOpen(true)} />
             </View>
-            <TaskError message={error || actionError} />
+            <TaskError message={error || actionError || (initialEditorOpen && snapshot && !initialTask ? 'This task is no longer available.' : null)} />
             {!!error && <TaskButton label="Retry" onPress={reload} />}
           </View>
         )}
@@ -113,14 +116,14 @@ export function TasksScreen() {
           />
         )}
       />
-      {editor && (
+      {shownEditor && (
         <TaskEditor
-          task={editor.task}
-          recurrence={editor.task ? latestRecurrence(recurrences, editor.task.id) : null}
+          task={shownEditor.task}
+          recurrence={shownEditor.task ? latestRecurrence(recurrences, shownEditor.task.id) : null}
           categories={categories}
-          onSave={(draft) => mutate(() => editor.task ? access.editTask(editor.task.id, draft) : access.createTask(draft))}
+          onSave={(draft) => mutate(() => shownEditor.task ? access.editTask(shownEditor.task.id, draft) : access.createTask(draft))}
           onCreateCategory={(name) => mutate(() => access.createCategory(name))}
-          onDismiss={() => setEditor(null)}
+          onDismiss={() => { setInitialEditorOpen(false); setEditor(null); }}
         />
       )}
       <RecurringTasks visible={seriesOpen} tasks={snapshot?.tasks ?? []} recurrences={recurrences}

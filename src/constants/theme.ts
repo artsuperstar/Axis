@@ -11,6 +11,9 @@ export const Colors = {
     backgroundElement: '#F0F0F3',
     backgroundSelected: '#E0E1E6',
     textSecondary: '#60646C',
+    calendarTask: '#2563EB',
+    calendarCommitment: '#B45309',
+    calendarWorkPayment: '#0F766E',
   },
   dark: {
     text: '#ffffff',
@@ -18,6 +21,9 @@ export const Colors = {
     backgroundElement: '#212225',
     backgroundSelected: '#2E3135',
     textSecondary: '#B0B4BA',
+    calendarTask: '#93C5FD',
+    calendarCommitment: '#FBBF24',
+    calendarWorkPayment: '#5EEAD4',
   },
 } as const;
 

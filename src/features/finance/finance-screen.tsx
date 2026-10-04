@@ -14,13 +14,15 @@ import { TransactionEditor } from './components/transaction-editor';
 import { TransactionRow } from './components/transaction-row';
 import { financeError } from './errors';
 import type { FinanceTransaction } from './types';
-import { useFinance } from './use-finance';
+import { useFinance, type FinanceView } from './use-finance';
 import { WorkView } from './work/components/work-view';
 
-export function FinanceScreen() {
+export function FinanceScreen({ initialView, initialRecordId, initialDueDate }: {
+  initialView?: FinanceView; initialRecordId?: string; initialDueDate?: string;
+} = {}) {
   const colors = useTheme();
   const insets = useSafeAreaInsets();
-  const { access, commitmentAccess, workAccess, snapshot, error, reload, mutate, selection, today, setView, setPeriodKind, navigatePeriod, returnToCurrent } = useFinance();
+  const { access, commitmentAccess, workAccess, snapshot, error, reload, mutate, selection, today, setView, setPeriodKind, navigatePeriod, returnToCurrent } = useFinance(initialView, initialRecordId, initialDueDate);
   const [editor, setEditor] = useState<{ transaction: FinanceTransaction | null } | null>(null);
   const [categoriesOpen, setCategoriesOpen] = useState(false);
   const [actionError, setActionError] = useState<string | null>(null);
@@ -65,8 +67,9 @@ export function FinanceScreen() {
           {snapshot?.analytics && <FinanceDashboard analytics={snapshot.analytics} />}
         </>}
         {selection.view === 'commitments' && snapshot && <CommitmentsView items={snapshot.items} categories={categories} access={commitmentAccess} today={today} mutate={mutate}
+          initialDetail={snapshot.initialCommitment}
           onCreateCategory={(name) => mutate(() => access.createCategory(name, 'expense'))} />}
-        {selection.view === 'work' && snapshot?.work && <WorkView data={snapshot.work} categories={categories} access={workAccess} mutate={mutate}
+        {selection.view === 'work' && snapshot?.work && <WorkView data={snapshot.work} categories={categories} access={workAccess} mutate={mutate} initialEntryId={initialRecordId}
           onCreateCategory={(name) => mutate(() => access.createCategory(name, 'income'))} />}
       </View>}
       ListEmptyComponent={!snapshot ? (error ? null : <ActivityIndicator color={colors.text} accessibilityLabel="Loading Finance" />) : selection.view !== 'transactions' ? null : <View style={styles.empty}>

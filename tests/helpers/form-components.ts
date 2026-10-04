@@ -30,6 +30,12 @@ export const workForms = require('../../src/features/finance/work/components/wor
 export const workViews = require('../../src/features/finance/work/components/work-view') as typeof import('../../src/features/finance/work/components/work-view');
 export const transactionForms = require('../../src/features/finance/components/transaction-editor') as typeof import('../../src/features/finance/components/transaction-editor');
 export const transactionRows = require('../../src/features/finance/components/transaction-row') as typeof import('../../src/features/finance/components/transaction-row');
+export const calendarGrid = require('../../src/features/calendar/components/month-grid') as typeof import('../../src/features/calendar/components/month-grid');
+export const calendarAgenda = require('../../src/features/calendar/components/day-agenda') as typeof import('../../src/features/calendar/components/day-agenda');
+export const commitmentViews = require('../../src/features/finance/commitments/components/commitments-view') as typeof import('../../src/features/finance/commitments/components/commitments-view');
+export const theme = require('../../src/constants/theme') as typeof import('../../src/constants/theme');
+export const fitnessForms = require('../../src/features/fitness/components/fitness-forms') as typeof import('../../src/features/fitness/components/fitness-forms');
+export const fitnessWorkout = require('../../src/features/fitness/components/workout-sheet') as typeof import('../../src/features/fitness/components/workout-sheet');
 
 export function renderControl(render: () => ReactNode) {
   let tree: ReactNode;
@@ -39,9 +45,11 @@ export function renderControl(render: () => ReactNode) {
 }
 
 type ControlProps = { children?: ReactNode; label?: string; onPress?: () => void; accessibilityLabel?: string; disabled?: boolean; editable?: boolean;
+  testID?: string; accessibilityState?: { selected?: boolean };
   style?: { position?: string }; value?: string | number | null; options?: { value: string | number | null; label: string }[]; helperText?: string;
   getResults?: (query: string) => import('../../src/components/autocomplete-field').AutocompleteResults<string | null>;
   onCreate?: (name: string) => string; onSelect?: (value: string | null) => void;
+  onRequestCreate?: (query: string) => void; onConfirm?: () => void; onDismiss?: () => void;
   action?: import('../../src/components/form-selection-host').SelectionInlineAction;
 };
 function elements(node: ReactNode): ReactElement<ControlProps>[] {

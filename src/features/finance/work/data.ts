@@ -1,8 +1,8 @@
-import { and, asc, desc, eq, isNull, sql } from 'drizzle-orm';
+import { and, asc, desc, eq, gte, inArray, isNull, lte, or, sql } from 'drizzle-orm';
 
 import type { AxisDatabase } from '@/database/client';
 import { financeCategories, financeTransactions, workCounterparties as counterparties, workEntries as entries, workPaymentAllocations as allocations } from '@/database/schema';
-import { localDateString } from '@/utils/calendar';
+import { localDateString, validateDateRange, type DateRange } from '@/utils/calendar';
 
 import { FinanceValidationError } from '../errors';
 import { validateTransactionDraft } from '../form';
@@ -29,19 +29,30 @@ export function createWorkDataAccess(db: AxisDatabase, newId: () => string, now 
   }
 
   /** Read all active relationships in one snapshot and reject broken reconciliation instead of hiding debt. */
-  function snapshot(query: Query): WorkSnapshot {
-    const parties = query.select().from(counterparties).orderBy(asc(counterparties.name), asc(counterparties.id)).all();
-    const work = query.select().from(entries).where(isNull(entries.deletedAt)).orderBy(desc(entries.workDate), asc(entries.id)).all();
-    const workById = new Map(work.map((row) => [row.id, row]));
+  function snapshot(query: Query, range?: DateRange): WorkSnapshot {
+    const workFilter = and(isNull(entries.deletedAt), range ? and(gte(entries.expectedPaymentDate, range.from), lte(entries.expectedPaymentDate, range.to)) : undefined);
+    const work = query.select().from(entries).where(workFilter).orderBy(desc(entries.workDate), asc(entries.id)).all();
+    const selectedPayments = query.select({ id: allocations.financeTransactionId }).from(allocations)
+      .innerJoin(entries, eq(entries.id, allocations.workEntryId)).where(and(isNull(allocations.deletedAt), workFilter));
+    // A combined receipt must reconcile in full even if only one of its entries is in the visible month.
+    const relatedWork = range ? query.select({ entry: entries }).from(entries).innerJoin(allocations, eq(entries.id, allocations.workEntryId))
+      .where(and(isNull(allocations.deletedAt), inArray(allocations.financeTransactionId, selectedPayments))).all().map(({ entry }) => entry) : work;
+    const workById = new Map([...work, ...relatedWork].map((row) => [row.id, row]));
+    const relatedParties = query.select({ id: entries.counterpartyId }).from(entries).innerJoin(allocations, eq(entries.id, allocations.workEntryId))
+      .where(and(isNull(allocations.deletedAt), inArray(allocations.financeTransactionId, selectedPayments)));
+    const parties = query.select().from(counterparties).where(range ? or(
+      inArray(counterparties.id, query.select({ id: entries.counterpartyId }).from(entries).where(workFilter)),
+      inArray(counterparties.id, relatedParties)) : undefined).orderBy(asc(counterparties.name), asc(counterparties.id)).all();
     const partyById = new Map(parties.map((row) => [row.id, row]));
     const relationships = query.select({ allocation: allocations, transaction: financeTransactions }).from(allocations)
-      .innerJoin(financeTransactions, eq(allocations.financeTransactionId, financeTransactions.id)).where(isNull(allocations.deletedAt)).all();
+      .innerJoin(financeTransactions, eq(allocations.financeTransactionId, financeTransactions.id))
+      .where(and(isNull(allocations.deletedAt), range ? inArray(allocations.financeTransactionId, selectedPayments) : undefined)).all();
     const received = new Map<string, bigint>();
     const payments = new Map<string, WorkPayment>();
     for (const { allocation, transaction } of relationships) {
       const workEntry = workById.get(allocation.workEntryId);
       const counterparty = workEntry && partyById.get(workEntry.counterpartyId);
-      if (!workEntry || !counterparty || transaction.type !== 'income' || transaction.deletedAt !== null) throw new FinanceValidationError('A Work payment needs reconciliation.');
+      if (!workEntry || workEntry.deletedAt !== null || !counterparty || transaction.type !== 'income' || transaction.deletedAt !== null) throw new FinanceValidationError('A Work payment needs reconciliation.');
       validateAmountMinor(allocation.amountMinor);
       received.set(workEntry.id, (received.get(workEntry.id) ?? 0n) + BigInt(allocation.amountMinor));
       const payment = payments.get(transaction.id) ?? { transaction, counterparty, allocations: [] };
@@ -79,6 +90,10 @@ export function createWorkDataAccess(db: AxisDatabase, newId: () => string, now 
 
   return {
     read: () => db.transaction((query) => snapshot(query)),
+    readRange(range: DateRange) {
+      validateDateRange(range);
+      return db.transaction((query) => snapshot(query, range).items.filter((item) => item.outstandingMinor > 0));
+    },
 
     createCounterparty(name: string) {
       const normalized = name.trim().replace(/\s+/g, ' ');

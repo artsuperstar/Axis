@@ -1,8 +1,8 @@
-import { and, asc, desc, eq, gt, gte, isNull, lt, ne, or } from 'drizzle-orm';
+import { and, asc, desc, eq, gt, gte, isNull, lt, lte, ne, or } from 'drizzle-orm';
 
 import type { AxisDatabase } from '@/database/client';
 import { commitmentOccurrences as occurrences, commitmentSchedules as schedules, financeCategories, financeCommitments as commitments, financeTransactions } from '@/database/schema';
-import { addDays, localDateString, validDate } from '@/utils/calendar';
+import { addDays, localDateString, validDate, validateDateRange, type DateRange } from '@/utils/calendar';
 
 import { FinanceValidationError } from '../errors';
 import { validateAmountMinor } from '../money';
@@ -84,7 +84,9 @@ export function createCommitmentDataAccess(db: AxisDatabase, newId: () => string
     if (target.id || (target.dueDate > today() && commitment.status !== 'active')) throw new FinanceValidationError('This occurrence is no longer available.');
     const rule = rules(query, commitment.id).find((value) => value.id === target.scheduleId);
     const due = rule && scheduleDue(rule, commitment.installmentCount, target.dueDate);
-    if (!due || due.dueDate > upcomingEnd(today())) throw new FinanceValidationError('This schedule changed. Refresh Commitments and try again.');
+    // A Calendar-requested future month may be beyond the normal three-month list preview.
+    // Resolve only this validated schedule identity; no additional future window is generated.
+    if (!due) throw new FinanceValidationError('This schedule changed. Refresh Commitments and try again.');
     persist(query, due);
     const inserted = rows(query, commitment.id).find((row) => row.dueDate === due.dueDate);
     if (!inserted || inserted.scheduleId !== due.scheduleId) throw new FinanceValidationError('This installment already has a retained due date.');
@@ -119,6 +121,37 @@ export function createCommitmentDataAccess(db: AxisDatabase, newId: () => string
   }
 
   return {
+    /** Due dates are persisted; future dates use the same previews as Commitments, preserving resume anchors. */
+    readRange(range: DateRange) {
+      validateDateRange(range);
+      return db.transaction((query) => {
+        const versions = query.select({ schedule: schedules, commitment: commitments, category: financeCategories }).from(schedules)
+          .innerJoin(commitments, eq(schedules.commitmentId, commitments.id)).leftJoin(financeCategories, eq(commitments.categoryId, financeCategories.id))
+          .where(and(isNull(commitments.deletedAt), lte(schedules.startDate, range.to), lte(schedules.effectiveFrom, range.to),
+            or(isNull(schedules.effectiveUntil), gt(schedules.effectiveUntil, range.from)))).all();
+        for (const { schedule, commitment } of versions) {
+          for (const due of scheduledDues(schedule, commitment.installmentCount, range.from, range.to < today() ? range.to : today())) persist(query, due);
+        }
+        const existing = query.select({ occurrence: occurrences, commitment: commitments, category: financeCategories }).from(occurrences)
+          .innerJoin(commitments, eq(commitments.id, occurrences.commitmentId)).leftJoin(financeCategories, eq(commitments.categoryId, financeCategories.id))
+          .where(and(isNull(commitments.deletedAt), gte(occurrences.dueDate, range.from), lte(occurrences.dueDate, range.to))).all();
+        const result = existing.filter(({ occurrence, commitment }) => occurrence.deletedAt === null && occurrence.status === 'pending'
+          && (occurrence.dueDate <= today() || commitment.status === 'active'))
+          .map((row) => ({ ...row, occurrence: displayOccurrence(row.occurrence) }));
+        for (const { schedule, commitment, category: historicalCategory } of versions) {
+          if (commitment.status !== 'active') continue;
+          for (const due of scheduledDues(schedule, commitment.installmentCount, range.from, range.to)) {
+            if (due.dueDate <= today() || existing.some(({ occurrence }) => occurrence.commitmentId === commitment.id && occurrence.dueDate === due.dueDate)) continue;
+            // A retained installment may have a different due date after a resume.
+            if (due.installmentIndex !== null && query.select({ id: occurrences.id }).from(occurrences)
+              .where(and(eq(occurrences.commitmentId, commitment.id), eq(occurrences.installmentIndex, due.installmentIndex))).get()) continue;
+            result.push({ commitment, category: historicalCategory, occurrence: previewOccurrence(due) });
+          }
+        }
+        return result;
+      });
+    },
+
     read() {
       return db.transaction((query) => {
         const all = query.select().from(commitments).where(isNull(commitments.deletedAt)).orderBy(asc(commitments.title), asc(commitments.id)).all();
