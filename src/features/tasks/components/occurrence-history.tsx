@@ -5,15 +5,17 @@ import { ThemedText } from '@/components/themed-text';
 import { AdaptiveModal, AdaptiveSheet } from '@/components/adaptive-sheet';
 import { Spacing } from '@/constants/theme';
 
-import { dateLabel, userError } from '../form';
-import { occurrenceLabels, occurrenceState } from '../recurrence';
-import type { OccurrenceStatus, Task, TaskOccurrence } from '../types';
+import { userError } from '../form';
+import { taskRowPresentation } from '../presentation';
+import type { OccurrenceStatus, Task, TaskCategory, TaskOccurrence, TaskRecurrence } from '../types';
 import { TaskButton, TaskError } from './controls';
 
 type Page = { occurrences: TaskOccurrence[]; nextBefore: string | null };
 
-export function OccurrenceHistory({ task, readPage, onStatus, onDismiss, now }: {
+export function OccurrenceHistory({ task, categories, recurrences, readPage, onStatus, onDismiss, now }: {
   task: Task;
+  categories: TaskCategory[];
+  recurrences: TaskRecurrence[];
   readPage: (before?: string) => Page;
   onStatus: (id: string, status: OccurrenceStatus) => TaskOccurrence;
   onDismiss: () => void;
@@ -62,18 +64,24 @@ export function OccurrenceHistory({ task, readPage, onStatus, onDismiss, now }: 
         <TaskError message={error} />
         {!!error && <TaskButton label="Retry" onPress={older} />}
         {!entries.length && !error && <ThemedText>No past occurrences yet.</ThemedText>}
-        {entries.map((entry) => (
-          <View key={entry.id} style={styles.entry}>
-            <ThemedText>{dateLabel(entry.scheduledDate)}{entry.scheduledTime ? ` at ${entry.scheduledTime}` : ''}</ThemedText>
-            <ThemedText type="small">{occurrenceLabels[occurrenceState(entry, new Date(now))]}{entry.deletedAt !== null ? ' · Previous schedule' : ''}</ThemedText>
-            {entry.deletedAt === null && (
-              <View style={styles.buttons}>
-                <TaskButton label={entry.status === 'completed' ? 'Reopen' : 'Complete'} accessibilityLabel={`${entry.status === 'completed' ? 'Reopen' : 'Complete'} occurrence on ${dateLabel(entry.scheduledDate)}`} onPress={() => change(entry, entry.status === 'completed' ? 'pending' : 'completed')} />
-                {entry.status !== 'completed' && <TaskButton label={entry.status === 'skipped' ? 'Return to pending' : 'Skip'} accessibilityLabel={`${entry.status === 'skipped' ? 'Return to pending' : 'Skip'} occurrence on ${dateLabel(entry.scheduledDate)}`} onPress={() => change(entry, entry.status === 'skipped' ? 'pending' : 'skipped')} />}
+        {entries.map((entry) => {
+          const row = taskRowPresentation(task, entry, recurrences, categories, now);
+          return (
+            <View key={entry.id} style={styles.entry}>
+              <View accessible style={styles.metadata} accessibilityLabel={`${row.accessibilityLabel}${entry.deletedAt !== null ? '. Previous schedule' : ''}`}>
+                <ThemedText>{row.date}</ThemedText>
+                <ThemedText type="small">{row.historyOutcome}{entry.deletedAt !== null ? ' · Previous schedule' : ''}</ThemedText>
+                <ThemedText type="small" themeColor="textSecondary">{row.recurrence}</ThemedText>
               </View>
-            )}
-          </View>
-        ))}
+              {entry.deletedAt === null && (
+                <View style={styles.buttons}>
+                  <TaskButton label={entry.status === 'completed' ? 'Reopen' : 'Complete'} accessibilityLabel={`${entry.status === 'completed' ? 'Reopen' : 'Complete'} ${row.actionSubject}`} onPress={() => change(entry, entry.status === 'completed' ? 'pending' : 'completed')} />
+                  {entry.status !== 'completed' && <TaskButton label={entry.status === 'skipped' ? 'Return to pending' : 'Skip'} accessibilityLabel={`${entry.status === 'skipped' ? 'Return to pending' : 'Skip'} ${row.actionSubject}`} onPress={() => change(entry, entry.status === 'skipped' ? 'pending' : 'skipped')} />}
+                </View>
+              )}
+            </View>
+          );
+        })}
         {nextBefore && <TaskButton label="Load older history" onPress={older} />}
       </AdaptiveSheet>
     </AdaptiveModal>
@@ -85,5 +93,6 @@ const styles = StyleSheet.create({
   title: { flex: 1 },
   content: { padding: Spacing.three, gap: Spacing.three },
   entry: { gap: Spacing.two, paddingBottom: Spacing.three },
+  metadata: { gap: Spacing.two },
   buttons: { flexDirection: 'row', flexWrap: 'wrap', gap: Spacing.two },
 });

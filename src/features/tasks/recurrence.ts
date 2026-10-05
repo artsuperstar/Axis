@@ -56,6 +56,11 @@ export function latestRecurrence(rules: TaskRecurrence[], taskId: string) {
   return (retained.length ? retained : all).sort((a, b) => b.effectiveFrom.localeCompare(a.effectiveFrom) || b.createdAt - a.createdAt)[0] ?? null;
 }
 
+/** Occurrences retain their governing version even after that schedule is closed or retired. */
+export function occurrenceRecurrence(rules: TaskRecurrence[], occurrence: TaskOccurrence) {
+  return rules.find((rule) => rule.id === occurrence.recurrenceId && rule.taskId === occurrence.taskId) ?? null;
+}
+
 export function recurrenceStopped(rule: TaskRecurrence) {
   return rule.deletedAt !== null || rule.effectiveUntil !== null;
 }

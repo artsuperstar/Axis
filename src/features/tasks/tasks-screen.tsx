@@ -103,7 +103,7 @@ export function TasksScreen({ initialTaskId }: { initialTaskId?: string } = {}) 
           <TaskRow
             task={item.task}
             occurrence={item.occurrence}
-            recurrence={item.occurrence ? latestRecurrence(recurrences, item.task.id) : null}
+            recurrences={recurrences}
             now={presentationNow}
             categories={categories}
             onEdit={() => { setActionError(null); setEditor({ task: item.task }); }}
@@ -130,7 +130,7 @@ export function TasksScreen({ initialTaskId }: { initialTaskId?: string } = {}) 
         onDismiss={() => setSeriesOpen(false)} onClosed={seriesClosed}
         onEdit={(task) => fromSeries(() => setEditor({ task }))}
         onHistory={(task) => fromSeries(() => setHistoryId(task.id))} />
-      {historyTask && <OccurrenceHistory task={historyTask} now={presentationNow} readPage={readHistory}
+      {historyTask && <OccurrenceHistory task={historyTask} categories={categories} recurrences={recurrences} now={presentationNow} readPage={readHistory}
         onStatus={(id, status) => mutate(() => access.setOccurrenceStatus(id, status))} onDismiss={() => setHistoryId(null)} />}
       {categoriesOpen && (
         <CategoryManager
