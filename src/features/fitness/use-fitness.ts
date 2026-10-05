@@ -19,11 +19,13 @@ export function useFitness(initialSessionId?: string) {
   const [error, setError] = useState<string | null>(null);
   const reload = useCallback(() => {
     try {
-      setSnapshot(access.read(historyLimit.current));
-      setDetail(selected.current ? access.readSession(selected.current) : null);
+      // Publish only after both reads succeed, retaining the last coherent pair on failure.
+      const nextSnapshot = access.read(historyLimit.current);
+      const nextDetail = selected.current ? access.readSession(selected.current) : null;
+      setSnapshot(nextSnapshot);
+      setDetail(nextDetail);
       setError(null);
     } catch (cause) {
-      setSnapshot(null); setDetail(null);
       setError(fitnessError(cause, 'Unable to load Fitness. Please try again.'));
     }
   }, [access]);

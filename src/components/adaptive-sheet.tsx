@@ -10,6 +10,7 @@ import { FormButton } from './form-controls';
 import { FormFocusContext } from './form-focus';
 import { FormScrollView, FormSelectionHost, useFormSelection, type FormSelectionHandle } from './form-selection-host';
 import { ThemedText } from './themed-text';
+import { SheetRefreshNotice } from './sheet-refresh-notice';
 
 const SheetBounds = createContext<{ height: number; bottomInset: number; leftInset: number; rightInset: number } | null>(null);
 
@@ -111,6 +112,7 @@ export function AdaptiveSheet({ title, header, children, onDismiss, action, onCo
         <ThemedText type="smallBold" accessibilityRole="header" style={styles.heading}>{title}</ThemedText>
         {action && onConfirm && <FormButton label={action} onPress={onConfirm} />}
       </View>}
+      <SheetRefreshNotice />
     </View>
     <FormFocusContext.Provider value={focus}>
       <View ref={bodyViewport} collapsable={false} style={[styles.body, styles.inner]} onLayout={() => { revealFocused(); selection.reposition(); }}>

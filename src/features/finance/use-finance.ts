@@ -30,26 +30,27 @@ export function useFinance(initialView: FinanceView = 'dashboard', initialRecord
   const todayRef = useRef(today);
   const [selection, setSelection] = useState<Selection>(() => ({ view: initialView, period: periodBounds('month', today) }));
   const selectionRef = useRef(selection);
-  const [snapshot, setSnapshot] = useState<Snapshot | null>(null);
+  const [loaded, setLoaded] = useState<{ selection: Selection; snapshot: Snapshot } | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const load = useCallback((next: Selection) => {
     try {
+      let snapshot: Snapshot;
       if (next.view === 'dashboard') {
-        setSnapshot({ ...access.readDashboard(next.period), transactions: [], items: [], paymentTransactionIds: [], workPaymentTransactionIds: [], work: null });
-      } else if (next.view === 'transactions') setSnapshot({ ...access.read(), analytics: null, items: [], work: null });
+        snapshot = { ...access.readDashboard(next.period), transactions: [], items: [], paymentTransactionIds: [], workPaymentTransactionIds: [], work: null };
+      } else if (next.view === 'transactions') snapshot = { ...access.read(), analytics: null, items: [], work: null };
       else if (next.view === 'commitments') {
         const initialCommitment = initialView === 'commitments' && initialRecordId && initialDueDate ? {
           data: commitmentAccess.readHistory(initialRecordId),
           occurrence: commitmentAccess.readRange({ from: initialDueDate, to: initialDueDate }).find((row) => row.commitment.id === initialRecordId)?.occurrence ?? null,
         } : undefined;
-        setSnapshot({ ...commitmentAccess.read(), initialCommitment, categories: access.readCategories(), transactions: [], analytics: null, paymentTransactionIds: [], workPaymentTransactionIds: [], work: null });
+        snapshot = { ...commitmentAccess.read(), initialCommitment, categories: access.readCategories(), transactions: [], analytics: null, paymentTransactionIds: [], workPaymentTransactionIds: [], work: null };
       }
-      else setSnapshot({ work: workAccess.read(), categories: access.readCategories(), transactions: [], analytics: null, items: [], paymentTransactionIds: [], workPaymentTransactionIds: [] });
+      else snapshot = { work: workAccess.read(), categories: access.readCategories(), transactions: [], analytics: null, items: [], paymentTransactionIds: [], workPaymentTransactionIds: [] };
+      setLoaded({ selection: next, snapshot });
       setError(null);
     } catch (cause) {
-      // Clear prior values so a failed period change never shows totals for a different period.
-      setSnapshot(null);
+      // A read error must not unmount views that own working editor drafts.
       setError(financeError(cause, 'Unable to load Finance. Please try again.'));
     }
   }, [access, commitmentAccess, workAccess, initialView, initialRecordId, initialDueDate]);
@@ -73,14 +74,12 @@ export function useFinance(initialView: FinanceView = 'dashboard', initialRecord
   }, [select, syncToday]);
 
   useFocusEffect(useCallback(() => {
-    const currentToday = localDateString(new Date());
-    todayRef.current = currentToday;
-    setToday(currentToday);
-    select({ view: initialView, period: periodBounds('month', currentToday) });
+    // Refocusing refreshes the current view, including any open editor it owns.
+    reload();
     const timer = setInterval(() => { if (localDateString(new Date()) !== todayRef.current) reload(); }, 60000);
     const subscription = AppState.addEventListener('change', (state) => { if (state === 'active') reload(); });
     return () => { clearInterval(timer); subscription.remove(); };
-  }, [initialView, reload, select]));
+  }, [reload]));
 
   function setView(view: FinanceView) {
     select({ ...syncToday().selection, view });
@@ -108,5 +107,10 @@ export function useFinance(initialView: FinanceView = 'dashboard', initialRecord
     return result;
   }
 
+  // Keep usable data without showing another view's rows or another period's totals.
+  let snapshot = loaded?.selection.view === selection.view ? loaded.snapshot : null;
+  if (snapshot?.analytics && loaded && (loaded.selection.period.startDate !== selection.period.startDate || loaded.selection.period.endDate !== selection.period.endDate)) {
+    snapshot = { ...snapshot, analytics: null };
+  }
   return { access, commitmentAccess, workAccess, snapshot, error, reload, mutate, selection, today, setView, setPeriodKind, navigatePeriod, returnToCurrent };
 }

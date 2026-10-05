@@ -3,6 +3,7 @@ import { ActivityIndicator, Alert, FlatList, Platform, StyleSheet, View } from '
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { FormButton, FormError } from '@/components/form-controls';
+import { SheetRefreshContext } from '@/components/sheet-refresh-notice';
 import { ThemedText } from '@/components/themed-text';
 import { Spacing } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
@@ -38,7 +39,7 @@ export function FinanceScreen({ initialView, initialRecordId, initialDueDate }: 
     ]);
   }
 
-  return <>
+  return <SheetRefreshContext.Provider value={{ error, onRetry: reload }}>
     <FlatList
       style={{ flex: 1, backgroundColor: colors.background }}
       contentInsetAdjustmentBehavior="automatic"
@@ -87,7 +88,7 @@ export function FinanceScreen({ initialView, initialRecordId, initialDueDate }: 
     {categoriesOpen && <FinanceCategoryManager categories={categories}
       onCreate={(name, type) => mutate(() => access.createCategory(name, type))}
       onDelete={(id) => mutate(() => access.deleteCategory(id))} onDismiss={() => setCategoriesOpen(false)} />}
-  </>;
+  </SheetRefreshContext.Provider>;
 }
 
 const styles = StyleSheet.create({
