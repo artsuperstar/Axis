@@ -1,12 +1,22 @@
 import { localDateString, validDate } from '@/utils/calendar';
 
-import type { JournalDraft, JournalEntry, JournalMood } from './types';
+import type { JournalDraft, JournalEntry, JournalEntryBaseline, JournalMood } from './types';
 
 export const moodOptions: { value: JournalMood | null; label: string }[] = [
   { value: null, label: 'None' }, { value: 'great', label: 'Great' }, { value: 'good', label: 'Good' },
   { value: 'okay', label: 'Okay' }, { value: 'low', label: 'Low' }, { value: 'bad', label: 'Bad' },
 ];
 export class JournalValidationError extends Error {}
+export const journalConflictMessage = 'This journal entry changed since you started editing. Your draft is kept. Discard changes to load the saved entry.';
+export class JournalConflictError extends JournalValidationError {
+  constructor() { super(journalConflictMessage); }
+}
+export function journalBaseline(entry: JournalEntryBaseline): JournalEntryBaseline {
+  return entry ? { id: entry.id, updatedAt: entry.updatedAt } : null;
+}
+export function journalBaselineMatches(baseline: JournalEntryBaseline, entry: JournalEntryBaseline) {
+  return baseline === null ? entry === null : entry !== null && baseline.id === entry.id && baseline.updatedAt === entry.updatedAt;
+}
 export function validateJournalDate(date: string, timestamp = Date.now()) {
   if (!validDate(date)) throw new JournalValidationError('Choose a valid journal date.');
   if (date > localDateString(new Date(timestamp))) throw new JournalValidationError('Journal dates must be today or earlier.');

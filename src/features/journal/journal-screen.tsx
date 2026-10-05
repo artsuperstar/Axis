@@ -54,6 +54,11 @@ export function JournalScreen() {
       { text: 'Cancel', style: 'cancel' }, { text: 'Delete', style: 'destructive', onPress: () => journal.editor.remove() },
     ]);
   }
+  function discardConflict() {
+    Alert.alert('Discard local changes?', 'Your unsaved writing will be discarded and the current saved entry will be loaded.', [
+      { text: 'Keep editing', style: 'cancel' }, { text: 'Discard changes', style: 'destructive', onPress: () => journal.editor.discard() },
+    ]);
+  }
   function openSurface(next: 'date' | 'history') {
     selection.current?.dismiss(false); Keyboard.dismiss();
     if (next === 'history') journal.readHistory();
@@ -67,13 +72,13 @@ export function JournalScreen() {
           <FormScrollView contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled" keyboardDismissMode={Platform.OS === 'ios' ? 'interactive' : 'on-drag'}
             onLayout={(event) => setWritingHeight(Math.max(100, Math.min(320, event.nativeEvent.layout.height - 64)))}>
             <JournalEditor state={journal.state} today={journal.today} writingHeight={writingHeight} onChange={journal.editor.change} onDate={() => openSurface('date')}
-              onToday={() => selectDate(localDateString(new Date()))} onHistory={() => openSurface('history')} onDelete={remove} onRetryDraft={journal.editor.flushDraft} />
+              onToday={() => selectDate(localDateString(new Date()))} onHistory={() => openSurface('history')} onDelete={remove} onRetryDraft={journal.editor.flushDraft} onDiscardConflict={discardConflict} />
             {!journal.state.loaded && <FormButton label="Retry journal" onPress={journal.reload} />}
             <JournalContext context={journal.context} error={journal.contextError} onRetry={journal.readContext} />
           </FormScrollView>
           <View style={styles.footer}>
             {!!journal.state.message && <ThemedText type="small" accessibilityLiveRegion="polite">{journal.state.message}</ThemedText>}
-            <FormButton label="Save" accessibilityLabel={`Save journal for ${dateLabel(journal.state.date)}`} disabled={!journal.state.loaded}
+            <FormButton label="Save" accessibilityLabel={`Save journal for ${dateLabel(journal.state.date)}`} disabled={!journal.state.loaded || journal.state.conflict}
               onPress={() => { Keyboard.dismiss(); journal.editor.save(); }} />
           </View>
         </KeyboardAvoidingView>

@@ -9,7 +9,7 @@ import { localDateString } from '@/utils/calendar';
 import { createFinanceDataAccess } from './data';
 import { createCommitmentDataAccess, type CommitmentHistory } from './commitments/data';
 import { createWorkDataAccess } from './work/data';
-import type { WorkSnapshot } from './work/types';
+import type { WorkOverview } from './work/types';
 import type { CommitmentItem, DisplayOccurrence } from './commitments/types';
 import { financeError } from './errors';
 import type { FinanceAnalytics } from './analytics';
@@ -18,7 +18,7 @@ import type { FinanceCategory, FinanceTransaction } from './types';
 
 export type FinanceView = 'dashboard' | 'transactions' | 'commitments' | 'work';
 type Selection = { view: FinanceView; period: FinancePeriod };
-type Snapshot = { transactions: FinanceTransaction[]; categories: FinanceCategory[]; analytics: FinanceAnalytics | null; items: CommitmentItem[]; paymentTransactionIds: string[]; workPaymentTransactionIds: string[]; work: WorkSnapshot | null;
+type Snapshot = { transactions: FinanceTransaction[]; categories: FinanceCategory[]; analytics: FinanceAnalytics | null; items: CommitmentItem[]; paymentTransactionIds: string[]; workPaymentTransactionIds: string[]; work: WorkOverview | null;
   initialCommitment?: { data: CommitmentHistory; occurrence: DisplayOccurrence | null } };
 
 export function useFinance(initialView: FinanceView = 'dashboard', initialRecordId?: string, initialDueDate?: string) {
@@ -46,7 +46,7 @@ export function useFinance(initialView: FinanceView = 'dashboard', initialRecord
         } : undefined;
         snapshot = { ...commitmentAccess.read(), initialCommitment, categories: access.readCategories(), transactions: [], analytics: null, paymentTransactionIds: [], workPaymentTransactionIds: [], work: null };
       }
-      else snapshot = { work: workAccess.read(), categories: access.readCategories(), transactions: [], analytics: null, items: [], paymentTransactionIds: [], workPaymentTransactionIds: [] };
+      else snapshot = { work: workAccess.readOverview(), categories: access.readCategories(), transactions: [], analytics: null, items: [], paymentTransactionIds: [], workPaymentTransactionIds: [] };
       setLoaded({ selection: next, snapshot });
       setError(null);
     } catch (cause) {

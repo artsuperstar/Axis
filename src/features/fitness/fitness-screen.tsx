@@ -26,8 +26,8 @@ const archiveOptions = [{ value: 0, label: 'Active' }, { value: 1, label: 'Archi
 
 export function FitnessScreen({ initialSessionId }: { initialSessionId?: string } = {}) {
   const colors = useTheme(); const insets = useSafeAreaInsets();
-  const fitness = useFitness(initialSessionId); const { snapshot, detail, access, mutate } = fitness;
   const [view, setView] = useState<FitnessView>('workout');
+  const fitness = useFitness(initialSessionId, view === 'routines'); const { snapshot, detail, access, mutate } = fitness;
   const [editor, setDialog] = useState<Dialog | null>(null);
   const [initialSessionOpen, setInitialSessionOpen] = useState(!!initialSessionId);
   const dialog = editor ?? (initialSessionOpen && detail ? { kind: 'session' as const } : null);
@@ -92,7 +92,7 @@ export function FitnessScreen({ initialSessionId }: { initialSessionId?: string 
   const exercises = snapshot?.exercises ?? [];
   const routines = snapshot?.routines ?? [];
   const activeRoutines = routines.filter((routine) => routine.deletedAt === null);
-  const displayedRoutines = routines.filter((routine) => (routine.deletedAt !== null) === archivedRoutines);
+  const displayedRoutines = fitness.routines.filter((routine) => (routine.deletedAt !== null) === archivedRoutines);
   const displayedExercises = exercises.filter((exercise) => (exercise.deletedAt !== null) === archivedExercises && exercise.name.toLowerCase().includes(search.trim().toLowerCase()));
   const selectedRoutine = activeRoutines.some((routine) => routine.id === routineId) ? routineId : null;
   // Capture form inputs when opening. Refreshes update the workout, never the working draft's identity.

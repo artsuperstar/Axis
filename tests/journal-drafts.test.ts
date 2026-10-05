@@ -49,7 +49,7 @@ test('unsaved paragraphs persist after debounce and restore character-for-charac
 
 test('recovered draft overrides older saved text and mood while the authoritative entry remains unchanged', async (t) => {
   const f = await journalDatabase(); t.after(() => f.sqlite.close());
-  const saved = f.access.save(today, { content: 'Had a good day.', mood: 'okay' })!;
+  const saved = f.access.save(today, { content: 'Had a good day.', mood: 'okay' }, f.access.getEntry(today))!;
   const working = { content: 'Had a good day. Finished Axis…\nMore writing.', mood: 'great' as const };
   const first = openEditor(f); first.editor.change(working); first.timers.advance(500);
   const reopened = openEditor(f).editor;
@@ -69,7 +69,7 @@ test('explicit Save updates the entry and removes only that date’s draft with 
 
 test('failed authoritative Save keeps latest recovery data, older saved entry, exact editor text and dirty state', async (t) => {
   const f = await journalDatabase(); t.after(() => f.sqlite.close());
-  const saved = f.access.save(today, { content: 'Authoritative text', mood: 'okay' })!;
+  const saved = f.access.save(today, { content: 'Authoritative text', mood: 'okay' }, f.access.getEntry(today))!;
   const { editor } = openEditor(f); const working = { content: 'Latest unsaved\nwriting', mood: 'low' as const }; editor.change(working);
   f.sqlite.exec("CREATE TRIGGER fail_journal_save BEFORE UPDATE ON journal_entries BEGIN SELECT RAISE(ABORT, 'save unavailable'); END;");
   let left = false;
@@ -91,7 +91,7 @@ test('failure removing a recovery row rolls back a new authoritative entry rathe
 
 test('Discard removes recovery state and reloads the current saved entry, and cancelled timers cannot resurrect it', async (t) => {
   const f = await journalDatabase(); t.after(() => f.sqlite.close());
-  const saved = f.access.save(today, { content: 'Saved state', mood: 'good' })!;
+  const saved = f.access.save(today, { content: 'Saved state', mood: 'good' }, f.access.getEntry(today))!;
   const { editor, timers } = openEditor(f); editor.change({ content: 'Abandoned writing', mood: 'bad' }); timers.advance(500);
   editor.change({ content: 'Another unsaved edit', mood: null }); const stale = timers.jobs.map((job) => job.callback);
   requestJournalNavigation(editor, (choose) => choose('discard'), () => {});
@@ -147,7 +147,7 @@ test('blank/whitespace new drafts and edits reverted to the saved state remove m
   const { editor, timers } = openEditor(f); editor.change({ content: 'New draft', mood: null }); timers.advance(500); assert.ok(f.access.getDraft(today));
   editor.change({ content: ' \t\n\u2003\u00a0', mood: null }); timers.advance(500);
   assert.equal(f.access.getDraft(today), null); assert.equal(editor.dirty(), false);
-  const saved = f.access.save(today, { content: 'Saved', mood: 'good' })!; editor.refresh();
+  const saved = f.access.save(today, { content: 'Saved', mood: 'good' }, f.access.getEntry(today))!; editor.refresh();
   editor.change({ content: 'Unsaved', mood: 'bad' }); timers.advance(500);
   editor.change({ content: saved.content, mood: saved.mood }); timers.advance(500);
   assert.equal(f.access.getDraft(today), null); assert.equal(editor.dirty(), false);
@@ -155,7 +155,7 @@ test('blank/whitespace new drafts and edits reverted to the saved state remove m
 
 test('clearing a saved entry restores as unsaved deletion intent, then explicit Save soft-deletes and clears recovery', async (t) => {
   const f = await journalDatabase(); t.after(() => f.sqlite.close());
-  const saved = f.access.save(today, { content: 'Original diary', mood: 'good' })!;
+  const saved = f.access.save(today, { content: 'Original diary', mood: 'good' }, f.access.getEntry(today))!;
   const { editor, timers } = openEditor(f); editor.change({ content: ' \n ', mood: null }); timers.advance(500);
   const recovery = f.access.getDraft(today)!;
   assert.equal(recovery.content, ''); assert.equal(recovery.mood, null); assert.equal(recovery.baseEntryId, saved.id); assert.equal(recovery.baseEntryUpdatedAt, saved.updatedAt);
@@ -177,7 +177,7 @@ test('mood-only drafts restore without creating saved entries and are removed wh
 test('drafts are absent from saved History/date markers and remain separate from source-derived context', async (t) => {
   const f = await journalDatabase(); t.after(() => f.sqlite.close());
   f.access.persistDraft(today, { content: 'Draft only', mood: 'good' }, null);
-  const saved = f.access.save('2026-10-03', { content: 'Saved history', mood: null })!;
+  const saved = f.access.save('2026-10-03', { content: 'Saved history', mood: null }, f.access.getEntry('2026-10-03'))!;
   f.access.persistDraft('2026-10-03', { content: 'Unsaved edit', mood: null }, saved);
   assert.deepEqual(f.access.listHistory().entries, [saved]);
   assert.deepEqual(f.access.datesWithEntries({ from: '2026-10-01', to: today }), ['2026-10-03']);
@@ -208,35 +208,42 @@ test('context/focus/foreground/minute refresh preserves recovered draft content,
 
 test('conflicting saved-state changes preserve recovery writing directly and Discard reloads current authority', async (t) => {
   const f = await journalDatabase(); t.after(() => f.sqlite.close());
-  const saved = f.access.save(today, { content: 'Original', mood: null })!;
+  const saved = f.access.save(today, { content: 'Original', mood: null }, f.access.getEntry(today))!;
   f.access.persistDraft(today, { content: 'My unsaved writing', mood: 'good' }, saved);
   f.sqlite.prepare('UPDATE journal_entries SET content = ?, updated_at = updated_at + 1 WHERE id = ?').run('Changed saved state', saved.id);
   const reopened = openEditor(f).editor;
   assert.equal(reopened.getState().draft.content, 'My unsaved writing'); assert.equal(reopened.getState().entry!.content, 'Changed saved state');
-  assert.match(reopened.getState().recoveryMessage!, /saved entry has changed/); assert.equal(reopened.dirty(), true);
+  assert.match(reopened.getState().recoveryMessage!, /changed since you started editing/); assert.equal(reopened.dirty(), true);
   reopened.discard(); assert.equal(reopened.getState().draft.content, 'Changed saved state'); assert.equal(f.access.getDraft(today), null);
 });
 
 test('a saved entry removed outside this editor never destroys recoverable meaningful writing', async (t) => {
   const f = await journalDatabase(); t.after(() => f.sqlite.close());
-  const saved = f.access.save(today, { content: 'Original', mood: null })!;
+  const saved = f.access.save(today, { content: 'Original', mood: null }, f.access.getEntry(today))!;
   f.access.persistDraft(today, { content: 'Keep this recovery', mood: 'good' }, saved);
   f.sqlite.prepare('UPDATE journal_entries SET deleted_at = updated_at, updated_at = updated_at + 1 WHERE id = ?').run(saved.id);
   const reopened = openEditor(f).editor;
   assert.equal(reopened.getState().entry, null); assert.equal(reopened.getState().draft.content, 'Keep this recovery');
-  assert.equal(reopened.save(), true); assert.notEqual(f.access.getEntry(today)!.id, saved.id); assert.equal(f.access.getDraft(today), null);
+  assert.equal(reopened.save(), false); assert.equal(reopened.getState().conflict, true);
+  assert.equal(f.access.getEntry(today), null); assert.equal(f.access.getDraft(today)!.content, 'Keep this recovery');
 });
 
-test('already-resolved blank deletion intents and identical saved states are cleaned on reopening', async (t) => {
+test('changed-baseline deletion intents and identical saved text remain recoverable until explicit Discard', async (t) => {
   const f = await journalDatabase(); t.after(() => f.sqlite.close());
-  const saved = f.access.save(today, { content: 'Original', mood: null })!;
+  const saved = f.access.save(today, { content: 'Original', mood: null }, f.access.getEntry(today))!;
   f.access.persistDraft(today, { content: '', mood: null }, saved);
   f.sqlite.prepare('UPDATE journal_entries SET deleted_at = updated_at, updated_at = updated_at + 1 WHERE id = ?').run(saved.id);
-  assert.equal(openEditor(f).editor.dirty(), false); assert.equal(f.access.getDraft(today), null);
-  const next = f.access.save(today, { content: 'Saved again', mood: null })!;
+  const deleted = openEditor(f).editor;
+  assert.equal(deleted.dirty(), true); assert.equal(deleted.getState().conflict, true);
+  assert.equal(deleted.save(), false); assert.ok(f.access.getDraft(today));
+  assert.equal(deleted.discard(), true); assert.equal(f.access.getDraft(today), null);
+  const next = f.access.save(today, { content: 'Saved again', mood: null }, f.access.getEntry(today))!;
   f.access.persistDraft(today, { content: 'Same content now saved', mood: null }, next);
   f.sqlite.prepare('UPDATE journal_entries SET content = ?, updated_at = updated_at + 1 WHERE id = ?').run('Same content now saved', next.id);
-  assert.equal(openEditor(f).editor.dirty(), false); assert.equal(f.access.getDraft(today), null);
+  const identical = openEditor(f).editor;
+  assert.equal(identical.dirty(), true); assert.equal(identical.getState().conflict, true);
+  assert.equal(identical.save(), false); assert.ok(f.access.getDraft(today));
+  assert.equal(identical.discard(), true); assert.equal(f.access.getDraft(today), null);
 });
 
 test('draft storage failures preserve editor writing, show independent protection errors and allow retry', async (t) => {
@@ -267,7 +274,7 @@ test('SQLite enforces draft identity, date/mood/timestamps and blank-intent meta
   for (const updated of [-1, 0.5, Number.MAX_SAFE_INTEGER + 1]) assert.throws(() => insert.run('2026-10-03', 'Text', null, updated, null, null), /CHECK/);
   assert.throws(() => insert.run('2026-10-03', '', null, 1000, 'saved-id', null), /CHECK/);
   assert.throws(() => insert.run('2026-10-03', 'Text', null, 1000, null, 1000), /CHECK/);
-  const saved = f.access.save('2026-10-03', { content: 'Other saved date', mood: null })!;
+  const saved = f.access.save('2026-10-03', { content: 'Other saved date', mood: null }, f.access.getEntry('2026-10-03'))!;
   assert.throws(() => f.access.persistDraft(today, { content: 'Wrong date', mood: null }, saved), /own date/);
   assert.deepEqual(f.sqlite.prepare('PRAGMA foreign_key_check').all(), []); assert.equal(f.sqlite.prepare('PRAGMA integrity_check').get()!.integrity_check, 'ok');
 });

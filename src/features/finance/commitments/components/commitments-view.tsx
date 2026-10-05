@@ -11,7 +11,7 @@ import { financeError } from '../../errors';
 import { financeCategoryName } from '../../form';
 import { formatBrlAmount } from '../../money';
 import type { FinanceCategory } from '../../types';
-import type { CommitmentDataAccess, CommitmentHistory } from '../data';
+import { appendCommitmentHistory, type CommitmentDataAccess, type CommitmentHistory } from '../data';
 import { occurrenceLabel } from '../scheduling';
 import { commitmentKindLabels, type CommitmentItem, type DisplayOccurrence } from '../types';
 import { CommitmentEditor, CommitmentModal, CommitmentPayment, CommitmentResume, CommitmentSheet } from './commitment-forms';
@@ -50,7 +50,14 @@ export function CommitmentsView({ items, categories, access, today, mutate, onCr
     Alert.alert(title, message, [{ text: 'Cancel', style: 'cancel' }, { text: 'Confirm', onPress: () => run(action) }]);
   }
   function refreshHistory(id: string) {
-    const data = mutate(() => access.readHistory(id, dialog?.kind === 'history' ? dialog.data.pageBefore : undefined));
+    const oldest = dialog?.kind === 'history' ? dialog.data.pageBefore : undefined;
+    const data = mutate(() => {
+      let refreshed = access.readHistory(id);
+      while (oldest && refreshed.nextBefore && (!refreshed.pageBefore || refreshed.pageBefore > oldest)) {
+        refreshed = appendCommitmentHistory(refreshed, access.readHistory(id, refreshed.nextBefore));
+      }
+      return refreshed;
+    });
     setDialog({ kind: 'history', data });
   }
   function skip(item: CommitmentItem, row: DisplayOccurrence, fromHistory = false) {
@@ -163,7 +170,8 @@ export function CommitmentsView({ items, categories, access, today, mutate, onCr
           () => { mutate(() => access.reopen(row.id)); refreshHistory(detail.commitment.id); })} />
       </View>)}
       {detail.nextBefore && <FormButton label="Load earlier history" onPress={() => run(() => {
-        const data = mutate(() => access.readHistory(detail.commitment.id, detail.nextBefore!)); setDialog({ kind: 'history', data });
+        const page = access.readHistory(detail.commitment.id, detail.nextBefore!);
+        setDialog({ kind: 'history', data: appendCommitmentHistory(detail, page) });
       })} />}
     </CommitmentSheet>}
     </CommitmentModal>}

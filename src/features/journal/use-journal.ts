@@ -17,7 +17,7 @@ export function useJournal() {
   const access = useMemo(() => createJournalDataAccess(db, randomUUID), [db]);
   const contextAccess = useMemo(() => createJournalContextAccess(db), [db]);
   const [state, setState] = useState<JournalEditorState>(() => ({ date: localDateString(new Date()), entry: null,
-    draft: { content: '', mood: null }, loaded: false, error: null, message: null, recoveryError: null, recoveryMessage: null }));
+    baseline: null, conflict: false, draft: { content: '', mood: null }, loaded: false, error: null, message: null, recoveryError: null, recoveryMessage: null }));
   const editor = useMemo(() => createJournalEditor(access, localDateString(new Date()), setState), [access]);
   const [today, setToday] = useState(() => localDateString(new Date()));
   const [context, setContext] = useState<JournalDayContext | null>(null);

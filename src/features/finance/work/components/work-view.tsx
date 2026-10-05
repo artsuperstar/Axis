@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Alert, StyleSheet, View } from 'react-native';
 
 import { FormButton, FormError, FormField } from '@/components/form-controls';
@@ -12,25 +12,61 @@ import { financeCategoryName } from '../../form';
 import { formatBrlAmount } from '../../money';
 import type { FinanceCategory } from '../../types';
 import type { WorkDataAccess } from '../data';
-import type { WorkItem, WorkPayment, WorkSnapshot } from '../types';
+import type { WorkHistoryPage, WorkItem, WorkOverview, WorkPayment, WorkSnapshot } from '../types';
 import { groupWorkItems } from '../presentation';
 import { WorkEditor, WorkModal, WorkPaymentEditor, WorkSheet } from './work-forms';
 import { WorkRow } from './work-row';
 
 type Dialog = { kind: 'edit'; id: string | null } | { kind: 'details'; id: string } | { kind: 'payment'; id?: string } | { kind: 'counterparties' } | { kind: 'history' };
 export function WorkView({ data, categories, access, mutate, onCreateCategory, initialEntryId }: {
-  data: WorkSnapshot; categories: FinanceCategory[]; access: WorkDataAccess; mutate: <T>(action: () => T) => T; onCreateCategory: (name: string) => FinanceCategory;
+  data: WorkOverview; categories: FinanceCategory[]; access: WorkDataAccess; mutate: <T>(action: () => T) => T; onCreateCategory: (name: string) => FinanceCategory;
   initialEntryId?: string;
 }) {
   const colors = useTheme();
   const [dialog, setDialog] = useState<Dialog | null>(() => initialEntryId ? { kind: 'details', id: initialEntryId } : null);
   const [error, setError] = useState<string | null>(null);
   const [name, setName] = useState('');
-  const [historyLimit, setHistoryLimit] = useState(20);
-  const { overdue, outstanding, settled: paid } = groupWorkItems(data.items);
-  const current = dialog && 'id' in dialog ? data.items.find((item) => item.entry.id === dialog.id) : undefined;
+  const historyLimit = useRef(20);
+  const [history, setHistory] = useState<WorkHistoryPage | null>(null);
+  const [detail, setDetail] = useState<WorkSnapshot | null>(null);
+  const { overdue, outstanding } = groupWorkItems(data.items);
+  const selectedId = dialog && 'id' in dialog ? dialog.id ?? undefined : undefined;
+  const current = selectedId ? detail?.items.find((item) => item.entry.id === selectedId) ?? data.items.find((item) => item.entry.id === selectedId) : undefined;
+  const historyOpen = dialog?.kind === 'history';
+  const lastRead = useRef<{ data: WorkOverview; selectedId?: string; historyOpen: boolean } | null>(null);
+  useEffect(() => {
+    if (lastRead.current?.data === data && lastRead.current.selectedId === selectedId && lastRead.current.historyOpen === historyOpen) return;
+    let cancelled = false;
+    void Promise.resolve().then(() => {
+      if (cancelled) return;
+      try {
+        // Read before publishing; failed reads retain the prior detail/page and open drafts.
+        const nextDetail = selectedId ? access.readDetail(selectedId) : null;
+        const nextHistory = historyOpen ? access.readHistory(historyLimit.current) : null;
+        if (nextDetail) setDetail(nextDetail);
+        if (nextHistory) setHistory(nextHistory);
+        lastRead.current = { data, selectedId, historyOpen };
+      } catch (cause) { setError(financeError(cause, 'Unable to refresh Work details.')); }
+    });
+    return () => { cancelled = true; };
+  }, [access, data, selectedId, historyOpen]);
   function run(action: () => void) { try { action(); setError(null); } catch (cause) { setError(financeError(cause, 'Unable to update Work.')); } }
-  function open(next: Dialog) { setError(null); setDialog(next); }
+  function open(next: Dialog) {
+    run(() => {
+      if ('id' in next && next.id) setDetail(access.readDetail(next.id));
+      if (next.kind === 'history') { historyLimit.current = 20; setHistory(access.readHistory()); }
+      lastRead.current = { data, selectedId: 'id' in next ? next.id ?? undefined : undefined, historyOpen: next.kind === 'history' };
+      setDialog(next);
+    });
+  }
+  function loadMoreHistory() {
+    if (!history?.next) return;
+    run(() => {
+      const next = access.readHistory(20, history.next!);
+      setHistory({ ...next, items: [...history.items, ...next.items], payments: [...history.payments, ...next.payments] });
+      historyLimit.current += 20;
+    });
+  }
   function confirm(title: string, message: string, action: () => void) {
     Alert.alert(title, message, [{ text: 'Cancel', style: 'cancel' }, { text: 'Confirm', onPress: () => run(action) }]);
   }
@@ -63,14 +99,14 @@ export function WorkView({ data, categories, access, mutate, onCreateCategory, i
       <FormButton label="Add work" onPress={() => open({ kind: 'edit', id: null })} />
       <FormButton label="Record payment" disabled={!data.totals.outstandingMinor} onPress={() => open({ kind: 'payment' })} />
       <FormButton label="Clients" onPress={() => { setName(''); open({ kind: 'counterparties' }); }} />
-      <FormButton label="History" onPress={() => { setHistoryLimit(20); open({ kind: 'history' }); }} />
+      <FormButton label="History" onPress={() => open({ kind: 'history' })} />
     </View>
     <FormError message={error} />
-    {!data.items.length && <ThemedText themeColor="textSecondary">No work yet. Record Hourly or Fixed work, then record payments when money arrives.</ThemedText>}
+    {!data.items.length && !data.settledCount && <ThemedText themeColor="textSecondary">No work yet. Record Hourly or Fixed work, then record payments when money arrives.</ThemedText>}
     {data.counterpartyTotals.filter((group) => group.outstandingMinor > 0n).map((group) => <ThemedText key={group.counterparty.id} type="small">{group.counterparty.name} · Outstanding {formatBrlAmount(group.outstandingMinor)}</ThemedText>)}
     {!!overdue.length && <><ThemedText type="smallBold" accessibilityRole="header">Payment overdue ({overdue.length})</ThemedText>{overdue.map((item) => <WorkRow key={item.entry.id} item={item} onPress={() => open({ kind: 'details', id: item.entry.id })} />)}</>}
     {!!outstanding.length && <><ThemedText type="smallBold" accessibilityRole="header">Outstanding ({outstanding.length})</ThemedText>{outstanding.map((item) => <WorkRow key={item.entry.id} item={item} onPress={() => open({ kind: 'details', id: item.entry.id })} />)}</>}
-    {!!data.items.length && !overdue.length && !outstanding.length && <ThemedText themeColor="textSecondary">No outstanding amount. Open History to review work and payments.</ThemedText>}
+    {!!(data.items.length + data.settledCount) && !overdue.length && !outstanding.length && <ThemedText themeColor="textSecondary">No outstanding amount. Open History to review work and payments.</ThemedText>}
     {dialog && <WorkModal onDismiss={() => setDialog(null)}>
       {dialog.kind === 'edit' && <WorkEditor key={dialog.id ?? 'new'} item={current ?? null} counterparties={data.counterparties}
         onCreateCounterparty={(value) => mutate(() => access.createCounterparty(value))} onDismiss={() => setDialog(null)}
@@ -88,7 +124,7 @@ export function WorkView({ data, categories, access, mutate, onCreateCategory, i
           </View>
           {current.receivedMinor > 0 && <ThemedText type="small" themeColor="textSecondary">Undo payments before deleting this work entry.</ThemedText>}
           <ThemedText type="smallBold" accessibilityRole="header">Payments</ThemedText>
-          {data.payments.filter((payment) => payment.allocations.some((allocation) => allocation.workEntryId === current.entry.id)).map(paymentCard)}
+          {detail?.payments.filter((payment) => payment.allocations.some((allocation) => allocation.workEntryId === current.entry.id)).map(paymentCard)}
           {!current.receivedMinor && <ThemedText themeColor="textSecondary">No payments allocated.</ThemedText>}
         </> : <ThemedText>This work entry is no longer available.</ThemedText>}
       </WorkSheet>}
@@ -103,12 +139,12 @@ export function WorkView({ data, categories, access, mutate, onCreateCategory, i
       </WorkSheet>}
       {dialog.kind === 'history' && <WorkSheet title="Work history" onDismiss={() => setDialog(null)}>
         <FormError message={error} />
-        <ThemedText type="smallBold" accessibilityRole="header">Settled work ({paid.length})</ThemedText>
-        {!paid.length && <ThemedText themeColor="textSecondary">No settled work yet.</ThemedText>}
-        {paid.slice(0, historyLimit).map((item) => <WorkRow key={item.entry.id} item={item} onPress={() => open({ kind: 'details', id: item.entry.id })} />)}
-        <ThemedText type="smallBold" accessibilityRole="header">Received payments ({data.payments.length})</ThemedText>
-        {data.payments.slice(0, historyLimit).map(paymentCard)}
-        {Math.max(paid.length, data.payments.length) > historyLimit && <FormButton label="Load more history" onPress={() => setHistoryLimit((limit) => limit + 20)} />}
+        <ThemedText type="smallBold" accessibilityRole="header">Settled work ({history?.settledCount ?? data.settledCount})</ThemedText>
+        {!history?.settledCount && <ThemedText themeColor="textSecondary">No settled work yet.</ThemedText>}
+        {history?.items.map((item) => <WorkRow key={item.entry.id} item={item} onPress={() => open({ kind: 'details', id: item.entry.id })} />)}
+        <ThemedText type="smallBold" accessibilityRole="header">Received payments ({history?.paymentCount ?? data.paymentCount})</ThemedText>
+        {history?.payments.map(paymentCard)}
+        {history?.next && <FormButton label="Load more history" onPress={loadMoreHistory} />}
       </WorkSheet>}
     </WorkModal>}
   </View>;

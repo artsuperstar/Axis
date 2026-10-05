@@ -11,7 +11,7 @@ import { migrate } from 'drizzle-orm/expo-sqlite/migrator';
 
 import * as schema from '../src/database/schema';
 import { seedDefaultCategories } from '../src/database/seed';
-import { createCommitmentDataAccess } from '../src/features/finance/commitments/data';
+import { appendCommitmentHistory, createCommitmentDataAccess } from '../src/features/finance/commitments/data';
 import { commitmentDraft, validateCommitmentDraft, validatePayment } from '../src/features/finance/commitments/form';
 import { historyStart, occurrenceLabel, proposedResumeDate, scheduledDues } from '../src/features/finance/commitments/scheduling';
 import { commitmentKinds, type CommitmentDraft, type CommitmentSchedule } from '../src/features/finance/commitments/types';
@@ -188,13 +188,13 @@ test('catch-up preserves old Paid/Skipped outcomes and History pages them withou
   assert.ok(firstPage.history.every(({ occurrence }) => occurrence.status === 'pending'));
   assert.equal(firstPage.nextBefore, '2025-11-01');
   const olderPage = access.readHistory(id, firstPage.nextBefore!);
-  assert.equal(olderPage.history.length, 14);
+  assert.equal(olderPage.history.length, 2, 'only the next older resolved page is returned');
   assert.equal(olderPage.nextBefore, null);
   assert.deepEqual(olderPage.history.filter(({ occurrence }) => occurrence.status !== 'pending').map(({ occurrence }) => occurrence), [...resolved].reverse());
   assert.equal(olderPage.history.find(({ occurrence }) => occurrence.status === 'paid')!.payment!.id, paymentId);
   access.reopen(resolved[0].id);
   assert.equal(item(access, id).outstanding[0].dueDate, '2025-08-10', 'reopened old outcomes immediately return to Overdue');
-  const refreshed = access.readHistory(id, olderPage.pageBefore);
+  const refreshed = appendCommitmentHistory(access.readHistory(id), access.readHistory(id, olderPage.pageBefore));
   assert.equal(refreshed.history.length, 14, 'refreshing keeps the loaded historical range');
   assert.equal(refreshed.history.find(({ occurrence }) => occurrence.id === resolved[0].id)!.occurrence.status, 'pending');
 });
@@ -486,7 +486,8 @@ test('paused installments do not consume numbers; a resumed anchor continues aft
   assert.equal(current.upcoming!.installmentIndex, 3); assert.equal(current.upcoming!.dueDate, '2027-01-20');
   const history = access.readHistory(id);
   assert.deepEqual(history.history.map(({ occurrence }) => occurrence.dueDate), ['2026-12-20']);
-  assert.deepEqual(access.readHistory(id, history.nextBefore!).history.map(({ occurrence }) => occurrence.dueDate), ['2026-12-20', '2026-01-10']);
+  assert.deepEqual(access.readHistory(id, history.nextBefore!).history.map(({ occurrence }) => occurrence.dueDate), ['2026-01-10']);
+  assert.deepEqual(appendCommitmentHistory(history, access.readHistory(id, history.nextBefore!)).history.map(({ occurrence }) => occurrence.dueDate), ['2026-12-20', '2026-01-10']);
 });
 
 test('unresolved prior installments retain their indices and due dates when the rest resumes', async (t) => {

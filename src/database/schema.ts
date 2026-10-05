@@ -105,6 +105,8 @@ export const taskOccurrences = sqliteTable('task_occurrences', {
   uniqueIndex('task_occurrences_rule_date_unique').on(table.recurrenceId, table.scheduledDate),
   uniqueIndex('task_occurrences_active_task_date_unique').on(table.taskId, table.scheduledDate).where(sql`${table.deletedAt} IS NULL`),
   index('task_occurrences_history_idx').on(table.taskId, table.scheduledDate),
+  // Cross-task materialization and Calendar range reads include retained tombstones.
+  index('task_occurrences_date_idx').on(table.scheduledDate),
   check('occurrence_status_valid', sql`${table.status} IN ('pending', 'completed', 'skipped')`),
   check('occurrence_completion_valid', sql`(${table.status} = 'completed' AND ${table.completedAt} IS NOT NULL) OR (${table.status} != 'completed' AND ${table.completedAt} IS NULL)`),
   check('occurrence_date_valid', sql`${table.scheduledDate} GLOB '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]' AND substr(${table.scheduledDate}, 1, 4) >= '0001' AND coalesce(strftime('%Y-%m-%d', ${table.scheduledDate}, '+0 days') = ${table.scheduledDate}, 0)`),

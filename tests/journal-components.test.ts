@@ -14,14 +14,14 @@ import { controls, homeContent, journalContext, journalDate, journalEditor, jour
 const today = '2026-10-04';
 const entry = { id: 'entry', entryDate: '2026-10-03', content: 'First line\nSecond line', mood: 'good' as const, createdAt: 0, updatedAt: 0, deletedAt: null };
 const state: JournalEditorState = { date: entry.entryDate, entry, draft: { content: entry.content, mood: entry.mood }, loaded: true, error: null, message: null,
-  recoveryError: null, recoveryMessage: null };
+  baseline: { id: entry.id, updatedAt: entry.updatedAt }, conflict: false, recoveryError: null, recoveryMessage: null };
 const context: JournalDayContext = { date: today, completedTaskCount: 4, taskNames: ['One', 'Two', 'Three'], workoutCount: 1,
   workouts: [{ id: 'workout', name: 'Upper Body', exerciseCount: 3, setCount: 9 }], transactionCount: 2, incomeMinor: 50000n, expensesMinor: 12000n, netFlowMinor: 38000n };
 
 test('Journal editor uses shared mood/date controls, multiline writing without a title and feature callbacks', () => {
   const events: string[] = []; const changed: JournalDraft[] = [];
   const form = renderControl(() => journalEditor.JournalEditor({ state, today, onChange: (draft) => changed.push(draft),
-    onDate: () => events.push('date'), onToday: () => events.push('today'), onHistory: () => events.push('history'), onDelete: () => events.push('delete'), onRetryDraft: () => {} }));
+    onDate: () => events.push('date'), onToday: () => events.push('today'), onHistory: () => events.push('history'), onDelete: () => events.push('delete'), onRetryDraft: () => {}, onDiscardConflict: () => {} }));
   assert.match(form.markup, /Journal writing for/); assert.match(form.markup, /textarea/); assert.doesNotMatch(form.markup, /Title/);
   const mood = form.elements.find((element) => element.type === controls.SelectField)!;
   assert.deepEqual(mood.props.options?.map((option) => option.value), [null, 'great', 'good', 'okay', 'low', 'bad']);
@@ -35,7 +35,7 @@ test('Journal editor uses shared mood/date controls, multiline writing without a
 });
 
 test('blank days show no saved entry and no destructive control; writing/mood changes show unsaved state', () => {
-  const actions = { today, onChange: () => {}, onDate: () => {}, onToday: () => {}, onHistory: () => {}, onDelete: () => {}, onRetryDraft: () => {} };
+  const actions = { today, onChange: () => {}, onDate: () => {}, onToday: () => {}, onHistory: () => {}, onDelete: () => {}, onRetryDraft: () => {}, onDiscardConflict: () => {} };
   const blank = { ...state, date: today, entry: null, draft: { content: '', mood: null } };
   const form = renderControl(() => journalEditor.JournalEditor({ ...actions, state: blank }));
   assert.match(form.markup, /No saved entry for this day/); assert.ok(!form.elements.some((element) => element.props.label === 'Delete entry'));
@@ -100,7 +100,7 @@ test('Home’s Journal action restores the local-today draft while the Journal e
     onOpen: (target) => { assert.equal(target.pathname, '/journal'); editor.load(localToday); }, onComplete: () => {} }));
   home.elements.find((element) => element.props.label === "Today's journal")!.props.onPress!();
   const screen = renderControl(() => journalEditor.JournalEditor({ state: editor.getState(), today, onChange: editor.change,
-    onDate: () => {}, onToday: () => {}, onHistory: () => {}, onDelete: () => {}, onRetryDraft: editor.flushDraft }));
+    onDate: () => {}, onToday: () => {}, onHistory: () => {}, onDelete: () => {}, onRetryDraft: editor.flushDraft, onDiscardConflict: () => {} }));
   assert.match(screen.markup, /Recovered from Home/); assert.match(screen.markup, /Restored unsaved draft/);
   assert.match(screen.markup, /No saved entry for this day/); assert.match(screen.markup, /Unsaved changes/); assert.doesNotMatch(screen.markup, /Recover unsaved draft\?/);
   assert.equal(f.access.getEntry(today), null); assert.equal(f.access.listHistory().entries.length, 0);
@@ -110,7 +110,28 @@ test('a draft protection failure exposes Retry without presenting the working dr
   let retries = 0;
   const form = renderControl(() => journalEditor.JournalEditor({ state: { ...state, recoveryError: 'Unable to protect your draft locally.',
     draft: { content: 'Unsaved writing', mood: null } }, today, onChange: () => {}, onDate: () => {}, onToday: () => {}, onHistory: () => {}, onDelete: () => {},
-    onRetryDraft: () => { retries++; } }));
+    onRetryDraft: () => { retries++; }, onDiscardConflict: () => {} }));
   assert.match(form.markup, /Unable to protect your draft/); assert.match(form.markup, /Unsaved changes/);
   form.elements.find((element) => element.props.label === 'Retry draft protection')!.props.onPress!(); assert.equal(retries, 1);
+});
+
+test('save conflict keeps local writing visible and offers explicit Discard and reload without an overwrite action', async (t) => {
+  const f = await journalDatabase(); t.after(() => f.sqlite.close());
+  const first = f.access.save(today, { content: 'Saved version 1', mood: 'good' }, null)!;
+  const editor = createJournalEditor(f.access, today, () => {}, f.now, fakeDraftTimers().host); editor.load(today);
+  editor.change({ content: 'Local writing\nStill here.', mood: 'low' });
+  const newer = f.access.save(today, { content: 'Saved version 2', mood: 'great' }, first)!;
+  assert.equal(editor.save(), false);
+  let discardRequested = false;
+  const form = renderControl(() => journalEditor.JournalEditor({ state: editor.getState(), today, onChange: editor.change,
+    onDate: () => {}, onToday: () => {}, onHistory: () => {}, onDelete: () => assert.fail('conflict must not offer Delete'),
+    onRetryDraft: editor.flushDraft, onDiscardConflict: () => { discardRequested = true; } }));
+  assert.match(form.markup, /changed since you started editing/); assert.match(form.markup, /Local writing/);
+  assert.match(form.markup, /Unsaved changes/); assert.doesNotMatch(form.markup, /Save anyway|Save will replace|Delete entry/);
+  assert.equal(discardRequested, false); assert.equal(f.access.getDraft(today)!.content, 'Local writing\nStill here.');
+  form.elements.find((element) => element.props.label === 'Discard changes and reload')!.props.onPress!();
+  assert.equal(discardRequested, true, 'the screen owns discard confirmation');
+  assert.deepEqual(f.access.getEntry(today), newer);
+  assert.equal(f.access.getDraft(today)!.content, 'Local writing\nStill here.', 'requesting confirmation does not discard');
+  editor.discard(); assert.equal(editor.getState().draft.content, newer.content); assert.equal(editor.getState().conflict, false);
 });

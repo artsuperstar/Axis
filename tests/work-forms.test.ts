@@ -136,7 +136,7 @@ test('Work main view displays current summary and outstanding work while keeping
   const id = work.create({ ...workDraft(null, today), counterpartyId: party.id, description: 'Historical paid entry', compensationType: 'fixed', fixedAmount: '800' });
   work.recordPayment({ counterpartyId: party.id, allocations: [{ workEntryId: id, amount: '800' }], categoryId: null, paymentDate: today });
   work.create({ ...workDraft(null, today), counterpartyId: party.id, description: 'Outstanding website', compensationType: 'fixed', fixedAmount: '200', expectedPaymentDate: '2026-10-02' });
-  const result = renderControl(() => workViews.WorkView({ data: work.read(), categories: finance.read().categories, access: work, mutate: (action) => action(), onCreateCategory: (name) => finance.createCategory(name, 'income') }));
+  const result = renderControl(() => workViews.WorkView({ data: work.readOverview(), categories: finance.read().categories, access: work, mutate: (action) => action(), onCreateCategory: (name) => finance.createCategory(name, 'income') }));
   assert.match(result.markup, /Earned R\$ 1\.000,00/); assert.match(result.markup, /Received R\$ 800,00/); assert.match(result.markup, /Outstanding R\$ 200,00/);
   assert.match(result.markup, /Outstanding website/); assert.match(result.markup, /Payment overdue/); assert.match(result.markup, /History/);
   assert.doesNotMatch(result.markup, /Historical paid entry/);
@@ -156,7 +156,7 @@ test('Work balances group unpaid/partial as Outstanding, fully resolved as Histo
   assert.deepEqual(new Set(groups.outstanding.map((row) => row.entry.id)), new Set([unpaid, partial]));
   assert.deepEqual(groups.overdue.map((row) => row.entry.id), [overdue]); assert.equal(groups.overdue[0].outstandingMinor, 60000);
   assert.deepEqual(new Set(groups.settled.map((row) => row.entry.id)), new Set([paid, zero]));
-  const view = renderControl(() => workViews.WorkView({ data: work.read(), categories: finance.read().categories, access: work, mutate: (action) => action(), onCreateCategory: (name) => finance.createCategory(name, 'income') }));
+  const view = renderControl(() => workViews.WorkView({ data: work.readOverview(), categories: finance.read().categories, access: work, mutate: (action) => action(), onCreateCategory: (name) => finance.createCategory(name, 'income') }));
   assert.match(view.markup, /Partial overdue/); assert.match(view.markup, /Partially paid/); assert.match(view.markup, /Outstanding \(2\)/);
   work.undoPayment(payment); assert.ok(groupWorkItems(work.read().items).outstanding.some((row) => row.entry.id === paid));
   assert.ok(!groupWorkItems(work.read().items).settled.some((row) => row.entry.id === paid));

@@ -1,4 +1,4 @@
-import { and, asc, desc, eq, gt, gte, isNull, lt, lte, ne, or } from 'drizzle-orm';
+import { and, asc, desc, eq, gt, gte, inArray, isNull, lt, lte, ne, or } from 'drizzle-orm';
 
 import type { AxisDatabase } from '@/database/client';
 import { commitmentOccurrences as occurrences, commitmentSchedules as schedules, financeCategories, financeCommitments as commitments, financeTransactions } from '@/database/schema';
@@ -8,11 +8,15 @@ import { FinanceValidationError } from '../errors';
 import { validateAmountMinor } from '../money';
 import { validateCommitmentDraft, validatePayment } from './form';
 import { duesThrough, historyStart, lastScheduledIndex, proposedResumeDate, scheduleDue, scheduledDues, upcomingEnd } from './scheduling';
-import type { Commitment, CommitmentDraft, CommitmentItem, CommitmentOccurrence, DisplayOccurrence, OccurrenceTarget, ScheduledDue } from './types';
+import type { Commitment, CommitmentDraft, CommitmentItem, CommitmentOccurrence, CommitmentSchedule, DisplayOccurrence, OccurrenceTarget, ScheduledDue } from './types';
 
 type Query = Pick<AxisDatabase, 'select' | 'insert' | 'update'>;
 const displayOccurrence = (row: CommitmentOccurrence): DisplayOccurrence => ({ ...row });
 const previewOccurrence = (row: ScheduledDue): DisplayOccurrence => ({ ...row, id: null, status: 'pending', paidTransactionId: null, resolvedAt: null });
+type OccurrenceKey = Pick<CommitmentOccurrence, 'commitmentId' | 'dueDate' | 'installmentIndex' | 'status' | 'deletedAt'>;
+type PaymentAmount = { amountMinor: number; deletedAt: number | null };
+const occurrenceKeys = { commitmentId: occurrences.commitmentId, dueDate: occurrences.dueDate, installmentIndex: occurrences.installmentIndex,
+  status: occurrences.status, deletedAt: occurrences.deletedAt };
 
 export function createCommitmentDataAccess(db: AxisDatabase, newId: () => string, now = Date.now) {
   const today = () => localDateString(new Date(now()));
@@ -39,23 +43,30 @@ export function createCommitmentDataAccess(db: AxisDatabase, newId: () => string
   }
 
   function persist(query: Query, due: ScheduledDue) {
-    query.insert(occurrences).values({ ...due, id: newId(), createdAt: now(), updatedAt: now() }).onConflictDoNothing().run();
+    return query.insert(occurrences).values({ ...due, id: newId(), createdAt: now(), updatedAt: now() }).onConflictDoNothing().returning().get();
   }
 
-  function materializeDue(query: Query, commitment: Commitment) {
+  function materializeDue(query: Query, commitment: Commitment, versions = rules(query, commitment.id), retained?: OccurrenceKey[]) {
     // Include tombstones in the keys: catch-up must never replace retained outcomes or identities.
-    const existing = query.select({ dueDate: occurrences.dueDate, installmentIndex: occurrences.installmentIndex })
-      .from(occurrences).where(eq(occurrences.commitmentId, commitment.id)).all();
+    const existing = retained ?? query.select().from(occurrences).where(eq(occurrences.commitmentId, commitment.id)).all();
     const dates = new Set(existing.map((row) => row.dueDate));
     const indices = new Set(existing.map((row) => row.installmentIndex).filter((index) => index !== null));
-    for (const rule of rules(query, commitment.id)) {
+    const missing: ScheduledDue[] = [];
+    for (const rule of versions) {
       for (const due of duesThrough(rule, commitment.installmentCount, today())) {
         if (dates.has(due.dueDate) || (due.installmentIndex !== null && indices.has(due.installmentIndex))) continue;
-        persist(query, due);
+        missing.push(due);
         dates.add(due.dueDate);
         if (due.installmentIndex !== null) indices.add(due.installmentIndex);
       }
     }
+    const inserted: CommitmentOccurrence[] = [];
+    // Keep parameters below SQLite's conservative variable limit during first-run catch-up.
+    for (let i = 0; i < missing.length; i += 50) {
+      const values = missing.slice(i, i + 50).map((due) => ({ ...due, id: newId(), createdAt: now(), updatedAt: now() }));
+      inserted.push(...query.insert(occurrences).values(values).onConflictDoNothing().returning().all());
+    }
+    return inserted;
   }
 
   function closeSchedules(query: Query, id: string, boundary: string) {
@@ -96,7 +107,15 @@ export function createCommitmentDataAccess(db: AxisDatabase, newId: () => string
   function item(query: Query, commitment: Commitment): CommitmentItem {
     const versions = rules(query, commitment.id);
     const existing = rows(query, commitment.id);
-    const future = existing.filter((row) => row.status === 'pending' && row.dueDate > today()).map(displayOccurrence);
+    const paid = query.select({ amountMinor: financeTransactions.amountMinor, deletedAt: financeTransactions.deletedAt })
+      .from(occurrences).innerJoin(financeTransactions, eq(occurrences.paidTransactionId, financeTransactions.id))
+      .where(and(eq(occurrences.commitmentId, commitment.id), eq(occurrences.status, 'paid'), isNull(occurrences.deletedAt))).all();
+    return projectItem(commitment, versions, existing, existing, paid);
+  }
+
+  function projectItem(commitment: Commitment, versions: CommitmentSchedule[], pending: CommitmentOccurrence[], retained: OccurrenceKey[], paid: PaymentAmount[]): CommitmentItem {
+    const existing = retained.filter((row) => row.deletedAt === null);
+    const future = pending.filter((row) => row.status === 'pending' && row.dueDate > today()).map(displayOccurrence);
     if (commitment.status === 'active') {
       for (const rule of versions) {
         for (const due of scheduledDues(rule, commitment.installmentCount, today(), upcomingEnd(today()))) {
@@ -105,16 +124,13 @@ export function createCommitmentDataAccess(db: AxisDatabase, newId: () => string
         }
       }
     }
-    const paid = query.select({ amountMinor: financeTransactions.amountMinor, deletedAt: financeTransactions.deletedAt })
-      .from(occurrences).innerJoin(financeTransactions, eq(occurrences.paidTransactionId, financeTransactions.id))
-      .where(and(eq(occurrences.commitmentId, commitment.id), eq(occurrences.status, 'paid'), isNull(occurrences.deletedAt))).all();
     if (paid.some((payment) => payment.deletedAt !== null)) throw new FinanceValidationError('A commitment payment needs reconciliation.');
     const resolvedCount = existing.filter((row) => row.status !== 'pending').length;
     const assignedIndex = commitment.installmentCount === null ? 0 : Math.max(
       ...versions.map((rule) => lastScheduledIndex(rule, commitment.installmentCount!, today())),
       ...existing.map((row) => row.installmentIndex ?? 0));
     return { commitment, schedule: versions[versions.length - 1], upcoming: commitment.status === 'active' ? future.sort((a, b) => a.dueDate.localeCompare(b.dueDate))[0] ?? null : null,
-      outstanding: existing.filter((row) => row.status === 'pending' && row.dueDate <= today()).map(displayOccurrence), resolvedCount,
+      outstanding: pending.filter((row) => row.status === 'pending' && row.dueDate <= today()).sort((a, b) => a.dueDate.localeCompare(b.dueDate)).map(displayOccurrence), resolvedCount,
       remainingCount: commitment.installmentCount === null ? null : commitment.installmentCount - resolvedCount,
       totalPaidMinor: paid.reduce((sum, payment) => sum + BigInt(validateAmountMinor(payment.amountMinor)), 0n),
       canResume: commitment.status === 'paused' && (commitment.installmentCount === null || assignedIndex < commitment.installmentCount) };
@@ -155,8 +171,30 @@ export function createCommitmentDataAccess(db: AxisDatabase, newId: () => string
     read() {
       return db.transaction((query) => {
         const all = query.select().from(commitments).where(isNull(commitments.deletedAt)).orderBy(asc(commitments.title), asc(commitments.id)).all();
-        for (const commitment of all) materializeDue(query, commitment);
-        return { items: all.map((commitment) => item(query, commitment)) };
+        const activeParents = query.select({ id: commitments.id }).from(commitments).where(isNull(commitments.deletedAt));
+        const versions = query.select({ schedule: schedules }).from(schedules).innerJoin(commitments, eq(commitments.id, schedules.commitmentId))
+          .where(isNull(commitments.deletedAt)).orderBy(asc(schedules.createdAt), asc(schedules.id)).all().map(({ schedule }) => schedule);
+        const keys = query.select(occurrenceKeys).from(occurrences)
+          .innerJoin(commitments, eq(commitments.id, occurrences.commitmentId)).where(isNull(commitments.deletedAt)).all();
+        const pending = query.select({ occurrence: occurrences }).from(occurrences).innerJoin(commitments, eq(commitments.id, occurrences.commitmentId))
+          .where(and(isNull(commitments.deletedAt), isNull(occurrences.deletedAt), eq(occurrences.status, 'pending'))).all().map(({ occurrence }) => occurrence);
+        const paid = query.select({ commitmentId: occurrences.commitmentId, amountMinor: financeTransactions.amountMinor, deletedAt: financeTransactions.deletedAt })
+          .from(occurrences).innerJoin(financeTransactions, eq(occurrences.paidTransactionId, financeTransactions.id))
+          .where(and(isNull(occurrences.deletedAt), eq(occurrences.status, 'paid'),
+            // A subquery keeps this bounded to current parents without a growing IN parameter list.
+            inArray(occurrences.commitmentId, activeParents))).all();
+        const group = <T extends { commitmentId: string }>(values: T[]) => {
+          const groups = new Map<string, T[]>();
+          for (const value of values) { const rows = groups.get(value.commitmentId) ?? []; rows.push(value); groups.set(value.commitmentId, rows); }
+          return groups;
+        };
+        const versionsByParent = group(versions), keysByParent = group(keys), pendingByParent = group(pending), paidByParent = group(paid);
+        return { items: all.map((commitment) => {
+          const versions = versionsByParent.get(commitment.id) ?? [], keys = keysByParent.get(commitment.id) ?? [];
+          const pending = pendingByParent.get(commitment.id) ?? [];
+          const inserted = materializeDue(query, commitment, versions, keys);
+          return projectItem(commitment, versions, [...pending, ...inserted], [...keys, ...inserted], paidByParent.get(commitment.id) ?? []);
+        }) };
       });
     },
 
@@ -298,14 +336,23 @@ export function createCommitmentDataAccess(db: AxisDatabase, newId: () => string
         const commitment = parent(query, id);
         const to = before ? addDays(before, -1) : today();
         const from = historyStart(to);
-        materializeDue(query, commitment);
+        const versions = rules(query, id);
+        const retained = query.select(occurrenceKeys).from(occurrences).where(eq(occurrences.commitmentId, id)).all();
+        const inserted = materializeDue(query, commitment, versions, retained);
+        const pending = query.select().from(occurrences).where(and(eq(occurrences.commitmentId, id), isNull(occurrences.deletedAt), eq(occurrences.status, 'pending'))).all();
         const history = query.select({ occurrence: occurrences, payment: financeTransactions }).from(occurrences)
           .leftJoin(financeTransactions, eq(occurrences.paidTransactionId, financeTransactions.id))
-          .where(and(eq(occurrences.commitmentId, id), isNull(occurrences.deletedAt), or(eq(occurrences.status, 'pending'), gte(occurrences.dueDate, from))))
-          .orderBy(desc(occurrences.dueDate)).all();
+          .where(and(eq(occurrences.commitmentId, id), isNull(occurrences.deletedAt),
+            before ? and(ne(occurrences.status, 'pending'), gte(occurrences.dueDate, from), lt(occurrences.dueDate, before))
+              : or(eq(occurrences.status, 'pending'), gte(occurrences.dueDate, from))))
+          .orderBy(desc(occurrences.dueDate), asc(occurrences.id)).all();
         const olderResolved = query.select({ id: occurrences.id }).from(occurrences)
           .where(and(eq(occurrences.commitmentId, id), isNull(occurrences.deletedAt), ne(occurrences.status, 'pending'), lt(occurrences.dueDate, from))).limit(1).get();
-        return { ...item(query, commitment), history, versions: rules(query, id), pageBefore: before, nextBefore: olderResolved ? from : null };
+        const paid = query.select({ amountMinor: financeTransactions.amountMinor, deletedAt: financeTransactions.deletedAt })
+          .from(occurrences).innerJoin(financeTransactions, eq(occurrences.paidTransactionId, financeTransactions.id))
+          .where(and(eq(occurrences.commitmentId, id), eq(occurrences.status, 'paid'), isNull(occurrences.deletedAt))).all();
+        const existing = [...retained, ...inserted].filter((row) => row.deletedAt === null);
+        return { ...projectItem(commitment, versions, pending, existing, paid), history, versions, pageBefore: before, nextBefore: olderResolved ? from : null };
       });
     },
   };
@@ -313,3 +360,10 @@ export function createCommitmentDataAccess(db: AxisDatabase, newId: () => string
 
 export type CommitmentDataAccess = ReturnType<typeof createCommitmentDataAccess>;
 export type CommitmentHistory = ReturnType<CommitmentDataAccess['readHistory']>;
+
+/** Older page queries never fetch the loaded suffix or outstanding rows again. */
+export function appendCommitmentHistory(previous: CommitmentHistory, next: CommitmentHistory): CommitmentHistory {
+  const history = new Map(previous.history.map((row) => [row.occurrence.id, row]));
+  for (const row of next.history) history.set(row.occurrence.id, row);
+  return { ...next, history: [...history.values()].sort((a, b) => b.occurrence.dueDate.localeCompare(a.occurrence.dueDate) || a.occurrence.id.localeCompare(b.occurrence.id)) };
+}

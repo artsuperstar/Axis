@@ -61,7 +61,7 @@ test('Work editor survives failed resume/focus and successful Retry, then saves 
   await app.change('Description *', 'Unsaved revised work'); await app.change('Fixed amount *', '876,54');
   await app.change('Expected payment date', today);
   const check = observeDraft(app, ['Description *', 'Fixed amount *', 'Work date *', 'Expected payment date']);
-  await failAndRetry(app, 'work.read', check, () => {
+  await failAndRetry(app, 'work.readOverview', check, () => {
     work.edit(id, { ...draft, description: 'Changed at source', fixedAmount: '900' }); work.createCounterparty('New surrounding client');
   });
   const autocomplete = app.find('AutocompleteField', 'Client *');
@@ -142,7 +142,7 @@ for (const kind of ['exercise', 'workout'] as const) {
     const { app, fitness, session, sessionExercise } = await workout(t); const exerciseId = kind === 'exercise' ? sessionExercise.id : null;
     await app.press(kind === 'exercise' ? `Note for ${sessionExercise.exerciseName}` : 'Add workout note');
     await app.change('Note (optional)', 'Unsaved note\nwith exact whitespace  ');
-    await failAndRetry(app, 'fitness.read', observeDraft(app, ['Note (optional)']), () => fitness.saveNote(session.id, exerciseId, 'Source note changed'));
+    await failAndRetry(app, 'fitness.readOverview', observeDraft(app, ['Note (optional)']), () => fitness.saveNote(session.id, exerciseId, 'Source note changed'));
     await app.press('Save'); const detail = fitness.readSession(session.id);
     assert.equal(kind === 'exercise' ? detail.exercises[0].note : detail.note, 'Unsaved note\nwith exact whitespace');
   });
@@ -162,7 +162,7 @@ test('Work allocation validation uses current outstanding balance and preserves 
   const app = await mount(createElement(screens.FinanceScreen, { initialView: 'work', initialRecordId: id }), db); t.after(app.unmount);
   await app.press('Record payment'); await app.change('Allocation in reais for Original work', '500');
   const check = observeDraft(app, ['Allocation in reais for Original work', 'Payment date *']);
-  await failAndRetry(app, 'work.read', check, () => work.recordPayment({ counterpartyId: client.id, allocations: [{ workEntryId: id, amount: '800' }], paymentDate: today, categoryId: null }));
+  await failAndRetry(app, 'work.readOverview', check, () => work.recordPayment({ counterpartyId: client.id, allocations: [{ workEntryId: id, amount: '800' }], paymentDate: today, categoryId: null }));
   await app.press('Confirm'); check(); assert.equal(finance.read().transactions.length, 1);
   assert.ok(app.nodes().some((node) => node.kind === 'FormError'));
 });
@@ -180,7 +180,7 @@ test('Commitment payment validation rejects an occurrence resolved during Retry 
 test('Fitness note validation rejects a workout completed during Retry while keeping the unsaved text', async (t) => {
   const { app, fitness, session } = await workout(t); await app.press('Add workout note'); await app.change('Note (optional)', 'Keep this working note');
   const check = observeDraft(app, ['Note (optional)']);
-  await failAndRetry(app, 'fitness.read', check, () => fitness.finishWorkout(session.id));
+  await failAndRetry(app, 'fitness.readOverview', check, () => fitness.finishWorkout(session.id));
   await app.press('Save'); check(); assert.equal(fitness.readSession(session.id).note, null);
   assert.ok(app.nodes().some((node) => node.kind === 'FormError' && node.textContent.includes('read-only')));
 });
@@ -188,7 +188,7 @@ test('Fitness note validation rejects a workout completed during Retry while kee
 test('Finance Save remains valid during a read failure, and write validation errors preserve the working draft', async (t) => {
   const { db, work } = await initialized(t); const client = work.createCounterparty('Client'); const id = work.create(fixed(client.id));
   const app = await mount(createElement(screens.FinanceScreen, { initialView: 'work', initialRecordId: id }), db); t.after(app.unmount);
-  await app.press('Edit'); await app.change('Fixed amount *', 'invalid'); runtime.fixture.failures.add('work.read'); await app.resume();
+  await app.press('Edit'); await app.change('Fixed amount *', 'invalid'); runtime.fixture.failures.add('work.readOverview'); await app.resume();
   const check = observeDraft(app, ['Description *', 'Fixed amount *']); await app.press('Save'); check();
   await app.change('Fixed amount *', '800'); await app.press('Save');
   assert.equal(work.read().items.find((row) => row.entry.id === id)!.earnedMinor, 80000);
@@ -199,7 +199,7 @@ for (const feature of ['Finance', 'Fitness'] as const) {
   test(`${feature} initial read failure offers Retry and clears the error after success`, async (t) => {
     const { db } = await initialized(t);
     const screen = feature === 'Finance' ? createElement(screens.FinanceScreen, { initialView: 'work' }) : createElement(screens.FitnessScreen);
-    const app = await mount(screen, db, [feature === 'Finance' ? 'work.read' : 'fitness.read']); t.after(app.unmount);
+    const app = await mount(screen, db, [feature === 'Finance' ? 'work.readOverview' : 'fitness.readOverview']); t.after(app.unmount);
     assert.ok(app.find('FormError')); assert.ok(!app.nodes().some((node) => node.kind === 'ActivityIndicator'));
     runtime.fixture.failures.clear(); await app.press('Retry');
     assert.ok(!app.nodes().some((node) => node.kind === 'FormError')); await app.press(feature === 'Finance' ? 'Add work' : 'Start Empty Workout');
@@ -225,6 +225,68 @@ test('Finance does not show last loaded totals under a failed new period or anot
   const app = await mount(createElement(Probe), db); t.after(app.unmount); assert.ok(state.snapshot!.analytics);
   runtime.fixture.failures.add('finance.readDashboard'); await act(() => state.navigatePeriod(-1));
   assert.equal(state.snapshot!.analytics, null); assert.ok(state.error);
-  runtime.fixture.failures.add('work.read'); await act(() => state.setView('work')); assert.equal(state.snapshot, null);
+  runtime.fixture.failures.add('work.readOverview'); await act(() => state.setView('work')); assert.equal(state.snapshot, null);
   runtime.fixture.failures.clear(); await act(() => state.reload()); assert.ok(state.snapshot!.work); assert.equal(state.error, null);
+});
+
+test('Work History interaction fetches three separate bounded pages and reaches its terminal page', async (t) => {
+  const { db, work, measure } = await initialized(t);
+  const client = work.createCounterparty('Paged client');
+  for (let i = 0; i < 45; i++) {
+    const id = work.create({ ...fixed(client.id), description: `Settled entry ${i}` });
+    work.recordPayment({ counterpartyId: client.id, allocations: [{ workEntryId: id, amount: '1000' }], paymentDate: today, categoryId: null });
+  }
+  const app = await mount(createElement(screens.FinanceScreen, { initialView: 'work' }), db); t.after(app.unmount);
+  const pages: string[][] = [];
+  for (const label of ['History', 'Load more history', 'Load more history']) {
+    await act(() => {
+      const result = measure(() => (app.find('FormButton', label).props.onPress as () => void)());
+      assert.equal(result.count, 9, 'opening/loading a page performs one read, without a duplicate effect read');
+      const entries = result.statements.find((row) => row.sql.startsWith('select') && row.sql.includes('"description"') && row.sql.includes('from "work_entries"'))!;
+      assert.ok(entries.rows <= 20);
+      pages.push(entries.params.filter((value): value is string => typeof value === 'string'));
+      for (const query of result.statements.filter((row) => row.sql.includes('"description"'))) assert.ok(query.rows <= 20);
+    });
+  }
+  assert.deepEqual(pages.map((ids) => ids.length), [20, 20, 5]);
+  assert.equal(new Set(pages.flat()).size, 45);
+  assert.ok(!app.nodes().some((node) => node.kind === 'FormButton' && node.props.label === 'Load more history'));
+});
+
+test('Fitness History loads older summaries incrementally and retains loaded rows on a page failure', async (t) => {
+  const { db, fitness, measure } = await initialized(t);
+  for (let i = 0; i < 45; i++) fitness.finishWorkout(fitness.startWorkout().id);
+  let state!: ReturnType<typeof hooks.useFitness>;
+  function Probe() { state = hooks.useFitness(); return null; }
+  const app = await mount(createElement(Probe), db); t.after(app.unmount);
+  assert.equal(state.snapshot!.history.length, 20);
+  await act(() => {
+    const page = measure(() => state.loadMoreHistory());
+    assert.equal(page.count, 3); assert.equal(page.rows, 21);
+  });
+  assert.equal(state.snapshot!.history.length, 40);
+  const before = state.snapshot;
+  runtime.fixture.failures.add('fitness.readHistory');
+  await act(() => state.loadMoreHistory()); assert.equal(state.snapshot, before); assert.ok(state.error);
+  runtime.fixture.failures.clear();
+  await act(() => state.loadMoreHistory());
+  assert.equal(state.snapshot!.history.length, 45); assert.equal(state.snapshot!.hasMoreHistory, false);
+  assert.equal(new Set(state.snapshot!.history.map((row) => row.id)).size, 45); assert.equal(state.error, null);
+});
+
+test('Fitness routine detail failure retains the coherent overview, routine details and workout editor', async (t) => {
+  const { db, fitness } = await initialized(t);
+  fitness.createRoutine({ name: 'Original routine', exercises: [] });
+  const session = fitness.startWorkout();
+  let state!: ReturnType<typeof hooks.useFitness>;
+  function Probe() { state = hooks.useFitness(session.id, true); return null; }
+  const app = await mount(createElement(Probe), db); t.after(app.unmount);
+  const before = { snapshot: state.snapshot, detail: state.detail, routines: state.routines };
+  fitness.createRoutine({ name: 'New routine', exercises: [] });
+  runtime.fixture.failures.add('fitness.readRoutines');
+  await app.resume();
+  assert.equal(state.snapshot, before.snapshot); assert.equal(state.detail, before.detail); assert.equal(state.routines, before.routines);
+  assert.ok(state.error);
+  runtime.fixture.failures.clear(); await act(() => state.reload());
+  assert.ok(state.routines.some((row) => row.name === 'New routine')); assert.equal(state.error, null);
 });

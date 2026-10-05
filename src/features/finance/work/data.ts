@@ -1,4 +1,4 @@
-import { and, asc, desc, eq, gte, inArray, isNull, lte, or } from 'drizzle-orm';
+import { and, asc, desc, eq, gt, gte, inArray, isNull, lt, lte, or, sql, type SQL } from 'drizzle-orm';
 
 import type { AxisDatabase } from '@/database/client';
 import { financeCategories, financeTransactions, workCounterparties as counterparties, workEntries as entries, workPaymentAllocations as allocations } from '@/database/schema';
@@ -9,7 +9,7 @@ import { FinanceValidationError } from '../errors';
 import { validateTransactionDraft } from '../form';
 import { formatBrlInput, validateAmountMinor } from '../money';
 import { allocationValues, earnedMinor, validateWorkDraft } from './form';
-import type { WorkCounterparty, WorkDraft, WorkEntry, WorkItem, WorkPayment, WorkPaymentDraft, WorkSnapshot, WorkTotals } from './types';
+import type { WorkCounterparty, WorkDraft, WorkEntry, WorkHistoryCursor, WorkHistoryPage, WorkItem, WorkOverview, WorkPayment, WorkPaymentDraft, WorkSnapshot, WorkTotals } from './types';
 
 type Query = Pick<AxisDatabase, 'select' | 'insert' | 'update'>;
 const emptyTotals = (): WorkTotals => ({ earnedMinor: 0n, receivedMinor: 0n, outstandingMinor: 0n });
@@ -30,24 +30,25 @@ export function createWorkDataAccess(db: AxisDatabase, newId: () => string, now 
   }
 
   /** Read all active relationships in one snapshot and reject broken reconciliation instead of hiding debt. */
-  function snapshot(query: Query, range?: DateRange): WorkSnapshot {
-    const workFilter = and(isNull(entries.deletedAt), range ? and(gte(entries.expectedPaymentDate, range.from), lte(entries.expectedPaymentDate, range.to)) : undefined);
+  function snapshot(query: Query, range?: DateRange, filter?: SQL): WorkSnapshot {
+    const targeted = !!range || !!filter;
+    const workFilter = and(isNull(entries.deletedAt), range ? and(gte(entries.expectedPaymentDate, range.from), lte(entries.expectedPaymentDate, range.to)) : undefined, filter);
     const work = query.select().from(entries).where(workFilter).orderBy(desc(entries.workDate), asc(entries.id)).all();
     const selectedPayments = query.select({ id: allocations.financeTransactionId }).from(allocations)
       .innerJoin(entries, eq(entries.id, allocations.workEntryId)).where(and(isNull(allocations.deletedAt), workFilter));
     // A combined receipt must reconcile in full even if only one of its entries is in the visible month.
-    const relatedWork = range ? query.select({ entry: entries }).from(entries).innerJoin(allocations, eq(entries.id, allocations.workEntryId))
+    const relatedWork = targeted ? query.select({ entry: entries }).from(entries).innerJoin(allocations, eq(entries.id, allocations.workEntryId))
       .where(and(isNull(allocations.deletedAt), inArray(allocations.financeTransactionId, selectedPayments))).all().map(({ entry }) => entry) : work;
     const workById = new Map([...work, ...relatedWork].map((row) => [row.id, row]));
     const relatedParties = query.select({ id: entries.counterpartyId }).from(entries).innerJoin(allocations, eq(entries.id, allocations.workEntryId))
       .where(and(isNull(allocations.deletedAt), inArray(allocations.financeTransactionId, selectedPayments)));
-    const parties = query.select().from(counterparties).where(range ? or(
+    const parties = query.select().from(counterparties).where(targeted ? or(
       inArray(counterparties.id, query.select({ id: entries.counterpartyId }).from(entries).where(workFilter)),
       inArray(counterparties.id, relatedParties)) : undefined).orderBy(asc(counterparties.name), asc(counterparties.id)).all();
     const partyById = new Map(parties.map((row) => [row.id, row]));
     const relationships = query.select({ allocation: allocations, transaction: financeTransactions }).from(allocations)
       .innerJoin(financeTransactions, eq(allocations.financeTransactionId, financeTransactions.id))
-      .where(and(isNull(allocations.deletedAt), range ? inArray(allocations.financeTransactionId, selectedPayments) : undefined)).all();
+      .where(and(isNull(allocations.deletedAt), targeted ? inArray(allocations.financeTransactionId, selectedPayments) : undefined)).all();
     const received = new Map<string, bigint>();
     const payments = new Map<string, WorkPayment>();
     for (const { allocation, transaction } of relationships) {
@@ -89,8 +90,108 @@ export function createWorkDataAccess(db: AxisDatabase, newId: () => string, now 
     if (counterparty.deletedAt !== null && existing?.counterpartyId !== id) throw new FinanceValidationError('Choose an active client for new work.');
   }
 
+  /** Compensation stays in earnedMinor. SQL only sums integer allocations, returned as text. */
+  function balances(query: Query) {
+    const broken = query.select({ id: allocations.financeTransactionId }).from(allocations)
+      .innerJoin(financeTransactions, eq(financeTransactions.id, allocations.financeTransactionId))
+      .innerJoin(entries, eq(entries.id, allocations.workEntryId)).where(isNull(allocations.deletedAt))
+      .groupBy(allocations.financeTransactionId)
+      .having(sql`sum(${allocations.amountMinor}) != ${financeTransactions.amountMinor}
+        OR ${financeTransactions.deletedAt} IS NOT NULL OR ${financeTransactions.type} != 'income'
+        OR count(DISTINCT ${entries.counterpartyId}) != 1 OR max(${entries.deletedAt} IS NOT NULL) != 0`).limit(1).get();
+    if (broken) throw new FinanceValidationError('A Work payment needs reconciliation.');
+    const rows = query.select({ id: entries.id, counterpartyId: entries.counterpartyId, workDate: entries.workDate,
+      compensationType: entries.compensationType, durationMinutes: entries.durationMinutes, hourlyRateMinor: entries.hourlyRateMinor, fixedAmountMinor: entries.fixedAmountMinor,
+      received: sql<string>`coalesce((SELECT cast(sum(a.amount_minor) as text) FROM work_payment_allocations a
+        WHERE a.work_entry_id = work_entries.id AND a.deleted_at IS NULL), '0')` }).from(entries)
+      .where(isNull(entries.deletedAt)).orderBy(desc(entries.workDate), asc(entries.id)).all();
+    return rows.map((row) => {
+      const earned = earnedMinor(row), received = BigInt(row.received);
+      if (received > BigInt(earned)) throw new FinanceValidationError('A work entry has received more than it earned.');
+      return { ...row, earned, received, outstanding: BigInt(earned) - received };
+    });
+  }
+  type Balance = ReturnType<typeof balances>[number];
+  function itemRows(query: Query, values: Balance[], parties: WorkCounterparty[]) {
+    const byId = new Map(values.map((value) => [value.id, value]));
+    const partyById = new Map(parties.map((party) => [party.id, party]));
+    const items: WorkItem[] = [];
+    // Actionable debt is unbounded by age; chunk SQL parameters, never truncate obligations.
+    for (let i = 0; i < values.length; i += 400) {
+      const page = values.slice(i, i + 400);
+      const rows = query.select().from(entries).where(and(isNull(entries.deletedAt), inArray(entries.id, page.map((value) => value.id))))
+        .orderBy(desc(entries.workDate), asc(entries.id)).limit(page.length).all();
+      for (const row of rows) {
+        const value = byId.get(row.id)!, counterparty = partyById.get(row.counterpartyId);
+        if (!counterparty) throw new FinanceValidationError('A work entry has no historical client.');
+        items.push({ entry: row, counterparty, earnedMinor: value.earned, receivedMinor: Number(value.received), outstandingMinor: Number(value.outstanding),
+          status: value.outstanding === 0n ? 'paid' : value.received === 0n ? 'unpaid' : 'partial',
+          overdue: value.outstanding > 0n && row.expectedPaymentDate !== null && row.expectedPaymentDate < today() });
+      }
+    }
+    return items;
+  }
+  function paymentCount(query: Query) {
+    return query.select({ count: sql<number>`count(DISTINCT ${allocations.financeTransactionId})`.mapWith(Number) }).from(allocations)
+      .where(isNull(allocations.deletedAt)).get()!.count;
+  }
+  function historyPayments(query: Query, limit: number, before?: WorkHistoryCursor['payment']) {
+    if (before === null) return { payments: [] as WorkPayment[], next: null };
+    const selected = query.select({ id: financeTransactions.id, date: financeTransactions.transactionDate, createdAt: financeTransactions.createdAt })
+      .from(financeTransactions).where(and(inArray(financeTransactions.id,
+        query.select({ id: allocations.financeTransactionId }).from(allocations).where(isNull(allocations.deletedAt))), before ? or(
+          lt(financeTransactions.transactionDate, before.date),
+          and(eq(financeTransactions.transactionDate, before.date), lt(financeTransactions.createdAt, before.createdAt)),
+          and(eq(financeTransactions.transactionDate, before.date), eq(financeTransactions.createdAt, before.createdAt), gt(financeTransactions.id, before.id))) : undefined))
+      .orderBy(desc(financeTransactions.transactionDate), desc(financeTransactions.createdAt), asc(financeTransactions.id)).limit(limit + 1).all();
+    const visible = selected.slice(0, limit);
+    if (!visible.length) return { payments: [] as WorkPayment[], next: null };
+    const rows = query.select({ allocation: allocations, transaction: financeTransactions, entry: entries, counterparty: counterparties }).from(allocations)
+      .innerJoin(financeTransactions, eq(financeTransactions.id, allocations.financeTransactionId))
+      .innerJoin(entries, eq(entries.id, allocations.workEntryId)).innerJoin(counterparties, eq(counterparties.id, entries.counterpartyId))
+      .where(and(isNull(allocations.deletedAt), inArray(allocations.financeTransactionId, visible.map((row) => row.id)))).all();
+    const grouped = new Map<string, WorkPayment>();
+    for (const { allocation, transaction, entry, counterparty } of rows) {
+      const payment = grouped.get(transaction.id) ?? { transaction, counterparty, allocations: [] };
+      payment.allocations.push({ ...allocation, description: entry.description }); grouped.set(transaction.id, payment);
+    }
+    const last = visible[visible.length - 1];
+    return { payments: visible.map((row) => grouped.get(row.id)!), next: selected.length > limit ? last : null };
+  }
+
   return {
     read: () => db.transaction((query) => snapshot(query)),
+    readOverview(): WorkOverview {
+      return db.transaction((query) => {
+        const values = balances(query), parties = query.select().from(counterparties).orderBy(asc(counterparties.name), asc(counterparties.id)).all();
+        const totals = emptyTotals(), groups = new Map<string, WorkTotals & { counterparty: WorkCounterparty }>();
+        const byId = new Map(parties.map((party) => [party.id, party]));
+        for (const value of values) {
+          const counterparty = byId.get(value.counterpartyId);
+          if (!counterparty) throw new FinanceValidationError('A work entry has no historical client.');
+          const group = groups.get(counterparty.id) ?? { ...emptyTotals(), counterparty };
+          for (const total of [totals, group]) { total.earnedMinor += BigInt(value.earned); total.receivedMinor += value.received; total.outstandingMinor += value.outstanding; }
+          groups.set(counterparty.id, group);
+        }
+        return { items: itemRows(query, values.filter((row) => row.outstanding > 0n), parties), counterparties: parties, totals,
+          counterpartyTotals: [...groups.values()], settledCount: values.filter((row) => row.outstanding === 0n).length, paymentCount: paymentCount(query) };
+      });
+    },
+    readHistory(limit = 20, before?: WorkHistoryCursor): WorkHistoryPage {
+      if (!Number.isSafeInteger(limit) || limit < 1) throw new FinanceValidationError('Invalid Work history page size.');
+      return db.transaction((query) => {
+        const values = balances(query), settled = values.filter((row) => row.outstanding === 0n);
+        const candidates = before?.entry === null ? [] : settled.filter((row) => !before?.entry || row.workDate < before.entry.date
+          || (row.workDate === before.entry.date && row.id > before.entry.id));
+        const selected = candidates.slice(0, limit), last = selected[selected.length - 1];
+        const parties = query.select().from(counterparties).orderBy(asc(counterparties.name), asc(counterparties.id)).all();
+        const payments = historyPayments(query, limit, before?.payment);
+        const entryNext = candidates.length > limit ? { date: last.workDate, id: last.id } : null;
+        return { items: itemRows(query, selected, parties), payments: payments.payments, settledCount: settled.length, paymentCount: paymentCount(query),
+          next: entryNext || payments.next ? { entry: entryNext, payment: payments.next } : null };
+      });
+    },
+    readDetail: (id: string) => db.transaction((query) => snapshot(query, undefined, eq(entries.id, id))),
     readRange(range: DateRange) {
       validateDateRange(range);
       return db.transaction((query) => snapshot(query, range).items.filter((item) => item.outstandingMinor > 0));

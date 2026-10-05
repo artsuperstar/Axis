@@ -80,7 +80,7 @@ test('additive Journal migration preserves all 18 prior tables, indexes, data an
   assert.deepEqual(f.finance.readDashboard(periodBounds('month', today)).analytics, f.analytics);
   assert.deepEqual(f.work.read(), f.workBefore); assert.deepEqual(f.fitness.read(), f.fitnessBefore);
   const access = createJournalDataAccess(f.db, randomUUID, now); assert.deepEqual(access.listHistory().entries, []);
-  const saved = access.save(today, { content: 'My first diary entry\nUnrelated to source data.', mood: 'good' })!;
+  const saved = access.save(today, { content: 'My first diary entry\nUnrelated to source data.', mood: 'good' }, access.getEntry(today))!;
   await migrate(f.db, bundledMigrations); assert.deepEqual(access.getEntry(today), saved); assert.deepEqual(f.snapshot(), f.before);
   assert.equal(f.sqlite.prepare('SELECT count(*) AS count FROM __drizzle_migrations').get()!.count, journal.entries.length);
   assert.deepEqual(f.sqlite.prepare('PRAGMA foreign_key_check').all(), []); assert.equal(f.sqlite.prepare('PRAGMA integrity_check').get()!.integrity_check, 'ok');
@@ -96,7 +96,7 @@ test('failed Journal migration rolls back the new table/index, preserves previou
   await migrate(f.db, bundledMigrations); await migrate(f.db, bundledMigrations);
   assert.deepEqual(f.snapshot(), f.before); assert.equal(f.sqlite.prepare('SELECT count(*) AS count FROM __drizzle_migrations').get()!.count, journal.entries.length);
   assert.deepEqual(f.home.read(), f.homeBefore); assert.deepEqual(f.calendar.readRange(f.range), f.agenda);
-  assert.equal(createJournalDataAccess(f.db, randomUUID, now).save(today, { content: 'Safe after retry', mood: null })!.content, 'Safe after retry');
+  assert.equal(createJournalDataAccess(f.db, randomUUID, now).save(today, { content: 'Safe after retry', mood: null }, null)!.content, 'Safe after retry');
   assert.deepEqual(f.sqlite.prepare('PRAGMA foreign_key_check').all(), []); assert.equal(f.sqlite.prepare('PRAGMA integrity_check').get()!.integrity_check, 'ok');
 });
 

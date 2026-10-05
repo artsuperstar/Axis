@@ -31,10 +31,10 @@ test('loading an editor creates no rows, Save persists, and later edits return t
 
 test('focus/resume refresh never overwrites unsaved text and refreshes persisted data when clean', async (t) => {
   const { access, sqlite, now } = await journalDatabase(); t.after(() => sqlite.close());
-  access.save(today, { content: 'Saved', mood: null });
+  access.save(today, { content: 'Saved', mood: null }, access.getEntry(today));
   const editor = createJournalEditor(access, today, () => {}, now); editor.load(today);
   editor.change({ content: 'Unsaved\nLong writing', mood: 'low' });
-  access.save(today, { content: 'Source changed', mood: 'good' }); editor.refresh();
+  access.save(today, { content: 'Source changed', mood: 'good' }, access.getEntry(today)); editor.refresh();
   assert.equal(editor.getState().draft.content, 'Unsaved\nLong writing'); assert.equal(editor.dirty(), true);
   editor.discard(); editor.refresh(); assert.equal(editor.getState().draft.content, 'Source changed');
 });
@@ -75,17 +75,17 @@ test('date switching saves the previous day before loading the target, and rejec
 
 test('cleared entries disappear on Save, explicit deletion clears the local draft, and reopened days stay blank', async (t) => {
   const { access, sqlite, now } = await journalDatabase(); t.after(() => sqlite.close());
-  access.save(today, { content: 'Saved entry', mood: 'good' });
+  access.save(today, { content: 'Saved entry', mood: 'good' }, access.getEntry(today));
   const editor = createJournalEditor(access, today, () => {}, now); editor.load(today);
   editor.change({ content: '', mood: null }); editor.save(); assert.equal(editor.getState().entry, null); assert.equal(editor.dirty(), false);
-  access.save(today, { content: 'Recreated', mood: null }); editor.refresh(); editor.change({ content: 'Unsaved edit', mood: null });
+  access.save(today, { content: 'Recreated', mood: null }, access.getEntry(today)); editor.refresh(); editor.change({ content: 'Unsaved edit', mood: null });
   assert.equal(editor.remove(), true); assert.equal(editor.dirty(), false); assert.equal(editor.getState().draft.content, '');
   editor.load(today); assert.equal(editor.getState().entry, null);
 });
 
 test('failed loading and deletion retain existing writing and present retryable errors', async (t) => {
   const { access, sqlite, now } = await journalDatabase(); t.after(() => sqlite.close());
-  access.save(today, { content: 'Never erase this on failure', mood: null });
+  access.save(today, { content: 'Never erase this on failure', mood: null }, access.getEntry(today));
   const editor = createJournalEditor({ ...access, softDelete: () => { throw new Error('Unavailable'); } }, today, () => {}, now);
   editor.load(today); const before = editor.getState().draft;
   assert.equal(editor.remove(), false); assert.deepEqual(editor.getState().draft, before); assert.match(editor.getState().error!, /Unable to delete/);

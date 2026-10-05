@@ -4,8 +4,8 @@ import type { AxisDatabase } from '@/database/client';
 import { journalDrafts, journalEntries } from '@/database/schema';
 import { validDate, validateDateRange, type DateRange } from '@/utils/calendar';
 
-import { journalDirty, JournalValidationError, normalizeJournalDraft, validateJournalDate } from './form';
-import type { JournalDraft, JournalEntry, JournalHistoryPage, PersistedJournalDraft } from './types';
+import { journalBaseline, journalBaselineMatches, JournalConflictError, journalDirty, JournalValidationError, normalizeJournalDraft, validateJournalDate } from './form';
+import type { JournalDraft, JournalEntry, JournalEntryBaseline, JournalHistoryPage, PersistedJournalDraft } from './types';
 
 export function createJournalDataAccess(db: AxisDatabase, newId: () => string, now = Date.now) {
   const activeDate = (date: string) => and(eq(journalEntries.entryDate, date), isNull(journalEntries.deletedAt));
@@ -15,19 +15,22 @@ export function createJournalDataAccess(db: AxisDatabase, newId: () => string, n
       if (!validDate(date)) throw new JournalValidationError('Choose a valid journal date.');
       return db.select().from(journalDrafts).where(draftDate(date)).get() ?? null;
     },
-    persistDraft(date: string, draft: JournalDraft, baseEntry: JournalEntry | null): PersistedJournalDraft | null {
+    persistDraft(date: string, draft: JournalDraft, baseEntry: JournalEntry | null, baseline: JournalEntryBaseline = journalBaseline(baseEntry)): PersistedJournalDraft | null {
       if (!validDate(date) || (baseEntry && (baseEntry.entryDate !== date || baseEntry.deletedAt !== null))) {
         throw new JournalValidationError('A journal draft must belong to its own date.');
       }
       const values = normalizeJournalDraft(draft);
       return db.transaction((query) => {
-        if (!journalDirty(values, baseEntry)) {
-          query.delete(journalDrafts).where(draftDate(date)).run();
-          return null;
+        if (!journalDirty(values, baseEntry) && journalBaselineMatches(baseline, baseEntry)) {
+          const current = query.select().from(journalEntries).where(activeDate(date)).get() ?? null;
+          if (journalBaselineMatches(baseline, current)) {
+            query.delete(journalDrafts).where(draftDate(date)).run();
+            return null;
+          }
         }
         const previous = query.select().from(journalDrafts).where(draftDate(date)).get();
-        const updatedAt = Math.max(now(), previous ? previous.updatedAt + 1 : 0, baseEntry?.updatedAt ?? 0);
-        const working = { ...values, updatedAt, baseEntryId: baseEntry?.id ?? null, baseEntryUpdatedAt: baseEntry?.updatedAt ?? null };
+        const updatedAt = Math.max(now(), previous ? previous.updatedAt + 1 : 0, baseline?.updatedAt ?? 0);
+        const working = { ...values, updatedAt, baseEntryId: baseline?.id ?? null, baseEntryUpdatedAt: baseline?.updatedAt ?? null };
         return query.insert(journalDrafts).values({ entryDate: date, ...working })
           .onConflictDoUpdate({ target: journalDrafts.entryDate, set: working }).returning().get();
       }, { behavior: 'immediate' });
@@ -44,11 +47,12 @@ export function createJournalDataAccess(db: AxisDatabase, newId: () => string, n
       if (!validDate(date)) throw new JournalValidationError('Choose a valid journal date.');
       return db.select().from(journalEntries).where(activeDate(date)).get() ?? null;
     },
-    save(date: string, draft: JournalDraft): JournalEntry | null {
+    save(date: string, draft: JournalDraft, baseline: JournalEntryBaseline): JournalEntry | null {
       validateJournalDate(date, now());
       const values = normalizeJournalDraft(draft);
       return db.transaction((query) => {
-        const existing = query.select().from(journalEntries).where(activeDate(date)).get();
+        const existing = query.select().from(journalEntries).where(activeDate(date)).get() ?? null;
+        if (!journalBaselineMatches(baseline, existing)) throw new JournalConflictError();
         const timestamp = existing ? Math.max(now(), existing.updatedAt + 1) : now();
         let entry: JournalEntry | null;
         if (!values.content && values.mood === null) {

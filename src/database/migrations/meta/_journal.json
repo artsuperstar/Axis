@@ -57,6 +57,13 @@
       "when": 1791141663778,
       "tag": "0007_journal_drafts",
       "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "6",
+      "when": 1791210578257,
+      "tag": "0008_task_occurrence_date_index",
+      "breakpoints": true
     }
   ]
 }

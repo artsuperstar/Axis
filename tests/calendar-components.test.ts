@@ -139,7 +139,7 @@ test('Calendar launch reuses Work details and Record payment in the existing ada
   const today = '2026-10-04'; const access = createWorkDataAccess(db, randomUUID, () => pickerValue(today).getTime());
   const client = access.createCounterparty('Client');
   const id = access.create({ ...workDraft(null, today), counterpartyId: client.id, description: 'Report', compensationType: 'fixed', fixedAmount: '100', expectedPaymentDate: today });
-  const result = renderControl(() => workViews.WorkView({ data: access.read(), access, categories: [], mutate: (action) => action(), initialEntryId: id,
+  const result = renderControl(() => workViews.WorkView({ data: access.readOverview(), access, categories: [], mutate: (action) => action(), initialEntryId: id,
     onCreateCategory: () => { throw new Error('unused'); } }));
   assert.ok(result.elements.some((node) => node.type === sheets.AdaptiveModal));
   assert.ok(result.elements.some((node) => node.type === sheets.AdaptiveSheet));

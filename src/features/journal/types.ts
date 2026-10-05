@@ -2,6 +2,7 @@ import type { journalDrafts, journalEntries } from '@/database/schema';
 import type { SessionSummary } from '@/features/fitness/types';
 
 export type JournalEntry = typeof journalEntries.$inferSelect;
+export type JournalEntryBaseline = Pick<JournalEntry, 'id' | 'updatedAt'> | null;
 export type JournalMood = NonNullable<JournalEntry['mood']>;
 export type JournalDraft = Pick<JournalEntry, 'content' | 'mood'>;
 export type PersistedJournalDraft = typeof journalDrafts.$inferSelect;

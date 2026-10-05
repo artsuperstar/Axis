@@ -85,7 +85,7 @@ test('Finance context remains exact beyond safe aggregate numbers and supports n
 
 test('source edits/deletes/payment undo refresh context without ever altering diary content or mood', async (t) => {
   const f = await journalDatabase(); t.after(() => f.sqlite.close());
-  const saved = f.access.save(today, { content: 'My memory\nremains my own.', mood: 'good' })!;
+  const saved = f.access.save(today, { content: 'My memory\nremains my own.', mood: 'good' }, f.access.getEntry(today))!;
   const transaction = f.finance.createTransaction({ ...transactionDraft(null, pickerValue(today)), description: 'Expense', amount: '10' });
   assert.equal(f.context.read(today).expensesMinor, 1000n);
   f.finance.editTransaction(transaction, { ...transactionDraft(null, pickerValue(today)), description: 'Edited expense', amount: '20' });
@@ -114,7 +114,7 @@ test('context reads are idempotent/read-only, generate no occurrences and bound 
   const before = snapshot(); const first = f.context.read(today);
   assert.equal(first.completedTaskCount, 5); assert.equal(first.taskNames.length, 3); assert.equal(first.workoutCount, 5); assert.equal(first.workouts.length, 3);
   assert.deepEqual(f.context.read(today), first); assert.deepEqual(snapshot(), before);
-  assert.deepEqual(Object.keys(f.access.save(today, { content: 'Independent', mood: null })!).sort(),
+  assert.deepEqual(Object.keys(f.access.save(today, { content: 'Independent', mood: null }, f.access.getEntry(today))!).sort(),
     ['id', 'entryDate', 'content', 'mood', 'createdAt', 'updatedAt', 'deletedAt'].sort());
 });
 

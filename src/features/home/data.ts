@@ -16,9 +16,9 @@ export function createHomeDataAccess(db: AxisDatabase, newId: () => string, now 
       const timestamp = now(); const clock = () => timestamp;
       const tasks = createTaskDataAccess(db, newId, clock).read();
       const commitments = createCommitmentDataAccess(db, newId, clock).read().items;
-      const work = createWorkDataAccess(db, newId, clock).read().items;
+      const work = createWorkDataAccess(db, newId, clock).readOverview().items;
       const financeCategories = createFinanceDataAccess(db, newId, clock).readCategories();
-      const fitness = createFitnessDataAccess(db, newId, clock).read(1);
+      const fitness = createFitnessDataAccess(db, newId, clock).readSummaries(1);
       return projectHome({ tasks, commitments, work, financeCategories, fitness }, new Date(timestamp));
     },
     completeTask(item: HomeTaskItem) {

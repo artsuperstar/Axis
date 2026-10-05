@@ -86,7 +86,7 @@ export function WorkEditor({ item, counterparties, onSave, onCreateCounterparty,
 }
 
 export function WorkPaymentEditor({ data, categories, initialItem, onSave, onCreateCategory, onDismiss }: {
-  data: WorkSnapshot; categories: FinanceCategory[]; initialItem?: WorkItem; onSave: (draft: WorkPaymentDraft) => void;
+  data: Pick<WorkSnapshot, 'items' | 'counterparties'>; categories: FinanceCategory[]; initialItem?: WorkItem; onSave: (draft: WorkPaymentDraft) => void;
   onCreateCategory: (name: string) => FinanceCategory; onDismiss: () => void;
 }) {
   const colors = useTheme();

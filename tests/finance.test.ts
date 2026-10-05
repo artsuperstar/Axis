@@ -668,7 +668,9 @@ test('additive Finance migration preserves existing Tasks, categories, schedule 
   await migrate(db, bundledMigrations);
   seedFinanceCategories(db, 2000);
   assert.deepEqual(access.read(), snapshot);
-  assert.deepEqual(sqlite.prepare("SELECT name, sql FROM sqlite_master WHERE name LIKE 'task%' ORDER BY name").all(), beforeSchema);
+  const afterSchema = sqlite.prepare("SELECT name, sql FROM sqlite_master WHERE name LIKE 'task%' ORDER BY name").all();
+  assert.deepEqual(afterSchema.filter((row) => row.name !== 'task_occurrences_date_idx'), beforeSchema);
+  assert.match(String(afterSchema.find((row) => row.name === 'task_occurrences_date_idx')?.sql), /ON `task_occurrences` \(`scheduled_date`\)/);
   await migrate(db, bundledMigrations);
   assert.deepEqual(access.read(), snapshot);
   assert.equal(db.select().from(schema.financeCategories).all().length, 13);

@@ -22,3 +22,9 @@ export type WorkSnapshot = {
   items: WorkItem[]; counterparties: WorkCounterparty[]; payments: WorkPayment[]; totals: WorkTotals;
   counterpartyTotals: (WorkTotals & { counterparty: WorkCounterparty })[];
 };
+export type WorkOverview = Omit<WorkSnapshot, 'payments'> & { settledCount: number; paymentCount: number };
+export type WorkHistoryCursor = {
+  entry: { date: string; id: string } | null;
+  payment: { date: string; createdAt: number; id: string } | null;
+};
+export type WorkHistoryPage = { items: WorkItem[]; payments: WorkPayment[]; settledCount: number; paymentCount: number; next: WorkHistoryCursor | null };

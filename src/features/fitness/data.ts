@@ -1,4 +1,4 @@
-import { and, asc, desc, eq, gte, inArray, isNotNull, isNull, lt, sql } from 'drizzle-orm';
+import { and, asc, desc, eq, gt, gte, inArray, isNotNull, isNull, lt, or, sql } from 'drizzle-orm';
 
 import type { AxisDatabase } from '@/database/client';
 import { localDayBounds } from '@/utils/calendar';
@@ -7,7 +7,7 @@ import { fitnessExercises as exercises, fitnessRoutines as routines, fitnessRout
   fitnessSessions as sessions, fitnessSessionExercises as sessionExercises, fitnessSets as sets } from '@/database/schema';
 
 import { FitnessValidationError, normalizeName, validateMeasurement, validateSet, validateTargets } from './form';
-import type { FitnessSnapshot, MeasurementType, RoutineDraft, RoutineDetail, Session, SessionDetail, SessionSummary, SetDraft } from './types';
+import type { FitnessOverview, FitnessSnapshot, MeasurementType, RoutineDraft, RoutineDetail, Session, SessionDetail, SessionSummary, SetDraft, WorkoutHistoryCursor } from './types';
 
 type Query = Pick<AxisDatabase, 'select' | 'insert' | 'update'>;
 
@@ -70,6 +70,32 @@ export function createFitnessDataAccess(db: AxisDatabase, newId: () => string, n
   };
   const summary = (row: { session: Session; exerciseCount: number; setCount: number }): SessionSummary => ({ ...row.session, exerciseCount: row.exerciseCount, setCount: row.setCount });
 
+  function workoutSummaries(query: Query, limit: number, before?: WorkoutHistoryCursor) {
+    if (!Number.isSafeInteger(limit) || limit < 1 || (before && before.completedAt === null)) throw new FitnessValidationError('Invalid history page.');
+    const history = query.select({ session: sessions, ...counts }).from(sessions)
+      .where(and(isNull(sessions.deletedAt), isNotNull(sessions.completedAt), before ? or(
+        lt(sessions.completedAt, before.completedAt!),
+        and(eq(sessions.completedAt, before.completedAt!), lt(sessions.startedAt, before.startedAt)),
+        and(eq(sessions.completedAt, before.completedAt!), eq(sessions.startedAt, before.startedAt), gt(sessions.id, before.id))) : undefined))
+      .orderBy(desc(sessions.completedAt), desc(sessions.startedAt), asc(sessions.id)).limit(limit + 1).all();
+    return { history: history.slice(0, limit).map(summary), hasMoreHistory: history.length > limit };
+  }
+  function activeSummary(query: Query) {
+    const active = query.select({ session: sessions, ...counts }).from(sessions).where(and(isNull(sessions.deletedAt), isNull(sessions.completedAt))).get();
+    return active ? summary(active) : null;
+  }
+  function routineDetails(query: Query): RoutineDetail[] {
+    const parents = query.select().from(routines).orderBy(asc(routines.name), asc(routines.id)).all();
+    const entries = query.select({ entry: routineExercises, exercise: exercises }).from(routineExercises)
+      .innerJoin(exercises, eq(routineExercises.exerciseId, exercises.id)).where(isNull(routineExercises.deletedAt))
+      .orderBy(asc(routineExercises.position)).all();
+    const grouped = new Map<string, RoutineDetail['exercises']>();
+    for (const { entry, exercise } of entries) {
+      const rows = grouped.get(entry.routineId) ?? []; rows.push({ ...entry, exercise }); grouped.set(entry.routineId, rows);
+    }
+    return parents.map((parent) => ({ ...parent, exercises: grouped.get(parent.id) ?? [] }));
+  }
+
   function saveRoutine(id: string | null, draft: RoutineDraft) {
     const name = normalizeName(draft.name);
     return db.transaction((query) => {
@@ -120,16 +146,21 @@ export function createFitnessDataAccess(db: AxisDatabase, newId: () => string, n
         .orderBy(desc(sessions.completedAt), asc(sessions.id)).all().map(summary);
     },
     read(historyLimit = 20): FitnessSnapshot {
-      if (!Number.isSafeInteger(historyLimit) || historyLimit < 1) throw new FitnessValidationError('Invalid history page size.');
       return db.transaction((query) => {
-        const history = query.select({ session: sessions, ...counts }).from(sessions).where(and(isNull(sessions.deletedAt), isNotNull(sessions.completedAt)))
-          .orderBy(desc(sessions.completedAt), desc(sessions.startedAt), asc(sessions.id)).limit(historyLimit + 1).all();
-        const active = query.select({ session: sessions, ...counts }).from(sessions).where(and(isNull(sessions.deletedAt), isNull(sessions.completedAt))).get();
         return { exercises: query.select().from(exercises).orderBy(asc(exercises.name)).all(),
-          routines: query.select({ id: routines.id }).from(routines).orderBy(asc(routines.name)).all().map(({ id }) => routine(query, id)),
-          active: active ? summary(active) : null, history: history.slice(0, historyLimit).map(summary), hasMoreHistory: history.length > historyLimit };
+          routines: routineDetails(query), active: activeSummary(query), ...workoutSummaries(query, historyLimit) };
       });
     },
+    readOverview(historyLimit = 20): FitnessOverview {
+      return db.transaction((query) => ({ ...workoutSummaries(query, historyLimit), active: activeSummary(query),
+        exercises: query.select().from(exercises).orderBy(asc(exercises.name)).all(),
+        routines: query.select().from(routines).orderBy(asc(routines.name), asc(routines.id)).all() }));
+    },
+    readSummaries(historyLimit = 1) {
+      return db.transaction((query) => ({ ...workoutSummaries(query, historyLimit), active: activeSummary(query) }));
+    },
+    readHistory: (limit = 20, before?: WorkoutHistoryCursor) => db.transaction((query) => workoutSummaries(query, limit, before)),
+    readRoutines: () => db.transaction(routineDetails),
     readRoutine: (id: string) => db.transaction((query) => routine(query, id)),
     readSession: (id: string) => db.transaction((query) => sessionDetail(query, id)),
     createExercise(draft: { name: string; measurementType: MeasurementType }) {
