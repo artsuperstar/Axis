@@ -1,8 +1,9 @@
-import { and, asc, desc, eq, gte, inArray, isNull, lte, or, sql } from 'drizzle-orm';
+import { and, asc, desc, eq, gte, inArray, isNull, lte, or } from 'drizzle-orm';
 
 import type { AxisDatabase } from '@/database/client';
 import { financeCategories, financeTransactions, workCounterparties as counterparties, workEntries as entries, workPaymentAllocations as allocations } from '@/database/schema';
 import { localDateString, validateDateRange, type DateRange } from '@/utils/calendar';
+import { canonicalIdentityName, normalizeIdentityDisplayName } from '@/utils/text-normalization';
 
 import { FinanceValidationError } from '../errors';
 import { validateTransactionDraft } from '../form';
@@ -96,10 +97,12 @@ export function createWorkDataAccess(db: AxisDatabase, newId: () => string, now 
     },
 
     createCounterparty(name: string) {
-      const normalized = name.trim().replace(/\s+/g, ' ');
+      const normalized = normalizeIdentityDisplayName(name);
       if (!normalized) throw new FinanceValidationError('Enter a client name.');
       return db.transaction((query) => {
-        if (query.select().from(counterparties).where(and(isNull(counterparties.deletedAt), sql`lower(${counterparties.name}) = lower(${normalized})`)).get()) {
+        const identity = canonicalIdentityName(normalized);
+        if (query.select().from(counterparties).where(isNull(counterparties.deletedAt)).all()
+          .some((counterparty) => canonicalIdentityName(counterparty.name) === identity)) {
           throw new FinanceValidationError('A client with this name already exists.');
         }
         const timestamp = now();

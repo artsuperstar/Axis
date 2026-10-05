@@ -46,6 +46,29 @@ test('Client autocomplete creates inline, persists, refreshes and selects before
   assert.ok(clientAutocomplete(work.read().counterparties, query).suggestions.some((option) => option.value === selected));
   assert.deepEqual(surface, { menu: null, inline: null });
 });
+test('Work editor offers and executes accent-distinct Client creation beside an accent-insensitive match', async (t) => {
+  const { sqlite, work } = await initialized(); t.after(() => sqlite.close());
+  const accented = work.createCounterparty('Álvaro');
+  const editor = renderControl(() => workForms.WorkEditor({ item: null, counterparties: work.read().counterparties,
+    onSave: () => {}, onCreateCounterparty: work.createCounterparty, onDismiss: () => {} }));
+  const field = editor.elements.find((element) => element.props.label === 'Client *')!;
+  const results = field.props.getResults!('Alvaro');
+  assert.deepEqual(results.suggestions, [{ value: accented.id, label: 'Álvaro' }]);
+  assert.equal(results.createLabel, '+ Create "Alvaro"');
+
+  let selected: string | null = null; let closed = false;
+  const options = renderControl(() => autocomplete.AutocompleteOptions({ value: selected, results,
+    onSelect: (id) => { selected = id; }, onCreate: () => {
+      const error = submitAutocompleteSelection('Alvaro', field.props.onCreate!, (id) => { selected = id; }, () => { closed = true; },
+        (cause) => financeError(cause, 'Unable to create client'));
+      assert.equal(error, null);
+    } }));
+  assert.ok(options.elements.some((element) => element.props.label === 'Álvaro'));
+  options.elements.find((element) => element.props.label === '+ Create "Alvaro"')!.props.onPress!();
+
+  assert.equal(closed, true); assert.ok(selected); assert.notEqual(selected, accented.id);
+  assert.deepEqual(work.read().counterparties.map((client) => client.name).sort(), ['Alvaro', 'Álvaro'].sort());
+});
 test('Client creation failure and outside dismissal preserve selection without creating unsaved names', async (t) => {
   const { sqlite, work } = await initialized(); t.after(() => sqlite.close());
   const previous = work.createCounterparty('Acme'); let selected = previous.id;

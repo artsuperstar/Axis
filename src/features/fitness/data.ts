@@ -1,7 +1,8 @@
-import { and, asc, desc, eq, gte, inArray, isNotNull, isNull, lt, ne, sql } from 'drizzle-orm';
+import { and, asc, desc, eq, gte, inArray, isNotNull, isNull, lt, sql } from 'drizzle-orm';
 
 import type { AxisDatabase } from '@/database/client';
 import { localDayBounds } from '@/utils/calendar';
+import { canonicalIdentityName } from '@/utils/text-normalization';
 import { fitnessExercises as exercises, fitnessRoutines as routines, fitnessRoutineExercises as routineExercises,
   fitnessSessions as sessions, fitnessSessionExercises as sessionExercises, fitnessSets as sets } from '@/database/schema';
 
@@ -74,7 +75,9 @@ export function createFitnessDataAccess(db: AxisDatabase, newId: () => string, n
     return db.transaction((query) => {
       const old = id ? routine(query, id) : null;
       if (old && old.deletedAt !== null) throw new FitnessValidationError('Archived routines cannot be edited.');
-      if (query.select().from(routines).where(and(isNull(routines.deletedAt), sql`lower(${routines.name}) = lower(${name})`, id ? ne(routines.id, id) : undefined)).get()) {
+      const identity = canonicalIdentityName(name);
+      if (query.select().from(routines).where(isNull(routines.deletedAt)).all()
+        .some((entry) => entry.id !== id && canonicalIdentityName(entry.name) === identity)) {
         throw new FitnessValidationError('An active routine with this name already exists.');
       }
       const retained = new Set<string>();
@@ -132,7 +135,9 @@ export function createFitnessDataAccess(db: AxisDatabase, newId: () => string, n
     createExercise(draft: { name: string; measurementType: MeasurementType }) {
       const name = normalizeName(draft.name); const measurementType = validateMeasurement(draft.measurementType);
       return db.transaction((query) => {
-        if (query.select().from(exercises).where(and(isNull(exercises.deletedAt), sql`lower(${exercises.name}) = lower(${name})`)).get()) {
+        const identity = canonicalIdentityName(name);
+        if (query.select().from(exercises).where(isNull(exercises.deletedAt)).all()
+          .some((exercise) => canonicalIdentityName(exercise.name) === identity)) {
           throw new FitnessValidationError('An active exercise with this name already exists.');
         }
         const timestamp = now();

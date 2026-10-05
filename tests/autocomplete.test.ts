@@ -32,8 +32,8 @@ test('empty Client query is sparse and hundreds of matches remain bounded', () =
   assert.equal(clientAutocomplete(many, 'client 299').createLabel, undefined, 'exact matching checks the full eligible set');
 });
 
-test('inline Create appears only for nonempty queries without an exact active match', () => {
-  assert.equal(clientAutocomplete(clients, ' JP   BALOES ').createLabel, undefined);
+test('inline Create follows accent-sensitive persisted identity rather than accent-insensitive search', () => {
+  assert.equal(clientAutocomplete(clients, ' JP   BALOES ').createLabel, '+ Create "JP BALOES"');
   assert.equal(clientAutocomplete(clients, 'JP Brindes').createLabel, '+ Create "JP Brindes"');
   assert.equal(clientAutocomplete(clients, 'JP Past').createLabel, '+ Create "JP Past"', 'an archived name can become a new Client ID');
 });

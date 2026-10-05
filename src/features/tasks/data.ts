@@ -8,6 +8,7 @@ import { addDays, localDateString } from './calendar';
 import { latestRecurrence, recurrenceDates, recurrenceStopped } from './recurrence';
 import type { OccurrenceStatus, RecurrenceDraft, Task, TaskDraft, TaskListItem, TaskRecurrence } from './types';
 import { localDayBounds, validateDateRange, type DateRange } from '@/utils/calendar';
+import { canonicalIdentityName, normalizeIdentityDisplayName } from '@/utils/text-normalization';
 
 type TaskDb = Pick<AxisDatabase, 'select' | 'insert' | 'update'>;
 export const occurrenceWindowDays = 30;
@@ -220,15 +221,17 @@ export function createTaskDataAccess(db: AxisDatabase, newId: () => string, now 
     },
 
     createCategory(input: string) {
-      const name = input.trim().replace(/\s+/g, ' ');
+      const name = normalizeIdentityDisplayName(input);
       if (!name) throw new TaskValidationError('Enter a category name.');
-      const duplicate = db.select().from(taskCategories)
-        .where(and(sql`lower(${taskCategories.name}) = lower(${name})`, isNull(taskCategories.deletedAt))).get();
-      if (duplicate) throw new TaskValidationError('A category with that name already exists.');
-      const timestamp = now();
-      const category = { id: newId(), name, isDefault: false, createdAt: timestamp, updatedAt: timestamp, deletedAt: null };
-      db.insert(taskCategories).values(category).run();
-      return category;
+      return db.transaction((query) => {
+        const identity = canonicalIdentityName(name);
+        const duplicate = query.select().from(taskCategories).where(isNull(taskCategories.deletedAt)).all()
+          .some((category) => canonicalIdentityName(category.name) === identity);
+        if (duplicate) throw new TaskValidationError('A category with that name already exists.');
+        const timestamp = now();
+        return query.insert(taskCategories).values({ id: newId(), name, isDefault: false, createdAt: timestamp,
+          updatedAt: timestamp, deletedAt: null }).returning().get();
+      }, { behavior: 'immediate' });
     },
 
     deleteCategory(id: string) {

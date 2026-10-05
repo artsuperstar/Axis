@@ -1,4 +1,5 @@
 import type { Exercise, MeasurementType, SetDraft, TargetDraft, Targets, WorkoutSet } from './types';
+import { canonicalIdentityName, normalizeIdentityDisplayName } from '@/utils/text-normalization';
 
 export class FitnessValidationError extends Error {}
 export function fitnessError(error: unknown, fallback = 'Unable to save. Please try again.') {
@@ -10,7 +11,7 @@ export const measurementOptions: { value: MeasurementType; label: string }[] = [
 ];
 export function measurementLabel(type: MeasurementType) { return measurementOptions.find((option) => option.value === type)?.label ?? type; }
 export function normalizeName(value: string) {
-  const name = value.trim().replace(/\s+/g, ' ');
+  const name = normalizeIdentityDisplayName(value);
   if (!name || name.length > 120) throw new FitnessValidationError('Enter a name between 1 and 120 characters.');
   return name;
 }
@@ -123,9 +124,10 @@ export function targetLabel(targets: Targets) {
     targets.targetDistanceMeters === null ? '' : distanceLabel(targets.targetDistanceMeters)].filter(Boolean).join(' · ');
 }
 export function exerciseResults(exercises: readonly Exercise[], query: string) {
-  const name = query.trim().replace(/\s+/g, ' ');
+  const name = normalizeIdentityDisplayName(query);
+  const normalized = canonicalIdentityName(name);
   const active = exercises.filter((exercise) => exercise.deletedAt === null);
-  return { suggestions: active.filter((exercise) => exercise.name.toLowerCase().includes(name.toLowerCase())).sort((a, b) => a.name.localeCompare(b.name))
+  return { suggestions: active.filter((exercise) => canonicalIdentityName(exercise.name).includes(normalized)).sort((a, b) => a.name.localeCompare(b.name))
     .slice(0, 20).map((exercise) => ({ value: exercise.id, label: exercise.name })),
-    createLabel: name && name.length <= 120 && !active.some((exercise) => exercise.name.toLowerCase() === name.toLowerCase()) ? `+ Create “${name}”` : undefined };
+    createLabel: name && name.length <= 120 && !active.some((exercise) => canonicalIdentityName(exercise.name) === normalized) ? `+ Create “${name}”` : undefined };
 }

@@ -1,7 +1,8 @@
 import type { WorkCounterparty, WorkItem } from './types';
+import { canonicalIdentityName, canonicalSearchText, normalizeIdentityDisplayName } from '@/utils/text-normalization';
 
 export function normalizeClientQuery(name: string) {
-  return name.trim().replace(/\s+/g, ' ').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+  return canonicalSearchText(name);
 }
 
 const compare = (a: string, b: string) => a < b ? -1 : a > b ? 1 : 0;
@@ -16,10 +17,10 @@ function matchingClients(clients: WorkCounterparty[], query: string) {
 
 export function clientAutocomplete(clients: WorkCounterparty[], query: string) {
   const active = clients.filter((client) => client.deletedAt === null);
-  const normalized = normalizeClientQuery(query);
-  const name = query.trim().replace(/\s+/g, ' ');
+  const name = normalizeIdentityDisplayName(query);
+  const identity = canonicalIdentityName(name);
   return { suggestions: matchingClients(active, query),
-    createLabel: normalized && !active.some((client) => normalizeClientQuery(client.name) === normalized) ? `+ Create "${name}"` : undefined };
+    createLabel: name && !active.some((client) => canonicalIdentityName(client.name) === identity) ? `+ Create "${name}"` : undefined };
 }
 
 /** Archived clients can still pay historical debts; never offer these for new work. */

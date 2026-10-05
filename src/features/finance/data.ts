@@ -1,8 +1,9 @@
-import { and, asc, desc, eq, isNull, sql } from 'drizzle-orm';
+import { and, asc, desc, eq, isNull } from 'drizzle-orm';
 
 import type { AxisDatabase } from '@/database/client';
 import { commitmentOccurrences, financeCategories, financeTransactions, workPaymentAllocations } from '@/database/schema';
 import { localDateString } from '@/utils/calendar';
+import { canonicalIdentityName, normalizeIdentityDisplayName } from '@/utils/text-normalization';
 
 import { FinanceValidationError } from './errors';
 import { readFinanceAnalytics } from './analytics';
@@ -100,13 +101,18 @@ export function createFinanceDataAccess(db: AxisDatabase, newId: () => string, n
 
     createCategory(name: string, type: TransactionType) {
       if (!transactionTypes.includes(type)) throw new FinanceValidationError('Choose Income or Expense for the category.');
-      const normalized = name.trim().replace(/\s+/g, ' ');
+      const normalized = normalizeIdentityDisplayName(name);
       if (!normalized) throw new FinanceValidationError('Enter a category name.');
-      const duplicate = db.select().from(financeCategories).where(and(eq(financeCategories.type, type), isNull(financeCategories.deletedAt),
-        sql`lower(${financeCategories.name}) = lower(${normalized})`)).get();
-      if (duplicate) throw new FinanceValidationError('A category with this name already exists for this type.');
-      const timestamp = now();
-      return db.insert(financeCategories).values({ id: newId(), name: normalized, type, isBuiltIn: false, createdAt: timestamp, updatedAt: timestamp }).returning().get();
+      return db.transaction((query) => {
+        const identity = canonicalIdentityName(normalized);
+        const duplicate = query.select().from(financeCategories)
+          .where(and(eq(financeCategories.type, type), isNull(financeCategories.deletedAt))).all()
+          .some((category) => canonicalIdentityName(category.name) === identity);
+        if (duplicate) throw new FinanceValidationError('A category with this name already exists for this type.');
+        const timestamp = now();
+        return query.insert(financeCategories).values({ id: newId(), name: normalized, type, isBuiltIn: false,
+          createdAt: timestamp, updatedAt: timestamp }).returning().get();
+      }, { behavior: 'immediate' });
     },
 
     deleteCategory(id: string) {
