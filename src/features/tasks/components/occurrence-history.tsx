@@ -58,8 +58,8 @@ export function OccurrenceHistory({ task, categories, recurrences, readPage, onS
   return (
     <AdaptiveModal onDismiss={onDismiss}>
       <AdaptiveSheet contentContainerStyle={styles.content} header={<View style={styles.header}>
-        <ThemedText type="smallBold" accessibilityRole="header" style={styles.title}>{task.title} · History</ThemedText>
-        <TaskButton label="Done" onPress={onDismiss} />
+        <ThemedText type="sheetTitle" accessibilityRole="header" style={styles.title}>{task.title} · History</ThemedText>
+        <TaskButton variant="quiet" label="Done" onPress={onDismiss} />
               </View>}>
         <TaskError message={error} />
         {!!error && <TaskButton label="Retry" onPress={older} />}

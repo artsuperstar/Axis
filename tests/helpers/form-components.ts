@@ -34,8 +34,12 @@ export const calendarGrid = require('../../src/features/calendar/components/mont
 export const calendarAgenda = require('../../src/features/calendar/components/day-agenda') as typeof import('../../src/features/calendar/components/day-agenda');
 export const commitmentViews = require('../../src/features/finance/commitments/components/commitments-view') as typeof import('../../src/features/finance/commitments/components/commitments-view');
 export const theme = require('../../src/constants/theme') as typeof import('../../src/constants/theme');
+export const themedText = require('../../src/components/themed-text') as typeof import('../../src/components/themed-text');
+export const themedView = require('../../src/components/themed-view') as typeof import('../../src/components/themed-view');
+export const statusText = require('../../src/components/status-text') as typeof import('../../src/components/status-text');
 export const fitnessForms = require('../../src/features/fitness/components/fitness-forms') as typeof import('../../src/features/fitness/components/fitness-forms');
 export const fitnessWorkout = require('../../src/features/fitness/components/workout-sheet') as typeof import('../../src/features/fitness/components/workout-sheet');
+export const workoutContent = require('../../src/features/fitness/components/workout-content') as typeof import('../../src/features/fitness/components/workout-content');
 export const homeContent = require('../../src/features/home/components/home-content') as typeof import('../../src/features/home/components/home-content');
 export const journalEditor = require('../../src/features/journal/components/journal-editor') as typeof import('../../src/features/journal/components/journal-editor');
 export const journalHistory = require('../../src/features/journal/components/journal-history') as typeof import('../../src/features/journal/components/journal-history');
@@ -51,6 +55,7 @@ export function renderControl(render: () => ReactNode) {
 }
 
 type ControlProps = { children?: ReactNode; label?: string; onPress?: () => void; accessibilityLabel?: string; disabled?: boolean; editable?: boolean;
+  accessibilityHint?: string;
   testID?: string; accessibilityState?: { selected?: boolean };
   style?: { position?: string }; value?: string | number | null; options?: { value: string | number | null; label: string }[]; helperText?: string;
   getResults?: (query: string) => import('../../src/components/autocomplete-field').AutocompleteResults<string | null>;

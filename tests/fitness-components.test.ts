@@ -10,7 +10,7 @@ import { blankSet, exerciseResults, measurementOptions, validateSet } from '../s
 import { builtInExercises, seedFitnessExercises } from '../src/features/fitness/seed';
 import type { MeasurementType } from '../src/features/fitness/types';
 import { bundledMigrations, database } from './helpers/database';
-import { autocomplete, fitnessForms, fitnessWorkout, renderControl } from './helpers/form-components';
+import { autocomplete, fitnessForms, fitnessWorkout, workoutContent, renderControl } from './helpers/form-components';
 
 async function initialized() {
   const result = database(); await migrate(result.db, bundledMigrations); seedFitnessExercises(result.db);
@@ -67,8 +67,8 @@ test('selecting an existing exercise in the workout picker persists it and retur
 
 for (const [type, values, fields, excluded] of [
   ['strength', { weight: '12.5', reps: '10' }, ['Weight (kg) *', 'Reps *'], ['Minutes', 'Distance (km)']],
-  ['bodyweight', { reps: '8' }, ['Added weight (kg, optional)', 'Reps *'], ['Minutes', 'Distance (km)']],
-  ['duration', { minutes: '1', seconds: '30' }, ['Minutes', 'Seconds (0–59)'], ['Reps *', 'Weight (kg) *']],
+  ['bodyweight', { reps: '8' }, ['Reps *', 'Added weight (kg, optional)'], ['Minutes', 'Distance (km)']],
+  ['duration', { minutes: '1', seconds: '30' }, ['Minutes', 'Seconds'], ['Reps *', 'Weight (kg) *']],
   ['distance', { distance: '2.5', minutes: '10' }, ['Distance (km)', 'Minutes (optional)'], ['Reps *', 'Weight (kg) *']],
 ] as [MeasurementType, Partial<ReturnType<typeof blankSet>>, string[], string[]][]) {
   test(`set editor exposes only ${type} fields and saves exact previous-set defaults`, async (t) => {
@@ -85,18 +85,21 @@ for (const [type, values, fields, excluded] of [
   });
 }
 
-test('Workout sheet shows actual sets, next draft ordinal and planned count without storing empty slots', async (t) => {
+test('inline Workout shows natural set numbering and Add set; History detail stays read-only', async (t) => {
   const { sqlite, fitness } = await initialized(); t.after(() => sqlite.close());
   const session = fitness.startWorkout(); const exerciseId = fitness.addSessionExercise(session.id, builtInExercises[0].id);
   const a = fitness.addSet(exerciseId, { ...blankSet(), weight: '60', reps: '10' });
   fitness.addSet(exerciseId, { ...blankSet(), weight: '60', reps: '9' }); fitness.deleteSet(a);
   const events: string[] = [];
-  const callbacks = { error: null, onDismiss: () => {}, onFinish: () => {}, onDiscard: () => {}, onAddExercise: () => {},
-    onRemoveExercise: () => {}, onSet: (id: string, setId: string | null) => events.push(`${id}:${setId}`), onDeleteSet: () => {}, onNote: () => {} };
-  const form = renderControl(() => fitnessWorkout.WorkoutSheet({ ...callbacks, session: fitness.readSession(session.id) }));
-  assert.match(form.markup, /Set 1 · 60 kg × 9/); assert.ok(!form.markup.includes('Set 2 ·'));
-  form.elements.find((element) => element.props.label === 'Log set 2')!.props.onPress!();
-  assert.deepEqual(events, [`${exerciseId}:null`]); assert.ok(form.elements.some((element) => element.props.label === 'Finish Workout'));
+  const callbacks = { error: null, onDismiss: () => {}, onAddExercise: () => {}, onActions: () => {},
+    onSet: (id: string, setId: string | null) => events.push(`${id}:${setId}`), onNote: () => {} };
+  const active = fitness.readSession(session.id);
+  const form = renderControl(() => workoutContent.WorkoutContent({ ...callbacks, session: active }));
+  assert.match(form.markup, /set 1\. 60 kg, 9 reps/); assert.ok(!form.markup.includes('set 2.'));
+  assert.ok(form.elements.some((element) => element.props.accessibilityHint?.includes('Edit this set'))); assert.ok(!form.markup.includes('aria-modal'));
+  form.elements.find((element) => element.props.label === '+ Add set')!.props.onPress!();
+  assert.deepEqual(events, [`${exerciseId}:null`]);
+  assert.equal(renderControl(() => fitnessWorkout.WorkoutSheet({ ...callbacks, session: active })).elements.length, 0);
   fitness.finishWorkout(session.id);
   const history = renderControl(() => fitnessWorkout.WorkoutSheet({ ...callbacks, session: fitness.readSession(session.id) }));
   assert.match(history.markup, /60 kg × 9/);

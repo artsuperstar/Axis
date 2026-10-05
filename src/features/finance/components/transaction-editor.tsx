@@ -63,9 +63,9 @@ export function TransactionEditor({ transaction, categories, onSave, onCreateCat
   return (
     <AdaptiveModal onDismiss={onDismiss}>
       <AdaptiveSheet contentContainerStyle={styles.content} header={<View style={styles.header}>
-        <FormButton label="Cancel" onPress={onDismiss} />
-        <ThemedText type="smallBold" accessibilityRole="header" style={[styles.heading, styles.title]}>{transaction ? 'Edit transaction' : 'New transaction'}</ThemedText>
-        <FormButton label="Save" onPress={save} />
+        <FormButton variant="quiet" label="Cancel" onPress={onDismiss} />
+        <ThemedText type="sheetTitle" accessibilityRole="header" style={[styles.heading, styles.title]}>{transaction ? 'Edit transaction' : 'New transaction'}</ThemedText>
+        <FormButton variant="primary" label="Save" onPress={save} />
       </View>}>
         <FormError message={error} />
         <SegmentedControl label="Type *" value={draft.type} options={transactionTypeOptions} disabled={commitmentPayment || workPayment} onChange={(type) => {

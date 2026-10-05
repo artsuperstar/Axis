@@ -3,7 +3,7 @@ import { AccessibilityInfo, Keyboard, Platform, Pressable, ScrollView, StyleShee
 import { SafeAreaInsetsContext } from 'react-native-safe-area-context';
 
 import { ThemedText } from '@/components/themed-text';
-import { Spacing } from '@/constants/theme';
+import { Radius, Space, SurfaceColors } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
 
 import { selectionMenuLayout, selectionOverlayReducer, type SelectionOverlayState } from './form-selection';
@@ -182,10 +182,10 @@ export function SelectionOverlay({ label, content, inline, layout, panelRef, hea
   return <View style={StyleSheet.absoluteFill} role="dialog" aria-label={inline?.title ?? `${label} choices`} aria-modal accessibilityViewIsModal onAccessibilityEscape={onClose}>
     <Pressable style={StyleSheet.absoluteFill} accessibilityRole="button" accessibilityLabel={inline ? `Dismiss ${inline.title.toLowerCase()} without saving` : `Close ${label.toLowerCase()} choices`} onPress={onClose} />
     {layout && <View ref={panelRef} style={[styles.menu, { left: layout.left, top: layout.top, width: layout.width, height: layout.height,
-      backgroundColor: colors.backgroundElement, borderColor: colors.textSecondary }]}>
+      backgroundColor: colors[SurfaceColors.overlay], borderColor: colors.borderStrong }]}>
       <View ref={headingRef} accessible tabIndex={-1} accessibilityRole="header" accessibilityLabel={inline?.title ?? `${label} choices`} style={styles.heading}
         onLayout={(event) => onHeadingHeight(event.nativeEvent.layout.height)}>
-        <ThemedText type="smallBold">{inline?.title ?? label}</ThemedText>
+        <ThemedText type="cardTitle">{inline?.title ?? label}</ThemedText>
       </View>
       {inline ? inline.content : <ScrollView keyboardShouldPersistTaps="always" style={styles.container} contentContainerStyle={styles.options}
         onContentSizeChange={(_width, height) => onOptionsHeight(height)}>{content}</ScrollView>}
@@ -202,7 +202,7 @@ export function FormScrollView({ onScroll, scrollEnabled = true, ref, ...props }
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
-  menu: { position: 'absolute', borderWidth: 1, borderRadius: Spacing.two, overflow: 'hidden', elevation: 8 },
-  heading: { padding: Spacing.two, flexShrink: 0 },
-  options: { padding: Spacing.two, gap: Spacing.two },
+  menu: { position: 'absolute', borderWidth: 1, borderRadius: Radius.overlay, overflow: 'hidden', elevation: 4 },
+  heading: { padding: Space.sm, flexShrink: 0 },
+  options: { padding: Space.sm, gap: Space.xs },
 });

@@ -120,7 +120,8 @@ test('Work-linked Finance editor locks type/amount and its row hides ordinary De
   assert.equal(editor.elements.find((element) => element.props.label === 'Amount *')!.props.editable, false);
   assert.equal(editor.elements.find((element) => element.props.label === 'Amount *')!.props.helperText, 'Amount is controlled by the linked Work payment.');
   const amountControl = renderControl(() => controls.FormField({ label: 'Amount *', value: '300,00', editable: false, helperText: 'Controlled by Work.' }));
-  assert.match(amountControl.markup, /aria-disabled="true"/); assert.match(amountControl.markup, /opacity:0\.45/);
+  assert.doesNotMatch(amountControl.markup, /aria-disabled="true"|opacity:0\.45/);
+  assert.match(amountControl.markup, /Read only/);
   assert.match(amountControl.markup, /Controlled by Work/);
   assert.match(amountControl.markup, /readOnly=""|readonly=""/);
   assert.notEqual(editor.elements.find((element) => element.props.label === 'Description *')!.props.editable, false);

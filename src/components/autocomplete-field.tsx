@@ -1,7 +1,8 @@
 import { useEffect, useId, useRef, useState } from 'react';
 import { ScrollView, StyleSheet, TextInput, View } from 'react-native';
 
-import { Spacing } from '@/constants/theme';
+import { Space } from '@/constants/theme';
+import { useTheme } from '@/hooks/use-theme';
 
 import { FormButton, FormChoice, FormError, FormField, FormSelect } from './form-controls';
 import { submitAutocompleteSelection, type SelectionOption, type SelectionValue } from './form-selection';
@@ -66,8 +67,8 @@ export function AutocompletePanel<T extends SelectionValue>({ label, value, getR
     </View>
     <ScrollView style={styles.results} keyboardShouldPersistTaps="always" contentContainerStyle={styles.options}
       onContentSizeChange={(_width, height) => { resultsHeight.current = height; onSize(topHeight.current + height); }}>
-      {!!description && <ThemedText type="small" themeColor="textSecondary">{description}</ThemedText>}
-      <ThemedText type="small" themeColor="textSecondary" accessibilityLiveRegion="polite">
+      {!!description && <ThemedText type="secondary" themeColor="textSecondary">{description}</ThemedText>}
+      <ThemedText type="metadata" themeColor="textSecondary" accessibilityLiveRegion="polite">
         {query.trim() ? `${results.suggestions.length} match${results.suggestions.length === 1 ? '' : 'es'}` : 'Type to find a match.'}
       </ThemedText>
       <AutocompleteOptions value={value} results={results} onSelect={select} onCreate={onCreate || onRequestCreate ? create : undefined} />
@@ -78,16 +79,20 @@ export function AutocompletePanel<T extends SelectionValue>({ label, value, getR
 export function AutocompleteOptions<T extends SelectionValue>({ value, results, onSelect, onCreate }: {
   value: T; results: AutocompleteResults<T>; onSelect: (value: T) => void; onCreate?: () => void;
 }) {
+  const colors = useTheme();
   return <>
     {results.suggestions.map((option) => <FormChoice key={String(option.value)} label={option.label} selected={option.value === value}
       disabled={option.disabled} onPress={() => onSelect(option.value)} />)}
-    {onCreate && !!results.createLabel && <FormButton label={results.createLabel} onPress={onCreate} />}
+    {onCreate && !!results.createLabel && <View style={[styles.createAction, { borderColor: colors.border }]}>
+      <FormButton variant="quiet" label={results.createLabel} onPress={onCreate} />
+    </View>}
   </>;
 }
 
 const styles = StyleSheet.create({
   panel: { flex: 1, minHeight: 0 },
-  search: { padding: Spacing.two, gap: Spacing.two, flexShrink: 0 },
+  search: { padding: Space.sm, gap: Space.sm, flexShrink: 0 },
   results: { flex: 1, minHeight: 0 },
-  options: { padding: Spacing.two, gap: Spacing.two },
+  options: { padding: Space.sm, gap: Space.sm },
+  createAction: { borderTopWidth: 1, paddingTop: Space.sm },
 });

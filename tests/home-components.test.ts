@@ -66,9 +66,9 @@ test('bounded preview communicates full count and remaining items with the corre
   assert.deepEqual(selected, target);
 });
 
-test('active workout is prominent and Resume opens the exact existing Fitness session', () => {
+test('active workout is prominent and Resume navigates to the Fitness tab', () => {
   let selected: HomeNavigation | null = null;
-  const target = { pathname: '/home-source' as const, params: { source: 'fitness' as const, recordId: 'workout-id' } };
+  const target = { pathname: '/(tabs)/fitness' as const };
   const form = renderControl(() => homeContent.HomeContent({ snapshot: { ...empty(), nothingPending: false, activeWorkout: { session: workout(), target } },
     onOpen: (value) => { selected = value; }, onComplete: () => {} }));
   assert.match(form.markup, /Workout in progress/); assert.match(form.markup, /Upper Body/);

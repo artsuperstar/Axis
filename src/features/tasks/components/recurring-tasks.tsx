@@ -21,8 +21,8 @@ export function RecurringTasks({ tasks, recurrences, onEdit, onHistory, onDismis
   return (
     <AdaptiveModal onDismiss={onDismiss} visible={visible} onClosed={onClosed}>
       <AdaptiveSheet contentContainerStyle={styles.content} header={<View style={styles.header}>
-              <ThemedText type="smallBold" accessibilityRole="header" style={{ flex: 1 }}>Repeating tasks</ThemedText>
-              <TaskButton label="Done" onPress={onDismiss} />
+              <ThemedText type="sheetTitle" accessibilityRole="header" style={{ flex: 1 }}>Repeating tasks</ThemedText>
+              <TaskButton variant="quiet" label="Done" onPress={onDismiss} />
             </View>}>
               {!series.length && <ThemedText>No repeating tasks yet.</ThemedText>}
               {series.map((task) => (

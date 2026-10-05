@@ -2,7 +2,7 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useRef, use
 import { Keyboard, Modal, Platform, Pressable, ScrollView, StyleSheet, View, useWindowDimensions, type KeyboardEvent, type StyleProp, type TextInput, type ViewStyle } from 'react-native';
 import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { Spacing } from '@/constants/theme';
+import { Radius, Space, SurfaceColors } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
 
 import { adaptiveSheetLayout, focusedFieldScroll, sheetViewportLayout } from './adaptive-sheet-layout';
@@ -18,13 +18,14 @@ const SheetBounds = createContext<{ height: number; bottomInset: number; leftIns
 export function AdaptiveModal({ children, onDismiss, visible = true, onClosed }: {
   children: ReactNode; onDismiss: () => void; visible?: boolean; onClosed?: () => void;
 }) {
+  const colors = useTheme();
   const menu = useRef<FormSelectionHandle>(null);
   function requestClose() { if (!menu.current?.dismiss()) onDismiss(); }
   return <Modal visible={visible} transparent presentationStyle="overFullScreen" statusBarTranslucent navigationBarTranslucent onRequestClose={requestClose} onDismiss={onClosed}>
     <SafeAreaProvider>
       <View style={styles.fill}>
         <FormSelectionHost ref={menu}>
-          <Pressable style={StyleSheet.absoluteFill} accessibilityRole="button" accessibilityLabel="Close sheet" onPress={requestClose} />
+          <Pressable style={[StyleSheet.absoluteFill, { backgroundColor: colors.scrim }]} accessibilityRole="button" accessibilityLabel="Close sheet" onPress={requestClose} />
           <SheetViewport onDismiss={requestClose}>{children}</SheetViewport>
         </FormSelectionHost>
       </View>
@@ -39,7 +40,7 @@ function SheetViewport({ children, onDismiss }: { children: ReactNode; onDismiss
   const [keyboardTop, setKeyboardTop] = useState<number | null>(() => Keyboard.metrics?.()?.screenY ?? null);
   const revision = useRef(0);
   const [windowFrame, setWindowFrame] = useState({ height, top: 0 });
-  const available = sheetViewportLayout(windowFrame.height, windowFrame.top, keyboardTop, insets.top, insets.bottom, Spacing.two);
+  const available = sheetViewportLayout(windowFrame.height, windowFrame.top, keyboardTop, insets.top, insets.bottom, Space.sm);
   const invalidate = useCallback(() => { revision.current++; }, []);
   const measure = useCallback(() => {
     const current = ++revision.current;
@@ -94,7 +95,7 @@ export function AdaptiveSheet({ title, header, children, onDismiss, action, onCo
       bodyViewport.current?.measureInWindow((_x, bodyTop, _width, bodyHeight) => {
         input.measureInWindow((_inputX, inputTop, _inputWidth, inputHeight) => {
           if (focused.current !== input || body.current !== scroll || !bodyHeight || !inputHeight) return;
-          const next = focusedFieldScroll(offset.current, inputTop, inputHeight, bodyTop, bodyHeight, Spacing.two);
+          const next = focusedFieldScroll(offset.current, inputTop, inputHeight, bodyTop, bodyHeight, Space.sm);
           if (Math.abs(next - offset.current) > 1) scroll.scrollTo({ y: next, animated: false });
         });
       });
@@ -104,13 +105,13 @@ export function AdaptiveSheet({ title, header, children, onDismiss, action, onCo
     blur: (input: TextInput | null) => { if (focused.current === input) focused.current = null; } }), [revealFocused]);
   useEffect(() => { revealFocused(); }, [layout.height, headerHeight, contentHeight, revealFocused]);
   useEffect(() => () => { if (frame.current !== null) cancelAnimationFrame(frame.current); focused.current = null; }, []);
-  return <View onLayout={selection.reposition} style={[styles.sheet, { backgroundColor: colors.background, height: ready ? layout.height : maximum,
+  return <View onLayout={selection.reposition} style={[styles.sheet, { backgroundColor: colors[SurfaceColors.overlay], borderColor: colors.border, height: ready ? layout.height : maximum,
     paddingBottom: layout.paddingBottom, paddingLeft: bounds?.leftInset ?? 0, paddingRight: bounds?.rightInset ?? 0, opacity: ready ? 1 : 0 }]}>
     <View style={[styles.fixedHeader, styles.inner]} onLayout={(event) => setHeaderHeight(Math.ceil(event.nativeEvent.layout.height))}>
       {header ?? <View style={styles.header}>
-        <FormButton label={action ? 'Cancel' : 'Done'} onPress={onDismiss ?? (() => {})} />
-        <ThemedText type="smallBold" accessibilityRole="header" style={styles.heading}>{title}</ThemedText>
-        {action && onConfirm && <FormButton label={action} onPress={onConfirm} />}
+        <FormButton variant="quiet" label={action ? 'Cancel' : 'Done'} onPress={onDismiss ?? (() => {})} />
+        <ThemedText type="sheetTitle" accessibilityRole="header" style={styles.heading}>{title}</ThemedText>
+        {action && onConfirm && <FormButton variant="primary" label={action} onPress={onConfirm} />}
       </View>}
       <SheetRefreshNotice />
     </View>
@@ -131,11 +132,11 @@ export function AdaptiveSheet({ title, header, children, onDismiss, action, onCo
 const styles = StyleSheet.create({
   fill: { flex: 1 },
   placement: { position: 'absolute', left: 0, right: 0, justifyContent: 'flex-end', alignItems: 'center' },
-  sheet: { width: '100%', borderTopLeftRadius: Spacing.two, borderTopRightRadius: Spacing.two, overflow: 'hidden' },
+  sheet: { width: '100%', borderTopLeftRadius: Radius.overlay, borderTopRightRadius: Radius.overlay, overflow: 'hidden', borderTopWidth: 1 },
   inner: { width: '100%', maxWidth: 640, alignSelf: 'center' },
   fixedHeader: { flexShrink: 0 },
   body: { flex: 1, minHeight: 0 },
-  header: { flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', gap: Spacing.two, padding: Spacing.three },
+  header: { flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', gap: Space.sm, padding: Space.lg },
   heading: { flex: 1, minWidth: 80, textAlign: 'center' },
-  content: { padding: Spacing.three, gap: Spacing.three },
+  content: { padding: Space.lg, gap: Space.lg },
 });

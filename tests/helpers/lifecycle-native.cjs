@@ -34,12 +34,13 @@ const controls = {
   FormSelectionHost, FormScrollView,
 };
 const fixture = {
-  db: null, failures: new Set(), accesses: {},
+  db: null, failures: new Set(), accesses: {}, reads: [], alerts: [], navigation: [],
   wrap(kind, access) {
     const wrapped = new Proxy(access, { get(target, name) {
       const value = target[name];
       if (typeof value !== 'function' || !String(name).startsWith('read')) return value;
       return (...args) => {
+        fixture.reads.push(`${kind}.${String(name)}`);
         if (fixture.failures.has(`${kind}.${String(name)}`)) throw new Error('Injected refresh failure');
         return value(...args);
       };
@@ -54,9 +55,10 @@ module.exports = {
   autocomplete: { AutocompleteField: host('AutocompleteField') },
   themedText: { ThemedText: host('ThemedText') },
   safeArea: { SafeAreaProvider: ({ children }) => children, useSafeAreaInsets: () => ({ top: 0, left: 0, right: 0, bottom: 0 }) },
+  screenSafeArea: { SafeAreaView: host('SafeAreaView') },
   crypto: { randomUUID }, database: { useDatabase: () => fixture.db },
   picker: { __esModule: true, default() { throw new Error('Native picker is outside this lifecycle test.'); }, DateTimePickerAndroid: { open() {} } },
-  router: { useFocusEffect(callback) {
+  router: { router: { push: (target) => fixture.navigation.push({ method: 'push', target }), navigate: (target) => fixture.navigation.push({ method: 'navigate', target }) }, useFocusEffect(callback) {
     React.useEffect(() => {
       const effect = { callback, cleanup: callback() }; focusEffects.add(effect);
       return () => { effect.cleanup?.(); focusEffects.delete(effect); };
@@ -68,7 +70,7 @@ module.exports = {
     StyleSheet: { create: (styles) => styles, absoluteFill: {} }, Platform: { OS: 'web', select: (options) => options.web ?? options.default },
     Keyboard: { metrics: () => null, addListener: () => ({ remove() {} }), dismiss() {} },
     useColorScheme: () => 'light', useWindowDimensions: () => ({ height: 800, width: 400, scale: 1, fontScale: 1 }),
-    Alert: { alert() {} }, AppState: { addEventListener(_event, callback) {
+    Alert: { alert: (title, message, buttons) => fixture.alerts.push({ title, message, buttons }) }, AppState: { addEventListener(_event, callback) {
       appStateListeners.add(callback); return { remove: () => appStateListeners.delete(callback) };
     } },
   },

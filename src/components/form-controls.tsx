@@ -2,11 +2,13 @@ import { useEffect, useId, useRef, useState, type Ref } from 'react';
 import { Pressable, ScrollView, StyleSheet, TextInput, View, type TextInputProps } from 'react-native';
 
 import { ThemedText } from '@/components/themed-text';
-import { Spacing } from '@/constants/theme';
+import { ControlSize, Radius, Space, Typography } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
 
 import { submitInlineName, type SelectionOption, type SelectionValue } from './form-selection';
 import { useFormFocus } from './form-focus';
+import { buttonAppearance, fieldAppearance, type ButtonVariant } from './control-appearance';
+import { StatusText } from './status-text';
 import { focusFormControl, useFormSelection, type InlineActionControls, type SelectionInlineAction } from './form-selection-host';
 
 export { FormScrollView, FormSelectionHost, focusFormControl, type FormSelectionHandle } from './form-selection-host';
@@ -15,27 +17,31 @@ export function SegmentedControl<T extends SelectionValue>({ label, value, optio
   label: string; value: T; options: readonly SelectionOption<T>[]; onChange: (value: T) => void; disabled?: boolean;
 }) {
   const colors = useTheme();
+  const [focused, setFocused] = useState<number | null>(null);
   return <View style={styles.field}>
-    <ThemedText type="smallBold">{label}</ThemedText>
-    <View accessibilityRole="radiogroup" accessibilityLabel={label} style={[styles.segments, { borderColor: colors.textSecondary }]}>
+    <ThemedText type="button">{label}</ThemedText>
+    <View accessibilityRole="radiogroup" accessibilityLabel={label} style={[styles.segments, { borderColor: colors.border }]}>
       {options.map((option, index) => {
         const selected = option.value === value;
         const unavailable = disabled || !!option.disabled;
         return <Pressable key={String(option.value)} accessibilityRole="radio" accessibilityLabel={`${label}: ${option.label}`}
           accessibilityState={{ checked: selected, disabled: unavailable }} aria-checked={selected} aria-disabled={unavailable}
-          disabled={unavailable} onPress={() => onChange(option.value)}
-          style={({ pressed }) => [styles.segment, { borderRightWidth: index < options.length - 1 ? 1 : 0, borderColor: colors.textSecondary,
-            backgroundColor: selected ? colors.backgroundSelected : colors.backgroundElement, opacity: unavailable ? 0.45 : pressed ? 0.7 : 1 }]}>
-          <ThemedText type="smallBold" style={styles.segmentText}>{option.label}{selected ? ' ✓' : ''}</ThemedText>
+          disabled={unavailable} onPress={() => onChange(option.value)} onFocus={() => setFocused(index)} onBlur={() => setFocused(null)}
+          style={({ pressed }) => [styles.segment, { borderRightWidth: index === options.length - 1 ? 0 : 1, borderColor: colors.border,
+            backgroundColor: unavailable ? colors.surfaceMuted : selected || focused === index ? colors.accentMuted : colors.surface,
+            borderBottomColor: focused === index ? colors.accent : 'transparent', borderBottomWidth: 2, opacity: pressed && !unavailable ? 0.85 : 1 }]}>
+          <ThemedText type="button" style={[styles.segmentText, { color: unavailable ? colors.textMuted : selected ? colors.accent : colors.textPrimary }]}>
+            {option.label}{selected ? ' ✓' : ''}
+          </ThemedText>
         </Pressable>;
       })}
     </View>
   </View>;
 }
 
-export function SelectField<T extends SelectionValue>({ label, value, options, onChange, displayValue, description, action, onOpen, disabled = false, ref }: {
+export function SelectField<T extends SelectionValue>({ label, value, options, onChange, displayValue, description, action, onOpen, disabled = false, error, ref }: {
   label: string; value: T; options: readonly SelectionOption<T>[]; onChange: (value: T) => void; displayValue?: string; description?: string;
-  action?: SelectionInlineAction; onOpen?: () => void; disabled?: boolean; ref?: Ref<View>;
+  action?: SelectionInlineAction; onOpen?: () => void; disabled?: boolean; error?: string | null; ref?: Ref<View>;
 }) {
   const id = useId();
   const trigger = useRef<View>(null);
@@ -46,7 +52,7 @@ export function SelectField<T extends SelectionValue>({ label, value, options, o
     if (typeof ref === 'function') ref(node);
     else if (ref) ref.current = node;
   }} label={label} value={displayValue ?? options.find((option) => option.value === value)?.label ?? 'Choose an option'}
-    disabled={disabled} expanded={expanded} onPress={() => {
+    disabled={disabled} expanded={expanded} error={error} onPress={() => {
       if (expanded) { selection.close(); return; }
       if (!trigger.current) return;
       onOpen?.();
@@ -62,13 +68,13 @@ export function SelectionMenu<T extends SelectionValue>({ label, value, options,
 }) {
   const colors = useTheme();
   return <>
-    {!!description && <ThemedText type="small" themeColor="textSecondary">{description}</ThemedText>}
+    {!!description && <ThemedText type="secondary" themeColor="textSecondary">{description}</ThemedText>}
     <View accessibilityRole="radiogroup" accessibilityLabel={label} style={styles.field}>
       {options.map((option) => <FormChoice key={String(option.value)} label={option.label} selected={option.value === value} disabled={option.disabled}
         onPress={() => { onClose(); onChange(option.value); }} />)}
     </View>
-    {action && <View style={[styles.menuAction, { borderColor: colors.textSecondary }]}>
-      <FormButton label={action.label} accessibilityLabel={action.accessibilityLabel} onPress={() => onInlineAction?.(action)} />
+    {action && <View style={[styles.menuAction, { borderColor: colors.border }]}>
+      <FormButton variant="quiet" label={action.label} accessibilityLabel={action.accessibilityLabel} onPress={() => onInlineAction?.(action)} />
     </View>}
   </>;
 }
@@ -115,20 +121,23 @@ export function InlineNameForm({ title, onCancel, onComplete, onSize, onSubmit, 
       <FormError message={error} />
     </ScrollView>
     <View style={styles.inlineFooter} onLayout={(event) => setFooterHeight(event.nativeEvent.layout.height)}>
-      <View style={styles.inlineButton}><FormButton label="Cancel" accessibilityLabel={`Cancel ${title.toLowerCase()}`} onPress={onCancel} /></View>
-      <View style={styles.inlineButton}><FormButton label="Create" accessibilityLabel={`Create ${title.toLowerCase().replace(/^new /, '')}`} onPress={submit} disabled={!name.trim()} /></View>
+      <View style={styles.inlineButton}><FormButton variant="quiet" label="Cancel" accessibilityLabel={`Cancel ${title.toLowerCase()}`} onPress={onCancel} /></View>
+      <View style={styles.inlineButton}><FormButton variant="primary" label="Create" accessibilityLabel={`Create ${title.toLowerCase().replace(/^new /, '')}`} onPress={submit} disabled={!name.trim()} /></View>
     </View>
   </View>;
 }
 
-export function FormButton({ label, onPress, disabled = false, selected = false, accessibilityLabel }: {
+export function FormButton({ label, onPress, disabled = false, selected = false, accessibilityLabel, variant = 'secondary' }: {
   label: string;
   onPress: () => void;
   disabled?: boolean;
   selected?: boolean;
   accessibilityLabel?: string;
+  variant?: ButtonVariant;
 }) {
   const colors = useTheme();
+  const [focused, setFocused] = useState(false);
+  const appearance = buttonAppearance(colors, variant, { disabled, selected, focused });
   return (
     <Pressable
       accessibilityRole="button"
@@ -136,17 +145,14 @@ export function FormButton({ label, onPress, disabled = false, selected = false,
       accessibilityState={{ disabled, selected }}
       disabled={disabled}
       onPress={onPress}
-      style={({ pressed }) => [styles.button, {
-        borderColor: selected ? colors.text : colors.textSecondary,
-        backgroundColor: selected ? colors.backgroundSelected : colors.backgroundElement,
-        opacity: disabled ? 0.45 : pressed ? 0.7 : 1,
-      }]}>
-      <ThemedText type="smallBold">{label}</ThemedText>
+      onFocus={() => setFocused(true)} onBlur={() => setFocused(false)}
+      style={({ pressed }) => [styles.button, buttonAppearance(colors, variant, { disabled, selected, focused, pressed }).style]}>
+      <ThemedText type="button" style={{ color: appearance.textColor }}>{label}{variant === 'navigation' && selected ? ' ✓' : ''}</ThemedText>
     </Pressable>
   );
 }
 
-export function FormSelect({ label, value, onPress, disabled = false, expanded = false, accessibilityHint, ref }: {
+export function FormSelect({ label, value, onPress, disabled = false, expanded = false, accessibilityHint, error, ref }: {
   label: string;
   value: string;
   onPress: () => void;
@@ -154,11 +160,14 @@ export function FormSelect({ label, value, onPress, disabled = false, expanded =
   expanded?: boolean;
   accessibilityHint?: string;
   ref?: Ref<View>;
+  error?: string | null;
 }) {
   const colors = useTheme();
+  const [focused, setFocused] = useState(false);
+  const appearance = fieldAppearance(colors, { disabled, focused, expanded, invalid: !!error });
   return (
     <View style={styles.field}>
-      <ThemedText type="smallBold">{label}</ThemedText>
+      <ThemedText type="button">{label}</ThemedText>
       <Pressable
         ref={ref}
         accessible
@@ -169,17 +178,16 @@ export function FormSelect({ label, value, onPress, disabled = false, expanded =
         aria-valuetext={value}
         aria-expanded={expanded}
         aria-disabled={disabled}
-        accessibilityHint={accessibilityHint ?? `Choose ${label.toLowerCase()}`}
+        aria-invalid={!!error}
+        accessibilityHint={[accessibilityHint ?? `Choose ${label.toLowerCase()}`, error].filter(Boolean).join('. ')}
         disabled={disabled}
         onPress={onPress}
-        style={({ pressed }) => [styles.select, {
-          borderColor: colors.textSecondary,
-          backgroundColor: colors.backgroundElement,
-          opacity: disabled ? 0.45 : pressed ? 0.7 : 1,
-        }]}>
-        <ThemedText style={styles.value}>{value}</ThemedText>
-        <ThemedText accessible={false} importantForAccessibility="no">▾</ThemedText>
+        onFocus={() => setFocused(true)} onBlur={() => setFocused(false)}
+        style={({ pressed }) => [styles.select, appearance, { opacity: pressed && !disabled ? 0.85 : 1 }]}>
+        <ThemedText type="body" style={[styles.value, { color: appearance.color }]}>{value}</ThemedText>
+        <ThemedText type="body" accessible={false} importantForAccessibility="no" style={[styles.check, { color: appearance.color }]}>{expanded ? '▴' : '▾'}</ThemedText>
       </Pressable>
+      <FormError message={error ?? null} />
     </View>
   );
 }
@@ -191,6 +199,7 @@ export function FormChoice({ label, selected, onPress, disabled = false }: {
   disabled?: boolean;
 }) {
   const colors = useTheme();
+  const [focused, setFocused] = useState(false);
   return (
     <Pressable
       accessible
@@ -201,13 +210,13 @@ export function FormChoice({ label, selected, onPress, disabled = false }: {
       aria-disabled={disabled}
       disabled={disabled}
       onPress={onPress}
-      style={({ pressed }) => [styles.select, {
-        borderColor: selected ? colors.text : colors.textSecondary,
-        backgroundColor: selected ? colors.backgroundSelected : colors.backgroundElement,
-        opacity: disabled ? 0.45 : pressed ? 0.7 : 1,
+      onFocus={() => setFocused(true)} onBlur={() => setFocused(false)}
+      style={({ pressed }) => [styles.option, {
+        backgroundColor: disabled ? colors.surfaceMuted : selected || focused ? colors.accentMuted : 'transparent',
+        opacity: pressed && !disabled ? 0.85 : 1,
       }]}>
-      <ThemedText style={styles.value}>{label}</ThemedText>
-      <ThemedText accessible={false} importantForAccessibility="no" style={styles.check}>{selected ? '✓' : ''}</ThemedText>
+      <ThemedText type="body" style={[styles.value, { color: disabled ? colors.textMuted : colors.textPrimary }]}>{label}</ThemedText>
+      <ThemedText type="body" accessible={false} importantForAccessibility="no" style={[styles.check, { color: colors.accent }]}>{selected ? '✓' : ''}</ThemedText>
     </Pressable>
   );
 }
@@ -216,20 +225,27 @@ export function FormWeekday({ label, checked, onPress }: { label: string; checke
   const colors = useTheme();
   return (
     <Pressable accessibilityRole="checkbox" accessibilityLabel={label} accessibilityState={{ checked }} onPress={onPress}
-      style={({ pressed }) => [styles.button, { borderColor: checked ? colors.text : colors.textSecondary,
-        backgroundColor: checked ? colors.backgroundSelected : colors.backgroundElement, opacity: pressed ? 0.7 : 1 }]}>
-      <ThemedText type="smallBold">{label.slice(0, 3)}{checked ? ' ✓' : ''}</ThemedText>
+      style={({ pressed }) => [styles.button, buttonAppearance(colors, 'secondary', { selected: checked, pressed }).style]}>
+      <ThemedText type="button" themeColor={checked ? 'accent' : 'textPrimary'}>{label.slice(0, 3)}{checked ? ' ✓' : ''}</ThemedText>
     </Pressable>
   );
 }
 
-export function FormField({ label, style, ref, helperText, editable = true, accessibilityState, onFocus, onBlur, ...props }: TextInputProps & { label: string; helperText?: string; ref?: Ref<TextInput> }) {
+export function FormField({ label, style, ref, helperText, editable = true, readOnly: readOnlyProp = false, disabled = false, error, accessibilityState, onFocus, onBlur, ...props }: TextInputProps & {
+  label: string; helperText?: string; disabled?: boolean; error?: string | null; ref?: Ref<TextInput>;
+}) {
   const colors = useTheme();
   const input = useRef<TextInput>(null);
   const focus = useFormFocus();
+  const [focused, setFocused] = useState(false);
+  const unavailable = disabled || !!accessibilityState?.disabled;
+  const readOnly = (!editable || readOnlyProp) && !unavailable;
   return (
     <View style={styles.field}>
-      <ThemedText type="smallBold">{label}</ThemedText>
+      <View style={styles.fieldLabel}>
+        <ThemedText type="button">{label}</ThemedText>
+        {readOnly && <ThemedText type="metadata" themeColor="textSecondary">Read only</ThemedText>}
+      </View>
       <TextInput
         ref={(node) => {
           input.current = node;
@@ -237,42 +253,45 @@ export function FormField({ label, style, ref, helperText, editable = true, acce
           else if (ref) ref.current = node;
         }}
         accessibilityLabel={label}
-        editable={editable}
-        accessibilityState={{ ...accessibilityState, disabled: !editable || accessibilityState?.disabled }}
-        aria-disabled={!editable || accessibilityState?.disabled}
-        accessibilityHint={helperText}
+        editable={editable && !readOnlyProp && !unavailable}
+        accessibilityState={{ ...accessibilityState, disabled: unavailable }}
+        aria-disabled={unavailable}
+        aria-invalid={!!error}
+        accessibilityHint={[readOnly ? 'Read only' : null, helperText, error].filter(Boolean).join('. ') || undefined}
         placeholderTextColor={colors.textSecondary}
-        selectionColor={colors.text}
-        style={[styles.input, { color: editable ? colors.text : colors.textSecondary, backgroundColor: colors.backgroundElement, borderColor: colors.textSecondary,
-          opacity: editable ? 1 : 0.45 }, style]}
-        onFocus={(event) => { focus?.focus(input.current); onFocus?.(event); }}
-        onBlur={(event) => { focus?.blur(input.current); onBlur?.(event); }}
+        selectionColor={colors.accent}
+        style={[styles.input, fieldAppearance(colors, { readOnly, disabled: unavailable, focused, invalid: !!error }), style]}
+        onFocus={(event) => { setFocused(true); focus?.focus(input.current); onFocus?.(event); }}
+        onBlur={(event) => { setFocused(false); focus?.blur(input.current); onBlur?.(event); }}
         {...props}
       />
-      {!!helperText && <ThemedText type="small" themeColor="textSecondary">{helperText}</ThemedText>}
+      {!!helperText && <ThemedText type="secondary" themeColor="textSecondary">{helperText}</ThemedText>}
+      <FormError message={error ?? null} />
     </View>
   );
 }
 
 export function FormError({ message }: { message: string | null }) {
   if (!message) return null;
-  return <ThemedText accessibilityRole="alert" accessibilityLiveRegion="polite">{message}</ThemedText>;
+  return <StatusText tone="danger" accessibilityRole="alert" accessibilityLiveRegion="polite">{message}</StatusText>;
 }
 
 const styles = StyleSheet.create({
-  segments: { flexDirection: 'row', borderWidth: 1, borderRadius: Spacing.two, overflow: 'hidden' },
-  segment: { flex: 1, minWidth: 0, minHeight: 48, alignItems: 'center', justifyContent: 'center', padding: Spacing.two },
+  segments: { flexDirection: 'row', borderWidth: 1, borderRadius: Radius.control, overflow: 'hidden' },
+  segment: { flex: 1, minWidth: 0, minHeight: ControlSize.field, alignItems: 'center', justifyContent: 'center', padding: Space.sm },
   segmentText: { textAlign: 'center', flexShrink: 1 },
-  menuAction: { borderTopWidth: 1, paddingTop: Spacing.two },
-  button: { minHeight: 44, justifyContent: 'center', alignItems: 'center', borderWidth: 1, borderRadius: Spacing.two, paddingHorizontal: Spacing.three, paddingVertical: Spacing.two },
-  field: { gap: Spacing.two },
-  select: { minHeight: 48, flexDirection: 'row', alignItems: 'center', gap: Spacing.two, borderWidth: 1, borderRadius: Spacing.two, paddingHorizontal: Spacing.three, paddingVertical: Spacing.two },
+  menuAction: { borderTopWidth: 1, paddingTop: Space.sm },
+  button: { minHeight: ControlSize.touch, minWidth: ControlSize.touch, justifyContent: 'center', alignItems: 'center', borderRadius: Radius.control, paddingHorizontal: Space.lg, paddingVertical: Space.sm },
+  field: { gap: Space.sm },
+  fieldLabel: { flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', gap: Space.sm },
+  select: { minHeight: ControlSize.field, flexDirection: 'row', alignItems: 'center', gap: Space.sm, borderWidth: 1, borderRadius: Radius.control, paddingHorizontal: Space.lg, paddingVertical: Space.sm },
+  option: { minHeight: ControlSize.field, flexDirection: 'row', alignItems: 'center', gap: Space.sm, borderRadius: Radius.small, paddingHorizontal: Space.md, paddingVertical: Space.sm },
   value: { flex: 1, flexShrink: 1 },
-  check: { minWidth: 24, textAlign: 'center' },
-  input: { minHeight: 48, borderWidth: 1, borderRadius: Spacing.two, paddingHorizontal: Spacing.three, paddingVertical: Spacing.two, fontSize: 16 },
+  check: { minWidth: ControlSize.indicator, textAlign: 'center' },
+  input: { minHeight: ControlSize.field, borderWidth: 1, borderRadius: Radius.control, paddingHorizontal: Space.lg, paddingVertical: Space.sm, ...Typography.input },
   inlineForm: { flex: 1, minHeight: 0 },
   inlineBody: { flex: 1 },
-  inlineContent: { padding: Spacing.two, gap: Spacing.two },
-  inlineFooter: { flexDirection: 'row', flexWrap: 'wrap', gap: Spacing.two, padding: Spacing.two, flexShrink: 0 },
+  inlineContent: { padding: Space.sm, gap: Space.sm },
+  inlineFooter: { flexDirection: 'row', flexWrap: 'wrap', gap: Space.sm, padding: Space.sm, flexShrink: 0 },
   inlineButton: { flex: 1, minWidth: 80 },
 });

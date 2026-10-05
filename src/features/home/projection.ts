@@ -84,7 +84,7 @@ export function projectHome(sources: HomeSources, now: Date): HomeSnapshot {
   const latest = sources.fitness.history[0];
   const workout = (session: NonNullable<typeof active>) => ({ session, target: { pathname: '/home-source' as const, params: { source: 'fitness' as const, recordId: session.id } } });
   return { date: today, today: sections(todayItems, false), attention: sections(attentionItems, true),
-    activeWorkout: active ? workout(active) : null,
+    activeWorkout: active ? { session: active, target: { pathname: '/(tabs)/fitness' } } : null,
     completedWorkout: !active && latest?.completedAt !== null && latest?.completedAt !== undefined && localDateString(new Date(latest.completedAt)) === today ? workout(latest) : null,
     nothingPending: todayItems.length === 0 && attentionItems.length === 0 && !active };
 }

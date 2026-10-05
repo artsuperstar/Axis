@@ -39,8 +39,8 @@ export function FinanceCategoryManager({ categories, onCreate, onDelete, onDismi
   return (
     <AdaptiveModal onDismiss={onDismiss}>
       <AdaptiveSheet contentContainerStyle={styles.content} header={<View style={styles.header}>
-        <ThemedText type="smallBold" accessibilityRole="header" style={{ flex: 1 }}>Finance categories</ThemedText>
-        <FormButton label="Done" onPress={onDismiss} />
+        <ThemedText type="sheetTitle" accessibilityRole="header" style={{ flex: 1 }}>Finance categories</ThemedText>
+        <FormButton variant="quiet" label="Done" onPress={onDismiss} />
               </View>}>
         <FormError message={error} />
         <SegmentedControl label="Type *" value={type} options={transactionTypeOptions} onChange={(value) => { setType(value); setError(null); }} />

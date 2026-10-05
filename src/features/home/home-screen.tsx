@@ -22,7 +22,7 @@ export function HomeScreen() {
       {home.snapshot && <ThemedText type="small" themeColor="textSecondary">{dateLabel(home.snapshot.date)}</ThemedText>}
       <FormError message={home.error || home.actionError} />
       {!!home.error && <FormButton label="Retry" onPress={home.reload} />}
-      {home.snapshot ? <HomeContent snapshot={home.snapshot} onOpen={(target) => router.push(target)} onComplete={home.completeTask} />
+      {home.snapshot ? <HomeContent snapshot={home.snapshot} onOpen={(target) => target.pathname === '/(tabs)/fitness' ? router.navigate(target) : router.push(target)} onComplete={home.completeTask} />
         : !home.error && <ActivityIndicator color={colors.text} accessibilityLabel="Loading Home" />}
     </View>
   </ScrollView>;

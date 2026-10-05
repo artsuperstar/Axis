@@ -129,7 +129,7 @@ async function workout(t: TestContext) {
 
 test('Fitness set editor keeps exact input across failed detail read and successful Retry, then saves it', async (t) => {
   const { app, fitness, session, sessionExercise } = await workout(t);
-  await app.press(`Log set 1 for ${sessionExercise.exerciseName}`); await app.change('Weight (kg) *', '12,345'); await app.change('Reps *', '8');
+  await app.press(`Add set for ${sessionExercise.exerciseName}`); await app.change('Weight (kg) *', '12,345'); await app.change('Reps *', '8');
   await failAndRetry(app, 'fitness.readSession', observeDraft(app, ['Weight (kg) *', 'Reps *']), () => {
     fitness.addSet(sessionExercise.id, { ...blankSet(), weight: '1', reps: '2' });
   });
@@ -150,7 +150,7 @@ for (const kind of ['exercise', 'workout'] as const) {
 
 test('Fitness preserves an edited set when Retry removes its exercise; authoritative Save rejects it and retains draft', async (t) => {
   const { app, fitness, sessionExercise } = await workout(t); fitness.addSet(sessionExercise.id, { ...blankSet(), weight: '10', reps: '2' });
-  await app.resume(); await app.press(`Edit ${sessionExercise.exerciseName} set 1`); await app.change('Weight (kg) *', '11');
+  await app.resume(); await app.tapSet(`${sessionExercise.exerciseName}, set 1. 10 kg, 2 reps`); await app.change('Weight (kg) *', '11');
   const check = observeDraft(app, ['Weight (kg) *', 'Reps *']);
   await failAndRetry(app, 'fitness.readSession', check, () => fitness.removeSessionExercise(sessionExercise.id));
   await app.press('Save'); check(); assert.ok(app.nodes().some((node) => node.kind === 'FormError' && node.textContent.includes('no longer available')));

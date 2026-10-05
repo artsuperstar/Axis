@@ -45,8 +45,8 @@ export function CategoryManager({ categories, onCreate, onDelete, onDismiss }: {
   return (
     <AdaptiveModal onDismiss={onDismiss}>
       <AdaptiveSheet contentContainerStyle={styles.content} header={<View style={styles.header}>
-        <ThemedText type="subtitle">Categories</ThemedText>
-        <TaskButton label="Done" onPress={onDismiss} />
+        <ThemedText type="sheetTitle" accessibilityRole="header" style={{ flex: 1 }}>Categories</ThemedText>
+        <TaskButton variant="quiet" label="Done" onPress={onDismiss} />
               </View>}>
         <TaskError message={error} />
         <TaskField label="Category name" value={name} onChangeText={setName} returnKeyType="done" onSubmitEditing={create} />

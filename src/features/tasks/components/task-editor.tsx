@@ -121,9 +121,9 @@ export function TaskEditor({ task, recurrence, categories, onSave, onCreateCateg
   return (
     <AdaptiveModal onDismiss={onDismiss}>
       <AdaptiveSheet contentContainerStyle={styles.form} header={<View style={styles.header}>
-        <TaskButton label="Cancel" onPress={onDismiss} />
-        <ThemedText type="smallBold" accessibilityRole="header" style={[styles.heading, styles.headingText]}>{task ? 'Edit task' : 'New task'}</ThemedText>
-        <TaskButton label="Save" onPress={save} />
+        <TaskButton variant="quiet" label="Cancel" onPress={onDismiss} />
+        <ThemedText type="sheetTitle" accessibilityRole="header" style={[styles.heading, styles.headingText]}>{task ? 'Edit task' : 'New task'}</ThemedText>
+        <TaskButton variant="primary" label="Save" onPress={save} />
       </View>}>
         <TaskError message={error} />
         <TaskField label="Title *" accessibilityLabel="Title, required" value={draft.title} onChangeText={(value) => change('title', value)} autoFocus returnKeyType="done" />

@@ -1,7 +1,7 @@
 import { createContext, useContext } from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import { Spacing } from '@/constants/theme';
+import { Space } from '@/constants/theme';
 
 import { FormButton, FormError } from './form-controls';
 
@@ -13,8 +13,8 @@ export function SheetRefreshNotice() {
   if (!status?.error) return null;
   return <View style={styles.notice}>
     <FormError message={status.error} />
-    <FormButton label="Retry refresh" onPress={status.onRetry} />
+    <FormButton variant="secondary" label="Retry refresh" onPress={status.onRetry} />
   </View>;
 }
 
-const styles = StyleSheet.create({ notice: { paddingHorizontal: Spacing.three, paddingBottom: Spacing.two, gap: Spacing.one } });
+const styles = StyleSheet.create({ notice: { paddingHorizontal: Space.lg, paddingBottom: Space.sm, gap: Space.xs } });

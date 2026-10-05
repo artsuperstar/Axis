@@ -188,7 +188,7 @@ test('active workout has an exact resume target, completion clears it and create
   const f = await initialized(); t.after(() => f.sqlite.close());
   const workout = f.fitness.startWorkout(); let snapshot = f.home.read();
   assert.equal(snapshot.activeWorkout!.session.id, workout.id);
-  assert.deepEqual(snapshot.activeWorkout!.target, { pathname: '/home-source', params: { source: 'fitness', recordId: workout.id } });
+  assert.deepEqual(snapshot.activeWorkout!.target, { pathname: '/(tabs)/fitness' });
   assert.equal(snapshot.nothingPending, false); assert.equal(snapshot.completedWorkout, null);
   f.fitness.finishWorkout(workout.id); snapshot = f.home.read();
   assert.equal(snapshot.activeWorkout, null); assert.equal(snapshot.completedWorkout!.session.id, workout.id); assert.equal(snapshot.nothingPending, true);
