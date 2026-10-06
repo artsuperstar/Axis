@@ -239,6 +239,33 @@ test('menu measurements account for modal origin, current scroll coordinates and
   assert.equal(selectionMenuLayout({ x: 116, y: 800, width: 288, height: 48 }, host, 200), null, 'an offscreen trigger cannot leave a stale menu');
 });
 
+test('action overlays are headerless and contain ordinary buttons without radio or selection controls', () => {
+  const result = renderControl(() => selection.SelectionOverlay({ label: 'Task options', presentation: 'actions', inline: null,
+    content: createElement('div', null, ...['Categories', 'Repeating Tasks', 'History'].map((label) => createElement(controls.FormButton, { key: label, variant: 'quiet', label, onPress() {} }))),
+    layout: selectionMenuLayout({ x: 280, y: 16, width: 44, height: 44 }, { x: 0, y: 0, width: 360, height: 800 }, 160, false, { preferredWidth: 240, align: 'end' }),
+    onClose() {}, onHeadingHeight() {}, onOptionsHeight() {} }));
+  assert.match(result.markup, /aria-label="Task options"/);
+  for (const label of ['Categories', 'Repeating Tasks', 'History']) assert.ok(result.markup.includes(`aria-label="${label}"`));
+  assert.doesNotMatch(result.markup, /role="radio|role="heading|choices|✓/);
+  assert.ok(!result.elements.some((element) => element.props.accessibilityLabel === 'Task options choices'));
+});
+
+test('right-aligned contextual width shares positioning bounds and fallback; default field widths stay unchanged', () => {
+  const anchor = { x: 300, y: 20, width: 44, height: 44 }; const host = { x: 0, y: 0, width: 360, height: 800 };
+  const context = selectionMenuLayout(anchor, host, 160, false, { preferredWidth: 240, align: 'end' })!;
+  assert.equal(context.placement, 'below'); assert.ok(context.width > anchor.width);
+  assert.equal(context.left + context.width, anchor.x + anchor.width, 'right edge tracks the trigger');
+  assert.ok(context.top >= anchor.y + anchor.height);
+  assert.equal(selectionMenuLayout(anchor, host, 160)!.width, anchor.width);
+  for (const width of [240, 320, 768]) for (const desiredWidth of [240, 480, 960]) {
+    const bounds = { x: 100, y: 80, width, height: 600 };
+    const nearBottom = { x: bounds.x + width - 56, y: bounds.y + 540, width: 44, height: 44 };
+    const layout = selectionMenuLayout(nearBottom, bounds, 180, false, { preferredWidth: desiredWidth, align: 'end' })!;
+    assert.equal(layout.placement, 'above'); assert.ok(layout.left >= 0 && layout.top >= 0);
+    assert.ok(layout.left + layout.width <= width && layout.top + layout.height <= bounds.height);
+  }
+});
+
 test('long menus and accessibility-sized content stay within narrow or resized usable bounds', () => {
   for (const width of [240, 320, 768]) for (const height of [240, 500, 1000]) {
     const host = { x: 40, y: 120, width, height };

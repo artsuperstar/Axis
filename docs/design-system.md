@@ -95,3 +95,5 @@ No Home, Task-row, Calendar-grid, Dashboard, Commitment, Work, active-workout, o
 Verify iPhone light/dark, scrim separation, long sheet titles/labels, large accessibility text, VoiceOver, keyboard focus/scrolling, category creation, and locked Work payment amounts. Automated styling and contrast checks do not replace physical testing.
 
 Stage 13B applies these roles to the inline active Workout, Fitness internal navigation and focused logging/actions. See [Active Workout](active-workout.md) for its layout, safe-area, keyboard and device-review decisions.
+
+Stage 13C applies these roles to Tasks rows, contextual actions, grouped editing and focused recurrence configuration. See [Tasks experience](tasks-experience.md) for interaction, recurrence-version and device-review decisions.

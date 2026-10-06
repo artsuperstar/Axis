@@ -1,5 +1,5 @@
-// Minimal host DOM for React DOM's real client reconciler. No layout or browser events are simulated.
-// Tests invoke component callbacks and assert state across committed renders, including unmounts.
+// Minimal host DOM for React DOM's real client reconciler. Measurements are fixtures, not native layout.
+// Tests invoke callbacks/keyboard dispatch and track focus/state across committed renders and unmounts.
 class HostNode {
   constructor(type, document, text = '') {
     this.nodeType = type === '#text' ? 3 : 1;
@@ -30,18 +30,28 @@ class HostNode {
     this.childNodes.forEach((node) => { node.parentNode = null; }); this.childNodes = [];
     if (value) this.appendChild(new HostNode('#text', this.ownerDocument, String(value)));
   }
-  measureInWindow(callback) { callback(0, 0, 400, 800); }
+  measureInWindow(callback) {
+    if (this.props?.label === '⋯' && this.kind === 'FormButton') callback(340, 16, 44, 44);
+    else callback(0, 0, 400, 800);
+  }
   scrollTo() {}
-  focus() {}
+  focus() { this.ownerDocument.activeElement = this; }
   blur() {}
+  querySelectorAll() {
+    const descendants = this.childNodes.flatMap((node) => [node, ...node.querySelectorAll()]);
+    return descendants.filter((node) => ['FormButton', 'FormField'].includes(node.kind) && !node.props?.disabled);
+  }
 }
 
+const listeners = new Map();
 const document = {
   nodeType: 9, activeElement: null,
   createElement: (type) => new HostNode(type, document),
   createElementNS: (_namespace, type) => new HostNode(type, document),
   createTextNode: (text) => new HostNode('#text', document, text),
-  addEventListener() {}, removeEventListener() {},
+  addEventListener(type, callback) { if (!listeners.has(type)) listeners.set(type, new Set()); listeners.get(type).add(callback); },
+  removeEventListener(type, callback) { listeners.get(type)?.delete(callback); },
+  dispatchEvent(event) { for (const callback of listeners.get(event.type) ?? []) callback(event); },
 };
 const window = { document, HTMLElement: HostNode, HTMLIFrameElement: class {} };
 document.defaultView = window;

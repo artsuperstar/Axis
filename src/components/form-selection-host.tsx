@@ -1,4 +1,4 @@
-import { createContext, useCallback, useContext, useEffect, useImperativeHandle, useLayoutEffect, useMemo, useReducer, useRef, useState, type ReactNode, type Ref } from 'react';
+import { createContext, useCallback, useContext, useEffect, useImperativeHandle, useLayoutEffect, useMemo, useReducer, useRef, useState, type ReactNode, type Ref, type RefObject } from 'react';
 import { AccessibilityInfo, Keyboard, Platform, Pressable, ScrollView, StyleSheet, View, useWindowDimensions, type KeyboardEvent as NativeKeyboardEvent, type ScrollViewProps, type TextInput } from 'react-native';
 import { SafeAreaInsetsContext } from 'react-native-safe-area-context';
 
@@ -9,7 +9,8 @@ import { useTheme } from '@/hooks/use-theme';
 import { selectionMenuLayout, selectionOverlayReducer, type SelectionOverlayState } from './form-selection';
 
 type CloseMenu = (restoreFocus?: boolean) => boolean;
-type MenuRequest = { id: string; label: string; trigger: View; estimatedHeight: number; content: ReactNode; keyboardInput?: boolean };
+type MenuRequest = { id: string; label: string; trigger: View; estimatedHeight: number; content: ReactNode; keyboardInput?: boolean;
+  presentation?: 'actions'; preferredWidth?: number; align?: 'start' | 'end'; initialFocus?: RefObject<View | null> };
 export type InlineActionControls = { title: string; onCancel: () => void; onComplete: () => void; onSize: (height: number) => void };
 export type SelectionInlineAction = { label: string; title: string; accessibilityLabel?: string; render: (controls: InlineActionControls) => ReactNode };
 type InlineRequest = { title: string; content: ReactNode };
@@ -20,7 +21,7 @@ export type FormSelectionHandle = { dismiss: CloseMenu };
 
 export function useFormSelection() {
   const context = useContext(SelectionContext);
-  if (!context) throw new Error('SelectField must be inside a FormSelectionHost in its editor modal.');
+  if (!context) throw new Error('Anchored controls must be inside a FormSelectionHost.');
   return context;
 }
 
@@ -30,10 +31,11 @@ export function focusFormControl(target: View | TextInput | null) {
   else AccessibilityInfo.sendAccessibilityEvent(target, 'focus');
 }
 
-/** One overlay per editor, inside the existing native modal and outside its ScrollViews. */
-export function FormSelectionHost({ children, ref }: { children: ReactNode; ref?: Ref<FormSelectionHandle> }) {
+/** One measured overlay per screen/modal, outside its ScrollViews. */
+export function FormSelectionHost({ children, ref, safeAreaApplied = false }: { children: ReactNode; ref?: Ref<FormSelectionHandle>; safeAreaApplied?: boolean }) {
   const { width, height, fontScale } = useWindowDimensions();
-  const insets = useContext(SafeAreaInsetsContext) ?? zeroInsets;
+  const contextInsets = useContext(SafeAreaInsetsContext);
+  const insets = safeAreaApplied ? zeroInsets : contextInsets ?? zeroInsets;
   const host = useRef<View>(null);
   const heading = useRef<View>(null);
   const panel = useRef<View>(null);
@@ -74,7 +76,8 @@ export function FormSelectionHost({ children, ref }: { children: ReactNode; ref?
         const usableBottom = keyboardTop.current == null ? measuredHeight - insets.bottom : Math.min(measuredHeight, Math.max(0, keyboardTop.current - y));
         const next = selectionMenuLayout({ x: anchorX, y: anchorY, width: anchorWidth, height: anchorHeight },
           { x: x + insets.left, y: y + insets.top, width: measuredWidth - insets.left - insets.right, height: usableBottom - insets.top },
-          Math.min(contentHeight.current, 360 * Math.max(1, fontScale)), retainCoveredAnchor.current);
+          Math.min(contentHeight.current, 360 * Math.max(1, fontScale)), retainCoveredAnchor.current,
+          { preferredWidth: current.preferredWidth === undefined ? undefined : current.preferredWidth * Math.max(1, fontScale), align: current.align });
         if (!next && !retainCoveredAnchor.current) close();
         else if (!next) return;
         else setLayout({ ...next, left: next.left + insets.left, top: next.top + insets.top });
@@ -88,6 +91,7 @@ export function FormSelectionHost({ children, ref }: { children: ReactNode; ref?
     request.current = next;
     keyboardTop.current = next.keyboardInput ? Keyboard.metrics?.()?.screenY ?? null : null;
     retainCoveredAnchor.current = !!next.keyboardInput;
+    headingHeight.current = next.presentation === 'actions' ? 0 : 40;
     contentHeight.current = next.estimatedHeight;
     measurement.current++;
     inlineRevision.current++;
@@ -129,7 +133,7 @@ export function FormSelectionHost({ children, ref }: { children: ReactNode; ref?
   useEffect(() => {
     if (menu && (!ready || inline)) return;
     const frame = requestAnimationFrame(() => {
-      focusFormControl(menu ? heading.current : returnFocus.current);
+      focusFormControl(menu ? menu.initialFocus?.current ?? heading.current : returnFocus.current);
       if (!menu) returnFocus.current = null;
     });
     return () => cancelAnimationFrame(frame);
@@ -162,7 +166,7 @@ export function FormSelectionHost({ children, ref }: { children: ReactNode; ref?
       <View style={styles.container} pointerEvents={menu ? 'none' : 'auto'} aria-hidden={!!menu} accessibilityElementsHidden={!!menu} importantForAccessibility={menu ? 'no-hide-descendants' : 'auto'}>
         {children}
       </View>
-      {menu && <SelectionOverlay label={menu.label} content={menu.content} inline={inline} layout={layout} panelRef={panel} headingRef={heading} onClose={() => close()}
+      {menu && <SelectionOverlay label={menu.label} content={menu.content} inline={inline} layout={layout} presentation={menu.presentation} panelRef={panel} headingRef={heading} onClose={() => close()}
         onHeadingHeight={(next) => {
           if (headingHeight.current !== next) { contentHeight.current += next - headingHeight.current; headingHeight.current = next; reposition(); }
         }} onOptionsHeight={(measuredHeight) => {
@@ -174,19 +178,21 @@ export function FormSelectionHost({ children, ref }: { children: ReactNode; ref?
 }
 
 /** Both states render in this absolute surface, outside the editor's layout and scroll container. */
-export function SelectionOverlay({ label, content, inline, layout, panelRef, headingRef, onClose, onHeadingHeight, onOptionsHeight }: {
+export function SelectionOverlay({ label, content, inline, layout, presentation, panelRef, headingRef, onClose, onHeadingHeight, onOptionsHeight }: {
   label: string; content: ReactNode; inline: InlineRequest | null; layout: ReturnType<typeof selectionMenuLayout>;
   panelRef?: Ref<View>; headingRef?: Ref<View>; onClose: () => void; onHeadingHeight: (height: number) => void; onOptionsHeight: (height: number) => void;
+  presentation?: 'actions';
 }) {
   const colors = useTheme();
-  return <View style={StyleSheet.absoluteFill} role="dialog" aria-label={inline?.title ?? `${label} choices`} aria-modal accessibilityViewIsModal onAccessibilityEscape={onClose}>
-    <Pressable style={StyleSheet.absoluteFill} accessibilityRole="button" accessibilityLabel={inline ? `Dismiss ${inline.title.toLowerCase()} without saving` : `Close ${label.toLowerCase()} choices`} onPress={onClose} />
+  const actions = presentation === 'actions' && !inline;
+  return <View style={StyleSheet.absoluteFill} role="dialog" aria-label={inline?.title ?? (actions ? label : `${label} choices`)} aria-modal accessibilityViewIsModal onAccessibilityEscape={onClose}>
+    <Pressable style={StyleSheet.absoluteFill} accessibilityRole="button" accessibilityLabel={inline ? `Dismiss ${inline.title.toLowerCase()} without saving` : `Close ${label.toLowerCase()}${actions ? '' : ' choices'}`} onPress={onClose} />
     {layout && <View ref={panelRef} style={[styles.menu, { left: layout.left, top: layout.top, width: layout.width, height: layout.height,
       backgroundColor: colors[SurfaceColors.overlay], borderColor: colors.borderStrong }]}>
-      <View ref={headingRef} accessible tabIndex={-1} accessibilityRole="header" accessibilityLabel={inline?.title ?? `${label} choices`} style={styles.heading}
+      {!actions && <View ref={headingRef} accessible tabIndex={-1} accessibilityRole="header" accessibilityLabel={inline?.title ?? `${label} choices`} style={styles.heading}
         onLayout={(event) => onHeadingHeight(event.nativeEvent.layout.height)}>
         <ThemedText type="cardTitle">{inline?.title ?? label}</ThemedText>
-      </View>
+      </View>}
       {inline ? inline.content : <ScrollView keyboardShouldPersistTaps="always" style={styles.container} contentContainerStyle={styles.options}
         onContentSizeChange={(_width, height) => onOptionsHeight(height)}>{content}</ScrollView>}
     </View>}

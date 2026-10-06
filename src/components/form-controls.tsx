@@ -127,26 +127,31 @@ export function InlineNameForm({ title, onCancel, onComplete, onSize, onSubmit, 
   </View>;
 }
 
-export function FormButton({ label, onPress, disabled = false, selected = false, accessibilityLabel, variant = 'secondary' }: {
+export function FormButton({ label, onPress, disabled = false, selected = false, accessibilityLabel, variant = 'secondary', expanded, align = 'center', ref }: {
   label: string;
   onPress: () => void;
   disabled?: boolean;
   selected?: boolean;
   accessibilityLabel?: string;
   variant?: ButtonVariant;
+  expanded?: boolean;
+  align?: 'start' | 'center';
+  ref?: Ref<View>;
 }) {
   const colors = useTheme();
   const [focused, setFocused] = useState(false);
   const appearance = buttonAppearance(colors, variant, { disabled, selected, focused });
   return (
     <Pressable
+      ref={ref}
       accessibilityRole="button"
       accessibilityLabel={accessibilityLabel ?? label}
-      accessibilityState={{ disabled, selected }}
+      accessibilityState={{ disabled, selected, ...(expanded === undefined ? {} : { expanded }) }}
+      aria-expanded={expanded}
       disabled={disabled}
       onPress={onPress}
       onFocus={() => setFocused(true)} onBlur={() => setFocused(false)}
-      style={({ pressed }) => [styles.button, buttonAppearance(colors, variant, { disabled, selected, focused, pressed }).style]}>
+      style={({ pressed }) => [styles.button, buttonAppearance(colors, variant, { disabled, selected, focused, pressed }).style, { alignItems: align === 'start' ? 'flex-start' : 'center' }]}>
       <ThemedText type="button" style={{ color: appearance.textColor }}>{label}{variant === 'navigation' && selected ? ' ✓' : ''}</ThemedText>
     </Pressable>
   );

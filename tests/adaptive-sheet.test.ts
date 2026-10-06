@@ -115,7 +115,6 @@ test('Task/Transaction editors and both category managers use the shared adaptiv
     () => transactionForms.TransactionEditor({ transaction: null, categories: [], onSave: () => {}, onCreateCategory: () => { throw Error(); }, onDismiss: () => {} }),
     () => taskCategories.CategoryManager({ categories: [], onCreate: () => {}, onDelete: () => {}, onDismiss: () => {} }),
     () => financeCategories.FinanceCategoryManager({ categories: [], onCreate: () => {}, onDelete: () => {}, onDismiss: () => {} }),
-    () => recurringTasks.RecurringTasks({ tasks: [], recurrences: [], onEdit: () => {}, onHistory: () => {}, onDismiss: () => {}, visible: true, onClosed: () => {} }),
     () => taskHistory.OccurrenceHistory({ task: { title: 'Task' } as Parameters<typeof taskHistory.OccurrenceHistory>[0]['task'], categories: [], recurrences: [], now: 1,
       readPage: () => ({ occurrences: [], nextBefore: null }), onStatus: () => { throw Error(); }, onDismiss: () => {} }),
   ];
@@ -124,4 +123,10 @@ test('Task/Transaction editors and both category managers use the shared adaptiv
     assert.equal(result.elements[0].type, sheets.AdaptiveModal);
     assert.ok(result.elements.some((element) => element.type === sheets.AdaptiveSheet));
   }
+});
+
+test('all-series management is screen content rather than an adaptive sheet', () => {
+  const result = renderControl(() => recurringTasks.RecurringTasks({ tasks: [], recurrences: [], onEdit: () => {}, onHistory: () => {} }));
+  assert.ok(!result.elements.some((element) => element.type === sheets.AdaptiveModal || element.type === sheets.AdaptiveSheet));
+  assert.ok(result.markup.includes('No repeating tasks yet.'));
 });

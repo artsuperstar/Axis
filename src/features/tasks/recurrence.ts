@@ -65,7 +65,7 @@ export function recurrenceStopped(rule: TaskRecurrence) {
   return rule.deletedAt !== null || rule.effectiveUntil !== null;
 }
 
-export function recurrencePatternSummary(rule: TaskRecurrence) {
+export function recurrencePatternSummary(rule: Pick<TaskRecurrence, 'frequency' | 'interval' | 'weekdayMask' | 'monthDay' | 'month'>) {
   const every = rule.interval === 1 ? '' : `${rule.interval} `;
   if (rule.frequency === 'daily') return `Every ${every}day${rule.interval === 1 ? '' : 's'}`;
   if (rule.frequency === 'weekly') {

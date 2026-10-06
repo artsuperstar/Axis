@@ -8,7 +8,7 @@ import { act, type ComponentType, type ReactNode } from 'react';
 const require = createRequire(import.meta.url);
 require('./lifecycle-dom.cjs');
 const boundary = require('./lifecycle-native.cjs') as {
-  fixture: { db: unknown; failures: Set<string>; reads: string[]; navigation: { method: string; target: unknown }[];
+  fixture: { db: unknown; failures: Set<string>; reads: string[]; navigation: { method: string; target: unknown }[]; pickers: Record<string, unknown>[];
     alerts: { title: string; message: string; buttons: { text: string; onPress?: () => void; style?: string }[] }[];
     wrap: (kind: string, access: unknown) => unknown }; resume: () => void; refocus: () => void;
 } & Record<string, unknown>;
@@ -30,13 +30,16 @@ function cachedModule(url: URL, exports: unknown) {
 }
 registerHooks({
   resolve(specifier, context, next) {
+    // Contextual menus exercise the actual shared host; editor selection remains a native boundary.
+    if (context.parentURL?.includes('/context-menu.') && specifier === './form-selection-host') return next(specifier, context);
     const key = boundaries[specifier];
     if (key) return cachedModule(new URL(`./lifecycle-boundary-${key}.cjs`, import.meta.url), boundary[key]);
     const kind = context.parentURL?.includes('/use-finance.') ? ({ './data': 'finance', './work/data': 'work', './commitments/data': 'commitments' } as Record<string, string>)[specifier]
-      : context.parentURL?.includes('/use-fitness.') && specifier === './data' ? 'fitness' : undefined;
+      : context.parentURL?.includes('/use-fitness.') && specifier === './data' ? 'fitness'
+        : context.parentURL?.includes('/use-tasks.') && specifier === './data' ? 'tasks' : undefined;
     if (kind) {
       const real = require(fileURLToPath(next(specifier, context).url));
-      const names: Record<string, string> = { finance: 'createFinanceDataAccess', work: 'createWorkDataAccess', commitments: 'createCommitmentDataAccess', fitness: 'createFitnessDataAccess' };
+      const names: Record<string, string> = { finance: 'createFinanceDataAccess', work: 'createWorkDataAccess', commitments: 'createCommitmentDataAccess', fitness: 'createFitnessDataAccess', tasks: 'createTaskDataAccess' };
       const name = names[kind];
       return cachedModule(new URL(`./lifecycle-access-${kind}.cjs`, import.meta.url), { [name]: (...args: unknown[]) => boundary.fixture.wrap(kind, real[name](...args)) });
     }
@@ -49,6 +52,9 @@ registerHooks({
 });
 
 export const screens = {
+  RepeatingTasksScreen: require('../../src/features/tasks/tasks-screen').RepeatingTasksScreen as ComponentType,
+  TasksHistoryScreen: require('../../src/features/tasks/tasks-screen').TasksHistoryScreen as ComponentType,
+  TasksScreen: require('../../src/features/tasks/tasks-screen').TasksScreen as ComponentType<NonNullable<Parameters<typeof import('../../src/features/tasks/tasks-screen').TasksScreen>[0]>>,
   HomeScreen: require('../../src/features/home/home-screen').HomeScreen as ComponentType,
   FinanceScreen: require('../../src/features/finance/finance-screen').FinanceScreen as ComponentType<NonNullable<Parameters<typeof import('../../src/features/finance/finance-screen').FinanceScreen>[0]>>,
   FitnessScreen: require('../../src/features/fitness/fitness-screen').FitnessScreen as ComponentType<NonNullable<Parameters<typeof import('../../src/features/fitness/fitness-screen').FitnessScreen>[0]>>,
@@ -63,6 +69,7 @@ const { createRoot } = require('react-dom/client') as { createRoot: (container: 
 export async function mount(node: ReactNode, db: unknown, failures: string[] = []) {
   boundary.fixture.db = db; boundary.fixture.failures.clear(); failures.forEach((failure) => boundary.fixture.failures.add(failure));
   boundary.fixture.alerts.length = 0; boundary.fixture.navigation.length = 0; boundary.fixture.reads.length = 0;
+  boundary.fixture.pickers.length = 0;
   const container = document.createElement('div') as unknown as Host;
   const root = createRoot(container);
   await act(() => root.render(node));

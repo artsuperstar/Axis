@@ -3,7 +3,8 @@ export type SelectionOption<T extends SelectionValue> = { value: T; label: strin
 export type SelectionRect = { x: number; y: number; width: number; height: number };
 
 /** Window measurements are translated into the modal host's own usable coordinates. */
-export function selectionMenuLayout(anchor: SelectionRect, host: SelectionRect, desiredHeight: number, retainCoveredAnchor = false) {
+export function selectionMenuLayout(anchor: SelectionRect, host: SelectionRect, desiredHeight: number, retainCoveredAnchor = false,
+  options: { preferredWidth?: number; align?: 'start' | 'end' } = {}) {
   const inset = 8;
   const gap = 4;
   if (host.width <= inset * 2 || host.height <= inset * 2 || anchor.width <= 0 || anchor.height <= 0) return null;
@@ -13,7 +14,8 @@ export function selectionMenuLayout(anchor: SelectionRect, host: SelectionRect, 
   if (!retainCoveredAnchor && (measuredY + anchor.height <= 0 || measuredY >= host.height)) return null;
   // An inline form owns keyboard focus. Keep its original anchor usable as the keyboard resizes the modal.
   const y = retainCoveredAnchor ? Math.max(inset, Math.min(measuredY, host.height - anchor.height - inset)) : measuredY;
-  const width = Math.min(anchor.width, host.width - inset * 2);
+  const width = Math.min(options.preferredWidth ?? anchor.width, host.width - inset * 2);
+  const desiredLeft = options.align === 'end' ? x + anchor.width - width : x;
   const below = Math.max(0, host.height - inset - (y + anchor.height + gap));
   const above = Math.max(0, y - gap - inset);
   const placement = below >= desiredHeight || below >= above ? 'below' : 'above';
@@ -22,7 +24,7 @@ export function selectionMenuLayout(anchor: SelectionRect, host: SelectionRect, 
   const height = Math.min(Math.max(1, desiredHeight), availableHeight);
   if (height <= 0) return null;
   return {
-    left: Math.max(inset, Math.min(x, host.width - width - inset)),
+    left: Math.max(inset, Math.min(desiredLeft, host.width - width - inset)),
     top: Math.max(inset, Math.min(placement === 'below' ? y + anchor.height + gap : y - gap - height, host.height - height - inset)),
     width, height, placement,
   };

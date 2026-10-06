@@ -4,13 +4,13 @@ import { Alert, Keyboard, Platform, StyleSheet, View, useWindowDimensions } from
 
 import { ThemedText } from '@/components/themed-text';
 import { AdaptiveModal, AdaptiveSheet } from '@/components/adaptive-sheet';
-import { Spacing } from '@/constants/theme';
+import { Space, Spacing } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { InlineNameForm, SelectField } from '@/components/form-controls';
 
 import { dateLabel, localDateString, localTimeString, pickerValue, taskDraft, userError, validateTaskDraft } from '../form';
 import { weekdayIndex } from '../calendar';
-import { frequencyLabels, monthNames, recurrenceStopped, weekdays } from '../recurrence';
+import { frequencyLabels, monthNames, recurrenceError, recurrencePatternSummary, recurrenceStopped, weekdays } from '../recurrence';
 import { createTaskCategorySelection, taskCategoryOptions, taskPriorityOptions } from '../form-options';
 import { type RecurrenceDraft, type RecurrenceFrequency, type Task, type TaskCategory, type TaskDraft, type TaskRecurrence } from '../types';
 import { TaskButton, TaskError, TaskField, TaskSelect, TaskWeekday } from './controls';
@@ -38,6 +38,8 @@ export function TaskEditor({ task, recurrence, categories, onSave, onCreateCateg
     return initial;
   });
   const [picker, setPicker] = useState<'date' | 'time' | 'end' | null>(null);
+  const [editingRecurrence, setEditingRecurrence] = useState(false);
+  const [recurrenceVisited, setRecurrenceVisited] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const saving = useRef(false);
   // Measure the actual sheet content, which may be narrower than the device window.
@@ -118,78 +120,102 @@ export function TaskEditor({ task, recurrence, categories, onSave, onCreateCateg
     ]);
   }
 
-  return (
-    <AdaptiveModal onDismiss={onDismiss}>
-      <AdaptiveSheet contentContainerStyle={styles.form} header={<View style={styles.header}>
-        <TaskButton variant="quiet" label="Cancel" onPress={onDismiss} />
-        <ThemedText type="sheetTitle" accessibilityRole="header" style={[styles.heading, styles.headingText]}>{task ? 'Edit task' : 'New task'}</ThemedText>
-        <TaskButton variant="primary" label="Save" onPress={save} />
-      </View>}>
-        <TaskError message={error} />
-        <TaskField label="Title *" accessibilityLabel="Title, required" value={draft.title} onChangeText={(value) => change('title', value)} autoFocus returnKeyType="done" />
-        <TaskField label="Description" value={draft.description} onChangeText={(value) => change('description', value)} multiline textAlignVertical="top" style={styles.description} />
+  function recurrenceDone() { Keyboard.dismiss(); setPicker(null); setEditingRecurrence(false); }
+  const scheduleFields = <View
+    onLayout={({ nativeEvent }) => setDateTimeWidth(nativeEvent.layout.width)}
+    style={[styles.dateTime, dateTimeInRow && styles.dateTimeRow]}>
+    <View style={[styles.dateTimeField, dateTimeInRow && styles.dateTimeColumn]}>
+      {Platform.OS === 'web' ? (
+        <TaskField label={draft.recurrence ? 'Start date *' : 'Date'} placeholder="YYYY-MM-DD" value={draft.date} onChangeText={(value) => { change('date', value); if (!value) change('time', ''); }} />
+      ) : (
+        <TaskSelect label={draft.recurrence ? 'Start date *' : 'Date'} value={draft.date ? dateLabel(draft.date) : 'Add date'} expanded={picker === 'date'} onPress={() => openPicker('date')} />
+      )}
+      {!!draft.date && !draft.recurrence && Platform.OS !== 'web' && <TaskButton label="Clear date" accessibilityLabel="Clear date and time" onPress={() => { change('date', ''); change('time', ''); setPicker(null); }} />}
+    </View>
+    <View style={[styles.dateTimeField, dateTimeInRow && styles.dateTimeColumn]}>
+      {Platform.OS === 'web' ? (
+        <TaskField label="Time" placeholder="HH:MM" value={draft.time} editable={!!draft.date} accessibilityHint={!draft.date ? 'Add a date before setting a time' : undefined} onChangeText={(value) => change('time', value)} />
+      ) : (
+        <TaskSelect label="Time" value={draft.time || 'Add time'} disabled={!draft.date} expanded={picker === 'time'} accessibilityHint={!draft.date ? 'Add a date before setting a time' : undefined} onPress={() => openPicker('time')} />
+      )}
+      {!!draft.time && Platform.OS !== 'web' && <TaskButton label="Clear time" onPress={() => { change('time', ''); setPicker(null); }} />}
+    </View>
+  </View>;
+  const pickerControls = picker && Platform.OS === 'ios' ? <>
+    <DateTimePicker value={picker === 'end' ? pickerValue(draft.recurrence?.endDate || draft.date) : pickerValue(draft.date, draft.time)}
+      mode={picker === 'end' ? 'date' : picker} display="spinner" themeVariant={scheme === 'dark' ? 'dark' : 'light'}
+      onValueChange={(_event, selected) => pickerChange(picker, selected)} />
+    <TaskButton variant="quiet" label="Done" accessibilityLabel={`Done choosing ${picker === 'end' ? 'end date' : picker}`} onPress={() => setPicker(null)} />
+  </> : null;
+  const intervalUnit = draft.recurrence?.frequency === 'daily' ? 'days' : draft.recurrence?.frequency === 'weekly' ? 'weeks' : 'months';
+  const recurrenceMessage = draft.recurrence ? recurrenceError(draft.recurrence, draft.date) : null;
+  const summary = draft.recurrence ? recurrenceMessage ? 'Review recurrence settings' : recurrencePatternSummary(draft.recurrence) : null;
 
+  return <AdaptiveModal onDismiss={editingRecurrence ? recurrenceDone : onDismiss}>
+    {editingRecurrence ? <AdaptiveSheet key="recurrence" contentContainerStyle={styles.form} header={<View style={styles.header}>
+      <TaskButton variant="quiet" label="Back" onPress={recurrenceDone} />
+      <ThemedText type="sheetTitle" accessibilityRole="header" style={[styles.heading, styles.headingText]}>Recurrence</ThemedText>
+      <TaskButton variant="primary" label="Done" onPress={recurrenceDone} />
+    </View>}>
+      <TaskError message={error} />
+      <View style={styles.section}>
+        <ThemedText type="cardTitle" accessibilityRole="header">Frequency</ThemedText>
         <SelectField label="Repeats" value={draft.recurrence?.frequency ?? 'none'} options={repeatOptions}
           displayValue={draft.recurrence ? frequencyLabels[draft.recurrence.frequency] : recurrence ? 'Stopped' : 'Does not repeat'}
           onOpen={() => setPicker(null)} onChange={(value) => chooseFrequency(value === 'none' ? null : value)} />
-
-        {(!recurrence || draft.recurrence) && <View
-          onLayout={({ nativeEvent }) => setDateTimeWidth(nativeEvent.layout.width)}
-          style={[styles.dateTime, dateTimeInRow && styles.dateTimeRow]}>
-          <View style={[styles.dateTimeField, dateTimeInRow && styles.dateTimeColumn]}>
-            {Platform.OS === 'web' ? (
-              <TaskField label={draft.recurrence ? 'Start date *' : 'Date'} placeholder="YYYY-MM-DD" value={draft.date} onChangeText={(value) => { change('date', value); if (!value) change('time', ''); }} />
-            ) : (
-              <TaskSelect label={draft.recurrence ? 'Start date *' : 'Date'} value={draft.date ? dateLabel(draft.date) : 'Add date'} expanded={picker === 'date'} onPress={() => openPicker('date')} />
-            )}
-            {!!draft.date && !draft.recurrence && Platform.OS !== 'web' && <TaskButton label="Clear date" accessibilityLabel="Clear date and time" onPress={() => { change('date', ''); change('time', ''); setPicker(null); }} />}
-          </View>
-          <View style={[styles.dateTimeField, dateTimeInRow && styles.dateTimeColumn]}>
-            {Platform.OS === 'web' ? (
-              <TaskField label="Time" placeholder="HH:MM" value={draft.time} editable={!!draft.date} accessibilityHint={!draft.date ? 'Add a date before setting a time' : undefined} onChangeText={(value) => change('time', value)} />
-            ) : (
-              <TaskSelect label="Time" value={draft.time || 'Add time'} disabled={!draft.date} expanded={picker === 'time'} accessibilityHint={!draft.date ? 'Add a date before setting a time' : undefined} onPress={() => openPicker('time')} />
-            )}
-            {!!draft.time && Platform.OS !== 'web' && <TaskButton label="Clear time" onPress={() => { change('time', ''); setPicker(null); }} />}
-          </View>
-        </View>}
-        {draft.recurrence && (
-          <View style={styles.options}>
-            {draft.recurrence.frequency !== 'yearly' && <TaskField label={`Every (${draft.recurrence.frequency === 'daily' ? 'days' : draft.recurrence.frequency === 'weekly' ? 'weeks' : 'months'})`} keyboardType="number-pad" value={Number.isNaN(draft.recurrence.interval) ? '' : String(draft.recurrence.interval)} onChangeText={(value) => changeRecurrence('interval', value ? Number(value) : NaN)} />}
-            {draft.recurrence.frequency === 'weekly' && (
-              <>
-                <ThemedText type="smallBold">Weekdays</ThemedText>
-                <View style={styles.weekdays}>
-                  {weekdays.map((day, index) => <TaskWeekday key={day} label={day} checked={!!(draft.recurrence!.weekdayMask & (1 << index))} onPress={() => changeRecurrence('weekdayMask', draft.recurrence!.weekdayMask ^ (1 << index))} />)}
-                </View>
-              </>
-            )}
-            {draft.recurrence.frequency === 'yearly' && <SelectField label="Month" value={draft.recurrence.month} options={monthOptions}
-              onOpen={() => setPicker(null)} onChange={(value) => changeRecurrence('month', value)} />}
-            {['monthly', 'yearly'].includes(draft.recurrence.frequency) && <TaskField label="Day of month" keyboardType="number-pad" value={Number.isNaN(draft.recurrence.monthDay) ? '' : String(draft.recurrence.monthDay)} onChangeText={(value) => changeRecurrence('monthDay', value ? Number(value) : NaN)} />}
-            {['monthly', 'yearly'].includes(draft.recurrence.frequency) && <ThemedText type="small" themeColor="textSecondary">Shorter months use their last valid day.</ThemedText>}
-            <SelectField label="Ends" value={draft.recurrence.endDate ? 'date' : 'never'} options={[{ value: 'never', label: 'Never' }, { value: 'date', label: 'On date' }]}
-              onOpen={() => setPicker(null)} onChange={(value) => changeRecurrence('endDate', value === 'never' ? '' : draft.recurrence?.endDate || draft.date || localDateString(new Date()))} />
-            {!!draft.recurrence.endDate && (Platform.OS === 'web'
-              ? <TaskField label="End date" placeholder="YYYY-MM-DD" value={draft.recurrence.endDate} onChangeText={(value) => changeRecurrence('endDate', value)} />
-              : <TaskSelect label="End date" value={dateLabel(draft.recurrence.endDate)} expanded={picker === 'end'} onPress={() => openPicker('end')} />)}
-          </View>
-        )}
-        {recurrence && <ThemedText type="small" themeColor="textSecondary">{"Schedule changes apply tomorrow. Today's occurrences and history stay."}</ThemedText>}
-        {recurrence && !recurrenceStopped(recurrence) && <TaskButton label="Stop repeating" onPress={stopRepeating} />}
-        {picker && Platform.OS === 'ios' && (
-          <>
-            <DateTimePicker
-              value={picker === 'end' ? pickerValue(draft.recurrence?.endDate || draft.date) : pickerValue(draft.date, draft.time)}
-              mode={picker === 'end' ? 'date' : picker}
-              display="spinner"
-              themeVariant={scheme === 'dark' ? 'dark' : 'light'}
-              onValueChange={(_event, selected) => pickerChange(picker, selected)}
-            />
-            <TaskButton label="Done" onPress={() => setPicker(null)} />
-          </>
-        )}
-
+      </View>
+      {draft.recurrence && <>
+        <View style={styles.section}>
+          <ThemedText type="cardTitle" accessibilityRole="header">Pattern</ThemedText>
+          {draft.recurrence.frequency !== 'yearly' && <View style={styles.interval}>
+            <View style={[styles.intervalCount, { flexBasis: 120 * Math.max(1, fontScale) }]}><TaskField label="Every" accessibilityLabel={`Repeat interval in ${intervalUnit}`} keyboardType="number-pad" value={Number.isNaN(draft.recurrence.interval) ? '' : String(draft.recurrence.interval)} onChangeText={(value) => changeRecurrence('interval', value ? Number(value) : NaN)} /></View>
+            <ThemedText type="body">{intervalUnit}</ThemedText>
+          </View>}
+          {draft.recurrence.frequency === 'weekly' && (
+            <>
+              <ThemedText type="secondary" themeColor="textSecondary">On these days</ThemedText>
+              <View style={styles.weekdays}>
+                {weekdays.map((day, index) => <TaskWeekday key={day} label={day} checked={!!(draft.recurrence!.weekdayMask & (1 << index))} onPress={() => changeRecurrence('weekdayMask', draft.recurrence!.weekdayMask ^ (1 << index))} />)}
+              </View>
+            </>
+          )}
+          {draft.recurrence.frequency === 'yearly' && <SelectField label="Month" value={draft.recurrence.month} options={monthOptions}
+            onOpen={() => setPicker(null)} onChange={(value) => changeRecurrence('month', value)} />}
+          {['monthly', 'yearly'].includes(draft.recurrence.frequency) && <TaskField label="Day" accessibilityLabel="Day of month" keyboardType="number-pad" value={Number.isNaN(draft.recurrence.monthDay) ? '' : String(draft.recurrence.monthDay)} onChangeText={(value) => changeRecurrence('monthDay', value ? Number(value) : NaN)} />}
+          {['monthly', 'yearly'].includes(draft.recurrence.frequency) && <ThemedText type="metadata" themeColor="textSecondary">Shorter months use their last valid day.</ThemedText>}
+        </View>
+        <View style={styles.section}>
+          <ThemedText type="cardTitle" accessibilityRole="header">Start</ThemedText>
+          {scheduleFields}{picker !== 'end' && pickerControls}
+        </View>
+        <View style={styles.section}>
+          <ThemedText type="cardTitle" accessibilityRole="header">End</ThemedText>
+          <SelectField label="Ends" value={draft.recurrence.endDate ? 'date' : 'never'} options={[{ value: 'never', label: 'Never' }, { value: 'date', label: 'On date' }]}
+            onOpen={() => setPicker(null)} onChange={(value) => changeRecurrence('endDate', value === 'never' ? '' : draft.recurrence?.endDate || draft.date || localDateString(new Date()))} />
+          {!!draft.recurrence.endDate && (Platform.OS === 'web'
+            ? <TaskField label="End date" placeholder="YYYY-MM-DD" value={draft.recurrence.endDate} onChangeText={(value) => changeRecurrence('endDate', value)} />
+            : <TaskSelect label="End date" value={dateLabel(draft.recurrence.endDate)} expanded={picker === 'end'} onPress={() => openPicker('end')} />)}
+          {picker === 'end' && pickerControls}
+        </View>
+      </>}
+      {recurrence && <ThemedText type="metadata" themeColor="textSecondary">{"Schedule changes apply tomorrow. Today's occurrences and history stay."}</ThemedText>}
+    </AdaptiveSheet> : <AdaptiveSheet key="task" contentContainerStyle={styles.form} header={<View style={styles.header}>
+      <TaskButton variant="quiet" label="Cancel" onPress={onDismiss} />
+      <ThemedText type="sheetTitle" accessibilityRole="header" style={[styles.heading, styles.headingText]}>{task ? 'Edit task' : 'New task'}</ThemedText>
+      <TaskButton variant="primary" label="Save" onPress={save} />
+    </View>}>
+      <TaskError message={error} />
+      <View style={styles.section}>
+        <ThemedText type="cardTitle" accessibilityRole="header">Task</ThemedText>
+        <TaskField label="Title *" accessibilityLabel="Title, required" value={draft.title} onChangeText={(value) => change('title', value)} autoFocus={!recurrenceVisited} returnKeyType="done" />
+        <TaskField label="Description" value={draft.description} onChangeText={(value) => change('description', value)} multiline textAlignVertical="top" style={styles.description} />
+      </View>
+      {(!recurrence || draft.recurrence) && <View style={styles.section}>
+        <ThemedText type="cardTitle" accessibilityRole="header">Schedule</ThemedText>
+        {scheduleFields}{pickerControls}
+      </View>}
+      <View style={styles.section}>
+        <ThemedText type="cardTitle" accessibilityRole="header">Organization</ThemedText>
         <SelectField label="Priority" value={draft.priority} options={taskPriorityOptions} onOpen={() => setPicker(null)} onChange={(value) => change('priority', value)} />
         <SelectField label="Category" value={draft.categoryId} displayValue={categoryLabel} options={taskCategoryOptions(categories)}
           onOpen={() => setPicker(null)} onChange={(value) => change('categoryId', value)}
@@ -197,21 +223,30 @@ export function TaskEditor({ task, recurrence, categories, onSave, onCreateCateg
             render: (controls) => <InlineNameForm {...controls}
               onSubmit={(name, complete) => createTaskCategorySelection(name, onCreateCategory, (id) => change('categoryId', id), complete)}
               formatError={(cause) => userError(cause, 'Unable to create this category. Please try again.')} /> }} />
-      </AdaptiveSheet>
-    </AdaptiveModal>
-  );
+      </View>
+      <View style={styles.section}>
+        <ThemedText type="cardTitle" accessibilityRole="header">Recurrence</ThemedText>
+        {!!summary && <ThemedText type="secondary" themeColor="textSecondary">{summary}{!recurrenceMessage && draft.recurrence?.endDate ? ` · Ends ${dateLabel(draft.recurrence.endDate)}` : ''}</ThemedText>}
+        {!summary && recurrence && <ThemedText type="metadata" themeColor="textSecondary">Repeating stopped</ThemedText>}
+        <TaskButton variant="quiet" label={draft.recurrence ? 'Edit recurrence' : 'Add recurrence'} onPress={() => { Keyboard.dismiss(); setPicker(null); setRecurrenceVisited(true); setEditingRecurrence(true); }} />
+        {recurrence && <ThemedText type="metadata" themeColor="textSecondary">{"Schedule changes apply tomorrow. Today's occurrences and history stay."}</ThemedText>}
+        {recurrence && !recurrenceStopped(recurrence) && <TaskButton variant="quiet" label="Stop repeating" onPress={stopRepeating} />}
+      </View>
+    </AdaptiveSheet>}
+  </AdaptiveModal>;
 }
 
 const styles = StyleSheet.create({
   header: { flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', padding: Spacing.three, gap: Spacing.two },
   heading: { flex: 1, minWidth: 80 },
   headingText: { textAlign: 'center' },
-  form: { padding: Spacing.three, gap: Spacing.three },
+  form: { padding: Space.lg, gap: Space.xl }, section: { gap: Space.sm },
   description: { minHeight: 80 },
   dateTime: { gap: Spacing.three },
   dateTimeRow: { flexDirection: 'row' },
   dateTimeField: { gap: Spacing.two, minWidth: 0 },
   dateTimeColumn: { flex: 1 },
-  options: { gap: Spacing.two },
+  interval: { flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', gap: Space.sm },
+  intervalCount: { flexShrink: 1, maxWidth: '100%' },
   weekdays: { flexDirection: 'row', flexWrap: 'wrap', gap: Spacing.two },
 });

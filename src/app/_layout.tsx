@@ -21,6 +21,8 @@ export default function RootLayout() {
       <DatabaseProvider>
         <Stack>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+          <Stack.Screen name="tasks/repeating" options={{ headerShown: false, presentation: 'card' }} />
+          <Stack.Screen name="tasks/history" options={{ headerShown: false, presentation: 'card' }} />
         </Stack>
       </DatabaseProvider>
       <StatusBar style="auto" />

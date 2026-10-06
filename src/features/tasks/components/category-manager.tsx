@@ -50,14 +50,14 @@ export function CategoryManager({ categories, onCreate, onDelete, onDismiss }: {
               </View>}>
         <TaskError message={error} />
         <TaskField label="Category name" value={name} onChangeText={setName} returnKeyType="done" onSubmitEditing={create} />
-        <TaskButton label="Create category" onPress={create} disabled={!name.trim()} />
+        <TaskButton variant="primary" label="Create category" onPress={create} disabled={!name.trim()} />
         {categories.map((category) => (
           <View key={category.id} style={styles.row}>
             <View style={styles.name}>
               <ThemedText>{category.name}</ThemedText>
               <ThemedText type="small" themeColor="textSecondary">{category.isDefault ? 'Built-in' : 'Custom'}</ThemedText>
             </View>
-            {!category.isDefault && <TaskButton label="Delete" onPress={() => remove(category)} />}
+            {!category.isDefault && <TaskButton variant="destructive" label="Delete" accessibilityLabel={`Delete category ${category.name}`} onPress={() => remove(category)} />}
           </View>
         ))}
       </AdaptiveSheet>

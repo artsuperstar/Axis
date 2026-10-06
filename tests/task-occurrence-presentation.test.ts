@@ -46,7 +46,7 @@ async function edited(t: TestContext, original = daily, updated = { ...daily, in
 type Fixture = Awaited<ReturnType<typeof edited>>;
 async function row(t: TestContext, f: Fixture, occurrence: TaskOccurrence | null, task = f.snapshot.tasks[0]) {
   const app = await mount(createElement(TaskRow, { task, occurrence, recurrences: f.snapshot.recurrences, categories: f.snapshot.categories, now: f.now(),
-    onEdit() {}, onComplete() {}, onDelete() {}, onSkip() {}, onHistory() {} }), f.db); t.after(app.unmount);
+    onEdit() {}, onComplete() {}, onActions() {} }), f.db); t.after(app.unmount);
   const details = app.nodes().find((node) => node.kind === 'Pressable' && node.props.accessibilityRole === 'button')!;
   assert.ok(details); return { app, details, label: String(details.props.accessibilityLabel) };
 }
@@ -56,13 +56,13 @@ test('today uses its original daily version, future uses every 3 days, and paren
   const future = f.snapshot.occurrences.find((entry) => entry.scheduledDate > '2026-10-05')!;
   for (const [occurrence, summary] of [[today, 'Every day'], [future, 'Every 3 days']] as const) {
     const { app, label } = await row(t, f, occurrence);
-    assert.ok(app.nodes().some((node) => node.kind === 'ThemedText' && node.textContent === summary));
+    assert.ok(app.nodes().some((node) => node.kind === 'ThemedText' && node.textContent.includes(summary)));
     assert.ok(label.includes(summary)); assert.equal(recurrencePatternSummary(occurrenceRecurrence(f.snapshot.recurrences, occurrence)!), summary);
     await app.unmount();
   }
   assert.equal(recurrencePatternSummary(latestRecurrence(f.snapshot.recurrences, f.id)!), 'Every 3 days');
-  const parent = await mount(createElement(RecurringTasks, { tasks: f.snapshot.tasks, recurrences: f.snapshot.recurrences, visible: true,
-    onClosed() {}, onDismiss() {}, onEdit() {}, onHistory() {} }), f.db); t.after(parent.unmount);
+  const parent = await mount(createElement(RecurringTasks, { tasks: f.snapshot.tasks, recurrences: f.snapshot.recurrences,
+    onEdit() {}, onHistory() {} }), f.db); t.after(parent.unmount);
   assert.ok(parent.container.textContent.includes('Every 3 days')); assert.ok(!parent.container.textContent.includes('Every day'));
 });
 
@@ -143,13 +143,13 @@ for (const state of ['pending', 'completed', 'skipped', 'missed'] as const) {
     for (const text of ['Workout', dateLabel(occurrence.scheduledDate), '14:30', 'High priority', 'Work', 'Every day', state[0].toUpperCase() + state.slice(1)]) assert.ok(label.includes(text));
     const checkbox = app.find('Pressable', `${state === 'completed' ? 'Reopen' : 'Complete'} Workout on ${dateLabel(occurrence.scheduledDate)} at 14:30`);
     assert.deepEqual(checkbox.props.accessibilityState, { checked: state === 'completed' }); assert.ok(!label.includes('Overdue'));
-    if (state === 'skipped') assert.ok(app.find('FormButton', `Return to pending Workout on ${dateLabel(occurrence.scheduledDate)} at 14:30`));
+    if (state === 'skipped') assert.ok(app.find('FormButton', `Actions for Workout on ${dateLabel(occurrence.scheduledDate)} at 14:30`));
   });
 }
 
 test('absent date/time, priority and category omit placeholders; deleted Task categories stay omitted', async (t) => {
   const f = await edited(t); const task = { ...f.snapshot.tasks[0], title: 'Undated task', description: null, priority: 'none' as const, categoryId: null, date: null, time: null };
-  const { label, app } = await row(t, f, null, task); assert.equal(label, 'Undated task. Pending'); assert.ok(app.container.textContent.includes('No date'));
+  const { label, app } = await row(t, f, null, task); assert.equal(label, 'Undated task. Pending'); assert.ok(!app.container.textContent.includes('No date'));
   await app.unmount();
   const category = f.snapshot.categories[0];
   const archived = taskRowPresentation({ ...task, categoryId: category.id }, null, [], [{ ...category, deletedAt: f.now() }], f.now());

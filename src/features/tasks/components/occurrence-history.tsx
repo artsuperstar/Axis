@@ -3,7 +3,9 @@ import { StyleSheet, View } from 'react-native';
 
 import { ThemedText } from '@/components/themed-text';
 import { AdaptiveModal, AdaptiveSheet } from '@/components/adaptive-sheet';
-import { Spacing } from '@/constants/theme';
+import { StatusText } from '@/components/status-text';
+import { Space } from '@/constants/theme';
+import { useTheme } from '@/hooks/use-theme';
 
 import { userError } from '../form';
 import { taskRowPresentation } from '../presentation';
@@ -21,6 +23,7 @@ export function OccurrenceHistory({ task, categories, recurrences, readPage, onS
   onDismiss: () => void;
   now: number;
 }) {
+  const colors = useTheme();
   const [entries, setEntries] = useState<TaskOccurrence[]>([]);
   const [nextBefore, setNextBefore] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -60,23 +63,23 @@ export function OccurrenceHistory({ task, categories, recurrences, readPage, onS
       <AdaptiveSheet contentContainerStyle={styles.content} header={<View style={styles.header}>
         <ThemedText type="sheetTitle" accessibilityRole="header" style={styles.title}>{task.title} · History</ThemedText>
         <TaskButton variant="quiet" label="Done" onPress={onDismiss} />
-              </View>}>
+      </View>}>
         <TaskError message={error} />
         {!!error && <TaskButton label="Retry" onPress={older} />}
         {!entries.length && !error && <ThemedText>No past occurrences yet.</ThemedText>}
         {entries.map((entry) => {
           const row = taskRowPresentation(task, entry, recurrences, categories, now);
           return (
-            <View key={entry.id} style={styles.entry}>
+            <View key={entry.id} style={[styles.entry, { borderColor: colors.border }]}>
               <View accessible style={styles.metadata} accessibilityLabel={`${row.accessibilityLabel}${entry.deletedAt !== null ? '. Previous schedule' : ''}`}>
-                <ThemedText>{row.date}</ThemedText>
-                <ThemedText type="small">{row.historyOutcome}{entry.deletedAt !== null ? ' · Previous schedule' : ''}</ThemedText>
-                <ThemedText type="small" themeColor="textSecondary">{row.recurrence}</ThemedText>
+                <ThemedText type="cardTitle" themeColor={row.resolved ? 'textSecondary' : 'textPrimary'}>{row.date}</ThemedText>
+                <StatusText type="metadata" tone={row.attention ? 'attention' : row.resolved || entry.deletedAt !== null ? 'subdued' : 'neutral'}>{row.historyOutcome}{entry.deletedAt !== null ? ' · Previous schedule' : ''}</StatusText>
+                <ThemedText type="metadata" themeColor="textSecondary">{row.recurrence}</ThemedText>
               </View>
               {entry.deletedAt === null && (
                 <View style={styles.buttons}>
-                  <TaskButton label={entry.status === 'completed' ? 'Reopen' : 'Complete'} accessibilityLabel={`${entry.status === 'completed' ? 'Reopen' : 'Complete'} ${row.actionSubject}`} onPress={() => change(entry, entry.status === 'completed' ? 'pending' : 'completed')} />
-                  {entry.status !== 'completed' && <TaskButton label={entry.status === 'skipped' ? 'Return to pending' : 'Skip'} accessibilityLabel={`${entry.status === 'skipped' ? 'Return to pending' : 'Skip'} ${row.actionSubject}`} onPress={() => change(entry, entry.status === 'skipped' ? 'pending' : 'skipped')} />}
+                  <TaskButton variant="quiet" label={entry.status === 'completed' ? 'Reopen' : 'Complete'} accessibilityLabel={`${entry.status === 'completed' ? 'Reopen' : 'Complete'} ${row.actionSubject}`} onPress={() => change(entry, entry.status === 'completed' ? 'pending' : 'completed')} />
+                  {entry.status !== 'completed' && <TaskButton variant="quiet" label={entry.status === 'skipped' ? 'Return to pending' : 'Skip'} accessibilityLabel={`${entry.status === 'skipped' ? 'Return to pending' : 'Skip'} ${row.actionSubject}`} onPress={() => change(entry, entry.status === 'skipped' ? 'pending' : 'skipped')} />}
                 </View>
               )}
             </View>
@@ -89,10 +92,10 @@ export function OccurrenceHistory({ task, categories, recurrences, readPage, onS
 }
 
 const styles = StyleSheet.create({
-  header: { padding: Spacing.three, flexDirection: 'row', alignItems: 'center', gap: Spacing.two },
+  header: { padding: Space.lg, flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', gap: Space.sm },
   title: { flex: 1 },
-  content: { padding: Spacing.three, gap: Spacing.three },
-  entry: { gap: Spacing.two, paddingBottom: Spacing.three },
-  metadata: { gap: Spacing.two },
-  buttons: { flexDirection: 'row', flexWrap: 'wrap', gap: Spacing.two },
+  content: { padding: Space.lg, gap: Space.lg },
+  entry: { gap: Space.sm, paddingBottom: Space.lg, borderBottomWidth: 1 },
+  metadata: { gap: Space.xs },
+  buttons: { flexDirection: 'row', flexWrap: 'wrap', gap: Space.sm },
 });
