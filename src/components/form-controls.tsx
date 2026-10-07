@@ -127,18 +127,21 @@ export function InlineNameForm({ title, onCancel, onComplete, onSize, onSubmit, 
   </View>;
 }
 
-export function FormButton({ label, onPress, disabled = false, selected = false, accessibilityLabel, variant = 'secondary', expanded, align = 'center', ref }: {
+export function FormButton({ label, onPress, disabled = false, selected = false, accessibilityLabel, variant = 'secondary', compactNavigation = false, expanded, align = 'center', ref }: {
   label: string;
   onPress: () => void;
   disabled?: boolean;
   selected?: boolean;
   accessibilityLabel?: string;
   variant?: ButtonVariant;
+  /** Opt-in for a single-row navigation strip: unchanged label, compact padding, underline selection. */
+  compactNavigation?: boolean;
   expanded?: boolean;
   align?: 'start' | 'center';
   ref?: Ref<View>;
 }) {
   const colors = useTheme();
+  const compact = variant === 'navigation' && compactNavigation;
   const [focused, setFocused] = useState(false);
   const appearance = buttonAppearance(colors, variant, { disabled, selected, focused });
   return (
@@ -151,8 +154,8 @@ export function FormButton({ label, onPress, disabled = false, selected = false,
       disabled={disabled}
       onPress={onPress}
       onFocus={() => setFocused(true)} onBlur={() => setFocused(false)}
-      style={({ pressed }) => [styles.button, buttonAppearance(colors, variant, { disabled, selected, focused, pressed }).style, { alignItems: align === 'start' ? 'flex-start' : 'center' }]}>
-      <ThemedText type="button" style={{ color: appearance.textColor }}>{label}{variant === 'navigation' && selected ? ' ✓' : ''}</ThemedText>
+      style={({ pressed }) => [styles.button, compact && styles.compactNavigation, buttonAppearance(colors, variant, { disabled, selected, focused, pressed }).style, { alignItems: align === 'start' ? 'flex-start' : 'center' }]}>
+      <ThemedText type="button" numberOfLines={compact ? 1 : undefined} style={{ color: appearance.textColor }}>{label}{variant === 'navigation' && selected && !compact ? ' ✓' : ''}</ThemedText>
     </Pressable>
   );
 }
@@ -287,6 +290,7 @@ const styles = StyleSheet.create({
   segmentText: { textAlign: 'center', flexShrink: 1 },
   menuAction: { borderTopWidth: 1, paddingTop: Space.sm },
   button: { minHeight: ControlSize.touch, minWidth: ControlSize.touch, justifyContent: 'center', alignItems: 'center', borderRadius: Radius.control, paddingHorizontal: Space.lg, paddingVertical: Space.sm },
+  compactNavigation: { paddingHorizontal: Space.micro },
   field: { gap: Space.sm },
   fieldLabel: { flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', gap: Space.sm },
   select: { minHeight: ControlSize.field, flexDirection: 'row', alignItems: 'center', gap: Space.sm, borderWidth: 1, borderRadius: Radius.control, paddingHorizontal: Space.lg, paddingVertical: Space.sm },

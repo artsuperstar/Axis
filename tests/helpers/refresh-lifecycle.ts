@@ -30,8 +30,8 @@ function cachedModule(url: URL, exports: unknown) {
 }
 registerHooks({
   resolve(specifier, context, next) {
-    // Contextual menus exercise the actual shared host; editor selection remains a native boundary.
-    if (context.parentURL?.includes('/context-menu.') && specifier === './form-selection-host') return next(specifier, context);
+    // Screen and native-modal menus use the same real host/context, as in production.
+    if ((context.parentURL?.includes('/context-menu.') || context.parentURL?.includes('/adaptive-sheet.')) && specifier === './form-selection-host') return next(specifier, context);
     const key = boundaries[specifier];
     if (key) return cachedModule(new URL(`./lifecycle-boundary-${key}.cjs`, import.meta.url), boundary[key]);
     const kind = context.parentURL?.includes('/use-finance.') ? ({ './data': 'finance', './work/data': 'work', './commitments/data': 'commitments' } as Record<string, string>)[specifier]

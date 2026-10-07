@@ -8,7 +8,7 @@ import { FormButton } from './form-controls';
 import { FormSelectionHost, useFormSelection } from './form-selection-host';
 
 export { FormSelectionHost as ContextMenuHost };
-export type ContextMenuAction = { label: string; onPress: () => void };
+export type ContextMenuAction = { label: string; accessibilityLabel?: string; variant?: 'quiet' | 'destructive'; onPress: () => void };
 
 /** Action buttons in the same measured overlay as selectors, with no field or selection semantics. */
 export function ContextMenu({ label, actions, disabled = false, onOpen }: {
@@ -36,7 +36,7 @@ export function ContextMenu({ label, actions, disabled = false, onOpen }: {
         estimatedHeight: actions.length * (ControlSize.touch + Space.xs) + Space.sm * 2 + 2, initialFocus: firstAction,
         content: <>
           {actions.map((action, index) => <FormButton key={action.label} ref={index === 0 ? firstAction : undefined}
-            variant="quiet" align="start" label={action.label} onPress={() => {
+            variant={action.variant ?? 'quiet'} align="start" label={action.label} accessibilityLabel={action.accessibilityLabel} onPress={() => {
               close(false);
               // Commit overlay dismissal before presenting a native modal or pushing a route.
               requestAnimationFrame(action.onPress);

@@ -108,3 +108,13 @@ test('one shared host replaces an existing contextual menu when another trigger 
   assert.equal(app.find('FormButton', 'Task options').props.expanded, false); assert.equal(app.find('FormButton', 'Other options').props.expanded, true);
   assert.ok(!app.nodes().some((node) => node.props?.label === 'First action')); assert.ok(app.find('FormButton', 'Second action'));
 });
+
+test('contextual actions forward explicit accessible subjects and destructive variants without selection semantics', async (t) => {
+  const f = await initialized(t); let chosen = false;
+  const app = await mount(createElement(ContextMenuHost, { safeAreaApplied: true, children: createElement(ContextMenu, {
+    label: 'Series options', actions: [{ label: 'End', accessibilityLabel: 'End Internet', variant: 'destructive', onPress() { chosen = true; } }],
+  }) }), f.db); t.after(app.unmount);
+  await app.press('Series options'); const end = app.find('FormButton', 'End Internet');
+  assert.equal(end.props.variant, 'destructive'); assert.equal(end.props.selected, undefined);
+  await app.press('End Internet'); await settle(); assert.equal(chosen, true); assert.ok(!overlay(app));
+});

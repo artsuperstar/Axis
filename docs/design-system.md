@@ -69,6 +69,8 @@ Use `ThemedText type="sheetTitle"`, etc. Font scaling remains enabled. Legacy ty
 - Destructive: danger text on a neutral surface; only for meaningful loss. Do not infer a role from the label.
 - Navigation: bottom selection indicator and visible selected checkmark; available for later internal-navigation migration.
 
+`compactNavigation` opts a navigation button into single-line text, compact horizontal padding, and an underline/background selection indicator without appending a checkmark. Selected/unselected labels, font metrics, padding and border dimensions stay identical; 44-point minimum targets remain. Finance uses this inside a nonwrapping horizontal strip with explicit large-text overflow. Other consumers retain their default presentation.
+
 Disabled controls use readable muted text/surfaces, not blanket opacity. Selection/checkmarks and accessible states remain intact. Focus adds a border cue; primary focus contrasts its border with its fill. Press feedback uses modest opacity while available.
 
 Default sheet headers and inline category creation adopt primary confirmation and quiet cancellation. Existing custom Task/Transaction/category/recurrence-history headers receive the same title/dismiss/confirm roles without moving their actions. Other feature actions await their screen-specific stage.
@@ -97,3 +99,7 @@ Verify iPhone light/dark, scrim separation, long sheet titles/labels, large acce
 Stage 13B applies these roles to the inline active Workout, Fitness internal navigation and focused logging/actions. See [Active Workout](active-workout.md) for its layout, safe-area, keyboard and device-review decisions.
 
 Stage 13C applies these roles to Tasks rows, contextual actions, grouped editing and focused recurrence configuration. See [Tasks experience](tasks-experience.md) for interaction, recurrence-version and device-review decisions.
+
+Stage 13D applies screenTitle, navigation, metric and compact status roles to the Finance shell and Overview. See [Finance Overview](finance-overview.md) for period controls, exact spending presentation, responsive layout and device-review decisions.
+
+Stage 13E applies compact obligation rows, primary Pay, anchored secondary/series actions and focused management/History to Commitments. See [Commitments experience](commitments-experience.md) for hierarchy, payment context, lifecycle and device-review decisions.

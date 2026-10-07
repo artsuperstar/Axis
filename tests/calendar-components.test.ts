@@ -12,7 +12,7 @@ import { createCommitmentDataAccess } from '../src/features/finance/commitments/
 import { commitmentDraft } from '../src/features/finance/commitments/form';
 import { createWorkDataAccess } from '../src/features/finance/work/data';
 import { workDraft } from '../src/features/finance/work/form';
-import { pickerValue } from '../src/utils/calendar';
+import { dateLabel, pickerValue } from '../src/utils/calendar';
 import { bundledMigrations, database } from './helpers/database';
 import { calendarAgenda, calendarGrid, commitmentViews, renderControl, sheets, theme, workViews } from './helpers/form-components';
 
@@ -126,11 +126,11 @@ test('Calendar launch opens the existing commitment sheet with the selected dist
     onCreateCategory: () => { throw new Error('unused'); }, initialDetail: { data: access.readHistory(id), occurrence } }));
   assert.ok(result.elements.some((node) => node.type === sheets.AdaptiveModal));
   assert.ok(result.elements.some((node) => node.type === sheets.AdaptiveSheet));
-  assert.equal(result.elements.filter((node) => node.props.label === 'Paid' && node.props.accessibilityLabel?.includes('Rent')).length, 2,
-    'one normal upcoming card plus the selected future occurrence in details');
-  assert.ok(result.elements.some((node) => node.props.label === 'Skip'));
-  assert.ok(result.elements.some((node) => node.props.label === 'Pause'));
-  assert.ok(result.elements.some((node) => node.props.label === 'Edit'));
+  assert.equal(result.elements.filter((node) => node.props.label === 'Pay' && node.props.accessibilityLabel?.includes('Rent')).length, 2,
+    'one normal upcoming row plus the selected future occurrence in details');
+  assert.ok(result.elements.some((node) => node.props.accessibilityLabel === `Pay Rent, due ${dateLabel(occurrence.dueDate)}`));
+  assert.ok(result.elements.some((node) => node.props.label === 'Series options for Rent'));
+  assert.ok(!result.elements.some((node) => ['Skip', 'Pause', 'Edit'].includes(node.props.label ?? '')), 'secondary actions are contextual');
   assert.equal(access.readRange({ from: occurrence.dueDate, to: occurrence.dueDate })[0].occurrence.id, null, 'opening details does not resolve the preview');
 });
 

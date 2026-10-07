@@ -91,8 +91,8 @@ test('Commitment payment retains amount/date through failure/Retry and saves lin
   const { db, commitments, finance } = await initialized(t);
   const id = commitments.create({ ...commitmentDraft(null, undefined, today), title: 'Rent', amount: '300' });
   const app = await mount(createElement(screens.FinanceScreen, { initialView: 'commitments', initialRecordId: id, initialDueDate: today }), db); t.after(app.unmount);
-  await app.press('Paid'); await app.change('Amount paid *', '321,09'); await app.change('Payment date *', today);
-  await failAndRetry(app, 'commitments.read', observeDraft(app, ['Amount paid *', 'Payment date *']));
+  await app.press('Pay'); await app.change('Actual amount paid *', '321,09'); await app.change('Payment date *', today);
+  await failAndRetry(app, 'commitments.read', observeDraft(app, ['Actual amount paid *', 'Payment date *']));
   await app.press('Confirm');
   assert.equal(finance.read().transactions[0].amountMinor, 32109);
   assert.equal(commitments.readHistory(id).history.find((row) => row.occurrence.dueDate === today)!.occurrence.status, 'paid');
@@ -101,7 +101,8 @@ test('Commitment payment retains amount/date through failure/Retry and saves lin
 test('Commitment editor keeps working title and amount while Retry updates its source', async (t) => {
   const { db, commitments } = await initialized(t); const draft = { ...commitmentDraft(null, undefined, today), title: 'Rent', amount: '300' }; const id = commitments.create(draft);
   const app = await mount(createElement(screens.FinanceScreen, { initialView: 'commitments', initialRecordId: id, initialDueDate: today }), db); t.after(app.unmount);
-  await app.press('Edit');
+  await app.press('Series options for Rent'); await app.press('Edit');
+  await act(async () => { await new Promise((resolve) => setTimeout(resolve, 10)); });
   await app.change('Title *', 'Working title'); await app.change('Expected amount *', '345,67');
   await failAndRetry(app, 'commitments.read', observeDraft(app, ['Title *', 'Expected amount *']), () => commitments.edit(id, { ...draft, title: 'Source changed' }));
   await app.press('Save'); assert.equal(commitments.readHistory(id).commitment.title, 'Working title');
@@ -171,7 +172,7 @@ test('Commitment payment validation rejects an occurrence resolved during Retry 
   const { db, commitments, finance } = await initialized(t); const id = commitments.create({ ...commitmentDraft(null, undefined, today), title: 'Rent', amount: '300' });
   const occurrence = commitments.readHistory(id).outstanding.find((row) => row.dueDate === today)!;
   const app = await mount(createElement(screens.FinanceScreen, { initialView: 'commitments', initialRecordId: id, initialDueDate: today }), db); t.after(app.unmount);
-  await app.press('Paid'); await app.change('Amount paid *', '321,09'); const check = observeDraft(app, ['Amount paid *', 'Payment date *']);
+  await app.press('Pay'); await app.change('Actual amount paid *', '321,09'); const check = observeDraft(app, ['Actual amount paid *', 'Payment date *']);
   await failAndRetry(app, 'commitments.read', check, () => commitments.skip(occurrence));
   await app.press('Confirm'); check(); assert.equal(finance.read().transactions.length, 0);
   assert.ok(app.nodes().some((node) => node.kind === 'FormError'));
@@ -200,9 +201,11 @@ for (const feature of ['Finance', 'Fitness'] as const) {
     const { db } = await initialized(t);
     const screen = feature === 'Finance' ? createElement(screens.FinanceScreen, { initialView: 'work' }) : createElement(screens.FitnessScreen);
     const app = await mount(screen, db, [feature === 'Finance' ? 'work.readOverview' : 'fitness.readOverview']); t.after(app.unmount);
-    assert.ok(app.find('FormError')); assert.ok(!app.nodes().some((node) => node.kind === 'ActivityIndicator'));
+    const hasError = () => app.nodes().some((node) => feature === 'Finance'
+      ? node.props?.accessibilityRole === 'alert' : node.kind === 'FormError');
+    assert.ok(hasError()); assert.ok(!app.nodes().some((node) => node.kind === 'ActivityIndicator'));
     runtime.fixture.failures.clear(); await app.press('Retry');
-    assert.ok(!app.nodes().some((node) => node.kind === 'FormError')); await app.press(feature === 'Finance' ? 'Add work' : 'Start Empty Workout');
+    assert.ok(!hasError()); await app.press(feature === 'Finance' ? 'Add work' : 'Start Empty Workout');
   });
 }
 

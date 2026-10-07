@@ -1,0 +1,19 @@
+# Finance shell and Overview — Stage 13D
+
+Finance opens to Overview (the existing internal `dashboard` identifier). Its fixed screen title and single-row Calm Utility navigation lead to Overview, Transactions, Commitments and Work. Navigation retains the selected Overview period, spending expansion and each destination's scroll offset. Native tabs delegate Finance safe areas to the same screens SafeAreaView used by Tasks/Fitness; the list disables automatic insets to avoid doubling them.
+
+Finance opts into `FormButton variant="navigation" compactNavigation`: the label stays unchanged when selected, with an underline/background indicator and the same font, padding and border dimensions in both states. Items use their unchanging single-line labels as the minimum allocation, never shrink, and share spare width equally. The strip never wraps. If large accessibility text cannot fit, a horizontal ScrollView provides deliberate overflow without shrinking or truncating labels; selection does not scroll the strip. All targets remain at least 44 points. Other navigation consumers keep their existing presentation.
+
+Overview uses the shared Period segmented control (Week/Month/Year; Month default), a period label and quiet labelled chevrons. The existing civil-date boundaries, current-period ceiling, rollover and historical navigation remain authoritative.
+
+Net Flow is the primary metric: Income minus Expenses from actual ledger transactions, never account Balance. Income/Expenses sit beneath it in two columns, stacking for narrow widths, enlarged text or long formatted amounts. The dashboard measures its available width; no currency text is ellipsized or capped to one line. Values use the existing exact BRL formatter. Net Flow/Expenses use primary text, including negative flow; Income uses restrained success text. Metric accessibility labels state the name, sign and formatted BRL amount.
+
+Spending shows the five largest categories in existing deterministic order. View all explicitly expands the full exact breakdown; Show less restores the preview. No synthetic Other category is introduced. Historical archived names and No category retain their existing analytics semantics. Each row announces category, exact amount and approximate share. Ratios reuse the existing BigInt-safe display helper; tiny positive shares read `<1%` and get a minimal visible bar. Rounded display shares need not sum to 100%; exact category centavos still sum to Expenses. These presentation values never feed back into totals.
+
+An empty period still shows three zero metrics plus quiet spending guidance. First loading shows a spinner, not fake financial zeros. Read errors use attention status text and Retry. The unchanged Finance hook retains the last successful same-view/same-period snapshot and never displays another period's totals after a failed period change. Editors retain the existing sheet refresh notice and dirty drafts.
+
+Add transaction and Categories live inside Transactions. Transaction rows/editors, linked payment protections, Commitments workflows and Work workflows retain their existing implementations. Their local management surfaces are unchanged; switching internal destinations normally requires dismissing native editors first. This stage does not keep every feature management view mounted in the background or add a cache.
+
+## Device review
+
+Still test iPhone Expo Go: initial Overview/Month, stable navigation positions while selecting every destination at normal/moderate text sizes, horizontal navigation at very large text, scroll return, period changes and disabled future chevron, positive/negative/empty metrics, very large BRL amounts, many/tiny categories and View all, light/dark, VoiceOver, safe areas/tab bar, transaction creation, Commitment Pay/Undo and Work receipt/Undo. Check resume/refocus read failure with an unsaved editor. Automated rendering/lifecycle tests and exports do not constitute device testing.

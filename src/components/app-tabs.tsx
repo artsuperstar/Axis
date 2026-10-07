@@ -27,7 +27,7 @@ export default function AppTabs() {
         <NativeTabs.Trigger.Icon sf="calendar" md="calendar_month" />
       </NativeTabs.Trigger>
 
-      <NativeTabs.Trigger name="finance">
+      <NativeTabs.Trigger name="finance" disableAutomaticContentInsets>
         <NativeTabs.Trigger.Label>Finance</NativeTabs.Trigger.Label>
         <NativeTabs.Trigger.Icon sf="dollarsign.circle.fill" md="account_balance_wallet" />
       </NativeTabs.Trigger>

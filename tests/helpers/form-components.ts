@@ -6,6 +6,7 @@ import { Children, createElement, isValidElement, type ReactElement, type ReactN
 // Exercise the real shared components with the existing web renderer, without adding a native test runtime.
 registerHooks({
   resolve(specifier, context, next) {
+    if (specifier === 'expo-router' && context.parentURL?.includes('/context-menu.')) return next(new URL('./router-focus.cjs', import.meta.url).href, context);
     // Match Metro's web resolution for the safe-area package's native implementation boundaries.
     if (context.parentURL?.includes('react-native-safe-area-context') && ['./SafeAreaView', './NativeSafeAreaProvider'].includes(specifier)) return next(`${specifier}.web`, context);
     const target = specifier === 'react-native' ? 'react-native-web' : specifier === '@react-native-community/datetimepicker'
@@ -24,6 +25,7 @@ export const commitmentForms = require('../../src/features/finance/commitments/c
 export const taskForms = require('../../src/features/tasks/components/task-editor') as typeof import('../../src/features/tasks/components/task-editor');
 export const taskCategories = require('../../src/features/tasks/components/category-manager') as typeof import('../../src/features/tasks/components/category-manager');
 export const financeCategories = require('../../src/features/finance/components/category-manager') as typeof import('../../src/features/finance/components/category-manager');
+export const financeDashboard = require('../../src/features/finance/components/finance-dashboard') as typeof import('../../src/features/finance/components/finance-dashboard');
 export const taskHistory = require('../../src/features/tasks/components/occurrence-history') as typeof import('../../src/features/tasks/components/occurrence-history');
 export const recurringTasks = require('../../src/features/tasks/components/recurring-tasks') as typeof import('../../src/features/tasks/components/recurring-tasks');
 export const workForms = require('../../src/features/finance/work/components/work-forms') as typeof import('../../src/features/finance/work/components/work-forms');

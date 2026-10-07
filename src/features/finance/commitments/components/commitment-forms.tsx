@@ -1,9 +1,10 @@
 import DateTimePicker, { DateTimePickerAndroid } from '@react-native-community/datetimepicker';
 import { useRef, useState } from 'react';
-import { Keyboard, Platform } from 'react-native';
+import { Keyboard, Platform, StyleSheet, View } from 'react-native';
 
 import { FormButton, FormError, FormField, FormSelect, InlineNameForm, SegmentedControl, SelectField } from '@/components/form-controls';
 import { ThemedText } from '@/components/themed-text';
+import { Space } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { dateLabel, localDateString, pickerValue } from '@/utils/calendar';
 
@@ -78,8 +79,8 @@ export function CommitmentEditor({ item, categories, onSave, onCreateCategory, o
   </CommitmentSheet>;
 }
 
-export function CommitmentPayment({ occurrence, title, onSave, onDismiss }: {
-  occurrence: OccurrenceTarget; title: string; onSave: (amount: string, date: string) => void; onDismiss: () => void;
+export function CommitmentPayment({ occurrence, title, categoryName, onSave, onDismiss }: {
+  occurrence: OccurrenceTarget; title: string; categoryName?: string | null; onSave: (amount: string, date: string) => void; onDismiss: () => void;
 }) {
   const [amount, setAmount] = useState(() => formatBrlInput(occurrence.expectedAmountMinor));
   const [date, setDate] = useState(() => localDateString(new Date()));
@@ -91,12 +92,19 @@ export function CommitmentPayment({ occurrence, title, onSave, onDismiss }: {
     try { validatePayment(amount, date, localDateString(new Date())); onSave(amount, date); onDismiss(); }
     catch (cause) { saving.current = false; setError(financeError(cause, 'Unable to record this payment.')); }
   }
-  return <CommitmentSheet title="Mark as paid" action="Confirm" onConfirm={save} onDismiss={onDismiss}>
+  return <CommitmentSheet title="Pay commitment" action="Confirm" onConfirm={save} onDismiss={onDismiss}>
     <FormError message={error} />
-    <ThemedText>{title}</ThemedText>
-    <ThemedText type="small">Due {dateLabel(occurrence.dueDate)} · Expected {formatBrlAmount(occurrence.expectedAmountMinor)}</ThemedText>
-    <FormField label="Amount paid *" value={amount} autoFocus keyboardType={Platform.OS === 'ios' ? 'numbers-and-punctuation' : 'decimal-pad'} onChangeText={(value) => { setAmount(value); setError(null); }} />
-    <CommitmentDate label="Payment date *" value={date} maximumDate={new Date()} onChange={(value) => { setDate(value); setError(null); }} />
+    <View style={styles.paymentContext}>
+      <ThemedText type="cardTitle">{title}</ThemedText>
+      <ThemedText type="metadata" themeColor="textSecondary">Due {dateLabel(occurrence.dueDate)}</ThemedText>
+      <ThemedText type="body">Expected amount · {formatBrlAmount(occurrence.expectedAmountMinor)}</ThemedText>
+      {!!categoryName && <ThemedText type="secondary" themeColor="textSecondary">Expense category · {categoryName}</ThemedText>}
+    </View>
+    <View style={styles.paymentFields}>
+      <FormField label="Actual amount paid *" value={amount} autoFocus keyboardType={Platform.OS === 'ios' ? 'numbers-and-punctuation' : 'decimal-pad'} onChangeText={(value) => { setAmount(value); setError(null); }}
+        helperText="This payment resolves the whole occurrence, even if the amount differs from expected." />
+      <CommitmentDate label="Payment date *" value={date} maximumDate={new Date()} onChange={(value) => { setDate(value); setError(null); }} />
+    </View>
   </CommitmentSheet>;
 }
 
@@ -116,6 +124,8 @@ export function CommitmentResume({ title, proposedDate, onResume, onDismiss }: {
     <FormError message={error} />
     <ThemedText>{title}</ThemedText>
     <CommitmentDate label="Next due date *" value={date} minimumDate={pickerValue(localDateString(new Date()), '00:00')} onChange={(value) => { setDate(value); setError(null); }} />
-    <ThemedText type="small" themeColor="textSecondary">Keep the proposed date to retain the previous billing day. Choosing another date sets a new monthly anchor. Retained occurrences keep their dates and still need to be resolved. Paused months are not backfilled.</ThemedText>
+    <ThemedText type="secondary" themeColor="textSecondary">Resuming starts the schedule again from the new due date. Keep the suggested date to preserve the billing day, or choose another date to change it. Existing unpaid occurrences still need payment. Paused months stay empty.</ThemedText>
   </CommitmentSheet>;
 }
+
+const styles = StyleSheet.create({ paymentContext: { gap: Space.sm }, paymentFields: { gap: Space.lg } });

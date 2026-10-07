@@ -1,6 +1,7 @@
 /// <reference types="node" />
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
+import { Children } from 'react';
 import type { ViewStyle } from 'react-native';
 
 import { buttonAppearance, fieldAppearance, type ButtonVariant } from '../src/components/control-appearance';
@@ -78,6 +79,45 @@ test('button variants preserve callbacks/disabled semantics and default to secon
   }
   const disabled = renderControl(() => controls.FormButton({ label: 'Save', variant: 'primary', disabled: true, onPress: () => assert.fail() }));
   assert.match(disabled.markup, /aria-disabled="true"/);
+});
+
+test('compact navigation keeps identical single-line label content and geometry in selected/unselected states', () => {
+  const geometry = (style: unknown) => {
+    const flat = flatten(style);
+    return [flat.paddingHorizontal, flat.paddingVertical, flat.minHeight, flat.minWidth, flat.borderWidth, flat.borderBottomWidth, flat.borderRadius];
+  };
+  for (const label of ['Overview', 'Transactions', 'Commitments', 'Work']) {
+    const results = [false, true].map((selected) => renderControl(() => controls.FormButton({
+      label, variant: 'navigation', compactNavigation: true, selected, onPress() {},
+    })));
+    const labels = results.map((result) => {
+      const text = result.elements.find((element) => element.type === themedText.ThemedText)!;
+      assert.equal((text.props as { numberOfLines?: number }).numberOfLines, 1);
+      assert.equal((text.props as { type?: string }).type, 'button');
+      assert.doesNotMatch(result.markup, /✓/);
+      assert.match(result.markup, /role="button"/);
+      assert.ok(result.markup.includes(`aria-label="${label}"`));
+      return Children.toArray(text.props.children).join('');
+    });
+    assert.deepEqual(labels, [label, label]);
+    const styles = results.map((result) => (result.elements[0].props.style as unknown as (state: { pressed: boolean }) => unknown)({ pressed: false }));
+    assert.deepEqual(geometry(styles[0]), geometry(styles[1]));
+    assert.ok((flatten(styles[0]).minHeight as number) >= theme.ControlSize.touch);
+    assert.ok((flatten(styles[0]).minWidth as number) >= theme.ControlSize.touch);
+    assert.equal(flatten(styles[0]).borderBottomWidth, 2);
+    assert.equal((results[0].elements[0].props.accessibilityState as { selected?: boolean }).selected, false);
+    assert.equal((results[1].elements[0].props.accessibilityState as { selected?: boolean }).selected, true);
+  }
+});
+
+test('compact navigation is opt-in and does not change other button or navigation consumers', () => {
+  const ordinary = renderControl(() => controls.FormButton({ label: 'Workout', variant: 'navigation', selected: true, onPress() {} }));
+  assert.match(ordinary.markup, /Workout ✓/);
+  const primary = renderControl(() => controls.FormButton({ label: 'Save', variant: 'primary', compactNavigation: true, onPress() {} }));
+  const text = primary.elements.find((element) => element.type === themedText.ThemedText)!;
+  assert.equal((text.props as { numberOfLines?: number }).numberOfLines, undefined);
+  const style = primary.elements[0].props.style as unknown as (state: { pressed: boolean }) => unknown;
+  assert.equal(flatten(style({ pressed: false })).paddingHorizontal, theme.Space.lg);
 });
 
 test('read-only and disabled fields stay noneditable but expose different visual/accessible states', () => {
