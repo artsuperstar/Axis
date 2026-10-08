@@ -1,8 +1,10 @@
 import { localDateString, validDate } from '@/utils/calendar';
+import { singleLineText } from '@/utils/text-normalization';
 
 import { FinanceValidationError } from '../errors';
 import { formatBrlInput, maxAmountMinor, parseBrlAmount, validateAmountMinor } from '../money';
 import type { WorkDraft, WorkEntry, WorkPaymentDraft } from './types';
+import { jobTitle } from './presentation';
 
 export const compensationOptions = [{ value: 'hourly' as const, label: 'Hourly' }, { value: 'fixed' as const, label: 'Fixed' }];
 
@@ -40,20 +42,21 @@ export function earnedMinor(entry: Pick<WorkEntry, 'compensationType' | 'duratio
 }
 
 export function workDraft(entry?: WorkEntry | null, today = localDateString(new Date())): WorkDraft {
-  return { description: entry?.description ?? '', counterpartyId: entry?.counterpartyId ?? null, compensationType: entry?.compensationType ?? 'hourly',
+  return { title: entry ? singleLineText(jobTitle(entry)) : '', description: entry?.description ?? '', counterpartyId: entry?.counterpartyId ?? null, compensationType: entry?.compensationType ?? 'hourly',
     workDate: entry?.workDate ?? today, hours: entry?.durationMinutes ? String(Math.floor(entry.durationMinutes / 60)) : '',
     minutes: entry?.durationMinutes ? String(entry.durationMinutes % 60) : '', hourlyRate: entry?.hourlyRateMinor ? formatBrlInput(entry.hourlyRateMinor) : '',
     fixedAmount: entry?.fixedAmountMinor ? formatBrlInput(entry.fixedAmountMinor) : '', expectedPaymentDate: entry?.expectedPaymentDate ?? '' };
 }
 
 export function validateWorkDraft(draft: WorkDraft, today = localDateString(new Date())) {
+  const title = singleLineText(draft.title).trim();
+  if (!title) throw new FinanceValidationError('Enter a job title.');
   const description = draft.description.trim();
-  if (!description) throw new FinanceValidationError('Enter a work description.');
   if (!draft.counterpartyId) throw new FinanceValidationError('Choose who this work is for.');
   const workDate = draft.workDate.trim(); const expectedPaymentDate = draft.expectedPaymentDate.trim() || null;
   if (!validDate(workDate) || workDate > today) throw new FinanceValidationError('Choose today or an earlier valid work date.');
   if (expectedPaymentDate && !validDate(expectedPaymentDate)) throw new FinanceValidationError('Choose a valid expected payment date.');
-  return { ...compensationValues(draft), description, counterpartyId: draft.counterpartyId, workDate, expectedPaymentDate };
+  return { ...compensationValues(draft), title, description, counterpartyId: draft.counterpartyId, workDate, expectedPaymentDate };
 }
 
 export function allocationValues(allocations: WorkPaymentDraft['allocations']) {

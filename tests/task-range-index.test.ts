@@ -6,7 +6,11 @@ import { migrate } from 'drizzle-orm/expo-sqlite/migrator';
 import { createTaskDataAccess } from '../src/features/tasks/data';
 import { taskDraft } from '../src/features/tasks/form';
 import { pickerValue } from '../src/utils/calendar';
-import { bundledMigrations, database, journal } from './helpers/database';
+import { bundledMigrations as allMigrations, database } from './helpers/database';
+
+// Assert this index-only migration independently of later additive schema changes.
+const journal = { ...allMigrations.journal, entries: allMigrations.journal.entries.slice(0, 9) };
+const bundledMigrations = { ...allMigrations, journal };
 
 test('date index migration is additive, preserves data, rolls back on failure and retries idempotently', async (t) => {
   const f = database(); t.after(() => f.sqlite.close());

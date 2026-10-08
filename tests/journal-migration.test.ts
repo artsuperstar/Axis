@@ -24,12 +24,18 @@ import { createJournalDataAccess } from '../src/features/journal/data';
 import { createTaskDataAccess } from '../src/features/tasks/data';
 import { taskDraft } from '../src/features/tasks/form';
 import { pickerValue } from '../src/utils/calendar';
-import { bundledMigrations, database, journal } from './helpers/database';
+import { bundledMigrations as allMigrations, database } from './helpers/database';
+
+// These suites isolate earlier feature migrations. Current Work APIs need the title column;
+// real pre-Title upgrade/rollback/data retention is covered separately in work-title-migration.test.ts.
+const journal = { ...allMigrations.journal, entries: allMigrations.journal.entries.slice(0, 9) };
+const bundledMigrations = { ...allMigrations, journal };
 
 const today = '2026-10-04'; const now = () => pickerValue(today).getTime();
 async function existingStage11() {
   const result = database(); const { db, sqlite } = result;
   await migrate(db, { ...bundledMigrations, journal: { ...journal, entries: journal.entries.slice(0, 6) } });
+  sqlite.exec(allMigrations.migrations.m0009);
   seedDefaultCategories(db, 1000); seedFinanceCategories(db, 1000); seedFitnessExercises(db);
   const tasks = createTaskDataAccess(db, randomUUID, now); const finance = createFinanceDataAccess(db, randomUUID, now);
   const commitments = createCommitmentDataAccess(db, randomUUID, now); const work = createWorkDataAccess(db, randomUUID, now);
@@ -48,7 +54,7 @@ async function existingStage11() {
   commitments.pay(commitment.outstanding[0], '170', today); commitments.skip(commitment.outstanding[1]);
   commitments.pause(commitmentId); commitments.resume(commitmentId, '2026-10-20'); finance.deleteCategory(category.id);
   const client = work.createCounterparty('Historical client');
-  const workId = work.create({ ...workDraft(null, today), description: 'Website', counterpartyId: client.id,
+  const workId = work.create({ ...workDraft(null, today), title: 'Website', description: 'Website', counterpartyId: client.id,
     compensationType: 'fixed', fixedAmount: '1000', expectedPaymentDate: today });
   work.recordPayment({ counterpartyId: client.id, allocations: [{ workEntryId: workId, amount: '400' }], paymentDate: today, categoryId: null });
   work.archiveCounterparty(client.id);

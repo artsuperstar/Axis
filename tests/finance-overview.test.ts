@@ -93,7 +93,7 @@ test('Overview / Transactions / Commitments / Work / Overview preserves ledger r
   const commitments = createCommitmentDataAccess(f.db, randomUUID);
   commitments.create({ ...commitmentDraft(null, undefined, today), title: 'Rent', amount: '300' });
   const work = createWorkDataAccess(f.db, randomUUID); const client = work.createCounterparty('Client');
-  work.create({ ...workDraft(null, today), counterpartyId: client.id, description: 'Outstanding work', compensationType: 'fixed', fixedAmount: '1000' });
+  work.create({ ...workDraft(null, today), counterpartyId: client.id, title: 'Outstanding work', description: 'Outstanding work', compensationType: 'fixed', fixedAmount: '1000' });
   const beforeCommitments = commitments.read(); const beforeWork = work.readOverview();
   const before = f.finance.read();
   const app = await mount(createElement(screens.FinanceScreen), f.db); t.after(app.unmount);

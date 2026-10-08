@@ -6,7 +6,7 @@ import { Children, createElement, isValidElement, type ReactElement, type ReactN
 // Exercise the real shared components with the existing web renderer, without adding a native test runtime.
 registerHooks({
   resolve(specifier, context, next) {
-    if (specifier === 'expo-router' && context.parentURL?.includes('/context-menu.')) return next(new URL('./router-focus.cjs', import.meta.url).href, context);
+    if (specifier === 'expo-router') return next(new URL('./router-focus.cjs', import.meta.url).href, context);
     // Match Metro's web resolution for the safe-area package's native implementation boundaries.
     if (context.parentURL?.includes('react-native-safe-area-context') && ['./SafeAreaView', './NativeSafeAreaProvider'].includes(specifier)) return next(`${specifier}.web`, context);
     const target = specifier === 'react-native' ? 'react-native-web' : specifier === '@react-native-community/datetimepicker'
@@ -29,6 +29,7 @@ export const financeDashboard = require('../../src/features/finance/components/f
 export const taskHistory = require('../../src/features/tasks/components/occurrence-history') as typeof import('../../src/features/tasks/components/occurrence-history');
 export const recurringTasks = require('../../src/features/tasks/components/recurring-tasks') as typeof import('../../src/features/tasks/components/recurring-tasks');
 export const workForms = require('../../src/features/finance/work/components/work-forms') as typeof import('../../src/features/finance/work/components/work-forms');
+export const workRows = require('../../src/features/finance/work/components/work-row') as typeof import('../../src/features/finance/work/components/work-row');
 export const workViews = require('../../src/features/finance/work/components/work-view') as typeof import('../../src/features/finance/work/components/work-view');
 export const transactionForms = require('../../src/features/finance/components/transaction-editor') as typeof import('../../src/features/finance/components/transaction-editor');
 export const transactionRows = require('../../src/features/finance/components/transaction-row') as typeof import('../../src/features/finance/components/transaction-row');

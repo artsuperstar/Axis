@@ -15,10 +15,18 @@ import { compensationOptions, workDraft } from '../src/features/finance/work/for
 import { clientAutocomplete } from '../src/features/finance/work/form-options';
 import { groupWorkItems } from '../src/features/finance/work/presentation';
 import { pickerValue } from '../src/utils/calendar';
+import { singleLineText } from '../src/utils/text-normalization';
 import { bundledMigrations, database } from './helpers/database';
-import { autocomplete, controls, renderControl, selection, transactionForms, transactionRows, workForms, workViews } from './helpers/form-components';
+import { autocomplete, controls, renderControl, selection, transactionForms, transactionRows, workForms, workRows, workViews } from './helpers/form-components';
 
 const today = '2026-10-03';
+
+test('Job Title is explicitly single-line and normalizes all pasted line separators without discarding words or accents', () => {
+  const result = renderControl(() => workForms.WorkEditor({ item: null, counterparties: [], onSave: () => {}, onCreateCounterparty: () => { throw new Error('not used'); }, onDismiss: () => {} }));
+  const title = result.elements.find((element) => element.props.label === 'Job title *')!;
+  assert.equal((title.props as unknown as { multiline: boolean }).multiline, false);
+  assert.equal(singleLineText('Logo\r\nDesign\nJoão\rClient\u2028Line\u2029End'), 'Logo Design João Client Line End');
+});
 async function initialized() {
   const result = database(); await migrate(result.db, bundledMigrations); seedFinanceCategories(result.db, 1000);
   const now = () => pickerValue(today).getTime();
@@ -84,7 +92,7 @@ test('Client creation failure and outside dismissal preserve selection without c
 });
 test('Work entry editor uses Client autocomplete and retains archived names without suggesting them for new work', async (t) => {
   const { sqlite, work } = await initialized(); t.after(() => sqlite.close());
-  const party = work.createCounterparty('Past client'); const id = work.create({ ...workDraft(null, today), counterpartyId: party.id, description: 'Fixed website', compensationType: 'fixed', fixedAmount: '800' });
+  const party = work.createCounterparty('Past client'); const id = work.create({ ...workDraft(null, today), counterpartyId: party.id, title: 'Fixed website', description: 'Fixed website', compensationType: 'fixed', fixedAmount: '800' });
   work.archiveCounterparty(party.id);
   const current = work.read().items.find((item) => item.entry.id === id)!;
   const result = renderControl(() => workForms.WorkEditor({ item: current, counterparties: work.read().counterparties, onSave: () => {}, onCreateCounterparty: work.createCounterparty, onDismiss: () => {} }));
@@ -95,14 +103,28 @@ test('Work entry editor uses Client autocomplete and retains archived names with
   assert.match(result.markup, /Past client \(archived\)/); assert.doesNotMatch(result.markup, /counterpart/i);
   assert.match(result.markup, /Fixed amount/); assert.doesNotMatch(result.markup, /Hourly rate|Duration \*/);
 });
+
+test('Job list, History row and detail omit empty Description without placeholder metadata or accessibility text', async (t) => {
+  const { sqlite, work } = await initialized(); t.after(() => sqlite.close());
+  const client = work.createCounterparty('João'); const id = work.create({ ...workDraft(null, today), title: 'Logo Design', description: 'Existing details', counterpartyId: client.id, compensationType: 'fixed', fixedAmount: '100' });
+  const original = work.readDetail(id).items[0];
+  for (const description of ['', '  \n ']) for (const detail of [false, true]) {
+    const item = { ...original, entry: { ...original.entry, description } };
+    const result = renderControl(() => workRows.WorkRow({ item, detail, onPress: detail ? undefined : () => {} }));
+    assert.ok(!result.elements.some((element) => element.props.testID === 'job-description'));
+    assert.match(result.markup, /Logo Design/); assert.match(result.markup, /João/);
+    assert.doesNotMatch(result.markup, /No description|Description unavailable/);
+    if (!detail) assert.ok(result.elements.some((element) => element.props.accessibilityLabel?.startsWith('Logo Design, João,')));
+  }
+});
 test('record-payment editor defaults a selected allocation to outstanding and accepts only active Income categories', async (t) => {
   const { sqlite, work, finance } = await initialized(); t.after(() => sqlite.close());
-  const party = work.createCounterparty('Acme'); const id = work.create({ ...workDraft(null, today), counterpartyId: party.id, description: 'Website', compensationType: 'fixed', fixedAmount: '800' });
+  const party = work.createCounterparty('Acme'); const id = work.create({ ...workDraft(null, today), counterpartyId: party.id, title: 'Website', description: 'Website', compensationType: 'fixed', fixedAmount: '800' });
   work.recordPayment({ counterpartyId: party.id, allocations: [{ workEntryId: id, amount: '300' }], categoryId: null, paymentDate: today });
   const archived = finance.createCategory('Archived income', 'income'); finance.deleteCategory(archived.id);
   const data = work.read(); const initialItem = data.items[0]; const categories = finance.read().categories;
   const result = renderControl(() => workForms.WorkPaymentEditor({ data, categories, initialItem, onSave: () => {}, onDismiss: () => {}, onCreateCategory: (name) => finance.createCategory(name, 'income') }));
-  const amount = result.elements.find((element) => element.props.label === 'Allocate *')!; assert.equal(amount.props.value, formatBrlInput(50000));
+  const amount = result.elements.find((element) => element.props.label === 'Amount received for this work *')!; assert.equal(amount.props.value, formatBrlInput(50000));
   assert.match(result.markup, /Payment total: R\$ 500,00/); assert.match(result.markup, /role="checkbox"[^>]*aria-checked="true"|aria-checked="true"[^>]*role="checkbox"/);
   const category = result.elements.find((element) => element.props.label === 'Income category')!;
   assert.deepEqual(category.props.options![0], { value: null, label: 'No category' });
@@ -112,7 +134,7 @@ test('record-payment editor defaults a selected allocation to outstanding and ac
 });
 test('Work-linked Finance editor locks type/amount and its row hides ordinary Delete', async (t) => {
   const { sqlite, work, finance } = await initialized(); t.after(() => sqlite.close());
-  const party = work.createCounterparty('Acme'); const id = work.create({ ...workDraft(null, today), counterpartyId: party.id, description: 'Website', compensationType: 'fixed', fixedAmount: '800' });
+  const party = work.createCounterparty('Acme'); const id = work.create({ ...workDraft(null, today), counterpartyId: party.id, title: 'Website', description: 'Website', compensationType: 'fixed', fixedAmount: '800' });
   work.recordPayment({ counterpartyId: party.id, allocations: [{ workEntryId: id, amount: '300' }], categoryId: null, paymentDate: today });
   const transaction = finance.read().transactions[0]; const categories = finance.read().categories;
   const editor = renderControl(() => transactionForms.TransactionEditor({ transaction, categories, workPayment: true, onSave: () => {}, onCreateCategory: finance.createCategory, onDismiss: () => {} }));
@@ -134,31 +156,32 @@ test('Work-linked Finance editor locks type/amount and its row hides ordinary De
 test('Work main view displays current summary and outstanding work while keeping paid entries in History', async (t) => {
   const { sqlite, work, finance } = await initialized(); t.after(() => sqlite.close());
   const party = work.createCounterparty('Acme');
-  const id = work.create({ ...workDraft(null, today), counterpartyId: party.id, description: 'Historical paid entry', compensationType: 'fixed', fixedAmount: '800' });
+  const id = work.create({ ...workDraft(null, today), counterpartyId: party.id, title: 'Historical paid entry', description: 'Historical paid entry', compensationType: 'fixed', fixedAmount: '800' });
   work.recordPayment({ counterpartyId: party.id, allocations: [{ workEntryId: id, amount: '800' }], categoryId: null, paymentDate: today });
-  work.create({ ...workDraft(null, today), counterpartyId: party.id, description: 'Outstanding website', compensationType: 'fixed', fixedAmount: '200', expectedPaymentDate: '2026-10-02' });
+  work.create({ ...workDraft(null, today), counterpartyId: party.id, title: 'Outstanding website', description: 'Outstanding website', compensationType: 'fixed', fixedAmount: '200', expectedPaymentDate: '2026-10-02' });
   const result = renderControl(() => workViews.WorkView({ data: work.readOverview(), categories: finance.read().categories, access: work, mutate: (action) => action(), onCreateCategory: (name) => finance.createCategory(name, 'income') }));
-  assert.match(result.markup, /Earned R\$ 1\.000,00/); assert.match(result.markup, /Received R\$ 800,00/); assert.match(result.markup, /Outstanding R\$ 200,00/);
-  assert.match(result.markup, /Outstanding website/); assert.match(result.markup, /Payment overdue/); assert.match(result.markup, /History/);
+  assert.match(result.markup, /aria-label="Earned, R\$ 1\.000,00"/); assert.match(result.markup, /aria-label="Received, R\$ 800,00"/); assert.match(result.markup, /aria-label="Outstanding, R\$ 200,00"/);
+  assert.match(result.markup, /Outstanding website/); assert.match(result.markup, /Needs attention/); assert.match(result.markup, /Work options/);
   assert.doesNotMatch(result.markup, /Historical paid entry/);
-  assert.match(result.markup, /Clients/); assert.doesNotMatch(result.markup, /counterpart/i);
+  assert.match(result.markup, /Jobs/); assert.doesNotMatch(result.markup, /work-clients/); assert.doesNotMatch(result.markup, /counterpart/i);
 });
 
 test('Work balances group unpaid/partial as Outstanding, fully resolved as History, and Undo reopens work', async (t) => {
   const { sqlite, work, finance } = await initialized(); t.after(() => sqlite.close());
   const client = work.createCounterparty('Client');
   const create = (description: string, expectedPaymentDate = '') => work.create({ ...workDraft(null, today), counterpartyId: client.id,
-    description, compensationType: 'fixed', fixedAmount: '1000', expectedPaymentDate });
+    title: description, description, compensationType: 'fixed', fixedAmount: '1000', expectedPaymentDate });
   const unpaid = create('Unpaid'); const partial = create('Partial'); const overdue = create('Partial overdue', '2026-10-01'); const paid = create('Paid');
   const pay = (id: string, amount: string) => work.recordPayment({ counterpartyId: client.id, allocations: [{ workEntryId: id, amount }], categoryId: null, paymentDate: today });
   pay(partial, '400'); pay(overdue, '400'); const payment = pay(paid, '1000');
-  const zero = work.create({ ...workDraft(null, today), counterpartyId: client.id, description: 'No payment due', hours: '0', minutes: '1', hourlyRate: '0,01' });
+  const zero = work.create({ ...workDraft(null, today), counterpartyId: client.id, title: 'No payment due', description: 'No payment due', hours: '0', minutes: '1', hourlyRate: '0,01' });
   const groups = groupWorkItems(work.read().items);
   assert.deepEqual(new Set(groups.outstanding.map((row) => row.entry.id)), new Set([unpaid, partial]));
   assert.deepEqual(groups.overdue.map((row) => row.entry.id), [overdue]); assert.equal(groups.overdue[0].outstandingMinor, 60000);
   assert.deepEqual(new Set(groups.settled.map((row) => row.entry.id)), new Set([paid, zero]));
   const view = renderControl(() => workViews.WorkView({ data: work.readOverview(), categories: finance.read().categories, access: work, mutate: (action) => action(), onCreateCategory: (name) => finance.createCategory(name, 'income') }));
-  assert.match(view.markup, /Partial overdue/); assert.match(view.markup, /Partially paid/); assert.match(view.markup, /Outstanding \(2\)/);
+  assert.match(view.markup, /Partial overdue/); assert.match(view.markup, /Needs attention/); assert.match(view.markup, /Jobs/);
+  assert.match(view.markup, />Unpaid</); assert.match(view.markup, />Partial</);
   work.undoPayment(payment); assert.ok(groupWorkItems(work.read().items).outstanding.some((row) => row.entry.id === paid));
   assert.ok(!groupWorkItems(work.read().items).settled.some((row) => row.entry.id === paid));
 });

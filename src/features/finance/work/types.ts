@@ -6,7 +6,7 @@ export type WorkCounterparty = typeof workCounterparties.$inferSelect;
 export type WorkEntry = typeof workEntries.$inferSelect;
 export type WorkPaymentAllocation = typeof workPaymentAllocations.$inferSelect;
 export type WorkDraft = {
-  description: string; counterpartyId: string | null; compensationType: WorkEntry['compensationType']; workDate: string;
+  title: string; description: string; counterpartyId: string | null; compensationType: WorkEntry['compensationType']; workDate: string;
   hours: string; minutes: string; hourlyRate: string; fixedAmount: string; expectedPaymentDate: string;
 };
 export type WorkPaymentDraft = {
@@ -17,7 +17,7 @@ export type WorkItem = {
   status: 'unpaid' | 'partial' | 'paid'; overdue: boolean;
 };
 export type WorkTotals = { earnedMinor: bigint; receivedMinor: bigint; outstandingMinor: bigint };
-export type WorkPayment = { transaction: FinanceTransaction; counterparty: WorkCounterparty; allocations: (WorkPaymentAllocation & { description: string })[] };
+export type WorkPayment = { transaction: FinanceTransaction; counterparty: WorkCounterparty; allocations: (WorkPaymentAllocation & { title: string | null; description: string })[] };
 export type WorkSnapshot = {
   items: WorkItem[]; counterparties: WorkCounterparty[]; payments: WorkPayment[]; totals: WorkTotals;
   counterpartyTotals: (WorkTotals & { counterparty: WorkCounterparty })[];

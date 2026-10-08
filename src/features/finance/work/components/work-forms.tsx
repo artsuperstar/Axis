@@ -6,10 +6,11 @@ import { AutocompleteField } from '@/components/autocomplete-field';
 import { AdaptiveSheet as WorkSheet } from '@/components/adaptive-sheet';
 import { FormButton, FormError, FormField, FormSelect, InlineNameForm, SegmentedControl, SelectField } from '@/components/form-controls';
 import { ThemedText } from '@/components/themed-text';
-import { Spacing } from '@/constants/theme';
+import { Space } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useTheme } from '@/hooks/use-theme';
 import { dateLabel, localDateString, pickerValue } from '@/utils/calendar';
+import { singleLineText } from '@/utils/text-normalization';
 
 import { financeError } from '../../errors';
 import { createFinanceCategorySelection, financeCategoryOptions } from '../../form-options';
@@ -17,6 +18,7 @@ import { formatBrlAmount, formatBrlInput } from '../../money';
 import type { FinanceCategory } from '../../types';
 import { allocationValues, compensationOptions, compensationValues, earnedMinor, workDraft } from '../form';
 import { clientAutocomplete, clientLabel, paymentClientAutocomplete } from '../form-options';
+import { jobTitle } from '../presentation';
 import type { WorkCounterparty, WorkDraft, WorkItem, WorkPaymentDraft, WorkSnapshot } from '../types';
 
 export { AdaptiveModal as WorkModal, AdaptiveSheet as WorkSheet } from '@/components/adaptive-sheet';
@@ -41,11 +43,12 @@ function WorkDate({ label, value, onChange, maximumDate }: { label: string; valu
   </>;
 }
 
-export function WorkEditor({ item, counterparties, onSave, onCreateCounterparty, onDismiss }: {
+export function WorkEditor({ item, counterparties, initialCounterpartyId, onSave, onCreateCounterparty, onDismiss }: {
   item: WorkItem | null; counterparties: WorkCounterparty[]; onSave: (draft: WorkDraft) => void;
+  initialCounterpartyId?: string;
   onCreateCounterparty: (name: string) => WorkCounterparty; onDismiss: () => void;
 }) {
-  const [draft, setDraft] = useState(() => workDraft(item?.entry));
+  const [draft, setDraft] = useState(() => ({ ...workDraft(item?.entry), counterpartyId: item?.entry.counterpartyId ?? initialCounterpartyId ?? null }));
   const [error, setError] = useState<string | null>(null);
   const saving = useRef(false);
   const selected = counterparties.find((party) => party.id === draft.counterpartyId);
@@ -61,14 +64,20 @@ export function WorkEditor({ item, counterparties, onSave, onCreateCounterparty,
   }
   return <WorkSheet title={item ? 'Edit work' : 'New work'} action="Save" onConfirm={save} onDismiss={onDismiss}>
     <FormError message={error} />
-    <SegmentedControl label="Compensation *" value={draft.compensationType} options={compensationOptions} onChange={(value) => change('compensationType', value)} />
-    <FormField label="Description *" value={draft.description} autoFocus onChangeText={(value) => change('description', value)} />
-    <AutocompleteField label="Client *" value={draft.counterpartyId} disabled={counterpartyLocked}
+    <View style={styles.group}>
+    <ThemedText type="cardTitle" accessibilityRole="header">Job</ThemedText>
+    <FormField label="Job title *" value={draft.title} multiline={false} autoFocus onChangeText={(value) => change('title', singleLineText(value))} />
+    {counterpartyLocked ? <FormField label="Client *" value={clientLabel(selected)} editable={false} helperText="Undo payments before changing the client." /> : <AutocompleteField label="Client *" value={draft.counterpartyId}
       displayValue={clientLabel(selected)} onSelect={(value) => change('counterpartyId', value)}
       description={archived ? 'This archived client is retained for historical work. Choose an active client to change it.' : undefined}
       getResults={(query) => clientAutocomplete(counterparties, query)} onCreate={(name) => onCreateCounterparty(name).id}
-      formatError={(cause) => financeError(cause, 'Unable to create this client.')} />
+      formatError={(cause) => financeError(cause, 'Unable to create this client.')} />}
+    <FormField label="Description" value={draft.description} multiline onChangeText={(value) => change('description', value)} />
     <WorkDate label="Work date *" value={draft.workDate} maximumDate={new Date()} onChange={(value) => change('workDate', value)} />
+    </View>
+    <View style={styles.group}>
+    <ThemedText type="cardTitle" accessibilityRole="header">Pricing</ThemedText>
+    <SegmentedControl label="Compensation *" value={draft.compensationType} options={compensationOptions} onChange={(value) => change('compensationType', value)} />
     {draft.compensationType === 'hourly' ? <>
       <ThemedText type="smallBold">Duration *</ThemedText>
       <View style={styles.duration}>
@@ -77,20 +86,26 @@ export function WorkEditor({ item, counterparties, onSave, onCreateCounterparty,
       </View>
       <FormField label="Hourly rate *" accessibilityLabel="Hourly rate in reais, required" value={draft.hourlyRate} placeholder="50,00" keyboardType={Platform.OS === 'ios' ? 'numbers-and-punctuation' : 'decimal-pad'} onChangeText={(value) => change('hourlyRate', value)} />
     </> : <FormField label="Fixed amount *" accessibilityLabel="Fixed amount in reais, required" value={draft.fixedAmount} placeholder="800,00" keyboardType={Platform.OS === 'ios' ? 'numbers-and-punctuation' : 'decimal-pad'} onChangeText={(value) => change('fixedAmount', value)} />}
-    <ThemedText type="smallBold">Earned: {preview !== null ? formatBrlAmount(preview) : 'Enter compensation terms'}</ThemedText>
+    <ThemedText type="cardTitle">Earned: {preview !== null ? formatBrlAmount(preview) : 'Enter compensation terms'}</ThemedText>
     {counterpartyLocked && <ThemedText type="small" themeColor="textSecondary">Received {formatBrlAmount(item!.receivedMinor)}. Earned cannot be reduced below this amount. Undo payments before changing the client.</ThemedText>}
+    </View>
+    <View style={styles.group}>
+    <ThemedText type="cardTitle" accessibilityRole="header">Payment expectation</ThemedText>
+    <ThemedText type="secondary" themeColor="textSecondary">When you expect to receive this money, separately from the work date.</ThemedText>
     <WorkDate label="Expected payment date" value={draft.expectedPaymentDate} onChange={(value) => change('expectedPaymentDate', value)} />
-    {!!draft.expectedPaymentDate && <FormButton label="Clear expected date" onPress={() => change('expectedPaymentDate', '')} />}
+    {!!draft.expectedPaymentDate && <FormButton variant="quiet" label="Clear expected date" onPress={() => change('expectedPaymentDate', '')} />}
+    </View>
     <ThemedText type="small" themeColor="textSecondary">Work records money earned. Income is recorded only when you receive a payment.</ThemedText>
   </WorkSheet>;
 }
 
-export function WorkPaymentEditor({ data, categories, initialItem, onSave, onCreateCategory, onDismiss }: {
+export function WorkPaymentEditor({ data, categories, initialItem, initialCounterpartyId, onSave, onCreateCategory, onDismiss }: {
   data: Pick<WorkSnapshot, 'items' | 'counterparties'>; categories: FinanceCategory[]; initialItem?: WorkItem; onSave: (draft: WorkPaymentDraft) => void;
+  initialCounterpartyId?: string;
   onCreateCategory: (name: string) => FinanceCategory; onDismiss: () => void;
 }) {
   const colors = useTheme();
-  const [draft, setDraft] = useState<WorkPaymentDraft>(() => ({ counterpartyId: initialItem?.entry.counterpartyId ?? null,
+  const [draft, setDraft] = useState<WorkPaymentDraft>(() => ({ counterpartyId: initialItem?.entry.counterpartyId ?? initialCounterpartyId ?? null,
     allocations: initialItem ? [{ workEntryId: initialItem.entry.id, amount: formatBrlInput(initialItem.outstandingMinor) }] : [],
     categoryId: null, paymentDate: localDateString(new Date()) }));
   const [error, setError] = useState<string | null>(null);
@@ -98,6 +113,11 @@ export function WorkPaymentEditor({ data, categories, initialItem, onSave, onCre
   const available = data.items.filter((item) => item.entry.counterpartyId === draft.counterpartyId && item.outstandingMinor > 0);
   let total: number | null = null;
   try { total = allocationValues(draft.allocations).amountMinor; } catch { /* Show the authoritative error on Confirm. */ }
+  const outstanding = available.reduce((sum, item) => sum + BigInt(item.outstandingMinor), 0n);
+  const validPreview = total !== null && draft.allocations.every((allocation) => {
+    const item = available.find((row) => row.entry.id === allocation.workEntryId);
+    return item && allocationValues([allocation]).amountMinor <= item.outstandingMinor;
+  });
   function change<K extends keyof WorkPaymentDraft>(key: K, value: WorkPaymentDraft[K]) { setDraft((current) => ({ ...current, [key]: value })); setError(null); }
   function toggle(item: WorkItem) {
     const id = item.entry.id;
@@ -117,19 +137,26 @@ export function WorkPaymentEditor({ data, categories, initialItem, onSave, onCre
       setDraft((current) => ({ ...current, counterpartyId: value, allocations: [] })); setError(null);
     }} />
     {!draft.counterpartyId && <ThemedText type="small" themeColor="textSecondary">Choose who paid you, then select their outstanding work.</ThemedText>}
+    {!!draft.counterpartyId && <View style={styles.group}>
+      <ThemedText type="secondary">Outstanding {formatBrlAmount(outstanding)}</ThemedText>
+      <ThemedText type="cardTitle">Receiving {total !== null ? formatBrlAmount(total) : 'Choose work below'}</ThemedText>
+      {validPreview && <ThemedText type="secondary" themeColor="textSecondary">Remaining after payment {formatBrlAmount(outstanding - BigInt(total!))}</ThemedText>}
+      <ThemedText type="secondary" themeColor="textSecondary">You can receive part of an entry or combine several entries for this client.</ThemedText>
+    </View>}
+    <ThemedText type="cardTitle" accessibilityRole="header">Apply received money to work</ThemedText>
     {available.map((item) => {
       const allocation = draft.allocations.find((row) => row.workEntryId === item.entry.id);
       return <View key={item.entry.id} style={styles.allocation}>
-        <Pressable accessibilityRole="checkbox" accessibilityLabel={`Allocate payment to ${item.entry.description}`} accessibilityState={{ checked: !!allocation }} aria-checked={!!allocation}
+        <Pressable accessibilityRole="checkbox" accessibilityLabel={`Allocate payment to ${jobTitle(item.entry)}`} accessibilityState={{ checked: !!allocation }} aria-checked={!!allocation}
           onPress={() => toggle(item)} style={[styles.entryChoice, { backgroundColor: allocation ? colors.backgroundSelected : colors.backgroundElement, borderColor: colors.textSecondary }]}>
-          <ThemedText>{item.entry.description}{allocation ? ' ✓' : ''}</ThemedText>
+          <ThemedText type="cardTitle">{jobTitle(item.entry)}{allocation ? ' ✓' : ''}</ThemedText>
           <ThemedText type="small">Outstanding {formatBrlAmount(item.outstandingMinor)}</ThemedText>
         </Pressable>
-        {allocation && <FormField label="Allocate *" accessibilityLabel={`Allocation in reais for ${item.entry.description}`} value={allocation.amount}
+        {allocation && <FormField label="Amount received for this work *" accessibilityLabel={`Allocation in reais for ${jobTitle(item.entry)}`} value={allocation.amount}
           keyboardType={Platform.OS === 'ios' ? 'numbers-and-punctuation' : 'decimal-pad'} onChangeText={(amount) => change('allocations', draft.allocations.map((row) => row.workEntryId === item.entry.id ? { ...row, amount } : row))} />}
       </View>;
     })}
-    <ThemedText type="smallBold">Payment total: {total !== null ? formatBrlAmount(total) : 'Select work and enter valid allocations'}</ThemedText>
+    <ThemedText type="cardTitle">Payment total: {total !== null ? formatBrlAmount(total) : 'Select work and enter valid amounts'}</ThemedText>
     <WorkDate label="Payment date *" value={draft.paymentDate} maximumDate={new Date()} onChange={(value) => change('paymentDate', value)} />
     <SelectField label="Income category" value={draft.categoryId} options={financeCategoryOptions(categories, 'income')} onChange={(value) => change('categoryId', value)}
       action={{ label: '+ New category', title: 'New income category', accessibilityLabel: 'Create new income category', render: (controls) => <InlineNameForm {...controls}
@@ -140,6 +167,6 @@ export function WorkPaymentEditor({ data, categories, initialItem, onSave, onCre
 }
 
 const styles = StyleSheet.create({
-  duration: { flexDirection: 'row', flexWrap: 'wrap', gap: Spacing.three }, durationField: { flex: 1, minWidth: 120 }, allocation: { gap: Spacing.two },
-  entryChoice: { minHeight: 48, padding: Spacing.three, gap: Spacing.two, borderWidth: 1, borderRadius: Spacing.two },
+  group: { gap: Space.sm }, duration: { flexDirection: 'row', flexWrap: 'wrap', gap: Space.md }, durationField: { flex: 1, minWidth: 120 }, allocation: { gap: Space.sm },
+  entryChoice: { minHeight: 48, paddingVertical: Space.md, gap: Space.sm, borderBottomWidth: 1 },
 });

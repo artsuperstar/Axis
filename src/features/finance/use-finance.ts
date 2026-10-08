@@ -21,7 +21,7 @@ type Selection = { view: FinanceView; period: FinancePeriod };
 type Snapshot = { transactions: FinanceTransaction[]; categories: FinanceCategory[]; analytics: FinanceAnalytics | null; items: CommitmentItem[]; paymentTransactionIds: string[]; workPaymentTransactionIds: string[]; work: WorkOverview | null;
   initialCommitment?: { data: CommitmentHistory; occurrence: DisplayOccurrence | null } };
 
-export function useFinance(initialView: FinanceView = 'dashboard', initialRecordId?: string, initialDueDate?: string) {
+export function useFinance(initialView: FinanceView = 'dashboard', initialRecordId?: string, initialDueDate?: string, workSummaryOnly = false) {
   const db = useDatabase();
   const access = useMemo(() => createFinanceDataAccess(db, randomUUID), [db]);
   const commitmentAccess = useMemo(() => createCommitmentDataAccess(db, randomUUID), [db]);
@@ -46,14 +46,14 @@ export function useFinance(initialView: FinanceView = 'dashboard', initialRecord
         } : undefined;
         snapshot = { ...commitmentAccess.read(), initialCommitment, categories: access.readCategories(), transactions: [], analytics: null, paymentTransactionIds: [], workPaymentTransactionIds: [], work: null };
       }
-      else snapshot = { work: workAccess.readOverview(), categories: access.readCategories(), transactions: [], analytics: null, items: [], paymentTransactionIds: [], workPaymentTransactionIds: [] };
+      else snapshot = { work: workAccess.readOverview({ includeJobs: !workSummaryOnly }), categories: access.readCategories(), transactions: [], analytics: null, items: [], paymentTransactionIds: [], workPaymentTransactionIds: [] };
       setLoaded({ selection: next, snapshot });
       setError(null);
     } catch (cause) {
       // A read error must not unmount views that own working editor drafts.
       setError(financeError(cause, 'Unable to load Finance. Please try again.'));
     }
-  }, [access, commitmentAccess, workAccess, initialView, initialRecordId, initialDueDate]);
+  }, [access, commitmentAccess, workAccess, initialView, initialRecordId, initialDueDate, workSummaryOnly]);
 
   const select = useCallback((next: Selection) => {
     selectionRef.current = next;

@@ -6,6 +6,7 @@ import { occurrenceLabel } from '@/features/finance/commitments/scheduling';
 import { commitmentKindLabels } from '@/features/finance/commitments/types';
 import { formatBrlAmount } from '@/features/finance/money';
 import type { WorkItem } from '@/features/finance/work/types';
+import { jobTitle } from '@/features/finance/work/presentation';
 import { localDateString } from '@/utils/calendar';
 
 import type { ScheduledItem } from './scheduled-types';
@@ -38,8 +39,8 @@ export function projectScheduledItems(tasks: ScheduledTaskRows, commitments: Sch
   for (const item of work) {
     if (!item.entry.expectedPaymentDate || item.outstandingMinor <= 0) continue;
     items.push({ id: `work:${item.entry.id}`, source: 'work', recordId: item.entry.id, date: item.entry.expectedPaymentDate,
-      title: item.counterparty.name, amountMinor: item.outstandingMinor,
-      secondary: `${item.entry.description} · ${formatBrlAmount(item.outstandingMinor)} outstanding`,
+      title: jobTitle(item.entry), amountMinor: item.outstandingMinor,
+      secondary: `${item.counterparty.name} · ${formatBrlAmount(item.outstandingMinor)} outstanding`,
       status: item.overdue ? 'Payment overdue' : 'Expected payment' });
   }
   // Source identities also protect against a repeated joined row reaching the presentation boundary.

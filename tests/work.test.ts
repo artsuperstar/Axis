@@ -30,7 +30,7 @@ import { bundledMigrations, database, journal } from './helpers/database';
 
 const today = '2026-10-03';
 const now = () => pickerValue(today).getTime();
-const fixed = (counterpartyId: string, amount = '1000', changes: Partial<WorkDraft> = {}): WorkDraft => ({ ...workDraft(null, today), compensationType: 'fixed', description: 'Website', counterpartyId, fixedAmount: amount, ...changes });
+const fixed = (counterpartyId: string, amount = '1000', changes: Partial<WorkDraft> = {}): WorkDraft => ({ ...workDraft(null, today), compensationType: 'fixed', title: 'Website', description: 'Website', counterpartyId, fixedAmount: amount, ...changes });
 async function initialized(filename = ':memory:') {
   const result = database(filename); await migrate(result.db, bundledMigrations);
   seedDefaultCategories(result.db, 1000); seedFinanceCategories(result.db, 1000);
@@ -59,7 +59,7 @@ test('duration accepts whole hours/minutes and rejects invalid, empty, fractiona
   }
 });
 test('work validation keeps Hourly/Fixed terms consistent and preserves nearest-cent results', () => {
-  const hourly = { ...workDraft(null, today), description: 'Translation', counterpartyId: 'client', hours: '2', minutes: '30', hourlyRate: '50', fixedAmount: '999' };
+  const hourly = { ...workDraft(null, today), title: 'Translation', description: 'Translation', counterpartyId: 'client', hours: '2', minutes: '30', hourlyRate: '50', fixedAmount: '999' };
   const values = validateWorkDraft(hourly, today);
   assert.equal(values.durationMinutes, 150); assert.equal(values.hourlyRateMinor, 5000); assert.equal(values.fixedAmountMinor, null); assert.equal(earnedMinor(values), 12500);
   const fixedValues = validateWorkDraft({ ...hourly, compensationType: 'fixed', fixedAmount: '800' }, today);
@@ -67,14 +67,20 @@ test('work validation keeps Hourly/Fixed terms consistent and preserves nearest-
   for (const amount of ['', '0', '-1', '1,001', '90.071.992.547.409,92']) assert.throws(() => validateWorkDraft(fixed('client', amount), today), FinanceValidationError);
   assert.equal(earnedMinor(validateWorkDraft({ ...hourly, hours: '0', minutes: '1', hourlyRate: '0,01' }, today)), 0);
   assert.equal(earnedMinor(validateWorkDraft({ ...hourly, hours: '0', minutes: '30', hourlyRate: '0,01' }, today)), 1);
-  for (const changes of [{ description: ' ' }, { counterpartyId: null }, { compensationType: 'salary' as never }, { workDate: '2026-02-30' }, { workDate: '2026-10-04' }, { expectedPaymentDate: '2026-02-29' }]) {
+  for (const changes of [{ counterpartyId: null }, { compensationType: 'salary' as never }, { workDate: '2026-02-30' }, { workDate: '2026-10-04' }, { expectedPaymentDate: '2026-02-29' }]) {
     assert.throws(() => validateWorkDraft({ ...hourly, ...changes }, today), FinanceValidationError);
   }
+});
+
+test('Title remains required and persisted Title has no pasted line breaks', () => {
+  const values = validateWorkDraft(fixed('client', '1000', { title: ' Logo\r\nDesign\u2028Project ' }), today);
+  assert.equal(values.title, 'Logo Design Project');
+  for (const title of ['', '  ', '\r\n\u2028\u2029']) assert.throws(() => validateWorkDraft(fixed('client', '1000', { title }), today), /job title/i);
 });
 test('a tiny hourly entry rounded to zero is retained without Income or an outstanding obligation', async (t) => {
   const { sqlite, work, finance } = await initialized(); t.after(() => sqlite.close());
   const client = work.createCounterparty('A');
-  const id = work.create({ ...workDraft(null, today), counterpartyId: client.id, description: 'One minute of work', hours: '0', minutes: '1', hourlyRate: '0,01', expectedPaymentDate: '2026-10-01' });
+  const id = work.create({ ...workDraft(null, today), counterpartyId: client.id, title: 'One minute of work', description: 'One minute of work', hours: '0', minutes: '1', hourlyRate: '0,01', expectedPaymentDate: '2026-10-01' });
   assert.equal(item(work, id).entry.durationMinutes, 1); assert.equal(item(work, id).earnedMinor, 0); assert.equal(item(work, id).receivedMinor, 0);
   assert.equal(item(work, id).outstandingMinor, 0); assert.equal(item(work, id).overdue, false); assert.equal(item(work, id).status, 'paid');
   assert.equal(finance.read().transactions.length, 0); assert.throws(() => work.recordPayment(payment(client.id, id, '0,01')), /exceeds/);
@@ -95,8 +101,8 @@ test('counterparties normalize names, enforce active uniqueness, archive and ret
 test('Work creation creates no Finance Income and captures local dates and historical compensation', async (t) => {
   const { sqlite, work, finance } = await initialized(); t.after(() => sqlite.close());
   const client = work.createCounterparty('Acme');
-  const first = work.create({ ...workDraft(null, today), description: 'Translation', counterpartyId: client.id, hours: '3', hourlyRate: '50', workDate: '2026-09-30', expectedPaymentDate: '2026-10-12' });
-  work.create({ ...workDraft(null, today), description: 'Later rate', counterpartyId: client.id, hours: '3', hourlyRate: '80' });
+  const first = work.create({ ...workDraft(null, today), title: 'Translation', description: 'Translation', counterpartyId: client.id, hours: '3', hourlyRate: '50', workDate: '2026-09-30', expectedPaymentDate: '2026-10-12' });
+  work.create({ ...workDraft(null, today), title: 'Later rate', description: 'Later rate', counterpartyId: client.id, hours: '3', hourlyRate: '80' });
   assert.equal(item(work, first).entry.hourlyRateMinor, 5000); assert.equal(item(work, first).earnedMinor, 15000);
   assert.equal(item(work, first).entry.workDate, '2026-09-30'); assert.equal(item(work, first).entry.expectedPaymentDate, '2026-10-12');
   assert.equal(item(work, first).status, 'unpaid'); assert.equal(item(work, first).receivedMinor, 0);

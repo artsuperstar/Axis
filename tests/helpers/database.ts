@@ -54,5 +54,13 @@ export function database(filename = ':memory:') {
       return { value, statements, count: statements.length, rows: statements.reduce((sum, row) => sum + row.rows, 0) };
     } finally { trace = null; }
   }
-  return { sqlite, db: drizzle(client, { schema }), measure };
+  async function measureAsync<T>(action: () => Promise<T>) {
+    const statements: NonNullable<typeof trace> = [];
+    trace = statements;
+    try {
+      const value = await action();
+      return { value, statements, count: statements.length, rows: statements.reduce((sum, row) => sum + row.rows, 0) };
+    } finally { trace = null; }
+  }
+  return { sqlite, db: drizzle(client, { schema }), measure, measureAsync };
 }

@@ -2,7 +2,7 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { Children } from 'react';
-import type { ViewStyle } from 'react-native';
+import type { TextStyle, ViewStyle } from 'react-native';
 
 import { buttonAppearance, fieldAppearance, type ButtonVariant } from '../src/components/control-appearance';
 import { autocomplete, controls, renderControl, selection, sheets, statusText, theme, themedText, themedView } from './helpers/form-components';
@@ -133,6 +133,22 @@ test('read-only and disabled fields stay noneditable but expose different visual
   }
   const disabled = renderControl(() => controls.FormField({ label: 'Unavailable', value: 'Value', disabled: true }));
   assert.match(disabled.markup, /aria-disabled="true"/); assert.doesNotMatch(disabled.markup, />Read only</);
+});
+
+test('shared fields use native single-line font metrics and reserve paragraph leading for multiline input', () => {
+  for (const multiline of [false, true]) {
+    const result = renderControl(() => controls.FormField({ label: 'Text', value: 'Example', multiline }));
+    const input = result.elements.find((element) => 'editable' in element.props)!;
+    const props = input.props as unknown as { multiline: boolean; style: unknown };
+    const style = flatten(props.style) as TextStyle;
+    assert.equal(props.multiline, multiline);
+    assert.equal(style.lineHeight, multiline ? theme.Typography.input.lineHeight : undefined);
+    assert.equal(style.textAlignVertical, multiline ? 'top' : 'center');
+    assert.equal(style.fontSize, theme.Typography.input.fontSize);
+    assert.equal(style.minHeight, theme.ControlSize.field);
+    assert.equal(style.paddingVertical, multiline ? theme.Space.sm : 0);
+    assert.equal(style.height, undefined, 'large text must not be constrained by a fixed field height');
+  }
 });
 
 test('field/selector errors are adjacent, announced, and invalid; expanded selectors keep state cues', () => {

@@ -50,17 +50,22 @@ async function failAndRetry(app: App, failure: string, checkDraft: () => void, b
   await app.press('Retry refresh'); checkDraft();
   assert.ok(!app.nodes().some((node) => node.kind === 'FormButton' && node.props.label === 'Retry refresh'));
 }
-function fixed(counterpartyId: string) { return { ...workDraft(null, today), compensationType: 'fixed' as const, counterpartyId, description: 'Original work', fixedAmount: '1000' }; }
+function fixed(counterpartyId: string) { return { ...workDraft(null, today), compensationType: 'fixed' as const, counterpartyId, title: 'Original work', description: 'Original work', fixedAmount: '1000' }; }
 
 test('Work editor survives failed resume/focus and successful Retry, then saves the exact draft', async (t) => {
   const { db, work } = await initialized(t); const client = work.createCounterparty('Client'); const draft = fixed(client.id); const id = work.create(draft);
   const app = await mount(createElement(screens.FinanceScreen), db); t.after(app.unmount);
   await app.press('Work');
-  const row = app.nodes().find((node) => node.kind === 'Pressable' && node.props.accessibilityHint === 'Work details and payments')!;
-  await act(() => (row.props.onPress as () => void)()); await app.press('Edit');
-  await app.change('Description *', 'Unsaved revised work'); await app.change('Fixed amount *', '876,54');
+  const row = app.nodes().find((node) => node.kind === 'Pressable' && node.props.accessibilityHint === 'Job details and payments')!;
+  await act(() => (row.props.onPress as () => void)()); await app.press('Work options for Original work'); await app.press('Edit');
+  await act(async () => { await new Promise((resolve) => setTimeout(resolve, 10)); });
+  const draftClient = work.createCounterparty('Draft client');
+  await act(() => (app.find('AutocompleteField', 'Client *').props.onSelect as (id: string) => void)(draftClient.id));
+  const selectedClientField = app.find('AutocompleteField', 'Client *');
+  await app.change('Job title *', 'Unsaved job title'); await app.change('Description', 'Unsaved revised work'); await app.change('Fixed amount *', '876,54');
   await app.change('Expected payment date', today);
-  const check = observeDraft(app, ['Description *', 'Fixed amount *', 'Work date *', 'Expected payment date']);
+  const checkFields = observeDraft(app, ['Job title *', 'Description', 'Fixed amount *', 'Work date *', 'Expected payment date']);
+  const check = () => { checkFields(); assert.equal(app.find('AutocompleteField', 'Client *'), selectedClientField); assert.equal(selectedClientField.props.value, draftClient.id); };
   await failAndRetry(app, 'work.readOverview', check, () => {
     work.edit(id, { ...draft, description: 'Changed at source', fixedAmount: '900' }); work.createCounterparty('New surrounding client');
   });
@@ -69,7 +74,7 @@ test('Work editor survives failed resume/focus and successful Retry, then saves 
   assert.ok(JSON.stringify(results).includes('New surrounding client'), 'Successful retry must update surrounding option data');
   await app.press('Save');
   const saved = work.read().items.find((item) => item.entry.id === id)!;
-  assert.equal(saved.entry.description, 'Unsaved revised work'); assert.equal(saved.earnedMinor, 87654);
+  assert.equal(saved.entry.counterpartyId, draftClient.id); assert.equal(saved.entry.title, 'Unsaved job title'); assert.equal(saved.entry.description, 'Unsaved revised work'); assert.equal(saved.earnedMinor, 87654);
   assert.equal(saved.entry.expectedPaymentDate, today); assert.ok(!app.nodes().some((node) => node.kind === 'Modal'));
 });
 
@@ -189,8 +194,10 @@ test('Fitness note validation rejects a workout completed during Retry while kee
 test('Finance Save remains valid during a read failure, and write validation errors preserve the working draft', async (t) => {
   const { db, work } = await initialized(t); const client = work.createCounterparty('Client'); const id = work.create(fixed(client.id));
   const app = await mount(createElement(screens.FinanceScreen, { initialView: 'work', initialRecordId: id }), db); t.after(app.unmount);
-  await app.press('Edit'); await app.change('Fixed amount *', 'invalid'); runtime.fixture.failures.add('work.readOverview'); await app.resume();
-  const check = observeDraft(app, ['Description *', 'Fixed amount *']); await app.press('Save'); check();
+  await app.press('Work options for Original work'); await app.press('Edit');
+  await act(async () => { await new Promise((resolve) => setTimeout(resolve, 10)); });
+  await app.change('Fixed amount *', 'invalid'); runtime.fixture.failures.add('work.readOverview'); await app.resume();
+  const check = observeDraft(app, ['Description', 'Fixed amount *']); await app.press('Save'); check();
   await app.change('Fixed amount *', '800'); await app.press('Save');
   assert.equal(work.read().items.find((row) => row.entry.id === id)!.earnedMinor, 80000);
   assert.ok(!app.nodes().some((node) => node.kind === 'Modal'));
@@ -233,23 +240,28 @@ test('Finance does not show last loaded totals under a failed new period or anot
 });
 
 test('Work History interaction fetches three separate bounded pages and reaches its terminal page', async (t) => {
-  const { db, work, measure } = await initialized(t);
+  const { db, work, measureAsync } = await initialized(t);
   const client = work.createCounterparty('Paged client');
   for (let i = 0; i < 45; i++) {
     const id = work.create({ ...fixed(client.id), description: `Settled entry ${i}` });
     work.recordPayment({ counterpartyId: client.id, allocations: [{ workEntryId: id, amount: '1000' }], paymentDate: today, categoryId: null });
   }
-  const app = await mount(createElement(screens.FinanceScreen, { initialView: 'work' }), db); t.after(app.unmount);
-  const pages: string[][] = [];
-  for (const label of ['History', 'Load more history', 'Load more history']) {
-    await act(() => {
-      const result = measure(() => (app.find('FormButton', label).props.onPress as () => void)());
+  // Mount the pushed destination; its overview intentionally has no Job details.
+  const initial = await measureAsync(() => mount(createElement(screens.WorkHistoryScreen), db));
+  const app = initial.value; t.after(app.unmount);
+  const first = initial.statements.find((row) => row.sql.startsWith('select') && row.sql.includes('"description"') && row.sql.includes('from "work_entries"'))!;
+  assert.equal(first.rows, 20);
+  const pages: string[][] = [first.params.filter((value): value is string => typeof value === 'string')];
+  for (const label of ['Load more history', 'Load more history']) {
+      const result = await measureAsync(async () => {
+        await app.press(label);
+        await act(async () => { await new Promise((resolve) => setTimeout(resolve, 10)); });
+      });
       assert.equal(result.count, 9, 'opening/loading a page performs one read, without a duplicate effect read');
       const entries = result.statements.find((row) => row.sql.startsWith('select') && row.sql.includes('"description"') && row.sql.includes('from "work_entries"'))!;
       assert.ok(entries.rows <= 20);
       pages.push(entries.params.filter((value): value is string => typeof value === 'string'));
       for (const query of result.statements.filter((row) => row.sql.includes('"description"'))) assert.ok(query.rows <= 20);
-    });
   }
   assert.deepEqual(pages.map((ids) => ids.length), [20, 20, 5]);
   assert.equal(new Set(pages.flat()).size, 45);

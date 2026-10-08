@@ -64,6 +64,20 @@
       "when": 1791210578257,
       "tag": "0008_task_occurrence_date_index",
       "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "6",
+      "when": 1791382427002,
+      "tag": "0009_work_job_title",
+      "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "6",
+      "when": 1791385270892,
+      "tag": "0010_work_optional_description",
+      "breakpoints": true
     }
   ]
 }

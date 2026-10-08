@@ -9,6 +9,7 @@ import { FinanceValidationError } from '../errors';
 import { validateTransactionDraft } from '../form';
 import { formatBrlInput, validateAmountMinor } from '../money';
 import { allocationValues, earnedMinor, validateWorkDraft } from './form';
+import { jobTitle } from './presentation';
 import type { WorkCounterparty, WorkDraft, WorkEntry, WorkHistoryCursor, WorkHistoryPage, WorkItem, WorkOverview, WorkPayment, WorkPaymentDraft, WorkSnapshot, WorkTotals } from './types';
 
 type Query = Pick<AxisDatabase, 'select' | 'insert' | 'update'>;
@@ -59,7 +60,7 @@ export function createWorkDataAccess(db: AxisDatabase, newId: () => string, now 
       received.set(workEntry.id, (received.get(workEntry.id) ?? 0n) + BigInt(allocation.amountMinor));
       const payment = payments.get(transaction.id) ?? { transaction, counterparty, allocations: [] };
       if (payment.counterparty.id !== counterparty.id) throw new FinanceValidationError('A Work payment contains different clients.');
-      payment.allocations.push({ ...allocation, description: workEntry.description });
+      payment.allocations.push({ ...allocation, title: workEntry.title, description: workEntry.description });
       payments.set(transaction.id, payment);
     }
     for (const payment of payments.values()) {
@@ -131,15 +132,17 @@ export function createWorkDataAccess(db: AxisDatabase, newId: () => string, now 
     }
     return items;
   }
-  function paymentCount(query: Query) {
+  function paymentCount(query: Query, counterpartyId?: string) {
     return query.select({ count: sql<number>`count(DISTINCT ${allocations.financeTransactionId})`.mapWith(Number) }).from(allocations)
-      .where(isNull(allocations.deletedAt)).get()!.count;
+      .where(and(isNull(allocations.deletedAt), counterpartyId ? inArray(allocations.workEntryId,
+        query.select({ id: entries.id }).from(entries).where(eq(entries.counterpartyId, counterpartyId))) : undefined)).get()!.count;
   }
-  function historyPayments(query: Query, limit: number, before?: WorkHistoryCursor['payment']) {
+  function historyPayments(query: Query, limit: number, before?: WorkHistoryCursor['payment'], counterpartyId?: string) {
     if (before === null) return { payments: [] as WorkPayment[], next: null };
     const selected = query.select({ id: financeTransactions.id, date: financeTransactions.transactionDate, createdAt: financeTransactions.createdAt })
       .from(financeTransactions).where(and(inArray(financeTransactions.id,
-        query.select({ id: allocations.financeTransactionId }).from(allocations).where(isNull(allocations.deletedAt))), before ? or(
+        query.select({ id: allocations.financeTransactionId }).from(allocations).where(and(isNull(allocations.deletedAt), counterpartyId ? inArray(allocations.workEntryId,
+          query.select({ id: entries.id }).from(entries).where(eq(entries.counterpartyId, counterpartyId))) : undefined))), before ? or(
           lt(financeTransactions.transactionDate, before.date),
           and(eq(financeTransactions.transactionDate, before.date), lt(financeTransactions.createdAt, before.createdAt)),
           and(eq(financeTransactions.transactionDate, before.date), eq(financeTransactions.createdAt, before.createdAt), gt(financeTransactions.id, before.id))) : undefined))
@@ -153,7 +156,7 @@ export function createWorkDataAccess(db: AxisDatabase, newId: () => string, now 
     const grouped = new Map<string, WorkPayment>();
     for (const { allocation, transaction, entry, counterparty } of rows) {
       const payment = grouped.get(transaction.id) ?? { transaction, counterparty, allocations: [] };
-      payment.allocations.push({ ...allocation, description: entry.description }); grouped.set(transaction.id, payment);
+      payment.allocations.push({ ...allocation, title: entry.title, description: entry.description }); grouped.set(transaction.id, payment);
     }
     const last = visible[visible.length - 1];
     return { payments: visible.map((row) => grouped.get(row.id)!), next: selected.length > limit ? last : null };
@@ -161,9 +164,10 @@ export function createWorkDataAccess(db: AxisDatabase, newId: () => string, now 
 
   return {
     read: () => db.transaction((query) => snapshot(query)),
-    readOverview(): WorkOverview {
+    readOverview({ includeJobs = true, counterpartyId }: { includeJobs?: boolean; counterpartyId?: string } = {}): WorkOverview {
       return db.transaction((query) => {
-        const values = balances(query), parties = query.select().from(counterparties).orderBy(asc(counterparties.name), asc(counterparties.id)).all();
+        const values = balances(query).filter((row) => !counterpartyId || row.counterpartyId === counterpartyId);
+        const parties = query.select().from(counterparties).where(counterpartyId ? eq(counterparties.id, counterpartyId) : undefined).orderBy(asc(counterparties.name), asc(counterparties.id)).all();
         const totals = emptyTotals(), groups = new Map<string, WorkTotals & { counterparty: WorkCounterparty }>();
         const byId = new Map(parties.map((party) => [party.id, party]));
         for (const value of values) {
@@ -173,21 +177,21 @@ export function createWorkDataAccess(db: AxisDatabase, newId: () => string, now 
           for (const total of [totals, group]) { total.earnedMinor += BigInt(value.earned); total.receivedMinor += value.received; total.outstandingMinor += value.outstanding; }
           groups.set(counterparty.id, group);
         }
-        return { items: itemRows(query, values.filter((row) => row.outstanding > 0n), parties), counterparties: parties, totals,
-          counterpartyTotals: [...groups.values()], settledCount: values.filter((row) => row.outstanding === 0n).length, paymentCount: paymentCount(query) };
+        return { items: includeJobs ? itemRows(query, values.filter((row) => row.outstanding > 0n), parties) : [], counterparties: parties, totals,
+          counterpartyTotals: [...groups.values()], settledCount: values.filter((row) => row.outstanding === 0n).length, paymentCount: paymentCount(query, counterpartyId) };
       });
     },
-    readHistory(limit = 20, before?: WorkHistoryCursor): WorkHistoryPage {
+    readHistory(limit = 20, before?: WorkHistoryCursor, counterpartyId?: string): WorkHistoryPage {
       if (!Number.isSafeInteger(limit) || limit < 1) throw new FinanceValidationError('Invalid Work history page size.');
       return db.transaction((query) => {
-        const values = balances(query), settled = values.filter((row) => row.outstanding === 0n);
+        const values = balances(query), settled = values.filter((row) => row.outstanding === 0n && (!counterpartyId || row.counterpartyId === counterpartyId));
         const candidates = before?.entry === null ? [] : settled.filter((row) => !before?.entry || row.workDate < before.entry.date
           || (row.workDate === before.entry.date && row.id > before.entry.id));
         const selected = candidates.slice(0, limit), last = selected[selected.length - 1];
-        const parties = query.select().from(counterparties).orderBy(asc(counterparties.name), asc(counterparties.id)).all();
-        const payments = historyPayments(query, limit, before?.payment);
+        const parties = query.select().from(counterparties).where(counterpartyId ? eq(counterparties.id, counterpartyId) : undefined).orderBy(asc(counterparties.name), asc(counterparties.id)).all();
+        const payments = historyPayments(query, limit, before?.payment, counterpartyId);
         const entryNext = candidates.length > limit ? { date: last.workDate, id: last.id } : null;
-        return { items: itemRows(query, selected, parties), payments: payments.payments, settledCount: settled.length, paymentCount: paymentCount(query),
+        return { items: itemRows(query, selected, parties), payments: payments.payments, settledCount: settled.length, paymentCount: paymentCount(query, counterpartyId),
           next: entryNext || payments.next ? { entry: entryNext, payment: payments.next } : null };
       });
     },
@@ -257,7 +261,7 @@ export function createWorkDataAccess(db: AxisDatabase, newId: () => string, now 
         for (const allocation of values.allocations) {
           const item = current.get(allocation.workEntryId);
           if (!item || item.entry.counterpartyId !== counterparty.id) throw new FinanceValidationError('Choose outstanding work from this client only.');
-          if (allocation.amountMinor > item.outstandingMinor) throw new FinanceValidationError(`Allocation for “${item.entry.description}” exceeds its outstanding amount. Refresh Work and try again.`);
+          if (allocation.amountMinor > item.outstandingMinor) throw new FinanceValidationError(`Allocation for “${jobTitle(item.entry)}” exceeds its outstanding amount. Refresh Work and try again.`);
         }
         if (draft.categoryId) {
           const category = query.select().from(financeCategories).where(eq(financeCategories.id, draft.categoryId)).get();

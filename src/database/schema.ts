@@ -256,12 +256,12 @@ export const workCounterparties = sqliteTable('work_counterparties', {
 export const workEntries = sqliteTable('work_entries', {
   id: text('id').primaryKey().notNull(),
   counterpartyId: text('counterparty_id').notNull().references(() => workCounterparties.id, { onDelete: 'restrict' }),
+  title: text('title'), // Nullable only for records created before Job Title was introduced.
   description: text('description').notNull(), compensationType: text('compensation_type', { enum: ['hourly', 'fixed'] }).notNull(),
   workDate: text('work_date').notNull(), durationMinutes: integer('duration_minutes'), hourlyRateMinor: integer('hourly_rate_minor'), fixedAmountMinor: integer('fixed_amount_minor'),
   expectedPaymentDate: text('expected_payment_date'),
   createdAt: integer('created_at').notNull(), updatedAt: integer('updated_at').notNull(), deletedAt: integer('deleted_at'),
 }, (table) => [
-  check('work_description_valid', sql`length(trim(${table.description})) > 0`),
   check('work_compensation_valid', sql`(${table.compensationType} = 'hourly' AND ${table.durationMinutes} IS NOT NULL AND ${table.hourlyRateMinor} IS NOT NULL
     AND typeof(${table.durationMinutes}) = 'integer' AND ${table.durationMinutes} BETWEEN 1 AND 9007199254740991
     AND typeof(${table.hourlyRateMinor}) = 'integer' AND ${table.hourlyRateMinor} BETWEEN 1 AND 9007199254740991 AND ${table.fixedAmountMinor} IS NULL)

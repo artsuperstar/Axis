@@ -52,6 +52,8 @@ registerHooks({
 });
 
 export const screens = {
+  WorkClientsScreen: require('../../src/features/finance/work/work-management-screen').WorkClientsScreen as ComponentType,
+  WorkHistoryScreen: require('../../src/features/finance/work/work-management-screen').WorkHistoryScreen as ComponentType,
   RepeatingTasksScreen: require('../../src/features/tasks/tasks-screen').RepeatingTasksScreen as ComponentType,
   TasksHistoryScreen: require('../../src/features/tasks/tasks-screen').TasksHistoryScreen as ComponentType,
   TasksScreen: require('../../src/features/tasks/tasks-screen').TasksScreen as ComponentType<NonNullable<Parameters<typeof import('../../src/features/tasks/tasks-screen').TasksScreen>[0]>>,

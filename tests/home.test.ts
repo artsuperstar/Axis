@@ -47,7 +47,7 @@ async function initialized() {
   }
   function expectedPayment(name = 'Client', expectedPaymentDate = initialDay) {
     const client = work.createCounterparty(name);
-    const id = work.create({ ...workDraft(null, initialDay), description: 'Website', counterpartyId: client.id,
+    const id = work.create({ ...workDraft(null, initialDay), title: 'Website', description: 'Website', counterpartyId: client.id,
       compensationType: 'fixed', fixedAmount: '1000', expectedPaymentDate });
     return { id, client };
   }

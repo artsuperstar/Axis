@@ -1,3 +1,8 @@
+/** Keep pasted line breaks out of single-line values without changing casing or accents. */
+export function singleLineText(value: string) {
+  return value.replace(/[\r\n\u2028\u2029]+/g, ' ');
+}
+
 /** Normalize user-defined display names without discarding meaningful accents. */
 export function normalizeIdentityDisplayName(value: string) {
   return value.trim().replace(/\s+/g, ' ').normalize('NFC');

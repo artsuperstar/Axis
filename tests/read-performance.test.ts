@@ -135,7 +135,7 @@ test('accumulated-data read paths remain targeted, paged and authoritative', asy
     home.completeTask(homeOccurrence);
     assert.ok(!home.read().today.flatMap((section) => section.items).some((row) => row.id === occurrence.id));
     const client = f.work.createCounterparty('New client');
-    const id = f.work.create({ ...workDraft(null, growthDate), counterpartyId: client.id, description: 'New Work', compensationType: 'fixed', fixedAmount: '1', expectedPaymentDate: growthDate });
+    const id = f.work.create({ ...workDraft(null, growthDate), counterpartyId: client.id, title: 'New Work', description: 'New Work', compensationType: 'fixed', fixedAmount: '1', expectedPaymentDate: growthDate });
     const paid = f.work.recordPayment({ counterpartyId: client.id, allocations: [{ workEntryId: id, amount: '1' }], paymentDate: growthDate, categoryId: null });
     assert.ok(!f.work.readOverview().items.some((item) => item.entry.id === id));
     f.work.undoPayment(paid);
@@ -154,7 +154,7 @@ test('accumulated-data read paths remain targeted, paged and authoritative', asy
   });
   await t.test('optimized Work reads retain exact large/hourly centavos and reject broken reconciliation', () => {
     const client = f.work.createCounterparty('Exact totals');
-    const id = f.work.create({ ...workDraft(null, growthDate), description: 'Exact hourly', counterpartyId: client.id,
+    const id = f.work.create({ ...workDraft(null, growthDate), title: 'Exact hourly', description: 'Exact hourly', counterpartyId: client.id,
       compensationType: 'hourly', hours: '0', minutes: '59', hourlyRate: formatBrlInput(maxAmountMinor) });
     const earned = f.work.readDetail(id).items[0].earnedMinor;
     const payment = f.work.recordPayment({ counterpartyId: client.id, allocations: [{ workEntryId: id, amount: formatBrlInput(earned) }], paymentDate: growthDate, categoryId: null });

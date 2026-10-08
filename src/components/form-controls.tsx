@@ -239,7 +239,7 @@ export function FormWeekday({ label, checked, onPress }: { label: string; checke
   );
 }
 
-export function FormField({ label, style, ref, helperText, editable = true, readOnly: readOnlyProp = false, disabled = false, error, accessibilityState, onFocus, onBlur, ...props }: TextInputProps & {
+export function FormField({ label, style, ref, helperText, editable = true, readOnly: readOnlyProp = false, disabled = false, multiline = false, error, accessibilityState, onFocus, onBlur, ...props }: TextInputProps & {
   label: string; helperText?: string; disabled?: boolean; error?: string | null; ref?: Ref<TextInput>;
 }) {
   const colors = useTheme();
@@ -268,7 +268,8 @@ export function FormField({ label, style, ref, helperText, editable = true, read
         accessibilityHint={[readOnly ? 'Read only' : null, helperText, error].filter(Boolean).join('. ') || undefined}
         placeholderTextColor={colors.textSecondary}
         selectionColor={colors.accent}
-        style={[styles.input, fieldAppearance(colors, { readOnly, disabled: unavailable, focused, invalid: !!error }), style]}
+        multiline={multiline}
+        style={[styles.input, multiline ? styles.multilineInput : styles.singleLineInput, fieldAppearance(colors, { readOnly, disabled: unavailable, focused, invalid: !!error }), style]}
         onFocus={(event) => { setFocused(true); focus?.focus(input.current); onFocus?.(event); }}
         onBlur={(event) => { setFocused(false); focus?.blur(input.current); onBlur?.(event); }}
         {...props}
@@ -284,6 +285,7 @@ export function FormError({ message }: { message: string | null }) {
   return <StatusText tone="danger" accessibilityRole="alert" accessibilityLiveRegion="polite">{message}</StatusText>;
 }
 
+const { lineHeight: inputLineHeight, ...inputTypography } = Typography.input;
 const styles = StyleSheet.create({
   segments: { flexDirection: 'row', borderWidth: 1, borderRadius: Radius.control, overflow: 'hidden' },
   segment: { flex: 1, minWidth: 0, minHeight: ControlSize.field, alignItems: 'center', justifyContent: 'center', padding: Space.sm },
@@ -297,7 +299,11 @@ const styles = StyleSheet.create({
   option: { minHeight: ControlSize.field, flexDirection: 'row', alignItems: 'center', gap: Space.sm, borderRadius: Radius.small, paddingHorizontal: Space.md, paddingVertical: Space.sm },
   value: { flex: 1, flexShrink: 1 },
   check: { minWidth: ControlSize.indicator, textAlign: 'center' },
-  input: { minHeight: ControlSize.field, borderWidth: 1, borderRadius: Radius.control, paddingHorizontal: Space.lg, paddingVertical: Space.sm, ...Typography.input },
+  input: { minHeight: ControlSize.field, borderWidth: 1, borderRadius: Radius.control, paddingHorizontal: Space.lg, ...inputTypography },
+  // iOS insets UIKit's already-positioned text/editing rect with native input padding.
+  // Let single-line native centering own vertical placement in every focus/value state.
+  singleLineInput: { paddingVertical: 0, textAlignVertical: 'center' },
+  multilineInput: { paddingVertical: Space.sm, lineHeight: inputLineHeight, textAlignVertical: 'top' },
   inlineForm: { flex: 1, minHeight: 0 },
   inlineBody: { flex: 1 },
   inlineContent: { padding: Space.sm, gap: Space.sm },

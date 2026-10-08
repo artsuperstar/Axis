@@ -66,7 +66,7 @@ test('Finance context reuses exact Income/Expense/Net Flow aggregation and exclu
   f.finance.createTransaction({ ...transactionDraft(null, pickerValue('2026-10-03')), description: 'Different day', amount: '900' });
   f.commitments.create({ ...commitmentDraft(null, undefined, today), title: 'Unpaid bill', firstDueDate: today, amount: '180' });
   const client = f.work.createCounterparty('Client');
-  f.work.create({ ...workDraft(null, today), description: 'Unreceived work', counterpartyId: client.id,
+  f.work.create({ ...workDraft(null, today), title: 'Unreceived work', description: 'Unreceived work', counterpartyId: client.id,
     compensationType: 'fixed', fixedAmount: '1000', expectedPaymentDate: today });
   const context = f.context.read(today);
   assert.equal(context.incomeMinor, 50000n); assert.equal(context.expensesMinor, 12000n); assert.equal(context.netFlowMinor, 38000n);
@@ -96,7 +96,7 @@ test('source edits/deletes/payment undo refresh context without ever altering di
   f.commitments.pay(occurrence, '170', today); assert.equal(f.context.read(today).expensesMinor, 17000n);
   f.commitments.reopen(occurrence.id!); assert.equal(f.context.read(today).expensesMinor, 0n);
   const client = f.work.createCounterparty('Client');
-  const work = f.work.create({ ...workDraft(null, today), description: 'Work', counterpartyId: client.id, compensationType: 'fixed', fixedAmount: '100' });
+  const work = f.work.create({ ...workDraft(null, today), title: 'Work', description: 'Work', counterpartyId: client.id, compensationType: 'fixed', fixedAmount: '100' });
   f.work.recordPayment({ counterpartyId: client.id, paymentDate: today, categoryId: null, allocations: [{ workEntryId: work, amount: '80' }] });
   assert.equal(f.context.read(today).incomeMinor, 8000n);
   f.work.undoPayment(f.finance.read().transactions.find((row) => row.type === 'income')!.id);

@@ -79,6 +79,7 @@ Default sheet headers and inline category creation adopt primary confirmation an
 
 - `FormField editable={false}` or `readOnly` means an authoritative locked value: full-opacity primary text, muted surface, stronger border, visible “Read only” label and accessible hint. It stays noneditable. `disabled` explicitly means unavailable.
 - Focused fields/expanded selectors use accent borders and raised surfaces. Expanded selectors also reverse their chevron. Focus callbacks still forward to the existing keyboard/scroll machinery and caller.
+- Single-line FormField inputs use native font metrics, zero native vertical padding and native vertical centering in the same 48-point minimum control. Horizontal padding, font size/weight and border width stay shared. iOS React Native applies input padding inside UIKit's already-computed text/editing rectangles; the former 8-point top/bottom insets could displace rendered text even while the empty control looked normal. Focus changes colors only, and value never selects a different geometry. Multiline fields retain 8-point vertical padding, 24-point paragraph line height and top alignment. No fixed height constrains accessibility font scaling.
 - Optional `error` on FormField/FormSelect/SelectField adds an invalid state, danger border, and adjacent alert text; errors outrank focus. Native hints include the message. No validation rules were changed or auto-mapped.
 - `FormError` is danger text with existing alert/live-region semantics.
 - `StatusText tone="neutral | attention | success | subdued | danger | info"` is text-first; callers provide meaningful words. It derives no domain status and introduces no badge container.
@@ -103,3 +104,5 @@ Stage 13C applies these roles to Tasks rows, contextual actions, grouped editing
 Stage 13D applies screenTitle, navigation, metric and compact status roles to the Finance shell and Overview. See [Finance Overview](finance-overview.md) for period controls, exact spending presentation, responsive layout and device-review decisions.
 
 Stage 13E applies compact obligation rows, primary Pay, anchored secondary/series actions and focused management/History to Commitments. See [Commitments experience](commitments-experience.md) for hierarchy, payment context, lifecycle and device-review decisions.
+
+Stage 13F presents Jobs first: Title, Client context, description preview and each job's financial status. Outstanding is the primary supporting metric; Client balances live in focused management/detail and settled jobs in paged History. See [Work experience](work-experience.md) for legacy Title compatibility, allocation, identity, lifecycle and device-review decisions.

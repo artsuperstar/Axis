@@ -169,12 +169,12 @@ test('installment counts and resumed schedule/amount versions govern projected d
 test('Work partial/full receipts and date edits refresh outstanding amounts on the original expected date', async (t) => {
   const f = await initialized(); t.after(() => f.sqlite.close());
   const client = f.work.createCounterparty('Acme');
-  const id = f.work.create({ ...workDraft(null, initialDay), counterpartyId: client.id, description: 'Report', compensationType: 'fixed', fixedAmount: '1000', expectedPaymentDate: '2026-10-01' });
-  f.work.create({ ...workDraft(null, initialDay), counterpartyId: client.id, description: 'No date', compensationType: 'fixed', fixedAmount: '10' });
+  const id = f.work.create({ ...workDraft(null, initialDay), counterpartyId: client.id, title: 'Report', description: 'Report', compensationType: 'fixed', fixedAmount: '1000', expectedPaymentDate: '2026-10-01' });
+  f.work.create({ ...workDraft(null, initialDay), counterpartyId: client.id, title: 'No date', description: 'No date', compensationType: 'fixed', fixedAmount: '10' });
   const payment = (amount: string) => f.work.recordPayment({ counterpartyId: client.id, allocations: [{ workEntryId: id, amount }], paymentDate: initialDay, categoryId: null });
   const first = f.calendar.readRange(range); assert.equal(first.length, 1); assert.equal(first[0].status, 'Payment overdue'); assert.equal(first[0].date, '2026-10-01');
   f.work.archiveCounterparty(client.id); payment('400');
-  const partial = f.calendar.readRange(range)[0]; assert.equal(partial.source === 'work' && partial.amountMinor, 60000); assert.equal(partial.title, 'Acme');
+  const partial = f.calendar.readRange(range)[0]; assert.equal(partial.source === 'work' && partial.amountMinor, 60000); assert.equal(partial.title, 'Report'); assert.ok(partial.secondary.includes('Acme'));
   const row = f.work.read().items.find((item) => item.entry.id === id)!;
   f.work.edit(id, { ...workDraft(row.entry, initialDay), expectedPaymentDate: '2026-11-10' });
   assert.equal(f.calendar.readRange(range).length, 0); assert.equal(f.calendar.readRange(monthGridRange('2026-11-01'))[0].status, 'Expected payment');
@@ -183,12 +183,12 @@ test('Work partial/full receipts and date edits refresh outstanding amounts on t
 test('a combined Work payment reconciles across expected-date ranges; unrelated history is not loaded', async (t) => {
   const f = await initialized(); t.after(() => f.sqlite.close());
   const client = f.work.createCounterparty('Client');
-  const make = (date: string) => f.work.create({ ...workDraft(null, initialDay), counterpartyId: client.id, description: date, compensationType: 'fixed', fixedAmount: '100', expectedPaymentDate: date });
+  const make = (date: string) => f.work.create({ ...workDraft(null, initialDay), counterpartyId: client.id, title: date, description: date, compensationType: 'fixed', fixedAmount: '100', expectedPaymentDate: date });
   const a = make(initialDay); const b = make('2027-03-01');
   f.work.recordPayment({ counterpartyId: client.id, allocations: [{ workEntryId: a, amount: '40' }, { workEntryId: b, amount: '20' }], paymentDate: initialDay, categoryId: null });
   assert.deepEqual(f.work.readRange(range).map((row) => [row.entry.id, row.outstandingMinor]), [[a, 6000]]);
   const other = f.work.createCounterparty('Unrelated');
-  const outside = f.work.create({ ...workDraft(null, initialDay), counterpartyId: other.id, description: 'Outside', compensationType: 'fixed', fixedAmount: '100', expectedPaymentDate: '2025-01-01' });
+  const outside = f.work.create({ ...workDraft(null, initialDay), counterpartyId: other.id, title: 'Outside', description: 'Outside', compensationType: 'fixed', fixedAmount: '100', expectedPaymentDate: '2025-01-01' });
   const payment = f.work.recordPayment({ counterpartyId: other.id, allocations: [{ workEntryId: outside, amount: '10' }], paymentDate: initialDay, categoryId: null });
   f.db.update(schema.financeTransactions).set({ amountMinor: 1 }).where(eq(schema.financeTransactions.id, payment)).run();
   assert.equal(f.calendar.readRange(range).length, 1, 'out-of-range history is not scanned');
@@ -198,7 +198,7 @@ test('mixed day agenda sorts timed Tasks, all-day Tasks, Commitments, and Work; 
   const f = await initialized(); t.after(() => f.sqlite.close());
   for (const [title, time] of [['Zulu', '10:00'], ['Beta', '09:00'], ['Alpha', '09:00'], ['Date only', '']]) f.tasks.createTask({ ...taskDraft(), title, time, date: initialDay });
   f.commitments.create({ ...commitmentDraft(null, undefined, initialDay), title: 'Bill', amount: '10', firstDueDate: initialDay });
-  const client = f.work.createCounterparty('Client'); f.work.create({ ...workDraft(null, initialDay), counterpartyId: client.id, description: 'Work', compensationType: 'fixed', fixedAmount: '100', expectedPaymentDate: initialDay });
+  const client = f.work.createCounterparty('Client'); f.work.create({ ...workDraft(null, initialDay), counterpartyId: client.id, title: 'Work', description: 'Work', compensationType: 'fixed', fixedAmount: '100', expectedPaymentDate: initialDay });
   f.finance.createTransaction({ ...transactionDraft(null, pickerValue(initialDay)), type: 'expense', description: 'Ordinary Expense', amount: '20' });
   const items = f.calendar.readRange(range); const sections = dayAgenda(items.reverse(), initialDay);
   assert.deepEqual(sections.map((row) => row.title), ['Tasks', 'Commitments', 'Expected payments']);
