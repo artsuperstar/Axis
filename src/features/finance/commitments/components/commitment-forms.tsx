@@ -2,7 +2,8 @@ import DateTimePicker, { DateTimePickerAndroid } from '@react-native-community/d
 import { useRef, useState } from 'react';
 import { Keyboard, Platform, StyleSheet, View } from 'react-native';
 
-import { FormButton, FormError, FormField, FormSelect, InlineNameForm, SegmentedControl, SelectField } from '@/components/form-controls';
+import { FormError, FormField, FormSelect, InlineNameForm, SegmentedControl, SelectField } from '@/components/form-controls';
+import { PickerBackHeader } from '@/components/back-button';
 import { ThemedText } from '@/components/themed-text';
 import { Space } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
@@ -34,9 +35,9 @@ function CommitmentDate({ label, value, onChange, minimumDate, maximumDate }: {
   return <>
     <FormSelect label={label} value={dateLabel(value)} expanded={open} onPress={choose} />
     {open && Platform.OS === 'ios' && <>
+      <PickerBackHeader title={label} onBack={() => setOpen(false)} />
       <DateTimePicker value={pickerValue(value)} mode="date" display="spinner" minimumDate={minimumDate} maximumDate={maximumDate}
         themeVariant={scheme === 'dark' ? 'dark' : 'light'} onValueChange={(_event, date) => onChange(localDateString(date))} />
-      <FormButton label="Done" onPress={() => setOpen(false)} />
     </>}
   </>;
 }

@@ -60,10 +60,7 @@ export function OccurrenceHistory({ task, categories, recurrences, readPage, onS
 
   return (
     <AdaptiveModal onDismiss={onDismiss}>
-      <AdaptiveSheet contentContainerStyle={styles.content} header={<View style={styles.header}>
-        <ThemedText type="sheetTitle" accessibilityRole="header" style={styles.title}>{task.title} · History</ThemedText>
-        <TaskButton variant="quiet" label="Done" onPress={onDismiss} />
-      </View>}>
+      <AdaptiveSheet title={`${task.title} · History`} onDismiss={onDismiss} contentContainerStyle={styles.content}>
         <TaskError message={error} />
         {!!error && <TaskButton label="Retry" onPress={older} />}
         {!entries.length && !error && <ThemedText>No past occurrences yet.</ThemedText>}
@@ -92,8 +89,6 @@ export function OccurrenceHistory({ task, categories, recurrences, readPage, onS
 }
 
 const styles = StyleSheet.create({
-  header: { padding: Space.lg, flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', gap: Space.sm },
-  title: { flex: 1 },
   content: { padding: Space.lg, gap: Space.lg },
   entry: { gap: Space.sm, paddingBottom: Space.lg, borderBottomWidth: 1 },
   metadata: { gap: Space.xs },

@@ -4,6 +4,7 @@ import { ActivityIndicator, ScrollView, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-screens/experimental';
 
 import { ContextMenuHost } from '@/components/context-menu';
+import { BackButton } from '@/components/back-button';
 import { FormButton } from '@/components/form-controls';
 import type { FormSelectionHandle } from '@/components/form-selection-host';
 import { SheetRefreshContext } from '@/components/sheet-refresh-notice';
@@ -28,7 +29,7 @@ function WorkManagementScreen({ destination }: { destination: 'clients' | 'histo
       <ContextMenuHost ref={menuHost} safeAreaApplied>
         <View testID="work-management-header" style={[styles.inner, styles.header]}>
           <View style={styles.titleRow}>
-            <FormButton variant="quiet" label="←" accessibilityLabel="Back to Work" onPress={() => {
+            <BackButton accessibilityLabel="Back to Work" onPress={() => {
               if (router.canGoBack()) router.back(); else router.replace('/work');
             }} />
             <ThemedText type="screenTitle" accessibilityRole="header">{destination === 'clients' ? 'Clients' : 'History'}</ThemedText>

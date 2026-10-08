@@ -117,7 +117,7 @@ test('Pay / Skip / Undo update feed, exact Overview, linked Transactions, Home a
   assert.ok(!sections(app).some((section) => section.props.testID === 'commitment-section-today'));
   await app.press('Overview'); assert.ok(app.container.textContent.includes('ExpensesR$ 185,21')); assert.ok(app.container.textContent.includes('Veterinary care'));
   assert.equal(f.finance.readDashboard(periodBounds('month', today)).analytics.expensesMinor, 18521n);
-  await app.press('Transactions'); assert.ok(app.container.textContent.includes('Commitment payment · Undo in Commitments history'));
+  await app.press('Transactions'); assert.ok(app.nodes().some((node) => node.textContent === 'Commitment'));
   assert.ok(!app.nodes().some((node) => node.props?.label === 'Delete'));
   await app.press('Commitments'); await menu(app, 'Commitment options', 'History');
   const readsBefore = runtime.fixture.reads.filter((read) => read === 'commitments.readHistory').length;
@@ -126,7 +126,7 @@ test('Pay / Skip / Undo update feed, exact Overview, linked Transactions, Home a
   assert.ok(app.container.textContent.includes('Expected R$ 180,20')); assert.ok(app.container.textContent.includes(`Payment date ${dateLabel(today)}`));
   assert.equal(app.find('FormButton', 'Undo payment').props.variant, 'quiet'); await app.press('Undo payment'); await app.confirm('Confirm');
   assert.equal(f.finance.read().transactions.length, 0); assert.equal(dueHome().length, 1); assert.equal(dueCalendar().length, 1);
-  await app.press('Done'); await app.press('Back to Commitments');
+  await app.press('Back'); await app.press('Back to Commitments');
   assert.ok(sections(app).some((section) => section.props.testID === 'commitment-section-today'));
   await menu(app, `Actions for ${subject('Vet')}`, 'Skip'); assert.equal(dueHome().length, 1); await app.confirm('Confirm');
   assert.equal(dueHome().length, 0); assert.equal(dueCalendar().length, 0); assert.equal(f.finance.read().transactions.length, 0);
@@ -134,7 +134,7 @@ test('Pay / Skip / Undo update feed, exact Overview, linked Transactions, Home a
   assert.equal(rows(app, 'commitment-history-row').length, 1); assert.ok(rows(app, 'commitment-history-row')[0].textContent.includes('Skipped'));
   assert.ok(!rows(app, 'commitment-history-row')[0].textContent.includes('Payment date'));
   await app.press('Reopen'); await app.confirm('Confirm'); assert.equal(dueHome().length, 1);
-  await app.press('Done'); await app.press('Back to Commitments'); await app.press('Overview');
+  await app.press('Back'); await app.press('Back to Commitments'); await app.press('Overview');
   assert.ok(app.container.textContent.includes('ExpensesR$ 0,00'));
 });
 
@@ -170,7 +170,7 @@ test('resolved History loads incremental earlier pages with no duplicate rows an
   assert.equal(new Set(history.map((row) => row.textContent)).size, 30);
   assert.ok(!app.nodes().some((node) => node.props?.label === 'Load earlier history'));
   assert.ok(!history.some((row) => row.textContent.includes('Pending')));
-  await app.press('Done'); await app.press('Back to Commitments'); assert.ok(app.find('FormButton', `Pay ${subject('Archive')}`));
+  await app.press('Back'); await app.press('Back to Commitments'); assert.ok(app.find('FormButton', `Pay ${subject('Archive')}`));
 });
 
 for (const fontScale of [1, 2]) test(`long names, maximum BRL and installment progress retain wrapping and contextual accessibility at font scale ${fontScale}`, async (t) => {
@@ -218,7 +218,7 @@ for (const mode of ['light', 'dark'] as const) test(`${mode} mode uses attention
   await app.press(`Pay ${subject('Old debt', oldDate)}`); await app.press('Confirm');
   await menu(app, 'Commitment options', 'History'); await app.tapSet('History for Old debt');
   await app.press('Load earlier history'); await app.press(`Undo payment for ${subject('Old debt', oldDate)}`); await app.confirm('Confirm');
-  await app.press('Done'); await app.press('Back to Commitments');
+  await app.press('Back'); await app.press('Back to Commitments');
   assert.ok(app.find('FormButton', `Pay ${subject('Old debt', oldDate)}`));
   assert.equal(f.access.readHistory(id).outstanding[0].dueDate, oldDate); assert.equal(f.finance.read().transactions.length, 0);
 });

@@ -5,7 +5,8 @@ import { Keyboard, Platform, StyleSheet, View } from 'react-native';
 import { FormButton, FormError, FormField, FormSelect, InlineNameForm, SegmentedControl, SelectField } from '@/components/form-controls';
 import { ThemedText } from '@/components/themed-text';
 import { AdaptiveModal, AdaptiveSheet } from '@/components/adaptive-sheet';
-import { Spacing } from '@/constants/theme';
+import { PickerBackHeader } from '@/components/back-button';
+import { Spacing, Typography } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { dateLabel, localDateString, pickerValue } from '@/utils/calendar';
 
@@ -68,32 +69,41 @@ export function TransactionEditor({ transaction, categories, onSave, onCreateCat
         <FormButton variant="primary" label="Save" onPress={save} />
       </View>}>
         <FormError message={error} />
-        <SegmentedControl label="Type *" value={draft.type} options={transactionTypeOptions} disabled={commitmentPayment || workPayment} onChange={(type) => {
-          setDraft((current) => changeTransactionType(current, type, categories)); setError(null);
-        }} />
-        {commitmentPayment && <ThemedText type="small" themeColor="textSecondary">Commitment payment. Amount, date, and other fields can be edited here. To remove it, use Undo payment in Commitments history.</ThemedText>}
-        {workPayment && <ThemedText type="small" themeColor="textSecondary">Work payment. To correct it, use Undo payment in Work and record it again.</ThemedText>}
-        <FormField label="Amount *" accessibilityLabel={workPayment ? 'Amount in reais, locked to Work allocations' : 'Amount in reais, required'} editable={!workPayment} helperText={workPayment ? 'Amount is controlled by the linked Work payment.' : undefined}
-          placeholder="25,90" value={draft.amount} onChangeText={(value) => change('amount', value)} keyboardType={Platform.OS === 'ios' ? 'numbers-and-punctuation' : 'decimal-pad'} autoFocus={!workPayment} />
-        <FormField label="Description *" accessibilityLabel="Description, required" value={draft.description} onChangeText={(value) => change('description', value)} returnKeyType="next" />
-        {Platform.OS === 'web' ? (
-          <FormField label="Date *" placeholder="YYYY-MM-DD" value={draft.transactionDate} onChangeText={(value) => change('transactionDate', value)} />
-        ) : (
-          <FormSelect label="Date *" value={dateLabel(draft.transactionDate)} expanded={picker} onPress={openDate} />
-        )}
-        {picker && Platform.OS === 'ios' && <>
-          <DateTimePicker value={pickerValue(draft.transactionDate)} mode="date" display="spinner" maximumDate={new Date()}
-            themeVariant={scheme === 'dark' ? 'dark' : 'light'} onValueChange={(_event, date) => change('transactionDate', localDateString(date))} />
-          <FormButton label="Done" onPress={() => setPicker(false)} />
-        </>}
-        <SelectField label="Category" value={draft.categoryId} displayValue={categoryLabel}
-          options={financeCategoryOptions(categories, draft.type)} onChange={(value) => change('categoryId', value)} onOpen={() => setPicker(false)}
-          description={archivedCategory ? `Current category: ${categoryLabel}. Keep it by dismissing this menu, or choose an active category or No category.` : undefined}
-          action={{ label: '+ New category', title: `New ${transactionTypeLabels[draft.type].toLowerCase()} category`, accessibilityLabel: `Create new ${draft.type} category`,
-            render: (controls) => <InlineNameForm {...controls}
-              onSubmit={(name, complete) => createFinanceCategorySelection(name, draft.type, onCreateCategory, (id) => change('categoryId', id), complete)}
-              formatError={(cause) => financeError(cause, 'Unable to create this category. Please try again.')} /> }} />
-        <FormField label="Note" value={draft.note} onChangeText={(value) => change('note', value)} multiline textAlignVertical="top" style={styles.note} />
+        <View style={styles.section}>
+          <ThemedText type="cardTitle" accessibilityRole="header">Transaction</ThemedText>
+          <SegmentedControl label="Type *" value={draft.type} options={transactionTypeOptions} disabled={commitmentPayment || workPayment} onChange={(type) => {
+            setDraft((current) => changeTransactionType(current, type, categories)); setError(null);
+          }} />
+          {commitmentPayment && <ThemedText type="small" themeColor="textSecondary">Commitment payment. Amount, date, and other fields can be edited here. To remove it, use Undo payment in Commitments history.</ThemedText>}
+          {workPayment && <ThemedText type="small" themeColor="textSecondary">Work payment. To correct it, use Undo payment in Work and record it again.</ThemedText>}
+          <FormField label="Amount *" accessibilityLabel={workPayment ? 'Amount in reais, locked to Work allocations' : 'Amount in reais, required'} editable={!workPayment} helperText={workPayment ? 'Amount is controlled by the linked Work payment.' : undefined}
+            placeholder="25,90" value={draft.amount} onChangeText={(value) => change('amount', value)} keyboardType={Platform.OS === 'ios' ? 'numbers-and-punctuation' : 'decimal-pad'} autoFocus={!workPayment} style={styles.amount} />
+        </View>
+        <View style={styles.section}>
+          <ThemedText type="cardTitle" accessibilityRole="header">Details</ThemedText>
+          <FormField label="Description *" accessibilityLabel="Description, required" value={draft.description} onChangeText={(value) => change('description', value)} returnKeyType="next" />
+          <SelectField label="Category" value={draft.categoryId} displayValue={categoryLabel}
+            options={financeCategoryOptions(categories, draft.type)} onChange={(value) => change('categoryId', value)} onOpen={() => setPicker(false)}
+            description={archivedCategory ? `Current category: ${categoryLabel}. Keep it by dismissing this menu, or choose an active category or No category.` : undefined}
+            action={{ label: '+ New category', title: `New ${transactionTypeLabels[draft.type].toLowerCase()} category`, accessibilityLabel: `Create new ${draft.type} category`,
+              render: (controls) => <InlineNameForm {...controls}
+                onSubmit={(name, complete) => createFinanceCategorySelection(name, draft.type, onCreateCategory, (id) => change('categoryId', id), complete)}
+                formatError={(cause) => financeError(cause, 'Unable to create this category. Please try again.')} /> }} />
+          <FormField label="Note" value={draft.note} onChangeText={(value) => change('note', value)} multiline textAlignVertical="top" style={styles.note} />
+        </View>
+        <View style={styles.section}>
+          <ThemedText type="cardTitle" accessibilityRole="header">Date</ThemedText>
+          {Platform.OS === 'web' ? (
+            <FormField label="Date *" placeholder="YYYY-MM-DD" value={draft.transactionDate} onChangeText={(value) => change('transactionDate', value)} />
+          ) : (
+            <FormSelect label="Date *" value={dateLabel(draft.transactionDate)} expanded={picker} onPress={openDate} />
+          )}
+          {picker && Platform.OS === 'ios' && <>
+            <PickerBackHeader title="Date" onBack={() => setPicker(false)} />
+            <DateTimePicker value={pickerValue(draft.transactionDate)} mode="date" display="spinner" maximumDate={new Date()}
+              themeVariant={scheme === 'dark' ? 'dark' : 'light'} onValueChange={(_event, date) => change('transactionDate', localDateString(date))} />
+          </>}
+        </View>
       </AdaptiveSheet>
     </AdaptiveModal>
   );
@@ -103,4 +113,5 @@ const styles = StyleSheet.create({
   header: { flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: Spacing.two, padding: Spacing.three },
   heading: { flex: 1, minWidth: 80 }, title: { textAlign: 'center' },
   content: { padding: Spacing.three, gap: Spacing.three }, note: { minHeight: 80 },
+  section: { gap: Spacing.three }, amount: { fontSize: Typography.sectionHeading.fontSize, fontWeight: Typography.sectionHeading.fontWeight },
 });

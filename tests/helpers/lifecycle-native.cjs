@@ -23,7 +23,8 @@ function SectionList(props) {
   return React.createElement(SectionHost, props, props.ListHeaderComponent,
     props.sections.length ? props.sections.map((section) => React.createElement(React.Fragment, { key: section.title },
       props.renderSectionHeader({ section }), section.data.map((item, index) => React.createElement(React.Fragment,
-        { key: props.keyExtractor(item) }, props.renderItem({ item, index, section }))), props.renderSectionFooter?.({ section }))) : props.ListEmptyComponent);
+        { key: props.keyExtractor(item) }, props.renderItem({ item, index, section }))), props.renderSectionFooter?.({ section }))) : props.ListEmptyComponent,
+    props.ListFooterComponent);
 }
 const appStateListeners = new Set();
 const focusEffects = new Set();

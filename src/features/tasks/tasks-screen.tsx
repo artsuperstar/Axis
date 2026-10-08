@@ -6,6 +6,7 @@ import { SafeAreaView } from 'react-native-screens/experimental';
 import { ThemedText } from '@/components/themed-text';
 import { SheetRefreshContext } from '@/components/sheet-refresh-notice';
 import { ContextMenuHost } from '@/components/context-menu';
+import { BackButton } from '@/components/back-button';
 import { ControlSize, Space } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
 
@@ -132,7 +133,7 @@ export function TasksScreen({ initialTaskId, destination = 'main' }: {
       <ContextMenuHost safeAreaApplied>
       <View style={styles.header}>
         <View style={styles.titleRow}>
-          {!main && <TaskButton variant="quiet" label="←" accessibilityLabel="Back to Tasks" onPress={() => {
+          {!main && <BackButton accessibilityLabel="Back to Tasks" onPress={() => {
             if (router.canGoBack()) router.back(); else router.replace('/(tabs)/tasks');
           }} />}
           <ThemedText type="screenTitle" accessibilityRole="header" style={styles.title}>{title}</ThemedText>

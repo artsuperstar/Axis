@@ -4,6 +4,7 @@ import { Alert, Keyboard, Platform, StyleSheet, View, useWindowDimensions } from
 
 import { ThemedText } from '@/components/themed-text';
 import { AdaptiveModal, AdaptiveSheet } from '@/components/adaptive-sheet';
+import { BackButton, PickerBackHeader } from '@/components/back-button';
 import { Space, Spacing } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { InlineNameForm, SelectField } from '@/components/form-controls';
@@ -142,10 +143,10 @@ export function TaskEditor({ task, recurrence, categories, onSave, onCreateCateg
     </View>
   </View>;
   const pickerControls = picker && Platform.OS === 'ios' ? <>
+    <PickerBackHeader title={picker === 'end' ? 'End date' : picker === 'date' ? 'Date' : 'Time'} onBack={() => setPicker(null)} />
     <DateTimePicker value={picker === 'end' ? pickerValue(draft.recurrence?.endDate || draft.date) : pickerValue(draft.date, draft.time)}
       mode={picker === 'end' ? 'date' : picker} display="spinner" themeVariant={scheme === 'dark' ? 'dark' : 'light'}
       onValueChange={(_event, selected) => pickerChange(picker, selected)} />
-    <TaskButton variant="quiet" label="Done" accessibilityLabel={`Done choosing ${picker === 'end' ? 'end date' : picker}`} onPress={() => setPicker(null)} />
   </> : null;
   const intervalUnit = draft.recurrence?.frequency === 'daily' ? 'days' : draft.recurrence?.frequency === 'weekly' ? 'weeks' : 'months';
   const recurrenceMessage = draft.recurrence ? recurrenceError(draft.recurrence, draft.date) : null;
@@ -153,9 +154,8 @@ export function TaskEditor({ task, recurrence, categories, onSave, onCreateCateg
 
   return <AdaptiveModal onDismiss={editingRecurrence ? recurrenceDone : onDismiss}>
     {editingRecurrence ? <AdaptiveSheet key="recurrence" contentContainerStyle={styles.form} header={<View style={styles.header}>
-      <TaskButton variant="quiet" label="Back" onPress={recurrenceDone} />
-      <ThemedText type="sheetTitle" accessibilityRole="header" style={[styles.heading, styles.headingText]}>Recurrence</ThemedText>
-      <TaskButton variant="primary" label="Done" onPress={recurrenceDone} />
+      <BackButton accessibilityLabel="Back to task editor" onPress={recurrenceDone} />
+      <ThemedText type="sheetTitle" accessibilityRole="header" style={styles.heading}>Recurrence</ThemedText>
     </View>}>
       <TaskError message={error} />
       <View style={styles.section}>

@@ -170,7 +170,7 @@ test('Finish is persistent/primary/confirmed, returns to start state and keeps m
   assert.equal(app.nodes().filter((node) => node.kind === 'FormButton' && node.props?.label === 'View workout').length, 2);
   const view = app.nodes().find((node) => node.kind === 'FormButton' && node.props?.label === 'View workout')!;
   await act(() => (view.props.onPress as () => void)()); assert.ok(app.find('Modal'));
-  assert.ok(!app.nodes().some((node) => node.props?.label === '+ Add exercise')); await app.press('Done'); await app.press('Workout');
+  assert.ok(!app.nodes().some((node) => node.props?.label === '+ Add exercise')); await app.press('Back'); await app.press('Workout');
   assert.ok(app.find('FormButton', 'Start Empty Workout'));
 });
 
@@ -214,7 +214,7 @@ test('Home completed-workout source entry opens read-only History while an activ
   const active = fitness.startWorkout();
   const app = await mount(createElement(screens.FitnessScreen, { initialSessionId: completed.id }), db); t.after(app.unmount);
   assert.equal(app.find('FormButton', 'History').props.selected, true); assert.ok(app.find('Modal'));
-  assert.ok(!app.nodes().some((node) => node.kind === 'FormField')); await app.press('Done');
+  assert.ok(!app.nodes().some((node) => node.kind === 'FormField')); await app.press('Back');
   assert.equal(app.find('FormButton', 'History').props.selected, true); await app.press('Workout'); assertInline(app);
   assert.equal(fitness.readOverview().active!.id, active.id);
 });

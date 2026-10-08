@@ -99,15 +99,15 @@ test('Overview / Transactions / Commitments / Work / Overview preserves ledger r
   const app = await mount(createElement(screens.FinanceScreen), f.db); t.after(app.unmount);
   await app.press('Previous month'); const oldPeriod = app.nodes().find((node) => node.kind === 'ThemedText' && node.props.type === 'cardTitle')!.textContent;
   await act(() => (app.find('FlatList').props.onScroll as (event: unknown) => void)({ nativeEvent: { contentOffset: { y: 240 } } }));
-  await app.press('Transactions'); assert.equal(app.find('FormButton', 'Add transaction').props.variant, 'primary');
-  await act(() => (app.find('FlatList').props.onScroll as (event: unknown) => void)({ nativeEvent: { contentOffset: { y: 100 } } }));
+  await app.press('Transactions'); assert.equal(app.find('Pressable', 'Add transaction').props.accessibilityRole, 'button');
+  await act(() => (app.find('SectionList').props.onScroll as (event: unknown) => void)({ nativeEvent: { contentOffset: { y: 100 } } }));
   await app.press('Commitments'); assert.ok(app.find('FormButton', 'Add commitment'));
   await app.press('Work'); assert.ok(app.find('FormButton', 'Add work'));
   await app.press('Overview');
   assert.deepEqual(app.find('FlatList').props.contentOffset, { x: 0, y: 240 });
   assert.ok(app.nodes().some((node) => node.textContent === oldPeriod));
   assert.equal(app.find('SegmentedControl', 'Period').props.value, 'month');
-  await app.press('Transactions'); assert.deepEqual(app.find('FlatList').props.contentOffset, { x: 0, y: 100 });
+  await app.press('Transactions'); assert.deepEqual(app.find('SectionList').props.contentOffset, { x: 0, y: 100 });
   assert.deepEqual(f.finance.read(), before);
   assert.deepEqual(commitments.read(), beforeCommitments); assert.deepEqual(work.readOverview(), beforeWork);
 });
@@ -230,10 +230,10 @@ test('failed dashboard refresh retains exact last-good metrics and successful Re
 
 test('transaction drafts survive failed refresh in the new shell and saved transactions immediately update Overview', async (t) => {
   const f = await initialized(t); const app = await mount(createElement(screens.FinanceScreen), f.db); t.after(app.unmount);
-  await app.press('Transactions'); await app.press('Add transaction');
+  await app.press('Transactions'); await app.tapSet('Add transaction');
   await app.change('Description *', 'Working transaction'); await app.change('Amount *', '123,45');
   const description = app.find('FormField', 'Description *'); const modal = app.find('Modal');
-  runtime.fixture.failures.add('finance.read'); await app.resume(); await app.refocus();
+  runtime.fixture.failures.add('finance.readLedgerPage'); await app.resume(); await app.refocus();
   assert.equal(app.find('Modal'), modal); assert.equal(app.find('FormField', 'Description *'), description);
   assert.equal(app.find('FormField', 'Amount *').props.value, '123,45');
   runtime.fixture.failures.clear(); await app.press('Retry refresh'); await app.press('Save'); await app.press('Overview');

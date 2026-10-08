@@ -148,7 +148,7 @@ test('header management is available only through Task options; Categories keeps
   await handoff(app, 'Categories'); await app.change('Category name', 'New category'); await app.press('Create category');
   const category = f.access.read().categories.find((item) => item.name === 'New category')!; assert.ok(category);
   await app.press('Delete category New category'); assert.equal(runtime.fixture.alerts.at(-1)!.title, 'Delete category?'); await app.confirm('Cancel');
-  assert.ok(f.access.read().categories.some((item) => item.id === category.id)); await app.press('Done'); noModal(app);
+  assert.ok(f.access.read().categories.some((item) => item.id === category.id)); await app.press('Back'); noModal(app);
 });
 
 for (const [label, target, Route] of [['Repeating Tasks', '/tasks/repeating', RepeatingRoute], ['History', '/tasks/history', HistoryRoute]] as const) {
@@ -207,9 +207,9 @@ test('Repeating Tasks is full-screen content and retains schedule edit, stopped 
   const stopped = f.create('Stopped series', { date: today, recurrence: daily }); f.access.stopRepeating(stopped);
   const app = await mount(createElement(RepeatingRoute), f.db); t.after(app.unmount); noModal(app);
   for (const text of ['Series', 'Stopped series', 'Current schedule', 'Every day']) assert.ok(app.container.textContent.includes(text));
-  await app.press('Edit schedule for Series'); await app.press('Edit recurrence'); await app.change('Every', '3'); await app.press('Done'); await app.press('Save'); noModal(app);
+  await app.press('Edit schedule for Series'); await app.press('Edit recurrence'); await app.change('Every', '3'); await app.press('Back to task editor'); await app.press('Save'); noModal(app);
   assert.ok(app.container.textContent.includes('Every 3 days')); await app.press('History for Series'); assert.ok(app.container.textContent.includes('Series · History'));
-  await app.press('Done'); await app.press('Delete recurring task Series'); assert.ok(f.access.read().tasks.some((entry) => entry.id === id)); await app.confirm('Cancel');
+  await app.press('Back'); await app.press('Delete recurring task Series'); assert.ok(f.access.read().tasks.some((entry) => entry.id === id)); await app.confirm('Cancel');
   await app.press('Delete recurring task Series'); await app.confirm('Delete'); assert.ok(!f.access.read().tasks.some((entry) => entry.id === id)); noModal(app);
 });
 
@@ -236,7 +236,7 @@ test('failed refresh preserves disclosure/preview state, mounted list, editor an
   const modal = app.find('Modal'); const interval = app.find('FormField', 'Every'); runtime.fixture.failures.add('tasks.read'); await app.resume();
   assert.equal(app.find('SectionList'), list); assert.equal(app.find('Modal'), modal); assert.equal(app.find('FormField', 'Every'), interval);
   assert.equal(section(app, 'Earlier').expanded, true); assert.equal(section(app, 'Upcoming').expanded, true); assert.equal(section(app, 'To-do').data.length, 6);
-  runtime.fixture.failures.clear(); await app.press('Retry'); await app.press('Done'); assert.equal(app.find('FormField', 'Title *').props.value, 'Unsaved'); await app.press('Save');
+  runtime.fixture.failures.clear(); await app.press('Retry'); await app.press('Back to task editor'); assert.equal(app.find('FormField', 'Title *').props.value, 'Unsaved'); await app.press('Save');
   assert.equal(section(app, 'To-do').data.length, 6); assert.equal(app.find('SectionList'), list);
 });
 

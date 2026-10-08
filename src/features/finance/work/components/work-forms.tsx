@@ -4,6 +4,7 @@ import { Keyboard, Platform, Pressable, StyleSheet, View } from 'react-native';
 
 import { AutocompleteField } from '@/components/autocomplete-field';
 import { AdaptiveSheet as WorkSheet } from '@/components/adaptive-sheet';
+import { PickerBackHeader } from '@/components/back-button';
 import { FormButton, FormError, FormField, FormSelect, InlineNameForm, SegmentedControl, SelectField } from '@/components/form-controls';
 import { ThemedText } from '@/components/themed-text';
 import { Space } from '@/constants/theme';
@@ -36,9 +37,9 @@ function WorkDate({ label, value, onChange, maximumDate }: { label: string; valu
   return <>
     <FormSelect label={label} value={value ? dateLabel(value) : 'Add date'} expanded={open} onPress={choose} />
     {open && Platform.OS === 'ios' && <>
+      <PickerBackHeader title={label} onBack={() => setOpen(false)} />
       <DateTimePicker value={pickerValue(value)} mode="date" display="spinner" maximumDate={maximumDate}
         themeVariant={scheme === 'dark' ? 'dark' : 'light'} onValueChange={(_event, date) => onChange(localDateString(date))} />
-      <FormButton label="Done" onPress={() => setOpen(false)} />
     </>}
   </>;
 }

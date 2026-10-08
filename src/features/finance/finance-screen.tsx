@@ -1,9 +1,10 @@
 import { useRef, useState } from 'react';
-import { ActivityIndicator, Alert, FlatList, ScrollView, StyleSheet, View } from 'react-native';
+import { ActivityIndicator, Alert, FlatList, Platform, ScrollView, SectionList, StyleSheet, View, type NativeScrollEvent, type NativeSyntheticEvent } from 'react-native';
 import { SafeAreaView } from 'react-native-screens/experimental';
 
 import { FormButton, FormError } from '@/components/form-controls';
-import { ContextMenuHost } from '@/components/context-menu';
+import { ContextMenu, ContextMenuHost } from '@/components/context-menu';
+import { FloatingAddButton, floatingAddClearance } from '@/components/floating-add-button';
 import type { FormSelectionHandle } from '@/components/form-selection-host';
 import { SheetRefreshContext } from '@/components/sheet-refresh-notice';
 import { StatusText } from '@/components/status-text';
@@ -15,9 +16,11 @@ import { FinanceCategoryManager } from './components/category-manager';
 import { CommitmentsView } from './commitments/components/commitments-view';
 import { FinanceDashboard, FinancePeriodControls } from './components/finance-dashboard';
 import { TransactionEditor } from './components/transaction-editor';
+import { TransactionDetail } from './components/transaction-detail';
 import { TransactionRow } from './components/transaction-row';
 import { financeError } from './errors';
-import type { FinanceTransaction } from './types';
+import type { FinanceTransaction, TransactionSource } from './types';
+import { transactionSections } from './transactions-presentation';
 import { useFinance, type FinanceView } from './use-finance';
 import { WorkView } from './work/components/work-view';
 
@@ -30,8 +33,12 @@ export function FinanceScreen({ initialView, initialRecordId, initialDueDate }: 
   initialView?: FinanceView; initialRecordId?: string; initialDueDate?: string;
 } = {}) {
   const colors = useTheme();
-  const { access, commitmentAccess, workAccess, snapshot, error, reload, mutate, selection, today, setView, setPeriodKind, navigatePeriod, returnToCurrent } = useFinance(initialView, initialRecordId, initialDueDate);
-  const [editor, setEditor] = useState<{ transaction: FinanceTransaction | null } | null>(null);
+  const { access, commitmentAccess, workAccess, snapshot, error, reload, mutate, selection, today, setView, setPeriodKind, navigatePeriod, returnToCurrent, loadMoreTransactions } = useFinance(initialView, initialRecordId, initialDueDate);
+  const [editor, setEditor] = useState<{ transaction: FinanceTransaction | null; source?: TransactionSource } | null>(null);
+  const [linkedDetail, setLinkedDetail] = useState<{ transaction: FinanceTransaction; source: TransactionSource } | null>(null);
+  const [linkedDetailOpen, setLinkedDetailOpen] = useState(false);
+  const [sourceWorkspace, setSourceWorkspace] = useState(false);
+  const pendingDetailAction = useRef<(() => void) | null>(null);
   const [categoriesOpen, setCategoriesOpen] = useState(false);
   const [actionError, setActionError] = useState<string | null>(null);
   const [spendingExpanded, setSpendingExpanded] = useState(false);
@@ -44,6 +51,32 @@ export function FinanceScreen({ initialView, initialRecordId, initialDueDate }: 
     menuHost.current?.dismiss(false);
     setScrollOffset(offsets.current[view]);
     setView(view);
+  }
+
+  function openTransaction(transaction: FinanceTransaction) {
+    setActionError(null);
+    const source = snapshot?.ledger?.sources[transaction.id];
+    if (source) { setLinkedDetail({ transaction, source }); setLinkedDetailOpen(true); }
+    else setEditor({ transaction });
+  }
+
+  function detailClosed() {
+    const action = pendingDetailAction.current;
+    pendingDetailAction.current = null;
+    setLinkedDetail(null);
+    action?.();
+  }
+
+  function closeDetail(action?: () => void) {
+    pendingDetailAction.current = action ?? null;
+    setLinkedDetailOpen(false);
+    // Finish iOS native dismissal before presenting the editor or an owning workspace.
+    if (Platform.OS !== 'ios') requestAnimationFrame(detailClosed);
+  }
+
+  function onScroll(event: NativeSyntheticEvent<NativeScrollEvent>) {
+    menuHost.current?.dismiss(false);
+    offsets.current[selection.view] = Math.max(0, event.nativeEvent.contentOffset.y);
   }
 
   function remove(transaction: FinanceTransaction) {
@@ -74,47 +107,72 @@ export function FinanceScreen({ initialView, initialRecordId, initialDueDate }: 
       </View>}
       <FormError message={actionError} />
     </View>
-    <FlatList
+    {selection.view === 'transactions' ? <SectionList
+      style={styles.list}
+      contentInsetAdjustmentBehavior="never"
+      contentContainerStyle={[styles.inner, styles.content, styles.ledgerContent]}
+      contentOffset={{ x: 0, y: scrollOffset }}
+      onScroll={onScroll} scrollEventThrottle={16} keyboardShouldPersistTaps="handled"
+      stickySectionHeadersEnabled={false}
+      sections={transactionSections(snapshot?.transactions ?? [], today)}
+      keyExtractor={(transaction) => transaction.id}
+      ListHeaderComponent={<View style={styles.ledgerHeader}>
+        <ThemedText type="sectionHeading" accessibilityRole="header" style={styles.destinationHeading}>Transactions</ThemedText>
+        <ContextMenu label="Transactions options" disabled={!snapshot} actions={[
+          { label: 'Categories', onPress: () => setCategoriesOpen(true) },
+        ]} />
+      </View>}
+      ListEmptyComponent={!snapshot ? (error ? null : <ActivityIndicator color={colors.accent} accessibilityLabel="Loading transactions" />) : <View style={styles.empty}>
+        <ThemedText type="cardTitle">No transactions yet</ThemedText>
+        <ThemedText themeColor="textSecondary">Actual income received and expenses paid will appear here.</ThemedText>
+      </View>}
+      renderSectionHeader={({ section }) => <ThemedText type="cardTitle" themeColor="textSecondary" accessibilityRole="header" style={styles.dateHeading}>{section.title}</ThemedText>}
+      renderItem={({ item }) => <TransactionRow transaction={item} categories={categories} today={today}
+        source={snapshot?.ledger?.sources[item.id]} onEdit={() => openTransaction(item)} onDelete={() => remove(item)} />}
+      ListFooterComponent={snapshot?.ledger?.next ? <View style={styles.pageFooter}>
+        <FormButton variant="quiet" label="Load older transactions" onPress={loadMoreTransactions} />
+      </View> : null}
+    /> : <FlatList
       key={selection.view}
       style={styles.list}
       contentInsetAdjustmentBehavior="never"
       contentContainerStyle={[styles.inner, styles.content]}
       contentOffset={{ x: 0, y: scrollOffset }}
-      onScroll={(event) => { menuHost.current?.dismiss(false); offsets.current[selection.view] = Math.max(0, event.nativeEvent.contentOffset.y); }}
+      onScroll={onScroll}
       scrollEventThrottle={16}
       keyboardShouldPersistTaps="handled"
-      data={snapshot?.transactions ?? []}
-      keyExtractor={(transaction) => transaction.id}
+      data={[]}
       ListHeaderComponent={<View style={styles.header}>
-        {selection.view === 'transactions' && <View style={styles.buttons}>
-          <FormButton variant="primary" label="Add transaction" disabled={!snapshot} onPress={() => { setActionError(null); setEditor({ transaction: null }); }} />
-          <FormButton label="Categories" disabled={!snapshot} onPress={() => setCategoriesOpen(true)} />
-        </View>}
         {selection.view === 'dashboard' && <>
           <FinancePeriodControls period={selection.period} today={today} onKind={setPeriodKind} onMove={navigatePeriod} onCurrent={returnToCurrent} />
           {snapshot?.analytics && <FinanceDashboard analytics={snapshot.analytics} spendingExpanded={spendingExpanded} onToggleSpending={() => setSpendingExpanded((expanded) => !expanded)} />}
           {!snapshot?.analytics && !error && <ActivityIndicator color={colors.accent} accessibilityLabel="Loading Finance Overview" />}
         </>}
         {selection.view === 'commitments' && snapshot && <CommitmentsView items={snapshot.items} categories={categories} access={commitmentAccess} today={today} mutate={mutate}
-          initialDetail={snapshot.initialCommitment}
+          initialDetail={sourceWorkspace ? undefined : snapshot.initialCommitment}
           onCreateCategory={(name) => mutate(() => access.createCategory(name, 'expense'))} />}
-        {selection.view === 'work' && snapshot?.work && <WorkView data={snapshot.work} categories={categories} access={workAccess} mutate={mutate} initialEntryId={initialRecordId}
+        {selection.view === 'work' && snapshot?.work && <WorkView data={snapshot.work} categories={categories} access={workAccess} mutate={mutate} initialEntryId={sourceWorkspace ? undefined : initialRecordId}
           onCreateCategory={(name) => mutate(() => access.createCategory(name, 'income'))} />}
       </View>}
-      ListEmptyComponent={!snapshot ? (error || selection.view === 'dashboard' ? null : <ActivityIndicator color={colors.accent} accessibilityLabel="Loading Finance" />) : selection.view !== 'transactions' ? null : <View style={styles.empty}>
-        <ThemedText>No transactions yet</ThemedText>
-        <ThemedText themeColor="textSecondary">Record income received or an expense paid.</ThemedText>
-      </View>}
-      renderItem={({ item }) => <TransactionRow transaction={item} categories={categories} commitmentPayment={snapshot?.paymentTransactionIds.includes(item.id)}
-        workPayment={snapshot?.workPaymentTransactionIds.includes(item.id)} onEdit={() => { setActionError(null); setEditor({ transaction: item }); }} onDelete={() => remove(item)} />}
-    />
+      ListEmptyComponent={!snapshot && !error && selection.view !== 'dashboard' ? <ActivityIndicator color={colors.accent} accessibilityLabel="Loading Finance" /> : null}
+      renderItem={() => null}
+    />}
+    {selection.view === 'transactions' && <FloatingAddButton label="Add transaction" disabled={!snapshot}
+      onPress={() => { setActionError(null); setEditor({ transaction: null }); }} />}
     </ContextMenuHost>
     </SafeAreaView>
     {editor && <TransactionEditor transaction={editor.transaction} categories={categories}
-      commitmentPayment={!!editor.transaction && snapshot?.paymentTransactionIds.includes(editor.transaction.id)}
-      workPayment={!!editor.transaction && snapshot?.workPaymentTransactionIds.includes(editor.transaction.id)}
+      commitmentPayment={editor.source?.kind === 'commitment'}
+      workPayment={editor.source?.kind === 'work'}
       onSave={(draft) => mutate(() => editor.transaction ? access.editTransaction(editor.transaction.id, draft) : access.createTransaction(draft))}
       onCreateCategory={(name, type) => mutate(() => access.createCategory(name, type))} onDismiss={() => setEditor(null)} />}
+    {linkedDetail && <TransactionDetail {...linkedDetail} categories={categories} today={today}
+      visible={linkedDetailOpen} onClosed={detailClosed} onDismiss={() => closeDetail()} onEdit={() => closeDetail(() => setEditor(linkedDetail))}
+      onOpenSource={() => closeDetail(() => {
+        // A Home/Calendar entry target must not reopen an unrelated record over this workspace.
+        setSourceWorkspace(true);
+        navigateView(linkedDetail.source.kind === 'work' ? 'work' : 'commitments');
+      })} />}
     {categoriesOpen && <FinanceCategoryManager categories={categories}
       onCreate={(name, type) => mutate(() => access.createCategory(name, type))}
       onDelete={(id) => mutate(() => access.deleteCategory(id))} onDismiss={() => setCategoriesOpen(false)} />}
@@ -127,5 +185,8 @@ const styles = StyleSheet.create({
   navigationItem: { flexGrow: 1, flexShrink: 0 },
   notice: { flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', gap: Space.sm }, noticeText: { flexGrow: 1, flexShrink: 1, flexBasis: 200 },
   list: { flex: 1 }, content: { padding: Space.lg, paddingBottom: Space.xl, flexGrow: 1 }, header: { gap: Space.xl, paddingBottom: Space.lg },
-  buttons: { flexDirection: 'row', flexWrap: 'wrap', gap: Space.sm }, empty: { paddingVertical: Space.xxl, gap: Space.sm },
+  ledgerContent: { paddingBottom: floatingAddClearance },
+  ledgerHeader: { flexDirection: 'row', alignItems: 'center', gap: Space.sm, paddingBottom: Space.sm }, destinationHeading: { flex: 1 },
+  dateHeading: { paddingTop: Space.lg, paddingBottom: Space.xs }, pageFooter: { paddingTop: Space.lg },
+  empty: { paddingVertical: Space.xxl, gap: Space.sm },
 });

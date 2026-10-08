@@ -245,7 +245,7 @@ test('Job rows keep Title first, bound description previews, show partial/Paid/o
   await act(() => (row.props.onPress as () => void)());
   const full = app.nodes().find((node) => node.props?.testID === 'job-description' && node.props.numberOfLines === undefined)!;
   assert.equal(full.textContent, description); assert.equal(f.work.readDetail(a).items[0].entry.description, description);
-  await app.press('Done'); await menu(app, 'Work options', 'History');
+  await app.press('Back'); await menu(app, 'Work options', 'History');
   const paid = rows(app, 'work-entry').find((node) => String(node.props.accessibilityLabel).startsWith('Paid job,'))!;
   assert.ok(paid.textContent.includes('Paid')); assert.ok(!paid.textContent.includes('Overdue'));
 });
@@ -316,7 +316,7 @@ test('client payment supports partial receipt then multi-entry settlement and ex
   assert.equal(f.finance.read().transactions.length, 1); assertTotals(app, 100000n, 40000n);
   assert.equal(expectedItems()[0].amountMinor, 60000); assert.equal(homeDebt()[0].source, 'work');
   await app.press('Overview'); assert.ok(app.container.textContent.includes('IncomeR$ 400,00')); assert.ok(app.container.textContent.includes('Net FlowR$ 400,00'));
-  await app.press('Transactions'); assert.ok(app.container.textContent.includes('Work payment · Undo in Work')); assert.ok(!app.nodes().some((node) => node.props?.label === 'Delete'));
+  await app.press('Transactions'); assert.ok(app.container.textContent.includes(' · Work')); assert.ok(!app.nodes().some((node) => node.props?.label === 'Delete'));
   const second = f.create(client.id, 'Translation detail', { title: 'Translation', fixedAmount: '100', expectedPaymentDate: today });
   await app.press('Work'); await openClient(app, 'Acme'); await app.press('Record payment from Acme');
   await app.tapSet('Allocate payment to Logo'); await app.tapSet('Allocate payment to Translation');
@@ -348,7 +348,7 @@ test('client details prefill Add work and archived/settled Clients remain reacha
   assert.ok(app.find('Pressable', 'Open Active details').textContent.includes('Outstanding R$ 1.000,00'));
   assert.ok(app.find('Pressable', 'Open Historical details').textContent.includes('Outstanding R$ 0,00'));
   await app.tapSet('Open Historical details'); assert.ok(app.container.textContent.includes('No open work')); assertTotals(app, 0n, 0n);
-  await app.press('Done');
+  await app.press('Back');
   await menu(app, 'Client options for Active', 'Archive'); await app.confirm('Confirm');
   await app.press('Back to Work'); assert.ok(rows(app, 'work-entry')[0].textContent.includes('Archived')); assert.equal(f.work.readOverview().totals.outstandingMinor, 100000n);
 });

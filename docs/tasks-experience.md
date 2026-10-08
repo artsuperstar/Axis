@@ -28,7 +28,7 @@ The Tasks native tab disables automatic content insets and uses the existing `re
 
 The task editor groups Task, Schedule, Organization and Recurrence with larger gaps between groups. Date/time retain measured responsive layout and native picker behavior. Existing category selection/creation and priority controls remain shared.
 
-Add/Edit recurrence replaces the sheet content within the same native modal, preserving the entire task draft. It presents Frequency, Pattern, Start and End. Count and unit sit together, weekdays keep shared checked states, and monthly/yearly rules keep the short-month explanation. Back, Done and outside dismissal return to the main editor with draft changes; only Save persists. Opening recurrence does not reopen the Title keyboard on return.
+Add/Edit recurrence replaces the sheet content within the same native modal, preserving the entire task draft. It presents Frequency, Pattern, Start and End. Count and unit sit together, weekdays keep shared checked states, and monthly/yearly rules keep the short-month explanation. The top-left back arrow and outside dismissal return to the main editor with draft changes; only Save persists. Opening recurrence does not reopen the Title keyboard on return.
 
 The summary reuses `recurrencePatternSummary`; its parameter now accepts the pattern fields of an unsaved draft. Formatting and recurrence rules are unchanged. Existing schedules retain the tomorrow boundary explanation and confirmed Stop repeating behavior.
 
@@ -50,7 +50,7 @@ Automated component tests use native boundary mocks; they do not establish physi
 - Upcoming last/collapsed, one next instance per series, and View in Calendar.
 - Task options → Categories, pushed Repeating Tasks/History and back gestures; retained main scroll/disclosure state.
 - Floating Add task above the native tab bar, with the final list content reachable and unobscured.
-- Task editor grouping, focused recurrence, Back/Done, keyboard and native date/time/end-date pickers.
+- Task editor grouping, focused recurrence, the back arrow, keyboard and native date/time/end-date pickers.
 - Daily intervals, weekly weekdays, monthly day 31 and yearly month/day.
 - Light/dark mode, large accessibility text, touch targets and VoiceOver dated action labels.
 

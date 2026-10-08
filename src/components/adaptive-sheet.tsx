@@ -6,6 +6,7 @@ import { Radius, Space, SurfaceColors } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
 
 import { adaptiveSheetLayout, focusedFieldScroll, sheetViewportLayout } from './adaptive-sheet-layout';
+import { BackButton } from './back-button';
 import { FormButton } from './form-controls';
 import { FormFocusContext } from './form-focus';
 import { FormScrollView, FormSelectionHost, useFormSelection, type FormSelectionHandle } from './form-selection-host';
@@ -109,8 +110,9 @@ export function AdaptiveSheet({ title, header, children, onDismiss, action, onCo
     paddingBottom: layout.paddingBottom, paddingLeft: bounds?.leftInset ?? 0, paddingRight: bounds?.rightInset ?? 0, opacity: ready ? 1 : 0 }]}>
     <View style={[styles.fixedHeader, styles.inner]} onLayout={(event) => setHeaderHeight(Math.ceil(event.nativeEvent.layout.height))}>
       {header ?? <View style={styles.header}>
-        <FormButton variant="quiet" label={action ? 'Cancel' : 'Done'} onPress={onDismiss ?? (() => {})} />
-        <ThemedText type="sheetTitle" accessibilityRole="header" style={styles.heading}>{title}</ThemedText>
+        {action ? <FormButton variant="quiet" label="Cancel" onPress={onDismiss ?? (() => {})} />
+          : <BackButton onPress={onDismiss ?? (() => {})} />}
+        <ThemedText type="sheetTitle" accessibilityRole="header" style={[styles.heading, !action && styles.returnHeading]}>{title}</ThemedText>
         {action && onConfirm && <FormButton variant="primary" label={action} onPress={onConfirm} />}
       </View>}
       <SheetRefreshNotice />
@@ -138,5 +140,6 @@ const styles = StyleSheet.create({
   body: { flex: 1, minHeight: 0 },
   header: { flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', gap: Space.sm, padding: Space.lg },
   heading: { flex: 1, minWidth: 80, textAlign: 'center' },
+  returnHeading: { textAlign: 'left' },
   content: { padding: Space.lg, gap: Space.lg },
 });

@@ -150,8 +150,8 @@ test('Work-linked Finance editor locks type/amount and its row hides ordinary De
   assert.notEqual(editor.elements.find((element) => element.props.label === 'Note')!.props.editable, false);
   assert.notEqual(editor.elements.find((element) => element.props.label === 'Category')!.props.disabled, true);
   assert.notEqual(editor.elements.find((element) => element.props.label === 'Date *')!.props.editable, false);
-  const row = renderControl(() => transactionRows.TransactionRow({ transaction, categories, workPayment: true, onEdit: () => {}, onDelete: () => {} }));
-  assert.doesNotMatch(row.markup, /Delete/); assert.match(row.markup, /Work payment/);
+  const row = renderControl(() => transactionRows.TransactionRow({ transaction, categories, source: finance.readLedgerPage().sources[transaction.id], onEdit: () => {}, onDelete: () => {} }));
+  assert.doesNotMatch(row.markup, /Delete/); assert.match(row.markup, /Work/);
 });
 test('Work main view displays current summary and outstanding work while keeping paid entries in History', async (t) => {
   const { sqlite, work, finance } = await initialized(); t.after(() => sqlite.close());

@@ -38,10 +38,7 @@ export function FinanceCategoryManager({ categories, onCreate, onDelete, onDismi
 
   return (
     <AdaptiveModal onDismiss={onDismiss}>
-      <AdaptiveSheet contentContainerStyle={styles.content} header={<View style={styles.header}>
-        <ThemedText type="sheetTitle" accessibilityRole="header" style={{ flex: 1 }}>Finance categories</ThemedText>
-        <FormButton variant="quiet" label="Done" onPress={onDismiss} />
-              </View>}>
+      <AdaptiveSheet title="Finance categories" onDismiss={onDismiss} contentContainerStyle={styles.content}>
         <FormError message={error} />
         <SegmentedControl label="Type *" value={type} options={transactionTypeOptions} onChange={(value) => { setType(value); setError(null); }} />
         <FormField label="Category name *" value={name} onChangeText={(value) => { setName(value); setError(null); }} returnKeyType="done" onSubmitEditing={create} />
@@ -59,7 +56,6 @@ export function FinanceCategoryManager({ categories, onCreate, onDelete, onDismi
 }
 
 const styles = StyleSheet.create({
-  header: { flexDirection: 'row', alignItems: 'center', gap: Spacing.two, padding: Spacing.three },
   content: { padding: Spacing.three, gap: Spacing.three },
   row: { flexDirection: 'row', alignItems: 'center', gap: Spacing.two },
 });

@@ -117,10 +117,10 @@ test('Commitment editor keeps working title and amount while Retry updates its s
 test('Transaction editor keeps draft and category through refresh failure and successful Retry', async (t) => {
   const { db, finance } = await initialized(t); const category = finance.readCategories().find((row) => row.type === 'expense')!;
   const app = await mount(createElement(screens.FinanceScreen, { initialView: 'transactions' }), db); t.after(app.unmount);
-  await app.press('Add transaction'); await app.change('Description *', 'Working transaction'); await app.change('Amount *', '25,05');
+  await app.tapSet('Add transaction'); await app.change('Description *', 'Working transaction'); await app.change('Amount *', '25,05');
   await act(() => (app.find('SelectField', 'Category').props.onChange as (id: string) => void)(category.id));
   const checkFields = observeDraft(app, ['Description *', 'Amount *']);
-  await failAndRetry(app, 'finance.read', () => { checkFields(); assert.equal(app.find('SelectField', 'Category').props.value, category.id); });
+  await failAndRetry(app, 'finance.readLedgerPage', () => { checkFields(); assert.equal(app.find('SelectField', 'Category').props.value, category.id); });
   await app.press('Save'); assert.equal(finance.read().transactions[0].description, 'Working transaction');
   assert.equal(finance.read().transactions[0].amountMinor, 2505);
 });

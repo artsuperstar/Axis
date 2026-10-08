@@ -80,7 +80,7 @@ test('recurring rows offer Complete/Reopen and contextual Skip/return, Edit, His
   const app = await mount(createElement(screens.TasksScreen), f.db); t.after(app.unmount);
   await app.tapSet(`Complete ${row.actionSubject}`); assert.equal(f.access.read().occurrences.find((entry) => entry.id === occurrence.id)!.status, 'completed');
   const archive = await mount(createElement(screens.TasksHistoryScreen), f.db);
-  await archive.press(`Actions for ${row.actionSubject}`); assert.ok(!archive.nodes().some((node) => node.props?.label === 'Skip occurrence')); await archive.press('Done');
+  await archive.press(`Actions for ${row.actionSubject}`); assert.ok(!archive.nodes().some((node) => node.props?.label === 'Skip occurrence')); await archive.press('Back');
   await archive.tapSet(`Reopen ${row.actionSubject}`); await archive.unmount(); await app.refocus();
   await app.press(`Actions for ${row.actionSubject}`); await app.press('Skip occurrence'); noModal(app);
   assert.equal(f.access.read().occurrences.find((entry) => entry.id === occurrence.id)!.status, 'skipped');
@@ -90,7 +90,7 @@ test('recurring rows offer Complete/Reopen and contextual Skip/return, Edit, His
   assert.equal(f.access.read().occurrences.find((entry) => entry.id === occurrence.id)!.status, 'pending');
   await app.press(`Actions for ${row.actionSubject}`); await handoff(app, 'Edit recurring task'); assert.ok(app.find('FormButton', 'Edit recurrence'));
   await app.press('Cancel'); await app.press(`Actions for ${row.actionSubject}`); await handoff(app, 'View History');
-  assert.ok(app.container.textContent.includes('Medication · History')); await app.press('Done');
+  assert.ok(app.container.textContent.includes('Medication · History')); await app.press('Back');
   await app.press(`Actions for ${row.actionSubject}`); await app.press('Delete recurring task');
   assert.equal(runtime.fixture.alerts.at(-1)!.title, 'Delete repeating task?'); assert.equal(f.access.read().tasks.length, 1);
   await app.confirm('Delete'); assert.equal(f.access.read().tasks.length, 0); noModal(app);
@@ -149,11 +149,11 @@ test('Task editor groups concepts and recurrence is an optional focused surface 
   assert.equal(app.find('FormButton', 'Add recurrence').props.variant, 'quiet'); assert.ok(!app.nodes().some((node) => node.props?.label === 'Repeats'));
   await app.change('Description', 'Draft description'); await choose(app, 'Priority', 'high'); const category = f.access.read().categories[0]; await choose(app, 'Category', category.id);
   const modal = app.find('Modal'); await app.press('Add recurrence'); assert.equal(app.find('Modal'), modal);
-  await choose(app, 'Repeats', 'daily'); await app.change('Every', '3'); await app.press('Done'); assert.equal(app.find('Modal'), modal);
+  await choose(app, 'Repeats', 'daily'); await app.change('Every', '3'); await app.press('Back to task editor'); assert.equal(app.find('Modal'), modal);
   assert.equal(app.find('FormField', 'Title *').props.value, 'Working task'); assert.equal(app.find('FormField', 'Title *').props.autoFocus, false);
   assert.equal(app.find('FormField', 'Description').props.value, 'Draft description'); assert.equal(app.find('SelectField', 'Priority').props.value, 'high');
   assert.equal(app.find('SelectField', 'Category').props.value, category.id); assert.ok(app.container.textContent.includes('Every 3 days'));
-  assert.equal(f.access.read().tasks.length, 0, 'Done only changes the editor draft'); await app.press('Save');
+  assert.equal(f.access.read().tasks.length, 0, 'Returning only changes the editor draft'); await app.press('Save');
   assert.equal(f.dismissed(), true); assert.equal(f.saved()!.recurrence!.interval, 3); assert.equal(f.access.read().tasks.length, 1);
 });
 
@@ -171,7 +171,7 @@ for (const frequency of ['daily', 'weekly', 'monthly', 'yearly'] as const) {
     if (frequency === 'yearly' || frequency === 'monthly') {
       await app.change('Day', frequency === 'yearly' ? '12' : '31'); assert.ok(app.container.textContent.includes('Shorter months use their last valid day.'));
     }
-    await choose(app, 'Ends', 'date'); await app.change('End date', '2026-12-31'); await app.press('Done'); await app.press('Save');
+    await choose(app, 'Ends', 'date'); await app.change('End date', '2026-12-31'); await app.press('Back to task editor'); await app.press('Save');
     const rule = latestRecurrence(f.access.read().recurrences, f.access.read().tasks[0].id)!;
     assert.equal(rule.frequency, frequency); assert.equal(rule.endDate, '2026-12-31'); assert.equal(rule.interval, frequency === 'yearly' ? 1 : frequency === 'daily' ? 3 : 2);
     if (frequency === 'weekly') assert.equal(rule.weekdayMask, 2 | 8); if (frequency === 'monthly') assert.equal(rule.monthDay, 31);
@@ -181,9 +181,9 @@ for (const frequency of ['daily', 'weekly', 'monthly', 'yearly'] as const) {
 }
 
 test('invalid recurrence remains authoritatively rejected on Save, and None still removes the draft recurrence', async (t) => {
-  const f = await editor(t); await f.app.press('Add recurrence'); await choose(f.app, 'Repeats', 'daily'); await f.app.change('Every', '0'); await f.app.press('Done');
+  const f = await editor(t); await f.app.press('Add recurrence'); await choose(f.app, 'Repeats', 'daily'); await f.app.change('Every', '0'); await f.app.press('Back to task editor');
   assert.ok(f.app.container.textContent.includes('Review recurrence settings')); await f.app.press('Save'); assert.equal(f.dismissed(), false); assert.equal(f.access.read().tasks.length, 0);
-  assert.ok(f.app.find('FormError')); await f.app.press('Edit recurrence'); await choose(f.app, 'Repeats', 'none'); await f.app.press('Back'); await f.app.press('Save');
+  assert.ok(f.app.find('FormError')); await f.app.press('Edit recurrence'); await choose(f.app, 'Repeats', 'none'); await f.app.press('Back to task editor'); await f.app.press('Save');
   assert.equal(f.saved()!.recurrence, null); assert.equal(f.access.read().recurrences.length, 0);
 });
 
@@ -192,7 +192,7 @@ test('recurrence edits still apply tomorrow; the current occurrence keeps its or
   const original = f.access.read().occurrences.find((row) => row.scheduledDate === today)!;
   const app = await mount(createElement(screens.TasksScreen, { initialTaskId: id }), f.db); t.after(app.unmount);
   assert.ok(app.container.textContent.includes("Schedule changes apply tomorrow. Today's occurrences and history stay."));
-  await app.press('Edit recurrence'); await app.change('Every', '3'); await app.press('Done'); await app.press('Save'); noModal(app);
+  await app.press('Edit recurrence'); await app.change('Every', '3'); await app.press('Back to task editor'); await app.press('Save'); noModal(app);
   const snapshot = f.access.read(); const current = snapshot.occurrences.find((entry) => entry.id === original.id)!;
   const future = snapshot.occurrences.find((entry) => entry.scheduledDate > today)!;
   assert.equal(presentation(f, id, current).recurrence, 'Every day'); assert.equal(presentation(f, id, future).recurrence, 'Every 3 days');
@@ -216,6 +216,33 @@ test('date/time layout adapts to large text while clearing Date still clears Tim
   await app.change('Time', '14:30'); await app.change('Date', ''); assert.equal(app.find('FormField', 'Time').props.value, ''); assert.equal(app.find('FormField', 'Time').props.editable, false);
 });
 
+test('iOS Task picker back arrows retain date, time and recurrence end-date drafts without saving', async (t) => {
+  const platform = (runtime.native as { Platform: { OS: string } }).Platform;
+  const previous = platform.OS; t.after(() => { platform.OS = previous; });
+  const f = await editor(t); const { app } = f;
+  platform.OS = 'ios'; await app.change('Title *', 'Picker draft'); const modal = app.find('Modal');
+  for (const [label, selected, back] of [
+    ['Date', pickerValue(today), 'Back from date picker'],
+    ['Time', pickerValue(today, '14:30'), 'Back from time picker'],
+  ] as const) {
+    await act(() => (app.find('FormSelect', label).props.onPress as () => void)());
+    await act(() => (app.find('DateTimePicker').props.onValueChange as (event: unknown, date: Date) => void)({}, selected));
+    const arrow = app.find('FormButton', back); assert.equal(arrow.parentNode!.childNodes[0], arrow);
+    await app.press(back); assert.equal(app.find('Modal'), modal);
+    assert.ok(!app.nodes().some((node) => node.kind === 'DateTimePicker'));
+  }
+  assert.equal(app.find('FormSelect', 'Time').props.value, '14:30');
+  await app.press('Add recurrence'); await choose(app, 'Repeats', 'daily'); await choose(app, 'Ends', 'date');
+  await act(() => (app.find('FormSelect', 'End date').props.onPress as () => void)());
+  await act(() => (app.find('DateTimePicker').props.onValueChange as (event: unknown, date: Date) => void)({}, pickerValue('2026-12-31')));
+  await app.press('Back from end date picker'); assert.equal(app.find('Modal'), modal);
+  assert.ok(!app.nodes().some((node) => node.kind === 'DateTimePicker'));
+  await app.press('Back to task editor'); assert.equal(f.access.read().tasks.length, 0);
+  await app.press('Save');
+  assert.equal(f.saved()!.date, today); assert.equal(f.saved()!.time, '14:30');
+  assert.equal(f.saved()!.recurrence!.endDate, '2026-12-31');
+});
+
 test('native Android date/time picker callbacks and gating remain unchanged', async (t) => {
   const platform = (runtime.native as { Platform: { OS: string } }).Platform; const previous = platform.OS; platform.OS = 'android'; t.after(() => { platform.OS = previous; });
   const f = await initialized(t); const app = await mount(createElement(screens.TasksScreen), f.db); t.after(app.unmount); await app.tapSet('Add task');
@@ -236,7 +263,7 @@ test('summary refresh failure preserves the open Task editor and the recurrence 
   await app.press('Add recurrence'); await choose(app, 'Repeats', 'daily'); await app.change('Every', '3');
   const interval = app.find('FormField', 'Every'); await app.resume(); assert.equal(app.find('FormField', 'Every'), interval); assert.equal(interval.props.value, '3');
   runtime.fixture.failures.clear(); await app.press('Retry'); assert.equal(app.find('Modal'), modal); assert.equal(app.find('FormField', 'Every'), interval);
-  await app.press('Done'); await app.press('Save'); assert.equal(f.access.read().tasks[0].title, 'Unsaved task'); assert.equal(latestRecurrence(f.access.read().recurrences, id)!.interval, 3);
+  await app.press('Back to task editor'); await app.press('Save'); assert.equal(f.access.read().tasks[0].title, 'Unsaved task'); assert.equal(latestRecurrence(f.access.read().recurrences, id)!.interval, 3);
 });
 
 test('recurring manager separates identity/current schedule and quieter History from Edit and confirmed Delete', async (t) => {

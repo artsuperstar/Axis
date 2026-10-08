@@ -1,5 +1,6 @@
 /// <reference types="node" />
 import assert from 'node:assert/strict';
+import { createRequire } from 'node:module';
 import { test } from 'node:test';
 import { Children } from 'react';
 import type { TextStyle, ViewStyle } from 'react-native';
@@ -17,6 +18,26 @@ function contrast(a: string, b: string) {
   return (Math.max(x, y) + 0.05) / (Math.min(x, y) + 0.05);
 }
 const flatten = (style: unknown): ViewStyle & { color?: string } => Object.assign({}, ...[style].flat(Infinity));
+
+test('shared back arrow has an explicit accessible name, quiet button treatment and a 44-point target', () => {
+  const { BackButton } = createRequire(import.meta.url)('../src/components/back-button') as typeof import('../src/components/back-button');
+  let presses = 0;
+  for (const accessibilityLabel of [undefined, 'Back to Tasks']) {
+    const element = BackButton({ accessibilityLabel, onPress: () => { presses++; } });
+    assert.equal(element.props.label, '←');
+    assert.equal(element.props.variant, 'quiet');
+    const result = renderControl(() => controls.FormButton(element.props));
+    assert.match(result.markup, /role="button"/);
+    assert.ok(result.markup.includes(`aria-label="${accessibilityLabel ?? 'Back'}"`));
+    const style = result.elements[0].props.style as unknown as (state: { pressed: boolean }) => unknown;
+    const normal = flatten(style({ pressed: false }));
+    assert.ok((normal.minHeight as number) >= 44);
+    assert.ok((normal.minWidth as number) >= 44);
+    assert.notDeepEqual(flatten(style({ pressed: true })), normal);
+    result.elements[0].props.onPress!();
+  }
+  assert.equal(presses, 2);
+});
 
 for (const mode of ['light', 'dark'] as const) {
   test(`${mode} semantic text, statuses and principal action keep readable contrast`, () => {

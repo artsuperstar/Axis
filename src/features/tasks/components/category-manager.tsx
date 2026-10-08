@@ -44,10 +44,7 @@ export function CategoryManager({ categories, onCreate, onDelete, onDismiss }: {
 
   return (
     <AdaptiveModal onDismiss={onDismiss}>
-      <AdaptiveSheet contentContainerStyle={styles.content} header={<View style={styles.header}>
-        <ThemedText type="sheetTitle" accessibilityRole="header" style={{ flex: 1 }}>Categories</ThemedText>
-        <TaskButton variant="quiet" label="Done" onPress={onDismiss} />
-              </View>}>
+      <AdaptiveSheet title="Categories" onDismiss={onDismiss} contentContainerStyle={styles.content}>
         <TaskError message={error} />
         <TaskField label="Category name" value={name} onChangeText={setName} returnKeyType="done" onSubmitEditing={create} />
         <TaskButton variant="primary" label="Create category" onPress={create} disabled={!name.trim()} />
@@ -66,7 +63,6 @@ export function CategoryManager({ categories, onCreate, onDelete, onDismiss }: {
 }
 
 const styles = StyleSheet.create({
-  header: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', padding: Spacing.three },
   content: { padding: Spacing.three, gap: Spacing.three },
   row: { flexDirection: 'row', alignItems: 'center', gap: Spacing.two },
   name: { flex: 1 },

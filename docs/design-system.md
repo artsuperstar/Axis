@@ -87,6 +87,37 @@ Default sheet headers and inline category creation adopt primary confirmation an
 
 Anchoring, option data, search-versus-identity rules, outside dismissal, focus return, creation callbacks, scrolling, and modal stacking remain unchanged.
 
+## Navigation and action semantics
+
+**Axis does not use a textual Done action as the primary way to leave an app-rendered surface. Leaving/returning uses a top-left back arrow, including sheets and nested picker/configuration views. Explicit persistence continues to use Save/Create/Add/Pay/Confirm/Finish Workout.**
+
+- Shared `BackButton` reuses the existing quiet Tasks/Work arrow treatment, accessible label and 44-point minimum touch target. The caller owns behavior: arrows can pop a route, dismiss a sheet, close a picker or return with a retained draft. An arrow does not implicitly save or discard.
+- Pushed routes use normal Expo Router back when a previous route exists and the established fallback replacement only for direct entry. Native stack headers, iOS swipe-back and Android Back remain intact.
+- AdaptiveSheet uses the arrow at the left of a nonediting header. Headers with explicit actions retain Cancel and their existing Save/Create/Confirm action. Custom editor headers retain Save/Cancel.
+- Axis-rendered picker headers place the arrow before the title and above the unchanged native picker. Closing retains the exact selection behavior previously attached to Done.
+- Recurrence configuration has one left arrow returning to the parent draft; the Task editor's final Save still persists. No duplicate Done/Back controls.
+- Anchored menus dismiss on selection, outside tap or supported Back/Escape, with no exit header.
+- **Native OS exception:** keyboard return keys and OS-owned dialogs are unchanged. Domain wording such as Completed or task names containing Done is unaffected.
+
+### Done control audit — corrected Stage 13G convention
+
+| Former control | Replacement / exact behavior |
+| --- | --- |
+| Shared AdaptiveSheet default Done | Top-left Back; same onDismiss callback. Inherited by linked Transactions, Work/Client details and History, Commitment details/history/actions, Fitness workout detail/actions/Add Exercise, Journal History and other temporary sheets. |
+| Task category manager Done | Shared sheet Back; dismiss manager. Category writes remain explicit. |
+| Task occurrence History Done | Shared sheet Back; dismiss History. Occurrence actions/paging unchanged. |
+| Finance category manager Done | Shared sheet Back; dismiss manager. Create/Archive unchanged. |
+| Task recurrence Done (and duplicate textual Back) | One Back to task editor arrow; retain draft, close picker and return to parent editor. |
+| Task date/time/end-date picker Done | Top-left picker Back; close picker and retain chosen values. |
+| Transaction date picker Done | Top-left picker Back; close picker and retain date; final Save remains explicit. |
+| Work date picker Done | Top-left picker Back; close picker, retain work/payment/expected date. |
+| Commitment date picker Done | Top-left picker Back; close picker, retain due/payment date. |
+| Pushed Tasks History/Repeating Tasks and Work Clients/History | Existing route back behavior now uses the shared arrow. Fallbacks unchanged. |
+| Journal date chooser and explicit editors | Existing Choose/Cancel and Save/Cancel/Create/Confirm preserved. |
+| Native keyboard Done and native system UI | Excluded; Axis does not replace OS-owned controls. |
+
+A syntax-aware repository regression checks action labels, including referenced constants, without flagging domain text or native return-key settings. Mounted tests cover arrow position/order, accessible labels, dismissal, nested draft retention, explicit saves and direct-entry fallbacks.
+
 ## Sheets
 
 AdaptiveModal adds a themed scrim to the existing outside-dismiss target. AdaptiveSheet and selection menus use the overlay surface/radius. Sheet anchoring, measured height, fixed header, viewport/safe-area/keyboard calculations, and square bottom corners remain unchanged. A subtle top border separates sheets; menus retain modest existing Android elevation.
@@ -106,3 +137,5 @@ Stage 13D applies screenTitle, navigation, metric and compact status roles to th
 Stage 13E applies compact obligation rows, primary Pay, anchored secondary/series actions and focused management/History to Commitments. See [Commitments experience](commitments-experience.md) for hierarchy, payment context, lifecycle and device-review decisions.
 
 Stage 13F presents Jobs first: Title, Client context, description preview and each job's financial status. Outstanding is the primary supporting metric; Client balances live in focused management/detail and settled jobs in paged History. See [Work experience](work-experience.md) for legacy Title compatibility, allocation, identity, lifecycle and device-review decisions.
+
+Stage 13G applies compact date-grouped ledger rows, signed amounts, source-owned payment details, anchored management and a destination-only floating Add to Transactions. See [Transactions experience](transactions-experience.md) for cursor paging, safe linked editing, local dates, accessibility and device-review decisions.

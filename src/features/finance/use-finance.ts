@@ -14,12 +14,12 @@ import type { CommitmentItem, DisplayOccurrence } from './commitments/types';
 import { financeError } from './errors';
 import type { FinanceAnalytics } from './analytics';
 import { movePeriod, periodBounds, refreshPeriod, type FinancePeriod, type PeriodKind } from './periods';
-import type { FinanceCategory, FinanceTransaction } from './types';
+import type { FinanceCategory, FinanceTransaction, TransactionLedgerPage } from './types';
 
 export type FinanceView = 'dashboard' | 'transactions' | 'commitments' | 'work';
 type Selection = { view: FinanceView; period: FinancePeriod };
-type Snapshot = { transactions: FinanceTransaction[]; categories: FinanceCategory[]; analytics: FinanceAnalytics | null; items: CommitmentItem[]; paymentTransactionIds: string[]; workPaymentTransactionIds: string[]; work: WorkOverview | null;
-  initialCommitment?: { data: CommitmentHistory; occurrence: DisplayOccurrence | null } };
+type Snapshot = { transactions: FinanceTransaction[]; categories: FinanceCategory[]; analytics: FinanceAnalytics | null; items: CommitmentItem[]; work: WorkOverview | null;
+  ledger?: TransactionLedgerPage; initialCommitment?: { data: CommitmentHistory; occurrence: DisplayOccurrence | null } };
 
 export function useFinance(initialView: FinanceView = 'dashboard', initialRecordId?: string, initialDueDate?: string, workSummaryOnly = false) {
   const db = useDatabase();
@@ -32,21 +32,25 @@ export function useFinance(initialView: FinanceView = 'dashboard', initialRecord
   const selectionRef = useRef(selection);
   const [loaded, setLoaded] = useState<{ selection: Selection; snapshot: Snapshot } | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const ledgerLimit = useRef(40);
 
   const load = useCallback((next: Selection) => {
     try {
       let snapshot: Snapshot;
       if (next.view === 'dashboard') {
-        snapshot = { ...access.readDashboard(next.period), transactions: [], items: [], paymentTransactionIds: [], workPaymentTransactionIds: [], work: null };
-      } else if (next.view === 'transactions') snapshot = { ...access.read(), analytics: null, items: [], work: null };
+        snapshot = { ...access.readDashboard(next.period), transactions: [], items: [], work: null };
+      } else if (next.view === 'transactions') {
+        const ledger = access.readLedgerPage(ledgerLimit.current);
+        snapshot = { transactions: ledger.transactions, categories: ledger.categories, ledger, analytics: null, items: [], work: null };
+      }
       else if (next.view === 'commitments') {
         const initialCommitment = initialView === 'commitments' && initialRecordId && initialDueDate ? {
           data: commitmentAccess.readHistory(initialRecordId),
           occurrence: commitmentAccess.readRange({ from: initialDueDate, to: initialDueDate }).find((row) => row.commitment.id === initialRecordId)?.occurrence ?? null,
         } : undefined;
-        snapshot = { ...commitmentAccess.read(), initialCommitment, categories: access.readCategories(), transactions: [], analytics: null, paymentTransactionIds: [], workPaymentTransactionIds: [], work: null };
+        snapshot = { ...commitmentAccess.read(), initialCommitment, categories: access.readCategories(), transactions: [], analytics: null, work: null };
       }
-      else snapshot = { work: workAccess.readOverview({ includeJobs: !workSummaryOnly }), categories: access.readCategories(), transactions: [], analytics: null, items: [], paymentTransactionIds: [], workPaymentTransactionIds: [] };
+      else snapshot = { work: workAccess.readOverview({ includeJobs: !workSummaryOnly }), categories: access.readCategories(), transactions: [], analytics: null, items: [] };
       setLoaded({ selection: next, snapshot });
       setError(null);
     } catch (cause) {
@@ -107,10 +111,24 @@ export function useFinance(initialView: FinanceView = 'dashboard', initialRecord
     return result;
   }
 
+  function loadMoreTransactions() {
+    if (selection.view !== 'transactions' || loaded?.selection.view !== 'transactions' || !loaded.snapshot.ledger?.next) return;
+    try {
+      const page = access.readLedgerPage(40, loaded.snapshot.ledger.next);
+      const ledger = { ...page, transactions: [...loaded.snapshot.transactions, ...page.transactions],
+        sources: { ...loaded.snapshot.ledger.sources, ...page.sources } };
+      ledgerLimit.current += 40;
+      setLoaded({ ...loaded, snapshot: { ...loaded.snapshot, transactions: ledger.transactions, categories: ledger.categories, ledger } });
+      setError(null);
+    } catch (cause) {
+      setError(financeError(cause, 'Unable to load older transactions. Please try again.'));
+    }
+  }
+
   // Keep usable data without showing another view's rows or another period's totals.
   let snapshot = loaded?.selection.view === selection.view ? loaded.snapshot : null;
   if (snapshot?.analytics && loaded && (loaded.selection.period.startDate !== selection.period.startDate || loaded.selection.period.endDate !== selection.period.endDate)) {
     snapshot = { ...snapshot, analytics: null };
   }
-  return { access, commitmentAccess, workAccess, snapshot, error, reload, mutate, selection, today, setView, setPeriodKind, navigatePeriod, returnToCurrent };
+  return { access, commitmentAccess, workAccess, snapshot, error, reload, mutate, selection, today, setView, setPeriodKind, navigatePeriod, returnToCurrent, loadMoreTransactions };
 }

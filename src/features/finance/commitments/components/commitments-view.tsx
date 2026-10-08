@@ -3,6 +3,7 @@ import { Alert, Pressable, StyleSheet, View } from 'react-native';
 
 import { ContextMenu, type ContextMenuAction } from '@/components/context-menu';
 import { FormButton, FormError } from '@/components/form-controls';
+import { BackButton } from '@/components/back-button';
 import { StatusText } from '@/components/status-text';
 import { ThemedText } from '@/components/themed-text';
 import { ControlSize, Space } from '@/constants/theme';
@@ -144,7 +145,7 @@ export function CommitmentsView({ items, categories, access, today, mutate, onCr
   const resolved = detail?.data.history.filter(({ occurrence }) => occurrence.status !== 'pending') ?? [];
   return <View style={styles.section}>
     <View style={styles.heading}>
-      {surface !== 'obligations' && <FormButton variant="quiet" label="←" accessibilityLabel="Back to Commitments" onPress={() => { setSurface('obligations'); setError(null); }} />}
+      {surface !== 'obligations' && <BackButton accessibilityLabel="Back to Commitments" onPress={() => { setSurface('obligations'); setError(null); }} />}
       <ThemedText type="sectionHeading" accessibilityRole="header" style={styles.title}>{surface === 'obligations' ? 'Commitments' : surface === 'manage' ? 'Manage commitments' : 'Commitment History'}</ThemedText>
       {surface === 'obligations' && <ContextMenu label="Commitment options" onOpen={() => setError(null)} actions={[
         { label: 'Manage commitments', onPress: () => setSurface('manage') }, { label: 'History', onPress: () => setSurface('history') },

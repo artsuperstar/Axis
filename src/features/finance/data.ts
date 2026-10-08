@@ -1,20 +1,21 @@
-import { and, asc, desc, eq, isNull } from 'drizzle-orm';
+import { and, asc, desc, eq, gt, inArray, isNull, lt, or } from 'drizzle-orm';
 
 import type { AxisDatabase } from '@/database/client';
-import { commitmentOccurrences, financeCategories, financeTransactions, workPaymentAllocations } from '@/database/schema';
+import { commitmentOccurrences, financeCategories, financeCommitments, financeTransactions, workCounterparties, workEntries, workPaymentAllocations } from '@/database/schema';
 import { localDateString } from '@/utils/calendar';
 import { canonicalIdentityName, normalizeIdentityDisplayName } from '@/utils/text-normalization';
 
 import { FinanceValidationError } from './errors';
 import { readFinanceAnalytics } from './analytics';
 import { validateTransactionDraft } from './form';
+import { jobTitle } from './work/presentation';
 import type { FinancePeriod } from './periods';
-import { transactionTypes, type FinanceTransaction, type TransactionDraft, type TransactionType } from './types';
+import { transactionTypes, type FinanceTransaction, type TransactionDraft, type TransactionType, type TransactionCursor, type TransactionLedgerPage, type TransactionSource } from './types';
 
 export function createFinanceDataAccess(db: AxisDatabase, newId: () => string, now = Date.now) {
-  function readCategories() {
+  function readCategories(query: Pick<AxisDatabase, 'select'> = db) {
     // Historical display and analytics resolve archived categories; selectors filter them separately.
-    return db.select().from(financeCategories)
+    return query.select().from(financeCategories)
       .orderBy(asc(financeCategories.type), desc(financeCategories.isBuiltIn), asc(financeCategories.name), asc(financeCategories.id)).all();
   }
 
@@ -48,6 +49,40 @@ export function createFinanceDataAccess(db: AxisDatabase, newId: () => string, n
 
   return {
     readCategories,
+    /** Ledger-only projection. Stable date/timestamp/ID cursors preserve the existing order. */
+    readLedgerPage(limit = 40, before?: TransactionCursor): TransactionLedgerPage {
+      if (!Number.isSafeInteger(limit) || limit < 1) throw new FinanceValidationError('Invalid transaction page size.');
+      return db.transaction((query) => {
+        const rows = query.select().from(financeTransactions).where(and(isNull(financeTransactions.deletedAt), before ? or(
+          lt(financeTransactions.transactionDate, before.date),
+          and(eq(financeTransactions.transactionDate, before.date), lt(financeTransactions.createdAt, before.createdAt)),
+          and(eq(financeTransactions.transactionDate, before.date), eq(financeTransactions.createdAt, before.createdAt), gt(financeTransactions.id, before.id))) : undefined))
+          .orderBy(desc(financeTransactions.transactionDate), desc(financeTransactions.createdAt), asc(financeTransactions.id)).limit(limit + 1).all();
+        const transactions = rows.slice(0, limit); const ids = transactions.map((row) => row.id);
+        const sources: Record<string, TransactionSource> = {};
+        if (ids.length) {
+          const work = query.select({ transactionId: workPaymentAllocations.financeTransactionId, id: workEntries.id,
+            title: workEntries.title, description: workEntries.description, clientName: workCounterparties.name })
+            .from(workPaymentAllocations).innerJoin(workEntries, eq(workEntries.id, workPaymentAllocations.workEntryId))
+            .innerJoin(workCounterparties, eq(workCounterparties.id, workEntries.counterpartyId))
+            .where(and(inArray(workPaymentAllocations.financeTransactionId, ids), isNull(workPaymentAllocations.deletedAt)))
+            .orderBy(asc(workPaymentAllocations.createdAt), asc(workPaymentAllocations.id)).all();
+          for (const row of work) {
+            const source = sources[row.transactionId] ?? { kind: 'work' as const, clientName: row.clientName, jobs: [] };
+            if (source.kind === 'work') source.jobs.push({ id: row.id, title: jobTitle(row) });
+            sources[row.transactionId] = source;
+          }
+          const commitments = query.select({ transactionId: commitmentOccurrences.paidTransactionId, commitmentId: financeCommitments.id,
+            name: financeCommitments.title, dueDate: commitmentOccurrences.dueDate }).from(commitmentOccurrences)
+            .innerJoin(financeCommitments, eq(financeCommitments.id, commitmentOccurrences.commitmentId))
+            .where(and(inArray(commitmentOccurrences.paidTransactionId, ids), eq(commitmentOccurrences.status, 'paid'), isNull(commitmentOccurrences.deletedAt))).all();
+          for (const row of commitments) if (row.transactionId) sources[row.transactionId] = { kind: 'commitment', name: row.name, commitmentId: row.commitmentId, dueDate: row.dueDate };
+        }
+        const last = transactions.at(-1);
+        return { transactions, categories: readCategories(query), sources,
+          next: rows.length > limit && last ? { date: last.transactionDate, createdAt: last.createdAt, id: last.id } : null };
+      });
+    },
     read() {
       return {
         transactions: db.select().from(financeTransactions).where(isNull(financeTransactions.deletedAt))
