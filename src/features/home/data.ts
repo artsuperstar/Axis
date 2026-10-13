@@ -5,6 +5,8 @@ import { createCommitmentDataAccess } from '@/features/finance/commitments/data'
 import { createFinanceDataAccess } from '@/features/finance/data';
 import { createWorkDataAccess } from '@/features/finance/work/data';
 import { createFitnessDataAccess } from '@/features/fitness/data';
+import { createJournalDataAccess } from '@/features/journal/data';
+import { localDateString } from '@/utils/calendar';
 
 import { projectHome } from './projection';
 import type { HomeTaskItem } from './types';
@@ -17,9 +19,13 @@ export function createHomeDataAccess(db: AxisDatabase, newId: () => string, now 
       const tasks = createTaskDataAccess(db, newId, clock).read();
       const commitments = createCommitmentDataAccess(db, newId, clock).read().items;
       const work = createWorkDataAccess(db, newId, clock).readOverview().items;
-      const financeCategories = createFinanceDataAccess(db, newId, clock).readCategories();
-      const fitness = createFitnessDataAccess(db, newId, clock).readSummaries(1);
-      return projectHome({ tasks, commitments, work, financeCategories, fitness }, new Date(timestamp));
+      const date = localDateString(new Date(timestamp));
+      const finance = createFinanceDataAccess(db, newId, clock);
+      const financeCategories = finance.readCategories();
+      const spentTodayMinor = finance.readSpentOnDate(date);
+      const fitness = createFitnessDataAccess(db, newId, clock).readDailySummary(date);
+      const journal = { hasEntry: createJournalDataAccess(db, newId, clock).hasEntry(date) };
+      return projectHome({ tasks, commitments, work, financeCategories, fitness, journal, spentTodayMinor }, new Date(timestamp));
     },
     completeTask(item: HomeTaskItem) {
       const tasks = createTaskDataAccess(db, newId, now);

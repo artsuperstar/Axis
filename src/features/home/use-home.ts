@@ -18,7 +18,7 @@ export function useHome() {
   const [actionError, setActionError] = useState<string | null>(null);
   const reload = useCallback(() => {
     try { setSnapshot(access.read()); setError(null); }
-    catch (cause) { setSnapshot(null); setError(userError(cause, 'Unable to load Home. Please try again.')); }
+    catch (cause) { setError(userError(cause, 'Unable to load Home. Please try again.')); }
   }, [access]);
   useFocusEffect(useCallback(() => startHomeRefresh({
     load: reload, everyMinute: (load) => { const timer = setInterval(load, 60000); return () => clearInterval(timer); },

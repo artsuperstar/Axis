@@ -73,7 +73,7 @@ module.exports = {
       const effect = { callback, cleanup: callback() }; focusEffects.add(effect);
       return () => { effect.cleanup?.(); focusEffects.delete(effect); };
     }, [callback]);
-  } },
+  }, useLocalSearchParams: () => fixture.routeParams ?? {} },
   native: {
     AccessibilityInfo: { sendAccessibilityEvent: (target) => target?.focus() },
     BackHandler: { addEventListener: (_event, callback) => { backListeners.add(callback); return { remove: () => backListeners.delete(callback) }; } },

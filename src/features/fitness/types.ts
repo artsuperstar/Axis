@@ -1,4 +1,4 @@
-import type { fitnessExercises, fitnessRoutines, fitnessRoutineExercises, fitnessSessions, fitnessSessionExercises, fitnessSets } from '@/database/schema';
+import type { fitnessExercises, fitnessRoutines, fitnessRoutineExercises, fitnessSessions, fitnessSessionExercises, fitnessSets, fitnessRotations, fitnessRotationSteps } from '@/database/schema';
 
 export type Exercise = typeof fitnessExercises.$inferSelect;
 export type MeasurementType = Exercise['measurementType'];
@@ -9,6 +9,12 @@ export type SessionExercise = typeof fitnessSessionExercises.$inferSelect;
 export type WorkoutSet = typeof fitnessSets.$inferSelect;
 export type Targets = Pick<RoutineExercise, 'targetSetCount' | 'targetRepMin' | 'targetRepMax' | 'targetDurationSeconds' | 'targetDistanceMeters'>;
 export type RoutineDetail = Routine & { exercises: (RoutineExercise & { exercise: Exercise })[] };
+export type Rotation = typeof fitnessRotations.$inferSelect;
+export type RotationStep = typeof fitnessRotationSteps.$inferSelect;
+export type RotationDetail = Rotation & { steps: (RotationStep & { routine: Routine })[]; locked: boolean };
+export type NextWorkout = { rotation: Pick<Rotation, 'id' | 'name'>; stepId: string; routine: Routine };
+export type RotationDraft = { name: string; steps: { id: string | null; routineId: string }[]; nextStepId?: string; nextStepIndex?: number; updatedAt?: number };
+export type FitnessDailySummary = { active: SessionSummary | null; completedCount: number; history: SessionSummary[]; nextWorkout: NextWorkout | null; rotationSequence: string[] };
 export type SessionDetail = Session & { exercises: (SessionExercise & { sets: WorkoutSet[] })[] };
 export type SessionSummary = Session & { exerciseCount: number; setCount: number };
 export type FitnessSnapshot = {

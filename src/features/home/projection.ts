@@ -5,7 +5,7 @@ import type { TaskPriority } from '@/features/tasks/types';
 import type { CommitmentItem } from '@/features/finance/commitments/types';
 import type { FinanceCategory } from '@/features/finance/types';
 import type { WorkItem } from '@/features/finance/work/types';
-import type { FitnessSnapshot } from '@/features/fitness/types';
+import type { FitnessDailySummary, FitnessSnapshot } from '@/features/fitness/types';
 import { dateLabel, localDateString } from '@/utils/calendar';
 
 import { compareScheduledItems, projectScheduledItems } from '../scheduled-items';
@@ -16,9 +16,12 @@ import type { HomeItem, HomeSection, HomeSnapshot, HomeTaskItem } from './types'
 export type HomeSources = {
   tasks: ReturnType<ReturnType<typeof createTaskDataAccess>['read']>;
   commitments: CommitmentItem[]; financeCategories: FinanceCategory[]; work: WorkItem[];
-  fitness: Pick<FitnessSnapshot, 'active' | 'history'>;
+  fitness: Pick<FitnessSnapshot, 'active' | 'history'> & Partial<Pick<FitnessDailySummary, 'completedCount' | 'nextWorkout' | 'rotationSequence'>>;
+  journal?: { hasEntry: boolean };
+  spentTodayMinor?: bigint;
 };
 export const homePreviewLimits = { todayTasks: 5, todayFinance: 3, attentionPerSource: 3 } as const;
+export const homeAgendaLimit = 5;
 const sourceOrder = ['task', 'commitment', 'work'] as const;
 const priorityRank: Record<TaskPriority, number> = { high: 0, medium: 1, low: 2, none: 3 };
 export const moduleTargets: Record<ScheduledSource, HomeNavigation> = {
@@ -58,44 +61,61 @@ export function projectHome(sources: HomeSources, now: Date): HomeSnapshot {
   const taskRows = activeTasks.map(({ task, occurrence }) => ({ task, occurrence,
     recurrence: occurrence ? rules.get(occurrence.recurrenceId) ?? null : null,
     category: task.categoryId ? categories.get(task.categoryId) ?? null : null }));
-  const commitmentRows = sources.commitments.filter((item) => item.commitment.deletedAt === null).flatMap((item) => item.outstanding
+  const commitmentRows = sources.commitments.filter((item) => item.commitment.deletedAt === null).flatMap((item) => [...item.outstanding, ...(item.upcoming ? [item.upcoming] : [])]
     .filter((occurrence) => occurrence.status === 'pending').map((occurrence) => ({
       commitment: item.commitment, occurrence, category: item.commitment.categoryId ? financeCategories.get(item.commitment.categoryId) ?? null : null,
     })));
   const work = sources.work.filter((item) => item.entry.deletedAt === null && item.outstandingMinor > 0);
   const overdueWork = new Set(work.filter((item) => item.overdue).map((item) => item.entry.id));
+  const clients = new Map(work.map((item) => [item.entry.id, item.counterparty.name]));
   const todayItems: HomeItem[] = []; const attentionItems: HomeItem[] = [];
+  const futureItems: HomeItem[] = [];
   for (const item of projectScheduledItems(taskRows, commitmentRows, work, now)) {
     const target: SourceTarget = { pathname: '/home-source', params: { source: item.source, recordId: item.recordId, date: item.date } };
     if (item.source === 'task') {
       const key = item.occurrenceId ?? item.recordId;
       const attention = earlier.has(key) || missed.has(key);
       const projected: HomeTaskItem = { ...item, priority: taskPriority.get(item.recordId) ?? 'none',
-        status: missed.has(key) ? 'Missed' : attention ? 'Earlier' : 'Today', target };
+        status: missed.has(key) ? 'Missed' : attention ? 'Earlier' : item.date > today ? 'Upcoming' : 'Today', target };
       if (attention) attentionItems.push(projected);
       else if (item.date === today) todayItems.push(projected);
+      else if (item.date > today) futureItems.push(projected);
     } else {
-      const projected: HomeItem = { ...item, target };
+      const projected: HomeItem = item.source === 'work' ? { ...item, target, clientName: clients.get(item.recordId)! } : { ...item, target };
       if (item.source === 'work' ? overdueWork.has(item.recordId) : item.status === 'Overdue') attentionItems.push(projected);
       else if (item.date === today) todayItems.push(projected);
+      else if (item.date > today) futureItems.push(projected);
     }
   }
   const active = sources.fitness.active;
   const latest = sources.fitness.history[0];
   const workout = (session: NonNullable<typeof active>) => ({ session, target: { pathname: '/home-source' as const, params: { source: 'fitness' as const, recordId: session.id } } });
   return { date: today, today: sections(todayItems, false), attention: sections(attentionItems, true),
+    todayPreview: todayItems.sort(compareScheduledItems).slice(0, homeAgendaLimit),
+    // Global preview: oldest dates first, with the shared source/time/title/identity tie-breaks.
+    attentionPreview: attentionItems.sort(compareScheduledItems).slice(0, homeAgendaLimit),
+    nextUp: todayItems.length ? null : futureItems.sort(compareScheduledItems)[0] ?? null,
+    journal: sources.journal ?? { hasEntry: false },
+    spentTodayMinor: sources.spentTodayMinor ?? 0n,
+    nextWorkout: sources.fitness.nextWorkout ?? null, rotationSequence: sources.fitness.rotationSequence ?? [],
+    completedWorkoutCount: sources.fitness.completedCount ?? sources.fitness.history.filter((session) => session.completedAt !== null && localDateString(new Date(session.completedAt)) === today).length,
     activeWorkout: active ? { session: active, target: { pathname: '/(tabs)/fitness' } } : null,
     completedWorkout: !active && latest?.completedAt !== null && latest?.completedAt !== undefined && localDateString(new Date(latest.completedAt)) === today ? workout(latest) : null,
     nothingPending: todayItems.length === 0 && attentionItems.length === 0 && !active };
 }
 
 export function homeItemContext(item: HomeItem, today: string) {
-  if (item.source === 'commitment') return item.status === 'Overdue' ? `Overdue since ${dateLabel(item.date)}` : 'Due today';
-  if (item.source === 'work') return item.status === 'Payment overdue' ? `Payment overdue since ${dateLabel(item.date)}` : 'Expected payment today';
+  if (item.source === 'commitment') return item.status === 'Overdue' ? `Overdue since ${dateLabel(item.date)}` : item.date === today ? 'Due today' : `Due ${dateLabel(item.date)}`;
+  if (item.source === 'work') return item.status === 'Payment overdue' ? `Payment overdue since ${dateLabel(item.date)}` : item.date === today ? 'Expected payment today' : `Expected ${dateLabel(item.date)}`;
   const date = item.date === today ? 'Today' : dateLabel(item.date);
   return [item.status === 'Missed' ? 'Missed' : item.status === 'Earlier' ? 'Earlier' : null, date, item.time].filter(Boolean).join(' · ');
 }
+export function homeTaskMetadata(item: HomeTaskItem) {
+  return item.secondary.replace(/^(?:All day|\d{2}:\d{2})(?: · )?/, '');
+}
+
 export function homeItemLabel(item: HomeItem, today: string) {
   const source = item.source === 'task' ? item.occurrenceId ? 'Recurring task' : 'Task' : item.source === 'commitment' ? 'Commitment' : 'Work payment';
-  return `${item.title}. ${source}. ${homeItemContext(item, today)}. ${item.secondary}`;
+  const detail = item.source === 'task' ? homeTaskMetadata(item) : item.secondary;
+  return [item.title, source, homeItemContext(item, today), detail].filter(Boolean).join('. ');
 }

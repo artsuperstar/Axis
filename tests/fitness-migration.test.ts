@@ -75,6 +75,8 @@ test('Stage 10 migration preserves every previous table/index, domain fact, dash
   const after = sqlite.prepare("SELECT name, sql FROM sqlite_master WHERE name NOT LIKE 'sqlite_%' ORDER BY name").all();
   for (const old of definitions) assert.deepEqual(after.find((row) => row.name === old.name), old);
   assert.equal(sqlite.prepare("SELECT count(*) AS count FROM sqlite_master WHERE type = 'table' AND name LIKE 'fitness_%'").get()!.count, 6);
+  // Current APIs require rotation columns. The genuine pre-rotation upgrade is tested separately.
+  sqlite.exec(allMigrations.migrations.m0011);
   const fitness = createFitnessDataAccess(db, randomUUID, now);
   assert.equal(fitness.read().exercises.length, 14); assert.equal(fitness.read().history.length, 0);
   const started = fitness.startWorkout(); fitness.finishWorkout(started.id);
@@ -94,6 +96,7 @@ test('failed Stage 10 migration rolls back new Fitness objects and preserves pri
   assert.deepEqual(snapshot(), before); assert.equal(sqlite.prepare('SELECT count(*) AS count FROM __drizzle_migrations').get()!.count, 5);
   assert.equal(sqlite.prepare("SELECT count(*) AS count FROM sqlite_master WHERE name LIKE 'fitness_%'").get()!.count, 0);
   await migrate(db, bundledMigrations); seedFitnessExercises(db);
+  sqlite.exec(allMigrations.migrations.m0011);
   assert.equal(createFitnessDataAccess(db, randomUUID, now).read().exercises.length, 14);
   assert.deepEqual(snapshot(), before); assert.equal(sqlite.prepare('SELECT count(*) AS count FROM __drizzle_migrations').get()!.count, journal.entries.length);
   assert.deepEqual(sqlite.prepare('PRAGMA foreign_key_check').all(), []);

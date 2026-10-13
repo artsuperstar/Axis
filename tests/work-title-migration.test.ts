@@ -10,7 +10,11 @@ import { workDraft } from '../src/features/finance/work/form';
 import { jobTitle } from '../src/features/finance/work/presentation';
 import { pickerValue } from '../src/utils/calendar';
 import { singleLineText } from '../src/utils/text-normalization';
-import { bundledMigrations, database, journal } from './helpers/database';
+import { bundledMigrations as allMigrations, database } from './helpers/database';
+
+// Isolate Work's migration head; later rotation objects have separate upgrade coverage.
+const journal = { ...allMigrations.journal, entries: allMigrations.journal.entries.slice(0, 11) };
+const bundledMigrations = { ...allMigrations, journal };
 
 const today = '2026-10-07';
 const description = ('Inventory management software for warehouse stock control.\n' + 'Historical details remain intact. '.repeat(100)).trimEnd();

@@ -4,7 +4,11 @@ import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { migrate } from 'drizzle-orm/expo-sqlite/migrator';
 
-import { bundledMigrations, database, journal } from './helpers/database';
+import { bundledMigrations as allMigrations, database } from './helpers/database';
+
+// Isolate Work's migration head; later rotation objects have separate upgrade coverage.
+const journal = { ...allMigrations.journal, entries: allMigrations.journal.entries.slice(0, 11) };
+const bundledMigrations = { ...allMigrations, journal };
 
 async function populated() {
   const f = database();

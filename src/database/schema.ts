@@ -1,5 +1,5 @@
 import { sql, type SQLWrapper } from 'drizzle-orm';
-import { check, foreignKey, index, integer, sqliteTable, text, uniqueIndex } from 'drizzle-orm/sqlite-core';
+import { check, foreignKey, index, integer, sqliteTable, text, uniqueIndex, type SQLiteTableExtraConfigValue } from 'drizzle-orm/sqlite-core';
 
 export const taskCategories = sqliteTable('task_categories', {
   id: text('id').primaryKey().notNull(),
@@ -343,8 +343,33 @@ export const fitnessRoutineExercises = sqliteTable('fitness_routine_exercises', 
   uniqueIndex('fitness_routine_exercise_position_unique').on(table.routineId, table.position).where(sql`${table.deletedAt} IS NULL`),
 ]);
 
+export const fitnessRotations = sqliteTable('fitness_rotations', {
+  id: text('id').primaryKey().notNull(), name: text('name').notNull(),
+  nextStepId: text('next_step_id'), isActive: integer('is_active', { mode: 'boolean' }).notNull().default(false),
+  createdAt: integer('created_at').notNull(), updatedAt: integer('updated_at').notNull(), deletedAt: integer('deleted_at'),
+}, (table): SQLiteTableExtraConfigValue[] => [
+  foreignKey({ columns: [table.nextStepId, table.id], foreignColumns: [fitnessRotationSteps.id, fitnessRotationSteps.rotationId] }).onDelete('restrict'),
+  check('fitness_rotation_active_valid', sql`${table.isActive} IN (0, 1) AND (${table.isActive} = 0 OR (${table.deletedAt} IS NULL AND ${table.nextStepId} IS NOT NULL))`),
+  uniqueIndex('fitness_one_active_rotation').on(sql`(1)`).where(sql`${table.isActive} = 1 AND ${table.deletedAt} IS NULL`),
+]);
+
+export const fitnessRotationSteps = sqliteTable('fitness_rotation_steps', {
+  id: text('id').primaryKey().notNull(), rotationId: text('rotation_id').notNull(),
+  routineId: text('routine_id').notNull().references(() => fitnessRoutines.id, { onDelete: 'restrict' }),
+  position: integer('position').notNull(),
+  createdAt: integer('created_at').notNull(), updatedAt: integer('updated_at').notNull(), deletedAt: integer('deleted_at'),
+}, (table): SQLiteTableExtraConfigValue[] => [
+  foreignKey({ columns: [table.rotationId], foreignColumns: [fitnessRotations.id] }).onDelete('restrict'),
+  check('fitness_rotation_step_position_valid', sql`${table.position} >= 0`),
+  uniqueIndex('fitness_rotation_step_parent_unique').on(table.id, table.rotationId),
+  uniqueIndex('fitness_rotation_step_position_unique').on(table.rotationId, table.position).where(sql`${table.deletedAt} IS NULL`),
+  index('fitness_rotation_step_routine_idx').on(table.routineId),
+]);
+
 export const fitnessSessions = sqliteTable('fitness_workout_sessions', {
   id: text('id').primaryKey().notNull(), routineId: text('routine_id').references(() => fitnessRoutines.id, { onDelete: 'restrict' }),
+  rotationId: text('rotation_id').references(() => fitnessRotations.id, { onDelete: 'restrict' }),
+  rotationStepId: text('rotation_step_id').references(() => fitnessRotationSteps.id, { onDelete: 'restrict' }),
   name: text('name').notNull(), startedAt: integer('started_at').notNull(), completedAt: integer('completed_at'), note: text('note'), ...fitnessLifecycle(),
 }, (table) => [
   check('fitness_session_name_valid', sql`length(trim(${table.name})) BETWEEN 1 AND 120`),

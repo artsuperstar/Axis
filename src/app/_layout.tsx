@@ -26,6 +26,8 @@ export default function RootLayout() {
           <Stack.Screen name="work/index" options={{ headerShown: false, presentation: 'card' }} />
           <Stack.Screen name="work/clients" options={{ headerShown: false, presentation: 'card' }} />
           <Stack.Screen name="work/history" options={{ headerShown: false, presentation: 'card' }} />
+          <Stack.Screen name="fitness/rotations" options={{ headerShown: false, presentation: 'card' }} />
+          <Stack.Screen name="fitness/rotation" options={{ headerShown: false, presentation: 'card' }} />
         </Stack>
       </DatabaseProvider>
       <StatusBar style="auto" />

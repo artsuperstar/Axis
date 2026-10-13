@@ -6,8 +6,10 @@ import { eq } from 'drizzle-orm';
 import * as schema from '../src/database/schema';
 import { appendCommitmentHistory } from '../src/features/finance/commitments/data';
 import { createHomeDataAccess } from '../src/features/home/data';
+import { createFinanceDataAccess } from '../src/features/finance/data';
 import { projectHome } from '../src/features/home/projection';
 import { createTaskDataAccess } from '../src/features/tasks/data';
+import { createRotationDataAccess } from '../src/features/fitness/rotations-data';
 import { workDraft } from '../src/features/finance/work/form';
 import { formatBrlInput, maxAmountMinor } from '../src/features/finance/money';
 import { growthDate, growthFixture, growthNow } from './helpers/growth-fixture';
@@ -115,10 +117,15 @@ test('accumulated-data read paths remain targeted, paged and authoritative', asy
   await t.test('Home projections match original snapshots and refresh after source mutations', () => {
     const tasks = createTaskDataAccess(f.db, randomUUID, growthNow), home = createHomeDataAccess(f.db, randomUUID, growthNow);
     const expected = projectHome({ tasks: tasks.read(), commitments: f.commitments.read().items, work: f.work.read().items,
-      financeCategories: [], fitness: f.fitness.read(1) }, new Date(growthNow()));
+      financeCategories: [], fitness: f.fitness.readDailySummary(growthDate),
+      spentTodayMinor: createFinanceDataAccess(f.db, randomUUID, growthNow).readSpentOnDate(growthDate) }, new Date(growthNow()));
     const measured = f.measure(() => home.read());
     assert.deepEqual(measured.value, expected);
     assert.ok(measured.statements.every((row) => !row.sql.includes('fitness_routine_exercises')));
+    // Summary counts may aggregate sets; individual set rows must not be fetched.
+    assert.ok(measured.statements.every((row) => !row.sql.includes('from "fitness_sets"') && !row.sql.includes('journal_drafts')));
+    assert.equal(measured.statements.filter((row) => row.sql.includes('"journal_entries"')).length, 1);
+    assert.ok(measured.value.todayPreview.length <= 5 && measured.value.attentionPreview.length <= 5);
     assert.equal(home.read().attention.find((row) => row.source === 'commitment')!.total, 20);
     const obligation = f.commitments.read().items[0].outstanding[0];
     f.commitments.pay(obligation, '100', growthDate);
@@ -141,6 +148,23 @@ test('accumulated-data read paths remain targeted, paged and authoritative', asy
     f.work.undoPayment(paid);
     assert.ok(f.work.readOverview().items.some((item) => item.entry.id === id));
     assert.equal(home.read().today.find((section) => section.source === 'work')!.total, 1);
+  });
+  await t.test('Home loads only active rotation names and next routine without expanding accumulated Fitness data', () => {
+    const rotations = createRotationDataAccess(f.db, randomUUID, growthNow);
+    const routines = ['Push', 'Pull', 'Legs'].map((name) => f.fitness.createRoutine({ name, exercises: [] }));
+    for (let index = 0; index < 30; index++) rotations.create({ name: `Saved ${index}`, steps: routines.map((routineId) => ({ id: null, routineId })) });
+    const id = rotations.create({ name: 'Active cycle', steps: routines.map((routineId) => ({ id: null, routineId })) });
+    rotations.activate(id);
+    const result = f.measure(() => createHomeDataAccess(f.db, randomUUID, growthNow).read());
+    assert.deepEqual(result.value.rotationSequence, ['Push', 'Pull', 'Legs']);
+    assert.equal(result.value.nextWorkout!.routine.name, 'Push');
+    const plan = result.statements.filter((row) => row.sql.includes('from "fitness_rotations"'));
+    assert.equal(plan.length, 1); assert.equal(plan[0].rows, 3);
+    const fitness = result.statements.filter((row) => row.sql.startsWith('select') && row.sql.includes('fitness_'));
+    assert.equal(fitness.length, 4);
+    assert.ok(fitness.every((row) => !row.sql.includes('fitness_routine_exercises') && !row.sql.includes('from "fitness_sets"')));
+    assert.ok(result.value.todayPreview.length <= 5 && result.value.attentionPreview.length <= 5);
+    rotations.deactivate(id);
   });
   await t.test('catch-up repairs old holes idempotently without resetting resolved outcomes', () => {
     const id = f.commitments.read().items[0].commitment.id;

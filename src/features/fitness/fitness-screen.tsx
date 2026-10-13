@@ -1,4 +1,4 @@
-import { useFocusEffect } from 'expo-router';
+import { router, useFocusEffect } from 'expo-router';
 import { useCallback, useRef, useState } from 'react';
 import { ActivityIndicator, Alert, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-screens/experimental';
@@ -49,6 +49,7 @@ export function FitnessScreen({ initialSessionId }: { initialSessionId?: string 
   const [search, setSearch] = useState('');
   const [routineId, setRoutineId] = useState<string | null>(null);
   const [actionError, setActionError] = useState<string | null>(null);
+  const [lastFinished, setLastFinished] = useState<string | null>(null);
   function close() {
     if (initialSessionOpen && detail && detail.completedAt !== null) navigateView('history');
     setDialog(null); setInitialSessionOpen(false); fitness.closeSession(); setActionError(null);
@@ -70,7 +71,7 @@ export function FitnessScreen({ initialSessionId }: { initialSessionId?: string 
         { text: 'Cancel', style: 'cancel' }, { text: 'Go to workout', onPress: () => openSession(activeId) },
       ]); return;
     }
-    perform(() => access.startWorkout(id)); navigateView('workout');
+    perform(() => access.startWorkout(id)); setLastFinished(null); navigateView('workout');
   }
   function archiveExercise(exercise: Exercise) {
     Alert.alert('Archive exercise?', `“${exercise.name}” will leave new exercise choices. Existing routines and workout history will retain it.`, [
@@ -87,7 +88,7 @@ export function FitnessScreen({ initialSessionId }: { initialSessionId?: string 
     const id = workout.id;
     Alert.alert('Finish workout?', 'Save this workout to History? Unfilled planned sets are allowed. Completed workouts are read-only.', [
       { text: 'Cancel', style: 'cancel' }, { text: 'Finish Workout', onPress: () => perform(() => {
-        access.finishWorkout(id); close(); offsets.current.workout = 0; setScrollOffset(0);
+        access.finishWorkout(id); setLastFinished(workout.name); close(); offsets.current.workout = 0; setScrollOffset(0);
       }) },
     ]);
   }
@@ -149,15 +150,31 @@ export function FitnessScreen({ initialSessionId }: { initialSessionId?: string 
             onSet={editSet} onNote={editNote} onActions={openActions} onAddExercise={() => setDialog({ kind: 'add-exercise', sessionId: workout.id })} />
             : fitness.error ? <ThemedText themeColor="textSecondary">Workout details are unavailable. Retry to load your current workout.</ThemedText>
               : <ActivityIndicator color={colors.accent} accessibilityLabel="Loading current workout" /> : <>
-            <ThemedText type="sectionHeading" accessibilityRole="header">Start a workout</ThemedText>
+            {lastFinished && <View style={styles.description}>
+              <ThemedText type="secondary" accessibilityRole="alert">Workout completed</ThemedText>
+              <ThemedText type="cardTitle">{lastFinished}</ThemedText>
+            </View>}
+            {fitness.nextWorkout && <View style={styles.description}>
+              <ThemedText type="sectionHeading" accessibilityRole="header">{lastFinished ? 'Up next' : 'Next workout'}</ThemedText>
+              <ThemedText type="cardTitle" accessibilityLabel={`Next workout, ${fitness.nextWorkout.routine.name}`}>{fitness.nextWorkout.routine.name}</ThemedText>
+              <FormButton variant="primary" label={`Start ${fitness.nextWorkout.routine.name}`} onPress={() => start(fitness.nextWorkout!.routine.id)} />
+            </View>}
+            <ThemedText type="sectionHeading" accessibilityRole="header">{fitness.nextWorkout ? 'Other options' : 'Start a workout'}</ThemedText>
             <SelectField<string | null> label="Workout routine" value={selectedRoutine}
               options={[{ value: null, label: 'Choose a routine' }, ...activeRoutines.map((routine) => ({ value: routine.id, label: routine.name }))]} onChange={setRoutineId} />
-            <FormButton variant="primary" label="Start from Routine" disabled={selectedRoutine === null} onPress={() => start(selectedRoutine)} />
+            <FormButton variant={fitness.nextWorkout ? 'quiet' : 'primary'} label={fitness.nextWorkout ? 'Start another routine' : 'Start from Routine'} disabled={selectedRoutine === null} onPress={() => start(selectedRoutine)} />
             <FormButton label="Start Empty Workout" onPress={() => start(null)} />
             {!activeRoutines.length && <FormButton label="Create a routine" onPress={() => setDialog({ kind: 'routine', routine: null })} />}
             <ThemedText type="small" themeColor="textSecondary">Log sets as you go, then finish to save the workout to History.</ThemedText>
           </>)}
           {snapshot && view === 'routines' && <>
+            <View style={styles.description}>
+              <ThemedText type="sectionHeading" accessibilityRole="header">Workout rotation</ThemedText>
+              <ThemedText type="cardTitle">{fitness.nextWorkout?.rotation.name ?? 'No active rotation'}</ThemedText>
+              {fitness.nextWorkout && <ThemedText type="metadata" themeColor="textSecondary">{fitness.rotationSteps.join(' → ')}</ThemedText>}
+              {fitness.nextWorkout && <ThemedText type="secondary" themeColor="textSecondary">Next: {fitness.nextWorkout.routine.name}</ThemedText>}
+              <FormButton variant="quiet" label={fitness.nextWorkout ? 'Manage rotation →' : 'Set up rotation →'} onPress={() => router.push('/fitness/rotations')} />
+            </View>
             <FormButton label="New routine" onPress={() => setDialog({ kind: 'routine', routine: null })} />
             <SegmentedControl label="Routines" value={archivedRoutines ? 1 : 0} options={archiveOptions} onChange={(value) => setArchivedRoutines(value === 1)} />
             {!displayedRoutines.length && <ThemedText themeColor="textSecondary">No {archivedRoutines ? 'archived' : 'active'} routines.</ThemedText>}

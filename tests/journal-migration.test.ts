@@ -20,6 +20,7 @@ import { createFitnessDataAccess } from '../src/features/fitness/data';
 import { blankSet, blankTargets } from '../src/features/fitness/form';
 import { seedFitnessExercises } from '../src/features/fitness/seed';
 import { createHomeDataAccess } from '../src/features/home/data';
+import { projectHome } from '../src/features/home/projection';
 import { createJournalDataAccess } from '../src/features/journal/data';
 import { createTaskDataAccess } from '../src/features/tasks/data';
 import { taskDraft } from '../src/features/tasks/form';
@@ -36,6 +37,9 @@ async function existingStage11() {
   const result = database(); const { db, sqlite } = result;
   await migrate(db, { ...bundledMigrations, journal: { ...journal, entries: journal.entries.slice(0, 6) } });
   sqlite.exec(allMigrations.migrations.m0009);
+  // Isolate Journal migration while current Fitness APIs use optional rotation columns.
+  // Populated pre-rotation upgrade/rollback coverage lives in fitness-rotation-migration.test.ts.
+  sqlite.exec(allMigrations.migrations.m0011);
   seedDefaultCategories(db, 1000); seedFinanceCategories(db, 1000); seedFitnessExercises(db);
   const tasks = createTaskDataAccess(db, randomUUID, now); const finance = createFinanceDataAccess(db, randomUUID, now);
   const commitments = createCommitmentDataAccess(db, randomUUID, now); const work = createWorkDataAccess(db, randomUUID, now);
@@ -64,10 +68,14 @@ async function existingStage11() {
   fitness.addSet(row.id, { ...blankSet(), minutes: '3' }); fitness.finishWorkout(completed); fitness.startWorkout();
   fitness.archiveRoutine(routine); fitness.archiveExercise(exercise.id);
   const calendar = createCalendarDataAccess(db, randomUUID, now); const home = createHomeDataAccess(db, randomUUID, now);
-  const range = { from: '2026-10-01', to: '2026-10-31' }; const agenda = calendar.readRange(range); const homeBefore = home.read();
+  const range = { from: '2026-10-01', to: '2026-10-31' }; const agenda = calendar.readRange(range);
+  // A Stage 11 database has no Journal table yet. Compare its source projection with
+  // the current reader after migration, when today's empty Journal can be queried.
+  const homeBefore = projectHome({ tasks: tasks.read(), commitments: commitments.read().items, work: work.readOverview().items,
+    financeCategories: finance.readCategories(), fitness: fitness.readDailySummary(today), spentTodayMinor: finance.readSpentOnDate(today) }, new Date(now()));
   const analytics = finance.readDashboard(periodBounds('month', today)).analytics;
   const workBefore = work.read(); const fitnessBefore = fitness.read();
-  const oldTables = sqlite.prepare("SELECT name FROM sqlite_master WHERE type = 'table' AND name NOT LIKE 'sqlite_%' AND name != '__drizzle_migrations' ORDER BY name")
+  const oldTables = sqlite.prepare("SELECT name FROM sqlite_master WHERE type = 'table' AND name NOT LIKE 'sqlite_%' AND name != '__drizzle_migrations' AND name NOT IN ('fitness_rotations', 'fitness_rotation_steps') ORDER BY name")
     .all().map((row) => String(row.name));
   const snapshot = () => Object.fromEntries(oldTables.map((table) => [table, sqlite.prepare(`SELECT * FROM "${table}" ORDER BY id`).all()]));
   const before = snapshot();
@@ -124,7 +132,7 @@ async function existingJournal() {
     .run(id, today, 'Existing Stage 12 diary\nKeep every character.', 'good', now(), now());
   const writing = f.sqlite.prepare('SELECT * FROM journal_entries ORDER BY id').all();
   const definitions = f.sqlite.prepare("SELECT name, sql FROM sqlite_master WHERE name NOT LIKE 'sqlite_%' AND name != '__drizzle_migrations' ORDER BY name").all();
-  return { ...f, writing, definitions };
+  return { ...f, writing, definitions, homeBefore: f.home.read() };
 }
 
 test('draft migration upgrades a device with the original Stage 12 migration without changing saved writing or any prior data', async (t) => {

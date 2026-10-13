@@ -1,13 +1,14 @@
-import { and, asc, desc, eq, gt, inArray, isNull, lt, or } from 'drizzle-orm';
+import { and, asc, desc, eq, gt, inArray, isNull, lt, or, sql } from 'drizzle-orm';
 
 import type { AxisDatabase } from '@/database/client';
 import { commitmentOccurrences, financeCategories, financeCommitments, financeTransactions, workCounterparties, workEntries, workPaymentAllocations } from '@/database/schema';
-import { localDateString } from '@/utils/calendar';
+import { localDateString, validDate } from '@/utils/calendar';
 import { canonicalIdentityName, normalizeIdentityDisplayName } from '@/utils/text-normalization';
 
 import { FinanceValidationError } from './errors';
 import { readFinanceAnalytics } from './analytics';
 import { validateTransactionDraft } from './form';
+import { validateAmountMinor } from './money';
 import { jobTitle } from './work/presentation';
 import type { FinancePeriod } from './periods';
 import { transactionTypes, type FinanceTransaction, type TransactionDraft, type TransactionType, type TransactionCursor, type TransactionLedgerPage, type TransactionSource } from './types';
@@ -49,6 +50,15 @@ export function createFinanceDataAccess(db: AxisDatabase, newId: () => string, n
 
   return {
     readCategories,
+    /** Group equal amounts before exact JS arithmetic; SUM can overflow SQLite's signed 64-bit integer. */
+    readSpentOnDate(date: string): bigint {
+      if (!validDate(date)) throw new FinanceValidationError('Choose a valid transaction date.');
+      const groups = db.select({ amountMinor: financeTransactions.amountMinor, count: sql<number>`count(*)`.mapWith(Number) })
+        .from(financeTransactions).where(and(eq(financeTransactions.transactionDate, date),
+          eq(financeTransactions.type, 'expense'), isNull(financeTransactions.deletedAt)))
+        .groupBy(financeTransactions.amountMinor).all();
+      return groups.reduce((sum, group) => sum + BigInt(validateAmountMinor(group.amountMinor)) * BigInt(group.count), 0n);
+    },
     /** Ledger-only projection. Stable date/timestamp/ID cursors preserve the existing order. */
     readLedgerPage(limit = 40, before?: TransactionCursor): TransactionLedgerPage {
       if (!Number.isSafeInteger(limit) || limit < 1) throw new FinanceValidationError('Invalid transaction page size.');

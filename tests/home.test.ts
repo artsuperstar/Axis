@@ -17,7 +17,9 @@ import { workDraft } from '../src/features/finance/work/form';
 import { createFitnessDataAccess } from '../src/features/fitness/data';
 import { seedFitnessExercises } from '../src/features/fitness/seed';
 import { createHomeDataAccess } from '../src/features/home/data';
-import { homePreviewLimits, projectHome, type HomeSources } from '../src/features/home/projection';
+import { createJournalDataAccess } from '../src/features/journal/data';
+import { journalBaseline } from '../src/features/journal/form';
+import { homeAgendaLimit, homePreviewLimits, projectHome, type HomeSources } from '../src/features/home/projection';
 import { startHomeRefresh } from '../src/features/home/refresh';
 import type { HomeItem, HomeSnapshot, HomeTaskItem } from '../src/features/home/types';
 import { sourceRequest } from '../src/features/source-navigation';
@@ -304,4 +306,61 @@ test('Home re-reads create no Home tables or records, preserve financial dates/d
   const before = snapshot(); f.home.read(); f.home.read(); assert.deepEqual(snapshot(), before);
   assert.equal(f.sqlite.prepare("SELECT count(*) AS count FROM sqlite_master WHERE name LIKE 'home_%'").get()!.count, 0);
   assert.deepEqual(f.sqlite.prepare('PRAGMA foreign_key_check').all(), []); assert.equal(f.sqlite.prepare('PRAGMA integrity_check').get()!.integrity_check, 'ok');
+});
+
+test('global Home previews are bounded independently of source groups with exact totals and oldest dated attention', async (t) => {
+  const f = await initialized(); t.after(() => f.sqlite.close());
+  for (let i = 0; i < 8; i++) {
+    f.task(`Today ${i}`, { time: i % 2 ? '18:00' : '09:00' });
+    f.task(`Earlier ${i}`, { date: `2026-09-${String(10 + i).padStart(2, '0')}`, priority: i === 7 ? 'high' : 'none' });
+  }
+  f.bill('Old obligation', '2025-08-03'); f.expectedPayment('Old client', '2025-08-05');
+  f.bill('Due today'); f.expectedPayment('Today client');
+  const first = f.home.read(); assert.deepEqual(first, f.home.read());
+  assert.equal(first.todayPreview.length, homeAgendaLimit);
+  assert.equal(first.attentionPreview.length, homeAgendaLimit);
+  assert.equal(first.today.reduce((sum, section) => sum + section.total, 0), 10);
+  assert.equal(first.attention.reduce((sum, section) => sum + section.total, 0), 24);
+  assert.deepEqual(first.attentionPreview.map((item) => item.date), ['2025-08-03', '2025-08-05', '2025-09-03', '2025-10-03', '2025-11-03']);
+  assert.equal(first.attentionPreview[1].source, 'work');
+  assert.equal(first.attentionPreview[1].title, 'Website');
+  assert.ok(first.todayPreview.every((item) => item.source === 'task' && item.time === '09:00' || item.source === 'task' && item.time === '18:00'));
+  assert.equal(first.nextUp, null);
+});
+
+test('empty Today exposes only the nearest scheduled source item and advances past resolved/deleted future tasks', async (t) => {
+  const f = await initialized(); t.after(() => f.sqlite.close());
+  const day = '2026-10-05';
+  const completed = f.task('Completed future', { date: day, time: '08:00' }); f.tasks.setCompleted(completed, true);
+  const deleted = f.task('Deleted future', { date: day, time: '07:00' }); f.tasks.deleteTask(deleted);
+  const skipped = f.task('Skipped future', { date: day, time: '06:00', recurrence: { ...daily, endDate: day } });
+  f.tasks.setOccurrenceStatus(f.tasks.read().occurrences.find((row) => row.taskId === skipped)!.id, 'skipped');
+  const later = f.task('Date-only future', { date: day });
+  const next = f.task('Next appointment', { date: day, time: '09:30' });
+  const bill = f.bill('Future bill', day); const payment = f.expectedPayment('Future client', day);
+  let snapshot = f.home.read(); assert.equal(snapshot.todayPreview.length, 0);
+  assert.equal(snapshot.nextUp!.recordId, next); assert.equal(snapshot.nextUp!.status, 'Upcoming');
+  f.tasks.setCompleted(next, true); snapshot = f.home.read(); assert.equal(snapshot.nextUp!.recordId, later);
+  f.tasks.setCompleted(later, true); snapshot = f.home.read(); assert.equal(snapshot.nextUp!.recordId, bill);
+  const obligation = f.commitments.read().items.find((item) => item.commitment.id === bill)!.upcoming!;
+  f.commitments.skip(obligation); snapshot = f.home.read(); assert.equal(snapshot.nextUp!.recordId, payment.id);
+  f.task('Today entry'); assert.equal(f.home.read().nextUp, null);
+});
+
+test('Journal entry state is one targeted local-day lookup; Home never writes or clears recoverable drafts', async (t) => {
+  const f = await initialized(); t.after(() => f.sqlite.close());
+  const journal = createJournalDataAccess(f.db, randomUUID, f.now);
+  journal.persistDraft(initialDay, { content: 'Unsaved writing', mood: null }, null);
+  const before = journal.getDraft(initialDay);
+  const read = f.measure(() => f.home.read());
+  assert.deepEqual(read.value.journal, { hasEntry: false });
+  assert.deepEqual(journal.getDraft(initialDay), before);
+  const queries = read.statements.filter((statement) => statement.sql.includes('"journal_entries"'));
+  assert.equal(queries.length, 1); assert.match(queries[0].sql, /where/);
+  assert.doesNotMatch(queries[0].sql, /"content"|"mood"/);
+  assert.ok(!read.statements.some((statement) => statement.sql.includes('journal_drafts')));
+  const saved = journal.save(initialDay, { content: 'Saved today', mood: 'good' }, journalBaseline(null))!;
+  assert.deepEqual(f.home.read().journal, { hasEntry: true });
+  journal.softDelete(saved.id); assert.equal(f.home.read().journal.hasEntry, false);
+  f.setTime('2026-10-05'); assert.equal(f.home.read().journal.hasEntry, false);
 });

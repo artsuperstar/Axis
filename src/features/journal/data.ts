@@ -43,6 +43,11 @@ export function createJournalDataAccess(db: AxisDatabase, newId: () => string, n
         return entry;
       }, { behavior: 'immediate' });
     },
+    /** Summary callers need saved existence, not the diary's content or recovery draft. */
+    hasEntry(date: string): boolean {
+      if (!validDate(date)) throw new JournalValidationError('Choose a valid journal date.');
+      return db.select({ id: journalEntries.id }).from(journalEntries).where(activeDate(date)).get() !== undefined;
+    },
     getEntry(date: string): JournalEntry | null {
       if (!validDate(date)) throw new JournalValidationError('Choose a valid journal date.');
       return db.select().from(journalEntries).where(activeDate(date)).get() ?? null;

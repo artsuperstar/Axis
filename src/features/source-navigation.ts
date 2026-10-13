@@ -1,6 +1,7 @@
 import { validDate } from '@/utils/calendar';
 
 export type SourceRequest =
+  | { source: 'transactions' }
   | { source: 'task'; recordId: string; date: string }
   | { source: 'commitment' | 'work'; recordId?: string; date?: string }
   | { source: 'fitness'; recordId: string };
@@ -8,6 +9,7 @@ export type SourceTarget = { pathname: '/home-source'; params: SourceRequest };
 export type HomeNavigation = SourceTarget | { pathname: '/(tabs)/tasks' | '/(tabs)/calendar' | '/(tabs)/finance' | '/(tabs)/fitness' | '/journal' };
 export function sourceRequest(params: { source?: unknown; recordId?: unknown; date?: unknown }, origin: 'Home' | 'Calendar'): SourceRequest | null {
   const { source, recordId, date } = params;
+  if (source === 'transactions') return origin === 'Home' && recordId === undefined && date === undefined ? { source } : null;
   if (recordId !== undefined && (typeof recordId !== 'string' || !recordId)) return null;
   if (date !== undefined && (typeof date !== 'string' || !validDate(date))) return null;
   if (source === 'fitness') return origin === 'Home' && typeof recordId === 'string' ? { source, recordId } : null;

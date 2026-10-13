@@ -10,7 +10,7 @@ require('./lifecycle-dom.cjs');
 const boundary = require('./lifecycle-native.cjs') as {
   fixture: { db: unknown; failures: Set<string>; reads: string[]; navigation: { method: string; target: unknown }[]; pickers: Record<string, unknown>[];
     alerts: { title: string; message: string; buttons: { text: string; onPress?: () => void; style?: string }[] }[];
-    wrap: (kind: string, access: unknown) => unknown }; resume: () => void; refocus: () => void;
+    wrap: (kind: string, access: unknown) => unknown; routeParams?: Record<string, string> }; resume: () => void; refocus: () => void;
 } & Record<string, unknown>;
 const boundaries: Record<string, string> = {
   'react-native': 'native', 'expo-router': 'router', 'expo-crypto': 'crypto', 'react-native-safe-area-context': 'safeArea',
@@ -34,12 +34,14 @@ registerHooks({
     if ((context.parentURL?.includes('/context-menu.') || context.parentURL?.includes('/adaptive-sheet.')) && specifier === './form-selection-host') return next(specifier, context);
     const key = boundaries[specifier];
     if (key) return cachedModule(new URL(`./lifecycle-boundary-${key}.cjs`, import.meta.url), boundary[key]);
-    const kind = context.parentURL?.includes('/use-finance.') ? ({ './data': 'finance', './work/data': 'work', './commitments/data': 'commitments' } as Record<string, string>)[specifier]
+    const kind = context.parentURL?.includes('/transaction-create.') && specifier === '../data' ? 'finance'
+      : context.parentURL?.includes('/use-finance.') ? ({ './data': 'finance', './work/data': 'work', './commitments/data': 'commitments' } as Record<string, string>)[specifier]
       : context.parentURL?.includes('/use-fitness.') && specifier === './data' ? 'fitness'
-        : context.parentURL?.includes('/use-tasks.') && specifier === './data' ? 'tasks' : undefined;
+        : context.parentURL?.includes('/use-tasks.') && specifier === './data' ? 'tasks'
+          : context.parentURL?.includes('/use-home.') && specifier === './data' ? 'home' : undefined;
     if (kind) {
       const real = require(fileURLToPath(next(specifier, context).url));
-      const names: Record<string, string> = { finance: 'createFinanceDataAccess', work: 'createWorkDataAccess', commitments: 'createCommitmentDataAccess', fitness: 'createFitnessDataAccess', tasks: 'createTaskDataAccess' };
+      const names: Record<string, string> = { finance: 'createFinanceDataAccess', work: 'createWorkDataAccess', commitments: 'createCommitmentDataAccess', fitness: 'createFitnessDataAccess', tasks: 'createTaskDataAccess', home: 'createHomeDataAccess' };
       const name = names[kind];
       return cachedModule(new URL(`./lifecycle-access-${kind}.cjs`, import.meta.url), { [name]: (...args: unknown[]) => boundary.fixture.wrap(kind, real[name](...args)) });
     }
@@ -52,6 +54,8 @@ registerHooks({
 });
 
 export const screens = {
+  WorkoutRotationsScreen: require('../../src/features/fitness/rotations-screen').WorkoutRotationsScreen as ComponentType,
+  WorkoutRotationEditorScreen: require('../../src/features/fitness/rotations-screen').WorkoutRotationEditorScreen as ComponentType,
   WorkClientsScreen: require('../../src/features/finance/work/work-management-screen').WorkClientsScreen as ComponentType,
   WorkHistoryScreen: require('../../src/features/finance/work/work-management-screen').WorkHistoryScreen as ComponentType,
   RepeatingTasksScreen: require('../../src/features/tasks/tasks-screen').RepeatingTasksScreen as ComponentType,

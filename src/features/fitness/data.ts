@@ -7,7 +7,8 @@ import { fitnessExercises as exercises, fitnessRoutines as routines, fitnessRout
   fitnessSessions as sessions, fitnessSessionExercises as sessionExercises, fitnessSets as sets } from '@/database/schema';
 
 import { FitnessValidationError, normalizeName, validateMeasurement, validateSet, validateTargets } from './form';
-import type { FitnessOverview, FitnessSnapshot, MeasurementType, RoutineDraft, RoutineDetail, Session, SessionDetail, SessionSummary, SetDraft, WorkoutHistoryCursor } from './types';
+import { advanceWorkoutRotation, assertRoutineNotInRotation, readActiveRotationPlan, readNextWorkout } from './rotations-data';
+import type { FitnessDailySummary, FitnessOverview, FitnessSnapshot, MeasurementType, RoutineDraft, RoutineDetail, Session, SessionDetail, SessionSummary, SetDraft, WorkoutHistoryCursor } from './types';
 
 type Query = Pick<AxisDatabase, 'select' | 'insert' | 'update'>;
 
@@ -139,6 +140,15 @@ export function createFitnessDataAccess(db: AxisDatabase, newId: () => string, n
     return next;
   }
   return {
+    /** One local-day aggregate and one latest summary, independent of accumulated History size. */
+    readDailySummary(date: string): FitnessDailySummary {
+      const { from, until } = localDayBounds(date);
+      const completed = and(isNull(sessions.deletedAt), gte(sessions.completedAt, from), lt(sessions.completedAt, until));
+      return db.transaction((query) => ({ active: activeSummary(query), ...readActiveRotationPlan(query),
+        completedCount: query.select({ count: sql<number>`count(*)`.mapWith(Number) }).from(sessions).where(completed).get()!.count,
+        history: query.select({ session: sessions, ...counts }).from(sessions).where(completed)
+          .orderBy(desc(sessions.completedAt), desc(sessions.startedAt), asc(sessions.id)).limit(1).all().map(summary) }));
+    },
     readCompletedOnDate(date: string): SessionSummary[] {
       const { from, until } = localDayBounds(date);
       return db.select({ session: sessions, ...counts }).from(sessions)
@@ -190,6 +200,7 @@ export function createFitnessDataAccess(db: AxisDatabase, newId: () => string, n
       db.transaction((query) => {
         const row = routine(query, id);
         if (row.deletedAt !== null) return;
+        assertRoutineNotInRotation(query, id);
         const timestamp = stamp(row);
         query.update(routines).set({ deletedAt: timestamp, updatedAt: timestamp }).where(eq(routines.id, id)).run();
       }, { behavior: 'immediate' });
@@ -201,7 +212,10 @@ export function createFitnessDataAccess(db: AxisDatabase, newId: () => string, n
         const plan = routineId ? routine(query, routineId) : null;
         if (plan && plan.deletedAt !== null) throw new FitnessValidationError('Choose an active routine.');
         const id = newId(); const timestamp = now();
-        query.insert(sessions).values({ id, routineId, name: plan?.name ?? 'Free workout', startedAt: timestamp, createdAt: timestamp, updatedAt: timestamp }).run();
+        const next = readNextWorkout(query);
+        const expected = plan && next?.routine.id === plan.id ? next : null;
+        query.insert(sessions).values({ id, routineId, rotationId: expected?.rotation.id ?? null, rotationStepId: expected?.stepId ?? null,
+          name: plan?.name ?? 'Free workout', startedAt: timestamp, createdAt: timestamp, updatedAt: timestamp }).run();
         // Archived references remain in the template, but are not added to a new workout.
         plan?.exercises.filter((entry) => entry.exercise.deletedAt === null).forEach((entry, position) => {
           query.insert(sessionExercises).values({ id: newId(), sessionId: id, exerciseId: entry.exerciseId, exerciseName: entry.exercise.name,
@@ -268,6 +282,7 @@ export function createFitnessDataAccess(db: AxisDatabase, newId: () => string, n
       db.transaction((query) => {
         const row = editableSession(query, id); const timestamp = Math.max(stamp(row), row.startedAt);
         query.update(sessions).set({ completedAt: timestamp, updatedAt: timestamp }).where(eq(sessions.id, id)).run();
+        advanceWorkoutRotation(query, row, timestamp);
       }, { behavior: 'immediate' });
     },
     discardWorkout(id: string) {

@@ -95,6 +95,7 @@ test('Home Resume navigates to the Fitness tab and exposes the same active Worko
   const { db, fitness } = await initialized(t); const session = fitness.startWorkout(); fitness.saveNote(session.id, null, 'Same active session');
   const home = await mount(createElement(screens.HomeScreen), db);
   try {
+    await home.tapSet(home.nodes().find((node) => String(node.props?.accessibilityLabel ?? '').startsWith('Fitness.'))!.props.accessibilityLabel as string);
     await home.press('Resume workout');
     assert.deepEqual(runtime.fixture.navigation, [{ method: 'navigate', target: { pathname: '/(tabs)/fitness' } }]);
     assert.ok(!home.nodes().some((node) => node.kind === 'Modal'));

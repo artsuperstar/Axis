@@ -15,7 +15,7 @@ import { changeTransactionType, financeCategoryForTransaction, transactionDraft,
 import { createFinanceCategorySelection, financeCategoryOptions, transactionTypeOptions } from '../form-options';
 import { transactionTypeLabels, type FinanceCategory, type FinanceTransaction, type TransactionDraft } from '../types';
 
-export function TransactionEditor({ transaction, categories, onSave, onCreateCategory, onDismiss, commitmentPayment = false, workPayment = false }: {
+export function TransactionEditor({ transaction, categories, onSave, onCreateCategory, onDismiss, commitmentPayment = false, workPayment = false, categoriesReady = true }: {
   transaction: FinanceTransaction | null;
   categories: FinanceCategory[];
   onSave: (draft: TransactionDraft) => void;
@@ -23,6 +23,7 @@ export function TransactionEditor({ transaction, categories, onSave, onCreateCat
   onDismiss: () => void;
   commitmentPayment?: boolean;
   workPayment?: boolean;
+  categoriesReady?: boolean;
 }) {
   const scheme = useColorScheme();
   const [draft, setDraft] = useState(() => transactionDraft(transaction));
@@ -49,7 +50,7 @@ export function TransactionEditor({ transaction, categories, onSave, onCreateCat
   }
 
   function save() {
-    if (saving.current) return;
+    if (saving.current || !categoriesReady) return;
     saving.current = true;
     try {
       validateTransactionDraft(draft);
@@ -66,7 +67,7 @@ export function TransactionEditor({ transaction, categories, onSave, onCreateCat
       <AdaptiveSheet contentContainerStyle={styles.content} header={<View style={styles.header}>
         <FormButton variant="quiet" label="Cancel" onPress={onDismiss} />
         <ThemedText type="sheetTitle" accessibilityRole="header" style={[styles.heading, styles.title]}>{transaction ? 'Edit transaction' : 'New transaction'}</ThemedText>
-        <FormButton variant="primary" label="Save" onPress={save} />
+        <FormButton variant="primary" label="Save" disabled={!categoriesReady} onPress={save} />
       </View>}>
         <FormError message={error} />
         <View style={styles.section}>
@@ -82,7 +83,7 @@ export function TransactionEditor({ transaction, categories, onSave, onCreateCat
         <View style={styles.section}>
           <ThemedText type="cardTitle" accessibilityRole="header">Details</ThemedText>
           <FormField label="Description *" accessibilityLabel="Description, required" value={draft.description} onChangeText={(value) => change('description', value)} returnKeyType="next" />
-          <SelectField label="Category" value={draft.categoryId} displayValue={categoryLabel}
+          <SelectField label="Category" value={draft.categoryId} displayValue={categoryLabel} disabled={!categoriesReady}
             options={financeCategoryOptions(categories, draft.type)} onChange={(value) => change('categoryId', value)} onOpen={() => setPicker(false)}
             description={archivedCategory ? `Current category: ${categoryLabel}. Keep it by dismissing this menu, or choose an active category or No category.` : undefined}
             action={{ label: '+ New category', title: `New ${transactionTypeLabels[draft.type].toLowerCase()} category`, accessibilityLabel: `Create new ${draft.type} category`,

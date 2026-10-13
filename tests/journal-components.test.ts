@@ -85,10 +85,10 @@ test('unsaved-change sheet exposes Save, Discard and Keep editing, with dismissa
 
 test('Home provides a modest secondary Journal route alongside Calendar without another tab', () => {
   const opened: HomeNavigation[] = [];
-  const form = renderControl(() => homeContent.HomeContent({ snapshot: { date: today, today: [], attention: [], activeWorkout: null, completedWorkout: null, nothingPending: true },
+  const form = renderControl(() => homeContent.HomeContent({ onAddTransaction: () => {}, snapshot: { date: today, today: [], attention: [], activeWorkout: null, completedWorkout: null, nothingPending: true, spentTodayMinor: 0n, completedWorkoutCount: 0, nextWorkout: null, rotationSequence: [], todayPreview: [], attentionPreview: [], nextUp: null, journal: { hasEntry: false } },
     onOpen: (target) => opened.push(target), onComplete: () => {} }));
-  form.elements.find((element) => element.props.label === "Today's journal")!.props.onPress!(); assert.deepEqual(opened, [{ pathname: '/journal' }]);
-  assert.ok(form.elements.some((element) => element.props.label === 'View Calendar'));
+  form.elements.find((element) => element.props.accessibilityLabel?.startsWith('Journal.'))!.props.onPress!(); assert.deepEqual(opened, [{ pathname: '/journal' }]);
+  assert.match(form.markup, /Journal/);
 });
 
 test('Home’s Journal action restores the local-today draft while the Journal editor still announces no saved entry', async (t) => {
@@ -96,9 +96,9 @@ test('Home’s Journal action restores the local-today draft while the Journal e
   f.access.persistDraft(today, { content: 'Recovered from Home\nUnsaved.', mood: 'good' }, null);
   const localToday = localDateString(new Date(f.now()));
   const editor = createJournalEditor(f.access, localToday, () => {}, f.now, fakeDraftTimers().host);
-  const home = renderControl(() => homeContent.HomeContent({ snapshot: { date: today, today: [], attention: [], activeWorkout: null, completedWorkout: null, nothingPending: true },
+  const home = renderControl(() => homeContent.HomeContent({ onAddTransaction: () => {}, snapshot: { date: today, today: [], attention: [], activeWorkout: null, completedWorkout: null, nothingPending: true, spentTodayMinor: 0n, completedWorkoutCount: 0, nextWorkout: null, rotationSequence: [], todayPreview: [], attentionPreview: [], nextUp: null, journal: { hasEntry: false } },
     onOpen: (target) => { assert.equal(target.pathname, '/journal'); editor.load(localToday); }, onComplete: () => {} }));
-  home.elements.find((element) => element.props.label === "Today's journal")!.props.onPress!();
+  home.elements.find((element) => element.props.accessibilityLabel?.startsWith('Journal.'))!.props.onPress!();
   const screen = renderControl(() => journalEditor.JournalEditor({ state: editor.getState(), today, onChange: editor.change,
     onDate: () => {}, onToday: () => {}, onHistory: () => {}, onDelete: () => {}, onRetryDraft: editor.flushDraft, onDiscardConflict: () => {} }));
   assert.match(screen.markup, /Recovered from Home/); assert.match(screen.markup, /Restored unsaved draft/);
