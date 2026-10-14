@@ -20,12 +20,11 @@ export function useCalendar() {
   const [error, setError] = useState<string | null>(null);
   const [actionError, setActionError] = useState<string | null>(null);
   const reload = useCallback(() => {
+    setToday(localDateString(new Date()));
     try {
       setSnapshot({ month: selection.month, items: access.readRange(monthGridRange(selection.month)) });
-      setToday(localDateString(new Date()));
       setError(null);
     } catch (cause) {
-      setSnapshot(null);
       setError(userError(cause, 'Unable to load Calendar. Please try again.'));
     }
   }, [access, selection.month]);
@@ -46,5 +45,10 @@ export function useCalendar() {
   return { selection, today, items: snapshot?.month === selection.month ? snapshot.items : null, error, actionError, reload, toggleTask,
     onDate: (date: string) => { setActionError(null); setSelection(selectDate(date)); },
     onMove: (direction: -1 | 1) => { setActionError(null); setSelection((current) => moveMonth(current, direction)); },
-    onToday: () => { setActionError(null); setSelection(returnToToday(localDateString(new Date()))); reload(); } };
+    onToday: () => {
+      const next = returnToToday(localDateString(new Date()));
+      setActionError(null); setToday(next.selected); setSelection(next);
+      // A new month is loaded by the focus effect; avoid reading the old month with a stale closure.
+      if (next.month === selection.month) reload();
+    } };
 }

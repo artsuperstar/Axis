@@ -60,7 +60,7 @@ const fixture = {
 };
 module.exports = {
   fixture, controls,
-  selection: { FormSelectionHost, FormScrollView, useFormSelection: () => selection },
+  selection: { FormSelectionHost, FormScrollView, useFormSelection: () => selection, focusFormControl: (target) => target?.focus() },
   autocomplete: { AutocompleteField: host('AutocompleteField') },
   themedText: { ThemedText: host('ThemedText') },
   safeArea: { SafeAreaProvider: ({ children }) => children, SafeAreaInsetsContext: React.createContext({ top: 0, left: 0, right: 0, bottom: 0 }), useSafeAreaInsets: () => ({ top: 0, left: 0, right: 0, bottom: 0 }) },

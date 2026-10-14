@@ -22,7 +22,7 @@ export default function AppTabs() {
         <NativeTabs.Trigger.Icon sf="checkmark.circle.fill" md="check_circle" />
       </NativeTabs.Trigger>
 
-      <NativeTabs.Trigger name="calendar">
+      <NativeTabs.Trigger name="calendar" disableAutomaticContentInsets>
         <NativeTabs.Trigger.Label>Calendar</NativeTabs.Trigger.Label>
         <NativeTabs.Trigger.Icon sf="calendar" md="calendar_month" />
       </NativeTabs.Trigger>

@@ -6,6 +6,7 @@ import { test } from 'node:test';
 import { migrate } from 'drizzle-orm/expo-sqlite/migrator';
 
 import { selectDate } from '../src/features/calendar/model';
+import { calendarDateLabel, calendarWeekdays } from '../src/features/calendar/presentation';
 import { activityMarkers, calendarMarkerOrder, calendarMarkerPresentation } from '../src/features/calendar/markers';
 import type { CalendarItem, TaskCalendarItem } from '../src/features/calendar/types';
 import { createCommitmentDataAccess } from '../src/features/finance/commitments/data';
@@ -30,7 +31,7 @@ test('month controls select adjacent dates, navigate both directions, and return
   assert.ok(cells.some((node) => node.props.accessibilityLabel?.includes('2 tasks')));
   cells[0].props.onPress!(); assert.deepEqual(selected, ['2026-09-28']);
   assert.equal(cells.filter((node) => node.props.accessibilityLabel?.includes(', selected')).length, 1);
-  assert.match(result.markup, /Underlined: today/);
+  assert.match(result.markup, /Commitment/); assert.match(result.markup, /Work/);
 });
 
 test('six-row month renders all distinct accessible date controls', () => {
@@ -41,6 +42,7 @@ test('six-row month renders all distinct accessible date controls', () => {
 });
 
 for (const [name, date, selected, today] of [
+  ['ordinary', '2026-10-15', '2026-10-12', '2026-10-04'],
   ['selected', '2026-10-12', '2026-10-12', '2026-10-04'],
   ['today', '2026-10-04', '2026-10-12', '2026-10-04'],
   ['selected and today', '2026-10-04', '2026-10-04', '2026-10-04'],
@@ -55,8 +57,12 @@ for (const [name, date, selected, today] of [
     const cell = result.elements.find((node) => node.props.testID === `calendar-date-${date}`)!;
     const dots = result.elements.filter((node) => node.props.testID?.startsWith(`calendar-marker-${date}-`));
     assert.deepEqual(dots.map((node) => node.props.testID), calendarMarkerOrder.map((type) => `calendar-marker-${date}-${type}`));
-    assert.match(cell.props.accessibilityLabel!, /5 tasks, 3 commitments, 1 expected payment/);
+    assert.match(cell.props.accessibilityLabel!, /5 tasks, 3 commitments, 1 Work item/);
     assert.equal(cell.props.accessibilityState?.selected, date === selected);
+    const style = Object.assign({}, ...(cell.props.style as unknown as (state: { pressed: boolean }) => object[])({ pressed: false }));
+    assert.equal(style.borderColor, date === selected || date === today ? theme.Colors.light.accent : 'transparent');
+    assert.equal(style.backgroundColor, date === selected ? theme.Colors.light.accentMuted : theme.Colors.light.background);
+    assert.ok(cell.props.accessibilityLabel!.startsWith(calendarDateLabel(date)));
     if (date === today) assert.match(cell.props.accessibilityLabel!, /today/);
     if (name === 'adjacent month') assert.match(cell.props.accessibilityLabel!, /adjacent month/);
     for (const [index, dot] of dots.entries()) {
@@ -74,7 +80,8 @@ test('empty, sparse and busy cells use the same layout and marker strip without 
   const [empty, sparse, busy] = [render(0), render(1), render(500)];
   const cell = (result: typeof empty) => result.elements.find((node) => node.props.testID === `calendar-date-${date}`)!;
   const strip = (result: typeof empty) => result.elements.find((node) => node.props.testID === `calendar-markers-${date}`)!;
-  assert.deepEqual(cell(empty).props.style, cell(sparse).props.style); assert.deepEqual(cell(sparse).props.style, cell(busy).props.style);
+  const appearance = (result: typeof empty) => (cell(result).props.style as unknown as (state: { pressed: boolean }) => unknown[])({ pressed: false });
+  assert.deepEqual(appearance(empty), appearance(sparse)); assert.deepEqual(appearance(sparse), appearance(busy));
   assert.deepEqual(strip(empty).props.style, strip(sparse).props.style); assert.deepEqual(strip(sparse).props.style, strip(busy).props.style);
   assert.equal(empty.elements.filter((node) => node.props.testID?.startsWith('calendar-marker-')).length, 0);
   assert.equal(sparse.elements.filter((node) => node.props.testID?.startsWith('calendar-marker-')).length, 1);
@@ -82,6 +89,41 @@ test('empty, sparse and busy cells use the same layout and marker strip without 
   assert.equal(busy.elements.filter((node) => node.props.testID?.startsWith('calendar-date-')).length, 42);
   assert.match(cell(busy).props.accessibilityLabel!, /500 tasks/);
   assert.doesNotMatch(busy.markup, />500<|• 500/, 'raw counts are not rendered in the cell');
+});
+
+test('marker legend labels and dots reuse the identical centralized source colors and wrap naturally', () => {
+  const result = renderControl(() => calendarGrid.CalendarLegend());
+  for (const type of calendarMarkerOrder) {
+    assert.ok(result.markup.includes(calendarMarkerPresentation[type].label));
+    const dot = result.elements.find((node) => node.props.testID === `calendar-legend-marker-${type}`)!;
+    assert.equal(Object.assign({}, ...dot.props.style as object[]).backgroundColor, theme.Colors.light[calendarMarkerPresentation[type].color]);
+    assert.equal(dot.props.onPress, undefined);
+  }
+  const legend = result.elements.find((node) => node.props.testID === 'calendar-legend')!;
+  assert.equal((legend.props.style as { flexWrap: string }).flexWrap, 'wrap');
+});
+
+test('weekday labels follow device locale in Monday-first order and expose complete weekday names', () => {
+  const weekdays = calendarWeekdays();
+  assert.equal(weekdays[0].full, pickerValue('2026-10-12').toLocaleDateString(undefined, { weekday: 'long' }));
+  assert.equal(weekdays[6].full, pickerValue('2026-10-18').toLocaleDateString(undefined, { weekday: 'long' }));
+  const result = renderControl(() => calendarGrid.MonthGrid({ selection: selectDate('2026-10-13'), today: '2026-10-13', markers: new Map(), onDate: () => {}, onMove: () => {}, onToday: () => {} }));
+  for (const day of weekdays) assert.ok(result.elements.some((node) => node.props.accessibilityLabel === day.full));
+});
+
+test('agenda preserves complete long source names and large amounts with no fake date-only times or financial actions', () => {
+  const title = 'A long source object name '.repeat(8).trim();
+  const date = '2026-10-13';
+  const items: CalendarItem[] = [
+    { ...task, date, title, status: 'Scheduled', completed: false },
+    { id: 'bill', source: 'commitment', recordId: 'bill', occurrenceId: 'occ', date, title, secondary: 'Expected amount', status: 'Due today', amountMinor: 999999999999 },
+    { id: 'work', source: 'work', recordId: 'work', date, title, clientName: 'Client · name with punctuation', secondary: '', status: 'Payment overdue', amountMinor: 999999999999 },
+  ];
+  const result = renderControl(() => calendarAgenda.DayAgenda({ date, today: date, items, onOpen: () => {}, onToggleTask: () => {} }));
+  assert.ok(result.markup.includes(title)); assert.match(result.markup, /9\.999\.999\.999,99/);
+  assert.match(result.markup, /Client · name with punctuation/); assert.match(result.markup, /outstanding/);
+  assert.doesNotMatch(result.markup, /All day|00:00|text-overflow:ellipsis|white-space:nowrap/);
+  assert.ok(!result.elements.some((node) => ['Pay', 'Skip', 'Edit', 'Delete'].includes(node.props.label ?? '')));
 });
 
 for (const mode of ['light', 'dark'] as const) {
@@ -94,7 +136,7 @@ for (const mode of ['light', 'dark'] as const) {
     };
     const markerColors = calendarMarkerOrder.map((type) => colors[calendarMarkerPresentation[type].color]);
     assert.equal(new Set(markerColors).size, 3);
-    for (const marker of markerColors) for (const background of [colors.background, colors.backgroundSelected]) {
+    for (const marker of markerColors) for (const background of [colors.background, colors.accentMuted]) {
       const a = luminance(marker); const b = luminance(background);
       assert.ok((Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05) >= 3, 'decorative source indicators should remain visible on selection');
     }
@@ -107,13 +149,13 @@ test('agenda opens source identity and Task completion action; only populated se
   const opened: CalendarItem[] = []; const toggled: TaskCalendarItem[] = [];
   const result = renderControl(() => calendarAgenda.DayAgenda({ date: task.date, items: [task], onOpen: (item) => opened.push(item), onToggleTask: (item) => toggled.push(item) }));
   result.elements.find((node) => node.props.accessibilityLabel?.startsWith('Open Report'))!.props.onPress!();
-  result.elements.find((node) => node.props.label === 'Reopen')!.props.onPress!();
+  result.elements.find((node) => node.props.accessibilityLabel?.startsWith('Reopen Report'))!.props.onPress!();
   assert.deepEqual(opened, [task]); assert.deepEqual(toggled, [task]);
   assert.match(result.markup, /Completed/); assert.doesNotMatch(result.markup, /Commitments|Expected payments|Nothing scheduled/);
 });
 test('empty day has concise empty state and no source actions', () => {
   const result = renderControl(() => calendarAgenda.DayAgenda({ date: '2026-10-05', items: [task], onOpen: () => {}, onToggleTask: () => {} }));
-  assert.match(result.markup, /Nothing scheduled for this day\./);
+  assert.match(result.markup, /Nothing scheduled/);
   assert.ok(!result.elements.some((node) => node.props.onPress));
 });
 

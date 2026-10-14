@@ -39,7 +39,7 @@ export function projectScheduledItems(tasks: ScheduledTaskRows, commitments: Sch
   for (const item of work) {
     if (!item.entry.expectedPaymentDate || item.outstandingMinor <= 0) continue;
     items.push({ id: `work:${item.entry.id}`, source: 'work', recordId: item.entry.id, date: item.entry.expectedPaymentDate,
-      title: jobTitle(item.entry), amountMinor: item.outstandingMinor,
+      title: jobTitle(item.entry), amountMinor: item.outstandingMinor, clientName: item.counterparty.name,
       secondary: `${item.counterparty.name} · ${formatBrlAmount(item.outstandingMinor)} outstanding`,
       status: item.overdue ? 'Payment overdue' : 'Expected payment' });
   }

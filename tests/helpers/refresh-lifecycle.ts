@@ -38,10 +38,11 @@ registerHooks({
       : context.parentURL?.includes('/use-finance.') ? ({ './data': 'finance', './work/data': 'work', './commitments/data': 'commitments' } as Record<string, string>)[specifier]
       : context.parentURL?.includes('/use-fitness.') && specifier === './data' ? 'fitness'
         : context.parentURL?.includes('/use-tasks.') && specifier === './data' ? 'tasks'
-          : context.parentURL?.includes('/use-home.') && specifier === './data' ? 'home' : undefined;
+          : context.parentURL?.includes('/use-home.') && specifier === './data' ? 'home'
+            : context.parentURL?.includes('/use-calendar.') && specifier === './data' ? 'calendar' : undefined;
     if (kind) {
       const real = require(fileURLToPath(next(specifier, context).url));
-      const names: Record<string, string> = { finance: 'createFinanceDataAccess', work: 'createWorkDataAccess', commitments: 'createCommitmentDataAccess', fitness: 'createFitnessDataAccess', tasks: 'createTaskDataAccess', home: 'createHomeDataAccess' };
+      const names: Record<string, string> = { finance: 'createFinanceDataAccess', work: 'createWorkDataAccess', commitments: 'createCommitmentDataAccess', fitness: 'createFitnessDataAccess', tasks: 'createTaskDataAccess', home: 'createHomeDataAccess', calendar: 'createCalendarDataAccess' };
       const name = names[kind];
       return cachedModule(new URL(`./lifecycle-access-${kind}.cjs`, import.meta.url), { [name]: (...args: unknown[]) => boundary.fixture.wrap(kind, real[name](...args)) });
     }
@@ -54,6 +55,7 @@ registerHooks({
 });
 
 export const screens = {
+  CalendarScreen: require('../../src/features/calendar/calendar-screen').CalendarScreen as ComponentType,
   WorkoutRotationsScreen: require('../../src/features/fitness/rotations-screen').WorkoutRotationsScreen as ComponentType,
   WorkoutRotationEditorScreen: require('../../src/features/fitness/rotations-screen').WorkoutRotationEditorScreen as ComponentType,
   WorkClientsScreen: require('../../src/features/finance/work/work-management-screen').WorkClientsScreen as ComponentType,

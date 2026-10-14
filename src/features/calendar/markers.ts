@@ -7,10 +7,10 @@ export type CalendarMarker = { type: CalendarMarkerType; count: number };
 
 /** Source identity, ordering, and presentation stay centralized as Calendar sources expand. */
 export const calendarMarkerOrder: readonly CalendarMarkerType[] = ['task', 'commitment', 'work'];
-export const calendarMarkerPresentation: Record<CalendarMarkerType, { color: ThemeColor; singular: string; plural: string }> = {
-  task: { color: 'calendarTask', singular: 'task', plural: 'tasks' },
-  commitment: { color: 'calendarCommitment', singular: 'commitment', plural: 'commitments' },
-  work: { color: 'calendarWorkPayment', singular: 'expected payment', plural: 'expected payments' },
+export const calendarMarkerPresentation: Record<CalendarMarkerType, { color: ThemeColor; label: string; singular: string; plural: string }> = {
+  task: { color: 'calendarTask', label: 'Task', singular: 'task', plural: 'tasks' },
+  commitment: { color: 'calendarCommitment', label: 'Commitment', singular: 'commitment', plural: 'commitments' },
+  work: { color: 'calendarWorkPayment', label: 'Work', singular: 'Work item', plural: 'Work items' },
 };
 
 /** One marker per present source; counts are retained only for richer accessibility announcements. */

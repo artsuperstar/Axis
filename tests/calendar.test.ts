@@ -11,7 +11,7 @@ import { migrate } from 'drizzle-orm/expo-sqlite/migrator';
 
 import * as schema from '../src/database/schema';
 import { createCalendarDataAccess } from '../src/features/calendar/data';
-import { monthDates, moveMonth, returnToToday, selectDate } from '../src/features/calendar/model';
+import { jumpToMonth, monthDates, moveMonth, returnToToday, selectDate } from '../src/features/calendar/model';
 import { activityMarkers, dayAgenda, projectCalendar, sourceParams } from '../src/features/calendar/projection';
 import type { TaskCalendarItem } from '../src/features/calendar/types';
 import { createTaskDataAccess } from '../src/features/tasks/data';
@@ -67,6 +67,31 @@ test('civil dates and local picker round-trip without UTC day shifts', () => {
     assert.equal(localDateString(pickerValue(date, '00:01')), date); assert.equal(startOfMonth(date).slice(0, 7), date.slice(0, 7));
     assert.equal(addDays(addDays(date, 1), -1), date);
   }
+});
+
+test('month/year jumps reuse addMonths clamping, actual selected day and full supported years', () => {
+  for (const [date, year, month, expected] of [
+    ['2026-10-13', 2027, 2, '2027-02-13'], ['2027-01-31', 2027, 2, '2027-02-28'],
+    ['2028-01-31', 2028, 2, '2028-02-29'], ['2026-03-31', 2026, 4, '2026-04-30'],
+    ['2026-12-31', 2027, 1, '2027-01-31'], ['2026-10-31', 1, 2, '0001-02-28'],
+    ['2026-10-31', 9999, 12, '9999-12-31'],
+  ] as const) assert.deepEqual(jumpToMonth(selectDate(date), year, month), selectDate(expected));
+  assert.equal(jumpToMonth({ month: '2026-10-01', selected: '2026-09-30' }, 2027, 2).selected, '2027-02-28');
+  for (const [year, month] of [[0, 1], [10000, 1], [2026, 0], [2026, 13], [2026.5, 1]]) assert.throws(() => jumpToMonth(selectDate(initialDay), year, month), /valid month/);
+});
+
+test('month/year jumps retain intended civil dates across non-UTC zones and DST boundaries', () => {
+  const previous = process.env.TZ;
+  try {
+    for (const zone of ['America/Sao_Paulo', 'America/New_York', 'Pacific/Kiritimati']) {
+      process.env.TZ = zone;
+      for (const [date, year, month, expected] of [['2026-10-14', 2027, 3, '2027-03-14'], ['2027-01-31', 2028, 2, '2028-02-29']] as const) {
+        const jump = jumpToMonth(selectDate(date), year, month);
+        assert.equal(jump.selected, expected); assert.equal(localDateString(pickerValue(jump.selected, '00:01')), expected);
+        assert.equal(jump.month, startOfMonth(expected));
+      }
+    }
+  } finally { if (previous === undefined) delete process.env.TZ; else process.env.TZ = previous; }
 });
 test('range APIs reject malformed, reversed, and unbounded requests', async (t) => {
   const f = await initialized(); t.after(() => f.sqlite.close());

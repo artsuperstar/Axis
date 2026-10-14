@@ -12,7 +12,11 @@ const items = (source: CalendarSource, count: number, day = date) => Array.from(
 for (const [name, tasks, commitments, work, expected] of [
   ['one Task', 1, 0, 0, [{ type: 'task', count: 1 }]],
   ['five Tasks', 5, 0, 0, [{ type: 'task', count: 5 }]],
+  ['Commitment only', 0, 1, 0, [{ type: 'commitment', count: 1 }]],
+  ['Work only', 0, 0, 1, [{ type: 'work', count: 1 }]],
   ['Task and Commitment', 1, 1, 0, [{ type: 'task', count: 1 }, { type: 'commitment', count: 1 }]],
+  ['Task and Work', 1, 0, 1, [{ type: 'task', count: 1 }, { type: 'work', count: 1 }]],
+  ['Commitment and Work', 0, 1, 1, [{ type: 'commitment', count: 1 }, { type: 'work', count: 1 }]],
   ['several records across all three sources', 2, 3, 1, [{ type: 'task', count: 2 }, { type: 'commitment', count: 3 }, { type: 'work', count: 1 }]],
   ['no records', 0, 0, 0, []],
 ] as const) {
@@ -32,15 +36,15 @@ test('source order is stable regardless of record order and dates are grouped in
   assert.equal(activityMarkers(rows).has('2026-10-12'), false);
 });
 
-test('source presentation gives Work its expected-payment meaning and a distinct semantic theme token', () => {
+test('source presentation explicitly identifies Work and uses distinct existing semantic theme tokens', () => {
   assert.deepEqual(calendarMarkerOrder.map((type) => calendarMarkerPresentation[type].color), ['calendarTask', 'calendarCommitment', 'calendarWorkPayment']);
-  assert.equal(calendarMarkerPresentation.work.singular, 'expected payment');
+  assert.equal(calendarMarkerPresentation.work.singular, 'Work item');
 });
 
 test('accessible summaries retain per-source counts, pluralization, and a concise empty state', () => {
   const markers = activityMarkers([...items('task', 3), ...items('commitment', 1), ...items('work', 2)]).get(date)!;
-  assert.equal(markerAccessibilitySummary(markers), '3 tasks, 1 commitment, 2 expected payments');
+  assert.equal(markerAccessibilitySummary(markers), '3 tasks, 1 commitment, 2 Work items');
   assert.equal(markerAccessibilitySummary([{ type: 'task', count: 1 }, { type: 'commitment', count: 2 }, { type: 'work', count: 1 }]),
-    '1 task, 2 commitments, 1 expected payment');
+    '1 task, 2 commitments, 1 Work item');
   assert.equal(markerAccessibilitySummary([]), 'No scheduled activity');
 });
