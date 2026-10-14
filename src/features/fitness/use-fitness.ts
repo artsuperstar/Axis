@@ -8,16 +8,18 @@ import { useDatabase } from '@/database/database-provider';
 import { createFitnessDataAccess } from './data';
 import { fitnessError } from './form';
 import { createRotationDataAccess } from './rotations-data';
-import type { FitnessOverview, NextWorkout, RoutineDetail, SessionDetail } from './types';
+import type { FitnessOverview, NextWorkout, RoutineSummary, SessionDetail } from './types';
 
-export function useFitness(initialSessionId?: string, includeRoutineDetails = false, includeActiveDetail = true) {
+export function useFitness(initialSessionId?: string, includeRoutines = false, includeActiveDetail = true, includeHistory = true) {
   const db = useDatabase();
   const access = useMemo(() => createFitnessDataAccess(db, randomUUID), [db]);
   const rotations = useMemo(() => createRotationDataAccess(db, randomUUID), [db]);
   const [nextWorkout, setNextWorkout] = useState<NextWorkout | null>(null);
   const [rotationSteps, setRotationSteps] = useState<string[]>([]);
   const [snapshot, setSnapshot] = useState<FitnessOverview | null>(null);
-  const [routines, setRoutines] = useState<RoutineDetail[]>([]);
+  const [routines, setRoutines] = useState<RoutineSummary[]>([]);
+  const [routinesLoaded, setRoutinesLoaded] = useState(false);
+  const [historyLoaded, setHistoryLoaded] = useState(false);
   const [detail, setDetail] = useState<SessionDetail | null>(null);
   const [activeDetail, setActiveDetail] = useState<SessionDetail | null>(null);
   const selected = useRef<string | null>(initialSessionId ?? null);
@@ -26,25 +28,27 @@ export function useFitness(initialSessionId?: string, includeRoutineDetails = fa
   const reload = useCallback(() => {
     try {
       // Publish together only after all requested reads succeed. Editors keep their captured drafts.
-      const nextSnapshot = access.readOverview(historyLimit.current);
+      const nextSnapshot = access.readOverview(historyLimit.current, includeHistory);
       const nextPlan = rotations.readNext();
-      const nextSteps = includeRoutineDetails ? rotations.readActiveSteps() : [];
+      const nextSteps = nextPlan && (includeRoutines || includeActiveDetail) ? rotations.readActiveSteps() : [];
       const nextActive = includeActiveDetail && nextSnapshot.active ? access.readSession(nextSnapshot.active.id) : null;
       const nextDetail = selected.current ? selected.current === nextActive?.id ? nextActive : access.readSession(selected.current) : null;
-      const nextRoutines = includeRoutineDetails ? access.readRoutines() : [];
-      setSnapshot(nextSnapshot);
+      const nextRoutines = includeRoutines ? access.readRoutineSummaries() : null;
+      // Retain loaded History while visiting other destinations, including through a failed return refresh.
+      setSnapshot((current) => !includeHistory && current ? { ...nextSnapshot, history: current.history, hasMoreHistory: current.hasMoreHistory } : nextSnapshot);
+      if (includeHistory) setHistoryLoaded(true);
       setNextWorkout(nextPlan);
       setRotationSteps(nextSteps);
       setDetail(nextDetail);
       // Keep the last known Workout while visiting other destinations, without reading it there.
       // Invalidate it when the overview authoritatively removes or replaces the active session.
       setActiveDetail((current) => includeActiveDetail ? nextActive : current?.id === nextSnapshot.active?.id ? current : null);
-      setRoutines(nextRoutines);
+      if (nextRoutines) { setRoutines(nextRoutines); setRoutinesLoaded(true); }
       setError(null);
     } catch (cause) {
       setError(fitnessError(cause, 'Unable to load Fitness. Please try again.'));
     }
-  }, [access, rotations, includeRoutineDetails, includeActiveDetail]);
+  }, [access, rotations, includeRoutines, includeActiveDetail, includeHistory]);
   useFocusEffect(useCallback(() => {
     reload();
     const subscription = AppState.addEventListener('change', (state) => { if (state === 'active') reload(); });
@@ -69,5 +73,5 @@ export function useFitness(initialSessionId?: string, includeRoutineDetails = fa
       setError(null);
     } catch (cause) { setError(fitnessError(cause, 'Unable to load older workouts. Please try again.')); }
   }
-  return { access, snapshot, nextWorkout, rotationSteps, routines, detail, activeDetail, error, reload, mutate, openSession, closeSession, loadMoreHistory };
+  return { access, snapshot, nextWorkout, rotationSteps, routines, routinesLoaded, historyLoaded, detail, activeDetail, error, reload, mutate, openSession, closeSession, loadMoreHistory };
 }

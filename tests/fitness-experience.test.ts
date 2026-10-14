@@ -55,7 +55,7 @@ test('starting from a routine opens inline Workout with snapshotted exercises/ta
 test('starting via Routines returns to inline Workout rather than opening a workout sheet', async (t) => {
   const { db, fitness } = await initialized(t); fitness.createRoutine({ name: 'Empty plan', exercises: [] });
   const app = await mount(createElement(screens.FitnessScreen), db); t.after(app.unmount);
-  await app.press('Routines'); await app.press('Start Empty plan'); assertInline(app);
+  await app.press('Routines'); await app.press('Options for Empty plan'); await app.press('Start Empty plan'); await act(() => new Promise((resolve) => setTimeout(resolve, 20)));  assertInline(app);
   assert.equal(fitness.readOverview().active!.name, 'Empty plan');
 });
 
@@ -75,17 +75,17 @@ test('internal navigation preserves active Workout/scroll context and uses only 
   const exerciseId = fitness.addSessionExercise(session.id, exercise.id); fitness.addSet(exerciseId, { ...blankSet(), weight: '80', reps: '5' });
   fitness.createRoutine({ name: 'Other plan', exercises: [] });
   const app = await mount(createElement(screens.FitnessScreen), db); t.after(app.unmount); assertInline(app);
-  assert.ok(!runtime.fixture.reads.includes('fitness.readRoutines'));
+  assert.ok(!runtime.fixture.reads.includes('fitness.readRoutineSummaries'));
   await act(() => (app.find('ScrollView').props.onScroll as (event: unknown) => void)({ nativeEvent: { contentOffset: { y: 420 } } }));
   runtime.fixture.reads.length = 0; await app.press('Routines');
-  assert.ok(runtime.fixture.reads.includes('fitness.readRoutines')); assert.ok(!runtime.fixture.reads.includes('fitness.readSession'));
+  assert.ok(runtime.fixture.reads.includes('fitness.readRoutineSummaries')); assert.ok(!runtime.fixture.reads.includes('fitness.readSession'));
   for (const destination of ['Exercises', 'History']) {
     runtime.fixture.reads.length = 0; await app.press(destination);
-    assert.ok(!runtime.fixture.reads.includes('fitness.readRoutines')); assert.ok(!runtime.fixture.reads.includes('fitness.readSession'));
+    assert.ok(!runtime.fixture.reads.includes('fitness.readRoutineSummaries')); assert.ok(!runtime.fixture.reads.includes('fitness.readSession'));
   }
   runtime.fixture.reads.length = 0; await app.press('Workout'); assertInline(app);
   assert.deepEqual(app.find('ScrollView').props.contentOffset, { x: 0, y: 420 });
-  assert.ok(runtime.fixture.reads.includes('fitness.readSession')); assert.ok(!runtime.fixture.reads.includes('fitness.readRoutines'));
+  assert.ok(runtime.fixture.reads.includes('fitness.readSession')); assert.ok(!runtime.fixture.reads.includes('fitness.readRoutineSummaries'));
   assert.ok(app.find('Pressable', `${exercise.name}, set 1. 80 kg, 5 reps`));
   for (const label of ['Workout', 'Routines', 'Exercises', 'History']) assert.equal(app.find('FormButton', label).props.variant, 'navigation');
   await app.press('Exercises'); await app.refocus(); assertInline(app); // Returning from Home lands on Workout.
@@ -168,8 +168,8 @@ test('Finish is persistent/primary/confirmed, returns to start state and keeps m
   await app.press('Start Empty Workout'); const second = fitness.readOverview().active!.id;
   await app.press('Finish Workout'); await app.confirm('Finish Workout'); await app.press('History');
   assert.equal(fitness.readOverview().history.length, 2); assert.notEqual(first.id, second);
-  assert.equal(app.nodes().filter((node) => node.kind === 'FormButton' && node.props?.label === 'View workout').length, 2);
-  const view = app.nodes().find((node) => node.kind === 'FormButton' && node.props?.label === 'View workout')!;
+  assert.equal(app.nodes().filter((node) => node.kind === 'Pressable' && String(node.props?.accessibilityLabel ?? '').startsWith('View Free workout,')).length, 2);
+  const view = app.nodes().find((node) => node.kind === 'Pressable' && String(node.props?.accessibilityLabel ?? '').startsWith('View Free workout,'))!;
   await act(() => (view.props.onPress as () => void)()); assert.ok(app.find('Modal'));
   assert.ok(!app.nodes().some((node) => node.props?.label === '+ Add exercise')); await app.press('Back'); await app.press('Workout');
   assert.ok(app.find('FormButton', 'Start Empty Workout'));

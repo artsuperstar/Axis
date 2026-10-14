@@ -21,7 +21,7 @@ Workout has no inline keyboard inputs. Numeric and note inputs remain inside the
 
 ## Reads and refreshes
 
-`useFitness` reads the overview and only the active session detail in Workout. Routine details load only for the Routines manager. Completed detail loads on explicit History opening; History summary paging stays unchanged. All requested refresh results publish together, preserving last-known-good data on failure. Set/note editors keep the inputs captured when opened, independent of refreshed session objects.
+`useFitness` reads the overview and only the active session detail in Workout. Stage 13K adds counts-only Routines rows; one routine's detail loads when its editor/detail opens. History summaries load only for History, and completed detail loads on explicit opening; History summary paging stays unchanged. All requested refresh results publish together, preserving last-known-good data on failure. Set/note editors keep the inputs captured when opened, independent of refreshed session objects.
 
 Home Resume navigates to the existing Fitness tab. Completed-today Home links retain their read-only History detail route. There is a single active-workout presentation, including legacy active source entries.
 

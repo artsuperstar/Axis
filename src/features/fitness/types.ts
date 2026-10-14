@@ -9,6 +9,7 @@ export type SessionExercise = typeof fitnessSessionExercises.$inferSelect;
 export type WorkoutSet = typeof fitnessSets.$inferSelect;
 export type Targets = Pick<RoutineExercise, 'targetSetCount' | 'targetRepMin' | 'targetRepMax' | 'targetDurationSeconds' | 'targetDistanceMeters'>;
 export type RoutineDetail = Routine & { exercises: (RoutineExercise & { exercise: Exercise })[] };
+export type RoutineSummary = Routine & { exerciseCount: number };
 export type Rotation = typeof fitnessRotations.$inferSelect;
 export type RotationStep = typeof fitnessRotationSteps.$inferSelect;
 export type RotationDetail = Rotation & { steps: (RotationStep & { routine: Routine })[]; locked: boolean };

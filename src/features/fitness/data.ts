@@ -161,8 +161,8 @@ export function createFitnessDataAccess(db: AxisDatabase, newId: () => string, n
           routines: routineDetails(query), active: activeSummary(query), ...workoutSummaries(query, historyLimit) };
       });
     },
-    readOverview(historyLimit = 20): FitnessOverview {
-      return db.transaction((query) => ({ ...workoutSummaries(query, historyLimit), active: activeSummary(query),
+    readOverview(historyLimit = 20, includeHistory = true): FitnessOverview {
+      return db.transaction((query) => ({ ...(includeHistory ? workoutSummaries(query, historyLimit) : { history: [], hasMoreHistory: false }), active: activeSummary(query),
         exercises: query.select().from(exercises).orderBy(asc(exercises.name)).all(),
         routines: query.select().from(routines).orderBy(asc(routines.name), asc(routines.id)).all() }));
     },
@@ -171,6 +171,10 @@ export function createFitnessDataAccess(db: AxisDatabase, newId: () => string, n
     },
     readHistory: (limit = 20, before?: WorkoutHistoryCursor) => db.transaction((query) => workoutSummaries(query, limit, before)),
     readRoutines: () => db.transaction(routineDetails),
+    /** Template rows need counts, not every exercise and its target configuration. */
+    readRoutineSummaries: () => db.select({ routine: routines,
+      exerciseCount: sql<number>`(SELECT count(*) FROM fitness_routine_exercises e WHERE e.routine_id = fitness_routines.id AND e.deleted_at IS NULL)`.mapWith(Number),
+    }).from(routines).orderBy(asc(routines.name), asc(routines.id)).all().map(({ routine, exerciseCount }) => ({ ...routine, exerciseCount })),
     readRoutine: (id: string) => db.transaction((query) => routine(query, id)),
     readSession: (id: string) => db.transaction((query) => sessionDetail(query, id)),
     createExercise(draft: { name: string; measurementType: MeasurementType }) {

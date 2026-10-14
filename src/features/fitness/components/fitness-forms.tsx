@@ -8,8 +8,9 @@ import { ThemedText } from '@/components/themed-text';
 import { Space, Spacing } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
 
-import { blankTargets, exerciseResults, fitnessError, measurementLabel, measurementOptions, normalizeName, setDraft, targetDraft, validateMeasurement, validateSet, validateTargets } from '../form';
+import { blankTargets, exerciseResults, fitnessError, measurementLabel, measurementOptions, normalizeName, setDraft, targetDraft, targetLabel, validateMeasurement, validateSet, validateTargets } from '../form';
 import type { Exercise, MeasurementType, RoutineDetail, RoutineDraft, SetDraft, TargetDraft, WorkoutSet } from '../types';
+import { exerciseMeasurementLabel } from '../management-presentation';
 
 function useSave() {
   const saving = useRef(false);
@@ -86,6 +87,10 @@ export function TargetFields({ type, draft, onChange }: { type: MeasurementType;
 }
 
 type RoutineEntryDraft = { key: string; id: string | null; exercise: Exercise; targets: TargetDraft };
+function draftTargets(entry: RoutineEntryDraft) {
+  try { return targetLabel(validateTargets(entry.exercise.measurementType, entry.targets)) || 'No targets'; }
+  catch { return 'Check target values'; }
+}
 export function RoutineEditor({ routine, exercises, onSave, onCreateExercise, onDismiss }: {
   routine: RoutineDetail | null; exercises: Exercise[]; onSave: (draft: RoutineDraft) => void;
   onCreateExercise: (draft: { name: string; measurementType: MeasurementType }) => Exercise; onDismiss: () => void;
@@ -97,6 +102,7 @@ export function RoutineEditor({ routine, exercises, onSave, onCreateExercise, on
   })));
   const sequence = useRef(0);
   const [creating, setCreating] = useState<string | null>(null);
+  const [targetEntry, setTargetEntry] = useState<string | null>(null);
   const submit = useSave();
   function append(exercise: Exercise) {
     const key = `draft-${++sequence.current}`;
@@ -117,24 +123,29 @@ export function RoutineEditor({ routine, exercises, onSave, onCreateExercise, on
     onSave({ name, exercises: entries.map((entry) => ({ id: entry.id, exerciseId: entry.exercise.id, targets: entry.targets })) }); onDismiss();
   })}>
     <FormError message={submit.error} />
+    <ThemedText type="sectionHeading" accessibilityRole="header">Routine</ThemedText>
     <FormField label="Routine name *" value={name} maxLength={120} onChangeText={(value) => { setName(value); submit.clearError(); }} />
+    <ThemedText type="sectionHeading" accessibilityRole="header">Exercises</ThemedText>
+    {!entries.length && <ThemedText type="secondary" themeColor="textSecondary">No exercises yet</ThemedText>}
+    {entries.map((entry, index) => <View key={entry.key} style={[styles.routineEntry, { borderColor: colors.border }]}>
+      <ThemedText type="cardTitle" accessibilityRole="header">{index + 1}. {entry.exercise.name}</ThemedText>
+      <ThemedText type="metadata" themeColor="textSecondary">{measurementLabel(entry.exercise.measurementType)} · {exerciseMeasurementLabel(entry.exercise.measurementType)}{entry.exercise.deletedAt !== null ? ' · Archived — omitted from new workouts' : ''}</ThemedText>
+      <ThemedText type="metadata" themeColor="textSecondary">{draftTargets(entry)}</ThemedText>
+      <View style={styles.actions}>
+        <FormButton variant="quiet" label="Targets" accessibilityLabel={`Configure targets for ${entry.exercise.name}`} expanded={targetEntry === entry.key}
+          onPress={() => setTargetEntry((current) => current === entry.key ? null : entry.key)} />
+        <FormButton variant="quiet" label="Up" accessibilityLabel={`Move ${entry.exercise.name} up`} disabled={index === 0} onPress={() => move(index, -1)} />
+        <FormButton variant="quiet" label="Down" accessibilityLabel={`Move ${entry.exercise.name} down`} disabled={index === entries.length - 1} onPress={() => move(index, 1)} />
+        <FormButton variant="quiet" label="Remove" accessibilityLabel={`Remove ${entry.exercise.name} from routine`} onPress={() => { setEntries((current) => current.filter((item) => item.key !== entry.key)); submit.clearError(); }} />
+      </View>
+      {targetEntry === entry.key && <TargetFields type={entry.exercise.measurementType} draft={entry.targets} onChange={(targets) => {
+        setEntries((current) => current.map((item) => item.key === entry.key ? { ...item, targets } : item)); submit.clearError();
+      }} />}
+    </View>)}
     <AutocompleteField<string | null> label="Add exercise" value={null} displayValue="Search exercises"
       getResults={(query) => exerciseResults(exercises, query)} onSelect={(id) => {
         const exercise = exercises.find((entry) => entry.id === id && entry.deletedAt === null); if (exercise) append(exercise);
       }} onRequestCreate={setCreating} />
-    {!entries.length && <ThemedText type="small" themeColor="textSecondary">Add exercises now, or keep this routine empty.</ThemedText>}
-    {entries.map((entry, index) => <View key={entry.key} style={[styles.card, { backgroundColor: colors.backgroundElement }]}>
-      <ThemedText type="smallBold" accessibilityRole="header">{index + 1}. {entry.exercise.name}</ThemedText>
-      <ThemedText type="small" themeColor="textSecondary">{measurementLabel(entry.exercise.measurementType)}{entry.exercise.deletedAt !== null ? ' · Archived — omitted from new workouts' : ''}</ThemedText>
-      <View style={styles.actions}>
-        <FormButton label="Move up" accessibilityLabel={`Move ${entry.exercise.name} up`} disabled={index === 0} onPress={() => move(index, -1)} />
-        <FormButton label="Move down" accessibilityLabel={`Move ${entry.exercise.name} down`} disabled={index === entries.length - 1} onPress={() => move(index, 1)} />
-        <FormButton label="Remove" accessibilityLabel={`Remove ${entry.exercise.name} from routine`} onPress={() => { setEntries((current) => current.filter((item) => item.key !== entry.key)); submit.clearError(); }} />
-      </View>
-      <TargetFields type={entry.exercise.measurementType} draft={entry.targets} onChange={(targets) => {
-        setEntries((current) => current.map((item) => item.key === entry.key ? { ...item, targets } : item)); submit.clearError();
-      }} />
-    </View>)}
   </AdaptiveSheet>;
 }
 
@@ -189,5 +200,5 @@ export function NoteEditor({ title, value, onSave, onDismiss }: { title: string;
 const styles = StyleSheet.create({
   duration: { flexDirection: 'row', flexWrap: 'wrap', gap: Space.md }, durationPart: { flexGrow: 1, flexShrink: 1 },
   fields: { gap: Spacing.two }, actions: { flexDirection: 'row', flexWrap: 'wrap', gap: Spacing.two },
-  card: { borderRadius: Spacing.two, padding: Spacing.three, gap: Spacing.two },
+  routineEntry: { borderBottomWidth: 1, paddingBottom: Space.lg, gap: Space.sm },
 });

@@ -1,13 +1,14 @@
 import { randomUUID } from 'expo-crypto';
 import { router, useLocalSearchParams } from 'expo-router';
 import { useRef, useState, type ReactNode } from 'react';
-import { ActivityIndicator, Alert, StyleSheet, View } from 'react-native';
+import { ActivityIndicator, Alert, Pressable, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-screens/experimental';
 
 import { BackButton } from '@/components/back-button';
-import { FormButton, FormError, FormField, FormScrollView, FormSelectionHost, SelectField } from '@/components/form-controls';
+import { FormButton, FormError, FormField, FormScrollView, SelectField } from '@/components/form-controls';
+import { ContextMenu, ContextMenuHost } from '@/components/context-menu';
 import { ThemedText } from '@/components/themed-text';
-import { Radius, Space } from '@/constants/theme';
+import { ControlSize, Radius, Space } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
 
 import { fitnessError } from './form';
@@ -18,14 +19,14 @@ function backToFitness() { if (router.canGoBack()) router.back(); else router.re
 function RotationPage({ title, onBack, children, error, onRetry }: { title: string; onBack: () => void; children: ReactNode; error: string | null; onRetry: () => void }) {
   const colors = useTheme();
   return <SafeAreaView edges={{ top: true, bottom: true, left: true, right: true }} style={{ flex: 1, backgroundColor: colors.background }}>
-    <FormSelectionHost>
+    <ContextMenuHost>
       <View style={[styles.inner, styles.header]}>
         <View style={styles.actions}><BackButton onPress={onBack} accessibilityLabel={`Back from ${title.toLowerCase()}`} />
           <ThemedText type="screenTitle" accessibilityRole="header" style={{ flex: 1 }}>{title}</ThemedText></View>
         <FormError message={error} />{error && <FormButton variant="quiet" label="Retry" onPress={onRetry} />}
       </View>
       <FormScrollView style={{ flex: 1 }} contentInsetAdjustmentBehavior="never" keyboardShouldPersistTaps="handled" contentContainerStyle={[styles.inner, styles.content]}>{children}</FormScrollView>
-    </FormSelectionHost>
+    </ContextMenuHost>
   </SafeAreaView>;
 }
 
@@ -45,18 +46,24 @@ export function WorkoutRotationsScreen() {
     {fitness.snapshot && !fitness.snapshot.rotations.length && <ThemedText themeColor="textSecondary">Build an optional cycle from your routines. It advances when you complete the next workout.</ThemedText>}
     {fitness.snapshot?.rotations.map((rotation) => {
       const next = rotation.steps.find((step) => step.id === rotation.nextStepId)!;
+      const edit = () => router.push({ pathname: '/fitness/rotation', params: { rotationId: rotation.id } });
       return <View key={rotation.id} style={[styles.row, { borderColor: colors.border }]}>
-        <ThemedText type="cardTitle" accessibilityLabel={`${rotation.name}, ${rotation.isActive ? 'active' : 'inactive'}, next workout ${next.routine.name}`}>{rotation.name}</ThemedText>
-        <ThemedText type="secondary" themeColor="textSecondary">{rotation.isActive ? 'Active' : 'Inactive'} · Next: {next.routine.name}</ThemedText>
-        <ThemedText type="metadata" themeColor="textSecondary">{rotation.steps.map((step) => step.routine.name).join(' → ')}</ThemedText>
-        {rotation.locked && <ThemedText type="secondary" themeColor="textSecondary">Finish or discard the linked workout before changing its steps or activation.</ThemedText>}
         <View style={styles.actions}>
-          <FormButton variant="quiet" label="Edit" accessibilityLabel={`Edit ${rotation.name}`} onPress={() => router.push({ pathname: '/fitness/rotation', params: { rotationId: rotation.id } })} />
-          <FormButton variant="quiet" label={rotation.isActive ? 'Deactivate' : 'Set active'} accessibilityLabel={`${rotation.isActive ? 'Deactivate' : 'Set active'} ${rotation.name}`}
-            disabled={rotation.locked} onPress={() => perform(() => rotation.isActive ? fitness.access.deactivate(rotation.id) : fitness.access.activate(rotation.id))} />
-          <FormButton variant="quiet" label="Reset rotation" accessibilityLabel={`Reset ${rotation.name}`} disabled={rotation.locked} onPress={() => confirm(rotation, true)} />
-          <FormButton variant="destructive" label="Delete" accessibilityLabel={`Delete ${rotation.name}`} disabled={rotation.locked} onPress={() => confirm(rotation, false)} />
+          <Pressable accessibilityRole="button" accessibilityLabel={`Edit ${rotation.name}`} accessibilityHint="Opens the rotation editor."
+            onPress={edit} style={({ pressed }) => [styles.rotationObject, pressed && { backgroundColor: colors.surfaceMuted }]}>
+            <ThemedText type="cardTitle">{rotation.name}</ThemedText>
+            <ThemedText type="secondary" themeColor="textSecondary">{rotation.isActive ? 'Active' : 'Inactive'} · Next: {next.routine.name}</ThemedText>
+            <ThemedText type="metadata" themeColor="textSecondary">{rotation.steps.map((step) => step.routine.name).join(' → ')}</ThemedText>
+          </Pressable>
+          <ContextMenu label={`Options for ${rotation.name}`} actions={[
+            { label: 'Edit', accessibilityLabel: `Edit ${rotation.name}`, onPress: edit },
+            { label: rotation.isActive ? 'Deactivate' : 'Set active', accessibilityLabel: `${rotation.isActive ? 'Deactivate' : 'Set active'} ${rotation.name}`,
+              disabled: rotation.locked, onPress: () => perform(() => rotation.isActive ? fitness.access.deactivate(rotation.id) : fitness.access.activate(rotation.id)) },
+            { label: 'Reset rotation', accessibilityLabel: `Reset ${rotation.name}`, disabled: rotation.locked, onPress: () => confirm(rotation, true) },
+            { label: 'Delete', accessibilityLabel: `Delete ${rotation.name}`, disabled: rotation.locked, variant: 'destructive', onPress: () => confirm(rotation, false) },
+          ]} />
         </View>
+        {rotation.locked && <ThemedText type="secondary" themeColor="textSecondary">Finish or discard the linked workout before changing its steps or activation.</ThemedText>}
       </View>;
     })}
   </RotationPage>;
@@ -140,5 +147,6 @@ const styles = StyleSheet.create({
   inner: { width: '100%', maxWidth: 640, alignSelf: 'center' }, header: { padding: Space.lg, gap: Space.sm },
   content: { padding: Space.lg, paddingBottom: Space.xl, gap: Space.lg, flexGrow: 1 }, actions: { flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', gap: Space.sm },
   row: { paddingVertical: Space.md, borderBottomWidth: 1, gap: Space.sm }, editor: { gap: Space.md },
+  rotationObject: { flex: 1, minWidth: 0, minHeight: ControlSize.touch, gap: Space.xs, paddingVertical: Space.sm },
   step: { padding: Space.md, borderWidth: 1, borderRadius: Radius.surface, gap: Space.sm },
 });

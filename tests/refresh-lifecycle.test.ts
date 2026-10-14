@@ -289,7 +289,7 @@ test('Fitness History loads older summaries incrementally and retains loaded row
   assert.equal(new Set(state.snapshot!.history.map((row) => row.id)).size, 45); assert.equal(state.error, null);
 });
 
-test('Fitness routine detail failure retains the coherent overview, routine details and workout editor', async (t) => {
+test('Fitness routine summary failure retains the coherent overview, routine rows and workout editor', async (t) => {
   const { db, fitness } = await initialized(t);
   fitness.createRoutine({ name: 'Original routine', exercises: [] });
   const session = fitness.startWorkout();
@@ -298,7 +298,7 @@ test('Fitness routine detail failure retains the coherent overview, routine deta
   const app = await mount(createElement(Probe), db); t.after(app.unmount);
   const before = { snapshot: state.snapshot, detail: state.detail, routines: state.routines };
   fitness.createRoutine({ name: 'New routine', exercises: [] });
-  runtime.fixture.failures.add('fitness.readRoutines');
+  runtime.fixture.failures.add('fitness.readRoutineSummaries');
   await app.resume();
   assert.equal(state.snapshot, before.snapshot); assert.equal(state.detail, before.detail); assert.equal(state.routines, before.routines);
   assert.ok(state.error);

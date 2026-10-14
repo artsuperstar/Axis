@@ -19,6 +19,10 @@ async function fixture(t: TestContext) {
   const routines = ['Push', 'Pull', 'Legs'].map((name) => fitness.createRoutine({ name, exercises: [] }));
   return { ...f, fitness, rotations, routines };
 }
+async function menuAction(app: Awaited<ReturnType<typeof mount>>, name: string, action: string) {
+  await app.press(`Options for ${name}`); await app.press(action);
+  await act(() => new Promise((resolve) => setTimeout(resolve, 20)));
+}
 const plan = (routineIds: string[], name = 'Gym Cycle') => ({ name, steps: routineIds.map((routineId) => ({ id: null, routineId })) });
 async function select(app: Awaited<ReturnType<typeof mount>>, label: string, id: string) {
   await act(() => (app.find('SelectField', label).props.onChange as (value: string) => void)(id));
@@ -53,7 +57,7 @@ test('suggested start uses inline logger, Finish immediately shows Up next, and 
 test('ordinary Routine Start recognizes expected step and discard restores unchanged suggestion', async (t) => {
   const f = await fixture(t); const id = f.rotations.create(plan(f.routines)); f.rotations.activate(id);
   const app = await mount(createElement(screens.FitnessScreen), f.db); t.after(app.unmount);
-  await app.press('Routines'); await app.press('Start Push');
+  await app.press('Routines'); await menuAction(app, 'Push', 'Start Push');
   assert.equal(f.fitness.readOverview().active!.rotationStepId, f.rotations.readNext()!.stepId);
   await app.press('Workout actions'); await app.press('Discard workout'); await app.confirm('Discard');
   assert.ok(app.find('FormButton', 'Start Push')); assert.equal(f.rotations.readNext()!.routine.name, 'Push');
@@ -84,12 +88,12 @@ test('editor validation and Cancel keep source data unchanged; archived routines
 test('rotation management supports explicit activation, confirmed reset/deletion and preserves routines/history', async (t) => {
   const f = await fixture(t); const id = f.rotations.create(plan(f.routines));
   const app = await mount(createElement(screens.WorkoutRotationsScreen), f.db); t.after(app.unmount);
-  await app.press('Set active Gym Cycle'); assert.ok(app.container.textContent.includes('Active · Next: Push'));
+  await menuAction(app, 'Gym Cycle', 'Set active Gym Cycle'); assert.ok(app.container.textContent.includes('Active · Next: Push'));
   const row = f.rotations.read()[0]; f.rotations.setNext(id, row.steps[1].id); await app.resume();
-  await app.press('Reset Gym Cycle'); assert.equal(f.rotations.readNext()!.stepId, row.steps[1].id, 'confirmation required');
+  await menuAction(app, 'Gym Cycle', 'Reset Gym Cycle'); assert.equal(f.rotations.readNext()!.stepId, row.steps[1].id, 'confirmation required');
   await app.confirm('Reset'); assert.equal(f.rotations.readNext()!.stepId, row.steps[0].id);
-  await app.press('Edit Gym Cycle'); assert.deepEqual(runtime.fixture.navigation.at(-1)!.target, { pathname: '/fitness/rotation', params: { rotationId: id } });
-  await app.press('Delete Gym Cycle'); assert.equal(f.rotations.read().length, 1); await app.confirm('Delete');
+  await app.tapSet('Edit Gym Cycle'); assert.deepEqual(runtime.fixture.navigation.at(-1)!.target, { pathname: '/fitness/rotation', params: { rotationId: id } });
+  await menuAction(app, 'Gym Cycle', 'Delete Gym Cycle'); assert.equal(f.rotations.read().length, 1); await app.confirm('Delete');
   assert.equal(f.rotations.read().length, 0); assert.equal(f.fitness.readOverview().routines.length, 3);
 });
 

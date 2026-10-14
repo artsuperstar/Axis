@@ -5,7 +5,8 @@ import { SafeAreaView } from 'react-native-screens/experimental';
 
 import { AdaptiveModal, AdaptiveSheet } from '@/components/adaptive-sheet';
 import { SheetRefreshContext } from '@/components/sheet-refresh-notice';
-import { FormButton, FormError, FormField, FormScrollView, FormSelectionHost, SegmentedControl, SelectField } from '@/components/form-controls';
+import { FormButton, FormError, FormField, FormScrollView, SegmentedControl, SelectField } from '@/components/form-controls';
+import { ContextMenuHost } from '@/components/context-menu';
 import { ThemedText } from '@/components/themed-text';
 import { Space, Spacing } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
@@ -13,12 +14,14 @@ import { useTheme } from '@/hooks/use-theme';
 import { AddExerciseSheet, ExerciseEditor, NoteEditor, RoutineEditor, SetEditor } from './components/fitness-forms';
 import { WorkoutSheet } from './components/workout-sheet';
 import { WorkoutContent } from './components/workout-content';
-import { fitnessError, measurementLabel, targetLabel } from './form';
-import type { Exercise, RoutineDetail, SessionDetail } from './types';
+import { ArchivedRoutineDetail, ExerciseDetail, FitnessObjectRow, WorkoutHistory } from './components/management-content';
+import { fitnessError } from './form';
+import { exerciseMeasurementLabel, exerciseTypeLabel, workoutCounts } from './management-presentation';
+import type { Exercise, Routine, RoutineDetail, SessionDetail } from './types';
 import { useFitness } from './use-fitness';
 
 type FitnessView = 'workout' | 'routines' | 'exercises' | 'history';
-type Dialog = { kind: 'exercise' } | { kind: 'routine'; routine: RoutineDetail | null } | { kind: 'session' } |
+type Dialog = { kind: 'exercise' } | { kind: 'exercise-detail'; exercise: Exercise } | { kind: 'routine'; routine: RoutineDetail | null } | { kind: 'session' } |
   { kind: 'add-exercise'; sessionId: string } | { kind: 'set'; exercise: SessionDetail['exercises'][number]; setId: string | null } |
   { kind: 'note'; sessionId: string; exerciseId: string | null; title: string; value: string | null } |
   { kind: 'actions'; exerciseId: string | null; title: string };
@@ -31,7 +34,7 @@ export function FitnessScreen({ initialSessionId }: { initialSessionId?: string 
   const colors = useTheme();
   const [destination, setView] = useState<FitnessView>('workout');
   const [initialSessionOpen, setInitialSessionOpen] = useState(!!initialSessionId);
-  const fitness = useFitness(initialSessionId, destination === 'routines', destination === 'workout');
+  const fitness = useFitness(initialSessionId, destination === 'routines', destination === 'workout', destination === 'history' || initialSessionOpen);
   const { snapshot, detail, activeDetail, access, mutate } = fitness;
   const view = initialSessionOpen && detail && detail.completedAt !== null ? 'history' : destination;
   const workout = snapshot?.active && activeDetail?.id === snapshot.active.id ? activeDetail : null;
@@ -78,7 +81,11 @@ export function FitnessScreen({ initialSessionId }: { initialSessionId?: string 
       { text: 'Cancel', style: 'cancel' }, { text: 'Archive', style: 'destructive', onPress: () => perform(() => access.archiveExercise(exercise.id)) },
     ]);
   }
-  function archiveRoutine(routine: RoutineDetail) {
+  function openRoutine(id: string) {
+    try { setDialog({ kind: 'routine', routine: access.readRoutine(id) }); setActionError(null); }
+    catch (cause) { setActionError(fitnessError(cause, 'Unable to open this routine. Please try again.')); }
+  }
+  function archiveRoutine(routine: Routine) {
     Alert.alert('Archive routine?', `Archive “${routine.name}”? Workout history will remain unchanged.`, [
       { text: 'Cancel', style: 'cancel' }, { text: 'Archive', style: 'destructive', onPress: () => perform(() => access.archiveRoutine(routine.id)) },
     ]);
@@ -134,7 +141,7 @@ export function FitnessScreen({ initialSessionId }: { initialSessionId?: string 
   const createExercise = (draft: Parameters<typeof access.createExercise>[0]) => mutate(() => access.createExercise(draft));
   return <SheetRefreshContext.Provider value={{ error: fitness.error, onRetry: fitness.reload }}>
     <SafeAreaView edges={{ top: true, bottom: true, left: true, right: true }} style={{ flex: 1, backgroundColor: colors.background }}>
-    <FormSelectionHost>
+    <ContextMenuHost>
         <View style={[styles.inner, styles.header]}>
           <ThemedText type="screenTitle" accessibilityRole="header">Fitness</ThemedText>
           <FormError message={fitness.error || actionError} />
@@ -157,6 +164,8 @@ export function FitnessScreen({ initialSessionId }: { initialSessionId?: string 
             {fitness.nextWorkout && <View style={styles.description}>
               <ThemedText type="sectionHeading" accessibilityRole="header">{lastFinished ? 'Up next' : 'Next workout'}</ThemedText>
               <ThemedText type="cardTitle" accessibilityLabel={`Next workout, ${fitness.nextWorkout.routine.name}`}>{fitness.nextWorkout.routine.name}</ThemedText>
+              <ThemedText type="secondary" themeColor="textSecondary">{fitness.nextWorkout.rotation.name}</ThemedText>
+              <ThemedText type="metadata" themeColor="textSecondary">{fitness.rotationSteps.join(' → ')}</ThemedText>
               <FormButton variant="primary" label={`Start ${fitness.nextWorkout.routine.name}`} onPress={() => start(fitness.nextWorkout!.routine.id)} />
             </View>}
             <ThemedText type="sectionHeading" accessibilityRole="header">{fitness.nextWorkout ? 'Other options' : 'Start a workout'}</ThemedText>
@@ -175,42 +184,38 @@ export function FitnessScreen({ initialSessionId }: { initialSessionId?: string 
               {fitness.nextWorkout && <ThemedText type="secondary" themeColor="textSecondary">Next: {fitness.nextWorkout.routine.name}</ThemedText>}
               <FormButton variant="quiet" label={fitness.nextWorkout ? 'Manage rotation →' : 'Set up rotation →'} onPress={() => router.push('/fitness/rotations')} />
             </View>
-            <FormButton label="New routine" onPress={() => setDialog({ kind: 'routine', routine: null })} />
+            <ThemedText type="sectionHeading" accessibilityRole="header">Your routines</ThemedText>
+            <FormButton variant="quiet" label="New routine" onPress={() => setDialog({ kind: 'routine', routine: null })} />
             <SegmentedControl label="Routines" value={archivedRoutines ? 1 : 0} options={archiveOptions} onChange={(value) => setArchivedRoutines(value === 1)} />
-            {!displayedRoutines.length && <ThemedText themeColor="textSecondary">No {archivedRoutines ? 'archived' : 'active'} routines.</ThemedText>}
-            {displayedRoutines.map((routine) => <View key={routine.id} style={[styles.card, { backgroundColor: colors.backgroundElement }]}>
-              <ThemedText type="smallBold" accessibilityRole="header">{routine.name}</ThemedText>
-              {routine.exercises.map((entry, index) => <View key={entry.id} style={styles.description}>
-                <ThemedText type="small">{index + 1}. {entry.exercise.name}{entry.exercise.deletedAt !== null ? ' · Archived' : ''}</ThemedText>
-                {!!targetLabel(entry) && <ThemedText type="small" themeColor="textSecondary">{targetLabel(entry)}</ThemedText>}
-              </View>)}
-              {!routine.exercises.length && <ThemedText type="small" themeColor="textSecondary">Empty routine</ThemedText>}
-              {routine.exercises.some((entry) => entry.exercise.deletedAt !== null) && <ThemedText type="small" themeColor="textSecondary">Archived exercises stay in this plan and are omitted from new workouts.</ThemedText>}
-              {routine.deletedAt === null && <View style={styles.actions}>
-                <FormButton label="Start" accessibilityLabel={`Start ${routine.name}`} onPress={() => start(routine.id)} />
-                <FormButton label="Edit" accessibilityLabel={`Edit ${routine.name}`} onPress={() => setDialog({ kind: 'routine', routine })} />
-                <FormButton label="Archive" accessibilityLabel={`Archive ${routine.name}`} onPress={() => archiveRoutine(routine)} />
-              </View>}
-            </View>)}
+            {fitness.routinesLoaded && !displayedRoutines.length && <ThemedText themeColor="textSecondary">No {archivedRoutines ? 'archived' : 'active'} routines.</ThemedText>}
+            {!fitness.routinesLoaded && !fitness.error && <ActivityIndicator accessibilityLabel="Loading routines" color={colors.accent} />}
+            {displayedRoutines.map((routine) => <FitnessObjectRow key={routine.id} name={routine.name}
+              summary={workoutCounts(routine.exerciseCount)} label={`Open ${routine.name}, ${workoutCounts(routine.exerciseCount)}`}
+              hint={routine.deletedAt === null ? 'Opens the routine editor.' : 'Opens the archived routine. Read-only.'}
+              onPress={() => openRoutine(routine.id)} actions={routine.deletedAt === null ? [
+                { label: 'Start workout', accessibilityLabel: `Start ${routine.name}`, onPress: () => start(routine.id) },
+                { label: 'Edit', accessibilityLabel: `Edit ${routine.name}`, onPress: () => openRoutine(routine.id) },
+                { label: 'Archive', accessibilityLabel: `Archive ${routine.name}`, variant: 'destructive', onPress: () => archiveRoutine(routine) },
+              ] : undefined} />)}
           </>}
           {snapshot && view === 'exercises' && <>
             <FormButton label="New exercise" onPress={() => setDialog({ kind: 'exercise' })} />
             <SegmentedControl label="Exercise library" value={archivedExercises ? 1 : 0} options={archiveOptions} onChange={(value) => setArchivedExercises(value === 1)} />
             <FormField label="Search exercises" value={search} onChangeText={setSearch} autoCorrect={false} />
             {!displayedExercises.length && <ThemedText themeColor="textSecondary">No matching exercises.</ThemedText>}
-            {displayedExercises.map((exercise) => <View key={exercise.id} style={[styles.card, { backgroundColor: colors.backgroundElement }]}>
-              <ThemedText type="smallBold">{exercise.name}</ThemedText>
-              <ThemedText type="small" themeColor="textSecondary">{measurementLabel(exercise.measurementType)} · {exercise.isBuiltIn ? 'Built-in' : 'Custom'}{exercise.deletedAt !== null ? ' · Archived' : ''}</ThemedText>
-              {!exercise.isBuiltIn && exercise.deletedAt === null && <FormButton label="Archive" accessibilityLabel={`Archive ${exercise.name}`} onPress={() => archiveExercise(exercise)} />}
-            </View>)}
+            {displayedExercises.map((exercise) => <FitnessObjectRow key={exercise.id} name={exercise.name}
+              summary={`${exerciseTypeLabel(exercise.measurementType)} · ${exerciseMeasurementLabel(exercise.measurementType)}`}
+              label={`Open ${exercise.name}, ${exerciseTypeLabel(exercise.measurementType)}`}
+              hint="Opens exercise details." onPress={() => setDialog({ kind: 'exercise-detail', exercise })}
+              actions={!exercise.isBuiltIn && exercise.deletedAt === null ? [
+                { label: 'Archive', accessibilityLabel: `Archive ${exercise.name}`, variant: 'destructive', onPress: () => archiveExercise(exercise) },
+              ] : undefined} />)}
           </>}
           {snapshot && view === 'history' && <>
-            {!snapshot.history.length && <ThemedText themeColor="textSecondary">Completed workouts will appear here.</ThemedText>}
-            {snapshot.history.map((session) => <View key={session.id} style={[styles.card, { backgroundColor: colors.backgroundElement }]}>
-              <ThemedText type="smallBold">{session.name}</ThemedText>
-              <ThemedText type="small" themeColor="textSecondary">{new Date(session.startedAt).toLocaleDateString()} · {session.exerciseCount} exercises · {session.setCount} sets</ThemedText>
-              <FormButton label="View workout" accessibilityLabel={`View ${session.name}, ${new Date(session.startedAt).toLocaleDateString()}`} onPress={() => openSession(session.id)} />
-            </View>)}
+            <ThemedText type="sectionHeading" accessibilityRole="header">Workout History</ThemedText>
+            {!fitness.historyLoaded && !fitness.error && <ActivityIndicator accessibilityLabel="Loading workout History" color={colors.accent} />}
+            {fitness.historyLoaded && !snapshot.history.length && <ThemedText themeColor="textSecondary">No completed workouts yet</ThemedText>}
+            <WorkoutHistory sessions={snapshot.history} onOpen={openSession} />
             {snapshot.hasMoreHistory && <FormButton label="Load older workouts" onPress={fitness.loadMoreHistory} />}
           </>}
         </View>
@@ -218,12 +223,13 @@ export function FitnessScreen({ initialSessionId }: { initialSessionId?: string 
       {view === 'workout' && workout && <View style={[styles.footer, { backgroundColor: colors.surface, borderColor: colors.border }]}>
         <View style={styles.inner}><FormButton variant="primary" label="Finish Workout" onPress={finish} /></View>
       </View>}
-    </FormSelectionHost>
+    </ContextMenuHost>
     </SafeAreaView>
     {dialog && <AdaptiveModal onDismiss={close}>
       {dialog.kind === 'exercise' && <ExerciseEditor onSave={createExercise} onCreated={close} onDismiss={close} />}
-      {dialog.kind === 'routine' && <RoutineEditor routine={dialog.routine} exercises={exercises} onCreateExercise={createExercise} onDismiss={close}
-        onSave={(draft) => mutate(() => dialog.routine ? access.editRoutine(dialog.routine.id, draft) : access.createRoutine(draft))} />}
+      {dialog.kind === 'exercise-detail' && <ExerciseDetail exercise={dialog.exercise} onDismiss={close} />}
+      {dialog.kind === 'routine' && (dialog.routine?.deletedAt != null ? <ArchivedRoutineDetail routine={dialog.routine} onDismiss={close} /> : <RoutineEditor routine={dialog.routine} exercises={exercises} onCreateExercise={createExercise} onDismiss={close}
+        onSave={(draft) => mutate(() => dialog.routine ? access.editRoutine(dialog.routine.id, draft) : access.createRoutine(draft))} />)}
       {dialog.kind === 'session' && detail && <WorkoutSheet session={detail} error={actionError} onDismiss={close} />}
       {dialog.kind === 'actions' && <AdaptiveSheet title={dialog.title} onDismiss={close}>
         <FormError message={actionError} />
