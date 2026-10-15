@@ -32,7 +32,8 @@ test('Task options opens a measured, right-aligned action overlay with exactly t
   const style = Object.assign({}, ...surface.props.style as object[]) as { position: string; width: number; height: number; top: number; left: number; borderRadius: number; elevation: number };
   assert.equal(style.position, 'absolute'); assert.ok(style.width > 44 && style.width <= 400);
   assert.ok(style.left + style.width <= 400 && style.top + style.height <= 800); assert.ok(style.top >= 60);
-  assert.ok(style.borderRadius > 0 && style.elevation > 0);
+  assert.ok(style.borderRadius > 0);
+  assert.ok(style.elevation > 0 || (style as unknown as { boxShadow?: unknown }).boxShadow, 'Raised overlay uses platform elevation or the prototype shadow');
   assert.ok(!app.container.textContent.includes('Task options choices'));
 });
 

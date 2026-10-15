@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Axis · Stage 14D.2 Tasks progress</title>
+<style>
+  :root{color-scheme:light dark;font-family:system-ui,sans-serif;background:#f5f0ea;color:#241e1c}
+  body{max-width:1280px;margin:32px auto;padding:0 24px}h1{font-family:Georgia,serif;font-weight:500}p{max-width:78ch;line-height:1.6}
+  main{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:24px}figure{margin:0}figcaption{font-weight:600;margin:16px 0 8px}
+  img{display:block;width:100%;max-width:390px;height:auto;border:1px solid #9b837b;border-radius:16px}a{color:#68344e}
+  @media(prefers-color-scheme:dark){:root{background:#151315;color:#f6f0ed}a{color:#dfA6bf}}
+</style>
+<header>
+  <h1>Tasks · Daily progress and section navigation</h1>
+  <p>Stage 14D.2 actual-component review. The production TasksScreen, real SQLite task fixtures and bundled Lora/Manrope fonts supply every capture. These show 3 of 6 and 6 of 6 completed, with no simulated device chrome.</p>
+  <p><strong>RN Web layout evidence, not physical-device testing.</strong> Static SSR shows the initial virtualized window, so later To-do/Upcoming rows may not render in these captures. Large-text variants explicitly simulate 2× native text scaling. Native scrolling, pinned navigation, VoiceOver and live motion require device review.</p>
+  <p>The supplied approved mockup remains the visual reference in the conversation. Real Axis keeps its FAB, contextual task actions, four scroll sections, localized full date, current Tasks accent and native bottom navigation.</p>
+  <p><a href="design-system-v2-stage-14d.md#stage-14d2--tasks-daily-progress--section-navigation">Implementation and validation record</a></p>
+</header>
+<main>
+  <figure><figcaption>Light · partial · 390px</figcaption><img src="previews/task-daily-progress/tasks-light-390-partial.png" alt="Light Tasks: section navigation, 3 of 6 completed and pending rows followed by completed Today rows"></figure>
+  <figure><figcaption>Dark · partial · 390px</figcaption><img src="previews/task-daily-progress/tasks-dark-390-partial.png" alt="Dark Tasks: section navigation, half-filled ring and 3 of 6 completed"></figure>
+  <figure><figcaption>Light · complete · 390px</figcaption><img src="previews/task-daily-progress/tasks-light-390-complete.png" alt="Light Tasks: 6 of 6 completed, closed ring with a check, all Today rows retained"></figure>
+  <figure><figcaption>Dark · complete · 390px</figcaption><img src="previews/task-daily-progress/tasks-dark-390-complete.png" alt="Dark Tasks: 6 of 6 completed and readable resolved rows"></figure>
+  <figure><figcaption>Light · partial · 320px</figcaption><img src="previews/task-daily-progress/tasks-light-320-partial.png" alt="Narrow light Tasks with all four navigation destinations and real partial progress"></figure>
+  <figure><figcaption>Dark · partial · 320px</figcaption><img src="previews/task-daily-progress/tasks-dark-320-partial.png" alt="Narrow dark Tasks with four destinations and integrated Today progress"></figure>
+  <figure><figcaption>Light · simulated 2× text · 320px</figcaption><img src="previews/task-daily-progress/tasks-light-320-large-text.png" alt="Light 320px layout with two-row navigation and full-width Today date and count"></figure>
+  <figure><figcaption>Dark · simulated 2× text · 320px</figcaption><img src="previews/task-daily-progress/tasks-dark-320-large-text.png" alt="Dark 320px layout with enlarged wrapping labels and completed rows"></figure>
+  <figure><figcaption>Light · simulated 2× text · 390px</figcaption><img src="previews/task-daily-progress/tasks-light-390-large-text.png" alt="Light 390px layout showing large-text navigation fallback"></figure>
+  <figure><figcaption>Dark · simulated 2× text · 390px</figcaption><img src="previews/task-daily-progress/tasks-dark-390-large-text.png" alt="Dark 390px layout showing large-text Today progress and readable retained completions"></figure>
+</main>
+</html>

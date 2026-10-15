@@ -1,43 +1,48 @@
-import { Stack, useNavigation } from 'expo-router';
-import { useHeaderHeight, usePreventRemove } from 'expo-router/react-navigation';
-import { useRef, useState } from 'react';
-import { Alert, Keyboard, KeyboardAvoidingView, Platform, StyleSheet, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { router, useLocalSearchParams, useNavigation } from 'expo-router';
+import { usePreventRemove } from 'expo-router/react-navigation';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { ActivityIndicator, Alert, Keyboard, KeyboardAvoidingView, Platform, StyleSheet, View, useWindowDimensions } from 'react-native';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { AdaptiveModal } from '@/components/adaptive-sheet';
-import { FormButton, FormScrollView, FormSelectionHost, type FormSelectionHandle } from '@/components/form-controls';
+import { BackButton } from '@/components/back-button';
+import { ContextMenu, ContextMenuHost } from '@/components/context-menu';
+import { FormButton, FormError, FormScrollView, type FormSelectionHandle } from '@/components/form-controls';
 import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { Spacing } from '@/constants/theme';
-import { dateLabel, localDateString } from '@/utils/calendar';
+import { Space } from '@/constants/theme';
+import { useTheme } from '@/hooks/use-theme';
+import { addDays, localDateString } from '@/utils/calendar';
 
 import { JournalContext } from './components/journal-context';
-import { JournalDate } from './components/journal-date';
+import { JournalDate, JournalDayNavigation } from './components/journal-date';
 import { JournalEditor } from './components/journal-editor';
-import { JournalHistory } from './components/journal-history';
 import { JournalLeave } from './components/journal-leave';
 import { requestJournalNavigation, type JournalLeaveChoice } from './editor';
+import { journalFullDate, journalSaveLabel, journalWritingVisible } from './presentation';
 import { useJournal } from './use-journal';
 
 export function JournalScreen() {
-  const journal = useJournal();
+  const params = useLocalSearchParams<{ date?: string; entryRequest?: string }>();
+  const requestedDate = typeof params.date === 'string' ? params.date : undefined;
+  const journal = useJournal(requestedDate);
+  const { editor, targetDate, loadDate } = journal;
   const navigation = useNavigation();
-  const headerHeight = useHeaderHeight();
+  const colors = useTheme(); const insets = useSafeAreaInsets(); const { fontScale } = useWindowDimensions();
   const selection = useRef<FormSelectionHandle>(null);
   const pendingChoice = useRef<((choice: JournalLeaveChoice) => void) | null>(null);
-  const [surface, setSurface] = useState<'date' | 'history' | 'leave' | null>(null);
+  const [surface, setSurface] = useState<'date' | 'leave' | null>(null);
+  const [writingDate, setWritingDate] = useState<string | null>(null);
+  const [headerHeight, setHeaderHeight] = useState(0);
   const [writingHeight, setWritingHeight] = useState(320);
-  function guarded(proceed: () => void) {
+  const guarded = useCallback((proceed: () => void) => {
     if (pendingChoice.current) return;
-    requestJournalNavigation(journal.editor, (choose) => {
-      pendingChoice.current = choose;
-      setSurface('leave');
+    requestJournalNavigation(editor, (choose) => {
+      pendingChoice.current = choose; setSurface('leave');
     }, proceed);
-  }
+  }, [editor]);
   function finishChoice(choice: JournalLeaveChoice) {
     const choose = pendingChoice.current;
-    pendingChoice.current = null; setSurface(null);
-    choose?.(choice);
+    pendingChoice.current = null; setSurface(null); choose?.(choice);
   }
   function closeSurface() { if (pendingChoice.current) finishChoice('keep'); else setSurface(null); }
   usePreventRemove(journal.editor.dirty(), ({ data }) => {
@@ -45,12 +50,22 @@ export function JournalScreen() {
     if (selection.current?.dismiss()) return;
     guarded(() => navigation.dispatch(data.action));
   });
-  function selectDate(date: string) {
-    if (date === journal.state.date) { closeSurface(); return; }
-    guarded(() => { setSurface(null); Keyboard.dismiss(); journal.loadDate(date); });
-  }
+  const selectDate = useCallback((date: string) => {
+    if (date === targetDate && date === editor.getState().date) { setSurface(null); return; }
+    guarded(() => { setSurface(null); Keyboard.dismiss(); loadDate(date); });
+  }, [guarded, editor, loadDate, targetDate]);
+  // A unique History request can select a date already present in retained route params.
+  // Ordinary internal day browsing and midnight refreshes never replay that request.
+  const intent = `${requestedDate ?? 'today'}:${params.entryRequest ?? ''}`;
+  const handledIntent = useRef(intent);
+  useEffect(() => {
+    if (handledIntent.current === intent) return;
+    handledIntent.current = intent; selectDate(requestedDate ?? localDateString(new Date()));
+  }, [intent, requestedDate, selectDate]);
+  function back() { guarded(() => { if (router.canGoBack()) router.back(); else router.replace('/(tabs)'); }); }
+  function history() { guarded(() => { Keyboard.dismiss(); router.push('/journal/history'); }); }
   function remove() {
-    Alert.alert('Delete journal entry?', `Delete the entry for ${dateLabel(journal.state.date)}? Unsaved changes will also be discarded.`, [
+    Alert.alert('Delete journal entry?', `Delete the entry for ${journalFullDate(journal.state.date)}? Unsaved changes will also be discarded.`, [
       { text: 'Cancel', style: 'cancel' }, { text: 'Delete', style: 'destructive', onPress: () => journal.editor.remove() },
     ]);
   }
@@ -59,38 +74,59 @@ export function JournalScreen() {
       { text: 'Keep editing', style: 'cancel' }, { text: 'Discard changes', style: 'destructive', onPress: () => journal.editor.discard() },
     ]);
   }
-  function openSurface(next: 'date' | 'history') {
-    selection.current?.dismiss(false); Keyboard.dismiss();
-    if (next === 'history') journal.readHistory();
-    setSurface(next);
-  }
-  return <ThemedView style={styles.fill}>
-    <Stack.Screen options={{ title: 'Journal', headerBackTitle: 'Home' }} />
-    <SafeAreaView edges={['left', 'right', 'bottom']} style={styles.fill}>
-      <FormSelectionHost ref={selection}>
-        <KeyboardAvoidingView style={styles.fill} behavior={Platform.OS === 'ios' ? 'padding' : undefined} keyboardVerticalOffset={headerHeight}>
-          <FormScrollView contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled" keyboardDismissMode={Platform.OS === 'ios' ? 'interactive' : 'on-drag'}
-            onLayout={(event) => setWritingHeight(Math.max(100, Math.min(320, event.nativeEvent.layout.height - 64)))}>
-            <JournalEditor state={journal.state} today={journal.today} writingHeight={writingHeight} onChange={journal.editor.change} onDate={() => openSurface('date')}
-              onToday={() => selectDate(localDateString(new Date()))} onHistory={() => openSurface('history')} onDelete={remove} onRetryDraft={journal.editor.flushDraft} onDiscardConflict={discardConflict} />
-            {!journal.state.loaded && <FormButton label="Retry journal" onPress={journal.reload} />}
-            <JournalContext context={journal.context} error={journal.contextError} onRetry={journal.readContext} />
-          </FormScrollView>
-          <View style={styles.footer}>
-            {!!journal.state.message && <ThemedText type="small" accessibilityLiveRegion="polite">{journal.state.message}</ThemedText>}
-            <FormButton label="Save" accessibilityLabel={`Save journal for ${dateLabel(journal.state.date)}`} disabled={!journal.state.loaded || journal.state.conflict}
+  const targetFailed = journal.targetDate !== journal.state.date || !journal.state.loaded;
+  const writingVisible = journalWritingVisible(journal.state, journal.today, writingDate);
+  const saveLabel = journalSaveLabel(journal.state);
+  return <SafeAreaView style={[styles.fill, { backgroundColor: colors.background }]}>
+    <ContextMenuHost ref={selection}>
+      <View style={[styles.inner, styles.header]} onLayout={(event) => setHeaderHeight(event.nativeEvent.layout.height)}>
+        <BackButton accessibilityLabel="Back from journal" onPress={back} />
+        <ThemedText type="screenTitle" accessibilityRole="header" style={styles.title}>Journal</ThemedText>
+        <ContextMenu label="Journal options" actions={[
+          { label: 'History', onPress: history },
+          ...(!targetFailed && journal.state.entry && !journal.state.conflict ? [{ label: 'Delete entry', variant: 'destructive' as const, onPress: remove }] : []),
+        ]} />
+      </View>
+      <KeyboardAvoidingView style={styles.fill} behavior={Platform.OS === 'ios' ? 'padding' : undefined} keyboardVerticalOffset={insets.top + headerHeight}>
+        <FormScrollView contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled" keyboardDismissMode={Platform.OS === 'ios' ? 'interactive' : 'on-drag'}
+          onLayout={(event) => setWritingHeight(Math.max(240, Math.min(400, event.nativeEvent.layout.height * 0.6)))}>
+          <View style={styles.inner}>
+            <JournalDayNavigation date={journal.targetDate} today={journal.today} onDate={() => { Keyboard.dismiss(); setSurface('date'); }}
+              onPrevious={() => selectDate(addDays(journal.targetDate, -1))} onNext={() => selectDate(addDays(journal.targetDate, 1))}
+              onToday={() => selectDate(localDateString(new Date()))} />
+            {targetFailed ? <>
+              <FormError message={journal.state.error} />
+              {journal.state.error ? <>
+                <ThemedText type="secondary" themeColor="textSecondary">Unable to open {journalFullDate(journal.targetDate)}.{journal.state.loaded ? ' Your previous day is kept.' : ''}</ThemedText>
+                <FormButton variant="quiet" label="Retry journal" onPress={journal.reload} />
+                {journal.state.loaded && <FormButton variant="quiet" label="Return to loaded day" onPress={() => selectDate(journal.state.date)} />}
+              </> : <ActivityIndicator color={colors.accent} accessibilityLabel="Loading journal day" />}
+            </> : <>
+              <JournalEditor state={journal.state} writingVisible={writingVisible} writingHeight={Math.max(writingHeight, 180 * fontScale)}
+                onWrite={() => setWritingDate(journal.state.date)} onChange={journal.editor.change}
+                onRetryDraft={journal.editor.flushDraft} onDiscardConflict={discardConflict} />
+              {!!journal.state.error && <FormButton variant="quiet" label="Retry journal" onPress={journal.reload} />}
+              <JournalContext context={journal.context} error={journal.contextError} onRetry={journal.readContext} />
+            </>}
+          </View>
+        </FormScrollView>
+        {!targetFailed && writingVisible && <View style={[styles.footer, { backgroundColor: colors.background, borderColor: colors.border }]}>
+          <View style={[styles.inner, styles.save]}>
+            {!!journal.state.message && <ThemedText type="metadata" themeColor="textSecondary" accessibilityLiveRegion="polite" style={styles.message}>{journal.state.message}</ThemedText>}
+            <FormButton variant="primary" label={saveLabel} accessibilityLabel={`${saveLabel} journal for ${journalFullDate(journal.state.date)}`} disabled={journal.state.conflict}
               onPress={() => { Keyboard.dismiss(); journal.editor.save(); }} />
           </View>
-        </KeyboardAvoidingView>
-      </FormSelectionHost>
-    </SafeAreaView>
+        </View>}
+      </KeyboardAvoidingView>
+    </ContextMenuHost>
     {surface && <AdaptiveModal onDismiss={closeSurface}>
       {surface === 'leave' ? <JournalLeave onChoose={finishChoice} />
-        : surface === 'date' ? <JournalDate date={journal.state.date} today={journal.today} onSelect={selectDate} onDismiss={closeSurface} />
-        : <JournalHistory entries={journal.history} hasMore={journal.historyBefore !== null} error={journal.historyError}
-          onSelect={selectDate} onOlder={() => journal.readHistory(true)} onRetry={() => journal.readHistory()} onDismiss={closeSurface} />}
+        : <JournalDate date={journal.targetDate} today={journal.today} onSelect={selectDate} onDismiss={closeSurface} />}
     </AdaptiveModal>}
-  </ThemedView>;
+  </SafeAreaView>;
 }
-const styles = StyleSheet.create({ fill: { flex: 1 }, content: { padding: Spacing.three, gap: Spacing.four },
-  footer: { paddingHorizontal: Spacing.three, paddingVertical: Spacing.two, gap: Spacing.one } });
+const styles = StyleSheet.create({ fill: { flex: 1 }, inner: { width: '100%', maxWidth: 640, alignSelf: 'center', gap: Space.xl },
+  header: { padding: Space.lg, flexDirection: 'row', alignItems: 'center', gap: Space.sm }, title: { flex: 1, minWidth: 0 },
+  content: { padding: Space.lg, paddingBottom: Space.xl, flexGrow: 1 },
+  footer: { paddingHorizontal: Space.lg, paddingVertical: Space.md, borderTopWidth: 1 },
+  save: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'flex-end', alignItems: 'center', gap: Space.sm }, message: { flex: 1, minWidth: 80 } });

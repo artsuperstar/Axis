@@ -2,6 +2,7 @@ import { useEffect, useId, useRef, useState, type Ref } from 'react';
 import { Pressable, ScrollView, StyleSheet, TextInput, View, type TextInputProps } from 'react-native';
 
 import { ThemedText } from '@/components/themed-text';
+import { UiButton } from './design-system';
 import { ControlSize, Radius, Space, Typography } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
 
@@ -127,7 +128,7 @@ export function InlineNameForm({ title, onCancel, onComplete, onSize, onSubmit, 
   </View>;
 }
 
-export function FormButton({ label, onPress, disabled = false, selected = false, accessibilityLabel, variant = 'secondary', compactNavigation = false, expanded, align = 'center', ref }: {
+export function FormButton({ label, onPress, disabled = false, selected = false, accessibilityLabel, variant = 'secondary', compactNavigation = false, expanded, align = 'center', ref, appearance: visual, icon, showIndicator, feature }: {
   label: string;
   onPress: () => void;
   disabled?: boolean;
@@ -139,11 +140,16 @@ export function FormButton({ label, onPress, disabled = false, selected = false,
   expanded?: boolean;
   align?: 'start' | 'center';
   ref?: Ref<View>;
+  appearance?: 'v2';
+  icon?: 'plus' | 'more';
+  showIndicator?: boolean;
+  feature?: 'fitness' | 'tasks';
 }) {
   const colors = useTheme();
   const compact = variant === 'navigation' && compactNavigation;
   const [focused, setFocused] = useState(false);
   const appearance = buttonAppearance(colors, variant, { disabled, selected, focused });
+  if (visual === 'v2') return <UiButton {...{ label, onPress, disabled, selected, accessibilityLabel, variant, expanded, align, ref, icon, showIndicator, feature }} />;
   return (
     <Pressable
       ref={ref}

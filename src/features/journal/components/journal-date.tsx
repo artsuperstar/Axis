@@ -1,13 +1,32 @@
 import DateTimePicker, { DateTimePickerAndroid } from '@react-native-community/datetimepicker';
 import { useState } from 'react';
-import { Platform } from 'react-native';
+import { Platform, Pressable, StyleSheet, View } from 'react-native';
 
 import { AdaptiveSheet } from '@/components/adaptive-sheet';
-import { FormError, FormField, FormSelect } from '@/components/form-controls';
+import { FormButton, FormError, FormField, FormSelect } from '@/components/form-controls';
+import { ThemedText } from '@/components/themed-text';
+import { ControlSize, Space } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { dateLabel, localDateString, pickerValue } from '@/utils/calendar';
 
 import { journalError, validateJournalDate } from '../form';
+import { journalFullDate } from '../presentation';
+
+export function JournalDayNavigation({ date, today, onPrevious, onNext, onToday, onDate }: {
+  date: string; today: string; onPrevious: () => void; onNext: () => void; onToday: () => void; onDate: () => void;
+}) {
+  return <View style={styles.date}>
+    <Pressable accessibilityRole="button" accessibilityLabel={journalFullDate(date)} accessibilityHint="Choose a journal date, today or earlier."
+      onPress={onDate} style={styles.heading}>
+      <ThemedText type="sectionHeading" accessibilityRole="header">{journalFullDate(date)}</ThemedText>
+    </Pressable>
+    <View style={styles.actions}>
+      <FormButton variant="quiet" label="Previous" accessibilityLabel="Previous day" disabled={date === '0001-01-01'} onPress={onPrevious} />
+      <FormButton variant="quiet" label="Next" accessibilityLabel="Next day" disabled={date >= today} onPress={onNext} />
+      {date !== today && <FormButton variant="quiet" label="Today" onPress={onToday} />}
+    </View>
+  </View>;
+}
 
 export function JournalDate({ date, today, onSelect, onDismiss }: { date: string; today: string; onSelect: (date: string) => void; onDismiss: () => void }) {
   const [selected, setSelected] = useState(date);
@@ -28,3 +47,5 @@ export function JournalDate({ date, today, onSelect, onDismiss }: { date: string
         themeVariant={scheme === 'dark' ? 'dark' : 'light'} onValueChange={(_event, value) => setSelected(localDateString(value))} />}
   </AdaptiveSheet>;
 }
+const styles = StyleSheet.create({ date: { gap: Space.xs }, heading: { minHeight: ControlSize.touch, justifyContent: 'center' },
+  actions: { flexDirection: 'row', flexWrap: 'wrap', gap: Space.sm } });

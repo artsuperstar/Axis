@@ -6,6 +6,10 @@ import { Children, createElement, isValidElement, type ReactElement, type ReactN
 // Exercise the real shared components with the existing web renderer, without adding a native test runtime.
 registerHooks({
   resolve(specifier, context, next) {
+    if (specifier === 'expo-image') return next(new URL('./native-image.cjs', import.meta.url).href, context);
+    if (specifier === 'react-native-reanimated') return next(new URL('./native-motion.cjs', import.meta.url).href, context);
+    if (specifier === 'react-native-worklets') return next(new URL('./native-worklets.cjs', import.meta.url).href, context);
+    if (specifier === 'expo-font') return next(new URL('./native-font.cjs', import.meta.url).href, context);
     if (specifier === 'expo-router') return next(new URL('./router-focus.cjs', import.meta.url).href, context);
     // Match Metro's web resolution for the safe-area package's native implementation boundaries.
     if (context.parentURL?.includes('react-native-safe-area-context') && ['./SafeAreaView', './NativeSafeAreaProvider'].includes(specifier)) return next(`${specifier}.web`, context);
@@ -13,7 +17,8 @@ registerHooks({
       ? new URL('./date-time-picker.cjs', import.meta.url).href : specifier;
     return next(target, context);
   },
-  load(url, context, next) { return url.endsWith('.css') ? { format: 'commonjs', source: '', shortCircuit: true } : next(url, context); },
+  load(url, context, next) { return url.endsWith('.ttf') ? { format: 'commonjs', source: 'module.exports = 1;', shortCircuit: true }
+    : url.endsWith('.css') ? { format: 'commonjs', source: '', shortCircuit: true } : next(url, context); },
 });
 const require = createRequire(import.meta.url);
 const { renderToStaticMarkup } = require('react-dom/server') as { renderToStaticMarkup: (node: ReactNode) => string };

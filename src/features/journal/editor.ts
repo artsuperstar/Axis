@@ -53,7 +53,7 @@ export function createJournalEditor(access: EditorAccess, date: string, notify: 
     change(draft: JournalDraft) {
       if (!state.loaded) return;
       pendingDraft = true;
-      update({ ...state, draft, error: null, message: null });
+      update({ ...state, draft, error: null, message: null, recoveryMessage: state.conflict ? state.recoveryMessage : null });
       persistence.changed();
     },
     save() {

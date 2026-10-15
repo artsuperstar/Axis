@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Axis 14D.1 — Tasks visual comparison</title>
+  <style>
+    :root{color-scheme:light}*{box-sizing:border-box}body{margin:0;padding:24px;background:#f5f0ea;color:#241e1c;font:16px/1.5 system-ui,sans-serif}main{max-width:1420px;margin:auto}h1{font-size:28px;margin:0 0 8px}h2{font-size:20px;margin:0 0 12px}p{margin:8px 0 16px}nav{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0}button{font:inherit;min-height:44px;padding:8px 16px;border:1px solid #9b837b;border-radius:10px;background:#fffcf8;color:#241e1c;cursor:pointer}button[aria-pressed=true]{background:#68344e;color:#fff9fb}button:focus-visible,a:focus-visible{outline:3px solid #7b425e;outline-offset:3px}.comparison{display:grid;grid-template-columns:minmax(240px,1fr) repeat(2,minmax(280px,390px));gap:20px;align-items:start}.pane{min-width:0}.reference{padding:20px;background:#fffcf8;border-radius:16px}.screen{display:block;max-width:100%;width:390px;height:auto;border-radius:12px}figcaption{font-size:14px;color:#6a5e59;margin:10px 0}figure{margin:0}a{color:#68344e}table{border-collapse:collapse;width:100%;margin-top:24px;background:#fffcf8}th,td{text-align:left;vertical-align:top;padding:12px;border-bottom:1px solid #e4dad4}th{font-weight:600}footer{margin-top:24px}small{color:#6a5e59}@media(max-width:1000px){.comparison{grid-template-columns:1fr 1fr}.reference{grid-column:1/-1}}@media(max-width:620px){body{padding:16px}.comparison{grid-template-columns:1fr}.reference{grid-column:auto}table{font-size:14px}th,td{padding:8px}}
+  </style>
+</head>
+<body><main>
+  <h1>Tasks — Stage 14D.1 visual fidelity review</h1>
+  <p>Actual supplied target → unchanged 14D screen → corrected Tasks main. The two rendered screens use identical source-backed fixtures.</p>
+  <nav aria-label="Comparison theme">
+    <button type="button" id="light" aria-pressed="true" onclick="changeTheme('light')">Light</button>
+    <button type="button" id="dark" aria-pressed="false" onclick="changeTheme('dark')">Dark</button>
+  </nav>
+  <nav aria-label="Comparison data">
+    <button type="button" id="normal" aria-pressed="true" onclick="changeCase('normal')">Populated Today</button>
+    <button type="button" id="device" aria-pressed="false" onclick="changeCase('device')">Device screenshot state</button>
+  </nav>
+  <div class="comparison">
+    <section class="reference pane" aria-labelledby="target-heading">
+      <h2 id="target-heading">1. Supplied visual target</h2>
+      <p><strong>Use the first uploaded image in the Stage 14D.1 request:</strong> the 1536 × 1024 four-panel mockup, specifically its two left Tasks panels.</p>
+      <p>The actual image is visible in the conversation but is not available as a local image file. This pane documents that exact reference rather than displaying a fabricated reconstruction.</p>
+      <ul>
+        <li>Warm cream and charcoal surfaces with clear ownership.</li>
+        <li>Editorial title; compact rows inside contained regions.</li>
+        <li>Warm Today icon; indigo future icon/control vocabulary.</li>
+        <li>Soft corners and restrained depth.</li>
+      </ul>
+      <p><strong>Architecture translation:</strong> keep vertical Earlier/Today/To-do/Upcoming, header overflow and FAB. Ignore the mockup’s tabs, header Add, progress metrics and completed Today rows.</p>
+      <p>The second uploaded image is the physical current-state reference: Earlier 19, Today 0, To-do 1, Upcoming 2. Select “Device screenshot state” to compare that data state.</p>
+    </section>
+    <figure class="pane"><h2>2. Before 14D.1</h2><a id="before-link" href="previews/tasks-fidelity-before/tasks-light-390-normal.png"><img class="screen" id="before-image" src="previews/tasks-fidelity-before/tasks-light-390-normal.png" alt="Unchanged Stage 14D Tasks main, light, populated Today"></a><figcaption>Actual pre-edit TasksScreen, 390 × 900. Captured before production changes.</figcaption></figure>
+    <figure class="pane"><h2>3. After 14D.1</h2><a id="after-link" href="previews/tasks-fidelity-after/tasks-light-390-normal.png"><img class="screen" id="after-image" src="previews/tasks-fidelity-after/tasks-light-390-normal.png" alt="Corrected Tasks main, light, populated Today"></a><figcaption>Actual corrected TasksScreen, same fixture and viewport. Click either capture for full resolution.</figcaption></figure>
+  </div>
+  <table><thead><tr><th>Attribute</th><th>Before gap</th><th>After assessment</th></tr></thead><tbody>
+    <tr><td>Warmth</td><td>Palette present, weak material character</td><td>Strong: clean warm Today surface and semantic amber tile</td></tr>
+    <tr><td>Surface hierarchy</td><td>Generic boxes with similar header treatment</td><td>Strong: primary work region, quieter To-do, compact disclosures</td></tr>
+    <tr><td>Section ownership</td><td>Plain labels did most of the work</td><td>Strong: icon/header/count composition joins continuous row surfaces</td></tr>
+    <tr><td>Typography personality</td><td>Serif title plus uniformly emphasized rows</td><td>Strong within the rulebook: Lora title, stronger Manrope headings, quieter regular row titles</td></tr>
+    <tr><td>Spacing</td><td>Generic padding and loose row rhythm</td><td>Strong: 20px gutters, aligned header/row text, compact metadata</td></tr>
+    <tr><td>Density</td><td>64px minimum one-line rows; three-line rows about 88px</td><td>Strong: 56px minimum one-line rows; three-line rows about 70px. Richer module headers use more space.</td></tr>
+    <tr><td>Depth</td><td>Flat surface wash</td><td>Moderate-to-strong: tonal groups, icon/count insets, soft edge continuity. No rendered lighting effects.</td></tr>
+    <tr><td>Control polish</td><td>Generic rings, bare overflow and large FAB</td><td>Strong: indigo circular boundaries, round overflow housing, 52px FAB and tactile disclosure states</td></tr>
+    <tr><td>Overall resemblance</td><td>Conservative token substitution</td><td>Substantially closer in visual character; intentionally different IA, heading face and task information</td></tr>
+  </tbody></table>
+  <footer>
+    <p><a href="design-system-v2-stage-14d.md">Implementation, skills, tokens, tests and native-review notes</a></p>
+    <p>Additional after captures: <a href="previews/tasks-fidelity-after/tasks-light-320-normal.png">320 light</a> · <a href="previews/tasks-fidelity-after/tasks-dark-320-normal.png">320 dark</a> · <a href="previews/tasks-fidelity-after/tasks-light-390-long.png">long content</a> · <a href="previews/tasks-fidelity-after/tasks-dark-390-large-text.png">2× text</a> · <a href="previews/tasks-fidelity-after/tasks-dark-390-empty.png">empty</a>.</p>
+    <small>Static RN Web captures, not native-device screenshots. Source hooks and safe-area boundaries are substituted for rendering; actual screen components, fonts and model-backed fixtures are used. Native tabs are not reconstructed. Large text is explicitly simulated. Dense SSR captures show the initial virtualized window, not a native scrolling benchmark.</small>
+  </footer>
+</main><script>
+  let theme='light', variant='normal';
+  function update(){for(const phase of ['before','after']){const path=`previews/tasks-fidelity-${phase}/tasks-${theme}-390-${variant}.png`;document.getElementById(`${phase}-image`).src=path;document.getElementById(`${phase}-image`).alt=`${phase} Tasks main, ${theme}, ${variant==='device'?'empty Today device state':'populated Today'}`;document.getElementById(`${phase}-link`).href=path;}for(const name of ['light','dark'])document.getElementById(name).setAttribute('aria-pressed',String(name===theme));for(const name of ['normal','device'])document.getElementById(name).setAttribute('aria-pressed',String(name===variant));}
+  function changeTheme(value){theme=value;update()}function changeCase(value){variant=value;update()}
+</script></body></html>

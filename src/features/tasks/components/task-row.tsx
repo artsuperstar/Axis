@@ -8,8 +8,9 @@ import { useTheme } from '@/hooks/use-theme';
 import { taskRowPresentation } from '../presentation';
 import type { Task, TaskCategory, TaskOccurrence, TaskRecurrence } from '../types';
 import { TaskButton } from './controls';
+import { TaskListRow } from './task-list-row';
 
-export function TaskRow({ task, occurrence, recurrences, categories, onEdit, onComplete, onActions, now }: {
+export type TaskRowProps = {
   task: Task;
   categories: TaskCategory[];
   onEdit: () => void;
@@ -18,10 +19,13 @@ export function TaskRow({ task, occurrence, recurrences, categories, onEdit, onC
   occurrence: TaskOccurrence | null;
   recurrences: TaskRecurrence[];
   now: number;
-}) {
+  appearance?: 'v2'; section?: string;
+};
+export function TaskRow({ task, occurrence, recurrences, categories, onEdit, onComplete, onActions, now, appearance, section }: TaskRowProps) {
   const colors = useTheme();
   const row = taskRowPresentation(task, occurrence, recurrences, categories, now);
   const { completed, metadata } = row;
+  if (appearance === 'v2') return <TaskListRow {...{ task, occurrence, recurrences, categories, onEdit, onComplete, onActions, now, section, row }} />;
   return (
     <View style={[styles.row, { borderColor: colors.border }]}>
       <Pressable

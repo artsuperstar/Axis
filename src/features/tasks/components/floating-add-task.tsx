@@ -1,26 +1,25 @@
 import { useState } from 'react';
-import { Pressable, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 
-import { buttonAppearance } from '@/components/control-appearance';
-import { ThemedText } from '@/components/themed-text';
-import { Space } from '@/constants/theme';
-import { useTheme } from '@/hooks/use-theme';
+import { UiIcon, UiPressable, raisedSurfaceShadow, useDesignColors } from '@/components/design-system';
+import { DesignSpace as Space } from '@/constants/design-system-v2';
 
-export const taskFabSize = 56;
-export const taskFabClearance = taskFabSize + Space.lg * 2;
+export const taskFabSize = 52;
+export const taskFabClearance = taskFabSize + Space.section * 2;
 
 /** The parent safe area includes the native tab bar; list padding reserves the overlay's space. */
 export function FloatingAddTask({ disabled, onPress }: { disabled: boolean; onPress: () => void }) {
-  const colors = useTheme();
+  const colors = useDesignColors();
   const [focused, setFocused] = useState(false);
-  return <Pressable accessibilityRole="button" accessibilityLabel="Add task" accessibilityState={{ disabled }}
+  return <UiPressable scale accessibilityRole="button" accessibilityLabel="Add task" accessibilityState={{ disabled }}
     disabled={disabled} onPress={onPress} onFocus={() => setFocused(true)} onBlur={() => setFocused(false)}
-    style={({ pressed }) => [buttonAppearance(colors, 'primary', { disabled, focused, pressed }).style, styles.button]}>
-    <ThemedText type="metric" allowFontScaling={false} themeColor={disabled ? 'textMuted' : 'onAccent'}>＋</ThemedText>
-  </Pressable>;
+    style={[styles.button, raisedSurfaceShadow(colors), { backgroundColor: disabled ? colors.inset : colors.brand,
+      borderWidth: 2, borderColor: focused ? colors.onBrand : 'transparent' }]}>
+    <UiIcon name="plus" size={22} color={disabled ? colors.textMuted : colors.onBrand} />
+  </UiPressable>;
 }
 
 const styles = StyleSheet.create({
-  button: { position: 'absolute', right: Space.lg, bottom: Space.lg, width: taskFabSize, height: taskFabSize,
+  button: { position: 'absolute', right: Space.section, bottom: Space.section, width: taskFabSize, height: taskFabSize,
     borderRadius: taskFabSize / 2, alignItems: 'center', justifyContent: 'center' },
 });

@@ -60,7 +60,7 @@ test('fresh Tasks mount shows compact collapsed Earlier/Upcoming, expanded local
   for (const value of ['Earlier item', 'Future item', 'Archived item', 'Completed', 'No date', 'need attention']) assert.ok(!app.container.textContent.includes(value));
   const disclosure = app.find('Pressable', 'Earlier, 1 tasks');
   assert.equal(disclosure.props.accessibilityRole, 'button'); assert.deepEqual(disclosure.props.accessibilityState, { expanded: false, disabled: false });
-  assert.equal(disclosure.childNodes.filter((node) => node.kind === 'ThemedText').length, 1, 'No secondary warning sentence');
+  assert.equal(app.nodes(disclosure).filter((node) => node.kind === 'ThemedText' && node.textContent === 'Earlier').length, 1, 'One heading with the existing count, no secondary warning sentence');
   assert.ok(app.find('FormButton', 'View all 12')); noModal(app);
 });
 
@@ -78,7 +78,7 @@ test('Earlier expands/collapses with exact count while recurring Missed keeps go
   await app.tapSet(`Earlier, ${count - 1} tasks`); assert.equal(section(app, 'Earlier').expanded, false); assert.equal(section(app, 'Earlier').data.length, 0);
 });
 
-test('Today renders one-time and recurring items with rich metadata; completion leaves the active workspace and History can reopen', async (t) => {
+test('Today retains completed dated items with rich metadata and History can still reopen', async (t) => {
   const f = await initialized(t); const category = f.access.createCategory('Personal health');
   f.create('Today one-time', { date: today, time: '09:00', priority: 'high', categoryId: category.id });
   f.create('Today recurring', { date: today, time: '18:00', recurrence: daily });
@@ -86,7 +86,8 @@ test('Today renders one-time and recurring items with rich metadata; completion 
   assert.equal(section(app, 'Today').data.length, 2);
   const item = section(app, 'Today').data.find((entry) => !entry.occurrence)!; const presentation = row(f, item);
   for (const text of ['Today', '09:00', 'High priority', 'Personal health', 'Every day']) assert.ok(app.container.textContent.includes(text));
-  await app.tapSet(`Complete ${presentation.actionSubject}`); assert.equal(section(app, 'Today').data.length, 1);
+  await app.tapSet(`Complete ${presentation.actionSubject}`); assert.equal(section(app, 'Today').data.length, 2);
+  assert.deepEqual(section(app, 'Today').progress, { completed: 1, total: 2 });
   const archive = await mount(createElement(HistoryRoute), f.db);
   assert.ok(archive.find('Pressable', `Reopen ${presentation.actionSubject}`)); await archive.tapSet(`Reopen ${presentation.actionSubject}`);
   assert.equal(sections(archive).length, 0); await archive.unmount(); await app.refocus(); assert.equal(section(app, 'Today').data.length, 2);
@@ -113,10 +114,11 @@ test('at most five To-do items do not expose an unnecessary expand control', asy
 test('editing an undated To-do date schedules it; removing Date returns it to To-do and clears Time', async (t) => {
   const f = await initialized(t); const id = f.create('Schedule me');
   const app = await mount(createElement(screens.TasksScreen), f.db); t.after(app.unmount);
-  let item = section(app, 'To-do').data[0]; await app.tapSet(row(f, item).accessibilityLabel);
+  let item = section(app, 'To-do').data[0]; await app.press(`Actions for ${row(f, item).actionSubject}`); await handoff(app, 'Edit task');
   await app.change('Date', today); await app.change('Time', '14:30'); await app.press('Save');
   assert.equal(section(app, 'To-do').total, 0); assert.equal(section(app, 'Today').total, 1);
-  item = section(app, 'Today').data[0]; await app.tapSet(row(f, item).accessibilityLabel); await app.change('Date', ''); await app.press('Save');
+  item = section(app, 'Today').data[0]; await app.press(`Actions for ${row(f, item).actionSubject}`); await handoff(app, 'Edit task');
+  await app.change('Date', ''); await app.press('Save');
   assert.equal(section(app, 'Today').total, 0); assert.equal(section(app, 'To-do').total, 1);
   assert.equal(f.access.read().tasks.find((task) => task.id === id)!.date, null); assert.equal(f.access.read().tasks.find((task) => task.id === id)!.time, null);
 });
@@ -216,8 +218,8 @@ test('Repeating Tasks is full-screen content and retains schedule edit, stopped 
 test('floating Add task reserves scroll clearance inside tab-aware safe bounds and creates through the existing editor', async (t) => {
   const f = await initialized(t); const app = await mount(createElement(screens.TasksScreen), f.db); t.after(app.unmount);
   const fab = app.find('Pressable', 'Add task'); assert.equal(fab.props.accessibilityRole, 'button'); assert.deepEqual(fab.props.accessibilityState, { disabled: false });
-  const style = Object.assign({}, ...(fab.props.style as (state: unknown) => unknown[])({ pressed: false })) as { width: number; height: number; bottom: number; borderRadius: number };
-  assert.ok(style.width >= 44 && style.height >= 44); assert.equal(style.width, style.height); assert.equal(style.borderRadius, style.width / 2);
+  const style = Object.assign({}, ...(fab.props.style as unknown[]).flat(Infinity)) as { width: number; height: number; bottom: number; borderRadius: number };
+  assert.ok(style.width >= 44 && style.height >= 44); assert.equal(style.width, style.height); assert.ok(style.borderRadius > 0);
   const padding = Object.assign({}, ...(app.find('SectionList').props.contentContainerStyle as object[])) as { paddingBottom: number };
   assert.ok(padding.paddingBottom >= style.height + style.bottom, 'Last content clears the floating control');
   assert.deepEqual(app.find('SafeAreaView').props.edges, { top: true, bottom: true, left: true, right: true });

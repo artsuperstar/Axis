@@ -9,6 +9,9 @@ const require = createRequire(import.meta.url);
 require('./lifecycle-dom.cjs');
 const boundary = require('./lifecycle-native.cjs') as {
   fixture: { db: unknown; failures: Set<string>; reads: string[]; navigation: { method: string; target: unknown }[]; pickers: Record<string, unknown>[];
+    scrollLocations: { sectionIndex: number; itemIndex: number; animated: boolean }[]; scrollOffsets: { y: number; animated: boolean }[]; scrollFailures: number;
+    layoutAnimations: import('react-native').LayoutAnimationConfig[];
+    cellLayouts: unknown[];
     alerts: { title: string; message: string; buttons: { text: string; onPress?: () => void; style?: string }[] }[];
     wrap: (kind: string, access: unknown) => unknown; routeParams?: Record<string, string> }; resume: () => void; refocus: () => void;
 } & Record<string, unknown>;
@@ -16,6 +19,7 @@ const boundaries: Record<string, string> = {
   'react-native': 'native', 'expo-router': 'router', 'expo-crypto': 'crypto', 'react-native-safe-area-context': 'safeArea',
   '@react-native-community/datetimepicker': 'picker',
   'react-native-screens/experimental': 'screenSafeArea',
+  'expo-router/react-navigation': 'navigation',
   '@/database/database-provider': 'database', '@/components/form-controls': 'controls', './form-controls': 'controls',
   '@/components/form-selection-host': 'selection', './form-selection-host': 'selection',
   '@/components/autocomplete-field': 'autocomplete', '@/components/themed-text': 'themedText', './themed-text': 'themedText',
@@ -30,6 +34,10 @@ function cachedModule(url: URL, exports: unknown) {
 }
 registerHooks({
   resolve(specifier, context, next) {
+    if (specifier === 'expo-image') return next(new URL('./native-image.cjs', import.meta.url).href, context);
+    if (specifier === 'react-native-reanimated') return next(new URL('./native-motion.cjs', import.meta.url).href, context);
+    if (specifier === 'react-native-worklets') return next(new URL('./native-worklets.cjs', import.meta.url).href, context);
+    if (specifier === 'expo-font') return next(new URL('./native-font.cjs', import.meta.url).href, context);
     // Screen and native-modal menus use the same real host/context, as in production.
     if ((context.parentURL?.includes('/context-menu.') || context.parentURL?.includes('/adaptive-sheet.')) && specifier === './form-selection-host') return next(specifier, context);
     const key = boundaries[specifier];
@@ -39,22 +47,27 @@ registerHooks({
       : context.parentURL?.includes('/use-fitness.') && specifier === './data' ? 'fitness'
         : context.parentURL?.includes('/use-tasks.') && specifier === './data' ? 'tasks'
           : context.parentURL?.includes('/use-home.') && specifier === './data' ? 'home'
-            : context.parentURL?.includes('/use-calendar.') && specifier === './data' ? 'calendar' : undefined;
+            : context.parentURL?.includes('/use-calendar.') && specifier === './data' ? 'calendar'
+              : context.parentURL?.includes('/use-journal.') ? ({ './data': 'journal', './context': 'journalContext' } as Record<string, string>)[specifier]
+                : context.parentURL?.includes('/use-journal-history.') && specifier === './data' ? 'journal' : undefined;
     if (kind) {
       const real = require(fileURLToPath(next(specifier, context).url));
-      const names: Record<string, string> = { finance: 'createFinanceDataAccess', work: 'createWorkDataAccess', commitments: 'createCommitmentDataAccess', fitness: 'createFitnessDataAccess', tasks: 'createTaskDataAccess', home: 'createHomeDataAccess', calendar: 'createCalendarDataAccess' };
+      const names: Record<string, string> = { finance: 'createFinanceDataAccess', work: 'createWorkDataAccess', commitments: 'createCommitmentDataAccess', fitness: 'createFitnessDataAccess', tasks: 'createTaskDataAccess', home: 'createHomeDataAccess', calendar: 'createCalendarDataAccess', journal: 'createJournalDataAccess', journalContext: 'createJournalContextAccess' };
       const name = names[kind];
       return cachedModule(new URL(`./lifecycle-access-${kind}.cjs`, import.meta.url), { [name]: (...args: unknown[]) => boundary.fixture.wrap(kind, real[name](...args)) });
     }
     return next(specifier, context);
   },
   load(url, context, next) {
+    if (url.endsWith('.ttf')) return { format: 'commonjs', source: 'module.exports = 1;', shortCircuit: true };
     if (url.endsWith('.css')) return { format: 'commonjs', source: '', shortCircuit: true };
     return next(url, context);
   },
 });
 
 export const screens = {
+  JournalScreen: require('../../src/features/journal/journal-screen').JournalScreen as ComponentType,
+  JournalHistoryScreen: require('../../src/features/journal/journal-history-screen').JournalHistoryScreen as ComponentType,
   CalendarScreen: require('../../src/features/calendar/calendar-screen').CalendarScreen as ComponentType,
   WorkoutRotationsScreen: require('../../src/features/fitness/rotations-screen').WorkoutRotationsScreen as ComponentType,
   WorkoutRotationEditorScreen: require('../../src/features/fitness/rotations-screen').WorkoutRotationEditorScreen as ComponentType,
@@ -68,6 +81,7 @@ export const screens = {
   FitnessScreen: require('../../src/features/fitness/fitness-screen').FitnessScreen as ComponentType<NonNullable<Parameters<typeof import('../../src/features/fitness/fitness-screen').FitnessScreen>[0]>>,
 };
 export const hooks = {
+  useJournal: require('../../src/features/journal/use-journal').useJournal as typeof import('../../src/features/journal/use-journal').useJournal,
   useFinance: require('../../src/features/finance/use-finance').useFinance as typeof import('../../src/features/finance/use-finance').useFinance,
   useFitness: require('../../src/features/fitness/use-fitness').useFitness as typeof import('../../src/features/fitness/use-fitness').useFitness,
 };
@@ -78,9 +92,12 @@ export async function mount(node: ReactNode, db: unknown, failures: string[] = [
   boundary.fixture.db = db; boundary.fixture.failures.clear(); failures.forEach((failure) => boundary.fixture.failures.add(failure));
   boundary.fixture.alerts.length = 0; boundary.fixture.navigation.length = 0; boundary.fixture.reads.length = 0;
   boundary.fixture.pickers.length = 0;
+  boundary.fixture.scrollLocations.length = 0; boundary.fixture.scrollOffsets.length = 0; boundary.fixture.scrollFailures = 0;
+  boundary.fixture.layoutAnimations.length = 0;
+  boundary.fixture.cellLayouts.length = 0;
   const container = document.createElement('div') as unknown as Host;
   const root = createRoot(container);
-  await act(() => root.render(node));
+  await act(async () => { root.render(node); });
   function nodes(parent = container): Host[] { return parent.childNodes.flatMap((child) => [child, ...nodes(child)]); }
   function find(kind: string, label?: string) {
     const all = nodes().filter((node) => node.kind === kind && (!label || node.props.label === label || node.props.accessibilityLabel === label));

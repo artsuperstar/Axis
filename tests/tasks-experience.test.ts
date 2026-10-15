@@ -59,13 +59,14 @@ test('main Tasks centers on Today and To-do, with a floating Add task and contex
   for (const label of ['Skip', 'History', 'Delete']) assert.ok(!app.nodes().some((node) => node.kind === 'FormButton' && node.props.label === label));
 });
 
-test('one-time completion remains distinct from task-body editing; Delete is contextual and confirmed', async (t) => {
+test('one-time completion remains distinct from deliberate overflow editing; Delete is contextual and confirmed', async (t) => {
   const f = await initialized(t); const id = f.access.createTask({ ...taskDraft(), title: 'Report', date: today, time: '14:30' });
   const app = await mount(createElement(screens.TasksScreen), f.db); t.after(app.unmount); const row = presentation(f, id);
   await app.tapSet(`Complete ${row.actionSubject}`); assert.notEqual(f.access.read().tasks[0].completedAt, null); noModal(app);
   const archive = await mount(createElement(screens.TasksHistoryScreen), f.db);
   await archive.tapSet(`Reopen ${row.actionSubject}`); await archive.unmount(); await app.refocus(); assert.equal(f.access.read().tasks[0].completedAt, null);
-  await app.tapSet(row.accessibilityLabel); assert.ok(app.find('FormField', 'Title *')); assert.equal(f.access.read().tasks[0].completedAt, null);
+  await app.press(`Actions for ${row.actionSubject}`); await handoff(app, 'Edit task');
+  assert.ok(app.find('FormField', 'Title *')); assert.equal(f.access.read().tasks[0].completedAt, null);
   await app.press('Cancel'); await app.press(`Actions for ${row.actionSubject}`);
   assert.equal(app.find('FormButton', 'Delete task').props.variant, 'destructive'); await handoff(app, 'Edit task'); assert.ok(app.find('FormField', 'Title *'));
   await app.press('Cancel'); await app.press(`Actions for ${row.actionSubject}`); await app.press('Delete task');

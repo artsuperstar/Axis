@@ -8,6 +8,8 @@ import { SheetRefreshContext } from '@/components/sheet-refresh-notice';
 import { FormButton, FormError, FormField, FormScrollView, SegmentedControl, SelectField } from '@/components/form-controls';
 import { ContextMenuHost } from '@/components/context-menu';
 import { ThemedText } from '@/components/themed-text';
+import { UiText, DesignProvider, useDesignColors } from '@/components/design-system';
+import { InternalNavigation } from '@/components/internal-navigation';
 import { Space, Spacing } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
 
@@ -32,6 +34,7 @@ const archiveOptions = [{ value: 0, label: 'Active' }, { value: 1, label: 'Archi
 
 export function FitnessScreen({ initialSessionId }: { initialSessionId?: string } = {}) {
   const colors = useTheme();
+  const design = useDesignColors();
   const [destination, setView] = useState<FitnessView>('workout');
   const [initialSessionOpen, setInitialSessionOpen] = useState(!!initialSessionId);
   const fitness = useFitness(initialSessionId, destination === 'routines', destination === 'workout', destination === 'history' || initialSessionOpen);
@@ -40,7 +43,7 @@ export function FitnessScreen({ initialSessionId }: { initialSessionId?: string 
   const workout = snapshot?.active && activeDetail?.id === snapshot.active.id ? activeDetail : null;
   const offsets = useRef<Record<FitnessView, number>>({ workout: 0, routines: 0, exercises: 0, history: 0 });
   const [scrollOffset, setScrollOffset] = useState(0);
-  function navigateView(next: FitnessView) { setScrollOffset(offsets.current[next]); setView(next); }
+  function navigateView(next: FitnessView) { setInsertedSetId(null); setScrollOffset(offsets.current[next]); setView(next); }
   // A module entry (including Home Resume) lands on Workout. Internal destinations remain independent.
   useFocusEffect(useCallback(() => {
     if (!initialSessionId) { setScrollOffset(offsets.current.workout); setView('workout'); }
@@ -53,6 +56,7 @@ export function FitnessScreen({ initialSessionId }: { initialSessionId?: string 
   const [routineId, setRoutineId] = useState<string | null>(null);
   const [actionError, setActionError] = useState<string | null>(null);
   const [lastFinished, setLastFinished] = useState<string | null>(null);
+  const [insertedSetId, setInsertedSetId] = useState<string | null>(null);
   function close() {
     if (initialSessionOpen && detail && detail.completedAt !== null) navigateView('history');
     setDialog(null); setInitialSessionOpen(false); fitness.closeSession(); setActionError(null);
@@ -139,14 +143,17 @@ export function FitnessScreen({ initialSessionId }: { initialSessionId?: string 
     setDialog({ kind: 'actions', exerciseId, title: exercise?.exerciseName ?? 'Workout actions' });
   }
   const createExercise = (draft: Parameters<typeof access.createExercise>[0]) => mutate(() => access.createExercise(draft));
-  return <SheetRefreshContext.Provider value={{ error: fitness.error, onRetry: fitness.reload }}>
-    <SafeAreaView edges={{ top: true, bottom: true, left: true, right: true }} style={{ flex: 1, backgroundColor: colors.background }}>
+  const v2Active = view === 'workout' && !!snapshot?.active;
+  const ScreenTitle = v2Active ? UiText : ThemedText;
+  return <DesignProvider><SheetRefreshContext.Provider value={{ error: fitness.error, onRetry: fitness.reload }}>
+    <SafeAreaView edges={{ top: true, bottom: true, left: true, right: true }} style={{ flex: 1, backgroundColor: v2Active ? design.canvas : colors.background }}>
     <ContextMenuHost>
         <View style={[styles.inner, styles.header]}>
-          <ThemedText type="screenTitle" accessibilityRole="header">Fitness</ThemedText>
+          <ScreenTitle type="screenTitle" accessibilityRole="header">Fitness</ScreenTitle>
           <FormError message={fitness.error || actionError} />
           {fitness.error && <FormButton label="Retry" onPress={fitness.reload} />}
-          <View style={styles.actions}>{views.map((option) => <FormButton variant="navigation" key={option.value} label={option.label} selected={view === option.value} onPress={() => navigateView(option.value)} />)}</View>
+          {snapshot?.active ? <InternalNavigation value={view} options={views} onChange={navigateView} />
+            : <View style={styles.actions}>{views.map((option) => <FormButton variant="navigation" key={option.value} label={option.label} selected={view === option.value} onPress={() => navigateView(option.value)} />)}</View>}
         </View>
       <FormScrollView key={view} style={{ flex: 1 }} contentInsetAdjustmentBehavior="never" keyboardShouldPersistTaps="handled"
         contentOffset={{ x: 0, y: scrollOffset }} onScroll={(event) => { offsets.current[view] = event.nativeEvent.contentOffset.y; }}
@@ -154,7 +161,7 @@ export function FitnessScreen({ initialSessionId }: { initialSessionId?: string 
         <View style={styles.inner}>
           {!snapshot && !fitness.error && <ActivityIndicator color={colors.text} accessibilityLabel="Loading Fitness" />}
           {snapshot && view === 'workout' && (snapshot.active ? workout ? <WorkoutContent session={workout}
-            onSet={editSet} onNote={editNote} onActions={openActions} onAddExercise={() => setDialog({ kind: 'add-exercise', sessionId: workout.id })} />
+            insertedSetId={insertedSetId} onSet={editSet} onNote={editNote} onActions={openActions} onAddExercise={() => setDialog({ kind: 'add-exercise', sessionId: workout.id })} />
             : fitness.error ? <ThemedText themeColor="textSecondary">Workout details are unavailable. Retry to load your current workout.</ThemedText>
               : <ActivityIndicator color={colors.accent} accessibilityLabel="Loading current workout" /> : <>
             {lastFinished && <View style={styles.description}>
@@ -220,8 +227,8 @@ export function FitnessScreen({ initialSessionId }: { initialSessionId?: string 
           </>}
         </View>
       </FormScrollView>
-      {view === 'workout' && workout && <View style={[styles.footer, { backgroundColor: colors.surface, borderColor: colors.border }]}>
-        <View style={styles.inner}><FormButton variant="primary" label="Finish Workout" onPress={finish} /></View>
+      {view === 'workout' && workout && <View testID="workout-footer" style={[styles.footer, { backgroundColor: design.canvas, borderTopWidth: 0 }]}>
+        <View style={styles.inner}><FormButton appearance="v2" feature="fitness" variant="primary" label="Finish Workout" onPress={finish} /></View>
       </View>}
     </ContextMenuHost>
     </SafeAreaView>
@@ -241,14 +248,17 @@ export function FitnessScreen({ initialSessionId }: { initialSessionId?: string 
       {dialog.kind === 'set' && <SetEditor key={dialog.setId ?? `new-${dialog.exercise.id}`} name={dialog.exercise.exerciseName} type={dialog.exercise.measurementType}
         existing={dialog.exercise.sets.find((set) => set.id === dialog.setId)} previous={dialog.exercise.sets.at(-1)} onDismiss={backToWorkout}
         error={actionError} onDelete={dialog.setId ? () => deleteSet(dialog.setId!) : undefined}
-        onSave={(draft) => mutate(() => dialog.setId ? access.editSet(dialog.setId, draft) : access.addSet(dialog.exercise.id, draft))} />}
+        onSave={(draft) => mutate(() => {
+          if (dialog.setId) access.editSet(dialog.setId, draft);
+          else setInsertedSetId(access.addSet(dialog.exercise.id, draft));
+        })} />}
       {dialog.kind === 'note' && <NoteEditor title={dialog.title} value={dialog.value} onDismiss={backToWorkout}
         onSave={(note) => mutate(() => access.saveNote(dialog.sessionId, dialog.exerciseId, note))} />}
       {!!fitness.error && !detail && dialog.kind === 'session' && <View style={[styles.card, { backgroundColor: colors.background }]}>
         <FormError message={fitness.error} /><FormButton label="Close" onPress={close} /><FormButton label="Retry" onPress={fitness.reload} />
       </View>}
     </AdaptiveModal>}
-  </SheetRefreshContext.Provider>;
+  </SheetRefreshContext.Provider></DesignProvider>;
 }
 
 const styles = StyleSheet.create({

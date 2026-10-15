@@ -2,34 +2,28 @@ import { StyleSheet, View } from 'react-native';
 
 import { FormButton, FormError } from '@/components/form-controls';
 import { ThemedText } from '@/components/themed-text';
-import { Spacing } from '@/constants/theme';
+import { Space } from '@/constants/theme';
 import { formatBrlAmount } from '@/features/finance/money';
 
 import type { JournalDayContext } from '../types';
 
 export function JournalContext({ context, error, onRetry }: { context: JournalDayContext | null; error: string | null; onRetry: () => void }) {
+  if (!error && (!context || (!context.completedTaskCount && !context.workoutCount && !context.transactionCount))) return null;
   return <View style={styles.content}>
-    <ThemedText type="smallBold" accessibilityRole="header">About this day</ThemedText>
+    <ThemedText type="secondary" accessibilityRole="header">Day at a Glance</ThemedText>
     <FormError message={error} />
-    {error && <FormButton label="Retry activity" onPress={onRetry} />}
-    {context && <>
-      {context.completedTaskCount > 0 && <View style={styles.group}>
-        <ThemedText type="small">Tasks completed: {context.completedTaskCount}</ThemedText>
-        <ThemedText type="small" themeColor="textSecondary">{context.taskNames.join(' · ')}{context.completedTaskCount > context.taskNames.length ? ' …' : ''}</ThemedText>
-      </View>}
-      {context.workoutCount > 0 && <View style={styles.group}>
-        <ThemedText type="small">Workouts completed: {context.workoutCount}</ThemedText>
-        {context.workouts.map((workout) => <ThemedText key={workout.id} type="small" themeColor="textSecondary">{workout.name} · {workout.exerciseCount} exercises · {workout.setCount} sets</ThemedText>)}
-        {context.workoutCount > context.workouts.length && <ThemedText type="small" themeColor="textSecondary">{context.workoutCount - context.workouts.length} more workouts</ThemedText>}
-      </View>}
-      {context.transactionCount > 0 && <View style={styles.group}>
-        <ThemedText type="small">Spent: {formatBrlAmount(context.expensesMinor)}</ThemedText>
-        <ThemedText type="small">Received: {formatBrlAmount(context.incomeMinor)}</ThemedText>
-        <ThemedText type="small">Net Flow: {formatBrlAmount(context.netFlowMinor)}</ThemedText>
-      </View>}
-      {context.completedTaskCount === 0 && context.workoutCount === 0 && context.transactionCount === 0
-        && <ThemedText type="small" themeColor="textSecondary">No completed activity or transactions for this day.</ThemedText>}
-    </>}
+    {error && <FormButton variant="quiet" label="Retry activity" onPress={onRetry} />}
+    {context && <View style={styles.lines}>
+      {context.completedTaskCount > 0 && <ThemedText type="secondary" themeColor="textSecondary">{context.completedTaskCount} {context.completedTaskCount === 1 ? 'task' : 'tasks'} completed</ThemedText>}
+      {context.workoutCount > 0 && <ThemedText type="secondary" themeColor="textSecondary">
+        {context.workoutCount === 1 ? `${context.workouts[0].name} · Workout completed` : `${context.workoutCount} workouts completed`}
+      </ThemedText>}
+      {context.transactionCount > 0 && <>
+        <ThemedText type="secondary" themeColor="textSecondary">Spent {formatBrlAmount(context.expensesMinor)}</ThemedText>
+        <ThemedText type="secondary" themeColor="textSecondary">Income {formatBrlAmount(context.incomeMinor)}</ThemedText>
+        <ThemedText type="secondary" themeColor="textSecondary">Net Flow {formatBrlAmount(context.netFlowMinor)}</ThemedText>
+      </>}
+    </View>}
   </View>;
 }
-const styles = StyleSheet.create({ content: { gap: Spacing.three, paddingTop: Spacing.three }, group: { gap: Spacing.one } });
+const styles = StyleSheet.create({ content: { gap: Space.sm, paddingTop: Space.md }, lines: { gap: Space.xs } });

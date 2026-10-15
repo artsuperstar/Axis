@@ -241,7 +241,8 @@ for (const [type, labels, values, display] of [
     for (let i = 0; i < labels.length; i++) await app.change(labels[i], values[i]); await app.press('Save'); assertInline(app);
     const set = fitness.readSession(session.id).exercises[0].sets[0]; assert.deepEqual(workoutSetPresentation(set).values, display);
     const row = app.find('Pressable', `${exercise.name}, set 1. ${workoutSetPresentation(set).spoken}`);
-    assert.ok(row.props.accessibilityHint); assert.ok(display.every((value) => row.textContent.includes(value)));
+    // Reps use the column heading visually; the accessible row still speaks the unit.
+    assert.ok(row.props.accessibilityHint); assert.ok(display.every((value) => row.textContent.includes(value.replace(/ reps$/, ''))));
     assert.ok(!row.textContent.includes('grams')); if (type === 'bodyweight') assert.equal(set.weightGrams, 10000);
   });
 }

@@ -5,12 +5,14 @@ import { SafeAreaInsetsContext } from 'react-native-safe-area-context';
 import { ThemedText } from '@/components/themed-text';
 import { Radius, Space, SurfaceColors } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
+import { MotionTokens, Shape } from '@/constants/design-system-v2';
+import { ContentInsertion, raisedSurfaceShadow, useDesignColors } from './design-system';
 
 import { selectionMenuLayout, selectionOverlayReducer, type SelectionOverlayState } from './form-selection';
 
 type CloseMenu = (restoreFocus?: boolean) => boolean;
 type MenuRequest = { id: string; label: string; trigger: View; estimatedHeight: number; content: ReactNode; keyboardInput?: boolean;
-  presentation?: 'actions'; preferredWidth?: number; align?: 'start' | 'end'; initialFocus?: RefObject<View | null> };
+  presentation?: 'actions'; appearance?: 'v2'; preferredWidth?: number; align?: 'start' | 'end'; initialFocus?: RefObject<View | null> };
 export type InlineActionControls = { title: string; onCancel: () => void; onComplete: () => void; onSize: (height: number) => void };
 export type SelectionInlineAction = { label: string; title: string; accessibilityLabel?: string; render: (controls: InlineActionControls) => ReactNode };
 type InlineRequest = { title: string; content: ReactNode };
@@ -166,7 +168,7 @@ export function FormSelectionHost({ children, ref, safeAreaApplied = false }: { 
       <View style={styles.container} pointerEvents={menu ? 'none' : 'auto'} aria-hidden={!!menu} accessibilityElementsHidden={!!menu} importantForAccessibility={menu ? 'no-hide-descendants' : 'auto'}>
         {children}
       </View>
-      {menu && <SelectionOverlay label={menu.label} content={menu.content} inline={inline} layout={layout} presentation={menu.presentation} panelRef={panel} headingRef={heading} onClose={() => close()}
+      {menu && <SelectionOverlay label={menu.label} content={menu.content} inline={inline} layout={layout} presentation={menu.presentation} appearance={menu.appearance} panelRef={panel} headingRef={heading} onClose={() => close()}
         onHeadingHeight={(next) => {
           if (headingHeight.current !== next) { contentHeight.current += next - headingHeight.current; headingHeight.current = next; reposition(); }
         }} onOptionsHeight={(measuredHeight) => {
@@ -178,23 +180,28 @@ export function FormSelectionHost({ children, ref, safeAreaApplied = false }: { 
 }
 
 /** Both states render in this absolute surface, outside the editor's layout and scroll container. */
-export function SelectionOverlay({ label, content, inline, layout, presentation, panelRef, headingRef, onClose, onHeadingHeight, onOptionsHeight }: {
+export function SelectionOverlay({ label, content, inline, layout, presentation, appearance, panelRef, headingRef, onClose, onHeadingHeight, onOptionsHeight }: {
   label: string; content: ReactNode; inline: InlineRequest | null; layout: ReturnType<typeof selectionMenuLayout>;
   panelRef?: Ref<View>; headingRef?: Ref<View>; onClose: () => void; onHeadingHeight: (height: number) => void; onOptionsHeight: (height: number) => void;
   presentation?: 'actions';
+  appearance?: 'v2';
 }) {
   const colors = useTheme();
+  const design = useDesignColors();
   const actions = presentation === 'actions' && !inline;
   return <View style={StyleSheet.absoluteFill} role="dialog" aria-label={inline?.title ?? (actions ? label : `${label} choices`)} aria-modal accessibilityViewIsModal onAccessibilityEscape={onClose}>
     <Pressable style={StyleSheet.absoluteFill} accessibilityRole="button" accessibilityLabel={inline ? `Dismiss ${inline.title.toLowerCase()} without saving` : `Close ${label.toLowerCase()}${actions ? '' : ' choices'}`} onPress={onClose} />
     {layout && <View ref={panelRef} style={[styles.menu, { left: layout.left, top: layout.top, width: layout.width, height: layout.height,
-      backgroundColor: colors[SurfaceColors.overlay], borderColor: colors.borderStrong }]}>
+      backgroundColor: colors[SurfaceColors.overlay], borderColor: colors.borderStrong }, appearance === 'v2' && {
+      backgroundColor: design.surface, borderColor: design.borderStrong, borderRadius: Shape.menu, elevation: 0, ...raisedSurfaceShadow(design) }]}>
+      <ContentInsertion animate={appearance === 'v2'} duration={MotionTokens.menu} style={styles.container}>
       {!actions && <View ref={headingRef} accessible tabIndex={-1} accessibilityRole="header" accessibilityLabel={inline?.title ?? `${label} choices`} style={styles.heading}
         onLayout={(event) => onHeadingHeight(event.nativeEvent.layout.height)}>
         <ThemedText type="cardTitle">{inline?.title ?? label}</ThemedText>
       </View>}
       {inline ? inline.content : <ScrollView keyboardShouldPersistTaps="always" style={styles.container} contentContainerStyle={styles.options}
         onContentSizeChange={(_width, height) => onOptionsHeight(height)}>{content}</ScrollView>}
+      </ContentInsertion>
     </View>}
   </View>;
 }
