@@ -1,0 +1,1 @@
+ALTER TABLE `fitness_session_exercises` ADD COLUMN `is_manually_complete` integer DEFAULT false NOT NULL CONSTRAINT `fitness_session_exercise_manual_complete_valid` CHECK (`is_manually_complete` IN (0, 1));

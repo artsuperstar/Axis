@@ -44,14 +44,14 @@ export function ExerciseEditor({ initialName = '', onSave, onCreated, onDismiss 
   </AdaptiveSheet>;
 }
 
-export function DurationFields({ minutes, seconds, onChange, optional = false, logging = false }: {
-  minutes: string; seconds: string; onChange: (key: 'minutes' | 'seconds', value: string) => void; optional?: boolean; logging?: boolean;
+export function DurationFields({ minutes, seconds, onChange, optional = false, logging = false, autoFocus = !optional }: {
+  minutes: string; seconds: string; onChange: (key: 'minutes' | 'seconds', value: string) => void; optional?: boolean; logging?: boolean; autoFocus?: boolean;
 }) {
   const { fontScale } = useWindowDimensions();
   if (logging) return <View style={styles.fields}>
     <ThemedText type="secondary" themeColor="textSecondary">{optional ? 'Duration (optional)' : 'Duration'} · Seconds: 0–59</ThemedText>
     <View style={styles.duration}>
-      <View style={[styles.durationPart, { flexBasis: 120 * Math.max(1, fontScale) }]}><FormField label={optional ? 'Minutes (optional)' : 'Minutes'} value={minutes} autoFocus={!optional} keyboardType="number-pad" onChangeText={(value) => onChange('minutes', value)} /></View>
+      <View style={[styles.durationPart, { flexBasis: 120 * Math.max(1, fontScale) }]}><FormField label={optional ? 'Minutes (optional)' : 'Minutes'} value={minutes} autoFocus={autoFocus} keyboardType="number-pad" onChangeText={(value) => onChange('minutes', value)} /></View>
       <View style={[styles.durationPart, { flexBasis: 120 * Math.max(1, fontScale) }]}><FormField label="Seconds" value={seconds} keyboardType="number-pad" onChangeText={(value) => onChange('seconds', value)} /></View>
     </View>
   </View>;
@@ -166,24 +166,24 @@ export function AddExerciseSheet({ exercises, onAdd, onCreateExercise, onDismiss
   </AdaptiveSheet>;
 }
 
-export function SetEditor({ name, type, existing, previous, onSave, onDismiss, onDelete, error }: {
-  name: string; type: MeasurementType; existing?: WorkoutSet; previous?: WorkoutSet; onSave: (draft: SetDraft) => void; onDismiss: () => void;
+export function SetEditor({ name, type, existing, onSave, onDismiss, onDelete, error }: {
+  name: string; type: MeasurementType; existing: WorkoutSet; onSave: (draft: SetDraft) => void; onDismiss: () => void;
   onDelete?: () => void; error?: string | null;
 }) {
-  const [draft, setDraftValue] = useState(() => setDraft(existing ?? previous));
+  const [draft, setDraftValue] = useState(() => setDraft(existing));
   const submit = useSave();
   function change(key: keyof SetDraft, value: string) { setDraftValue((current) => ({ ...current, [key]: value })); submit.clearError(); }
-  return <AdaptiveSheet title={existing ? 'Edit set' : 'Log set'} action="Save" onDismiss={onDismiss} onConfirm={() => submit.save(() => {
+  return <AdaptiveSheet title="Edit set" action="Save" onDismiss={onDismiss} onConfirm={() => submit.save(() => {
     validateSet(type, draft); onSave(draft); onDismiss();
   })}>
     <FormError message={submit.error || error || null} />
     <ThemedText type="smallBold">{name}</ThemedText>
-    {!existing && previous && <ThemedText type="small" themeColor="textSecondary">Prefilled from your last logged set in this workout.</ThemedText>}
-    {type === 'strength' && <FormField label="Weight (kg) *" value={draft.weight} autoFocus keyboardType={decimalKeyboard} onChangeText={(value) => change('weight', value)} />}
-    {(type === 'strength' || type === 'bodyweight') && <FormField label="Reps *" value={draft.reps} autoFocus={type === 'bodyweight'} keyboardType="number-pad" onChangeText={(value) => change('reps', value)} />}
+    <ThemedText type="small" themeColor="textSecondary">Performance details are optional. Empty fields stay empty.</ThemedText>
+    {type === 'strength' && <FormField label="Weight (kg, optional)" value={draft.weight} autoFocus keyboardType={decimalKeyboard} onChangeText={(value) => change('weight', value)} />}
+    {(type === 'strength' || type === 'bodyweight') && <FormField label="Reps (optional)" value={draft.reps} autoFocus={type === 'bodyweight'} keyboardType="number-pad" onChangeText={(value) => change('reps', value)} />}
     {type === 'bodyweight' && <FormField label="Added weight (kg, optional)" value={draft.weight} keyboardType={decimalKeyboard} onChangeText={(value) => change('weight', value)} />}
     {type === 'distance' && <DistanceFields logging distance={draft.distance} distanceUnit={draft.distanceUnit} onChange={change} />}
-    {(type === 'duration' || type === 'distance') && <DurationFields logging minutes={draft.minutes} seconds={draft.seconds} onChange={change} optional={type === 'distance'} />}
+    {(type === 'duration' || type === 'distance') && <DurationFields logging minutes={draft.minutes} seconds={draft.seconds} onChange={change} optional autoFocus={type === 'duration'} />}
     {existing && onDelete && <FormButton variant="destructive" label="Delete set" accessibilityLabel={`Delete set for ${name}`} onPress={onDelete} />}
   </AdaptiveSheet>;
 }

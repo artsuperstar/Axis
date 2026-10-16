@@ -9,7 +9,10 @@ import { createFitnessDataAccess } from '../src/features/fitness/data';
 import { blankTargets } from '../src/features/fitness/form';
 import { createRotationDataAccess } from '../src/features/fitness/rotations-data';
 import { seedFitnessExercises } from '../src/features/fitness/seed';
-import { bundledMigrations, database } from './helpers/database';
+import { bundledMigrations as allMigrations, database } from './helpers/database';
+
+// Keep this upgrade test pinned to the rotation migration; later set changes have their own coverage.
+const bundledMigrations = { ...allMigrations, journal: { ...allMigrations.journal, entries: allMigrations.journal.entries.slice(0, 12) } };
 
 async function previous() {
   const f = database(); await migrate(f.db, { ...bundledMigrations, journal: { ...bundledMigrations.journal, entries: bundledMigrations.journal.entries.slice(0, 11) } });
@@ -34,6 +37,8 @@ async function previous() {
 test('rotation migration additively upgrades populated previous Fitness data and preserves active/history snapshots, sets and notes', async (t) => {
   const f = await previous(); t.after(() => f.sqlite.close());
   await migrate(f.db, bundledMigrations); assert.deepEqual(f.snapshot(), f.before);
+  // Later completion column is required by current session APIs; its upgrade is tested separately.
+  f.sqlite.exec(allMigrations.migrations.m0013);
   const fitness = createFitnessDataAccess(f.db, randomUUID, f.now); const rotations = createRotationDataAccess(f.db, randomUUID, f.now);
   assert.equal(fitness.readOverview().active!.id, 'active');
   assert.equal(fitness.readSession('completed').exercises[0].sets[0].weightGrams, 12500);

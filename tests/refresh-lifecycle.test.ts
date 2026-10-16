@@ -19,6 +19,7 @@ import { seedFitnessExercises } from '../src/features/fitness/seed';
 import { localDateString } from '../src/utils/calendar';
 import { bundledMigrations, database } from './helpers/database';
 import { hooks, mount, runtime, screens } from './helpers/refresh-lifecycle';
+import { completeAndEditWorkoutSet, exerciseMenuAction, workoutMenuAction } from './helpers/workout-interactions';
 
 const today = localDateString(new Date());
 async function initialized(t: TestContext) {
@@ -135,18 +136,19 @@ async function workout(t: TestContext) {
 
 test('Fitness set editor keeps exact input across failed detail read and successful Retry, then saves it', async (t) => {
   const { app, fitness, session, sessionExercise } = await workout(t);
-  await app.press(`Add set for ${sessionExercise.exerciseName}`); await app.change('Weight (kg) *', '12,345'); await app.change('Reps *', '8');
-  await failAndRetry(app, 'fitness.readSession', observeDraft(app, ['Weight (kg) *', 'Reps *']), () => {
+  await completeAndEditWorkoutSet(app, sessionExercise.exerciseName); await app.change('Weight (kg, optional)', '12,345'); await app.change('Reps (optional)', '8');
+  await failAndRetry(app, 'fitness.readSession', observeDraft(app, ['Weight (kg, optional)', 'Reps (optional)']), () => {
     fitness.addSet(sessionExercise.id, { ...blankSet(), weight: '1', reps: '2' });
   });
   await app.press('Save'); const sets = fitness.readSession(session.id).exercises[0].sets;
-  assert.equal(sets.length, 2); assert.equal(sets[1].weightGrams, 12345); assert.equal(sets[1].reps, 8);
+  assert.equal(sets.length, 2); assert.equal(sets[0].weightGrams, 12345); assert.equal(sets[0].reps, 8);
 });
 
 for (const kind of ['exercise', 'workout'] as const) {
   test(`Fitness ${kind} note keeps exact text across failure/Retry and saves its working draft`, async (t) => {
     const { app, fitness, session, sessionExercise } = await workout(t); const exerciseId = kind === 'exercise' ? sessionExercise.id : null;
-    await app.press(kind === 'exercise' ? `Note for ${sessionExercise.exerciseName}` : 'Add workout note');
+    if (kind === 'exercise') await exerciseMenuAction(app, sessionExercise.exerciseName, `Note for ${sessionExercise.exerciseName}`);
+    else await workoutMenuAction(app, 'Add workout note');
     await app.change('Note (optional)', 'Unsaved note\nwith exact whitespace  ');
     await failAndRetry(app, 'fitness.readOverview', observeDraft(app, ['Note (optional)']), () => fitness.saveNote(session.id, exerciseId, 'Source note changed'));
     await app.press('Save'); const detail = fitness.readSession(session.id);
@@ -156,11 +158,11 @@ for (const kind of ['exercise', 'workout'] as const) {
 
 test('Fitness preserves an edited set when Retry removes its exercise; authoritative Save rejects it and retains draft', async (t) => {
   const { app, fitness, sessionExercise } = await workout(t); fitness.addSet(sessionExercise.id, { ...blankSet(), weight: '10', reps: '2' });
-  await app.resume(); await app.tapSet(`${sessionExercise.exerciseName}, set 1. 10 kg, 2 reps`); await app.change('Weight (kg) *', '11');
-  const check = observeDraft(app, ['Weight (kg) *', 'Reps *']);
+  await app.resume(); await app.tapSet(`${sessionExercise.exerciseName}, set 1. 10 kg, 2 reps`); await app.change('Weight (kg, optional)', '11');
+  const check = observeDraft(app, ['Weight (kg, optional)', 'Reps (optional)']);
   await failAndRetry(app, 'fitness.readSession', check, () => fitness.removeSessionExercise(sessionExercise.id));
   await app.press('Save'); check(); assert.ok(app.nodes().some((node) => node.kind === 'FormError' && node.textContent.includes('no longer available')));
-  await app.press('Cancel'); assert.ok(!app.nodes().some((node) => node.kind === 'FormField' && node.props.label === 'Weight (kg) *'));
+  await app.press('Cancel'); assert.ok(!app.nodes().some((node) => node.kind === 'FormField' && node.props.label === 'Weight (kg, optional)'));
 });
 
 test('Work allocation validation uses current outstanding balance and preserves the rejected payment draft', async (t) => {
@@ -184,7 +186,7 @@ test('Commitment payment validation rejects an occurrence resolved during Retry 
 });
 
 test('Fitness note validation rejects a workout completed during Retry while keeping the unsaved text', async (t) => {
-  const { app, fitness, session } = await workout(t); await app.press('Add workout note'); await app.change('Note (optional)', 'Keep this working note');
+  const { app, fitness, session } = await workout(t); await workoutMenuAction(app, 'Add workout note'); await app.change('Note (optional)', 'Keep this working note');
   const check = observeDraft(app, ['Note (optional)']);
   await failAndRetry(app, 'fitness.readOverview', check, () => fitness.finishWorkout(session.id));
   await app.press('Save'); check(); assert.equal(fitness.readSession(session.id).note, null);

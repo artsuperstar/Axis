@@ -85,6 +85,20 @@
       "when": 1791580699604,
       "tag": "0011_fitness_rotations",
       "breakpoints": true
+    },
+    {
+      "idx": 12,
+      "version": "6",
+      "when": 1792163822795,
+      "tag": "0012_fitness_set_completion",
+      "breakpoints": true
+    },
+    {
+      "idx": 13,
+      "version": "6",
+      "when": 1792170917030,
+      "tag": "0013_fitness_manual_completion",
+      "breakpoints": true
     }
   ]
 }

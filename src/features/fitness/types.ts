@@ -22,7 +22,7 @@ export type FitnessSnapshot = {
   exercises: Exercise[]; routines: RoutineDetail[]; active: SessionSummary | null;
   history: SessionSummary[]; hasMoreHistory: boolean;
 };
-export type FitnessOverview = Omit<FitnessSnapshot, 'routines'> & { routines: Routine[] };
+export type FitnessOverview = Omit<FitnessSnapshot, 'routines'> & { routines: RoutineSummary[] };
 export type WorkoutHistoryCursor = Pick<SessionSummary, 'completedAt' | 'startedAt' | 'id'>;
 export type SetDraft = { weight: string; reps: string; minutes: string; seconds: string; distance: string; distanceUnit: 'm' | 'km' };
 export type TargetDraft = Omit<SetDraft, 'weight' | 'reps'> & { setCount: string; repMin: string; repMax: string };

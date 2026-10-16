@@ -49,7 +49,10 @@ test('accumulated-data read paths remain targeted, paged and authoritative', asy
     assert.equal(summary.value.history[0].exerciseCount, 4); assert.equal(summary.value.history[0].setCount, 32);
     const overview = f.measure(() => f.fitness.readOverview());
     assert.equal(overview.count, 6); assert.equal(overview.value.routines.length, 30);
-    assert.ok(overview.statements.every((row) => !row.sql.includes('fitness_routine_exercises')));
+    assert.ok(overview.value.routines.every((routine) => routine.exerciseCount === 3 && !('exercises' in routine)));
+    const routineQuery = overview.statements.filter((row) => row.sql.includes('fitness_routine_exercises'));
+    assert.equal(routineQuery.length, 1, 'One aggregate projection supplies launch counts, not child rows per routine');
+    assert.ok(routineQuery[0].sql.includes('count(*)')); assert.equal(routineQuery[0].rows, 30);
     const routines = f.measure(() => f.fitness.readRoutines());
     assert.equal(routines.count, 4); assert.equal(routines.value[0].exercises.length, 3);
     const detail = f.measure(() => f.fitness.readSession(summary.value.history[0].id));

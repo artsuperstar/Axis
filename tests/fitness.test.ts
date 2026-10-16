@@ -305,7 +305,7 @@ test('SQLite enforces typed set checks, safe integer bounds, referential identit
   const { sqlite, db, fitness } = await initialized(); t.after(() => sqlite.close());
   const session = fitness.startWorkout(); const strength = fitness.addSessionExercise(session.id, builtIn('strength')); const duration = fitness.addSessionExercise(session.id, builtIn('duration'));
   const base = { id: randomUUID(), sessionExerciseId: strength, measurementType: 'strength' as const, position: 0, weightGrams: 1000, reps: 10, createdAt: now(), updatedAt: now() };
-  for (const values of [{ reps: null }, { reps: 1.5 }, { weightGrams: -1 }, { weightGrams: Number.MAX_SAFE_INTEGER + 1 }, { durationSeconds: 1 }, { position: -1 }, { sessionExerciseId: 'missing' }]) {
+  for (const values of [{ reps: 0 }, { reps: 1.5 }, { weightGrams: -1 }, { weightGrams: Number.MAX_SAFE_INTEGER + 1 }, { durationSeconds: 1 }, { position: -1 }, { sessionExerciseId: 'missing' }]) {
     assert.throws(() => db.insert(schema.fitnessSets).values({ ...base, ...values }).run());
   }
   assert.throws(() => db.insert(schema.fitnessSets).values({ ...base, sessionExerciseId: duration }).run());

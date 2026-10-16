@@ -55,14 +55,14 @@ export function validateSet(type: MeasurementType, draft: SetDraft) {
   const result = { weightGrams: null as number | null, reps: null as number | null, durationSeconds: null as number | null, distanceMeters: null as number | null };
   if (type === 'strength' || type === 'bodyweight') {
     rejectFields([draft.minutes, draft.seconds, draft.distance]);
-    result.reps = parseInteger(draft.reps, 'Reps');
-    result.weightGrams = type === 'bodyweight' && !draft.weight.trim() ? null : parseThousandths(draft.weight, 'Weight', type === 'strength');
+    result.reps = draft.reps.trim() ? parseInteger(draft.reps, 'Reps') : null;
+    result.weightGrams = draft.weight.trim() ? parseThousandths(draft.weight, 'Weight', type === 'strength') : null;
   } else if (type === 'duration') {
     rejectFields([draft.weight, draft.reps, draft.distance]);
-    result.durationSeconds = parseDuration(draft.minutes, draft.seconds);
+    result.durationSeconds = parseDuration(draft.minutes, draft.seconds, true);
   } else {
     rejectFields([draft.weight, draft.reps]);
-    result.distanceMeters = parseDistance(draft.distance, draft.distanceUnit);
+    result.distanceMeters = draft.distance.trim() ? parseDistance(draft.distance, draft.distanceUnit) : null;
     result.durationSeconds = parseDuration(draft.minutes, draft.seconds, true);
   }
   return result;
@@ -112,10 +112,10 @@ export function durationLabel(seconds: number) {
 }
 export function distanceLabel(meters: number) { return meters < 1000 ? `${meters} m` : `${formatThousandths(meters)} km`; }
 export function setLabel(set: Pick<WorkoutSet, 'measurementType' | 'weightGrams' | 'reps' | 'durationSeconds' | 'distanceMeters'>) {
-  if (set.measurementType === 'strength') return `${formatThousandths(set.weightGrams!)} kg × ${set.reps}`;
-  if (set.measurementType === 'bodyweight') return `${set.reps} reps${set.weightGrams === null ? '' : ` · +${formatThousandths(set.weightGrams)} kg`}`;
-  if (set.measurementType === 'duration') return durationLabel(set.durationSeconds!);
-  return `${distanceLabel(set.distanceMeters!)}${set.durationSeconds === null ? '' : ` · ${durationLabel(set.durationSeconds)}`}`;
+  if (set.measurementType === 'strength') return `${set.weightGrams === null ? '—' : `${formatThousandths(set.weightGrams)} kg`} × ${set.reps ?? '—'}`;
+  if (set.measurementType === 'bodyweight') return `${set.reps ?? '—'} reps${set.weightGrams === null ? '' : ` · +${formatThousandths(set.weightGrams)} kg`}`;
+  if (set.measurementType === 'duration') return set.durationSeconds === null ? '—' : durationLabel(set.durationSeconds);
+  return `${set.distanceMeters === null ? '—' : distanceLabel(set.distanceMeters)}${set.durationSeconds === null ? '' : ` · ${durationLabel(set.durationSeconds)}`}`;
 }
 export function targetLabel(targets: Targets) {
   return [targets.targetSetCount === null ? '' : `${targets.targetSetCount} planned sets`,

@@ -3,9 +3,9 @@ import { useCallback, useRef, useState } from 'react';
 import { ActivityIndicator, Alert, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-screens/experimental';
 
-import { AdaptiveModal, AdaptiveSheet } from '@/components/adaptive-sheet';
+import { AdaptiveModal } from '@/components/adaptive-sheet';
 import { SheetRefreshContext } from '@/components/sheet-refresh-notice';
-import { FormButton, FormError, FormField, FormScrollView, SegmentedControl, SelectField } from '@/components/form-controls';
+import { FormButton, FormError, FormField, FormScrollView, SegmentedControl } from '@/components/form-controls';
 import { ContextMenuHost } from '@/components/context-menu';
 import { ThemedText } from '@/components/themed-text';
 import { UiText, DesignProvider, useDesignColors } from '@/components/design-system';
@@ -16,17 +16,17 @@ import { useTheme } from '@/hooks/use-theme';
 import { AddExerciseSheet, ExerciseEditor, NoteEditor, RoutineEditor, SetEditor } from './components/fitness-forms';
 import { WorkoutSheet } from './components/workout-sheet';
 import { WorkoutContent } from './components/workout-content';
+import { WorkoutLanding } from './components/workout-landing';
 import { ArchivedRoutineDetail, ExerciseDetail, FitnessObjectRow, WorkoutHistory } from './components/management-content';
-import { fitnessError } from './form';
+import { blankSet, fitnessError } from './form';
 import { exerciseMeasurementLabel, exerciseTypeLabel, workoutCounts } from './management-presentation';
-import type { Exercise, Routine, RoutineDetail, SessionDetail } from './types';
+import type { Exercise, Routine, RoutineDetail, SessionDetail, WorkoutSet } from './types';
 import { useFitness } from './use-fitness';
 
 type FitnessView = 'workout' | 'routines' | 'exercises' | 'history';
 type Dialog = { kind: 'exercise' } | { kind: 'exercise-detail'; exercise: Exercise } | { kind: 'routine'; routine: RoutineDetail | null } | { kind: 'session' } |
-  { kind: 'add-exercise'; sessionId: string } | { kind: 'set'; exercise: SessionDetail['exercises'][number]; setId: string | null } |
-  { kind: 'note'; sessionId: string; exerciseId: string | null; title: string; value: string | null } |
-  { kind: 'actions'; exerciseId: string | null; title: string };
+  { kind: 'add-exercise'; sessionId: string } | { kind: 'set'; exercise: SessionDetail['exercises'][number]; set: WorkoutSet } |
+  { kind: 'note'; sessionId: string; exerciseId: string | null; title: string; value: string | null };
 const views: { value: FitnessView; label: string }[] = [
   { value: 'workout', label: 'Workout' }, { value: 'routines', label: 'Routines' }, { value: 'exercises', label: 'Exercises' }, { value: 'history', label: 'History' },
 ];
@@ -78,7 +78,7 @@ export function FitnessScreen({ initialSessionId }: { initialSessionId?: string 
         { text: 'Cancel', style: 'cancel' }, { text: 'Go to workout', onPress: () => openSession(activeId) },
       ]); return;
     }
-    perform(() => access.startWorkout(id)); setLastFinished(null); navigateView('workout');
+    perform(() => { access.startWorkout(id); setRoutineId(null); }); setLastFinished(null); navigateView('workout');
   }
   function archiveExercise(exercise: Exercise) {
     Alert.alert('Archive exercise?', `“${exercise.name}” will leave new exercise choices. Existing routines and workout history will retain it.`, [
@@ -125,11 +125,13 @@ export function FitnessScreen({ initialSessionId }: { initialSessionId?: string 
   const activeRoutines = routines.filter((routine) => routine.deletedAt === null);
   const displayedRoutines = fitness.routines.filter((routine) => (routine.deletedAt !== null) === archivedRoutines);
   const displayedExercises = exercises.filter((exercise) => (exercise.deletedAt !== null) === archivedExercises && exercise.name.toLowerCase().includes(search.trim().toLowerCase()));
-  const selectedRoutine = activeRoutines.some((routine) => routine.id === routineId) ? routineId : null;
+  const selectedRoutine = activeRoutines.find((routine) => routine.id === routineId)
+    ?? activeRoutines.find((routine) => routine.id === fitness.nextWorkout?.routine.id) ?? activeRoutines[0] ?? null;
   // Capture form inputs when opening. Refreshes update the workout, never the working draft's identity.
-  function editSet(exerciseId: string, setId: string | null) {
+  function editSet(exerciseId: string, setId: string) {
     const exercise = workout?.exercises.find((entry) => entry.id === exerciseId);
-    if (exercise) setDialog({ kind: 'set', exercise, setId });
+    const set = exercise?.sets.find((entry) => entry.id === setId);
+    if (exercise && set) setDialog({ kind: 'set', exercise, set });
   }
   function editNote(exerciseId: string | null) {
     if (!workout) return;
@@ -138,21 +140,17 @@ export function FitnessScreen({ initialSessionId }: { initialSessionId?: string 
       title: exercise ? `Note: ${exercise.exerciseName}` : 'Workout note', value: exercise?.note ?? (exerciseId === null ? workout.note : null) });
   }
   const backToWorkout = close;
-  function openActions(exerciseId: string | null) {
-    const exercise = workout?.exercises.find((entry) => entry.id === exerciseId);
-    setDialog({ kind: 'actions', exerciseId, title: exercise?.exerciseName ?? 'Workout actions' });
-  }
   const createExercise = (draft: Parameters<typeof access.createExercise>[0]) => mutate(() => access.createExercise(draft));
-  const v2Active = view === 'workout' && !!snapshot?.active;
-  const ScreenTitle = v2Active ? UiText : ThemedText;
+  const v2Workout = view === 'workout';
+  const ScreenTitle = v2Workout ? UiText : ThemedText;
   return <DesignProvider><SheetRefreshContext.Provider value={{ error: fitness.error, onRetry: fitness.reload }}>
-    <SafeAreaView edges={{ top: true, bottom: true, left: true, right: true }} style={{ flex: 1, backgroundColor: v2Active ? design.canvas : colors.background }}>
+    <SafeAreaView edges={{ top: true, bottom: true, left: true, right: true }} style={{ flex: 1, backgroundColor: v2Workout ? design.canvas : colors.background }}>
     <ContextMenuHost>
         <View style={[styles.inner, styles.header]}>
           <ScreenTitle type="screenTitle" accessibilityRole="header">Fitness</ScreenTitle>
           <FormError message={fitness.error || actionError} />
           {fitness.error && <FormButton label="Retry" onPress={fitness.reload} />}
-          {snapshot?.active ? <InternalNavigation value={view} options={views} onChange={navigateView} />
+          {v2Workout || snapshot?.active ? <InternalNavigation value={view} options={views} onChange={navigateView} />
             : <View style={styles.actions}>{views.map((option) => <FormButton variant="navigation" key={option.value} label={option.label} selected={view === option.value} onPress={() => navigateView(option.value)} />)}</View>}
         </View>
       <FormScrollView key={view} style={{ flex: 1 }} contentInsetAdjustmentBehavior="never" keyboardShouldPersistTaps="handled"
@@ -161,28 +159,15 @@ export function FitnessScreen({ initialSessionId }: { initialSessionId?: string 
         <View style={styles.inner}>
           {!snapshot && !fitness.error && <ActivityIndicator color={colors.text} accessibilityLabel="Loading Fitness" />}
           {snapshot && view === 'workout' && (snapshot.active ? workout ? <WorkoutContent session={workout}
-            insertedSetId={insertedSetId} onSet={editSet} onNote={editNote} onActions={openActions} onAddExercise={() => setDialog({ kind: 'add-exercise', sessionId: workout.id })} />
+            insertedSetId={insertedSetId} onSet={editSet} onCompleteSet={(id) => perform(() => setInsertedSetId(access.addSet(id, blankSet())))}
+            onExerciseCompleted={(id, completed) => perform(() => access.setExerciseCompleted(id, completed))}
+            onNote={editNote} onDiscard={discard} onRemoveExercise={removeExercise}
+            onAddExercise={() => setDialog({ kind: 'add-exercise', sessionId: workout.id })} />
             : fitness.error ? <ThemedText themeColor="textSecondary">Workout details are unavailable. Retry to load your current workout.</ThemedText>
-              : <ActivityIndicator color={colors.accent} accessibilityLabel="Loading current workout" /> : <>
-            {lastFinished && <View style={styles.description}>
-              <ThemedText type="secondary" accessibilityRole="alert">Workout completed</ThemedText>
-              <ThemedText type="cardTitle">{lastFinished}</ThemedText>
-            </View>}
-            {fitness.nextWorkout && <View style={styles.description}>
-              <ThemedText type="sectionHeading" accessibilityRole="header">{lastFinished ? 'Up next' : 'Next workout'}</ThemedText>
-              <ThemedText type="cardTitle" accessibilityLabel={`Next workout, ${fitness.nextWorkout.routine.name}`}>{fitness.nextWorkout.routine.name}</ThemedText>
-              <ThemedText type="secondary" themeColor="textSecondary">{fitness.nextWorkout.rotation.name}</ThemedText>
-              <ThemedText type="metadata" themeColor="textSecondary">{fitness.rotationSteps.join(' → ')}</ThemedText>
-              <FormButton variant="primary" label={`Start ${fitness.nextWorkout.routine.name}`} onPress={() => start(fitness.nextWorkout!.routine.id)} />
-            </View>}
-            <ThemedText type="sectionHeading" accessibilityRole="header">{fitness.nextWorkout ? 'Other options' : 'Start a workout'}</ThemedText>
-            <SelectField<string | null> label="Workout routine" value={selectedRoutine}
-              options={[{ value: null, label: 'Choose a routine' }, ...activeRoutines.map((routine) => ({ value: routine.id, label: routine.name }))]} onChange={setRoutineId} />
-            <FormButton variant={fitness.nextWorkout ? 'quiet' : 'primary'} label={fitness.nextWorkout ? 'Start another routine' : 'Start from Routine'} disabled={selectedRoutine === null} onPress={() => start(selectedRoutine)} />
-            <FormButton label="Start Empty Workout" onPress={() => start(null)} />
-            {!activeRoutines.length && <FormButton label="Create a routine" onPress={() => setDialog({ kind: 'routine', routine: null })} />}
-            <ThemedText type="small" themeColor="textSecondary">Log sets as you go, then finish to save the workout to History.</ThemedText>
-          </>)}
+              : <ActivityIndicator color={colors.accent} accessibilityLabel="Loading current workout" /> : <WorkoutLanding
+                routines={activeRoutines} selected={selectedRoutine} next={fitness.nextWorkout} lastWorkout={fitness.lastWorkout} lastFinished={lastFinished}
+                onSelect={setRoutineId} onStart={start} onRoutines={() => navigateView('routines')}
+                onCreate={() => setDialog({ kind: 'routine', routine: null })} onHistory={openSession} />)}
           {snapshot && view === 'routines' && <>
             <View style={styles.description}>
               <ThemedText type="sectionHeading" accessibilityRole="header">Workout rotation</ThemedText>
@@ -238,20 +223,11 @@ export function FitnessScreen({ initialSessionId }: { initialSessionId?: string 
       {dialog.kind === 'routine' && (dialog.routine?.deletedAt != null ? <ArchivedRoutineDetail routine={dialog.routine} onDismiss={close} /> : <RoutineEditor routine={dialog.routine} exercises={exercises} onCreateExercise={createExercise} onDismiss={close}
         onSave={(draft) => mutate(() => dialog.routine ? access.editRoutine(dialog.routine.id, draft) : access.createRoutine(draft))} />)}
       {dialog.kind === 'session' && detail && <WorkoutSheet session={detail} error={actionError} onDismiss={close} />}
-      {dialog.kind === 'actions' && <AdaptiveSheet title={dialog.title} onDismiss={close}>
-        <FormError message={actionError} />
-        {dialog.exerciseId === null ? <FormButton variant="destructive" label="Discard workout" onPress={discard} />
-          : <FormButton variant="destructive" label="Remove exercise from workout" onPress={() => removeExercise(dialog.exerciseId!)} />}
-      </AdaptiveSheet>}
       {dialog.kind === 'add-exercise' && <AddExerciseSheet exercises={exercises} onCreateExercise={createExercise} onDismiss={backToWorkout}
         onAdd={(id) => mutate(() => access.addSessionExercise(dialog.sessionId, id))} />}
-      {dialog.kind === 'set' && <SetEditor key={dialog.setId ?? `new-${dialog.exercise.id}`} name={dialog.exercise.exerciseName} type={dialog.exercise.measurementType}
-        existing={dialog.exercise.sets.find((set) => set.id === dialog.setId)} previous={dialog.exercise.sets.at(-1)} onDismiss={backToWorkout}
-        error={actionError} onDelete={dialog.setId ? () => deleteSet(dialog.setId!) : undefined}
-        onSave={(draft) => mutate(() => {
-          if (dialog.setId) access.editSet(dialog.setId, draft);
-          else setInsertedSetId(access.addSet(dialog.exercise.id, draft));
-        })} />}
+      {dialog.kind === 'set' && <SetEditor key={dialog.set.id} name={dialog.exercise.exerciseName} type={dialog.exercise.measurementType}
+        existing={dialog.set} onDismiss={backToWorkout} error={actionError} onDelete={() => deleteSet(dialog.set.id)}
+        onSave={(draft) => mutate(() => access.editSet(dialog.set.id, draft))} />}
       {dialog.kind === 'note' && <NoteEditor title={dialog.title} value={dialog.value} onDismiss={backToWorkout}
         onSave={(note) => mutate(() => access.saveNote(dialog.sessionId, dialog.exerciseId, note))} />}
       {!!fitness.error && !detail && dialog.kind === 'session' && <View style={[styles.card, { backgroundColor: colors.background }]}>

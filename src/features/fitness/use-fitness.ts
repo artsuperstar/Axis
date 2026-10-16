@@ -8,7 +8,7 @@ import { useDatabase } from '@/database/database-provider';
 import { createFitnessDataAccess } from './data';
 import { fitnessError } from './form';
 import { createRotationDataAccess } from './rotations-data';
-import type { FitnessOverview, NextWorkout, RoutineSummary, SessionDetail } from './types';
+import type { FitnessOverview, NextWorkout, RoutineSummary, SessionDetail, SessionSummary } from './types';
 
 export function useFitness(initialSessionId?: string, includeRoutines = false, includeActiveDetail = true, includeHistory = true) {
   const db = useDatabase();
@@ -22,6 +22,7 @@ export function useFitness(initialSessionId?: string, includeRoutines = false, i
   const [historyLoaded, setHistoryLoaded] = useState(false);
   const [detail, setDetail] = useState<SessionDetail | null>(null);
   const [activeDetail, setActiveDetail] = useState<SessionDetail | null>(null);
+  const [lastWorkout, setLastWorkout] = useState<SessionSummary | null>(null);
   const selected = useRef<string | null>(initialSessionId ?? null);
   const historyLimit = useRef(20);
   const [error, setError] = useState<string | null>(null);
@@ -34,6 +35,7 @@ export function useFitness(initialSessionId?: string, includeRoutines = false, i
       const nextActive = includeActiveDetail && nextSnapshot.active ? access.readSession(nextSnapshot.active.id) : null;
       const nextDetail = selected.current ? selected.current === nextActive?.id ? nextActive : access.readSession(selected.current) : null;
       const nextRoutines = includeRoutines ? access.readRoutineSummaries() : null;
+      const nextLast = includeActiveDetail && !nextSnapshot.active ? access.readHistory(1).history[0] ?? null : null;
       // Retain loaded History while visiting other destinations, including through a failed return refresh.
       setSnapshot((current) => !includeHistory && current ? { ...nextSnapshot, history: current.history, hasMoreHistory: current.hasMoreHistory } : nextSnapshot);
       if (includeHistory) setHistoryLoaded(true);
@@ -44,6 +46,7 @@ export function useFitness(initialSessionId?: string, includeRoutines = false, i
       // Invalidate it when the overview authoritatively removes or replaces the active session.
       setActiveDetail((current) => includeActiveDetail ? nextActive : current?.id === nextSnapshot.active?.id ? current : null);
       if (nextRoutines) { setRoutines(nextRoutines); setRoutinesLoaded(true); }
+      if (includeActiveDetail && !nextSnapshot.active) setLastWorkout(nextLast);
       setError(null);
     } catch (cause) {
       setError(fitnessError(cause, 'Unable to load Fitness. Please try again.'));
@@ -73,5 +76,5 @@ export function useFitness(initialSessionId?: string, includeRoutines = false, i
       setError(null);
     } catch (cause) { setError(fitnessError(cause, 'Unable to load older workouts. Please try again.')); }
   }
-  return { access, snapshot, nextWorkout, rotationSteps, routines, routinesLoaded, historyLoaded, detail, activeDetail, error, reload, mutate, openSession, closeSession, loadMoreHistory };
+  return { access, snapshot, nextWorkout, rotationSteps, lastWorkout, routines, routinesLoaded, historyLoaded, detail, activeDetail, error, reload, mutate, openSession, closeSession, loadMoreHistory };
 }

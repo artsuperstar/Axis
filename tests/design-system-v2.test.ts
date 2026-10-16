@@ -16,6 +16,7 @@ import { createTaskDataAccess } from '../src/features/tasks/data';
 import { taskDraft } from '../src/features/tasks/form';
 import { bundledMigrations, database } from './helpers/database';
 import { mount, runtime, screens } from './helpers/refresh-lifecycle';
+import { completeAndEditWorkoutSet } from './helpers/workout-interactions';
 
 const require = createRequire(import.meta.url);
 const design = require('../src/components/design-system') as typeof import('../src/components/design-system');
@@ -130,8 +131,8 @@ test('each exercise owns targets, local actions and sets; header and persistent 
   assert.ok(group); assert.equal(group.props.accessibilityLabel, `${strength.name} exercise`);
   assert.ok(group.textContent.includes('Target: 3 planned sets')); assert.ok(group.textContent.includes('No sets logged yet'));
   const children = app.nodes(group);
-  assert.ok(children.some((node) => node.props?.accessibilityLabel === `Add set for ${strength.name}`));
-  assert.ok(children.some((node) => node.props?.accessibilityLabel === `Actions for ${strength.name}`));
+  assert.ok(children.some((node) => node.props?.accessibilityLabel === `Complete set for ${strength.name}`));
+  assert.ok(children.some((node) => node.props?.accessibilityLabel === `More actions for ${strength.name}`));
   assert.ok(children.some((node) => node.props?.testID === `sets-inset-${detail.exercises[0].id}`));
   assert.ok(!children.some((node) => node.props?.testID === 'workout-header'));
   for (let node = app.find('FormButton', 'Finish Workout').parentNode; node; node = node.parentNode) assert.notEqual(node.kind, 'ScrollView');
@@ -146,7 +147,7 @@ test('only a locally added set animates; resume and returning from History do no
   const app = await mount(createElement(screens.FitnessScreen), f.db); t.after(app.unmount);
   motion.calls.length = 0;
   await app.resume(); assert.equal(motion.calls.length, 0);
-  await app.press(`Add set for ${strength.name}`); await app.change('Reps *', '9'); await app.press('Save');
+  await completeAndEditWorkoutSet(app, strength.name); await app.change('Reps (optional)', '9'); await app.press('Save');
   assert.equal(motion.calls.filter((call) => call.config.duration === 220).length, 1);
   assert.ok(motion.calls.every((call) => call.config.reduceMotion === 'system'));
   motion.calls.length = 0; await app.resume(); assert.equal(motion.calls.length, 0);
@@ -159,7 +160,7 @@ test('live Reduced Motion disables set insertion without changing data or access
   const session = f.fitness.startWorkout(); f.fitness.addSessionExercise(session.id, strength.id);
   const app = await mount(createElement(screens.FitnessScreen), f.db); t.after(app.unmount);
   await act(() => (runtime.reduceMotion as (value: boolean) => void)(true)); motion.calls.length = 0;
-  await app.press(`Add set for ${strength.name}`); await app.change('Weight (kg) *', '12'); await app.change('Reps *', '8'); await app.press('Save');
+  await completeAndEditWorkoutSet(app, strength.name); await app.change('Weight (kg, optional)', '12'); await app.change('Reps (optional)', '8'); await app.press('Save');
   assert.equal(motion.calls.length, 0); assert.equal(f.fitness.readSession(session.id).exercises[0].sets.length, 1);
   assert.ok(app.find('Pressable', `${strength.name}, set 1. 12 kg, 8 reps`));
 });
@@ -265,7 +266,7 @@ test('all authoritative measurement types determine icons, columns, optional val
     const cells = workoutSetCells(exercise.sets[0], columns);
     if (exercise.measurementType === 'bodyweight' || exercise.measurementType === 'distance') assert.equal(cells.at(-1), '—');
     for (const value of cells) assert.ok(children.some((node) => node.textContent === value));
-    assert.ok(children.some((node) => node.props?.accessibilityHint === 'Edit this set. Delete is available in the editor.'));
+    assert.ok(children.some((node) => node.props?.accessibilityHint === 'Opens set details. Delete is available in the editor.'));
   }
   assert.deepEqual(workoutSetColumns('bodyweight', [detail.exercises[1].sets[0]]), ['Reps']);
   assert.deepEqual(workoutSetColumns('distance', [detail.exercises[3].sets[0]]), ['Distance']);

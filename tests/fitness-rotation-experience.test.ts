@@ -1,5 +1,6 @@
 /// <reference types="node" />
 import assert from 'node:assert/strict';
+import { workoutMenuAction } from './helpers/workout-interactions';
 import { randomUUID } from 'node:crypto';
 import { test, type TestContext } from 'node:test';
 import { act, createElement } from 'react';
@@ -42,14 +43,14 @@ test('Routines exposes planning via a pushed route, retaining four Fitness desti
 test('suggested start uses inline logger, Finish immediately shows Up next, and a different routine does not advance', async (t) => {
   const f = await fixture(t); const id = f.rotations.create(plan(f.routines)); f.rotations.activate(id);
   const app = await mount(createElement(screens.FitnessScreen), f.db); t.after(app.unmount);
-  assert.ok(app.container.textContent.includes('Next workout')); assert.ok(app.find('FormButton', 'Start Push'));
-  assert.ok(app.find('FormButton', 'Start another routine')); assert.ok(app.find('FormButton', 'Start Empty Workout'));
+  assert.ok(app.container.textContent.includes('Next in Gym Cycle')); assert.ok(app.find('FormButton', 'Start Push'));
+  assert.ok(app.find('Pressable', 'Choose Legs, 0 exercises')); assert.ok(app.find('FormButton', 'Start Empty Workout'));
   await app.press('Start Push'); assert.ok(app.find('FormButton', 'Finish Workout'));
   assert.ok(!app.nodes().some((node) => node.props?.label === 'Start Pull' || node.kind === 'Modal'));
   await app.press('Finish Workout'); await app.confirm('Finish Workout');
-  assert.ok(app.container.textContent.includes('Workout completed')); assert.ok(app.container.textContent.includes('Up next'));
+  assert.ok(app.container.textContent.includes('Workout completed')); assert.ok(app.container.textContent.includes('Next in Gym Cycle'));
   assert.ok(app.find('FormButton', 'Start Pull')); assert.equal(f.rotations.readNext()!.routine.id, f.routines[1]);
-  await select(app, 'Workout routine', f.routines[2]); await app.press('Start another routine');
+  await app.tapSet('Choose Legs, 0 exercises'); await app.press('Start Legs');
   assert.equal(f.fitness.readOverview().active!.rotationId, null);
   await app.press('Finish Workout'); await app.confirm('Finish Workout'); assert.ok(app.find('FormButton', 'Start Pull'));
 });
@@ -59,7 +60,7 @@ test('ordinary Routine Start recognizes expected step and discard restores uncha
   const app = await mount(createElement(screens.FitnessScreen), f.db); t.after(app.unmount);
   await app.press('Routines'); await menuAction(app, 'Push', 'Start Push');
   assert.equal(f.fitness.readOverview().active!.rotationStepId, f.rotations.readNext()!.stepId);
-  await app.press('Workout actions'); await app.press('Discard workout'); await app.confirm('Discard');
+  await workoutMenuAction(app, 'Discard workout'); await app.confirm('Discard');
   assert.ok(app.find('FormButton', 'Start Push')); assert.equal(f.rotations.readNext()!.routine.name, 'Push');
 });
 

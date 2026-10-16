@@ -383,10 +383,12 @@ export const fitnessSessionExercises = sqliteTable('fitness_session_exercises', 
   id: text('id').primaryKey().notNull(), sessionId: text('session_id').notNull().references(() => fitnessSessions.id, { onDelete: 'restrict' }),
   exerciseId: text('exercise_id').notNull(), exerciseName: text('exercise_name').notNull(),
   measurementType: text('measurement_type', { enum: fitnessTypes }).notNull(), position: integer('position').notNull(), note: text('note'),
+  isManuallyComplete: integer('is_manually_complete', { mode: 'boolean' }).notNull().default(false),
   ...fitnessTargets(), ...fitnessLifecycle(),
 }, (table) => [
   foreignKey({ columns: [table.exerciseId, table.measurementType], foreignColumns: [fitnessExercises.id, fitnessExercises.measurementType] }).onDelete('restrict').onUpdate('restrict'),
   check('fitness_session_exercise_name_valid', sql`length(trim(${table.exerciseName})) BETWEEN 1 AND 120`),
+  check('fitness_session_exercise_manual_complete_valid', sql`${table.isManuallyComplete} IN (0, 1)`),
   check('fitness_session_exercise_position_valid', sql`typeof(${table.position}) = 'integer' AND ${table.position} BETWEEN 0 AND 9007199254740991`),
   check('fitness_session_targets_valid', fitnessTargetCheck(table)),
   check('fitness_session_exercise_updated_valid', sql`${table.updatedAt} >= ${table.createdAt}`),
@@ -403,13 +405,13 @@ export const fitnessSets = sqliteTable('fitness_sets', {
   foreignKey({ columns: [table.sessionExerciseId, table.measurementType], foreignColumns: [fitnessSessionExercises.id, fitnessSessionExercises.measurementType] }).onDelete('restrict').onUpdate('restrict'),
   check('fitness_set_position_valid', sql`typeof(${table.position}) = 'integer' AND ${table.position} BETWEEN 0 AND 9007199254740991`),
   check('fitness_set_values_valid', sql`
-    (${table.measurementType} = 'strength' AND ${table.weightGrams} IS NOT NULL AND typeof(${table.weightGrams}) = 'integer' AND ${table.weightGrams} BETWEEN 0 AND 9007199254740991
-      AND ${table.reps} IS NOT NULL AND ${positiveFitnessInteger(table.reps)} AND ${table.durationSeconds} IS NULL AND ${table.distanceMeters} IS NULL)
-    OR (${table.measurementType} = 'bodyweight' AND ${table.reps} IS NOT NULL AND ${positiveFitnessInteger(table.reps)}
+    (${table.measurementType} = 'strength' AND (${table.weightGrams} IS NULL OR typeof(${table.weightGrams}) = 'integer' AND ${table.weightGrams} BETWEEN 0 AND 9007199254740991)
+      AND (${table.reps} IS NULL OR ${positiveFitnessInteger(table.reps)}) AND ${table.durationSeconds} IS NULL AND ${table.distanceMeters} IS NULL)
+    OR (${table.measurementType} = 'bodyweight' AND (${table.reps} IS NULL OR ${positiveFitnessInteger(table.reps)})
       AND (${table.weightGrams} IS NULL OR ${positiveFitnessInteger(table.weightGrams)}) AND ${table.durationSeconds} IS NULL AND ${table.distanceMeters} IS NULL)
-    OR (${table.measurementType} = 'duration' AND ${table.durationSeconds} IS NOT NULL AND ${positiveFitnessInteger(table.durationSeconds)}
+    OR (${table.measurementType} = 'duration' AND (${table.durationSeconds} IS NULL OR ${positiveFitnessInteger(table.durationSeconds)})
       AND ${table.weightGrams} IS NULL AND ${table.reps} IS NULL AND ${table.distanceMeters} IS NULL)
-    OR (${table.measurementType} = 'distance' AND ${table.distanceMeters} IS NOT NULL AND ${positiveFitnessInteger(table.distanceMeters)}
+    OR (${table.measurementType} = 'distance' AND (${table.distanceMeters} IS NULL OR ${positiveFitnessInteger(table.distanceMeters)})
       AND (${table.durationSeconds} IS NULL OR ${positiveFitnessInteger(table.durationSeconds)}) AND ${table.weightGrams} IS NULL AND ${table.reps} IS NULL)`),
   check('fitness_set_updated_valid', sql`${table.updatedAt} >= ${table.createdAt}`),
   uniqueIndex('fitness_set_position_unique').on(table.sessionExerciseId, table.position).where(sql`${table.deletedAt} IS NULL`),

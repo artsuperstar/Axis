@@ -13,5 +13,7 @@ import m0008 from './0008_task_occurrence_date_index.sql';
 import m0009 from './0009_work_job_title.sql';
 import m0010 from './0010_work_optional_description.sql';
 import m0011 from './0011_fitness_rotations.sql';
+import m0012 from './0012_fitness_set_completion.sql';
+import m0013 from './0013_fitness_manual_completion.sql';
 
-export default { journal, migrations: { m0000, m0001, m0002, m0003, m0004, m0005, m0006, m0007, m0008, m0009, m0010, m0011 } };
+export default { journal, migrations: { m0000, m0001, m0002, m0003, m0004, m0005, m0006, m0007, m0008, m0009, m0010, m0011, m0012, m0013 } };

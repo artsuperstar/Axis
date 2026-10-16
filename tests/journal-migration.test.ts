@@ -40,6 +40,8 @@ async function existingStage11() {
   // Isolate Journal migration while current Fitness APIs use optional rotation columns.
   // Populated pre-rotation upgrade/rollback coverage lives in fitness-rotation-migration.test.ts.
   sqlite.exec(allMigrations.migrations.m0011);
+  // Current Fitness APIs require this later field; genuine 0013 upgrade/recovery has its own suite.
+  sqlite.exec(allMigrations.migrations.m0013);
   seedDefaultCategories(db, 1000); seedFinanceCategories(db, 1000); seedFitnessExercises(db);
   const tasks = createTaskDataAccess(db, randomUUID, now); const finance = createFinanceDataAccess(db, randomUUID, now);
   const commitments = createCommitmentDataAccess(db, randomUUID, now); const work = createWorkDataAccess(db, randomUUID, now);

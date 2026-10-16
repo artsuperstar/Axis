@@ -164,7 +164,9 @@ export function createFitnessDataAccess(db: AxisDatabase, newId: () => string, n
     readOverview(historyLimit = 20, includeHistory = true): FitnessOverview {
       return db.transaction((query) => ({ ...(includeHistory ? workoutSummaries(query, historyLimit) : { history: [], hasMoreHistory: false }), active: activeSummary(query),
         exercises: query.select().from(exercises).orderBy(asc(exercises.name)).all(),
-        routines: query.select().from(routines).orderBy(asc(routines.name), asc(routines.id)).all() }));
+        routines: query.select({ routine: routines,
+          exerciseCount: sql<number>`(SELECT count(*) FROM fitness_routine_exercises e WHERE e.routine_id = fitness_routines.id AND e.deleted_at IS NULL)`.mapWith(Number),
+        }).from(routines).orderBy(asc(routines.name), asc(routines.id)).all().map(({ routine, exerciseCount }) => ({ ...routine, exerciseCount })) }));
     },
     readSummaries(historyLimit = 1) {
       return db.transaction((query) => ({ ...workoutSummaries(query, historyLimit), active: activeSummary(query) }));
@@ -237,6 +239,16 @@ export function createFitnessDataAccess(db: AxisDatabase, newId: () => string, n
         query.insert(sessionExercises).values({ id, sessionId, exerciseId, exerciseName: source.name, measurementType: source.measurementType,
           position: nextPosition(query, sessionExercises, eq(sessionExercises.sessionId, sessionId)), createdAt: timestamp, updatedAt: timestamp }).run();
         touch(query, parent); return id;
+      }, { behavior: 'immediate' });
+    },
+    setExerciseCompleted(id: string, completed: boolean) {
+      if (typeof completed !== 'boolean') throw new FitnessValidationError('Choose a valid exercise completion state.');
+      db.transaction((query) => {
+        const { row, parent } = editableExercise(query, id);
+        if (row.targetSetCount !== null) throw new FitnessValidationError('Exercises with a set target complete automatically.');
+        if (row.isManuallyComplete === completed) return;
+        query.update(sessionExercises).set({ isManuallyComplete: completed, updatedAt: stamp(row) }).where(eq(sessionExercises.id, id)).run();
+        touch(query, parent);
       }, { behavior: 'immediate' });
     },
     removeSessionExercise(id: string) {

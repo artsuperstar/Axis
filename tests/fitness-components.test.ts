@@ -66,39 +66,41 @@ test('selecting an existing exercise in the workout picker persists it and retur
 });
 
 for (const [type, values, fields, excluded] of [
-  ['strength', { weight: '12.5', reps: '10' }, ['Weight (kg) *', 'Reps *'], ['Minutes', 'Distance (km)']],
-  ['bodyweight', { reps: '8' }, ['Reps *', 'Added weight (kg, optional)'], ['Minutes', 'Distance (km)']],
-  ['duration', { minutes: '1', seconds: '30' }, ['Minutes', 'Seconds'], ['Reps *', 'Weight (kg) *']],
-  ['distance', { distance: '2.5', minutes: '10' }, ['Distance (km)', 'Minutes (optional)'], ['Reps *', 'Weight (kg) *']],
+  ['strength', { weight: '12.5', reps: '10' }, ['Weight (kg, optional)', 'Reps (optional)'], ['Minutes', 'Distance (km)']],
+  ['bodyweight', { reps: '8' }, ['Reps (optional)', 'Added weight (kg, optional)'], ['Minutes', 'Distance (km)']],
+  ['duration', { minutes: '1', seconds: '30' }, ['Minutes (optional)', 'Seconds'], ['Reps (optional)', 'Weight (kg, optional)']],
+  ['distance', { distance: '2.5', minutes: '10' }, ['Distance (km)', 'Minutes (optional)'], ['Reps (optional)', 'Weight (kg, optional)']],
 ] as [MeasurementType, Partial<ReturnType<typeof blankSet>>, string[], string[]][]) {
-  test(`set editor exposes only ${type} fields and saves exact previous-set defaults`, async (t) => {
+  test(`set editor exposes only ${type} fields and preserves the existing set identity and values`, async (t) => {
     const { sqlite, fitness } = await initialized(); t.after(() => sqlite.close());
     const session = fitness.startWorkout(); const source = builtInExercises.find((exercise) => exercise.measurementType === type)!;
     const exerciseId = fitness.addSessionExercise(session.id, source.id); fitness.addSet(exerciseId, { ...blankSet(), ...values });
-    const previous = fitness.readSession(session.id).exercises[0].sets[0]; let dismissed = false;
-    const form = renderControl(() => fitnessForms.SetEditor({ name: source.name, type, previous,
-      onSave: (draft) => { assert.deepEqual(validateSet(type, draft), validateSet(type, { ...blankSet(), ...values })); fitness.addSet(exerciseId, draft); },
+    const existing = fitness.readSession(session.id).exercises[0].sets[0]; let dismissed = false;
+    const form = renderControl(() => fitnessForms.SetEditor({ name: source.name, type, existing,
+      onSave: (draft) => { assert.deepEqual(validateSet(type, draft), validateSet(type, { ...blankSet(), ...values })); fitness.editSet(existing.id, draft); },
       onDismiss: () => { dismissed = true; } }));
     for (const field of fields) assert.ok(form.elements.some((element) => element.props.label === field) || form.markup.includes(field));
     for (const field of excluded) assert.ok(!form.markup.includes(field));
-    form.elements[0].props.onConfirm!(); assert.equal(dismissed, true); assert.equal(fitness.readSession(session.id).exercises[0].sets.length, 2);
+    form.elements[0].props.onConfirm!(); assert.equal(dismissed, true); assert.equal(fitness.readSession(session.id).exercises[0].sets.length, 1);
+    assert.equal(fitness.readSession(session.id).exercises[0].sets[0].id, existing.id);
   });
 }
 
-test('inline Workout shows natural set numbering and Add set; History detail stays read-only', async (t) => {
+test('inline Workout shows natural set numbering and completion-first editing; History detail stays read-only', async (t) => {
   const { sqlite, fitness } = await initialized(); t.after(() => sqlite.close());
   const session = fitness.startWorkout(); const exerciseId = fitness.addSessionExercise(session.id, builtInExercises[0].id);
   const a = fitness.addSet(exerciseId, { ...blankSet(), weight: '60', reps: '10' });
   fitness.addSet(exerciseId, { ...blankSet(), weight: '60', reps: '9' }); fitness.deleteSet(a);
   const events: string[] = [];
-  const callbacks = { error: null, onDismiss: () => {}, onAddExercise: () => {}, onActions: () => {},
-    onSet: (id: string, setId: string | null) => events.push(`${id}:${setId}`), onNote: () => {} };
+  const callbacks = { error: null, onDismiss: () => {}, onAddExercise: () => {}, onDiscard: () => {},
+    onSet: (id: string, setId: string) => events.push(`${id}:${setId}`), onCompleteSet: () => {}, onExerciseCompleted: () => {}, onRemoveExercise: () => {}, onNote: () => {} };
   const active = fitness.readSession(session.id);
   const form = renderControl(() => workoutContent.WorkoutContent({ ...callbacks, session: active }));
   assert.match(form.markup, /set 1\. 60 kg, 9 reps/); assert.ok(!form.markup.includes('set 2.'));
-  assert.ok(form.elements.some((element) => element.props.accessibilityHint?.includes('Edit this set'))); assert.ok(!form.markup.includes('aria-modal'));
-  form.elements.find((element) => element.props.label === '+ Add set')!.props.onPress!();
-  assert.deepEqual(events, [`${exerciseId}:null`]);
+  assert.ok(form.elements.some((element) => element.props.accessibilityHint?.includes('Opens set details'))); assert.ok(!form.markup.includes('aria-modal'));
+  form.elements.find((element) => element.props.accessibilityHint?.includes('Opens set details'))!.props.onPress!();
+  assert.deepEqual(events, [`${exerciseId}:${active.exercises[0].sets[0].id}`]);
+  assert.ok(!form.markup.includes('Log set with details'));
   assert.equal(renderControl(() => fitnessWorkout.WorkoutSheet({ ...callbacks, session: active })).elements.length, 0);
   fitness.finishWorkout(session.id);
   const history = renderControl(() => fitnessWorkout.WorkoutSheet({ ...callbacks, session: fitness.readSession(session.id) }));

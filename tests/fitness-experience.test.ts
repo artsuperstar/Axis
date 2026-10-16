@@ -14,6 +14,7 @@ import type { MeasurementType } from '../src/features/fitness/types';
 import { workoutSetPresentation } from '../src/features/fitness/workout-presentation';
 import { bundledMigrations, database } from './helpers/database';
 import { mount, runtime, screens } from './helpers/refresh-lifecycle';
+import { completeAndEditWorkoutSet, editWorkoutSet, exerciseMenuAction, workoutMenuAction, logWorkoutSet } from './helpers/workout-interactions';
 
 type App = Awaited<ReturnType<typeof mount>>;
 async function initialized(t: TestContext) {
@@ -35,7 +36,7 @@ function strength(fitness: ReturnType<typeof createFitnessDataAccess>) {
 
 test('no-active Workout shows start choices; starting Empty transitions directly into inline Workout', async (t) => {
   const { db, fitness } = await initialized(t); const app = await mount(createElement(screens.FitnessScreen), db); t.after(app.unmount);
-  assert.ok(app.find('FormButton', 'Start Empty Workout')); assert.ok(app.find('FormButton', 'Start from Routine').props.disabled);
+  assert.ok(app.find('FormButton', 'Start Empty Workout')); assert.ok(app.find('FormButton', 'Create a routine'));
   assert.ok(!app.nodes().some((node) => node.props?.label === 'Finish Workout'));
   await app.press('Start Empty Workout'); assertInline(app); assert.equal(fitness.readOverview().active!.exerciseCount, 0);
   assert.ok(!app.nodes().some((node) => node.props?.label === 'Start Empty Workout'));
@@ -43,11 +44,11 @@ test('no-active Workout shows start choices; starting Empty transitions directly
 
 test('starting from a routine opens inline Workout with snapshotted exercises/targets and one active session', async (t) => {
   const { db, fitness } = await initialized(t); const exercise = strength(fitness);
-  const id = fitness.createRoutine({ name: 'Upper Body', exercises: [{ id: null, exerciseId: exercise.id, targets: { ...blankTargets(), setCount: '3', repMin: '8', repMax: '12' } }] });
+  fitness.createRoutine({ name: 'Upper Body', exercises: [{ id: null, exerciseId: exercise.id, targets: { ...blankTargets(), setCount: '3', repMin: '8', repMax: '12' } }] });
   const app = await mount(createElement(screens.FitnessScreen), db); t.after(app.unmount);
-  await act(() => (app.find('SelectField', 'Workout routine').props.onChange as (value: string) => void)(id));
-  await app.press('Start from Routine'); assertInline(app); assert.ok(app.container.textContent.includes('Upper Body'));
-  assert.ok(app.container.textContent.includes('Target: 3 planned sets')); assert.ok(app.find('FormButton', `Add set for ${exercise.name}`));
+  await app.tapSet('Choose Upper Body, 1 exercise');
+  await app.press('Start Upper Body'); assertInline(app); assert.ok(app.container.textContent.includes('Upper Body'));
+  assert.ok(app.container.textContent.includes('Target: 3 planned sets')); assert.ok(app.find('FormButton', `Complete set for ${exercise.name}`));
   const active = fitness.readOverview().active!; assert.equal(fitness.startWorkout().id, active.id);
   assert.equal(fitness.readSession(active.id).exercises[0].targetSetCount, 3);
 });
@@ -101,7 +102,8 @@ test('Home Resume navigates to the Fitness tab and exposes the same active Worko
     assert.ok(!home.nodes().some((node) => node.kind === 'Modal'));
   } finally { await home.unmount(); }
   const app = await mount(createElement(screens.FitnessScreen), db); t.after(app.unmount);
-  assertInline(app); assert.ok(app.container.textContent.includes('Same active session')); assert.equal(fitness.readOverview().active!.id, session.id);
+  assertInline(app); assert.equal(fitness.readOverview().active!.id, session.id);
+  await workoutMenuAction(app, 'Edit workout note'); assert.equal(app.find('FormField', 'Note (optional)').props.value, 'Same active session');
 });
 
 test('returning to Workout after a failed detail refresh retains last-known-good sets and scroll context', async (t) => {
@@ -120,17 +122,18 @@ test('Add Exercise, Add Set, tap-to-edit and editor Delete save into inline Work
   const app = await mount(createElement(screens.FitnessScreen), db); t.after(app.unmount);
   await app.press('+ Add exercise'); assert.ok(app.find('Modal'));
   await act(() => (app.find('AutocompleteField', 'Exercise').props.onSelect as (id: string) => void)(exercise.id)); assertInline(app);
-  await app.press(`Add set for ${exercise.name}`); assert.ok(app.find('Modal'));
-  assert.ok(!app.nodes().some((node) => node.props?.label === 'Delete set'));
-  await app.change('Weight (kg) *', '60'); await app.change('Reps *', '10'); await app.press('Save'); assertInline(app);
-  await app.press(`Add set for ${exercise.name}`); assert.equal(app.find('FormField', 'Weight (kg) *').props.value, '60');
-  assert.equal(app.find('FormField', 'Reps *').props.value, '10'); await app.change('Reps *', '9'); await app.press('Save');
+  await completeAndEditWorkoutSet(app, exercise.name); assert.ok(app.find('Modal'));
+  assert.ok(app.find('FormButton', 'Delete set'));
+  await app.change('Weight (kg, optional)', '60'); await app.change('Reps (optional)', '10'); await app.press('Save'); assertInline(app);
+  await completeAndEditWorkoutSet(app, exercise.name); assert.equal(app.find('FormField', 'Weight (kg, optional)').props.value, '');
+  assert.equal(app.find('FormField', 'Reps (optional)').props.value, '');
+  await app.change('Weight (kg, optional)', '60'); await app.change('Reps (optional)', '9'); await app.press('Save');
   assertInline(app); await app.tapSet(`${exercise.name}, set 1. 60 kg, 10 reps`);
-  await app.change('Weight (kg) *', '62,5'); await app.press('Save'); assertInline(app);
+  await app.change('Weight (kg, optional)', '62,5'); await app.press('Save'); assertInline(app);
   const before = fitness.readSession(session.id).exercises[0].sets; assert.equal(before[0].weightGrams, 62500);
   await app.tapSet(`${exercise.name}, set 1. 62.5 kg, 10 reps`); await app.press('Delete set');
   assert.equal(runtime.fixture.alerts.at(-1)!.title, 'Delete set?'); assert.equal(fitness.readSession(session.id).exercises[0].sets.length, 2);
-  await app.confirm('Cancel'); assert.ok(app.find('FormField', 'Weight (kg) *')); await app.press('Delete set'); await app.confirm('Delete'); assertInline(app);
+  await app.confirm('Cancel'); assert.ok(app.find('FormField', 'Weight (kg, optional)')); await app.press('Delete set'); await app.confirm('Delete'); assertInline(app);
   assert.deepEqual(fitness.readSession(session.id).exercises[0].sets.map((set) => set.id), [before[1].id]);
   assert.ok(app.find('Pressable', `${exercise.name}, set 1. 60 kg, 9 reps`));
   assert.ok(!app.nodes().some((node) => ['Edit', 'Delete', 'Remove exercise'].includes(String(node.props?.label))));
@@ -143,18 +146,18 @@ test('richer exercise creation returns naturally to inline Workout and selects t
   await act(() => (app.find('SelectField', 'Measurement type *').props.onChange as (type: string) => void)('bodyweight'));
   await app.press('Create'); assertInline(app);
   const exercise = fitness.readSession(session.id).exercises[0]; assert.equal(exercise.exerciseName, 'Custom movement'); assert.equal(exercise.measurementType, 'bodyweight');
-  assert.ok(app.find('FormButton', 'Add set for Custom movement'));
+  assert.ok(app.find('FormButton', 'Complete exercise Custom movement'));
 });
 
 test('quiet notes and contextual exercise removal preserve notes and require destructive confirmation', async (t) => {
   const { db, fitness } = await initialized(t); const session = fitness.startWorkout(); const exercise = strength(fitness);
   fitness.addSessionExercise(session.id, exercise.id); const app = await mount(createElement(screens.FitnessScreen), db); t.after(app.unmount);
-  assert.equal(app.find('FormButton', `Note for ${exercise.name}`).props.variant, 'quiet');
-  await app.press(`Note for ${exercise.name}`); await app.change('Note (optional)', 'Shoulder feels tight'); await app.press('Save'); assertInline(app);
-  await app.press('Add workout note'); await app.change('Note (optional)', 'Easy session'); await app.press('Save'); assertInline(app);
+  await exerciseMenuAction(app, exercise.name, `Note for ${exercise.name}`);
+  await app.change('Note (optional)', 'Shoulder feels tight'); await app.press('Save'); assertInline(app);
+  await workoutMenuAction(app, 'Add workout note'); await app.change('Note (optional)', 'Easy session'); await app.press('Save'); assertInline(app);
   assert.equal(fitness.readSession(session.id).exercises[0].note, 'Shoulder feels tight'); assert.equal(fitness.readSession(session.id).note, 'Easy session');
   assert.ok(app.container.textContent.includes('Shoulder feels tight'));
-  await app.press(`Actions for ${exercise.name}`); await app.press('Remove exercise from workout');
+  await exerciseMenuAction(app, exercise.name, 'Remove exercise from workout');
   assert.equal(fitness.readSession(session.id).exercises.length, 1); await app.confirm('Remove'); assertInline(app);
   assert.equal(fitness.readSession(session.id).exercises.length, 0);
 });
@@ -175,14 +178,14 @@ test('Finish is persistent/primary/confirmed, returns to start state and keeps m
   assert.ok(app.find('FormButton', 'Start Empty Workout'));
 });
 
-test('Discard is absent beside Finish, available through quiet Workout actions and remains confirmed', async (t) => {
+test('Discard is absent beside Finish, available through quiet workout overflow and remains confirmed', async (t) => {
   const { db, fitness } = await initialized(t); fitness.startWorkout();
   const app = await mount(createElement(screens.FitnessScreen), db); t.after(app.unmount); assertInline(app);
   assert.ok(!app.nodes().some((node) => node.props?.label === 'Discard workout'));
-  assert.equal(app.find('FormButton', 'Workout actions').props.variant, 'quiet'); await app.press('Workout actions');
-  assert.equal(app.find('FormButton', 'Discard workout').props.variant, 'destructive'); await app.press('Discard workout');
+  assert.equal(app.find('FormButton', 'More workout actions').props.variant, 'quiet'); await app.press('More workout actions');
+  assert.equal(app.find('FormButton', 'Discard workout').props.variant, 'destructive'); await app.press('Discard workout'); await act(() => new Promise((resolve) => setTimeout(resolve, 20)));
   assert.ok(fitness.readOverview().active); await app.confirm('Cancel'); assert.ok(fitness.readOverview().active);
-  await app.press('Discard workout'); await app.confirm('Discard'); assert.equal(fitness.readOverview().active, null);
+  await workoutMenuAction(app, 'Discard workout'); await app.confirm('Discard'); assert.equal(fitness.readOverview().active, null);
   assert.ok(app.find('FormButton', 'Start Empty Workout')); assert.ok(!app.nodes().some((node) => node.kind === 'Modal'));
   assert.equal(fitness.readOverview().history.length, 0);
 });
@@ -190,10 +193,11 @@ test('Discard is absent beside Finish, available through quiet Workout actions a
 test('inline refresh failure keeps workout and the exact subordinate set draft mounted through Retry', async (t) => {
   const { db, fitness } = await initialized(t); const session = fitness.startWorkout(); const exercise = strength(fitness);
   fitness.addSessionExercise(session.id, exercise.id); const app = await mount(createElement(screens.FitnessScreen), db); t.after(app.unmount);
+  await logWorkoutSet(app, exercise.name);
   runtime.fixture.failures.add('fitness.readSession'); await app.resume(); assertInline(app); assert.ok(app.find('FormError'));
-  await app.press(`Add set for ${exercise.name}`); await app.change('Weight (kg) *', '12,345'); await app.change('Reps *', '8');
-  const modal = app.find('Modal'); const field = app.find('FormField', 'Weight (kg) *'); await app.resume();
-  assert.equal(app.find('Modal'), modal); assert.equal(app.find('FormField', 'Weight (kg) *'), field); assert.equal(field.props.value, '12,345');
+  await editWorkoutSet(app, exercise.name); await app.change('Weight (kg, optional)', '12,345'); await app.change('Reps (optional)', '8');
+  const modal = app.find('Modal'); const field = app.find('FormField', 'Weight (kg, optional)'); await app.resume();
+  assert.equal(app.find('Modal'), modal); assert.equal(app.find('FormField', 'Weight (kg, optional)'), field); assert.equal(field.props.value, '12,345');
   runtime.fixture.failures.clear(); await app.press('Retry'); assert.equal(app.find('Modal'), modal); assert.equal(field.props.value, '12,345');
   await app.press('Save'); assertInline(app); assert.equal(fitness.readSession(session.id).exercises[0].sets[0].weightGrams, 12345);
 });
@@ -202,12 +206,12 @@ test('larger text gives duration fields room to wrap, retaining paired input sem
   t.mock.method(runtime.native as { useWindowDimensions: () => unknown }, 'useWindowDimensions', () => ({ height: 800, width: 320, scale: 1, fontScale: 2 }));
   const { db, fitness } = await initialized(t); const session = fitness.startWorkout();
   const exercise = fitness.readOverview().exercises.find((row) => row.measurementType === 'duration')!; fitness.addSessionExercise(session.id, exercise.id);
-  const app = await mount(createElement(screens.FitnessScreen), db); t.after(app.unmount); await app.press(`Add set for ${exercise.name}`);
-  const minutes = app.find('FormField', 'Minutes'); const seconds = app.find('FormField', 'Seconds');
+  const app = await mount(createElement(screens.FitnessScreen), db); t.after(app.unmount); await completeAndEditWorkoutSet(app, exercise.name);
+  const minutes = app.find('FormField', 'Minutes (optional)'); const seconds = app.find('FormField', 'Seconds');
   const style = minutes.parentNode!.props.style as { flexBasis?: number }[];
   assert.equal(style.at(-1)!.flexBasis, 240); assert.equal(minutes.parentNode!.parentNode, seconds.parentNode!.parentNode);
   assert.equal((minutes.parentNode!.parentNode!.props.style as { flexWrap: string }).flexWrap, 'wrap');
-  await app.change('Minutes', '1'); await app.change('Seconds', '30'); await app.press('Save'); assertInline(app);
+  await app.change('Minutes (optional)', '1'); await app.change('Seconds', '30'); await app.press('Save'); assertInline(app);
 });
 
 test('Home completed-workout source entry opens read-only History while an active session remains independent', async (t) => {
@@ -221,19 +225,19 @@ test('Home completed-workout source entry opens read-only History while an activ
 });
 
 for (const [type, labels, values, display] of [
-  ['strength', ['Weight (kg) *', 'Reps *'], ['60', '10'], ['60 kg', '10 reps']],
-  ['bodyweight', ['Reps *', 'Added weight (kg, optional)'], ['8', '10'], ['8 reps', '+10 kg']],
-  ['duration', ['Minutes', 'Seconds'], ['1', '30'], ['1:30']],
+  ['strength', ['Weight (kg, optional)', 'Reps (optional)'], ['60', '10'], ['60 kg', '10 reps']],
+  ['bodyweight', ['Reps (optional)', 'Added weight (kg, optional)'], ['8', '10'], ['8 reps', '+10 kg']],
+  ['duration', ['Minutes (optional)', 'Seconds'], ['1', '30'], ['1:30']],
   ['distance', ['Distance (km)', 'Minutes (optional)', 'Seconds'], ['2.5', '14', '32'], ['2.5 km', '14:32']],
 ] as [MeasurementType, string[], string[], string[]][]) {
-  test(`${type} logging prioritizes required values, preserves parsing and renders friendly inline performance`, async (t) => {
+  test(`${type} detail logging preserves parsing and renders friendly inline performance`, async (t) => {
     const { db, fitness } = await initialized(t); const session = fitness.startWorkout();
     const exercise = fitness.readOverview().exercises.find((row) => row.measurementType === type)!; fitness.addSessionExercise(session.id, exercise.id);
-    const app = await mount(createElement(screens.FitnessScreen), db); t.after(app.unmount); await app.press(`Add set for ${exercise.name}`);
+    const app = await mount(createElement(screens.FitnessScreen), db); t.after(app.unmount); await completeAndEditWorkoutSet(app, exercise.name);
     const fields = app.nodes().filter((node) => node.kind === 'FormField'); assert.deepEqual(fields.map((node) => node.props?.label), labels);
     assert.equal(fields[0].props.autoFocus, true); assert.ok(fields.slice(1).every((node) => !node.props.autoFocus));
     if (type === 'duration' || type === 'distance') {
-      const minutes = app.find('FormField', type === 'duration' ? 'Minutes' : 'Minutes (optional)');
+      const minutes = app.find('FormField', 'Minutes (optional)');
       const seconds = app.find('FormField', 'Seconds'); assert.equal(minutes.parentNode!.parentNode, seconds.parentNode!.parentNode);
       const layout = minutes.parentNode!.parentNode!.props.style as { flexDirection: string; flexWrap: string };
       assert.equal(layout.flexDirection, 'row'); assert.equal(layout.flexWrap, 'wrap'); assert.ok(app.container.textContent.includes('Seconds: 0\u201359'));

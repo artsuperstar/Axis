@@ -30,6 +30,7 @@ export function WorkoutSheet({ session, error, onDismiss }: {
     {session.exercises.map((exercise) => <View key={exercise.id} style={[styles.exercise, { borderColor: colors.border }]}>
       <ThemedText type="sectionHeading" accessibilityRole="header">{exercise.exerciseName}</ThemedText>
       <ThemedText type="small" themeColor="textSecondary">{measurementLabel(exercise.measurementType)}</ThemedText>
+      {exercise.targetSetCount === null && <ThemedText type="small" themeColor="textSecondary">{exercise.isManuallyComplete ? 'Exercise completed' : 'Not marked complete'} · No set target</ThemedText>}
       {!!exercise.note && <ThemedText type="small">Note: {exercise.note}</ThemedText>}
       {exercise.sets.map((set, index) => <View key={set.id} style={styles.set} accessible
         accessibilityLabel={`${exercise.exerciseName}, set ${index + 1}. ${workoutSetPresentation(set).spoken}`}>

@@ -78,7 +78,7 @@ async function main() {
         taskState = { access: f.tasks, snapshot: variant === 'empty' ? { ...taskData, tasks: [], items: [] } : taskData,
           presentationNow: f.now(), error: null, reload: noop, mutate: (action) => action() };
         fitnessState = { access: f.fitness, snapshot: f.fitness.readOverview(), activeDetail: variant === 'dense' ? denseWorkout : baseWorkout,
-          detail: null, nextWorkout: null, rotationSteps: [], routines: [], routinesLoaded: false, historyLoaded: false,
+          detail: null, lastWorkout: null, nextWorkout: null, rotationSteps: [], routines: [], routinesLoaded: false, historyLoaded: false,
           error: null, reload: noop, mutate: (action) => action(), openSession: noop, closeSession: noop, loadMoreHistory: noop };
         const result = renderControl(() => createElement(View, { style: { width, height, backgroundColor: DesignColors[scheme].canvas } },
           createElement(screen === 'tasks' ? TasksScreen : FitnessScreen)));
