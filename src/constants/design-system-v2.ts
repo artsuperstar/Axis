@@ -26,6 +26,9 @@ export const MotionTokens = { press: 120, selection: 180, indicator: 190, insert
 export const TouchTarget = 48;
 export const DesignTypography = {
   screenTitle: { fontSize: 36, lineHeight: 46, fontWeight: '600' },
+  editorTitle: { fontSize: 26, lineHeight: 34, fontWeight: '600' },
+  editorSection: { fontSize: 20, lineHeight: 28, fontWeight: '600' },
+  fieldLabel: { fontSize: 14, lineHeight: 20, fontWeight: '600' },
   sectionHeading: { fontSize: 20, lineHeight: 28, fontWeight: '600' },
   cardTitle: { fontSize: 16, lineHeight: 24, fontWeight: '600' },
   sheetTitle: { fontSize: 18, lineHeight: 24, fontWeight: '600' },

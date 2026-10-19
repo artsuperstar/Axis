@@ -2,7 +2,9 @@ import { useEffect, useId, useRef, useState, type Ref } from 'react';
 import { Pressable, ScrollView, StyleSheet, TextInput, View, type TextInputProps } from 'react-native';
 
 import { ThemedText } from '@/components/themed-text';
-import { UiButton } from './design-system';
+import { UiButton, UiIcon, UiText, useDesignColors, useInterfaceFontStyle } from './design-system';
+import type { UiIconName } from './ui-icon';
+import { Shape, TouchTarget } from '@/constants/design-system-v2';
 import { ControlSize, Radius, Space, Typography } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
 
@@ -40,9 +42,10 @@ export function SegmentedControl<T extends SelectionValue>({ label, value, optio
   </View>;
 }
 
-export function SelectField<T extends SelectionValue>({ label, value, options, onChange, displayValue, description, action, onOpen, disabled = false, error, ref }: {
+export function SelectField<T extends SelectionValue>({ label, value, options, onChange, displayValue, description, action, onOpen, disabled = false, error, ref, appearance, icon }: {
   label: string; value: T; options: readonly SelectionOption<T>[]; onChange: (value: T) => void; displayValue?: string; description?: string;
   action?: SelectionInlineAction; onOpen?: () => void; disabled?: boolean; error?: string | null; ref?: Ref<View>;
+  appearance?: 'v2'; icon?: UiIconName;
 }) {
   const id = useId();
   const trigger = useRef<View>(null);
@@ -53,36 +56,39 @@ export function SelectField<T extends SelectionValue>({ label, value, options, o
     if (typeof ref === 'function') ref(node);
     else if (ref) ref.current = node;
   }} label={label} value={displayValue ?? options.find((option) => option.value === value)?.label ?? 'Choose an option'}
-    disabled={disabled} expanded={expanded} error={error} onPress={() => {
+    disabled={disabled} expanded={expanded} error={error} appearance={appearance} icon={icon} onPress={() => {
       if (expanded) { selection.close(); return; }
       if (!trigger.current) return;
       onOpen?.();
-      selection.open({ id, label, trigger: trigger.current, estimatedHeight: 52 + options.length * 56 + (description ? 96 : 0) + (action ? 64 : 0),
-        content: <SelectionMenu label={label} value={value} options={options} onChange={onChange} description={description} action={action} onInlineAction={selection.beginInline} onClose={selection.close} /> });
+      selection.open({ id, label, trigger: trigger.current, appearance, estimatedHeight: 52 + options.length * 56 + (description ? 96 : 0) + (action ? 64 : 0),
+        content: <SelectionMenu appearance={appearance} label={label} value={value} options={options} onChange={onChange} description={description} action={action} onInlineAction={selection.beginInline} onClose={selection.close} /> });
     }} />;
 }
 
 /** The dropdown body is shared; category actions and selection side effects stay in the feature. */
-export function SelectionMenu<T extends SelectionValue>({ label, value, options, onChange, description, action, onInlineAction, onClose }: {
+export function SelectionMenu<T extends SelectionValue>({ label, value, options, onChange, description, action, onInlineAction, onClose, appearance }: {
   label: string; value: T; options: readonly SelectionOption<T>[]; onChange: (value: T) => void; description?: string;
   action?: SelectionInlineAction; onInlineAction?: (action: SelectionInlineAction) => void; onClose: (restoreFocus?: boolean) => void;
+  appearance?: 'v2';
 }) {
   const colors = useTheme();
+  const design = useDesignColors();
   return <>
-    {!!description && <ThemedText type="secondary" themeColor="textSecondary">{description}</ThemedText>}
+    {!!description && (appearance === 'v2' ? <UiText type="secondary" color="textSecondary">{description}</UiText> : <ThemedText type="secondary" themeColor="textSecondary">{description}</ThemedText>)}
     <View accessibilityRole="radiogroup" accessibilityLabel={label} style={styles.field}>
-      {options.map((option) => <FormChoice key={String(option.value)} label={option.label} selected={option.value === value} disabled={option.disabled}
+      {options.map((option) => <FormChoice appearance={appearance} key={String(option.value)} label={option.label} selected={option.value === value} disabled={option.disabled}
         onPress={() => { onClose(); onChange(option.value); }} />)}
     </View>
-    {action && <View style={[styles.menuAction, { borderColor: colors.border }]}>
-      <FormButton variant="quiet" label={action.label} accessibilityLabel={action.accessibilityLabel} onPress={() => onInlineAction?.(action)} />
+    {action && <View style={[styles.menuAction, { borderColor: appearance === 'v2' ? design.border : colors.border }]}>
+      <FormButton appearance={appearance} variant="quiet" label={action.label} accessibilityLabel={action.accessibilityLabel} onPress={() => onInlineAction?.(action)} />
     </View>}
   </>;
 }
 
 /** A generic name action inside the current overlay; features provide the domain operation and errors. */
-export function InlineNameForm({ title, onCancel, onComplete, onSize, onSubmit, formatError }: InlineActionControls & {
+export function InlineNameForm({ title, onCancel, onComplete, onSize, onSubmit, formatError, appearance }: InlineActionControls & {
   onSubmit: (name: string, complete: () => void) => void; formatError: (cause: unknown) => string;
+  appearance?: 'v2';
 }) {
   const [name, setName] = useState('');
   const [error, setError] = useState<string | null>(null);
@@ -116,19 +122,19 @@ export function InlineNameForm({ title, onCancel, onComplete, onSize, onSubmit, 
     <ScrollView ref={scroll} style={styles.inlineBody} contentContainerStyle={styles.inlineContent} keyboardShouldPersistTaps="always"
       onContentSizeChange={(_width, height) => setBodyHeight(height)}
       onLayout={(event) => { viewportHeight.current = event.nativeEvent.layout.height; keepInputVisible(); }}>
-      <FormField ref={input} label="Name *" accessibilityLabel={`${title} name, required`} value={name} autoFocus returnKeyType="done" submitBehavior="submit"
+      <FormField appearance={appearance} ref={input} label="Name *" accessibilityLabel={`${title} name, required`} value={name} autoFocus returnKeyType="done" submitBehavior="submit"
         onChangeText={(value) => { setName(value); setError(null); }} onSubmitEditing={submit}
         onLayout={(event) => { inputBounds.current = event.nativeEvent.layout; keepInputVisible(); }} />
-      <FormError message={error} />
+      <FormError appearance={appearance} message={error} />
     </ScrollView>
     <View style={styles.inlineFooter} onLayout={(event) => setFooterHeight(event.nativeEvent.layout.height)}>
-      <View style={styles.inlineButton}><FormButton variant="quiet" label="Cancel" accessibilityLabel={`Cancel ${title.toLowerCase()}`} onPress={onCancel} /></View>
-      <View style={styles.inlineButton}><FormButton variant="primary" label="Create" accessibilityLabel={`Create ${title.toLowerCase().replace(/^new /, '')}`} onPress={submit} disabled={!name.trim()} /></View>
+      <View style={styles.inlineButton}><FormButton appearance={appearance} variant="quiet" label="Cancel" accessibilityLabel={`Cancel ${title.toLowerCase()}`} onPress={onCancel} /></View>
+      <View style={styles.inlineButton}><FormButton appearance={appearance} variant="primary" label="Create" accessibilityLabel={`Create ${title.toLowerCase().replace(/^new /, '')}`} onPress={submit} disabled={!name.trim()} /></View>
     </View>
   </View>;
 }
 
-export function FormButton({ label, onPress, disabled = false, selected = false, accessibilityLabel, variant = 'secondary', compactNavigation = false, expanded, align = 'center', ref, appearance: visual, icon, showIndicator, feature }: {
+export function FormButton({ label, onPress, disabled = false, selected = false, accessibilityLabel, accessibilityHint, variant = 'secondary', compactNavigation = false, expanded, align = 'center', ref, appearance: visual, icon, leadingIcon, trailingIcon, showIndicator, feature, tone }: {
   label: string;
   onPress: () => void;
   disabled?: boolean;
@@ -141,6 +147,8 @@ export function FormButton({ label, onPress, disabled = false, selected = false,
   align?: 'start' | 'center';
   ref?: Ref<View>;
   appearance?: 'v2';
+  tone?: 'brand';
+  leadingIcon?: UiIconName; trailingIcon?: UiIconName; accessibilityHint?: string;
   icon?: 'plus' | 'more';
   showIndicator?: boolean;
   feature?: 'fitness' | 'tasks';
@@ -149,7 +157,7 @@ export function FormButton({ label, onPress, disabled = false, selected = false,
   const compact = variant === 'navigation' && compactNavigation;
   const [focused, setFocused] = useState(false);
   const appearance = buttonAppearance(colors, variant, { disabled, selected, focused });
-  if (visual === 'v2') return <UiButton {...{ label, onPress, disabled, selected, accessibilityLabel, variant, expanded, align, ref, icon, showIndicator, feature }} />;
+  if (visual === 'v2') return <UiButton {...{ label, onPress, disabled, selected, accessibilityLabel, accessibilityHint, variant, expanded, align, ref, icon, leadingIcon, trailingIcon, showIndicator, feature, tone }} />;
   return (
     <Pressable
       ref={ref}
@@ -166,7 +174,7 @@ export function FormButton({ label, onPress, disabled = false, selected = false,
   );
 }
 
-export function FormSelect({ label, value, onPress, disabled = false, expanded = false, accessibilityHint, error, ref }: {
+export function FormSelect({ label, value, onPress, disabled = false, expanded = false, accessibilityHint, error, ref, appearance: visual, icon }: {
   label: string;
   value: string;
   onPress: () => void;
@@ -175,13 +183,17 @@ export function FormSelect({ label, value, onPress, disabled = false, expanded =
   accessibilityHint?: string;
   ref?: Ref<View>;
   error?: string | null;
+  appearance?: 'v2'; icon?: UiIconName;
 }) {
   const colors = useTheme();
+  const design = useDesignColors();
   const [focused, setFocused] = useState(false);
-  const appearance = fieldAppearance(colors, { disabled, focused, expanded, invalid: !!error });
+  const appearance = visual === 'v2' ? { backgroundColor: disabled ? design.inset : design.surface,
+    color: disabled ? design.textMuted : design.textPrimary, borderColor: error ? design.danger : focused || expanded ? design.brand : design.border,
+    borderRadius: Shape.control } : fieldAppearance(colors, { disabled, focused, expanded, invalid: !!error });
   return (
     <View style={styles.field}>
-      <ThemedText type="button">{label}</ThemedText>
+      {visual === 'v2' ? <UiText type="fieldLabel">{label}</UiText> : <ThemedText type="button">{label}</ThemedText>}
       <Pressable
         ref={ref}
         accessible
@@ -198,21 +210,29 @@ export function FormSelect({ label, value, onPress, disabled = false, expanded =
         onPress={onPress}
         onFocus={() => setFocused(true)} onBlur={() => setFocused(false)}
         style={({ pressed }) => [styles.select, appearance, { opacity: pressed && !disabled ? 0.85 : 1 }]}>
-        <ThemedText type="body" style={[styles.value, { color: appearance.color }]}>{value}</ThemedText>
-        <ThemedText type="body" accessible={false} importantForAccessibility="no" style={[styles.check, { color: appearance.color }]}>{expanded ? '▴' : '▾'}</ThemedText>
+        {visual === 'v2' ? <>
+          {icon && <UiIcon name={icon} color={appearance.color} />}
+          <UiText type="body" style={[styles.value, { color: appearance.color }]}>{value}</UiText>
+          <View style={{ transform: [{ rotate: expanded ? '180deg' : '0deg' }] }}><UiIcon name="chevron" color={appearance.color} size={18} /></View>
+        </> : <>
+          <ThemedText type="body" style={[styles.value, { color: appearance.color }]}>{value}</ThemedText>
+          <ThemedText type="body" accessible={false} importantForAccessibility="no" style={[styles.check, { color: appearance.color }]}>{expanded ? '▴' : '▾'}</ThemedText>
+        </>}
       </Pressable>
-      <FormError message={error ?? null} />
+      <FormError appearance={visual} message={error ?? null} />
     </View>
   );
 }
 
-export function FormChoice({ label, selected, onPress, disabled = false }: {
+export function FormChoice({ label, selected, onPress, disabled = false, appearance }: {
   label: string;
   selected: boolean;
   onPress: () => void;
   disabled?: boolean;
+  appearance?: 'v2';
 }) {
   const colors = useTheme();
+  const design = useDesignColors();
   const [focused, setFocused] = useState(false);
   return (
     <Pressable
@@ -226,29 +246,44 @@ export function FormChoice({ label, selected, onPress, disabled = false }: {
       onPress={onPress}
       onFocus={() => setFocused(true)} onBlur={() => setFocused(false)}
       style={({ pressed }) => [styles.option, {
-        backgroundColor: disabled ? colors.surfaceMuted : selected || focused ? colors.accentMuted : 'transparent',
+        backgroundColor: appearance === 'v2' ? disabled ? design.inset : selected || focused ? design.selected : 'transparent'
+          : disabled ? colors.surfaceMuted : selected || focused ? colors.accentMuted : 'transparent',
         opacity: pressed && !disabled ? 0.85 : 1,
       }]}>
-      <ThemedText type="body" style={[styles.value, { color: disabled ? colors.textMuted : colors.textPrimary }]}>{label}</ThemedText>
-      <ThemedText type="body" accessible={false} importantForAccessibility="no" style={[styles.check, { color: colors.accent }]}>{selected ? '✓' : ''}</ThemedText>
+      {appearance === 'v2' ? <>
+        <UiText type="body" color={disabled ? 'textMuted' : 'textPrimary'} style={styles.value}>{label}</UiText>
+        <View style={styles.check}>{selected && <UiIcon name="check" color={design.brand} />}</View>
+      </> : <>
+        <ThemedText type="body" style={[styles.value, { color: disabled ? colors.textMuted : colors.textPrimary }]}>{label}</ThemedText>
+        <ThemedText type="body" accessible={false} importantForAccessibility="no" style={[styles.check, { color: colors.accent }]}>{selected ? '✓' : ''}</ThemedText>
+      </>}
     </Pressable>
   );
 }
 
-export function FormWeekday({ label, checked, onPress }: { label: string; checked: boolean; onPress: () => void }) {
+export function FormWeekday({ label, checked, onPress, appearance }: { label: string; checked: boolean; onPress: () => void; appearance?: 'v2' }) {
   const colors = useTheme();
+  const design = useDesignColors();
+  const [focused, setFocused] = useState(false);
   return (
-    <Pressable accessibilityRole="checkbox" accessibilityLabel={label} accessibilityState={{ checked }} onPress={onPress}
-      style={({ pressed }) => [styles.button, buttonAppearance(colors, 'secondary', { selected: checked, pressed }).style]}>
-      <ThemedText type="button" themeColor={checked ? 'accent' : 'textPrimary'}>{label.slice(0, 3)}{checked ? ' ✓' : ''}</ThemedText>
+    <Pressable accessibilityRole="checkbox" accessibilityLabel={label} accessibilityState={{ checked }} aria-checked={checked} onPress={onPress}
+      onFocus={() => setFocused(true)} onBlur={() => setFocused(false)}
+      style={({ pressed }) => [styles.button, appearance === 'v2' ? { flexDirection: 'row', gap: 4, minHeight: TouchTarget, borderWidth: 1,
+        backgroundColor: checked || pressed ? design.selected : design.control, borderRadius: Shape.control,
+        borderColor: checked || focused ? design.brand : design.border } : buttonAppearance(colors, 'secondary', { selected: checked, pressed }).style]}>
+      {appearance === 'v2' ? <><UiText type="button" color={checked ? 'brand' : 'textPrimary'}>{label.slice(0, 3)}</UiText>
+        {checked && <UiIcon name="check" color={design.brand} size={16} />}</>
+        : <ThemedText type="button" themeColor={checked ? 'accent' : 'textPrimary'}>{label.slice(0, 3)}{checked ? ' ✓' : ''}</ThemedText>}
     </Pressable>
   );
 }
 
-export function FormField({ label, style, ref, helperText, editable = true, readOnly: readOnlyProp = false, disabled = false, multiline = false, error, accessibilityState, onFocus, onBlur, ...props }: TextInputProps & {
-  label: string; helperText?: string; disabled?: boolean; error?: string | null; ref?: Ref<TextInput>;
+export function FormField({ label, style, ref, helperText, editable = true, readOnly: readOnlyProp = false, disabled = false, multiline = false, error, accessibilityState, onFocus, onBlur, appearance, ...props }: TextInputProps & {
+  label: string; helperText?: string; disabled?: boolean; error?: string | null; ref?: Ref<TextInput>; appearance?: 'v2';
 }) {
   const colors = useTheme();
+  const design = useDesignColors();
+  const font = useInterfaceFontStyle();
   const input = useRef<TextInput>(null);
   const focus = useFormFocus();
   const [focused, setFocused] = useState(false);
@@ -257,7 +292,7 @@ export function FormField({ label, style, ref, helperText, editable = true, read
   return (
     <View style={styles.field}>
       <View style={styles.fieldLabel}>
-        <ThemedText type="button">{label}</ThemedText>
+        {appearance === 'v2' ? <UiText type="fieldLabel">{label}</UiText> : <ThemedText type="button">{label}</ThemedText>}
         {readOnly && <ThemedText type="metadata" themeColor="textSecondary">Read only</ThemedText>}
       </View>
       <TextInput
@@ -272,22 +307,26 @@ export function FormField({ label, style, ref, helperText, editable = true, read
         aria-disabled={unavailable}
         aria-invalid={!!error}
         accessibilityHint={[readOnly ? 'Read only' : null, helperText, error].filter(Boolean).join('. ') || undefined}
-        placeholderTextColor={colors.textSecondary}
-        selectionColor={colors.accent}
+        placeholderTextColor={appearance === 'v2' ? design.textMuted : colors.textSecondary}
+        selectionColor={appearance === 'v2' ? design.brand : colors.accent}
         multiline={multiline}
-        style={[styles.input, multiline ? styles.multilineInput : styles.singleLineInput, fieldAppearance(colors, { readOnly, disabled: unavailable, focused, invalid: !!error }), style]}
+        style={[styles.input, multiline ? styles.multilineInput : styles.singleLineInput,
+          appearance === 'v2' ? { ...font, fontSize: 16, borderRadius: Shape.control, outlineColor: design.brand, color: unavailable ? design.textMuted : design.textPrimary,
+            backgroundColor: readOnly || unavailable ? design.inset : design.surface, borderColor: error ? design.danger : focused ? design.brand : design.border }
+            : fieldAppearance(colors, { readOnly, disabled: unavailable, focused, invalid: !!error }), style]}
         onFocus={(event) => { setFocused(true); focus?.focus(input.current); onFocus?.(event); }}
         onBlur={(event) => { setFocused(false); focus?.blur(input.current); onBlur?.(event); }}
         {...props}
       />
       {!!helperText && <ThemedText type="secondary" themeColor="textSecondary">{helperText}</ThemedText>}
-      <FormError message={error ?? null} />
+      <FormError appearance={appearance} message={error ?? null} />
     </View>
   );
 }
 
-export function FormError({ message }: { message: string | null }) {
+export function FormError({ message, appearance }: { message: string | null; appearance?: 'v2' }) {
   if (!message) return null;
+  if (appearance === 'v2') return <UiText type="secondary" color="danger" accessibilityRole="alert" accessibilityLiveRegion="polite">{message}</UiText>;
   return <StatusText tone="danger" accessibilityRole="alert" accessibilityLiveRegion="polite">{message}</StatusText>;
 }
 

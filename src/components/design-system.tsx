@@ -11,6 +11,7 @@ import type { ButtonVariant } from './control-appearance';
 import { ReducedMotionContext, motionTiming, useMotionPreference, useReducedMotion } from './motion';
 import { ThemedText, type ThemedTextProps } from './themed-text';
 import { UiIcon } from './ui-icon';
+import type { UiIconName } from './ui-icon';
 export { UiIcon } from './ui-icon';
 
 const fonts = {
@@ -32,12 +33,18 @@ export function useDesignColors(): DesignPalette {
   return DesignColors[useColorScheme() === 'dark' ? 'dark' : 'light'];
 }
 
+/** Native inputs share the local interface font and its readable load-failure fallback. */
+export function useInterfaceFontStyle() {
+  const { loaded, system } = useContext(TypographyContext);
+  return interfaceFontStyle(loaded, 'regular', system);
+}
+
 export function UiText({ color = 'textPrimary', type = 'body', style, ...props }: Omit<ThemedTextProps, 'themeColor' | 'type'> & { color?: keyof DesignPalette; type?: DesignTextRole }) {
   const colors = useDesignColors();
   const { loaded, displayLoaded, system } = useContext(TypographyContext);
   const semibold = DesignTypography[type].fontWeight === '600';
-  const face = type === 'screenTitle' ? displayFontStyle(displayLoaded, system) : interfaceFontStyle(loaded, semibold ? 'semibold' : 'regular', system);
-  return <ThemedText {...props} type={type === 'numeric' || type === 'smallLabel' ? 'body' : type} style={[DesignTypography[type], { color: colors[color] }, face, style]} />;
+  const face = type === 'screenTitle' || type === 'editorTitle' || type === 'editorSection' ? displayFontStyle(displayLoaded, system) : interfaceFontStyle(loaded, semibold ? 'semibold' : 'regular', system);
+  return <ThemedText {...props} type={type === 'numeric' || type === 'smallLabel' || type === 'editorTitle' || type === 'editorSection' || type === 'fieldLabel' ? 'body' : type} style={[DesignTypography[type], { color: colors[color] }, face, style]} />;
 }
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
@@ -62,26 +69,34 @@ export function UiPressable({ style, onPressIn, onPressOut, onHoverIn, onHoverOu
     onPressOut={(event) => { setPressed(false); progress.set(reduced ? 0 : withTiming(0, motionTiming(MotionTokens.press))); onPressOut?.(event); }} />;
 }
 
-export function UiButton({ label, onPress, disabled = false, selected = false, accessibilityLabel, variant = 'secondary', expanded, align = 'center', ref, icon, showIndicator = true, feature }: {
+export function UiButton({ label, onPress, disabled = false, selected = false, accessibilityLabel, accessibilityHint, variant = 'secondary', expanded, align = 'center', ref, icon, leadingIcon, trailingIcon, showIndicator = true, feature, tone }: {
   label: string; onPress: () => void; disabled?: boolean; selected?: boolean; accessibilityLabel?: string; variant?: ButtonVariant;
   expanded?: boolean; align?: 'start' | 'center'; ref?: Ref<View>; icon?: 'plus' | 'more';
+  leadingIcon?: UiIconName; trailingIcon?: UiIconName; accessibilityHint?: string;
   showIndicator?: boolean;
   feature?: 'fitness' | 'tasks';
+  tone?: 'brand';
 }) {
   const colors = useDesignColors();
   const [focused, setFocused] = useState(false);
   const primary = variant === 'primary' && !disabled;
   const textColor = disabled ? 'textMuted' : primary ? feature === 'fitness' ? 'onFitness' : 'onBrand'
-    : variant === 'destructive' ? 'danger' : selected ? 'brand' : feature === 'fitness' && variant === 'secondary' ? 'fitnessText' : 'textPrimary';
+    : variant === 'destructive' ? 'danger' : selected || tone === 'brand' ? 'brand' : feature === 'fitness' && variant === 'secondary' ? 'fitnessText' : 'textPrimary';
   return <UiPressable ref={ref} scale accessibilityRole="button" accessibilityLabel={accessibilityLabel ?? label}
+    accessibilityHint={accessibilityHint}
     accessibilityState={{ disabled, selected, ...(expanded === undefined ? {} : { expanded }) }} aria-expanded={expanded}
     disabled={disabled} onPress={onPress} onFocus={() => setFocused(true)} onBlur={() => setFocused(false)}
     style={({ pressed }) => [styles.button, { alignItems: align === 'start' ? 'flex-start' : 'center',
       paddingHorizontal: variant === 'navigation' ? Space.sm : Space.md,
       backgroundColor: disabled ? colors.inset : primary ? feature === 'fitness' ? colors.fitnessAccent : colors.brandStrong : pressed || selected ? colors.selected
-        : variant === 'quiet' || variant === 'navigation' ? 'transparent' : feature === 'fitness' ? colors.fitnessAccentSoft : colors.control,
-      borderColor: focused ? primary ? colors[textColor] : colors.brand : 'transparent' }]}>
-    {icon ? <UiIcon name={icon} color={colors[textColor]} /> : <UiText type="button" color={textColor}>{label}</UiText>}
+        : variant === 'quiet' || variant === 'navigation' ? 'transparent' : tone === 'brand' ? colors.brandSoft : feature === 'fitness' ? colors.fitnessAccentSoft : colors.control,
+      borderColor: focused ? primary ? colors[textColor] : colors.brand : 'transparent' },
+      (leadingIcon || trailingIcon) && { flexDirection: 'row', justifyContent: 'center', gap: Space.sm }]}>
+    {icon ? <UiIcon name={icon} color={colors[textColor]} /> : <>
+      {leadingIcon && <UiIcon name={leadingIcon} color={colors[textColor]} />}
+      <UiText type="button" color={textColor} style={trailingIcon ? { flex: 1, minWidth: 0 } : undefined}>{label}</UiText>
+      {trailingIcon && <UiIcon name={trailingIcon} color={colors[textColor]} />}
+    </>}
     {selected && variant === 'navigation' && showIndicator && <View style={{ position: 'absolute', left: 8, right: 8, bottom: 2, height: 2, backgroundColor: colors.brand }} />}
   </UiPressable>;
 }

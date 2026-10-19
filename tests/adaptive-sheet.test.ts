@@ -120,7 +120,7 @@ test('Task/Transaction editors and both category managers use the shared adaptiv
   ];
   for (const render of forms) {
     const result = renderControl(render);
-    assert.equal(result.elements[0].type, sheets.AdaptiveModal);
+    assert.equal(result.elements.filter((element) => element.type === sheets.AdaptiveModal).length, 1);
     assert.ok(result.elements.some((element) => element.type === sheets.AdaptiveSheet));
   }
 });

@@ -147,7 +147,7 @@ test('Task editor groups concepts and recurrence is an optional focused surface 
   const f = await editor(t, { title: 'Working task' }); const { app } = f;
   const headings = app.nodes().filter((node) => node.kind === 'ThemedText' && node.props.accessibilityRole === 'header').map((node) => node.textContent);
   assert.deepEqual(headings, ['New task', 'Task', 'Schedule', 'Organization', 'Recurrence']);
-  assert.equal(app.find('FormButton', 'Add recurrence').props.variant, 'quiet'); assert.ok(!app.nodes().some((node) => node.props?.label === 'Repeats'));
+  assert.equal(app.find('FormButton', 'Add recurrence').props.variant, 'secondary'); assert.ok(!app.nodes().some((node) => node.props?.label === 'Repeats'));
   await app.change('Description', 'Draft description'); await choose(app, 'Priority', 'high'); const category = f.access.read().categories[0]; await choose(app, 'Category', category.id);
   const modal = app.find('Modal'); await app.press('Add recurrence'); assert.equal(app.find('Modal'), modal);
   await choose(app, 'Repeats', 'daily'); await app.change('Every', '3'); await app.press('Back to task editor'); assert.equal(app.find('Modal'), modal);
@@ -159,10 +159,10 @@ test('Task editor groups concepts and recurrence is an optional focused surface 
 });
 
 for (const frequency of ['daily', 'weekly', 'monthly', 'yearly'] as const) {
-  test(`${frequency} recurrence retains interval/day/end-date behavior in Frequency → Pattern → Start → End order`, async (t) => {
+  test(`${frequency} recurrence retains interval/day/end-date behavior in the v2 conditional sections`, async (t) => {
     const f = await editor(t); const { app } = f; await app.press('Add recurrence'); await choose(app, 'Repeats', frequency);
     const headings = app.nodes().filter((node) => node.kind === 'ThemedText' && node.props.accessibilityRole === 'header').map((node) => node.textContent);
-    assert.deepEqual(headings, ['Recurrence', 'Frequency', 'Pattern', 'Start', 'End']);
+    assert.deepEqual(headings, ['Recurrence', 'Pattern', ...(frequency === 'yearly' ? [] : ['Repeat']), 'Schedule', 'Ends', 'Summary']);
     if (frequency !== 'yearly') await app.change('Every', frequency === 'daily' ? '3' : '2');
     if (frequency === 'weekly') {
       await act(() => (app.find('FormWeekday', 'Thursday').props.onPress as () => void)());

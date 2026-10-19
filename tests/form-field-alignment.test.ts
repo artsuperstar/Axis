@@ -86,3 +86,15 @@ test('focus, invalid and read-only appearances alter no input geometry', async (
   assert.equal(before.borderWidth, 1); assert.equal(before.paddingVertical, 0);
   assert.equal(input.props.editable, false); assert.equal(input.props.keyboardType, 'decimal-pad');
 });
+
+for (const platform of ['ios', 'android']) test(`${platform} v2 input keeps native single-line centering through focus and typing`, async (t) => {
+  const nativePlatform = (runtime.native as { Platform: { OS: string } }).Platform;
+  const previous = nativePlatform.OS; nativePlatform.OS = platform; t.after(() => { nativePlatform.OS = previous; });
+  function Probe() { const [value, setValue] = useState(''); return createElement(FormField, { appearance: 'v2', label: 'Title *', value, onChangeText: setValue }); }
+  const app = await mount(createElement(Probe), null); t.after(app.unmount);
+  const input = app.find('TextInput', 'Title *'); const before = geometry(input.props.style);
+  assert.equal(before.paddingVertical, 0); assert.equal(before.lineHeight, undefined); assert.equal(before.textAlignVertical, 'center');
+  await act(() => (input.props.onFocus as (event: unknown) => void)({ nativeEvent: { target: 1 } }));
+  await act(() => (input.props.onChangeText as (value: string) => void)('First character and a longer title'));
+  assert.deepEqual(geometry(input.props.style), before); assert.equal(input.props.allowFontScaling === false, false);
+});

@@ -12,6 +12,7 @@ import { FormFocusContext } from './form-focus';
 import { FormScrollView, FormSelectionHost, useFormSelection, type FormSelectionHandle } from './form-selection-host';
 import { ThemedText } from './themed-text';
 import { SheetRefreshNotice } from './sheet-refresh-notice';
+import { useDesignColors } from './design-system';
 
 const SheetBounds = createContext<{ height: number; bottomInset: number; leftInset: number; rightInset: number } | null>(null);
 
@@ -69,10 +70,11 @@ function SheetViewport({ children, onDismiss }: { children: ReactNode; onDismiss
 }
 
 /** Measure the fixed header and unconstrained scroll content separately, never the clipped body. */
-export function AdaptiveSheet({ title, header, children, onDismiss, action, onConfirm, contentContainerStyle }: {
-  title?: string; header?: ReactNode; children: ReactNode; onDismiss?: () => void; action?: string; onConfirm?: () => void; contentContainerStyle?: StyleProp<ViewStyle>;
+export function AdaptiveSheet({ title, header, children, onDismiss, action, onConfirm, contentContainerStyle, appearance }: {
+  title?: string; header?: ReactNode; children: ReactNode; onDismiss?: () => void; action?: string; onConfirm?: () => void; contentContainerStyle?: StyleProp<ViewStyle>; appearance?: 'v2';
 }) {
   const colors = useTheme();
+  const design = useDesignColors();
   const { height } = useWindowDimensions();
   const bounds = useContext(SheetBounds);
   const maximum = bounds?.height ?? height;
@@ -106,7 +108,7 @@ export function AdaptiveSheet({ title, header, children, onDismiss, action, onCo
     blur: (input: TextInput | null) => { if (focused.current === input) focused.current = null; } }), [revealFocused]);
   useEffect(() => { revealFocused(); }, [layout.height, headerHeight, contentHeight, revealFocused]);
   useEffect(() => () => { if (frame.current !== null) cancelAnimationFrame(frame.current); focused.current = null; }, []);
-  return <View onLayout={selection.reposition} style={[styles.sheet, { backgroundColor: colors[SurfaceColors.overlay], borderColor: colors.border, height: ready ? layout.height : maximum,
+  return <View onLayout={selection.reposition} style={[styles.sheet, { backgroundColor: appearance === 'v2' ? design.canvas : colors[SurfaceColors.overlay], borderColor: appearance === 'v2' ? design.border : colors.border, height: ready ? layout.height : maximum,
     paddingBottom: layout.paddingBottom, paddingLeft: bounds?.leftInset ?? 0, paddingRight: bounds?.rightInset ?? 0, opacity: ready ? 1 : 0 }]}>
     <View style={[styles.fixedHeader, styles.inner]} onLayout={(event) => setHeaderHeight(Math.ceil(event.nativeEvent.layout.height))}>
       {header ?? <View style={styles.header}>

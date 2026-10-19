@@ -22,6 +22,15 @@ import { pickerValue } from '../src/utils/calendar';
 import { bundledMigrations, database } from './helpers/database';
 import { controls, renderControl, selection } from './helpers/form-components';
 
+for (const checked of [false, true]) test(`v2 weekday exposes its full name and checked=${checked}, with a non-color selection cue`, () => {
+  let presses = 0;
+  const result = renderControl(() => controls.FormWeekday({ label: 'Wednesday', checked, appearance: 'v2', onPress: () => { presses++; } }));
+  assert.match(result.markup, /role="checkbox"/); assert.match(result.markup, /aria-label="Wednesday"/);
+  assert.ok(result.markup.includes(`aria-checked="${checked}"`)); assert.ok(result.markup.includes('Wed'));
+  assert.equal(result.markup.includes('icon-check'), checked);
+  result.elements.find((element) => element.props.accessibilityLabel === 'Wednesday')!.props.onPress!(); assert.equal(presses, 1);
+});
+
 const today = '2026-10-03';
 async function initialized() {
   const { sqlite, db } = database();
