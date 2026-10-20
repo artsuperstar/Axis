@@ -149,7 +149,7 @@ export function FormButton({ label, onPress, disabled = false, selected = false,
   appearance?: 'v2';
   tone?: 'brand';
   leadingIcon?: UiIconName; trailingIcon?: UiIconName; accessibilityHint?: string;
-  icon?: 'plus' | 'more';
+  icon?: UiIconName;
   showIndicator?: boolean;
   feature?: 'fitness' | 'tasks';
 }) {
@@ -318,7 +318,8 @@ export function FormField({ label, style, ref, helperText, editable = true, read
         onBlur={(event) => { setFocused(false); focus?.blur(input.current); onBlur?.(event); }}
         {...props}
       />
-      {!!helperText && <ThemedText type="secondary" themeColor="textSecondary">{helperText}</ThemedText>}
+      {!!helperText && (appearance === 'v2' ? <UiText type="secondary" color="textSecondary">{helperText}</UiText>
+        : <ThemedText type="secondary" themeColor="textSecondary">{helperText}</ThemedText>)}
       <FormError appearance={appearance} message={error ?? null} />
     </View>
   );

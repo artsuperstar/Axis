@@ -71,7 +71,7 @@ export function UiPressable({ style, onPressIn, onPressOut, onHoverIn, onHoverOu
 
 export function UiButton({ label, onPress, disabled = false, selected = false, accessibilityLabel, accessibilityHint, variant = 'secondary', expanded, align = 'center', ref, icon, leadingIcon, trailingIcon, showIndicator = true, feature, tone }: {
   label: string; onPress: () => void; disabled?: boolean; selected?: boolean; accessibilityLabel?: string; variant?: ButtonVariant;
-  expanded?: boolean; align?: 'start' | 'center'; ref?: Ref<View>; icon?: 'plus' | 'more';
+  expanded?: boolean; align?: 'start' | 'center'; ref?: Ref<View>; icon?: UiIconName;
   leadingIcon?: UiIconName; trailingIcon?: UiIconName; accessibilityHint?: string;
   showIndicator?: boolean;
   feature?: 'fitness' | 'tasks';
@@ -94,7 +94,7 @@ export function UiButton({ label, onPress, disabled = false, selected = false, a
       (leadingIcon || trailingIcon) && { flexDirection: 'row', justifyContent: 'center', gap: Space.sm }]}>
     {icon ? <UiIcon name={icon} color={colors[textColor]} /> : <>
       {leadingIcon && <UiIcon name={leadingIcon} color={colors[textColor]} />}
-      <UiText type="button" color={textColor} style={trailingIcon ? { flex: 1, minWidth: 0 } : undefined}>{label}</UiText>
+      <UiText type="button" color={textColor} style={trailingIcon ? { flex: 1, minWidth: 0 } : leadingIcon ? { flexShrink: 1, minWidth: 0 } : undefined}>{label}</UiText>
       {trailingIcon && <UiIcon name={trailingIcon} color={colors[textColor]} />}
     </>}
     {selected && variant === 'navigation' && showIndicator && <View style={{ position: 'absolute', left: 8, right: 8, bottom: 2, height: 2, backgroundColor: colors.brand }} />}

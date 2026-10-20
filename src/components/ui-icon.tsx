@@ -18,10 +18,20 @@ export const iconGeometry = {
   back: '<path d="m10 5-7 7 7 7M3 12h18"/>',
   forward: '<path d="m9 5 7 7-7 7"/>',
   calendar: '<rect x="3" y="5" width="18" height="16" rx="3"/><path d="M7 3v4M17 3v4M3 10h18M7 14h2M12 14h2M7 18h2"/>',
+  calendarRepeat: '<path d="M11 21H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4M7 3v4M17 3v4M3 10h18M20 15a4 4 0 0 0-7 1m0-3v3h3M14 21a4 4 0 0 0 7-1m0 3v-3h-3"/>',
+  calendarStopped: '<path d="M10 21H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4M7 3v4M17 3v4M3 10h18"/><circle cx="17" cy="18" r="5"/><path d="M15.5 16v4M18.5 16v4"/>',
+  pencil: '<path d="m4 16-1 5 5-1L21 7l-4-4L4 16Zm10-10 4 4"/>',
   dumbbell: '<path d="M8 12h8M5 5v14M8 7v10M16 7v10M19 5v14M2 9v6M22 9v6"/>',
   activity: '<circle cx="13" cy="4" r="2"/><path d="m6 10 5-3 5 4 4 1M11 7l-1 7-4 6M10 14l6 7"/>',
   timer: '<circle cx="12" cy="14" r="8"/><path d="M9 2h6M12 2v4M19 6l2-2M12 10v5l3 2"/>',
   route: '<circle cx="5" cy="5" r="2"/><circle cx="19" cy="19" r="2"/><path d="M7 5h9a4 4 0 0 1 0 8H8a3 3 0 0 0 0 6h9"/>',
+  chart: '<path d="M3 3v18h18M7 17v-4M12 17V9M17 17V5"/>',
+  heart: '<path d="m12 21-8-8a5 5 0 0 1 8-6 5 5 0 0 1 8 6l-8 8Z"/>',
+  person: '<circle cx="12" cy="7" r="4"/><path d="M4 21v-2a8 8 0 0 1 16 0v2"/>',
+  cart: '<path d="M2 3h3l3 12h11l3-9H6M8 15l-1 3h12"/><circle cx="9" cy="21" r="1"/><circle cx="18" cy="21" r="1"/>',
+  book: '<path d="M12 5c-3-2-6-2-10-1v15c4-1 7-1 10 1 3-2 6-2 10-1V4c-4-1-7-1-10 1Zm0 0v15"/>',
+  graduation: '<path d="m2 8 10-5 10 5-10 5L2 8Zm4 2v7c4 3 8 3 12 0v-7M22 8v9"/>',
+  briefcase: '<rect x="2" y="7" width="20" height="14" rx="2"/><path d="M8 7V3h8v4M2 12c6 4 14 4 20 0M12 12v5"/>',
 } as const;
 export type UiIconName = keyof typeof iconGeometry;
 

@@ -81,12 +81,12 @@ test('recurring rows offer Complete/Reopen and contextual Skip/return, Edit, His
   const app = await mount(createElement(screens.TasksScreen), f.db); t.after(app.unmount);
   await app.tapSet(`Complete ${row.actionSubject}`); assert.equal(f.access.read().occurrences.find((entry) => entry.id === occurrence.id)!.status, 'completed');
   const archive = await mount(createElement(screens.TasksHistoryScreen), f.db);
-  await archive.press(`Actions for ${row.actionSubject}`); assert.ok(!archive.nodes().some((node) => node.props?.label === 'Skip occurrence')); await archive.press('Back');
+  await archive.press(`Actions for ${row.actionSubject}`); assert.ok(!archive.nodes().some((node) => node.props?.label === 'Skip occurrence')); await archive.tapSet(`Close actions for ${row.actionSubject.toLowerCase()}`);
   await archive.tapSet(`Reopen ${row.actionSubject}`); await archive.unmount(); await app.refocus();
   await app.press(`Actions for ${row.actionSubject}`); await app.press('Skip occurrence'); noModal(app);
   assert.equal(f.access.read().occurrences.find((entry) => entry.id === occurrence.id)!.status, 'skipped');
   const skippedArchive = await mount(createElement(screens.TasksHistoryScreen), f.db);
-  await skippedArchive.press(`Actions for ${row.actionSubject}`); await skippedArchive.press('Return to pending'); noModal(skippedArchive);
+  await skippedArchive.press(`Actions for ${row.actionSubject}`); await handoff(skippedArchive, 'Return to pending'); noModal(skippedArchive);
   await skippedArchive.unmount(); await app.refocus();
   assert.equal(f.access.read().occurrences.find((entry) => entry.id === occurrence.id)!.status, 'pending');
   await app.press(`Actions for ${row.actionSubject}`); await handoff(app, 'Edit recurring task'); assert.ok(app.find('FormButton', 'Edit recurrence'));
@@ -270,10 +270,11 @@ test('summary refresh failure preserves the open Task editor and the recurrence 
 test('recurring manager separates identity/current schedule and quieter History from Edit and confirmed Delete', async (t) => {
   const f = await initialized(t); f.access.createTask({ ...taskDraft(), title: 'Read', date: today, recurrence: daily });
   const app = await mount(createElement(screens.RepeatingTasksScreen), f.db); t.after(app.unmount); noModal(app);
-  assert.ok(app.container.textContent.includes('Current schedule')); assert.equal(app.find('FormButton', 'History for Read').props.variant, 'quiet');
-  assert.equal(app.find('FormButton', 'Edit schedule for Read').props.variant, undefined);
+  assert.ok(app.container.textContent.includes('Current schedule')); assert.equal(app.find('FormButton', 'History for Read').props.variant, 'secondary');
+  assert.equal(app.find('FormButton', 'Edit schedule for Read').props.variant, 'secondary');
   await app.press('Edit schedule for Read'); assert.ok(app.find('FormButton', 'Edit recurrence')); await app.press('Cancel');
-  await app.press('Delete recurring task Read'); assert.equal(f.access.read().tasks.length, 1); await app.confirm('Delete'); assert.equal(f.access.read().tasks.length, 0);
+  await app.press('Options for repeating task Read'); await handoff(app, 'Delete recurring task Read');
+  assert.equal(f.access.read().tasks.length, 1); await app.confirm('Delete'); assert.equal(f.access.read().tasks.length, 0);
 });
 
 test('existing mutation APIs continue updating Home counts and Calendar statuses after Complete, Reopen, Skip and Delete', async (t) => {

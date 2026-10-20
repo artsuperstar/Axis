@@ -149,8 +149,9 @@ test('header management is available only through Task options; Categories keeps
   for (const label of ['Categories', 'Repeating Tasks', 'History']) assert.equal(app.find('FormButton', label).props.variant, 'quiet');
   await handoff(app, 'Categories'); await app.change('Category name', 'New category'); await app.press('Create category');
   const category = f.access.read().categories.find((item) => item.name === 'New category')!; assert.ok(category);
-  await app.press('Delete category New category'); assert.equal(runtime.fixture.alerts.at(-1)!.title, 'Delete category?'); await app.confirm('Cancel');
-  assert.ok(f.access.read().categories.some((item) => item.id === category.id)); await app.press('Back'); noModal(app);
+  await app.press('Actions for category New category'); await handoff(app, 'Delete category New category');
+  assert.equal(runtime.fixture.alerts.at(-1)!.title, 'Delete category?'); await app.confirm('Cancel');
+  assert.ok(f.access.read().categories.some((item) => item.id === category.id)); await app.press('Back to Tasks'); noModal(app);
 });
 
 for (const [label, target, Route] of [['Repeating Tasks', '/tasks/repeating', RepeatingRoute], ['History', '/tasks/history', HistoryRoute]] as const) {
@@ -198,7 +199,7 @@ test('History contains exactly the previously resolved groups and corrections re
   assert.ok(app.container.textContent.includes('Old completed')); assert.ok(!app.container.textContent.includes('Pending today'));
   const done = section(app, 'Completed').data.find((item) => item.key === completed.id)!;
   await app.tapSet(`Reopen ${row(f, done).actionSubject}`); assert.ok(!sections(app).some((entry) => entry.data.some((item) => item.key === completed.id)));
-  const skip = section(app, 'Skipped').data[0]; await app.press(`Actions for ${row(f, skip).actionSubject}`); await app.press('Return to pending');
+  const skip = section(app, 'Skipped').data[0]; await app.press(`Actions for ${row(f, skip).actionSubject}`); await handoff(app, 'Return to pending');
   assert.ok(!sections(app).some((entry) => entry.title === 'Skipped'));
   assert.equal(f.access.read().occurrences.find((entry) => entry.id === completed.id)!.status, 'pending');
   assert.equal(f.access.read().occurrences.find((entry) => entry.id === skipped.id)!.status, 'pending');
@@ -211,8 +212,10 @@ test('Repeating Tasks is full-screen content and retains schedule edit, stopped 
   for (const text of ['Series', 'Stopped series', 'Current schedule', 'Every day']) assert.ok(app.container.textContent.includes(text));
   await app.press('Edit schedule for Series'); await app.press('Edit recurrence'); await app.change('Every', '3'); await app.press('Back to task editor'); await app.press('Save'); noModal(app);
   assert.ok(app.container.textContent.includes('Every 3 days')); await app.press('History for Series'); assert.ok(app.container.textContent.includes('Series · History'));
-  await app.press('Back'); await app.press('Delete recurring task Series'); assert.ok(f.access.read().tasks.some((entry) => entry.id === id)); await app.confirm('Cancel');
-  await app.press('Delete recurring task Series'); await app.confirm('Delete'); assert.ok(!f.access.read().tasks.some((entry) => entry.id === id)); noModal(app);
+  await app.press('Back'); await app.press('Options for repeating task Series'); await handoff(app, 'Delete recurring task Series');
+  assert.ok(f.access.read().tasks.some((entry) => entry.id === id)); await app.confirm('Cancel');
+  await app.press('Options for repeating task Series'); await handoff(app, 'Delete recurring task Series');
+  await app.confirm('Delete'); assert.ok(!f.access.read().tasks.some((entry) => entry.id === id)); noModal(app);
 });
 
 test('floating Add task reserves scroll clearance inside tab-aware safe bounds and creates through the existing editor', async (t) => {

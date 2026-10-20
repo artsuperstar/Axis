@@ -7,8 +7,8 @@ import { ThemedText } from './themed-text';
 import { UiText } from './design-system';
 
 /** Same quiet, touch-friendly arrow as the Tasks/Work headers; callers own its return semantics. */
-export function BackButton({ onPress, accessibilityLabel = 'Back', appearance }: { onPress: () => void; accessibilityLabel?: string; appearance?: 'v2' }) {
-  return <FormButton appearance={appearance} tone={appearance ? 'brand' : undefined} leadingIcon={appearance ? 'back' : undefined}
+export function BackButton({ onPress, accessibilityLabel = 'Back', appearance, iconOnly = false }: { onPress: () => void; accessibilityLabel?: string; appearance?: 'v2'; iconOnly?: boolean }) {
+  return <FormButton appearance={appearance} tone={appearance ? 'brand' : undefined} icon={appearance && iconOnly ? 'back' : undefined} leadingIcon={appearance && !iconOnly ? 'back' : undefined}
     variant="quiet" label={appearance ? 'Back' : '←'} accessibilityLabel={accessibilityLabel} onPress={onPress} />;
 }
 

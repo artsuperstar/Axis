@@ -23,6 +23,7 @@ const require = createRequire(import.meta.url);
 const { TaskRow } = require('../src/features/tasks/components/task-row') as typeof import('../src/features/tasks/components/task-row');
 const { OccurrenceHistory } = require('../src/features/tasks/components/occurrence-history') as typeof import('../src/features/tasks/components/occurrence-history');
 const { RecurringTasks } = require('../src/features/tasks/components/recurring-tasks') as typeof import('../src/features/tasks/components/recurring-tasks');
+const { ContextMenuHost } = require('../src/components/context-menu') as typeof import('../src/components/context-menu');
 const daily: RecurrenceDraft = { frequency: 'daily', interval: 1, weekdayMask: 1, monthDay: 1, month: 1, endDate: '' };
 
 async function initialized(t: TestContext) {
@@ -61,8 +62,8 @@ test('today uses its original daily version, future uses every 3 days, and paren
     await app.unmount();
   }
   assert.equal(recurrencePatternSummary(latestRecurrence(f.snapshot.recurrences, f.id)!), 'Every 3 days');
-  const parent = await mount(createElement(RecurringTasks, { tasks: f.snapshot.tasks, recurrences: f.snapshot.recurrences,
-    onEdit() {}, onHistory() {} }), f.db); t.after(parent.unmount);
+  const parent = await mount(createElement(ContextMenuHost, null, createElement(RecurringTasks, { tasks: f.snapshot.tasks, recurrences: f.snapshot.recurrences,
+    onEdit() {}, onHistory() {} })), f.db); t.after(parent.unmount);
   assert.ok(parent.container.textContent.includes('Every 3 days')); assert.ok(!parent.container.textContent.includes('Every day'));
 });
 

@@ -25,6 +25,7 @@ const repeatOptions = [{ value: 'none' as const, label: 'Does not repeat' },
 const monthOptions = monthNames.map((label, index) => ({ value: index + 1, label }));
 
 type Props = {
+  appearance?: 'v2';
   task: Task | null;
   recurrence: TaskRecurrence | null;
   categories: TaskCategory[];
@@ -40,10 +41,10 @@ function MainSection({ v2, title, description, icon, children }: {
     : <View style={styles.section}><ThemedText type="cardTitle" accessibilityRole="header">{title}</ThemedText>{children}</View>;
 }
 
-function NewTaskHeader({ onCancel, onSave }: { onCancel: () => void; onSave: () => void }) {
+function NewTaskHeader({ onCancel, onSave, title: heading = 'New task' }: { onCancel: () => void; onSave: () => void; title?: string }) {
   const { width, fontScale } = useWindowDimensions();
   const large = fontScale >= 1.5;
-  const title = <UiText type="editorTitle" accessibilityRole="header" style={[styles.headingText, !large && styles.heading, width < 360 && { fontSize: 22, lineHeight: 30 }]}>New task</UiText>;
+  const title = <UiText type="editorTitle" accessibilityRole="header" style={[styles.headingText, !large && styles.heading, width < 360 && { fontSize: 22, lineHeight: 30 }]}>{heading}</UiText>;
   const cancel = <TaskButton appearance="v2" tone="brand" variant="quiet" leadingIcon="back" label="Cancel" onPress={onCancel} />;
   const save = <TaskButton appearance="v2" variant="primary" label="Save" onPress={onSave} />;
   return <View style={styles.editorHeader}>{large ? <>{title}<View style={styles.largeHeaderActions}>{cancel}{save}</View></>
@@ -59,8 +60,8 @@ function RecurrenceHeader({ onBack }: { onBack: () => void }) {
   </View>;
 }
 
-export function TaskEditor({ task, recurrence, categories, onSave, onCreateCategory, onDismiss }: Props) {
-  const v2 = task === null;
+export function TaskEditor({ task, recurrence, categories, onSave, onCreateCategory, onDismiss, appearance: visual }: Props) {
+  const v2 = task === null || visual === 'v2';
   const scheme = useColorScheme();
   const { fontScale } = useWindowDimensions();
   const [dateTimeWidth, setDateTimeWidth] = useState(0);
@@ -238,8 +239,8 @@ export function TaskEditor({ task, recurrence, categories, onSave, onCreateCateg
         {!recurrenceMessage && !!draft.recurrence?.endDate && <UiText type="secondary" color="textSecondary">Ends {dateLabel(draft.recurrence.endDate)}</UiText>}
         <TaskError appearance={appearance} message={recurrenceMessage} />
       </EditorSection>}
-      {recurrence && <ThemedText type="metadata" themeColor="textSecondary">{"Schedule changes apply tomorrow. Today's occurrences and history stay."}</ThemedText>}
-    </AdaptiveSheet> : <AdaptiveSheet key="task" appearance={appearance} contentContainerStyle={v2 ? styles.editorForm : styles.form} header={v2 ? <NewTaskHeader onCancel={onDismiss} onSave={save} /> : <View style={styles.header}>
+      {recurrence && (v2 ? <UiText type="metadata" color="textSecondary">{"Schedule changes apply tomorrow. Today's occurrences and history stay."}</UiText> : <ThemedText type="metadata" themeColor="textSecondary">{"Schedule changes apply tomorrow. Today's occurrences and history stay."}</ThemedText>)}
+    </AdaptiveSheet> : <AdaptiveSheet key="task" appearance={appearance} contentContainerStyle={v2 ? styles.editorForm : styles.form} header={v2 ? <NewTaskHeader title={task ? 'Edit task' : 'New task'} onCancel={onDismiss} onSave={save} /> : <View style={styles.header}>
       <TaskButton variant="quiet" label="Cancel" onPress={onDismiss} />
       <ThemedText type="sheetTitle" accessibilityRole="header" style={[styles.heading, styles.headingText]}>{task ? 'Edit task' : 'New task'}</ThemedText>
       <TaskButton variant="primary" label="Save" onPress={save} />
@@ -263,10 +264,10 @@ export function TaskEditor({ task, recurrence, categories, onSave, onCreateCateg
       </MainSection>
       <MainSection v2={v2} title="Recurrence" icon="repeat" description="Set a repeating schedule (optional).">
         {!v2 && !!summary && <ThemedText type="secondary" themeColor="textSecondary">{summary}{!recurrenceMessage && draft.recurrence?.endDate ? ` · Ends ${dateLabel(draft.recurrence.endDate)}` : ''}</ThemedText>}
-        {!summary && recurrence && <ThemedText type="metadata" themeColor="textSecondary">Repeating stopped</ThemedText>}
+        {!summary && recurrence && (v2 ? <UiText type="metadata" color="textSecondary">Repeating stopped</UiText> : <ThemedText type="metadata" themeColor="textSecondary">Repeating stopped</ThemedText>)}
         <TaskButton appearance={appearance} tone={v2 ? 'brand' : undefined} variant={v2 ? 'secondary' : 'quiet'} align={v2 ? 'start' : undefined} leadingIcon={v2 ? draft.recurrence ? 'repeat' : 'plus' : undefined} trailingIcon={v2 ? 'forward' : undefined} accessibilityLabel={draft.recurrence ? 'Edit recurrence' : 'Add recurrence'} accessibilityHint={summary ?? undefined} label={v2 && summary ? `${summary}${!recurrenceMessage && draft.recurrence?.endDate ? ` \u00b7 Ends ${dateLabel(draft.recurrence.endDate)}` : ''}` : draft.recurrence ? 'Edit recurrence' : 'Add recurrence'} onPress={() => { Keyboard.dismiss(); setPicker(null); setRecurrenceVisited(true); setEditingRecurrence(true); }} />
-        {recurrence && <ThemedText type="metadata" themeColor="textSecondary">{"Schedule changes apply tomorrow. Today's occurrences and history stay."}</ThemedText>}
-        {recurrence && !recurrenceStopped(recurrence) && <TaskButton variant="quiet" label="Stop repeating" onPress={stopRepeating} />}
+        {recurrence && (v2 ? <UiText type="metadata" color="textSecondary">{"Schedule changes apply tomorrow. Today's occurrences and history stay."}</UiText> : <ThemedText type="metadata" themeColor="textSecondary">{"Schedule changes apply tomorrow. Today's occurrences and history stay."}</ThemedText>)}
+        {recurrence && !recurrenceStopped(recurrence) && <TaskButton appearance={appearance} variant="quiet" label="Stop repeating" onPress={stopRepeating} />}
       </MainSection>
     </AdaptiveSheet>}
   </AdaptiveModal>;
