@@ -1,0 +1,1316 @@
+[
+  {
+    "name": "populated-dark-390",
+    "width": 390,
+    "theme": "dark",
+    "errors": [],
+    "rows": [
+      {
+        "label": "View Biceps, Back, 4 exercises · 4 sets. Completed at 20/10/2026, 10:51:00.",
+        "x": 25,
+        "y": 291,
+        "width": 340,
+        "height": 76,
+        "bottom": 367
+      },
+      {
+        "label": "View Free workout, 0 exercises · 0 sets. Completed at 20/10/2026, 09:33:00.",
+        "x": 25,
+        "y": 375,
+        "width": 340,
+        "height": 76,
+        "bottom": 451
+      },
+      {
+        "label": "View Chest, Triceps, Shoulders, 0 exercises · 0 sets. Completed at 19/10/2026, 15:16:00.",
+        "x": 25,
+        "y": 556,
+        "width": 340,
+        "height": 90,
+        "bottom": 646
+      },
+      {
+        "label": "View Legs, 1 exercise · 0 sets. Completed at 19/10/2026, 12:08:00.",
+        "x": 25,
+        "y": 654,
+        "width": 340,
+        "height": 76,
+        "bottom": 730
+      },
+      {
+        "label": "View Biceps, Back, 4 exercises · 0 sets. Completed at 17/10/2026, 18:21:00.",
+        "x": 25,
+        "y": 823,
+        "width": 340,
+        "height": 76,
+        "bottom": 899
+      },
+      {
+        "label": "View Free workout, 0 exercises · 0 sets. Completed at 17/10/2026, 08:39:00.",
+        "x": 25,
+        "y": 907,
+        "width": 340,
+        "height": 76,
+        "bottom": 983
+      }
+    ],
+    "dates": [
+      {
+        "label": "Yesterday, 2 sessions",
+        "x": 16,
+        "y": 230,
+        "width": 358,
+        "height": 61,
+        "bottom": 291
+      },
+      {
+        "label": "segunda-feira, 19 de outubro, 2 sessions",
+        "x": 16,
+        "y": 483,
+        "width": 358,
+        "height": 73,
+        "bottom": 556
+      },
+      {
+        "label": "sábado, 17 de outubro, 2 sessions",
+        "x": 16,
+        "y": 762,
+        "width": 358,
+        "height": 61,
+        "bottom": 823
+      }
+    ],
+    "overflow": [],
+    "scrollWidth": 390
+  },
+  {
+    "name": "populated-light-390",
+    "width": 390,
+    "theme": "light",
+    "errors": [],
+    "rows": [
+      {
+        "label": "View Biceps, Back, 4 exercises · 4 sets. Completed at 20/10/2026, 10:51:00.",
+        "x": 25,
+        "y": 291,
+        "width": 340,
+        "height": 76,
+        "bottom": 367
+      },
+      {
+        "label": "View Free workout, 0 exercises · 0 sets. Completed at 20/10/2026, 09:33:00.",
+        "x": 25,
+        "y": 375,
+        "width": 340,
+        "height": 76,
+        "bottom": 451
+      },
+      {
+        "label": "View Chest, Triceps, Shoulders, 0 exercises · 0 sets. Completed at 19/10/2026, 15:16:00.",
+        "x": 25,
+        "y": 556,
+        "width": 340,
+        "height": 90,
+        "bottom": 646
+      },
+      {
+        "label": "View Legs, 1 exercise · 0 sets. Completed at 19/10/2026, 12:08:00.",
+        "x": 25,
+        "y": 654,
+        "width": 340,
+        "height": 76,
+        "bottom": 730
+      },
+      {
+        "label": "View Biceps, Back, 4 exercises · 0 sets. Completed at 17/10/2026, 18:21:00.",
+        "x": 25,
+        "y": 823,
+        "width": 340,
+        "height": 76,
+        "bottom": 899
+      },
+      {
+        "label": "View Free workout, 0 exercises · 0 sets. Completed at 17/10/2026, 08:39:00.",
+        "x": 25,
+        "y": 907,
+        "width": 340,
+        "height": 76,
+        "bottom": 983
+      }
+    ],
+    "dates": [
+      {
+        "label": "Yesterday, 2 sessions",
+        "x": 16,
+        "y": 230,
+        "width": 358,
+        "height": 61,
+        "bottom": 291
+      },
+      {
+        "label": "segunda-feira, 19 de outubro, 2 sessions",
+        "x": 16,
+        "y": 483,
+        "width": 358,
+        "height": 73,
+        "bottom": 556
+      },
+      {
+        "label": "sábado, 17 de outubro, 2 sessions",
+        "x": 16,
+        "y": 762,
+        "width": 358,
+        "height": 61,
+        "bottom": 823
+      }
+    ],
+    "overflow": [],
+    "scrollWidth": 390
+  },
+  {
+    "name": "empty-dark-390",
+    "width": 390,
+    "theme": "dark",
+    "errors": [],
+    "rows": [],
+    "dates": [],
+    "overflow": [],
+    "scrollWidth": 390
+  },
+  {
+    "name": "narrow-dark-320",
+    "width": 320,
+    "theme": "dark",
+    "errors": [],
+    "rows": [
+      {
+        "label": "View Controlled strength and deliberate recovery with a long historical workout name, 3 exercises · 3 sets. Completed at 20/10/2026, 11:35:00.",
+        "x": 25,
+        "y": 371,
+        "width": 270,
+        "height": 196,
+        "bottom": 567
+      },
+      {
+        "label": "View Biceps, Back, 4 exercises · 4 sets. Completed at 20/10/2026, 10:51:00.",
+        "x": 25,
+        "y": 575,
+        "width": 270,
+        "height": 100,
+        "bottom": 675
+      },
+      {
+        "label": "View Free workout, 0 exercises · 0 sets. Completed at 20/10/2026, 09:33:00.",
+        "x": 25,
+        "y": 683,
+        "width": 270,
+        "height": 100,
+        "bottom": 783
+      },
+      {
+        "label": "View Chest, Triceps, Shoulders, 0 exercises · 0 sets. Completed at 19/10/2026, 15:16:00.",
+        "x": 25,
+        "y": 916,
+        "width": 270,
+        "height": 124,
+        "bottom": 1040
+      },
+      {
+        "label": "View Legs, 1 exercise · 0 sets. Completed at 19/10/2026, 12:08:00.",
+        "x": 25,
+        "y": 1048,
+        "width": 270,
+        "height": 100,
+        "bottom": 1148
+      }
+    ],
+    "dates": [
+      {
+        "label": "Yesterday, 3 sessions",
+        "x": 16,
+        "y": 282,
+        "width": 288,
+        "height": 89,
+        "bottom": 371
+      },
+      {
+        "label": "segunda-feira, 19 de outubro, 2 sessions",
+        "x": 16,
+        "y": 815,
+        "width": 288,
+        "height": 101,
+        "bottom": 916
+      }
+    ],
+    "overflow": [],
+    "scrollWidth": 320
+  },
+  {
+    "name": "wide-light-430",
+    "width": 430,
+    "theme": "light",
+    "errors": [],
+    "rows": [
+      {
+        "label": "View Biceps, Back, 4 exercises · 4 sets. Completed at 20/10/2026, 10:51:00.",
+        "x": 25,
+        "y": 291,
+        "width": 380,
+        "height": 76,
+        "bottom": 367
+      },
+      {
+        "label": "View Free workout, 0 exercises · 0 sets. Completed at 20/10/2026, 09:33:00.",
+        "x": 25,
+        "y": 375,
+        "width": 380,
+        "height": 76,
+        "bottom": 451
+      },
+      {
+        "label": "View Chest, Triceps, Shoulders, 0 exercises · 0 sets. Completed at 19/10/2026, 15:16:00.",
+        "x": 25,
+        "y": 544,
+        "width": 380,
+        "height": 90,
+        "bottom": 634
+      },
+      {
+        "label": "View Legs, 1 exercise · 0 sets. Completed at 19/10/2026, 12:08:00.",
+        "x": 25,
+        "y": 642,
+        "width": 380,
+        "height": 76,
+        "bottom": 718
+      },
+      {
+        "label": "View Biceps, Back, 4 exercises · 0 sets. Completed at 17/10/2026, 18:21:00.",
+        "x": 25,
+        "y": 811,
+        "width": 380,
+        "height": 76,
+        "bottom": 887
+      },
+      {
+        "label": "View Free workout, 0 exercises · 0 sets. Completed at 17/10/2026, 08:39:00.",
+        "x": 25,
+        "y": 895,
+        "width": 380,
+        "height": 76,
+        "bottom": 971
+      }
+    ],
+    "dates": [
+      {
+        "label": "Yesterday, 2 sessions",
+        "x": 16,
+        "y": 230,
+        "width": 398,
+        "height": 61,
+        "bottom": 291
+      },
+      {
+        "label": "segunda-feira, 19 de outubro, 2 sessions",
+        "x": 16,
+        "y": 483,
+        "width": 398,
+        "height": 61,
+        "bottom": 544
+      },
+      {
+        "label": "sábado, 17 de outubro, 2 sessions",
+        "x": 16,
+        "y": 750,
+        "width": 398,
+        "height": 61,
+        "bottom": 811
+      }
+    ],
+    "overflow": [],
+    "scrollWidth": 430
+  },
+  {
+    "name": "large-dark-320",
+    "width": 320,
+    "theme": "dark",
+    "errors": [],
+    "rows": [
+      {
+        "label": "View Controlled strength and deliberate recovery with a long historical workout name, 3 exercises · 3 sets. Completed at 20/10/2026, 11:35:00.",
+        "x": 25,
+        "y": 761,
+        "width": 270,
+        "height": 498,
+        "bottom": 1259
+      },
+      {
+        "label": "View Biceps, Back, 4 exercises · 4 sets. Completed at 20/10/2026, 10:51:00.",
+        "x": 25,
+        "y": 1267,
+        "width": 270,
+        "height": 258,
+        "bottom": 1525
+      },
+      {
+        "label": "View Free workout, 0 exercises · 0 sets. Completed at 20/10/2026, 09:33:00.",
+        "x": 25,
+        "y": 1533,
+        "width": 270,
+        "height": 298,
+        "bottom": 1831
+      },
+      {
+        "label": "View Chest, Triceps, Shoulders, 0 exercises · 0 sets. Completed at 19/10/2026, 15:16:00.",
+        "x": 25,
+        "y": 2080,
+        "width": 270,
+        "height": 306,
+        "bottom": 2386
+      },
+      {
+        "label": "View Legs, 1 exercise · 0 sets. Completed at 19/10/2026, 12:08:00.",
+        "x": 25,
+        "y": 2394,
+        "width": 270,
+        "height": 258,
+        "bottom": 2652
+      }
+    ],
+    "dates": [
+      {
+        "label": "Yesterday, 3 sessions",
+        "x": 16,
+        "y": 640,
+        "width": 288,
+        "height": 121,
+        "bottom": 761
+      },
+      {
+        "label": "segunda-feira, 19 de outubro, 2 sessions",
+        "x": 16,
+        "y": 1863,
+        "width": 288,
+        "height": 217,
+        "bottom": 2080
+      }
+    ],
+    "overflow": [],
+    "scrollWidth": 320
+  },
+  {
+    "name": "detail-dark-390",
+    "width": 390,
+    "theme": "dark",
+    "errors": [],
+    "rows": [
+      {
+        "label": "View Biceps, Back, 4 exercises · 4 sets. Completed at 20/10/2026, 10:51:00.",
+        "x": 25,
+        "y": 291,
+        "width": 340,
+        "height": 76,
+        "bottom": 367
+      },
+      {
+        "label": "View Free workout, 0 exercises · 0 sets. Completed at 20/10/2026, 09:33:00.",
+        "x": 25,
+        "y": 375,
+        "width": 340,
+        "height": 76,
+        "bottom": 451
+      },
+      {
+        "label": "View Chest, Triceps, Shoulders, 0 exercises · 0 sets. Completed at 19/10/2026, 15:16:00.",
+        "x": 25,
+        "y": 556,
+        "width": 340,
+        "height": 90,
+        "bottom": 646
+      },
+      {
+        "label": "View Legs, 1 exercise · 0 sets. Completed at 19/10/2026, 12:08:00.",
+        "x": 25,
+        "y": 654,
+        "width": 340,
+        "height": 76,
+        "bottom": 730
+      },
+      {
+        "label": "View Biceps, Back, 4 exercises · 0 sets. Completed at 17/10/2026, 18:21:00.",
+        "x": 25,
+        "y": 823,
+        "width": 340,
+        "height": 76,
+        "bottom": 899
+      },
+      {
+        "label": "View Free workout, 0 exercises · 0 sets. Completed at 17/10/2026, 08:39:00.",
+        "x": 25,
+        "y": 907,
+        "width": 340,
+        "height": 76,
+        "bottom": 983
+      }
+    ],
+    "dates": [
+      {
+        "label": "Yesterday, 2 sessions",
+        "x": 16,
+        "y": 230,
+        "width": 358,
+        "height": 61,
+        "bottom": 291
+      },
+      {
+        "label": "segunda-feira, 19 de outubro, 2 sessions",
+        "x": 16,
+        "y": 483,
+        "width": 358,
+        "height": 73,
+        "bottom": 556
+      },
+      {
+        "label": "sábado, 17 de outubro, 2 sessions",
+        "x": 16,
+        "y": 762,
+        "width": 358,
+        "height": 61,
+        "bottom": 823
+      }
+    ],
+    "overflow": [],
+    "scrollWidth": 390
+  },
+  {
+    "name": "detail-light-390",
+    "width": 390,
+    "theme": "light",
+    "errors": [],
+    "rows": [
+      {
+        "label": "View Biceps, Back, 4 exercises · 4 sets. Completed at 20/10/2026, 10:51:00.",
+        "x": 25,
+        "y": 291,
+        "width": 340,
+        "height": 76,
+        "bottom": 367
+      },
+      {
+        "label": "View Free workout, 0 exercises · 0 sets. Completed at 20/10/2026, 09:33:00.",
+        "x": 25,
+        "y": 375,
+        "width": 340,
+        "height": 76,
+        "bottom": 451
+      },
+      {
+        "label": "View Chest, Triceps, Shoulders, 0 exercises · 0 sets. Completed at 19/10/2026, 15:16:00.",
+        "x": 25,
+        "y": 556,
+        "width": 340,
+        "height": 90,
+        "bottom": 646
+      },
+      {
+        "label": "View Legs, 1 exercise · 0 sets. Completed at 19/10/2026, 12:08:00.",
+        "x": 25,
+        "y": 654,
+        "width": 340,
+        "height": 76,
+        "bottom": 730
+      },
+      {
+        "label": "View Biceps, Back, 4 exercises · 0 sets. Completed at 17/10/2026, 18:21:00.",
+        "x": 25,
+        "y": 823,
+        "width": 340,
+        "height": 76,
+        "bottom": 899
+      },
+      {
+        "label": "View Free workout, 0 exercises · 0 sets. Completed at 17/10/2026, 08:39:00.",
+        "x": 25,
+        "y": 907,
+        "width": 340,
+        "height": 76,
+        "bottom": 983
+      }
+    ],
+    "dates": [
+      {
+        "label": "Yesterday, 2 sessions",
+        "x": 16,
+        "y": 230,
+        "width": 358,
+        "height": 61,
+        "bottom": 291
+      },
+      {
+        "label": "segunda-feira, 19 de outubro, 2 sessions",
+        "x": 16,
+        "y": 483,
+        "width": 358,
+        "height": 73,
+        "bottom": 556
+      },
+      {
+        "label": "sábado, 17 de outubro, 2 sessions",
+        "x": 16,
+        "y": 762,
+        "width": 358,
+        "height": 61,
+        "bottom": 823
+      }
+    ],
+    "overflow": [],
+    "scrollWidth": 390
+  },
+  {
+    "name": "free-detail-dark-390",
+    "width": 390,
+    "theme": "dark",
+    "errors": [],
+    "rows": [
+      {
+        "label": "View Biceps, Back, 4 exercises · 4 sets. Completed at 20/10/2026, 10:51:00.",
+        "x": 25,
+        "y": 291,
+        "width": 340,
+        "height": 76,
+        "bottom": 367
+      },
+      {
+        "label": "View Free workout, 0 exercises · 0 sets. Completed at 20/10/2026, 09:33:00.",
+        "x": 25,
+        "y": 375,
+        "width": 340,
+        "height": 76,
+        "bottom": 451
+      },
+      {
+        "label": "View Chest, Triceps, Shoulders, 0 exercises · 0 sets. Completed at 19/10/2026, 15:16:00.",
+        "x": 25,
+        "y": 556,
+        "width": 340,
+        "height": 90,
+        "bottom": 646
+      },
+      {
+        "label": "View Legs, 1 exercise · 0 sets. Completed at 19/10/2026, 12:08:00.",
+        "x": 25,
+        "y": 654,
+        "width": 340,
+        "height": 76,
+        "bottom": 730
+      },
+      {
+        "label": "View Biceps, Back, 4 exercises · 0 sets. Completed at 17/10/2026, 18:21:00.",
+        "x": 25,
+        "y": 823,
+        "width": 340,
+        "height": 76,
+        "bottom": 899
+      },
+      {
+        "label": "View Free workout, 0 exercises · 0 sets. Completed at 17/10/2026, 08:39:00.",
+        "x": 25,
+        "y": 907,
+        "width": 340,
+        "height": 76,
+        "bottom": 983
+      }
+    ],
+    "dates": [
+      {
+        "label": "Yesterday, 2 sessions",
+        "x": 16,
+        "y": 230,
+        "width": 358,
+        "height": 61,
+        "bottom": 291
+      },
+      {
+        "label": "segunda-feira, 19 de outubro, 2 sessions",
+        "x": 16,
+        "y": 483,
+        "width": 358,
+        "height": 73,
+        "bottom": 556
+      },
+      {
+        "label": "sábado, 17 de outubro, 2 sessions",
+        "x": 16,
+        "y": 762,
+        "width": 358,
+        "height": 61,
+        "bottom": 823
+      }
+    ],
+    "overflow": [],
+    "scrollWidth": 390
+  },
+  {
+    "name": "zero-detail-dark-390",
+    "width": 390,
+    "theme": "dark",
+    "errors": [],
+    "rows": [
+      {
+        "label": "View Biceps, Back, 4 exercises · 4 sets. Completed at 20/10/2026, 10:51:00.",
+        "x": 25,
+        "y": 291,
+        "width": 340,
+        "height": 76,
+        "bottom": 367
+      },
+      {
+        "label": "View Free workout, 0 exercises · 0 sets. Completed at 20/10/2026, 09:33:00.",
+        "x": 25,
+        "y": 375,
+        "width": 340,
+        "height": 76,
+        "bottom": 451
+      },
+      {
+        "label": "View Chest, Triceps, Shoulders, 0 exercises · 0 sets. Completed at 19/10/2026, 15:16:00.",
+        "x": 25,
+        "y": 556,
+        "width": 340,
+        "height": 90,
+        "bottom": 646
+      },
+      {
+        "label": "View Legs, 1 exercise · 0 sets. Completed at 19/10/2026, 12:08:00.",
+        "x": 25,
+        "y": 654,
+        "width": 340,
+        "height": 76,
+        "bottom": 730
+      },
+      {
+        "label": "View Biceps, Back, 4 exercises · 0 sets. Completed at 17/10/2026, 18:21:00.",
+        "x": 25,
+        "y": 823,
+        "width": 340,
+        "height": 76,
+        "bottom": 899
+      },
+      {
+        "label": "View Free workout, 0 exercises · 0 sets. Completed at 17/10/2026, 08:39:00.",
+        "x": 25,
+        "y": 907,
+        "width": 340,
+        "height": 76,
+        "bottom": 983
+      }
+    ],
+    "dates": [
+      {
+        "label": "Yesterday, 2 sessions",
+        "x": 16,
+        "y": 230,
+        "width": 358,
+        "height": 61,
+        "bottom": 291
+      },
+      {
+        "label": "segunda-feira, 19 de outubro, 2 sessions",
+        "x": 16,
+        "y": 483,
+        "width": 358,
+        "height": 73,
+        "bottom": 556
+      },
+      {
+        "label": "sábado, 17 de outubro, 2 sessions",
+        "x": 16,
+        "y": 762,
+        "width": 358,
+        "height": 61,
+        "bottom": 823
+      }
+    ],
+    "overflow": [],
+    "scrollWidth": 390
+  },
+  {
+    "name": "detail-large-dark-320",
+    "width": 320,
+    "theme": "dark",
+    "errors": [],
+    "rows": [
+      {
+        "label": "View Controlled strength and deliberate recovery with a long historical workout name, 3 exercises · 3 sets. Completed at 20/10/2026, 11:35:00.",
+        "x": 25,
+        "y": 408,
+        "width": 270,
+        "height": 498,
+        "bottom": 906
+      },
+      {
+        "label": "View Biceps, Back, 4 exercises · 4 sets. Completed at 20/10/2026, 10:51:00.",
+        "x": 25,
+        "y": 914,
+        "width": 270,
+        "height": 258,
+        "bottom": 1172
+      },
+      {
+        "label": "View Free workout, 0 exercises · 0 sets. Completed at 20/10/2026, 09:33:00.",
+        "x": 25,
+        "y": 1180,
+        "width": 270,
+        "height": 298,
+        "bottom": 1478
+      },
+      {
+        "label": "View Chest, Triceps, Shoulders, 0 exercises · 0 sets. Completed at 19/10/2026, 15:16:00.",
+        "x": 25,
+        "y": 1727,
+        "width": 270,
+        "height": 306,
+        "bottom": 2033
+      },
+      {
+        "label": "View Legs, 1 exercise · 0 sets. Completed at 19/10/2026, 12:08:00.",
+        "x": 25,
+        "y": 2041,
+        "width": 270,
+        "height": 258,
+        "bottom": 2299
+      }
+    ],
+    "dates": [
+      {
+        "label": "Yesterday, 3 sessions",
+        "x": 16,
+        "y": 287,
+        "width": 288,
+        "height": 121,
+        "bottom": 408
+      },
+      {
+        "label": "segunda-feira, 19 de outubro, 2 sessions",
+        "x": 16,
+        "y": 1510,
+        "width": 288,
+        "height": 217,
+        "bottom": 1727
+      }
+    ],
+    "overflow": [],
+    "scrollWidth": 320
+  },
+  {
+    "name": "large-us-time-dark-320",
+    "width": 320,
+    "theme": "dark",
+    "errors": [],
+    "rows": [
+      {
+        "label": "View Controlled strength and deliberate recovery with a long historical workout name, 3 exercises · 3 sets. Completed at 10/20/2026, 11:35:00 AM.",
+        "x": 25,
+        "y": 761,
+        "width": 270,
+        "height": 538,
+        "bottom": 1299
+      },
+      {
+        "label": "View Biceps, Back, 4 exercises · 4 sets. Completed at 10/20/2026, 10:51:00 AM.",
+        "x": 25,
+        "y": 1307,
+        "width": 270,
+        "height": 298,
+        "bottom": 1605
+      },
+      {
+        "label": "View Free workout, 0 exercises · 0 sets. Completed at 10/20/2026, 9:33:00 AM.",
+        "x": 25,
+        "y": 1613,
+        "width": 270,
+        "height": 298,
+        "bottom": 1911
+      },
+      {
+        "label": "View Chest, Triceps, Shoulders, 0 exercises · 0 sets. Completed at 10/19/2026, 3:16:00 PM.",
+        "x": 25,
+        "y": 2112,
+        "width": 270,
+        "height": 346,
+        "bottom": 2458
+      },
+      {
+        "label": "View Legs, 1 exercise · 0 sets. Completed at 10/19/2026, 12:08:00 PM.",
+        "x": 25,
+        "y": 2466,
+        "width": 270,
+        "height": 298,
+        "bottom": 2764
+      }
+    ],
+    "dates": [
+      {
+        "label": "Yesterday, 3 sessions",
+        "x": 16,
+        "y": 640,
+        "width": 288,
+        "height": 121,
+        "bottom": 761
+      },
+      {
+        "label": "Monday, October 19, 2 sessions",
+        "x": 16,
+        "y": 1943,
+        "width": 288,
+        "height": 169,
+        "bottom": 2112
+      }
+    ],
+    "overflow": [],
+    "scrollWidth": 320
+  },
+  {
+    "name": "paged-dark-390",
+    "width": 390,
+    "theme": "dark",
+    "errors": [],
+    "rows": [
+      {
+        "label": "View Free workout, 0 exercises · 0 sets. Completed at 21/10/2026, 23:15:00.",
+        "x": 25,
+        "y": -4254,
+        "width": 340,
+        "height": 76,
+        "bottom": -4178
+      },
+      {
+        "label": "View Free workout, 0 exercises · 0 sets. Completed at 21/10/2026, 22:15:00.",
+        "x": 25,
+        "y": -4170,
+        "width": 340,
+        "height": 76,
+        "bottom": -4094
+      },
+      {
+        "label": "View Free workout, 0 exercises · 0 sets. Completed at 21/10/2026, 21:15:00.",
+        "x": 25,
+        "y": -4086,
+        "width": 340,
+        "height": 76,
+        "bottom": -4010
+      },
+      {
+        "label": "View Free workout, 0 exercises · 0 sets. Completed at 21/10/2026, 20:15:00.",
+        "x": 25,
+        "y": -4002,
+        "width": 340,
+        "height": 76,
+        "bottom": -3926
+      },
+      {
+        "label": "View Free workout, 0 exercises · 0 sets. Completed at 21/10/2026, 19:15:00.",
+        "x": 25,
+        "y": -3918,
+        "width": 340,
+        "height": 76,
+        "bottom": -3842
+      },
+      {
+        "label": "View Free workout, 0 exercises · 0 sets. Completed at 21/10/2026, 18:15:00.",
+        "x": 25,
+        "y": -3834,
+        "width": 340,
+        "height": 76,
+        "bottom": -3758
+      },
+      {
+        "label": "View Free workout, 0 exercises · 0 sets. Completed at 21/10/2026, 17:15:00.",
+        "x": 25,
+        "y": -3750,
+        "width": 340,
+        "height": 76,
+        "bottom": -3674
+      },
+      {
+        "label": "View Free workout, 0 exercises · 0 sets. Completed at 20/10/2026, 13:15:00.",
+        "x": 25,
+        "y": -1313,
+        "width": 340,
+        "height": 76,
+        "bottom": -1237
+      },
+      {
+        "label": "View Free workout, 0 exercises · 0 sets. Completed at 20/10/2026, 12:15:00.",
+        "x": 25,
+        "y": -1229,
+        "width": 340,
+        "height": 76,
+        "bottom": -1153
+      },
+      {
+        "label": "View Controlled strength and deliberate recovery with a long historical workout name, 3 exercises · 3 sets. Completed at 20/10/2026, 11:35:00.",
+        "x": 25,
+        "y": -1145,
+        "width": 340,
+        "height": 186,
+        "bottom": -959
+      },
+      {
+        "label": "View Free workout, 0 exercises · 0 sets. Completed at 20/10/2026, 11:15:00.",
+        "x": 25,
+        "y": -951,
+        "width": 340,
+        "height": 76,
+        "bottom": -875
+      },
+      {
+        "label": "View Biceps, Back, 4 exercises · 4 sets. Completed at 20/10/2026, 10:51:00.",
+        "x": 25,
+        "y": -867,
+        "width": 340,
+        "height": 76,
+        "bottom": -791
+      },
+      {
+        "label": "View Free workout, 0 exercises · 0 sets. Completed at 20/10/2026, 10:15:00.",
+        "x": 25,
+        "y": -783,
+        "width": 340,
+        "height": 76,
+        "bottom": -707
+      },
+      {
+        "label": "View Free workout, 0 exercises · 0 sets. Completed at 20/10/2026, 09:33:00.",
+        "x": 25,
+        "y": -699,
+        "width": 340,
+        "height": 76,
+        "bottom": -623
+      },
+      {
+        "label": "View Free workout, 0 exercises · 0 sets. Completed at 20/10/2026, 09:15:00.",
+        "x": 25,
+        "y": -615,
+        "width": 340,
+        "height": 76,
+        "bottom": -539
+      },
+      {
+        "label": "View Free workout, 0 exercises · 0 sets. Completed at 20/10/2026, 08:15:00.",
+        "x": 25,
+        "y": -531,
+        "width": 340,
+        "height": 76,
+        "bottom": -455
+      },
+      {
+        "label": "View Free workout, 0 exercises · 0 sets. Completed at 20/10/2026, 07:15:00.",
+        "x": 25,
+        "y": -447,
+        "width": 340,
+        "height": 76,
+        "bottom": -371
+      },
+      {
+        "label": "View Free workout, 0 exercises · 0 sets. Completed at 20/10/2026, 06:15:00.",
+        "x": 25,
+        "y": -363,
+        "width": 340,
+        "height": 76,
+        "bottom": -287
+      },
+      {
+        "label": "View Free workout, 0 exercises · 0 sets. Completed at 20/10/2026, 05:15:00.",
+        "x": 25,
+        "y": -279,
+        "width": 340,
+        "height": 76,
+        "bottom": -203
+      },
+      {
+        "label": "View Free workout, 0 exercises · 0 sets. Completed at 20/10/2026, 04:15:00.",
+        "x": 25,
+        "y": -195,
+        "width": 340,
+        "height": 76,
+        "bottom": -119
+      },
+      {
+        "label": "View Free workout, 0 exercises · 0 sets. Completed at 20/10/2026, 03:15:00.",
+        "x": 25,
+        "y": -111,
+        "width": 340,
+        "height": 76,
+        "bottom": -35
+      },
+      {
+        "label": "View Free workout, 0 exercises · 0 sets. Completed at 20/10/2026, 02:15:00.",
+        "x": 25,
+        "y": -27,
+        "width": 340,
+        "height": 76,
+        "bottom": 49
+      },
+      {
+        "label": "View Free workout, 0 exercises · 0 sets. Completed at 20/10/2026, 01:15:00.",
+        "x": 25,
+        "y": 57,
+        "width": 340,
+        "height": 76,
+        "bottom": 133
+      },
+      {
+        "label": "View Free workout, 0 exercises · 0 sets. Completed at 20/10/2026, 00:15:00.",
+        "x": 25,
+        "y": 141,
+        "width": 340,
+        "height": 76,
+        "bottom": 217
+      },
+      {
+        "label": "View Free workout, 0 exercises · 0 sets. Completed at 19/10/2026, 16:15:00.",
+        "x": 25,
+        "y": 322,
+        "width": 340,
+        "height": 76,
+        "bottom": 398
+      },
+      {
+        "label": "View Chest, Triceps, Shoulders, 0 exercises · 0 sets. Completed at 19/10/2026, 15:16:00.",
+        "x": 25,
+        "y": 406,
+        "width": 340,
+        "height": 90,
+        "bottom": 496
+      },
+      {
+        "label": "View Free workout, 0 exercises · 0 sets. Completed at 19/10/2026, 15:15:00.",
+        "x": 25,
+        "y": 504,
+        "width": 340,
+        "height": 76,
+        "bottom": 580
+      },
+      {
+        "label": "View Free workout, 0 exercises · 0 sets. Completed at 19/10/2026, 14:15:00.",
+        "x": 25,
+        "y": 588,
+        "width": 340,
+        "height": 76,
+        "bottom": 664
+      },
+      {
+        "label": "View Free workout, 0 exercises · 0 sets. Completed at 19/10/2026, 13:15:00.",
+        "x": 25,
+        "y": 672,
+        "width": 340,
+        "height": 76,
+        "bottom": 748
+      },
+      {
+        "label": "View Free workout, 0 exercises · 0 sets. Completed at 19/10/2026, 12:15:00.",
+        "x": 25,
+        "y": 756,
+        "width": 340,
+        "height": 76,
+        "bottom": 832
+      },
+      {
+        "label": "View Legs, 1 exercise · 0 sets. Completed at 19/10/2026, 12:08:00.",
+        "x": 25,
+        "y": 840,
+        "width": 340,
+        "height": 76,
+        "bottom": 916
+      },
+      {
+        "label": "View Free workout, 0 exercises · 0 sets. Completed at 19/10/2026, 11:15:00.",
+        "x": 25,
+        "y": 924,
+        "width": 340,
+        "height": 76,
+        "bottom": 1000
+      },
+      {
+        "label": "View Free workout, 0 exercises · 0 sets. Completed at 19/10/2026, 10:15:00.",
+        "x": 25,
+        "y": 1008,
+        "width": 340,
+        "height": 76,
+        "bottom": 1084
+      },
+      {
+        "label": "View Free workout, 0 exercises · 0 sets. Completed at 19/10/2026, 09:15:00.",
+        "x": 25,
+        "y": 1092,
+        "width": 340,
+        "height": 76,
+        "bottom": 1168
+      },
+      {
+        "label": "View Free workout, 0 exercises · 0 sets. Completed at 19/10/2026, 08:15:00.",
+        "x": 25,
+        "y": 1176,
+        "width": 340,
+        "height": 76,
+        "bottom": 1252
+      },
+      {
+        "label": "View Free workout, 0 exercises · 0 sets. Completed at 19/10/2026, 07:15:00.",
+        "x": 25,
+        "y": 1260,
+        "width": 340,
+        "height": 76,
+        "bottom": 1336
+      },
+      {
+        "label": "View Free workout, 0 exercises · 0 sets. Completed at 19/10/2026, 06:15:00.",
+        "x": 25,
+        "y": 1344,
+        "width": 340,
+        "height": 76,
+        "bottom": 1420
+      },
+      {
+        "label": "View Free workout, 0 exercises · 0 sets. Completed at 19/10/2026, 05:15:00.",
+        "x": 25,
+        "y": 1428,
+        "width": 340,
+        "height": 76,
+        "bottom": 1504
+      },
+      {
+        "label": "View Free workout, 0 exercises · 0 sets. Completed at 19/10/2026, 04:15:00.",
+        "x": 25,
+        "y": 1512,
+        "width": 340,
+        "height": 76,
+        "bottom": 1588
+      },
+      {
+        "label": "View Free workout, 0 exercises · 0 sets. Completed at 19/10/2026, 03:15:00.",
+        "x": 25,
+        "y": 1596,
+        "width": 340,
+        "height": 76,
+        "bottom": 1672
+      },
+      {
+        "label": "View Free workout, 0 exercises · 0 sets. Completed at 19/10/2026, 02:15:00.",
+        "x": 25,
+        "y": 1680,
+        "width": 340,
+        "height": 76,
+        "bottom": 1756
+      },
+      {
+        "label": "View Free workout, 0 exercises · 0 sets. Completed at 19/10/2026, 01:15:00.",
+        "x": 25,
+        "y": 1764,
+        "width": 340,
+        "height": 76,
+        "bottom": 1840
+      },
+      {
+        "label": "View Free workout, 0 exercises · 0 sets. Completed at 19/10/2026, 00:15:00.",
+        "x": 25,
+        "y": 1848,
+        "width": 340,
+        "height": 76,
+        "bottom": 1924
+      },
+      {
+        "label": "View Biceps, Back, 4 exercises · 0 sets. Completed at 17/10/2026, 18:21:00.",
+        "x": 25,
+        "y": 2017,
+        "width": 340,
+        "height": 76,
+        "bottom": 2093
+      },
+      {
+        "label": "View Free workout, 0 exercises · 0 sets. Completed at 17/10/2026, 08:39:00.",
+        "x": 25,
+        "y": 2101,
+        "width": 340,
+        "height": 76,
+        "bottom": 2177
+      }
+    ],
+    "dates": [
+      {
+        "label": "Today, 24 sessions",
+        "x": 16,
+        "y": -4315,
+        "width": 358,
+        "height": 61,
+        "bottom": -4254
+      },
+      {
+        "label": "segunda-feira, 19 de outubro, 19 sessions",
+        "x": 16,
+        "y": 249,
+        "width": 358,
+        "height": 73,
+        "bottom": 322
+      },
+      {
+        "label": "sábado, 17 de outubro, 2 sessions",
+        "x": 16,
+        "y": 1956,
+        "width": 358,
+        "height": 61,
+        "bottom": 2017
+      }
+    ],
+    "overflow": [],
+    "scrollWidth": 390
+  },
+  {
+    "virtualization": {
+      "loadedFirstPage": 20,
+      "totalFixtureSessions": 72,
+      "initialMounted": 20,
+      "allPagesLoaded": 72,
+      "allPagesMounted": 44
+    }
+  },
+  {
+    "finalLongNameDetailChecks": [
+      {
+        "name": "detail-dark-390",
+        "detailViewport": {
+          "height": 763,
+          "top": 81
+        }
+      },
+      {
+        "name": "detail-light-390",
+        "detailViewport": {
+          "height": 763,
+          "top": 81
+        }
+      },
+      {
+        "name": "free-detail-dark-390",
+        "detailViewport": {
+          "height": 763,
+          "top": 81
+        }
+      },
+      {
+        "name": "zero-detail-dark-390",
+        "detailViewport": {
+          "height": 763,
+          "top": 81
+        }
+      },
+      {
+        "name": "detail-large-dark-320",
+        "detailViewport": {
+          "height": 635,
+          "top": 209
+        }
+      }
+    ]
+  }
+]

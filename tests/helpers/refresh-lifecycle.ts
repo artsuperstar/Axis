@@ -39,7 +39,7 @@ registerHooks({
     if (specifier === 'react-native-worklets') return next(new URL('./native-worklets.cjs', import.meta.url).href, context);
     if (specifier === 'expo-font') return next(new URL('./native-font.cjs', import.meta.url).href, context);
     // Screen and native-modal menus use the same real host/context, as in production.
-    if ((context.parentURL?.includes('/context-menu.') || context.parentURL?.includes('/adaptive-sheet.') || context.parentURL?.includes('/recurring-tasks.') || context.parentURL?.includes('/task-history-list.') || context.parentURL?.includes('/routines-content.') || context.parentURL?.includes('/routine-composition.') || context.parentURL?.includes('/rotations-screen.'))
+    if ((context.parentURL?.includes('/context-menu.') || context.parentURL?.includes('/adaptive-sheet.') || context.parentURL?.includes('/recurring-tasks.') || context.parentURL?.includes('/task-history-list.') || context.parentURL?.includes('/routines-content.') || context.parentURL?.includes('/routine-composition.') || context.parentURL?.includes('/rotations-screen.') || context.parentURL?.includes('/exercises-content.'))
       && (specifier === './form-selection-host' || specifier === '@/components/form-selection-host')) return next(specifier, context);
     const key = boundaries[specifier];
     if (key) return cachedModule(new URL(`./lifecycle-boundary-${key}.cjs`, import.meta.url), boundary[key]);

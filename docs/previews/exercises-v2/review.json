@@ -1,0 +1,1200 @@
+[
+  {
+    "name": "active-dark-390",
+    "width": 390,
+    "theme": "dark",
+    "errors": [],
+    "mounted": 8,
+    "cards": [
+      {
+        "text": "Bench PressStrength · Weight + reps",
+        "x": 16,
+        "y": 462,
+        "width": 358,
+        "height": 76,
+        "bottom": 538
+      },
+      {
+        "text": "Bicep CurlStrength · Weight + reps",
+        "x": 16,
+        "y": 546,
+        "width": 358,
+        "height": 76,
+        "bottom": 622
+      },
+      {
+        "text": "CyclingDistance · Distance + optional time",
+        "x": 16,
+        "y": 630,
+        "width": 358,
+        "height": 76,
+        "bottom": 706
+      },
+      {
+        "text": "DeadliftStrength · Weight + reps",
+        "x": 16,
+        "y": 714,
+        "width": 358,
+        "height": 76,
+        "bottom": 790
+      },
+      {
+        "text": "DipBodyweight · Reps · optional added weight",
+        "x": 16,
+        "y": 798,
+        "width": 358,
+        "height": 76,
+        "bottom": 874
+      },
+      {
+        "text": "Leg PressStrength · Weight + reps",
+        "x": 16,
+        "y": 882,
+        "width": 358,
+        "height": 76,
+        "bottom": 958
+      },
+      {
+        "text": "Overhead PressStrength · Weight + reps",
+        "x": 16,
+        "y": 966,
+        "width": 358,
+        "height": 76,
+        "bottom": 1042
+      },
+      {
+        "text": "PlankDuration · Time",
+        "x": 16,
+        "y": 1050,
+        "width": 358,
+        "height": 76,
+        "bottom": 1126
+      }
+    ],
+    "overflow": [],
+    "search": {
+      "x": 29,
+      "y": 389,
+      "width": 332,
+      "height": 48,
+      "bottom": 437
+    },
+    "bodyScrollWidth": 390
+  },
+  {
+    "name": "active-light-390",
+    "width": 390,
+    "theme": "light",
+    "errors": [],
+    "mounted": 8,
+    "cards": [
+      {
+        "text": "Bench PressStrength · Weight + reps",
+        "x": 16,
+        "y": 462,
+        "width": 358,
+        "height": 76,
+        "bottom": 538
+      },
+      {
+        "text": "Bicep CurlStrength · Weight + reps",
+        "x": 16,
+        "y": 546,
+        "width": 358,
+        "height": 76,
+        "bottom": 622
+      },
+      {
+        "text": "CyclingDistance · Distance + optional time",
+        "x": 16,
+        "y": 630,
+        "width": 358,
+        "height": 76,
+        "bottom": 706
+      },
+      {
+        "text": "DeadliftStrength · Weight + reps",
+        "x": 16,
+        "y": 714,
+        "width": 358,
+        "height": 76,
+        "bottom": 790
+      },
+      {
+        "text": "DipBodyweight · Reps · optional added weight",
+        "x": 16,
+        "y": 798,
+        "width": 358,
+        "height": 76,
+        "bottom": 874
+      },
+      {
+        "text": "Leg PressStrength · Weight + reps",
+        "x": 16,
+        "y": 882,
+        "width": 358,
+        "height": 76,
+        "bottom": 958
+      },
+      {
+        "text": "Overhead PressStrength · Weight + reps",
+        "x": 16,
+        "y": 966,
+        "width": 358,
+        "height": 76,
+        "bottom": 1042
+      },
+      {
+        "text": "PlankDuration · Time",
+        "x": 16,
+        "y": 1050,
+        "width": 358,
+        "height": 76,
+        "bottom": 1126
+      }
+    ],
+    "overflow": [],
+    "search": {
+      "x": 29,
+      "y": 389,
+      "width": 332,
+      "height": 48,
+      "bottom": 437
+    },
+    "bodyScrollWidth": 390
+  },
+  {
+    "name": "archived-dark-390",
+    "width": 390,
+    "theme": "dark",
+    "errors": [],
+    "mounted": 1,
+    "cards": [
+      {
+        "text": "Old custom movementDuration · TimeArchived",
+        "x": 16,
+        "y": 462,
+        "width": 358,
+        "height": 96,
+        "bottom": 558
+      }
+    ],
+    "overflow": [],
+    "search": {
+      "x": 29,
+      "y": 389,
+      "width": 332,
+      "height": 48,
+      "bottom": 437
+    },
+    "bodyScrollWidth": 390
+  },
+  {
+    "name": "search-dark-390",
+    "width": 390,
+    "theme": "dark",
+    "errors": [],
+    "mounted": 1,
+    "cards": [
+      {
+        "text": "Bench PressStrength · Weight + reps",
+        "x": 16,
+        "y": 462,
+        "width": 358,
+        "height": 76,
+        "bottom": 538
+      }
+    ],
+    "overflow": [],
+    "search": {
+      "x": 29,
+      "y": 389,
+      "width": 332,
+      "height": 48,
+      "bottom": 437
+    },
+    "bodyScrollWidth": 390
+  },
+  {
+    "name": "no-results-dark-390",
+    "width": 390,
+    "theme": "dark",
+    "errors": [],
+    "mounted": 0,
+    "cards": [],
+    "overflow": [],
+    "search": {
+      "x": 29,
+      "y": 389,
+      "width": 332,
+      "height": 48,
+      "bottom": 437
+    },
+    "bodyScrollWidth": 390
+  },
+  {
+    "name": "mixed-types-dark-390",
+    "width": 390,
+    "theme": "dark",
+    "errors": [],
+    "mounted": 4,
+    "cards": [
+      {
+        "text": "Custom Mega PressDistance · Distance + optional time",
+        "x": 16,
+        "y": 462,
+        "width": 358,
+        "height": 94,
+        "bottom": 556
+      },
+      {
+        "text": "Custom bodyweightBodyweight · Reps · optional added weight",
+        "x": 16,
+        "y": 564,
+        "width": 358,
+        "height": 94,
+        "bottom": 658
+      },
+      {
+        "text": "Custom strengthStrength · Weight + reps",
+        "x": 16,
+        "y": 666,
+        "width": 358,
+        "height": 76,
+        "bottom": 742
+      },
+      {
+        "text": "Custom timerDuration · Time",
+        "x": 16,
+        "y": 750,
+        "width": 358,
+        "height": 76,
+        "bottom": 826
+      }
+    ],
+    "overflow": [],
+    "search": {
+      "x": 29,
+      "y": 389,
+      "width": 332,
+      "height": 48,
+      "bottom": 437
+    },
+    "bodyScrollWidth": 390
+  },
+  {
+    "name": "narrow-dark-320",
+    "width": 320,
+    "theme": "dark",
+    "errors": [],
+    "mounted": 1,
+    "cards": [
+      {
+        "text": "Controlled movement with a long descriptive name for balance and deliberate recoveryDistance · Distance + optional time",
+        "x": 16,
+        "y": 514,
+        "width": 288,
+        "height": 214,
+        "bottom": 728
+      }
+    ],
+    "overflow": [],
+    "search": {
+      "x": 29,
+      "y": 441,
+      "width": 262,
+      "height": 48,
+      "bottom": 489
+    },
+    "bodyScrollWidth": 320
+  },
+  {
+    "name": "large-dark-320",
+    "width": 320,
+    "theme": "dark",
+    "errors": [],
+    "mounted": 1,
+    "cards": [
+      {
+        "text": "Controlled movement with a long descriptive name for balance and deliberate recoveryDistance · Distance + optional time",
+        "x": 16,
+        "y": 871,
+        "width": 288,
+        "height": 590,
+        "bottom": 1461
+      }
+    ],
+    "overflow": [],
+    "search": {
+      "x": 29,
+      "y": 798,
+      "width": 262,
+      "height": 48,
+      "bottom": 846
+    },
+    "bodyScrollWidth": 320
+  },
+  {
+    "name": "wide-light-430",
+    "width": 430,
+    "theme": "light",
+    "errors": [],
+    "mounted": 8,
+    "cards": [
+      {
+        "text": "Bench PressStrength · Weight + reps",
+        "x": 16,
+        "y": 442,
+        "width": 398,
+        "height": 76,
+        "bottom": 518
+      },
+      {
+        "text": "Bicep CurlStrength · Weight + reps",
+        "x": 16,
+        "y": 526,
+        "width": 398,
+        "height": 76,
+        "bottom": 602
+      },
+      {
+        "text": "CyclingDistance · Distance + optional time",
+        "x": 16,
+        "y": 610,
+        "width": 398,
+        "height": 76,
+        "bottom": 686
+      },
+      {
+        "text": "DeadliftStrength · Weight + reps",
+        "x": 16,
+        "y": 694,
+        "width": 398,
+        "height": 76,
+        "bottom": 770
+      },
+      {
+        "text": "DipBodyweight · Reps · optional added weight",
+        "x": 16,
+        "y": 778,
+        "width": 398,
+        "height": 76,
+        "bottom": 854
+      },
+      {
+        "text": "Leg PressStrength · Weight + reps",
+        "x": 16,
+        "y": 862,
+        "width": 398,
+        "height": 76,
+        "bottom": 938
+      },
+      {
+        "text": "Overhead PressStrength · Weight + reps",
+        "x": 16,
+        "y": 946,
+        "width": 398,
+        "height": 76,
+        "bottom": 1022
+      },
+      {
+        "text": "PlankDuration · Time",
+        "x": 16,
+        "y": 1030,
+        "width": 398,
+        "height": 76,
+        "bottom": 1106
+      }
+    ],
+    "overflow": [],
+    "search": {
+      "x": 29,
+      "y": 369,
+      "width": 372,
+      "height": 48,
+      "bottom": 417
+    },
+    "bodyScrollWidth": 430
+  },
+  {
+    "name": "empty-active-dark-390",
+    "width": 390,
+    "theme": "dark",
+    "errors": [],
+    "mounted": 0,
+    "cards": [],
+    "overflow": [],
+    "search": {
+      "x": 29,
+      "y": 389,
+      "width": 332,
+      "height": 48,
+      "bottom": 437
+    },
+    "bodyScrollWidth": 390
+  },
+  {
+    "name": "new-dark-390",
+    "width": 390,
+    "theme": "dark",
+    "errors": [],
+    "mounted": 14,
+    "cards": [
+      {
+        "text": "Bench PressStrength · Weight + reps",
+        "x": 16,
+        "y": 462,
+        "width": 358,
+        "height": 76,
+        "bottom": 538
+      },
+      {
+        "text": "Bicep CurlStrength · Weight + reps",
+        "x": 16,
+        "y": 546,
+        "width": 358,
+        "height": 76,
+        "bottom": 622
+      },
+      {
+        "text": "CyclingDistance · Distance + optional time",
+        "x": 16,
+        "y": 630,
+        "width": 358,
+        "height": 76,
+        "bottom": 706
+      },
+      {
+        "text": "DeadliftStrength · Weight + reps",
+        "x": 16,
+        "y": 714,
+        "width": 358,
+        "height": 76,
+        "bottom": 790
+      },
+      {
+        "text": "DipBodyweight · Reps · optional added weight",
+        "x": 16,
+        "y": 798,
+        "width": 358,
+        "height": 76,
+        "bottom": 874
+      },
+      {
+        "text": "Leg PressStrength · Weight + reps",
+        "x": 16,
+        "y": 882,
+        "width": 358,
+        "height": 76,
+        "bottom": 958
+      },
+      {
+        "text": "Overhead PressStrength · Weight + reps",
+        "x": 16,
+        "y": 966,
+        "width": 358,
+        "height": 76,
+        "bottom": 1042
+      },
+      {
+        "text": "PlankDuration · Time",
+        "x": 16,
+        "y": 1050,
+        "width": 358,
+        "height": 76,
+        "bottom": 1126
+      },
+      {
+        "text": "Pull-upBodyweight · Reps · optional added weight",
+        "x": 16,
+        "y": 1134,
+        "width": 358,
+        "height": 76,
+        "bottom": 1210
+      },
+      {
+        "text": "Push-upBodyweight · Reps · optional added weight",
+        "x": 16,
+        "y": 1218,
+        "width": 358,
+        "height": 76,
+        "bottom": 1294
+      },
+      {
+        "text": "RunningDistance · Distance + optional time",
+        "x": 16,
+        "y": 1302,
+        "width": 358,
+        "height": 76,
+        "bottom": 1378
+      },
+      {
+        "text": "SquatStrength · Weight + reps",
+        "x": 16,
+        "y": 1386,
+        "width": 358,
+        "height": 76,
+        "bottom": 1462
+      },
+      {
+        "text": "Tricep ExtensionStrength · Weight + reps",
+        "x": 16,
+        "y": 1470,
+        "width": 358,
+        "height": 76,
+        "bottom": 1546
+      },
+      {
+        "text": "WalkingDistance · Distance + optional time",
+        "x": 16,
+        "y": 1554,
+        "width": 358,
+        "height": 76,
+        "bottom": 1630
+      }
+    ],
+    "overflow": [],
+    "search": {
+      "x": 29,
+      "y": 389,
+      "width": 332,
+      "height": 48,
+      "bottom": 437
+    },
+    "bodyScrollWidth": 390
+  },
+  {
+    "name": "new-light-390",
+    "width": 390,
+    "theme": "light",
+    "errors": [],
+    "mounted": 14,
+    "cards": [
+      {
+        "text": "Bench PressStrength · Weight + reps",
+        "x": 16,
+        "y": 462,
+        "width": 358,
+        "height": 76,
+        "bottom": 538
+      },
+      {
+        "text": "Bicep CurlStrength · Weight + reps",
+        "x": 16,
+        "y": 546,
+        "width": 358,
+        "height": 76,
+        "bottom": 622
+      },
+      {
+        "text": "CyclingDistance · Distance + optional time",
+        "x": 16,
+        "y": 630,
+        "width": 358,
+        "height": 76,
+        "bottom": 706
+      },
+      {
+        "text": "DeadliftStrength · Weight + reps",
+        "x": 16,
+        "y": 714,
+        "width": 358,
+        "height": 76,
+        "bottom": 790
+      },
+      {
+        "text": "DipBodyweight · Reps · optional added weight",
+        "x": 16,
+        "y": 798,
+        "width": 358,
+        "height": 76,
+        "bottom": 874
+      },
+      {
+        "text": "Leg PressStrength · Weight + reps",
+        "x": 16,
+        "y": 882,
+        "width": 358,
+        "height": 76,
+        "bottom": 958
+      },
+      {
+        "text": "Overhead PressStrength · Weight + reps",
+        "x": 16,
+        "y": 966,
+        "width": 358,
+        "height": 76,
+        "bottom": 1042
+      },
+      {
+        "text": "PlankDuration · Time",
+        "x": 16,
+        "y": 1050,
+        "width": 358,
+        "height": 76,
+        "bottom": 1126
+      },
+      {
+        "text": "Pull-upBodyweight · Reps · optional added weight",
+        "x": 16,
+        "y": 1134,
+        "width": 358,
+        "height": 76,
+        "bottom": 1210
+      },
+      {
+        "text": "Push-upBodyweight · Reps · optional added weight",
+        "x": 16,
+        "y": 1218,
+        "width": 358,
+        "height": 76,
+        "bottom": 1294
+      },
+      {
+        "text": "RunningDistance · Distance + optional time",
+        "x": 16,
+        "y": 1302,
+        "width": 358,
+        "height": 76,
+        "bottom": 1378
+      },
+      {
+        "text": "SquatStrength · Weight + reps",
+        "x": 16,
+        "y": 1386,
+        "width": 358,
+        "height": 76,
+        "bottom": 1462
+      },
+      {
+        "text": "Tricep ExtensionStrength · Weight + reps",
+        "x": 16,
+        "y": 1470,
+        "width": 358,
+        "height": 76,
+        "bottom": 1546
+      },
+      {
+        "text": "WalkingDistance · Distance + optional time",
+        "x": 16,
+        "y": 1554,
+        "width": 358,
+        "height": 76,
+        "bottom": 1630
+      }
+    ],
+    "overflow": [],
+    "search": {
+      "x": 29,
+      "y": 389,
+      "width": 332,
+      "height": 48,
+      "bottom": 437
+    },
+    "bodyScrollWidth": 390
+  },
+  {
+    "name": "detail-dark-390",
+    "width": 390,
+    "theme": "dark",
+    "errors": [],
+    "mounted": 14,
+    "cards": [
+      {
+        "text": "Bench PressStrength · Weight + reps",
+        "x": 16,
+        "y": 462,
+        "width": 358,
+        "height": 76,
+        "bottom": 538
+      },
+      {
+        "text": "Bicep CurlStrength · Weight + reps",
+        "x": 16,
+        "y": 546,
+        "width": 358,
+        "height": 76,
+        "bottom": 622
+      },
+      {
+        "text": "CyclingDistance · Distance + optional time",
+        "x": 16,
+        "y": 630,
+        "width": 358,
+        "height": 76,
+        "bottom": 706
+      },
+      {
+        "text": "DeadliftStrength · Weight + reps",
+        "x": 16,
+        "y": 714,
+        "width": 358,
+        "height": 76,
+        "bottom": 790
+      },
+      {
+        "text": "DipBodyweight · Reps · optional added weight",
+        "x": 16,
+        "y": 798,
+        "width": 358,
+        "height": 76,
+        "bottom": 874
+      },
+      {
+        "text": "Leg PressStrength · Weight + reps",
+        "x": 16,
+        "y": 882,
+        "width": 358,
+        "height": 76,
+        "bottom": 958
+      },
+      {
+        "text": "Overhead PressStrength · Weight + reps",
+        "x": 16,
+        "y": 966,
+        "width": 358,
+        "height": 76,
+        "bottom": 1042
+      },
+      {
+        "text": "PlankDuration · Time",
+        "x": 16,
+        "y": 1050,
+        "width": 358,
+        "height": 76,
+        "bottom": 1126
+      },
+      {
+        "text": "Pull-upBodyweight · Reps · optional added weight",
+        "x": 16,
+        "y": 1134,
+        "width": 358,
+        "height": 76,
+        "bottom": 1210
+      },
+      {
+        "text": "Push-upBodyweight · Reps · optional added weight",
+        "x": 16,
+        "y": 1218,
+        "width": 358,
+        "height": 76,
+        "bottom": 1294
+      },
+      {
+        "text": "RunningDistance · Distance + optional time",
+        "x": 16,
+        "y": 1302,
+        "width": 358,
+        "height": 76,
+        "bottom": 1378
+      },
+      {
+        "text": "SquatStrength · Weight + reps",
+        "x": 16,
+        "y": 1386,
+        "width": 358,
+        "height": 76,
+        "bottom": 1462
+      },
+      {
+        "text": "Tricep ExtensionStrength · Weight + reps",
+        "x": 16,
+        "y": 1470,
+        "width": 358,
+        "height": 76,
+        "bottom": 1546
+      },
+      {
+        "text": "WalkingDistance · Distance + optional time",
+        "x": 16,
+        "y": 1554,
+        "width": 358,
+        "height": 76,
+        "bottom": 1630
+      }
+    ],
+    "overflow": [],
+    "search": {
+      "x": 29,
+      "y": 389,
+      "width": 332,
+      "height": 48,
+      "bottom": 437
+    },
+    "bodyScrollWidth": 390
+  },
+  {
+    "name": "archived-detail-dark-390",
+    "width": 390,
+    "theme": "dark",
+    "errors": [],
+    "mounted": 1,
+    "cards": [
+      {
+        "text": "Old custom movementDuration · TimeArchived",
+        "x": 16,
+        "y": 462,
+        "width": 358,
+        "height": 96,
+        "bottom": 558
+      }
+    ],
+    "overflow": [],
+    "search": {
+      "x": 29,
+      "y": 389,
+      "width": 332,
+      "height": 48,
+      "bottom": 437
+    },
+    "bodyScrollWidth": 390
+  },
+  {
+    "name": "menu-dark-390",
+    "width": 390,
+    "theme": "dark",
+    "errors": [],
+    "mounted": 4,
+    "cards": [
+      {
+        "text": "Custom Mega PressDistance · Distance + optional time",
+        "x": 16,
+        "y": 462,
+        "width": 358,
+        "height": 94,
+        "bottom": 556
+      },
+      {
+        "text": "Custom bodyweightBodyweight · Reps · optional added weight",
+        "x": 16,
+        "y": 564,
+        "width": 358,
+        "height": 94,
+        "bottom": 658
+      },
+      {
+        "text": "Custom strengthStrength · Weight + reps",
+        "x": 16,
+        "y": 666,
+        "width": 358,
+        "height": 76,
+        "bottom": 742
+      },
+      {
+        "text": "Custom timerDuration · Time",
+        "x": 16,
+        "y": 750,
+        "width": 358,
+        "height": 76,
+        "bottom": 826
+      }
+    ],
+    "overflow": [],
+    "search": {
+      "x": 29,
+      "y": 389,
+      "width": 332,
+      "height": 48,
+      "bottom": 437
+    },
+    "bodyScrollWidth": 390
+  },
+  {
+    "name": "new-large-dark-320",
+    "width": 320,
+    "theme": "dark",
+    "errors": [],
+    "mounted": 8,
+    "cards": [
+      {
+        "text": "Bench PressStrength · Weight + reps",
+        "x": 16,
+        "y": 1028,
+        "width": 288,
+        "height": 214,
+        "bottom": 1242
+      },
+      {
+        "text": "Bicep CurlStrength · Weight + reps",
+        "x": 16,
+        "y": 1250,
+        "width": 288,
+        "height": 214,
+        "bottom": 1464
+      },
+      {
+        "text": "CyclingDistance · Distance + optional time",
+        "x": 16,
+        "y": 1472,
+        "width": 288,
+        "height": 214,
+        "bottom": 1686
+      },
+      {
+        "text": "DeadliftStrength · Weight + reps",
+        "x": 16,
+        "y": 1694,
+        "width": 288,
+        "height": 214,
+        "bottom": 1908
+      },
+      {
+        "text": "DipBodyweight · Reps · optional added weight",
+        "x": 16,
+        "y": 1916,
+        "width": 288,
+        "height": 254,
+        "bottom": 2170
+      },
+      {
+        "text": "Leg PressStrength · Weight + reps",
+        "x": 16,
+        "y": 2178,
+        "width": 288,
+        "height": 214,
+        "bottom": 2392
+      },
+      {
+        "text": "Overhead PressStrength · Weight + reps",
+        "x": 16,
+        "y": 2400,
+        "width": 288,
+        "height": 214,
+        "bottom": 2614
+      },
+      {
+        "text": "PlankDuration · Time",
+        "x": 16,
+        "y": 2622,
+        "width": 288,
+        "height": 174,
+        "bottom": 2796
+      }
+    ],
+    "overflow": [],
+    "search": {
+      "x": 29,
+      "y": 955,
+      "width": 262,
+      "height": 48,
+      "bottom": 1003
+    },
+    "bodyScrollWidth": 320
+  },
+  {
+    "name": "new-distance-dark-390",
+    "width": 390,
+    "theme": "dark",
+    "errors": [],
+    "mounted": 14,
+    "cards": [
+      {
+        "text": "Bench PressStrength · Weight + reps",
+        "x": 16,
+        "y": 462,
+        "width": 358,
+        "height": 76,
+        "bottom": 538
+      },
+      {
+        "text": "Bicep CurlStrength · Weight + reps",
+        "x": 16,
+        "y": 546,
+        "width": 358,
+        "height": 76,
+        "bottom": 622
+      },
+      {
+        "text": "CyclingDistance · Distance + optional time",
+        "x": 16,
+        "y": 630,
+        "width": 358,
+        "height": 76,
+        "bottom": 706
+      },
+      {
+        "text": "DeadliftStrength · Weight + reps",
+        "x": 16,
+        "y": 714,
+        "width": 358,
+        "height": 76,
+        "bottom": 790
+      },
+      {
+        "text": "DipBodyweight · Reps · optional added weight",
+        "x": 16,
+        "y": 798,
+        "width": 358,
+        "height": 76,
+        "bottom": 874
+      },
+      {
+        "text": "Leg PressStrength · Weight + reps",
+        "x": 16,
+        "y": 882,
+        "width": 358,
+        "height": 76,
+        "bottom": 958
+      },
+      {
+        "text": "Overhead PressStrength · Weight + reps",
+        "x": 16,
+        "y": 966,
+        "width": 358,
+        "height": 76,
+        "bottom": 1042
+      },
+      {
+        "text": "PlankDuration · Time",
+        "x": 16,
+        "y": 1050,
+        "width": 358,
+        "height": 76,
+        "bottom": 1126
+      },
+      {
+        "text": "Pull-upBodyweight · Reps · optional added weight",
+        "x": 16,
+        "y": 1134,
+        "width": 358,
+        "height": 76,
+        "bottom": 1210
+      },
+      {
+        "text": "Push-upBodyweight · Reps · optional added weight",
+        "x": 16,
+        "y": 1218,
+        "width": 358,
+        "height": 76,
+        "bottom": 1294
+      },
+      {
+        "text": "RunningDistance · Distance + optional time",
+        "x": 16,
+        "y": 1302,
+        "width": 358,
+        "height": 76,
+        "bottom": 1378
+      },
+      {
+        "text": "SquatStrength · Weight + reps",
+        "x": 16,
+        "y": 1386,
+        "width": 358,
+        "height": 76,
+        "bottom": 1462
+      },
+      {
+        "text": "Tricep ExtensionStrength · Weight + reps",
+        "x": 16,
+        "y": 1470,
+        "width": 358,
+        "height": 76,
+        "bottom": 1546
+      },
+      {
+        "text": "WalkingDistance · Distance + optional time",
+        "x": 16,
+        "y": 1554,
+        "width": 358,
+        "height": 76,
+        "bottom": 1630
+      }
+    ],
+    "overflow": [],
+    "search": {
+      "x": 29,
+      "y": 389,
+      "width": 332,
+      "height": 48,
+      "bottom": 437
+    },
+    "bodyScrollWidth": 390
+  },
+  {
+    "name": "search-keyboard-dark-390",
+    "width": 390,
+    "theme": "dark",
+    "errors": [],
+    "mounted": 2,
+    "cards": [
+      {
+        "text": "Bench PressStrength · Weight + reps",
+        "x": 16,
+        "y": 462,
+        "width": 358,
+        "height": 76,
+        "bottom": 538
+      },
+      {
+        "text": "Bicep CurlStrength · Weight + reps",
+        "x": 16,
+        "y": 546,
+        "width": 358,
+        "height": 76,
+        "bottom": 622
+      }
+    ],
+    "overflow": [],
+    "search": {
+      "x": 29,
+      "y": 389,
+      "width": 332,
+      "height": 48,
+      "bottom": 437
+    },
+    "bodyScrollWidth": 390
+  },
+  {
+    "virtualization": {
+      "fixture": "200 added custom exercises plus seeded/mixed records",
+      "initialMounted": 8
+    }
+  },
+  {
+    "finalMeasurementHeadingChecks": [
+      {
+        "name": "new-dark-390",
+        "measurementHeading": {
+          "height": 24,
+          "lineHeight": 24
+        }
+      },
+      {
+        "name": "new-light-390",
+        "measurementHeading": {
+          "height": 24,
+          "lineHeight": 24
+        }
+      },
+      {
+        "name": "new-large-dark-320",
+        "measurementHeading": {
+          "height": 48,
+          "lineHeight": 48
+        }
+      },
+      {
+        "name": "new-distance-dark-390",
+        "measurementHeading": {
+          "height": 24,
+          "lineHeight": 24
+        }
+      },
+      {
+        "name": "detail-dark-390",
+        "measurementHeading": {
+          "height": 24,
+          "lineHeight": 24
+        }
+      },
+      {
+        "name": "archived-detail-dark-390",
+        "measurementHeading": {
+          "height": 24,
+          "lineHeight": 24
+        }
+      }
+    ]
+  }
+]

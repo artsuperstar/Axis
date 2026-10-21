@@ -13,6 +13,15 @@ export function workoutCounts(exercises: number, sets?: number) {
   return `${exercises} ${exercises === 1 ? 'exercise' : 'exercises'}${sets === undefined ? '' : ` · ${sets} ${sets === 1 ? 'set' : 'sets'}`}`;
 }
 
+/** History is ordered/grouped by completion; its compact time uses the same timestamp. */
+export function workoutCompletionTime(session: Pick<SessionSummary, 'completedAt'>) {
+  return session.completedAt === null ? null : new Date(session.completedAt).toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' });
+}
+
+export function workoutGroupCount(count: number, mayContinue = false) {
+  return `${count} ${count === 1 ? 'session' : 'sessions'}${mayContinue ? ' loaded' : ''}`;
+}
+
 function localDateKey(date: Date) { return `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`; }
 
 export function workoutDateLabel(timestamp: number, now = new Date()) {

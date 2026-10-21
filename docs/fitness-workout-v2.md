@@ -2,6 +2,144 @@
 
 16 October 2026. Original surface mode: **Operate**. Original scope: Fitness → Workout, before and during a workout. Existing Routines, Exercises, History, routes and bottom-tab organization remain authoritative.
 
+## History v2 — Workout Archive
+
+21 October 2026. Surface mode: **Operate**. Scope: Fitness → History and its read-only completed-workout detail. The supplied dark mockup guides context → local date group → compact session summary → detail. Existing data, paging and native navigation remain authoritative.
+
+### Existing History behavior audit (before implementation)
+
+1. **Included states:** nondeleted sessions with `completedAt` set.
+2. **Finished only:** yes; completion is the authoritative inclusion rule.
+3. **Incomplete/discarded:** unfinished sessions remain outside History; Discard tombstones the session, also excluding it. No abandoned/missed outcome is invented.
+4. **Ordering timestamp:** `completedAt` descending, then `startedAt` descending, then session ID ascending. Date grouping follows completion in the device's local calendar.
+5. **Start stored:** `startedAt` is persisted.
+6. **Finish stored:** `completedAt` is persisted by Finish.
+7. **Displayed time decision:** show completion time, consistent with History ordering, date grouping, existing accessibility labels and detail's Completed timestamp. The compact row time is contextualized as Completed at, not reinterpreted as start time.
+8. **Exercise count:** SQL counts live saved session-exercise snapshots, not the current routine's entries.
+9. **Set count:** SQL counts live persisted sets joined to live session exercises. Planned targets are excluded; null performance values do not remove a persisted set from the count.
+10. **Zero counts:** valid finished empty/free/routine sessions and zero-set workouts are retained; Finish does not require logged sets or fulfilled targets.
+11. **Free workouts:** `routineId` is null and the saved session name is Free workout; they use the same History summary/detail model.
+12. **Routine changes/archive:** historical name is saved on the session; routine edits/archive do not rename history. There is no new routine-delete behavior in this pass.
+13. **Exercise archive:** detail reads saved session exercise names, measurement types and sets directly, retaining archived-source history.
+14. **Paging:** first page is 20 summaries; Load older workouts fetches the next 20 through a completion/start/ID cursor, appending rows. Refresh retains the number already loaded. No whole-database History read is introduced.
+15. **Row tap:** loads the selected saved session and opens the existing read-only AdaptiveModal/WorkoutSheet, within the Fitness destination. Home's completed-session entry remains supported independently of an active workout.
+16. **Mutability:** completed sessions and their exercise/set/note changes are rejected by existing domain guards; History has no edit/delete/overflow actions.
+
+### Implementation direction
+
+Reuse the existing Fitness v2 shell, warm cream/charcoal foundations, plum/pink tiles, practical row typography and shared press feedback. One SectionList will own local-date sections, preserving summary-only paging. The group header and row/footer edges form one continuous date surface with compact internal session rows, rather than giant nested cards. Use the existing date/group/count helpers, saved session names and one generic dumbbell for every workout row. Completion time and a quiet noninteractive Completed indicator complement counts. At narrow/large text, metadata moves below the identity. Last-date counts are explicitly marked loaded while older pages remain available, since the current page can split a date.
+
+### Implemented archive hierarchy and chronology
+
+History stays inside Fitness, with the existing title, InternalNavigation, four destinations and native bottom-tab/safe-area ownership. The compact clock/Workout History introduction is followed by owned date groups. Each group has a decorative calendar tile, localized date heading and actual loaded session count; compact bordered session rows share that date surface. The prior mapped History/legacy object-row implementation and its unused styles/exports were removed after migration; ExerciseDetail and ArchivedRoutineDetail behavior remains intact.
+
+`workoutHistoryGroups` remains authoritative for local completion-day grouping, including Today/Yesterday and locale-formatted older dates/year boundaries. Sessions are never sorted again in presentation: completion descending, start descending and ID ascending remain the source order. `workoutCompletionTime` formats the saved completion timestamp with locale-aware hour/minute formatting. Row announcements contextualize Completed at and include name/counts. Start time remains visible as Started in Detail; it is not substituted for completion in archive rows.
+
+### Summary, status and detail ownership
+
+Rows display saved session names, SQL-derived live session-exercise/set counts and one generic dumbbell icon, independent of routine names or exercise composition. Valid free, zero-exercise and zero-set workouts remain ordinary completed rows. Null performance values retain the persisted set count; planned targets never become logged-set totals. The quiet check/Completed indicator follows the reference and reinforces the validity of empty finished sessions; it is decorative/noninteractive within the single accessible detail button. Chevron and tiles do not introduce duplicate focus stops. There is no row overflow because History has no independent mutable actions.
+
+The direct WorkoutSheet was still legacy. It now uses v2 AdaptiveSheet/RoutineHeader and a full-height virtualized exercise body, with owned timestamp/note/exercise groups. Header Back and the existing modal return behavior remain. The body reads the same saved SessionDetail, retaining exercise names/types, notes, set records and null values, manual targetless completion and session/routine/rotation provenance. Existing set display (`setLabel`) and spoken (`workoutSetPresentation`) formatting are retained. No current routine/exercise lookup reconstructs detail; no writable set/note/finish controls are introduced. This also applies to Home's existing completed-session entry. Refresh failure retains the mounted detail and snapshot through Retry.
+
+The fixed detail header uses Workout details; the full historical session name is a prominent heading inside the scrollable summary. This prevents very long names at doubled text from consuming most of the fixed sheet viewport while preserving the complete saved identity.
+
+### Paging and performance
+
+One SectionList virtualizes summaries, using stable local-date keys/session IDs, eight-row initial/batch settings, a five-window range, dynamic heights and nonsticky group headers. Header/row/footer borders form the continuous group without wrapping all sessions in an unvirtualized parent. The existing manual Load older workouts action and 20-record cursor pages remain; section derivation merges appended records before rendering. A split date therefore grows under one header, without duplicates or skipped IDs. While older pages remain, the last date's count is labeled **N sessions loaded**; it is not presented as a whole-database daily total. Counts are derived and never persisted or fetched separately.
+
+Main History reads stay summary-only; the full selected session loads only when opened. Detail virtualizes exercise groups and retains shared sheet scroll/ref integration; set views within one exercise remain read-only mapped snapshot rows. Already-loaded History remains in hook state according to the existing contract; this pass adds no caching/paging architecture and does not change refresh query behavior. Per-destination scroll offsets remain independent.
+
+### Responsive, themes and accessibility
+
+The supplied dark reference informs warm charcoal/plum surfaces; existing cream tokens provide the light equivalent. Dates/counts, names/summaries and time/status may stack at narrow or accessibility widths. Large text puts the identity before secondary metadata, with a decorative icon/chevron row above the full-width name. Rows have no fixed height/truncation. Locale-specific completion labels can wrap, including AM/PM. Review spans 320/390/430pt and simulated doubled text, with default locale and an explicit en-US time-format case.
+
+Date groups expose meaningful header labels including session count; row buttons announce historical name, summary, contextual completion timestamp and read-only destination. Shared press/focus behavior, touch targets and Reduced Motion remain. No broad date/list layout animation is introduced. Loading, failed read and genuinely empty History remain distinct; the empty state uses No workouts yet / Completed workouts will appear here and no redundant Start CTA.
+
+### Skill findings
+
+- **frontend-design:** translated the mockup's date-owned archive hierarchy into compact session rows, preserving source content and existing Fitness shell instead of sample values or different navigation.
+- **Impeccable:** reviewed nested-surface restraint, quiet completion status, chronology, type/metadata density, spacing and both themes. The single date surface owns restrained row boundaries; the bounded comparison led to tighter detail spacing and safe wrapping for localized time.
+- **UI/UX Pro Max:** the initial chronology search had no match; the focused retry returned verified All-platform Date Formatting guidance. Existing locale-aware date semantics were retained rather than hardcoded English/ambiguous numeric grouping. Large-text priority, completion-time context, singular/plural counts and one clear read-only navigation action were reviewed.
+- **Expo building-native-ui:** checked SDK 57/RN 0.86 SectionList guidance, stable section/item keys, finite render windows, incremental page append/group merging, dynamic heights, native safe areas, shared modal scrolling and Reduced Motion. References: [Expo SDK 57](https://docs.expo.dev/versions/v57.0.0/), [SectionList](https://reactnative.dev/docs/0.86/sectionlist).
+
+Captures and instrumentation boundaries are documented in [Fitness History v2 previews](previews/fitness-history-v2/README.md). No schema, migration, dependency, data-access or hook change was required. Prior uncommitted Exercises v2 work remains intact.
+
+### History v2 validation
+
+- TypeScript passed. ESLint baseline comparison retains exactly six existing errors/two warnings, with zero changed diagnostics; global lint remains nonzero for those existing errors.
+- Seventeen new History regressions passed, including a UTC-started runner check for the local-midnight/year boundary. Focused History/Fitness/Exercises/Routines/Routine Editor/rotations/Workout coverage: **242 passed**.
+- Final complete suite: **1,102 passed**, no failures, cancellations or skips. Final-source iOS/Android exports passed.
+- `git diff --check` passed after removing an extra EOF blank line. Existing LF→CRLF working-copy notices remain informational.
+- SQLite integrity/FK assertions in snapshot/archive regressions passed. Production schema, migrations, dependencies, data access and hooks were not modified.
+- Browser captures report no runtime/text-overflow errors. First page: 20 summaries/20 mounted rows within the render window. After paging all 72 fixture summaries: 44 mounted rows at the measured position. The corrected long-name detail leaves a 635px scrollable viewport in the 320×844 doubled-text approximation. These are browser measurements, not native performance/device claims.
+- No files removed, staged, committed or pushed. Previous Exercises v2 changes remain present.
+
+## Exercises v2 — Exercise Library Management
+
+21 October 2026. Surface mode: **Operate**. Scope: Fitness → Exercises and its direct New Exercise/read-only Detail surfaces. The supplied dark mockup guides creation → library controls → compact cards; existing Fitness navigation and all exercise data behavior remain authoritative.
+
+### Existing exercise behavior audit (before implementation)
+
+1. **Editing today:** no exercise-edit API or UI exists. Identity taps open read-only ExerciseDetail. No Edit action will be invented.
+2. **Archive:** active custom exercises can be archived through their existing contextual Archive action and native confirmation.
+3. **Restore:** unsupported; no Restore action will be added.
+4. **Delete:** no separate exercise-delete capability exists.
+5. **Soft deletion:** Archive sets `deletedAt`/`updatedAt` in the existing immediate transaction.
+6. **Routine references:** retained, including their configured targets and position; archiving does not null/rewrite references.
+7. **Historical workouts:** retain exercise-name/measurement snapshots and recorded sets.
+8. **New routine membership:** archived exercises cannot be newly added; active exercise validation remains authoritative.
+9. **Existing active routines:** may retain archived exercises. Editing retained entries preserves them; starting a new workout omits them.
+10. **Started workouts:** an exercise archived after starting remains in that session; existing session snapshots/sets are unchanged.
+11. **Measurement changes:** no post-creation editing/conversion capability exists. Creation chooses one of the four existing types.
+12. **Built-in/custom distinction:** built-ins are viewable and cannot be archived; only active custom records have Archive. No unsupported ellipsis will appear merely to match the mockup.
+13. **Uniqueness:** active names are unique across built-in/custom records and measurement types; archived-name reuse is allowed.
+14. **Normalization:** persisted names trim outer whitespace, collapse whitespace and normalize NFC; identity compares locale-neutral lowercase without stripping accents. The transaction/race protection is unchanged. Library search has its own established case-insensitive, accent-sensitive substring behavior (`name.toLowerCase().includes(query.trim().toLowerCase())`); it does not use the richer routine picker's search helper.
+15. **Row taps:** intentionally open details for active, built-in and archived records; the identity remains a labeled button, independently of Archive overflow.
+
+### Implementation direction
+
+Reuse the current Fitness v2 header/InternalNavigation and existing cream/charcoal, plum/pink, Lora/Manrope tokens. One prominent New exercise action sits above a single library-control group owning Active/Archived and full-width inline Search. Compact exercise cards sit outside that group. Sans names/metadata wrap, and semantic tiles depend exclusively on the existing `measurementIcons[measurementType]` mapping. No name-specific imagery, extra filters, empty menus, duplicate CTA or product capabilities are introduced. New uses the shared v2 creation editor; read-only Detail receives bounded v2 alignment rather than an invented Edit form.
+
+### Implemented library and action ownership
+
+`ExercisesContent` owns one FlatList and one control group; individual `ExerciseLibraryCard` groups are siblings outside the control group, not children of a giant library card. Cards use practical sans names, authoritative measurement summaries and the existing strength/dumbbell, bodyweight/activity, duration/timer, distance/route mapping. A custom exercise name cannot change its icon. The built-in Bench Press/Bicep Curl/Cycling/Deadlift fixture matches the reference's content hierarchy, while deliberately omitting the mockup's unsupported built-in overflow menus.
+
+Identity taps retain read-only Detail, including active custom, built-in and archived records. Only an active custom record owns a measured contextual menu, containing the existing Archive action. Dismissal precedes the unchanged native confirmation. There is no Edit, Restore, Delete or active-row status badge. Archived rows remain viewable, use quieter surface/icon colors and explicitly announce/display Archived. The bodyweight summary retains the real **Reps · optional added weight** wording rather than losing optional added-weight semantics to match a shorter example.
+
+The full-width inline search includes a decorative authored search glyph using the existing icon vocabulary, an accessible label, shared focus styling, native iOS clear control and Done dismissal. One memoized filter applies the original collection predicate and lowercased substring query without reordering, canonicalizing or stripping accents. It uses the loaded source array and adds no SQL reads per row. Active/Archived and query remain parent-owned across modal flows and destination switches. Empty Active, empty Archived and no-match states have separate text and retain only the existing New exercise CTA.
+
+### Direct New/Detail alignment
+
+New exercise now opts into the existing v2 `ExerciseEditor` path. The shared sheet retains its focus reveal, keyboard measurement, Back/cancel and save guard; its fixed header retains **Create**, the existing action name. Exercise owns Name; Measurement owns the four-option anchored selector and the existing unit explanation. Selecting a measurement type updates the semantic section icon. Shared v2 creation from the Routine picker reuses these same sections; the legacy Workout variant and its product flow are unchanged.
+
+Measurement uses the existing practical `cardTitle` section-heading option in creation and Detail, avoiding a split word at doubled accessibility text while retaining header semantics.
+
+No Edit flow exists, so none was added. The existing read-only `ExerciseDetail` is aligned with a v2 header and measurement section, retaining the exact built-in/custom/archived explanation and Back behavior. Detail intentionally contains no editable fields or save control. Initial/focus/resume refresh failure retains the existing snapshot and mounted creation draft through Retry, including its selected measurement type.
+
+### List, responsive and keyboard behavior
+
+The old mapped ScrollView branch is removed for Exercises. One FlatList uses stable exercise IDs, eight initial rows/eight-row batches, a five-window range, dynamic heights and no nested vertical ScrollView. Native iOS keyboard insets, handled taps, on-drag dismissal, Done dismissal and shared menu scroll locking/remeasurement are enabled. Opening read-only Detail dismisses the search keyboard. The existing native-tab/safe-area architecture remains; no bottom navigation or other Fitness destination is redesigned. Search/control/header state does not live in recycled rows. Per-destination scroll offsets remain independent.
+
+320/390/430pt and simulated doubled-text captures cover wrapping, full-width search, large-text segmented/header adaptation and dynamic cards. At large text, identity stacks and overflow aligns toward the top of tall cards. Existing native shared focus and Reduced Motion behavior remain; no broad list-layout animation, dependency, cache or data-layer change was introduced. The data API still loads the library into memory; presentation virtualization does not claim SQL paging or reduced source-row loading.
+
+### Skill findings
+
+- **frontend-design:** used the supplied creation → owned library controls → compact sibling cards composition, preserving the current Fitness title/navigation rather than reproducing mockup shell differences. Sans working names maintain scanning density; high-level headings reuse established typography.
+- **Impeccable:** reviewed light/dark surfaces, card density, archive readability, nested-group restraint, empty states and the reference side by side. The requested card ownership is intentional; no extra decorative layers or status pills were added. The bounded visual review identified and corrected large-text overflow placement.
+- **UI/UX Pro Max:** verified the All-platform Focus States guidance and retained the shared visible focus styling. Reviewed search scope, Active/Archived selection, readable metadata, named contextual actions and native Archive safety. The Web-only Focus Not Obscured result was not claimed as verified native guidance; native keyboard behavior still needs physical testing.
+- **Expo building-native-ui:** checked SDK 57/RN 0.86 docs, virtualized list ownership, stable keys, keyboard insets/dismissal, safe-area handling, shared anchored menus, native confirmation, dynamic text and Reduced Motion. Existing shared infrastructure is reused rather than adding a dependency. References: [Expo SDK 57](https://docs.expo.dev/versions/v57.0.0/), [FlatList](https://reactnative.dev/docs/0.86/flatlist), [ScrollView](https://reactnative.dev/docs/0.86/scrollview).
+
+See [Exercises v2 previews](previews/exercises-v2/README.md) for captures and browser/native boundary limitations. Schema, migrations, dependencies, persistence and hooks are unchanged.
+
+### Exercises v2 validation
+
+- TypeScript passed; ESLint retains exactly the baseline six errors/two warnings, with zero changed diagnostics.
+- Eighteen new library regressions passed. Focused Exercises/Fitness/Routine Editor/Routines/Workout/rotation coverage: **225 passed**. Complete suite: **1,085 passed**, no failures, cancellations or skips.
+- Final-source iOS and Android exports passed. `git diff --check` passed, with Git's LF→CRLF working-copy notices only.
+- Archive regressions retain SQLite integrity/FK checks and passed; production database, migrations and data-access files were not modified.
+- Browser captures report no runtime/text-overflow errors; all four type icons are verified. The 220-record fixture has 219 active exercises, of which **eight cards initially mounted**. The corrected Measurement heading remains one line in the simulated doubled-text creation review. Native performance and keyboard/accessibility behavior still require physical testing.
+- No files were removed, staged, committed or pushed.
+
 ## Workout Rotations v2
 
 21 October 2026. Surface mode: **Operate**. Scope: the existing pushed `/fitness/rotations` management route and its shared `/fitness/rotation` New/Edit editor. The supplied dark mockup governs composition; existing source behavior remains authoritative.

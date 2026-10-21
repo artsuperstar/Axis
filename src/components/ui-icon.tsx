@@ -4,6 +4,7 @@ import { useMemo } from 'react';
 /** One small authored outline vocabulary, extending the prototype's two-unit action geometry. */
 export const iconGeometry = {
   plus: '<path d="M12 5v14M5 12h14"/>',
+  search: '<circle cx="10.5" cy="10.5" r="7.5"/><path d="m16 16 5 5"/>',
   up: '<path d="M12 20V4m-6 6 6-6 6 6"/>',
   down: '<path d="M12 4v16m-6-6 6 6 6-6"/>',
   target: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><path d="m12 12 9-9M17 3h4v4"/>',

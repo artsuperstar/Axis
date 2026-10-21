@@ -4,6 +4,7 @@ import { Keyboard, Platform, StyleSheet, View, useWindowDimensions } from 'react
 import { AdaptiveSheet, useModalBackHandler } from '@/components/adaptive-sheet';
 import { AutocompleteField } from '@/components/autocomplete-field';
 import { UiText } from '@/components/design-system';
+import { EditorSection } from '@/components/editor-section';
 import { FormButton, FormError, FormField, SegmentedControl, SelectField } from '@/components/form-controls';
 import { focusFormControl } from '@/components/form-selection-host';
 import { ThemedText } from '@/components/themed-text';
@@ -13,6 +14,7 @@ import { blankTargets, exerciseResults, fitnessError, measurementOptions, normal
 import type { Exercise, MeasurementType, RoutineDetail, RoutineDraft, SetDraft, TargetDraft, WorkoutSet } from '../types';
 import { RoutineComposition, RoutineHeader } from './routine-composition';
 import { RoutineExercisePicker } from './routine-exercise-picker';
+import { measurementIcons } from '../workout-presentation';
 
 function useSave() {
   const saving = useRef(false);
@@ -38,15 +40,15 @@ export function ExerciseEditor({ initialName = '', onSave, onCreated, onDismiss,
   }); }
   const helper = measurementType === 'strength' ? 'Weight in kg and reps.' : measurementType === 'bodyweight' ? 'Reps and optional added weight in kg.' :
     measurementType === 'duration' ? 'Minutes and seconds.' : 'Meters or kilometers, with optional duration.';
+  const identity = <FormField appearance={appearance} label="Name *" value={name} autoFocus maxLength={120} onChangeText={(value) => { setName(value); submit.clearError(); }} />;
+  const measurement = <SelectField appearance={appearance} label="Measurement type *" value={measurementType} options={measurementOptions} onChange={(value) => { setType(value); submit.clearError(); }} />;
   return <AdaptiveSheet appearance={appearance} title="New exercise" action="Create" onDismiss={onDismiss} onConfirm={create}
     header={appearance ? <RoutineHeader title="New exercise" onDismiss={onDismiss} action="Create" onSave={create} /> : undefined}>
     <FormError appearance={appearance} message={submit.error} />
-    <FormField appearance={appearance} label="Name *" value={name} autoFocus maxLength={120} onChangeText={(value) => { setName(value); submit.clearError(); }} />
-    <SelectField appearance={appearance} label="Measurement type *" value={measurementType} options={measurementOptions} onChange={(value) => { setType(value); submit.clearError(); }} />
-    {appearance ? <UiText type="secondary" color="textSecondary">{helper}</UiText> : <ThemedText type="small" themeColor="textSecondary">
-      {measurementType === 'strength' ? 'Weight in kg and reps.' : measurementType === 'bodyweight' ? 'Reps and optional added weight in kg.' :
-        measurementType === 'duration' ? 'Minutes and seconds.' : 'Meters or kilometers, with optional duration.'}
-    </ThemedText>}
+    {appearance ? <>
+      <EditorSection title="Exercise" description="" icon={measurementIcons[measurementType]} variant="group">{identity}</EditorSection>
+      <EditorSection title="Measurement" headingType="cardTitle" description="" icon="list" variant="group">{measurement}<UiText type="secondary" color="textSecondary">{helper}</UiText></EditorSection>
+    </> : <>{identity}{measurement}<ThemedText type="small" themeColor="textSecondary">{helper}</ThemedText></>}
   </AdaptiveSheet>;
 }
 
