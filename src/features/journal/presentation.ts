@@ -4,6 +4,8 @@ import { journalDirty } from './form';
 import type { JournalEditorState } from './editor';
 import type { JournalEntry } from './types';
 
+export const journalTaskPreviewLimit = 4;
+
 export function journalFullDate(date: string) {
   return pickerValue(date).toLocaleDateString(undefined, { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
 }
@@ -13,7 +15,7 @@ export function journalWritingVisible(state: JournalEditorState, today: string, 
 }
 
 export function journalSaveLabel(state: JournalEditorState) {
-  return state.entry && journalDirty(state.draft, state.entry) ? 'Save changes' : 'Save';
+  return state.entry && journalDirty(state.draft, state.entry) ? 'Save changes' : 'Save entry';
 }
 
 export function journalHistoryGroups(entries: readonly JournalEntry[]) {

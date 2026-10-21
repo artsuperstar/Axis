@@ -15,16 +15,17 @@ const entry = { id: 'entry', entryDate: '2026-10-03', content: 'First line\nSeco
 const state: JournalEditorState = { date: entry.entryDate, entry, draft: { content: entry.content, mood: entry.mood }, loaded: true, error: null, message: null,
   baseline: { id: entry.id, updatedAt: entry.updatedAt }, conflict: false, recoveryError: null, recoveryMessage: null };
 const actions = { onChange: () => {}, onRetryDraft: () => {}, onDiscardConflict: () => {} };
-const context: JournalDayContext = { date: today, completedTaskCount: 4, taskNames: ['One', 'Two', 'Three'], workoutCount: 1,
+const context: JournalDayContext = { date: today, completedTaskCount: 4, taskNames: ['One', 'Two', 'Three', 'Four'], workoutCount: 1,
   workouts: [{ id: 'workout', name: 'Upper Body', exerciseCount: 3, setCount: 9 }], transactionCount: 2, incomeMinor: 50000n, expensesMinor: 12000n, netFlowMinor: 38000n };
 
 test('Journal writing uses compact optional mood buttons and shared top-aligned multiline input', () => {
   const changed: JournalDraft[] = [];
   const form = renderControl(() => journalEditor.JournalEditor({ ...actions, state, onChange: (draft) => changed.push(draft) }));
   assert.match(form.markup, /Journal entry for/); assert.match(form.markup, /textarea/); assert.doesNotMatch(form.markup, /Title/);
-  const moods = form.elements.filter((element) => element.type === controls.FormButton);
-  assert.deepEqual(moods.map((element) => element.props.label), ['Great', 'Good', 'Okay', 'Low', 'Bad']);
-  assert.equal((moods[1].props as { selected?: boolean }).selected, true); assert.match(form.markup, /Good ✓/);
+  const moods = form.elements.filter((element) => element.props.accessibilityLabel?.endsWith(', mood'));
+  assert.deepEqual(moods.map((element) => element.props.accessibilityLabel), ['Great, mood', 'Good, mood', 'Okay, mood', 'Low, mood', 'Bad, mood']);
+  assert.equal((moods[1].props as { accessibilityState?: { selected: boolean } }).accessibilityState?.selected, true);
+  assert.match(form.markup, /icon-check/); assert.match(form.markup, /aria-pressed="true"/);
   moods[1].props.onPress!(); assert.equal(changed[0].mood, null);
   moods[0].props.onPress!(); assert.equal(changed[1].mood, 'great');
   const writing = form.elements.find((element) => element.type === controls.FormField)!;
@@ -69,8 +70,9 @@ test('History groups months with normalized two-line previews and preserves edit
 
 test('Day at a Glance gives counts, one workout name and exact Finance context without a dashboard', () => {
   const form = renderControl(() => journalContext.JournalContext({ context, error: null, onRetry: () => {} }));
-  assert.match(form.markup, /Day at a Glance/); assert.match(form.markup, /4 tasks completed/); assert.match(form.markup, /Upper Body/);
-  assert.doesNotMatch(form.markup, /One|3 exercises|9 sets|textarea|Balance/);
+  assert.match(form.markup, /Day at a Glance/); assert.match(form.markup, /4 completed/); assert.match(form.markup, /Upper Body/);
+  for (const name of context.taskNames) assert.match(form.markup, new RegExp(name));
+  assert.doesNotMatch(form.markup, /3 exercises|9 sets|textarea|Balance/);
   for (const amount of ['120,00', '500,00', '380,00']) assert.match(form.markup, new RegExp(amount));
   const multiple = renderControl(() => journalContext.JournalContext({ context: { ...context, workoutCount: 2 }, error: null, onRetry: () => {} }));
   assert.match(multiple.markup, /2 workouts completed/); assert.doesNotMatch(multiple.markup, /Upper Body/);

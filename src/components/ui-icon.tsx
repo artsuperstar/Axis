@@ -5,6 +5,11 @@ import { useMemo } from 'react';
 export const iconGeometry = {
   plus: '<path d="M12 5v14M5 12h14"/>',
   search: '<circle cx="10.5" cy="10.5" r="7.5"/><path d="m16 16 5 5"/>',
+  moodGreat: '<circle cx="12" cy="12" r="9"/><path d="M7 9h1M16 9h1M7 13h10a5 5 0 0 1-10 0Z"/>',
+  moodGood: '<circle cx="12" cy="12" r="9"/><path d="M8 9h.01M16 9h.01M7 14q5 6 10 0"/>',
+  moodOkay: '<circle cx="12" cy="12" r="9"/><path d="M8 9h.01M16 9h.01M8 15h8"/>',
+  moodLow: '<circle cx="12" cy="12" r="9"/><path d="M8 9h.01M16 9h.01M7 17q5-6 10 0"/>',
+  moodBad: '<circle cx="12" cy="12" r="9"/><path d="m7 8 2 2m8-2-2 2M7 18q5-8 10 0"/>',
   up: '<path d="M12 20V4m-6 6 6-6 6 6"/>',
   down: '<path d="M12 4v16m-6-6 6 6 6-6"/>',
   target: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><path d="m12 12 9-9M17 3h4v4"/>',

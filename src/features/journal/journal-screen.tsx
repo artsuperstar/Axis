@@ -5,29 +5,32 @@ import { ActivityIndicator, Alert, Keyboard, KeyboardAvoidingView, Platform, Sty
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { AdaptiveModal } from '@/components/adaptive-sheet';
-import { BackButton } from '@/components/back-button';
 import { ContextMenu, ContextMenuHost } from '@/components/context-menu';
 import { FormButton, FormError, FormScrollView, type FormSelectionHandle } from '@/components/form-controls';
-import { ThemedText } from '@/components/themed-text';
+import { DesignProvider, UiText, useDesignColors } from '@/components/design-system';
 import { Space } from '@/constants/theme';
-import { useTheme } from '@/hooks/use-theme';
 import { addDays, localDateString } from '@/utils/calendar';
 
 import { JournalContext } from './components/journal-context';
 import { JournalDate, JournalDayNavigation } from './components/journal-date';
 import { JournalEditor } from './components/journal-editor';
 import { JournalLeave } from './components/journal-leave';
+import { JournalHeader, JournalSaveAction } from './components/journal-surface';
 import { requestJournalNavigation, type JournalLeaveChoice } from './editor';
 import { journalFullDate, journalSaveLabel, journalWritingVisible } from './presentation';
 import { useJournal } from './use-journal';
 
 export function JournalScreen() {
+  return <DesignProvider><JournalContent /></DesignProvider>;
+}
+
+function JournalContent() {
   const params = useLocalSearchParams<{ date?: string; entryRequest?: string }>();
   const requestedDate = typeof params.date === 'string' ? params.date : undefined;
   const journal = useJournal(requestedDate);
   const { editor, targetDate, loadDate } = journal;
   const navigation = useNavigation();
-  const colors = useTheme(); const insets = useSafeAreaInsets(); const { fontScale } = useWindowDimensions();
+  const colors = useDesignColors(); const insets = useSafeAreaInsets(); const { fontScale } = useWindowDimensions();
   const selection = useRef<FormSelectionHandle>(null);
   const pendingChoice = useRef<((choice: JournalLeaveChoice) => void) | null>(null);
   const [surface, setSurface] = useState<'date' | 'leave' | null>(null);
@@ -77,16 +80,13 @@ export function JournalScreen() {
   const targetFailed = journal.targetDate !== journal.state.date || !journal.state.loaded;
   const writingVisible = journalWritingVisible(journal.state, journal.today, writingDate);
   const saveLabel = journalSaveLabel(journal.state);
-  return <SafeAreaView style={[styles.fill, { backgroundColor: colors.background }]}>
+  return <SafeAreaView style={[styles.fill, { backgroundColor: colors.canvas }]}>
     <ContextMenuHost ref={selection}>
-      <View style={[styles.inner, styles.header]} onLayout={(event) => setHeaderHeight(event.nativeEvent.layout.height)}>
-        <BackButton accessibilityLabel="Back from journal" onPress={back} />
-        <ThemedText type="screenTitle" accessibilityRole="header" style={styles.title}>Journal</ThemedText>
-        <ContextMenu label="Journal options" actions={[
+      <JournalHeader title="Journal" backLabel="Back from journal" onBack={back} onLayout={(event) => setHeaderHeight(event.nativeEvent.layout.height)}
+        options={<ContextMenu appearance="v2" label="Journal options" actions={[
           { label: 'History', onPress: history },
           ...(!targetFailed && journal.state.entry && !journal.state.conflict ? [{ label: 'Delete entry', variant: 'destructive' as const, onPress: remove }] : []),
-        ]} />
-      </View>
+        ]} />} />
       <KeyboardAvoidingView style={styles.fill} behavior={Platform.OS === 'ios' ? 'padding' : undefined} keyboardVerticalOffset={insets.top + headerHeight}>
         <FormScrollView contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled" keyboardDismissMode={Platform.OS === 'ios' ? 'interactive' : 'on-drag'}
           onLayout={(event) => setWritingHeight(Math.max(240, Math.min(400, event.nativeEvent.layout.height * 0.6)))}>
@@ -95,25 +95,25 @@ export function JournalScreen() {
               onPrevious={() => selectDate(addDays(journal.targetDate, -1))} onNext={() => selectDate(addDays(journal.targetDate, 1))}
               onToday={() => selectDate(localDateString(new Date()))} />
             {targetFailed ? <>
-              <FormError message={journal.state.error} />
+              <FormError appearance="v2" message={journal.state.error} />
               {journal.state.error ? <>
-                <ThemedText type="secondary" themeColor="textSecondary">Unable to open {journalFullDate(journal.targetDate)}.{journal.state.loaded ? ' Your previous day is kept.' : ''}</ThemedText>
-                <FormButton variant="quiet" label="Retry journal" onPress={journal.reload} />
-                {journal.state.loaded && <FormButton variant="quiet" label="Return to loaded day" onPress={() => selectDate(journal.state.date)} />}
-              </> : <ActivityIndicator color={colors.accent} accessibilityLabel="Loading journal day" />}
+                <UiText type="secondary" color="textSecondary">Unable to open {journalFullDate(journal.targetDate)}.{journal.state.loaded ? ' Your previous day is kept.' : ''}</UiText>
+                <FormButton appearance="v2" variant="quiet" label="Retry journal" onPress={journal.reload} />
+                {journal.state.loaded && <FormButton appearance="v2" variant="quiet" label="Return to loaded day" onPress={() => selectDate(journal.state.date)} />}
+              </> : <ActivityIndicator color={colors.brand} accessibilityLabel="Loading journal day" />}
             </> : <>
               <JournalEditor state={journal.state} writingVisible={writingVisible} writingHeight={Math.max(writingHeight, 180 * fontScale)}
                 onWrite={() => setWritingDate(journal.state.date)} onChange={journal.editor.change}
                 onRetryDraft={journal.editor.flushDraft} onDiscardConflict={discardConflict} />
-              {!!journal.state.error && <FormButton variant="quiet" label="Retry journal" onPress={journal.reload} />}
+              {!!journal.state.error && <FormButton appearance="v2" variant="quiet" label="Retry journal" onPress={journal.reload} />}
               <JournalContext context={journal.context} error={journal.contextError} onRetry={journal.readContext} />
             </>}
           </View>
         </FormScrollView>
-        {!targetFailed && writingVisible && <View style={[styles.footer, { backgroundColor: colors.background, borderColor: colors.border }]}>
+        {!targetFailed && writingVisible && <View style={[styles.footer, { backgroundColor: colors.canvas }]}>
           <View style={[styles.inner, styles.save]}>
-            {!!journal.state.message && <ThemedText type="metadata" themeColor="textSecondary" accessibilityLiveRegion="polite" style={styles.message}>{journal.state.message}</ThemedText>}
-            <FormButton variant="primary" label={saveLabel} accessibilityLabel={`${saveLabel} journal for ${journalFullDate(journal.state.date)}`} disabled={journal.state.conflict}
+            {!!journal.state.message && <UiText type="metadata" color="textSecondary" accessibilityLiveRegion="polite">{journal.state.message}</UiText>}
+            <JournalSaveAction label={saveLabel} accessibilityLabel={`${saveLabel} journal for ${journalFullDate(journal.state.date)}`} disabled={journal.state.conflict}
               onPress={() => { Keyboard.dismiss(); journal.editor.save(); }} />
           </View>
         </View>}
@@ -126,7 +126,6 @@ export function JournalScreen() {
   </SafeAreaView>;
 }
 const styles = StyleSheet.create({ fill: { flex: 1 }, inner: { width: '100%', maxWidth: 640, alignSelf: 'center', gap: Space.xl },
-  header: { padding: Space.lg, flexDirection: 'row', alignItems: 'center', gap: Space.sm }, title: { flex: 1, minWidth: 0 },
   content: { padding: Space.lg, paddingBottom: Space.xl, flexGrow: 1 },
-  footer: { paddingHorizontal: Space.lg, paddingVertical: Space.md, borderTopWidth: 1 },
-  save: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'flex-end', alignItems: 'center', gap: Space.sm }, message: { flex: 1, minWidth: 80 } });
+  footer: { paddingHorizontal: Space.lg, paddingVertical: Space.md },
+  save: { gap: Space.sm } });

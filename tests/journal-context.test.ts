@@ -112,7 +112,7 @@ test('context reads are idempotent/read-only, generate no occurrences and bound 
   const snapshot = () => Object.fromEntries(f.sqlite.prepare("SELECT name FROM sqlite_master WHERE type = 'table' AND name NOT LIKE 'sqlite_%'").all()
     .map((row) => [String(row.name), f.sqlite.prepare(`SELECT * FROM "${row.name}" ORDER BY rowid`).all()]));
   const before = snapshot(); const first = f.context.read(today);
-  assert.equal(first.completedTaskCount, 5); assert.equal(first.taskNames.length, 3); assert.equal(first.workoutCount, 5); assert.equal(first.workouts.length, 3);
+  assert.equal(first.completedTaskCount, 5); assert.equal(first.taskNames.length, 4); assert.equal(first.workoutCount, 5); assert.equal(first.workouts.length, 3);
   assert.deepEqual(f.context.read(today), first); assert.deepEqual(snapshot(), before);
   assert.deepEqual(Object.keys(f.access.save(today, { content: 'Independent', mood: null }, f.access.getEntry(today))!).sort(),
     ['id', 'entryDate', 'content', 'mood', 'createdAt', 'updatedAt', 'deletedAt'].sort());

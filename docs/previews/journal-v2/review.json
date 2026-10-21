@@ -1,0 +1,114 @@
+[
+  {
+    "name": "today-dark-390",
+    "width": 390,
+    "flags": "",
+    "errors": [],
+    "overflow": []
+  },
+  {
+    "name": "today-light-390",
+    "width": 390,
+    "flags": "",
+    "errors": [],
+    "overflow": []
+  },
+  {
+    "name": "selected-dark-390",
+    "width": 390,
+    "flags": "selected",
+    "errors": [],
+    "overflow": []
+  },
+  {
+    "name": "selected-entry-dark-390",
+    "width": 390,
+    "flags": "selected",
+    "errors": [],
+    "overflow": []
+  },
+  {
+    "name": "historical-dark-390",
+    "width": 390,
+    "flags": "past",
+    "errors": [],
+    "overflow": []
+  },
+  {
+    "name": "historical-entry-light-390",
+    "width": 390,
+    "flags": "past",
+    "errors": [],
+    "overflow": []
+  },
+  {
+    "name": "historical-empty-dark-390",
+    "width": 390,
+    "flags": "pastEmpty",
+    "errors": [],
+    "overflow": []
+  },
+  {
+    "name": "narrow-dark-320",
+    "width": 320,
+    "flags": "",
+    "errors": [],
+    "overflow": []
+  },
+  {
+    "name": "wide-light-430",
+    "width": 430,
+    "flags": "",
+    "errors": [],
+    "overflow": []
+  },
+  {
+    "name": "large-dark-320",
+    "width": 320,
+    "flags": "large&selected",
+    "errors": [],
+    "overflow": []
+  },
+  {
+    "name": "large-entry-dark-320",
+    "width": 320,
+    "flags": "large&selected",
+    "errors": [],
+    "overflow": []
+  },
+  {
+    "name": "context-dark-390",
+    "width": 390,
+    "flags": "selected&context",
+    "errors": [],
+    "overflow": []
+  },
+  {
+    "name": "history-dark-390",
+    "width": 390,
+    "flags": "history",
+    "errors": [],
+    "overflow": []
+  },
+  {
+    "name": "history-light-390",
+    "width": 390,
+    "flags": "history",
+    "errors": [],
+    "overflow": []
+  },
+  {
+    "name": "history-large-dark-320",
+    "width": 320,
+    "flags": "history&large",
+    "errors": [],
+    "overflow": []
+  },
+  {
+    "historyPages": [
+      20,
+      40,
+      46
+    ]
+  }
+]

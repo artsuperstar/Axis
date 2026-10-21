@@ -1,0 +1,132 @@
+[
+  {
+    "name": "one-dark-390",
+    "width": 390,
+    "flags": "",
+    "errors": [],
+    "overflow": [],
+    "interactive": 0,
+    "summary": [
+      "Tasks1 completedA finished task",
+      "FitnessFree workoutWorkout completed",
+      "FinanceSpentR$ 32,50IncomeR$ 180,00NetR$ 147,50"
+    ]
+  },
+  {
+    "name": "one-light-390",
+    "width": 390,
+    "flags": "",
+    "errors": [],
+    "overflow": [],
+    "interactive": 0,
+    "summary": [
+      "Tasks1 completedA finished task",
+      "FitnessFree workoutWorkout completed",
+      "FinanceSpentR$ 32,50IncomeR$ 180,00NetR$ 147,50"
+    ]
+  },
+  {
+    "name": "four-dark-390",
+    "width": 390,
+    "flags": "fewTasks",
+    "errors": [],
+    "overflow": [],
+    "interactive": 0,
+    "summary": [
+      "Tasks4 completedA finished taskPrepare the quarterly report with supporting details for the next planning sessionCall momWash dishes",
+      "FitnessFree workoutWorkout completed",
+      "FinanceSpentR$ 32,50IncomeR$ 180,00NetR$ 147,50"
+    ]
+  },
+  {
+    "name": "four-light-390",
+    "width": 390,
+    "flags": "fewTasks",
+    "errors": [],
+    "overflow": [],
+    "interactive": 0,
+    "summary": [
+      "Tasks4 completedA finished taskPrepare the quarterly report with supporting details for the next planning sessionCall momWash dishes",
+      "FitnessFree workoutWorkout completed",
+      "FinanceSpentR$ 32,50IncomeR$ 180,00NetR$ 147,50"
+    ]
+  },
+  {
+    "name": "seven-dark-390",
+    "width": 390,
+    "flags": "manyTasks",
+    "errors": [],
+    "overflow": [],
+    "interactive": 0,
+    "summary": [
+      "Tasks7 completedA finished taskPrepare the quarterly report with supporting details for the next planning sessionCall momWash dishes+3 more",
+      "FitnessFree workoutWorkout completed",
+      "FinanceSpentR$ 32,50IncomeR$ 180,00NetR$ 147,50"
+    ]
+  },
+  {
+    "name": "seven-light-390",
+    "width": 390,
+    "flags": "manyTasks",
+    "errors": [],
+    "overflow": [],
+    "interactive": 0,
+    "summary": [
+      "Tasks7 completedA finished taskPrepare the quarterly report with supporting details for the next planning sessionCall momWash dishes+3 more",
+      "FitnessFree workoutWorkout completed",
+      "FinanceSpentR$ 32,50IncomeR$ 180,00NetR$ 147,50"
+    ]
+  },
+  {
+    "name": "narrow-dark-320",
+    "width": 320,
+    "flags": "manyTasks",
+    "errors": [],
+    "overflow": [],
+    "interactive": 0,
+    "summary": [
+      "Tasks7 completedA finished taskPrepare the quarterly report with supporting details for the next planning sessionCall momWash dishes+3 more",
+      "FitnessFree workoutWorkout completed",
+      "FinanceSpentR$ 32,50IncomeR$ 180,00NetR$ 147,50"
+    ]
+  },
+  {
+    "name": "wide-light-430",
+    "width": 430,
+    "flags": "manyTasks",
+    "errors": [],
+    "overflow": [],
+    "interactive": 0,
+    "summary": [
+      "Tasks7 completedA finished taskPrepare the quarterly report with supporting details for the next planning sessionCall momWash dishes+3 more",
+      "FitnessFree workoutWorkout completed",
+      "FinanceSpentR$ 32,50IncomeR$ 180,00NetR$ 147,50"
+    ]
+  },
+  {
+    "name": "large-dark-320",
+    "width": 320,
+    "flags": "manyTasks&large",
+    "errors": [],
+    "overflow": [],
+    "interactive": 0,
+    "summary": [
+      "Tasks7 completedA finished taskPrepare the quarterly report with supporting details for the next planning sessionCall momWash dishes+3 more",
+      "FitnessFree workoutWorkout completed",
+      "FinanceSpentR$ 32,50IncomeR$ 180,00NetR$ 147,50"
+    ]
+  },
+  {
+    "name": "large-light-320",
+    "width": 320,
+    "flags": "manyTasks&large",
+    "errors": [],
+    "overflow": [],
+    "interactive": 0,
+    "summary": [
+      "Tasks7 completedA finished taskPrepare the quarterly report with supporting details for the next planning sessionCall momWash dishes+3 more",
+      "FitnessFree workoutWorkout completed",
+      "FinanceSpentR$ 32,50IncomeR$ 180,00NetR$ 147,50"
+    ]
+  }
+]

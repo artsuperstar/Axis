@@ -5,6 +5,7 @@ import { createTaskDataAccess } from '@/features/tasks/data';
 import { validDate } from '@/utils/calendar';
 
 import { JournalValidationError } from './form';
+import { journalTaskPreviewLimit } from './presentation';
 import type { JournalDayContext } from './types';
 
 /** Source-owned reads only: no recurrence generation, copied context, or expected financial amounts. */
@@ -19,7 +20,7 @@ export function createJournalContextAccess(db: AxisDatabase) {
         const completed = tasks.readCompletedOnDate(date);
         const workouts = fitness.readCompletedOnDate(date);
         const finance = readFinanceAnalytics(db, { startDate: date, endDate: date });
-        return { date, completedTaskCount: completed.length, taskNames: completed.slice(0, 3).map((row) => row.title),
+        return { date, completedTaskCount: completed.length, taskNames: completed.slice(0, journalTaskPreviewLimit).map((row) => row.title),
           workoutCount: workouts.length, workouts: workouts.slice(0, 3).map(({ id, name, exerciseCount, setCount }) => ({ id, name, exerciseCount, setCount })),
           transactionCount: finance.transactionCount, incomeMinor: finance.incomeMinor, expensesMinor: finance.expensesMinor, netFlowMinor: finance.netFlowMinor };
       });

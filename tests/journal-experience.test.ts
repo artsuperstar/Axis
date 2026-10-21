@@ -22,6 +22,8 @@ async function fixture(t: TestContext, date = today) {
 async function settle() { await act(() => new Promise((resolve) => setTimeout(resolve, 20))); }
 async function history(app: App) { await app.press('Journal options'); await app.press('History'); await settle(); }
 function dateShown(app: App, date: string) { assert.ok(app.find('Pressable', journalFullDate(date))); }
+function saveButton(app: App, label = 'Save entry') { return app.nodes().find(node => node.kind === 'Pressable' && String(node.props.accessibilityLabel).startsWith(`${label} journal for `))!; }
+async function save(app: App, label = 'Save entry') { const button = saveButton(app, label); assert.ok(button); assert.equal(button.props.disabled, false); await act(() => (button.props.onPress as () => void)()); }
 function rows(app: App) { return app.nodes().filter((node) => node.kind === 'Pressable' && String(node.props?.accessibilityLabel ?? '').startsWith('Open journal for')); }
 async function tap(app: App, row: ReturnType<App['nodes']>[number]) { await act(() => (row.props.onPress as () => void)()); }
 
@@ -30,7 +32,7 @@ test('today opens directly for writing with optional mood, explicit Save and bod
   dateShown(app, today); assert.ok(app.find('FormField', 'Entry')); assert.equal(app.find('FormButton', 'Next day').props.disabled, true);
   assert.ok(!app.nodes().some((node) => node.props?.label === 'Today' || node.textContent === 'Day at a Glance'));
   await app.change('Entry', 'My day\nA second paragraph.'); assert.equal(f.access.getEntry(today), null);
-  await app.press('Save'); assert.equal(f.access.getEntry(today)!.mood, null); assert.equal(f.access.getDraft(today), null);
+  await save(app); assert.equal(f.access.getEntry(today)!.mood, null); assert.equal(f.access.getDraft(today), null);
   assert.ok(app.container.textContent.includes('Saved')); assert.equal(f.access.listHistory().entries[0].content, 'My day\nA second paragraph.');
   await app.unmount();
   const home = await mount(createElement(screens.HomeScreen), f.db); t.after(home.unmount);
@@ -50,10 +52,10 @@ for (const [date, previous] of [[today, '2026-10-13'], ['2026-03-01', '2026-02-2
 
 test('past empty dates require Write an entry; saved historical dates remain editable and Save changes preserves date', async (t) => {
   const f = await fixture(t); const yesterday = addDays(today, -1); const app = await mount(createElement(screens.JournalScreen), f.db); t.after(app.unmount);
-  await app.press('Previous day'); await app.press('Write an entry'); await app.change('Entry', 'Yesterday note'); await app.press('Good'); await app.press('Save');
+  await app.press('Previous day'); await app.press('Write an entry'); await app.change('Entry', 'Yesterday note'); await app.tapSet('Good, mood'); await save(app);
   const first = f.access.getEntry(yesterday)!; assert.equal(first.mood, 'good'); assert.equal(f.access.getEntry(today), null);
   await app.press('Today'); await app.press('Previous day'); assert.equal(app.find('FormField', 'Entry').props.value, 'Yesterday note');
-  await app.change('Entry', 'Updated historical note'); await app.press('Save changes');
+  await app.change('Entry', 'Updated historical note'); await save(app, 'Save changes');
   const updated = f.access.getEntry(yesterday)!; assert.equal(updated.id, first.id); assert.equal(updated.entryDate, yesterday);
   assert.equal(f.access.listHistory().entries[0].content, 'Updated historical note');
 });
@@ -61,12 +63,13 @@ test('past empty dates require Write an entry; saved historical dates remain edi
 test('all existing moods are single choices, selected-state is exposed and tapping the current mood clears it', async (t) => {
   const f = await fixture(t); const app = await mount(createElement(screens.JournalScreen), f.db); t.after(app.unmount); await app.change('Entry', 'Writing stays independent');
   for (const [index, mood] of (['great', 'good', 'okay', 'low', 'bad'] as const).entries()) {
-    await app.press(moodLabel(mood));
-    const options = app.nodes().filter((node) => node.kind === 'FormButton' && String(node.props?.accessibilityLabel ?? '').endsWith(', mood'));
-    assert.equal(options.filter((node) => node.props.selected).length, 1); assert.equal(app.find('FormButton', moodLabel(mood)).props.selected, true);
-    await app.press(index === 0 ? 'Save' : 'Save changes'); assert.equal(f.access.getEntry(today)!.mood, mood);
+    await app.tapSet(`${moodLabel(mood)}, mood`);
+    const options = app.nodes().filter((node) => node.kind === 'Pressable' && String(node.props?.accessibilityLabel ?? '').endsWith(', mood'));
+    assert.equal(options.filter((node) => (node.props.accessibilityState as { selected: boolean }).selected).length, 1);
+    assert.equal((app.find('Pressable', `${moodLabel(mood)}, mood`).props.accessibilityState as { selected: boolean }).selected, true);
+    await save(app, index === 0 ? 'Save entry' : 'Save changes'); assert.equal(f.access.getEntry(today)!.mood, mood);
   }
-  await app.press('Bad'); assert.equal(app.find('FormButton', 'Bad').props.selected, false); await app.press('Save changes');
+  await app.tapSet('Bad, mood'); assert.equal((app.find('Pressable', 'Bad, mood').props.accessibilityState as { selected: boolean }).selected, false); await save(app, 'Save changes');
   assert.equal(f.access.getEntry(today)!.mood, null); assert.equal(f.access.getEntry(today)!.content, 'Writing stays independent');
 });
 
@@ -92,20 +95,20 @@ test('native removal guard retains the draft on Keep and replays the requested B
 
 test('restarting restores a saved-entry-plus-draft without autosaving; Save clears draft atomically', async (t) => {
   const f = await fixture(t); f.access.save(today, { content: 'Saved baseline', mood: 'good' }, null);
-  let app = await mount(createElement(screens.JournalScreen), f.db); await app.change('Entry', 'Working paragraphs\nStill unsaved'); await app.press('Low');
+  let app = await mount(createElement(screens.JournalScreen), f.db); await app.change('Entry', 'Working paragraphs\nStill unsaved'); await app.tapSet('Low, mood');
   await act(() => (runtime.blur as () => void)()); assert.equal(f.access.getDraft(today)!.content, 'Working paragraphs\nStill unsaved'); await app.unmount();
   app = await mount(createElement(screens.JournalScreen), f.db); t.after(app.unmount);
   assert.equal(app.find('FormField', 'Entry').props.value, 'Working paragraphs\nStill unsaved'); assert.ok(app.container.textContent.includes('Recovered draft'));
   assert.equal(f.access.getEntry(today)!.content, 'Saved baseline'); await app.change('Entry', 'Resumed writing'); assert.ok(!app.container.textContent.includes('Recovered draft'));
-  await app.press('Save changes'); assert.equal(f.access.getDraft(today), null); assert.equal(f.access.getEntry(today)!.content, 'Resumed writing');
+  await save(app, 'Save changes'); assert.equal(f.access.getDraft(today), null); assert.equal(f.access.getEntry(today)!.content, 'Resumed writing');
 });
 
 test('stale save preserves authoritative entry and local draft until confirmed discard/reload', async (t) => {
   const f = await fixture(t); const original = f.access.save(today, { content: 'First saved', mood: null }, null)!;
   const app = await mount(createElement(screens.JournalScreen), f.db); t.after(app.unmount); await app.change('Entry', 'Local edit');
   const current = f.access.save(today, { content: 'Other writer', mood: 'great' }, journalBaseline(original))!;
-  await app.press('Save changes'); assert.equal(app.find('FormField', 'Entry').props.value, 'Local edit'); assert.ok(app.container.textContent.includes('changed since'));
-  assert.deepEqual(f.access.getEntry(today), current); assert.equal(f.access.getDraft(today)!.content, 'Local edit'); assert.equal(app.find('FormButton', 'Save changes').props.disabled, true);
+  await save(app, 'Save changes'); assert.equal(app.find('FormField', 'Entry').props.value, 'Local edit'); assert.ok(app.container.textContent.includes('changed since'));
+  assert.deepEqual(f.access.getEntry(today), current); assert.equal(f.access.getDraft(today)!.content, 'Local edit'); assert.equal(saveButton(app, 'Save changes').props.disabled, true);
   await app.press('Discard changes and reload'); assert.equal(f.access.getDraft(today)!.content, 'Local edit'); await app.confirm('Keep editing');
   await app.press('Discard changes and reload'); await app.confirm('Discard changes'); assert.equal(app.find('FormField', 'Entry').props.value, 'Other writer'); assert.equal(f.access.getDraft(today), null);
 });
@@ -125,11 +128,11 @@ test('initial failure avoids a false empty date; noninitial context/entry failur
   const f = await fixture(t); const id = f.tasks.createTask({ ...taskDraft(), title: 'Completed today' }); f.tasks.setCompleted(id, true);
   const app = await mount(createElement(screens.JournalScreen), f.db, ['journal.getEntry']); t.after(app.unmount);
   assert.ok(app.find('FormButton', 'Retry journal')); assert.ok(!app.container.textContent.includes('No entry for this day'));
-  runtime.fixture.failures.clear(); await app.press('Retry journal'); await app.change('Entry', 'Draft stays'); await app.press('Okay');
+  runtime.fixture.failures.clear(); await app.press('Retry journal'); await app.change('Entry', 'Draft stays'); await app.tapSet('Okay, mood');
   const field = app.find('FormField', 'Entry'); runtime.fixture.failures.add('journalContext.read'); await app.resume();
-  assert.equal(app.find('FormField', 'Entry'), field); assert.equal(field.props.value, 'Draft stays'); assert.equal(app.find('FormButton', 'Okay').props.selected, true);
-  assert.ok(app.container.textContent.includes('1 task completed')); assert.ok(app.find('FormButton', 'Retry activity'));
-  runtime.fixture.failures.clear(); await app.press('Retry activity'); await app.press('Save');
+  assert.equal(app.find('FormField', 'Entry'), field); assert.equal(field.props.value, 'Draft stays'); assert.equal((app.find('Pressable', 'Okay, mood').props.accessibilityState as { selected: boolean }).selected, true);
+  assert.ok(app.container.textContent.includes('1 completed')); assert.ok(app.find('FormButton', 'Retry activity'));
+  runtime.fixture.failures.clear(); await app.press('Retry activity'); await save(app);
   runtime.fixture.failures.add('journal.getEntry'); await app.resume(); assert.equal(app.find('FormField', 'Entry'), field); assert.equal(field.props.value, 'Draft stays');
   runtime.fixture.failures.clear(); await app.press('Retry journal'); assert.equal(app.find('FormField', 'Entry'), field);
 });
@@ -140,10 +143,10 @@ test('source mutations refresh derived day context without changing authored wri
   const workout = f.fitness.startWorkout(); f.fitness.finishWorkout(workout.id);
   f.finance.createTransaction({ ...transactionDraft(null, pickerValue(today)), description: 'Groceries', amount: '82,40' });
   f.finance.createTransaction({ ...transactionDraft(null, pickerValue(today)), description: 'Income', amount: '200', type: 'income' });
-  await app.resume(); assert.ok(app.container.textContent.includes('1 task completed')); assert.ok(app.container.textContent.includes('Free workout'));
+  await app.resume(); assert.ok(app.container.textContent.includes('1 completed')); assert.ok(app.container.textContent.includes('Context task')); assert.ok(app.container.textContent.includes('Free workout'));
   assert.ok(app.container.textContent.includes('82,40')); assert.ok(app.container.textContent.includes('117,60'));
   f.fitness.finishWorkout(f.fitness.startWorkout().id); f.tasks.setCompleted(id, false); await app.resume();
-  assert.ok(app.container.textContent.includes('2 workouts completed')); assert.ok(!app.container.textContent.includes('1 task completed'));
+  assert.ok(app.container.textContent.includes('2 workouts completed')); assert.ok(!app.container.textContent.includes('Context task'));
   assert.equal(app.find('FormField', 'Entry').props.value, 'Independent writing'); assert.equal(f.access.getEntry(today), null);
 });
 
@@ -245,7 +248,7 @@ test('iOS keyboard layout uses native safe area plus measured header and keeps S
   const header = app.nodes().find((node) => node.kind === 'View' && node.childNodes.some((child) => child.kind === 'ThemedText' && child.textContent === 'Journal'))!;
   await act(() => (header.props.onLayout as (event: unknown) => void)({ nativeEvent: { layout: { height: 72 } } }));
   assert.equal(keyboard.props.keyboardVerticalOffset, 131);
-  for (let parent = app.find('FormButton', 'Save').parentNode; parent; parent = parent.parentNode) assert.notEqual(parent.kind, 'ScrollView');
+  for (let parent = saveButton(app).parentNode; parent; parent = parent.parentNode) assert.notEqual(parent.kind, 'ScrollView');
   const scrolling = app.find('ScrollView'); assert.equal(scrolling.props.keyboardDismissMode, 'interactive');
   await act(() => (scrolling.props.onLayout as (event: unknown) => void)({ nativeEvent: { layout: { height: 180 } } }));
   assert.equal((app.find('FormField', 'Entry').props.style as { minHeight: number }).minHeight, 240);
