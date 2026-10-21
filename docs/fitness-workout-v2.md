@@ -1,12 +1,261 @@
 # Fitness Workout — Warm Editorial Hearth refinement
 
-16 October 2026. Surface mode: **Operate**. Scope: Fitness → Workout, before and during a workout. Existing Routines, Exercises, History, routes and bottom-tab organization remain authoritative.
+16 October 2026. Original surface mode: **Operate**. Original scope: Fitness → Workout, before and during a workout. Existing Routines, Exercises, History, routes and bottom-tab organization remain authoritative.
+
+## Workout Rotations v2
+
+21 October 2026. Surface mode: **Operate**. Scope: the existing pushed `/fitness/rotations` management route and its shared `/fitness/rotation` New/Edit editor. The supplied dark mockup governs composition; existing source behavior remains authoritative.
+
+### Rotation behavior audit
+
+1. **States:** saved rotations are Active or Inactive. Soft-deleted records disappear from management. There is no Paused state.
+2. **Activation:** the existing Set active action performs an immediate transaction, validating the saved next step and deactivating the previous active rotation.
+3. **Multiple saved rotations:** supported, including duplicate names and repeated routines with distinct step IDs.
+4. **Multiple active rotations:** prohibited by both transaction logic and the existing unique database constraint; zero active rotations is valid.
+5. **Edit:** the shared draft edits name, ordered steps and optional explicit next position. Existing step IDs and the saved pointer survive rename/reorder when retained. Removing the pointed step selects the next survivor in the previous cycle. Optimistic `updatedAt` conflict detection remains. A linked active workout permits renaming but locks sequence and next-position changes. Active state is managed by the existing overflow, not a new editor toggle.
+6. **Delete:** requires the existing native confirmation, checks the linked-workout lock, deactivates and tombstones the rotation.
+7. **Soft/hard deletion:** soft (`deletedAt`); no physical deletion was introduced.
+8. **Workout/history impact:** completed sessions and their captured rotation/step provenance remain intact. Deleting a rotation does not delete workout/history records.
+9. **Referenced routines:** unchanged by deleting a rotation. Saving requires active routines; archiving a routine referenced by any nondeleted saved rotation remains blocked.
+10. **Archived references:** ordinary app operations cannot archive a referenced routine, including one referenced only by an inactive rotation. Management's existing join is preserved; no filtering or data repair was added.
+11. **Next position:** the parent stores `nextStepId`; the ordered live steps store stable identities and positions. Each card resolves that exact saved pointer, including inactive rotations. The active pointer is the same one read by Workout/Routines planning. Missing pointers show an honest No next routine fallback, never a fabricated first step.
+12. **Progression:** only successfully finishing the linked expected-next workout advances the pointer, in the same transaction as completion, wrapping around the ordered steps. Starting, discarding, unrelated routine workouts and empty workouts do not advance it.
+13. **Manual progression:** existing Set as next workout in the editor and confirmed Reset rotation remain available, with linked-workout guards. Activation/deactivation retains saved progression.
+14. **Confirmations:** Reset and Delete retain their native confirmation wording and Cancel paths. Activation, deactivation, draft reorder/remove and draft Cancel retain their existing behavior; no additional confirmation step was invented.
+
+### Visual and interaction changes
+
+The former plain header, detached green creation button and divider-led loose text are replaced by a circular Back control above a Lora heading and description, one plum/pink New rotation action, and bounded rotation-owned groups. Each group contains a generic repeat tile, a practical sans saved name, a compact text state badge, a quiet measured overflow, an internal divider, the authoritative Next line, and the saved sequence joined with arrows. Existing source ordering is retained even when it differs from the mockup. No bottom tabs or decorative botanical imagery were added to this pushed screen.
+
+Only existing overflow actions appear: Edit, Set active/Deactivate, Reset rotation and Delete. Menus close before routing, confirmation or mutations; the shared host handles measurement, outside/Back dismissal and focus. Scrolling is locked while a menu is open and repositions during an in-flight scroll. Linked-session restrictions remain visible and disable the same actions. Identity taps still open Edit.
+
+Empty management has a repeat icon, **No workout rotations yet.**, the requested explanation, and the single creation action already above it. Initial loading/read failure is distinct from an empty saved library. Failed refresh retains the last snapshot.
+
+### New/Edit subflow audit and alignment
+
+Both creation and editing immediately opened the same legacy form, making bounded shared alignment appropriate. Both remain pushed routes. The shared RoutineHeader supplies Cancel/title/Save, retained above scrolling; Rotation owns the required name field, followed by Routines, dynamic ordered routine cards and the existing anchored Add routine selector. Reorder arrows retain explicit accessible labels, Set as next workout exposes selection, and Remove remains a draft operation. The editor does not acquire activation fields or new rotation rules. The selector still receives active source routines only, allows repeated routine steps, and clears only its add choice after adding. No routines still directs the user to Fitness first.
+
+The editor retains state outside recycled rows, its captured original version, validation errors, immediate transaction save and duplicate-save guard. Focus/resume/Retry cannot overwrite a dirty name, sequence or selected next position. Existing locked rename behavior is unchanged.
+
+### Architecture, responsive behavior and accessibility
+
+Management and editor each own one FlatList with stable rotation/step IDs, six initial rows, six-row batches, a five-window render range, dynamic heights and no enclosing ScrollView. The editor uses the existing FormScrollView as its native scroll component, preserving shared menu coordination and enabling automatic iOS keyboard insets. Android retains the app's existing keyboard resize behavior. No fixed card heights, text truncation or broad layout animations were introduced. Full saved definitions are still read by the existing management API; this pass virtualizes presentation, not persistence reads.
+
+Review sizes are 320, 390 and 430pt, including simulated doubled text. Narrow titles use 32/42 base type instead of 36/46; accessibility scaling remains enabled. Identity stacks at large text, while overflow remains separately owned and touch-friendly. Names, Next and sequences wrap. New/Edit reuse the existing narrow/large-text header stacking. Icons are decorative; status and Next are included in the identity's accessible hint as well as visible text; named overflow actions identify their rotation. Shared button focus, disabled/selected semantics, 48pt minimum targets and Reduced Motion are retained.
+
+Existing cream/charcoal, plum/pink, surface, border and typography tokens supply both themes. The Active badge uses brand emphasis and Inactive uses neutral emphasis, with text conveying state in either theme. No custom palette, dependency, schema, migration, data-access or hook change was needed.
+
+### Skill findings
+
+- **frontend-design:** translated the supplied screen-context → creation → owned-card hierarchy, preserving source ordering and using serif for screen/editor headings and sans for working names/controls.
+- **Impeccable:** checked card ownership, nested-surface restraint, internal divider purpose, type density and both themes. The requested owned cards take precedence over generic advice against card-based scaffolding; no decorative gradients/shadows or page-wide layout animations were added. A narrow doubled-text title defect was corrected in the bounded review pass.
+- **UI/UX Pro Max:** the verified All-platform Empty States guidance supports an explanatory empty state and one clear existing CTA. State labels, contextual action ownership and native destructive confirmation were reviewed explicitly. A Web-only live-badge result was not treated as native guidance or used to add competing live regions.
+- **Expo building-native-ui:** checked SDK 57 and RN 0.86 documentation, bounded virtualization, stable keys/draft ownership, safe-area handling, the shared measured menus, native Alert confirmations, keyboard insets and large-text/Reduced Motion behavior. Existing shared cross-platform menus were retained instead of introducing an iOS-only menu implementation. Sources: [Expo SDK 57](https://docs.expo.dev/versions/v57.0.0/), [RN FlatList](https://reactnative.dev/docs/0.86/flatlist), [RN ScrollView](https://reactnative.dev/docs/0.86/scrollview).
+
+Review captures and their boundaries are documented in [Workout Rotations v2 previews](previews/workout-rotations-v2/README.md). Browser captures substitute native/data-hook boundaries and use fixtures generated through real SQLite/domain APIs; integration tests exercise real hooks and persistence. Native keyboard, VoiceOver/TalkBack, focus/Back transitions and Expo Go performance still require physical-device validation.
+
+### Validation results
+
+- TypeScript: passed.
+- ESLint baseline comparison: exactly the same six existing errors and two existing warnings; zero changed diagnostics. Global lint retains its existing nonzero exit status.
+- Focused Fitness/rotation/Routines/Routine Editor/Workout regressions: **207 passed**.
+- Complete automated suite: **1,067 passed**, no failures, cancellations or skips.
+- iOS and Android exports: passed.
+- `git diff --check`: passed (Git emits the existing LF→CRLF working-copy notices).
+- Browser checks: no text overflow/runtime errors in the recorded states; actual measured large-text action stays within its routine card; real selector → Add routine → Save draft payload passed. In a 103-rotation fixture, 12 cards were initially mounted. This is browser review instrumentation, not native performance/device testing.
+- No schema, migration, dependency, data-access or hook changes. No files removed, staged, committed or pushed. Prior uncommitted work retained.
 
 ## Visual and interaction direction
 
 The supplied launch mockup establishes an owned primary start region, clear routine choices, a quieter empty-start action and a warm editorial hierarchy. The active-workout reference establishes exercise-owned surfaces with an inset set table. This implementation keeps the approved v2 cream/charcoal surfaces, Lora for sparse high-level titles, Manrope for working UI, and the existing Fitness clay accent.
 
 The screen does not copy the mockup's pounds, invented routine descriptions, exercise-name-based icons or unexplained header plus. Axis retains metric units, measurement-type icons, its existing navigation/actions and source-owned rotation rules.
+
+## Routine Editor v2.1 — Add Exercise Picker
+
+20 October 2026. Focused correction following physical iPhone feedback: the Routine Editor's header Add exercise action opened an anchored autocomplete sized relative to its compact trigger. With the keyboard open, the resulting narrow floating panel cramped names/search, obscured the draft and felt detached from the mobile editor. The physical report supersedes the earlier browser-only acceptance of that interaction.
+
+### Architecture and selection
+
+RoutineEditor now opens a dedicated full-width `RoutineExercisePicker` AdaptiveSheet inside the **existing native modal**. It replaces the editor's visible content temporarily; the RoutineEditor state remains mounted. No second native modal, anchored panel, nested ScrollView or new route is introduced. The main editor composition, Exercises library and Manage Rotation are unchanged.
+
+The compact header names Add exercise, explains “Choose an exercise for this routine,” and offers Back to routine editor. There is no Save. The body has one fixed full-width v2 search field, one flexing virtualized result list and a fixed quiet Create new exercise action. Rows use practical sans-serif name/metadata text, a decorative semantic icon and a button action with an explicit add-and-return hint. They have no fixed heights or aggressive truncation.
+
+Search still uses `exerciseResults`: identical canonical matching, active-only filtering, name ordering and creation eligibility. Its new optional limit leaves every existing autocomplete caller at the previous 20 results. The focused picker requests all available matches and virtualizes them, so users can browse past twenty without changing search identity/matching rules. Blank search shows available exercises in the established name order.
+
+Result rows show the name plus the existing measurement label/detail formatter. The existing shared mapping remains exclusive: strength → dumbbell, bodyweight → activity, duration → timer, distance → route. Different names and user-created definitions never produce unique exercise artwork.
+
+Tapping a row appends a fresh routine-entry draft, dismisses the keyboard, closes the picker and returns to the working routine. Deliberately selecting the same exercise on another opening creates a separate entry, as before. Name, original entry IDs/order, targets and unsaved changes remain in the parent draft; no routine write occurs until Save. Archived definitions are excluded from choices. Existing routine references and transactional Save semantics remain unchanged.
+
+### Creation and Back behavior
+
+Create new exercise opens the existing ExerciseEditor with bounded v2 styling and the current search text as its initial name. Empty search may open an empty creation form. Existing exact active-name/invalid-name eligibility remains respected through the shared helper, and persistence still validates the submitted definition. Successful creation persists the definition once, appends it and returns to the routine. Canceling creation returns to the picker with its query intact; closing the picker then returns to the intact routine. No-match searches say “No exercises found” and keep the creation path available.
+
+AdaptiveModal gains an **opt-in** `useModalBackHandler` registration for nested surfaces. Anchored controls retain first dismissal priority (for example, the creation form's measurement selector), then native Back/outside/accessibility escape returns one picker/creation step, before the parent routine can close. Main-editor Back still discards its unsaved routine. Other callers do not register an override and keep their prior dismissal path. After picker dismissal/selection, focus returns to the mounted Add exercise trigger through the existing shared focus helper.
+
+### Keyboard, scrolling and accessibility
+
+AdaptiveSheet retains its existing native keyboard frame, viewport-origin, safe-area and focused-input handling. The picker uses its available height above the keyboard. Search and Create sit outside the scrolling results; the result list flexes to the remaining space instead of a tiny fixed-height container. Keyboard Done dismisses via the existing Keyboard API; rows use handled taps so selection works without a preliminary dismissal tap, and drag dismissal is enabled. No new keyboard offsets or device-specific coordinates are added to production code.
+
+The single FlatList uses stable exercise IDs, initial/batch size 8 and window size 5. It reuses RoutineScrollView's composed ref, so both VirtualizedList and the shared sheet receive the same native scroll handle. Draft state lives outside recycled rows. No new broad animation is used; existing press feedback respects Reduced Motion.
+
+FormField gains optional `showLabel=false` for this search: its accessible label remains Search exercises, while the placeholder provides the visible prompt without duplicating a label above the input. Other fields retain their default visible labels. Decorative icons remain hidden from accessibility. Row labels include name/type/measurement and their hint explains selection. Back/Create are explicitly labeled. Large text wraps naturally; search/footer remain fixed and results remain scrollable. Native large text plus a keyboard may show fewer rows, and users can dismiss the keyboard to recover space.
+
+### Skills and review evidence
+
+- **frontend-design:** replaced the trigger-sized desktop composition with a single owned mobile surface, fixed search and quiet creation footer; rows retain compact name/measurement hierarchy.
+- **Impeccable:** the physical width/keyboard failure overrode prior browser acceptance. Removed the obsolete autocomplete action-trigger option, avoided stacked floating surfaces and kept the parent editor unchanged. Checked paired themes and narrow/large-text layouts in one visual review.
+- **UI/UX Pro Max:** reviewed clear search, no-match recovery, result actions, duplicate/archival semantics and accessible names. Its focused searches returned web-scoped guidance, so native keyboard behavior follows Expo/RN documentation and the existing app infrastructure rather than desktop autocomplete recommendations.
+- **Expo Skills:** guided the single-modal replacement surface, opt-in nested Back handling, shared keyboard/safe-area measurements, flexible result list, native handled taps and drag dismissal. Matching Expo SDK 57 and React Native 0.86 Keyboard/ScrollView/FlatList documentation was checked.
+
+See [actual-source captures and simulation limits](previews/routine-picker-v2-1/README.md). Normal-text simulated keyboard captures at 320/390/430 show 3–4 fully visible result rows; doubled text retains a scrolling area with Create visible. Actual iPhone keyboard acceptance has not been performed.
+
+### v2.1 validation
+
+Added **11 focused picker regressions** covering both themes, useful initial results, no anchored autocomplete/Save, search and canonical ordering, archived exclusion, no matches and creation eligibility, measurement icons/row announcements, selection/duplicates, name/order/targets and entry-ID retention, nested native Back/outside dismissal, creation seeding/cancel/success, failed-refresh/Retry draft protection, keyboard Done callback, large text and 100-result virtualization beyond the prior short-list cap. Existing routine component/management/editor tests now interact with the focused picker instead of invoking the obsolete autocomplete callbacks.
+
+TypeScript passed. ESLint exactly matches the starting **6 errors / 2 warnings**, with no new diagnostics. **243 focused regressions passed**, including Routine Editor, picker, Routines, Workout and shared controls; the complete serial suite passed **1,057/1,057** with no failures, cancellations or skips. The final 11 picker cases also passed independently after strengthening Done-callback coverage. iOS and Android exports passed to `dist/routine-picker-ios` and `dist/routine-picker-android`. `git diff --check` passed. Schema, migrations, dependency manifests and persistence/data-layer files are unchanged. The optional result limit is a presentation helper change, not a search identity or database change.
+
+Browser interaction review passed real source search, scrolling to the last of 160 matches, keyboard dismissal with simulated native frame events, selection, intact name/targets, focus restoration, Escape to the parent, creation/cancellation/return and Save payload. It mounted 11 result rows initially and 27 near the end; the results viewport grew from 322 to 622 points when the simulated keyboard hid. Browser/data-hook substitutions and the lack of physical-device testing are documented with the captures. Nothing was staged, committed or pushed; prior uncommitted work remains intact.
+
+## Routine Editor v2
+
+The v2.1 section above supersedes the original anchored Add exercise interaction described in this foundation record.
+
+20 October 2026. Scope: New routine and Edit routine, their direct exercise/target subflows, and the existing archived read-only routine surface. The supplied dark Routine Editor image controls visual composition; domain behavior takes precedence. The Routines library and Manage Rotation are not redesigned here.
+
+### Existing routine editor behavior audit
+
+1. **Add:** a shared exercise autocomplete searches available exercises. Selecting appends a draft entry; its richer Create flow persists the exercise definition, then appends it and returns to the intact routine draft.
+2. **Archived choices:** `exerciseResults` excludes archived exercises; append also checks the current source. Persistence rejects newly assigned archived exercise references.
+3. **Targets:** Targets toggles inline fields for one stable entry key. Changes remain in the routine draft, with no independent Apply/Save transaction or new navigation destination.
+4. **Target fields:** every type has optional planned sets (1–100). Strength/bodyweight add minimum/maximum reps; duration adds minutes/seconds; distance adds distance plus m/km. Distance targets have no duration field. Blank targets remain unset; unit conversion and validation use the existing exact model.
+5. **Remove:** immediate draft removal, without confirmation. Persistence changes only when Save succeeds.
+6. **Order:** array order becomes zero-based persisted `position`. Existing IDs survive reorder. The existing immediate transaction temporarily offsets retained positions before writing the final order, preserving uniqueness.
+7. **Repeated exercises:** allowed as separate routine entries, each with its own identity and targets. No deduplication was introduced.
+8. **Later exercise archival:** retained routine references and names remain visible, with the existing archived/omitted-from-new-workouts explanation. New workout creation continues to omit archived definitions; previous session snapshots remain intact.
+9. **Save:** `saveRoutine` is an immediate SQLite transaction. Routine identity, membership, targets, ordering and soft removals commit together or roll back together. No data-layer changes were needed.
+10. **Validation:** normalized name must be 1–120 characters, and cannot duplicate another active routine under existing canonical identity rules. Invalid/mismatched/reused entry IDs, newly assigned archived exercises, invalid measurement/target fields, non-positive or unsafe quantities, set counts above 100, invalid rep ranges, seconds above 59 and invalid distances can block Save. Empty routines are allowed. Existing domain and race protections remain authoritative.
+11. **Unsaved return:** Cancel/icon Back, native modal Back and outside dismissal discard the unsaved routine. Cancel from richer exercise creation returns to the working routine. A successfully created exercise definition remains persisted independently even if the routine is subsequently canceled, as before. Focus/resume refresh failures and Retry preserve the working routine draft.
+12. **Read-only:** archived routines use the existing separate read-only entry point. It now shares v2 composition rendering, with no name input, Save, Add, Targets, reorder, Remove or Start controls. Archive restrictions involving saved rotations remain unchanged.
+
+### Composition and shared architecture
+
+Both New/Edit still use one `RoutineEditor`; title alone distinguishes their visual entry state. `RoutineHeader` provides a visible arrow + Cancel action, compact Lora title and pink/plum Save. At 320 widths or large text the title and action row separate. The archived read-only surface retains an icon Back control. Save errors stay beneath this fixed header, visible even when the list is scrolled.
+
+`EditorSection` owns Routine identity and its required, full-width v2 input. The continuous Exercises group owns its factual exercise count and header Add exercise action. It deliberately does not claim uniform planned sets. Empty New routines show one compact empty state without a duplicate CTA.
+
+`RoutineComposition` is a Fitness-specific rendering component, not a new domain abstraction. Each compact exercise card owns its current numbered name, established measurement icon, shared measurement labels, shared `targetLabel` summary, visible Targets, icon reorder controls and quiet destructive Remove. Long titles and metadata wrap. The mockup's extra overflow is omitted because the existing editor has no distinct additional actions.
+
+### Updated reference and semantic icon rule
+
+The updated reference explicitly shows arrow + Cancel, a generic Routine/Fitness icon and an Exercises/list icon. Those details now use the existing shared controls and icon vocabulary. The lower Search exercises surface in the image is not duplicated: the header Add exercise action already opens the same search/creation flow. Reorder remains icon-only, as the brief requires, despite the image's Up/Down text.
+
+Exercise artwork depends exclusively on the persisted measurement type, through the existing `measurementIcons` map shared with Active Workout: strength → dumbbell; bodyweight → activity; duration → timer; distance → route. **There are no exercise-name-specific icons.** Bicep Curl, Pull-down, Inclined Row and Row all use the same strength icon. A custom name never creates a new visual identity or overrides its measurement icon. The Routine heading uses a generic dumbbell and the Exercises heading a list; neither derives from a routine/exercise name.
+
+The refreshed normal preview uses the four Strength examples from the new image. Mixed previews contain a built-in/custom pair for each measurement type, with a second scrolled capture covering the duration/distance pairs. New light/dark integration regressions inspect the actual icon inside each card and use intentionally misleading custom names to ensure name text cannot affect type selection. They also verify one Add exercise entry point and no redundant overflow.
+
+Targets stays inline and receives v2 field/segmented styling. The shared autocomplete gains optional v2 appearance and an action-style trigger; the feature still owns search, active-choice filtering, selection, creation and persistence. Richer ExerciseEditor creation receives optional v2 styling only in this routine flow. Other callers keep their established appearance.
+
+Shared `FormButton`/`UiButton` gain optional compact horizontal padding for composition controls, retaining the 48-point touch minimum. `UiIcon` adds authored up/down/target/trash symbols in its existing outline vocabulary. No new icon dependency or palette is introduced. EditorSection omits empty description space; existing described sections retain their layout.
+
+### List, keyboard and responsive behavior
+
+The previous mapped ScrollView is replaced by one FlatList with stable draft/persisted keys, initial/batch size 5 and window size 5. No fixed item heights or broad list-layout animations are used. Routine/target drafts and expanded-entry identity live outside recycled cards. The editor must load its actual composition for editing; virtualization bounds mounted UI, not the authoritative membership array.
+
+AdaptiveSheet gains optional `scrollBody` and `fillHeight`. Its default scroll/sizing path stays intact. The editor supplies a stable component element containing its FlatList, rather than nesting it inside a ScrollView or using a new component type on every draft update. A composed scroll ref forwards both VirtualizedList measurement and AdaptiveSheet focused-input reveal to the same shared FormScrollView. Native viewport/keyboard handling, menu scroll locking, repositioning and modal layering remain shared. Pinning this list sheet to available height avoids resizing as virtualized height estimates change.
+
+Reviewed at 320, 390 and 430 widths and simulated doubled text. Add exercise stacks under the section heading on narrow/large-text layouts; card actions wrap naturally. Large text gives titles the full card width. Save remains in the fixed header. Font scaling is not capped; cards have no fixed heights. Light cream and warm charcoal use existing v2 semantic surfaces/borders and brand plum/pink. Existing press feedback respects Reduced Motion; no reorder animation was added.
+
+Accessibility retains the required name label, explicit Add exercise label, numbered exercise headings and readable measurement/target text. Targets announces its exercise and expanded state. Reorder arrows announce their exercise and disabled boundary state; Remove announces which exercise leaves the routine. Read-only wording is explicit and decorative icons do not add announcements.
+
+### Skill findings and review
+
+- **frontend-design:** the reference's identity → composition → per-exercise actions hierarchy drove the two owned groups, restrained serif headings and compact card structure. Real actions replace fictional mockup overflow.
+- **Impeccable:** the Operate guidance kept domain/navigation truth intact. The visual review checked nested-surface ownership, action density, quiet destructive treatment, spacing, wrapping and paired themes. One inspection/correction and one confirmation pass were used; no decorative motion or broader redesign was added.
+- **UI/UX Pro Max:** the verified `icons` result `icon-context-accessibility` guided hidden decorative icons and explicit labels/state on icon-only controls. Existing Axis icons were reused instead of adopting the dataset's library suggestions. The review also kept Targets visible and the empty state/action singular.
+- **Expo Skills:** the installed building-native-ui guidance and matching Expo SDK 57 / React Native 0.86 documentation informed the single bounded list, preserved modal/keyboard infrastructure, merged scroll ref, native press targets and responsive action rows. The user/repository's established editor architecture takes precedence over generic skill preferences.
+
+See [review captures and limitations](previews/routine-editor-v2/README.md). Browser fixtures come from migrated SQLite, while the browser substitutes native/data-hook boundaries. Integration tests exercise real SQLite. Native physical-device testing has not been performed.
+
+### Tests and validation
+
+Added 15 Routine Editor regressions covering New/Edit, required name, factual counts and all measurement/target summaries, target validation/persistence, reordered IDs/targets and boundaries, active choices, richer creation, repeated exercises, immediate Remove, Save, nested Cancel, native Back, archived/read-only states, 80-entry compositions, long names and responsive/font-scale cases. This includes two theme-specific regressions proving built-in/custom exercises of the same type reuse exactly the same semantic icon, independent of misleading name text. Existing Fitness component coverage reads the editor's scroll-body slot; the Routines refresh regression distinguishes the retained library list from the editor's second list. Existing failed-refresh/Retry draft-identity tests remain active.
+
+Validation after the updated reference/icon correction: TypeScript passed; **232 focused** Routine Editor/Routines/Workout/shared-form tests passed; the complete serial suite passed **1,046/1,046**, with no failures, cancellations or skips. ESLint exactly matches the starting **6 errors / 2 warnings** by file, rule, severity and message; there are no new findings. iOS and Android exports passed to `dist/routine-editor-v2-icons-ios` and `dist/routine-editor-v2-icons-android`. `git diff --check` passed. Schema, migrations, dependencies and persistence/data APIs are unchanged. Nothing was staged, committed or pushed; prior uncommitted work was preserved.
+
+Initial Windows runs encountered worker initialization and memory allocation failures. An obsolete test also compared the library list DOM object against the newly introduced editor list; it now asserts the actual invariant that the original library list remains mounted. The final serial suite passed. Esbuild's existing `ESBUILD_WORKER_THREADS=0` fallback was used; no dependencies or assertions were weakened.
+
+Physical follow-up: iPhone Expo Go and Android keyboard reveal/dismissal in the name/target fields; picker and nested creation layering; Back/Cancel behavior; VoiceOver/TalkBack labels and disabled reorder controls; native large text in both themes; and scrolling/reordering a long routine. No unrelated screen redesign is recommended by this pass.
+
+## Routines v2 — Rotation and Routine Management
+
+### Existing routine behavior audit (before implementation)
+
+1. **Open/edit:** the active routine identity/details area opens the existing RoutineEditor after a targeted `readRoutine(id)`; overflow Edit opens that same editor.
+2. **Archive:** active routines offer confirmed Archive through their anchored overflow.
+3. **Restore:** no restore action or data API exists. Archived routines are read-only; this stage must not invent restoration.
+4. **Delete:** there is no separate routine deletion action or data API. The legitimate removal capability is Archive.
+5. **Storage:** Archive soft-deletes the routine by setting `deletedAt` and advancing `updatedAt`. It does not physically remove it.
+6. **Rotation references:** archiving is rejected while a routine belongs to any non-deleted saved rotation, including an inactive rotation. Users must remove those references or delete the saved rotation through existing management first. References are not silently rewritten.
+7. **History:** completed sessions retain their own routine/session/exercise snapshots and references after archival; existing History remains intact and read-only.
+8. **Start:** archived routines cannot start workouts. Their list has no Start/Edit/Archive menu; tapping identity opens existing read-only detail. Active routine Start retains the current in-progress-workout guard.
+9. **Counts:** `readRoutineSummaries` counts non-deleted routine-exercise associations in SQL. Archived exercise references can still contribute to the template count; starting a workout continues to omit archived exercises. `workoutCounts` owns singular/plural wording.
+10. **Ordering:** library summaries retain the source name-then-ID order. Saved rotation step order is independently meaningful and must remain unchanged. The sequence uses source `readActiveSteps` names in order, joined with the existing arrow presentation.
+11. **Row tap:** tapping routine identity already opens its editor/read-only detail; overflow separately owns contextual actions. This intentional existing pattern remains.
+
+Rotation state audit: no active/valid next plan currently produces No active rotation plus Set up rotation, linking to `/fitness/rotations`. A rotation cannot be saved without at least one routine or activated without a next step. `readNext` returns null for invalid/missing/deleted next references. The Routines presentation does not invent a next routine or switch to a fallback plan. The previous library fully rendered mapped rows inside the destination ScrollView; this stage may introduce a single virtualized list while retaining source-owned reads and ordering.
+
+### Routines composition and visual reference
+
+The supplied current iPhone screenshot and target establish the replacement hierarchy: Fitness header/navigation → owned Workout rotation card → Your routines with adjacent New routine → Active/Archived selector → compact routine cards. The previous loose headings/text, detached creation control, legacy green selector and divider-led rows are removed from this destination. The real FitnessScreen now reuses the same serif Fitness title, warm v2 canvas and InternalNavigation already available on Workout. Four destinations, module-entry behavior, remembered per-destination scroll offsets and bottom-tab navigation remain unchanged.
+
+The rotation card contains an outline repeat tile, restrained serif heading, actual rotation name, the existing ordered source names joined by the existing arrow presentation, a highlighted Next line and one full-width gear/chevron management row. The next name comes only from the authoritative `readNext` result. No active plan retains No active rotation and Set up rotation. Both management labels open the existing `/fitness/rotations` route. No inline rotation editor, new fallback routine, extra rotation action or creation semantic is introduced.
+
+Your routines introduces the source-owned library. Its compact primary New routine action remains beside the heading where space permits and stacks below it at narrower/large-text sizes. It opens the unchanged RoutineEditor. Successful saves refresh existing source summaries; there is no inline creation form or optimistic library ledger. While Archived is selected, creation retains the existing filter semantics rather than silently switching views.
+
+The shared SegmentedControl gained an optional v2 appearance, optional hidden visible label (the accessible group label remains Routines), and optional decorative option icons. Existing consumers keep their legacy defaults. V2 options expose radio roles and checked/disabled states, selected checkmarks, an outlined/tinted selection and shared focus/press feedback. At large font scales, the two options stack into full-width rows so Archived does not break into a narrow letter column. There is no custom feature-specific selector.
+
+Routine cards reuse GroupSurface, dumbbell UiIcon tiles, practical UiText and a clearly labeled identity button. The existing identity tap opens the editor or archived read-only detail; it is deliberately retained alongside overflow Edit because it was already the product pattern. The outer card is not one ambiguous button. Titles wrap, exercise counts use `workoutCounts`, and no invented descriptions such as upper body are added. At 390 points the three active fixture cards measured 358 × 76; these are fixture measurements, not fixed heights. Long and accessibility-sized names expand naturally.
+
+Active cards retain exactly Start workout, Edit and confirmed Archive in their existing shared anchored ContextMenu. Archived cards use the same structure with a muted icon, readable name/count and read-only detail hint. They have no overflow because no archived contextual action exists. No Restore/Delete capability is implied or invented. Archiving a routine referenced by a saved rotation still reports the existing error instead of changing its references. Starting a workout still uses the existing in-progress guard, session snapshots and rotation-provenance rules.
+
+The mockup's plum/pink areas use current v2 brand/selected tokens on this destination, consistent with Fitness internal navigation. Warm canvas/group/border values and typography remain inherited. Workout's existing accent/token usage and all global palettes are unchanged. The mockup's navigation icons, bottom tab artwork and blue floating development control are not copied: the established InternalNavigation and real app shell remain authoritative. No decorative image, gradient backdrop or new dependency is introduced.
+
+### Virtualization, responsive behavior and accessibility
+
+Routines now owns one FlatList rather than a mapped collection inside FormScrollView. The rotation/library/selector area is its ListHeaderComponent; there is no nested scroll body. Stable routine IDs, initialNumToRender 8, maxToRenderPerBatch 8 and windowSize 5 bound mounted content without truncating the library. Variable-height cards do not use fixed getItemLayout. The source counts-only `readRoutineSummaries` API remains unchanged and loads no per-routine exercise detail until the user opens it.
+
+The 123-active-routine browser fixture mounted 8 cards initially and 45 after scrolling, with no duplicate mounted IDs. This measures React Native Web mounting, not native device frame rate. Existing read-path growth tests still verify that routine summaries avoid child payloads. The full library remains available; no arbitrary data limit or new paging contract is added.
+
+The shared overlay host remains outside recycled cards. Scrolling locks while a menu is open, and normal scroll callbacks remeasure the existing anchor. Menu actions close before native Archive confirmation, editor presentation or starting a workout. Existing outside/Back/escape dismissal and focus handling remain source-owned. The existing screen applies safe areas once for this destination. No new list layout choreography or insertion animation is added; shared press/selection/menu feedback retains Reduced Motion behavior.
+
+Reviewed widths are 320, 390 and 430 points, with doubled-text 320 and a scrolled library capture. Rotation sequence and Next values wrap. New routine stacks under its heading when needed. At large text, routine icon/overflow occupy their own row above full-width identity text, while Active/Archived stack and preserve full labels. No single-line truncation or accessibility font cap is introduced. Routine cards remain bounded to the existing 640-point content maximum on wider screens.
+
+The four navigation selections remain announced. Manage/Set up rotation and New routine retain explicit button labels. Routine identity announces its name and correctly pluralized count; archived identity describes read-only detail. Each overflow names its routine. Active/Archived exposes checked state and a visible check cue, independent of color. Decorative icons remain hidden from accessibility. Measured New routine, Manage rotation, radio and overflow controls were at least 48 points high. Empty Active and Archived collections have compact explanatory states without a second Create action, and loading does not flash the empty library.
+
+F1 refresh behavior is retained: summary failures keep the last known library and the same open routine editor/working fields through Retry. Fitness hook/data APIs and transactional archive/start/editor mutations are unchanged. Exercises, Fitness History and Workout content retain their existing components and behavior.
+
+### Skill findings and review evidence
+
+- **frontend-design:** used the actual target's rotation/library ownership, serif section hierarchy, attached creation action and compact horizontal cards. Kept the mockup's plum direction within existing tokens, without copying unrelated shell or development overlays.
+- **Impeccable:** reviewed card bloat, control duplication and archived legibility in a bounded capture pass. Kept one rotation surface and one compact card per routine. Review found a real large-text selector word split, which was corrected through the shared primitive; preview-only animation/scroll boundaries were also repaired before saving final captures.
+- **UI/UX Pro Max:** actively queried and verified All-platform Accessibility / Color Only guidance. The selected Active/Archived state has a visible check, border and native radio checked state rather than color alone. Readable archived cards remain operable through their legitimate read-only path.
+- **Expo native UI:** checked Expo 57 and React Native 0.86 FlatList guidance, using one virtualized scroll body, stable keys, variable heights, existing native confirmation and the established measured overlay host. Safe areas and Reduced Motion remain native/shared concerns; no new native module was added.
+
+Nine captures in [the Routines preview folder](previews/routines-v2/README.md) cover dark/light Active 390, Archived dark 390, Active light 320, Active dark 430, large-text dark 320 plus scrolled library, and empty Active dark/Archived light. Eight configurations reported no page errors or horizontal text overflow. The source-backed fixture includes a three-routine rotation with the second step next, 0/1/4-exercise counts, and one archived routine with completed workout History. It is illustrative fixture data created through real APIs, not hardcoded production content.
+
+`scripts/preview-routines.ts` renders the real FitnessScreen and controls through React Native Web. It substitutes the Fitness data hook, router, native safe-area/font/keyboard/picker/Alert boundaries and native animation scheduling. Fixtures are generated from migrated/seeded in-memory SQLite using real Fitness/rotation data APIs. Browser mutations update review state or record callbacks, not the production database; SQLite integration tests cover actual persistence. The preview animation boundary exposes current selected-state geometry with Reduced Motion instead of pretending to benchmark UI-thread motion. No device frame, OS chrome, bottom navigation or floating development control is fabricated.
+
+Real browser checks passed Manage route identity, menu outside dismissal, Active/Archived checked state, archived read-only detail, New routine/Save callback, menu closure before confirmation, archive filtering and bounded mounting. Native Alert cancellation/protection, history/reference retention, workout start and edit persistence are verified separately against SQLite.
+
+### Files and validation scope
+
+New files: `src/features/fitness/components/routines-content.tsx`, `tests/routines-v2.test.ts`, `scripts/preview-routines.ts` and the preview folder. Modified: `src/features/fitness/fitness-screen.tsx`, `src/components/form-controls.tsx` (optional v2 segmented presentation), `src/components/ui-icon.tsx` (gear/archive geometry), `tests/helpers/refresh-lifecycle.ts` (real selection context for menu/list locking), `tests/fitness-rotation-experience.test.ts` (icon replaces literal arrow in action labels), `tests/form-controls.test.ts` and this document. No generic management-card hierarchy was introduced because existing primitives cover this surface without changing Exercises.
+
+No schema, migrations, source persistence/domain logic, routes, seed definitions, package manifests or dependencies changed. No files were removed, staged, committed or pushed. Physical-device follow-up remains iPhone Expo Go and Android: native fonts/density, accessibility sizes, scrolling a long library, bottom-edge menu anchoring, focus restoration, native Archive/Cancel and in-progress-workout confirmation, tab/rotation navigation and editor draft retention. No physical-device testing was performed.
+
+Final validation passed TypeScript, 197 focused Fitness/Workout/shared-control tests, all 1,031 tests in the full serial suite, iOS export, Android export, live browser interactions and `git diff --check`. There were no test failures, cancellations or skips. Seventeen new source-backed Routines cases and three real shared-selector cases cover source rotation/next values, 0/1/N counts, creation/editor/start, archive cancellation/reference protection/history retention, archived read-only behavior, no-plan/invalid-next fixtures, empty states, themes, narrow/large text, radio checked state/non-color cues, large lists, scroll restoration and F1 refresh/editor retention. ESLint matches the captured starting baseline of six errors and two warnings with no added or removed file/rule/severity/message findings. A test-only typing annotation was corrected before the final TypeScript run; production source was unchanged after the final captures.
 
 ## Landing / launch
 

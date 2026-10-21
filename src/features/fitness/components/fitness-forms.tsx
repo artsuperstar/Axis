@@ -1,16 +1,18 @@
-import { useRef, useState } from 'react';
-import { Platform, StyleSheet, View, useWindowDimensions } from 'react-native';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { Keyboard, Platform, StyleSheet, View, useWindowDimensions } from 'react-native';
 
-import { AdaptiveSheet } from '@/components/adaptive-sheet';
+import { AdaptiveSheet, useModalBackHandler } from '@/components/adaptive-sheet';
 import { AutocompleteField } from '@/components/autocomplete-field';
+import { UiText } from '@/components/design-system';
 import { FormButton, FormError, FormField, SegmentedControl, SelectField } from '@/components/form-controls';
+import { focusFormControl } from '@/components/form-selection-host';
 import { ThemedText } from '@/components/themed-text';
 import { Space, Spacing } from '@/constants/theme';
-import { useTheme } from '@/hooks/use-theme';
 
-import { blankTargets, exerciseResults, fitnessError, measurementLabel, measurementOptions, normalizeName, setDraft, targetDraft, targetLabel, validateMeasurement, validateSet, validateTargets } from '../form';
+import { blankTargets, exerciseResults, fitnessError, measurementOptions, normalizeName, setDraft, targetDraft, targetLabel, validateMeasurement, validateSet, validateTargets } from '../form';
 import type { Exercise, MeasurementType, RoutineDetail, RoutineDraft, SetDraft, TargetDraft, WorkoutSet } from '../types';
-import { exerciseMeasurementLabel } from '../management-presentation';
+import { RoutineComposition, RoutineHeader } from './routine-composition';
+import { RoutineExercisePicker } from './routine-exercise-picker';
 
 function useSave() {
   const saving = useRef(false);
@@ -23,29 +25,33 @@ function useSave() {
 }
 const decimalKeyboard = Platform.OS === 'ios' ? 'numbers-and-punctuation' : 'decimal-pad';
 
-export function ExerciseEditor({ initialName = '', onSave, onCreated, onDismiss }: {
+export function ExerciseEditor({ initialName = '', onSave, onCreated, onDismiss, appearance }: {
   initialName?: string; onSave: (draft: { name: string; measurementType: MeasurementType }) => Exercise;
-  onCreated: (exercise: Exercise) => void; onDismiss: () => void;
+  onCreated: (exercise: Exercise) => void; onDismiss: () => void; appearance?: 'v2';
 }) {
   const [name, setName] = useState(initialName);
   const [measurementType, setType] = useState<MeasurementType>('strength');
   const submit = useSave();
-  return <AdaptiveSheet title="New exercise" action="Create" onDismiss={onDismiss} onConfirm={() => submit.save(() => {
+  function create() { submit.save(() => {
     const exercise = onSave({ name: normalizeName(name), measurementType: validateMeasurement(measurementType) });
     onCreated(exercise);
-  })}>
-    <FormError message={submit.error} />
-    <FormField label="Name *" value={name} autoFocus maxLength={120} onChangeText={(value) => { setName(value); submit.clearError(); }} />
-    <SelectField label="Measurement type *" value={measurementType} options={measurementOptions} onChange={(value) => { setType(value); submit.clearError(); }} />
-    <ThemedText type="small" themeColor="textSecondary">
+  }); }
+  const helper = measurementType === 'strength' ? 'Weight in kg and reps.' : measurementType === 'bodyweight' ? 'Reps and optional added weight in kg.' :
+    measurementType === 'duration' ? 'Minutes and seconds.' : 'Meters or kilometers, with optional duration.';
+  return <AdaptiveSheet appearance={appearance} title="New exercise" action="Create" onDismiss={onDismiss} onConfirm={create}
+    header={appearance ? <RoutineHeader title="New exercise" onDismiss={onDismiss} action="Create" onSave={create} /> : undefined}>
+    <FormError appearance={appearance} message={submit.error} />
+    <FormField appearance={appearance} label="Name *" value={name} autoFocus maxLength={120} onChangeText={(value) => { setName(value); submit.clearError(); }} />
+    <SelectField appearance={appearance} label="Measurement type *" value={measurementType} options={measurementOptions} onChange={(value) => { setType(value); submit.clearError(); }} />
+    {appearance ? <UiText type="secondary" color="textSecondary">{helper}</UiText> : <ThemedText type="small" themeColor="textSecondary">
       {measurementType === 'strength' ? 'Weight in kg and reps.' : measurementType === 'bodyweight' ? 'Reps and optional added weight in kg.' :
         measurementType === 'duration' ? 'Minutes and seconds.' : 'Meters or kilometers, with optional duration.'}
-    </ThemedText>
+    </ThemedText>}
   </AdaptiveSheet>;
 }
 
-export function DurationFields({ minutes, seconds, onChange, optional = false, logging = false, autoFocus = !optional }: {
-  minutes: string; seconds: string; onChange: (key: 'minutes' | 'seconds', value: string) => void; optional?: boolean; logging?: boolean; autoFocus?: boolean;
+export function DurationFields({ minutes, seconds, onChange, optional = false, logging = false, autoFocus = !optional, appearance }: {
+  minutes: string; seconds: string; onChange: (key: 'minutes' | 'seconds', value: string) => void; optional?: boolean; logging?: boolean; autoFocus?: boolean; appearance?: 'v2';
 }) {
   const { fontScale } = useWindowDimensions();
   if (logging) return <View style={styles.fields}>
@@ -56,32 +62,32 @@ export function DurationFields({ minutes, seconds, onChange, optional = false, l
     </View>
   </View>;
   return <View style={styles.fields}>
-    <FormField label={optional ? 'Minutes (optional)' : 'Minutes'} value={minutes} keyboardType="number-pad" onChangeText={(value) => onChange('minutes', value)} />
-    <FormField label="Seconds (0–59)" value={seconds} keyboardType="number-pad" onChangeText={(value) => onChange('seconds', value)} />
+    <FormField appearance={appearance} label={optional ? 'Minutes (optional)' : 'Minutes'} value={minutes} keyboardType="number-pad" onChangeText={(value) => onChange('minutes', value)} />
+    <FormField appearance={appearance} label="Seconds (0–59)" value={seconds} keyboardType="number-pad" onChangeText={(value) => onChange('seconds', value)} />
   </View>;
 }
-export function DistanceFields({ distance, distanceUnit, onChange, logging = false }: {
-  distance: string; distanceUnit: 'm' | 'km'; onChange: (key: 'distance' | 'distanceUnit', value: string) => void; logging?: boolean;
+export function DistanceFields({ distance, distanceUnit, onChange, logging = false, appearance }: {
+  distance: string; distanceUnit: 'm' | 'km'; onChange: (key: 'distance' | 'distanceUnit', value: string) => void; logging?: boolean; appearance?: 'v2';
 }) {
   return <View style={styles.fields}>
-    <SegmentedControl label="Distance unit" value={distanceUnit} options={[{ value: 'km', label: 'km' }, { value: 'm', label: 'm' }]}
+    <SegmentedControl appearance={appearance} label="Distance unit" value={distanceUnit} options={[{ value: 'km', label: 'km' }, { value: 'm', label: 'm' }]}
       onChange={(value) => {
         // Do not reinterpret a previously entered quantity when its unit changes.
         onChange('distance', ''); onChange('distanceUnit', value);
       }} />
-    <FormField label={`Distance (${distanceUnit})`} value={distance} autoFocus={logging} keyboardType={distanceUnit === 'km' ? decimalKeyboard : 'number-pad'} onChangeText={(value) => onChange('distance', value)} />
+    <FormField appearance={appearance} label={`Distance (${distanceUnit})`} value={distance} autoFocus={logging} keyboardType={distanceUnit === 'km' ? decimalKeyboard : 'number-pad'} onChangeText={(value) => onChange('distance', value)} />
   </View>;
 }
-export function TargetFields({ type, draft, onChange }: { type: MeasurementType; draft: TargetDraft; onChange: (draft: TargetDraft) => void }) {
+export function TargetFields({ type, draft, onChange, appearance }: { type: MeasurementType; draft: TargetDraft; onChange: (draft: TargetDraft) => void; appearance?: 'v2' }) {
   function change(key: keyof TargetDraft, value: string) { onChange({ ...draft, [key]: value }); }
   return <View style={styles.fields}>
-    <FormField label="Planned sets (optional, 1–100)" value={draft.setCount} keyboardType="number-pad" onChangeText={(value) => change('setCount', value)} />
+    <FormField appearance={appearance} label="Planned sets (optional, 1–100)" value={draft.setCount} keyboardType="number-pad" onChangeText={(value) => change('setCount', value)} />
     {(type === 'strength' || type === 'bodyweight') && <>
-      <FormField label="Minimum reps (optional)" value={draft.repMin} keyboardType="number-pad" onChangeText={(value) => change('repMin', value)} />
-      <FormField label="Maximum reps (optional)" value={draft.repMax} keyboardType="number-pad" onChangeText={(value) => change('repMax', value)} />
+      <FormField appearance={appearance} label="Minimum reps (optional)" value={draft.repMin} keyboardType="number-pad" onChangeText={(value) => change('repMin', value)} />
+      <FormField appearance={appearance} label="Maximum reps (optional)" value={draft.repMax} keyboardType="number-pad" onChangeText={(value) => change('repMax', value)} />
     </>}
-    {type === 'duration' && <DurationFields minutes={draft.minutes} seconds={draft.seconds} optional onChange={change} />}
-    {type === 'distance' && <DistanceFields distance={draft.distance} distanceUnit={draft.distanceUnit}
+    {type === 'duration' && <DurationFields appearance={appearance} minutes={draft.minutes} seconds={draft.seconds} optional onChange={change} />}
+    {type === 'distance' && <DistanceFields appearance={appearance} distance={draft.distance} distanceUnit={draft.distanceUnit}
       onChange={(key, value) => onChange(key === 'distanceUnit' ? { ...draft, distance: '', distanceUnit: value as 'm' | 'km' } : { ...draft, distance: value })} />}
   </View>;
 }
@@ -95,7 +101,6 @@ export function RoutineEditor({ routine, exercises, onSave, onCreateExercise, on
   routine: RoutineDetail | null; exercises: Exercise[]; onSave: (draft: RoutineDraft) => void;
   onCreateExercise: (draft: { name: string; measurementType: MeasurementType }) => Exercise; onDismiss: () => void;
 }) {
-  const colors = useTheme();
   const [name, setName] = useState(routine?.name ?? '');
   const [entries, setEntries] = useState<RoutineEntryDraft[]>(() => (routine?.exercises ?? []).map((entry) => ({
     key: entry.id, id: entry.id, exercise: entry.exercise, targets: targetDraft(entry),
@@ -103,6 +108,18 @@ export function RoutineEditor({ routine, exercises, onSave, onCreateExercise, on
   const sequence = useRef(0);
   const [creating, setCreating] = useState<string | null>(null);
   const [targetEntry, setTargetEntry] = useState<string | null>(null);
+  const [choosing, setChoosing] = useState(false);
+  const [query, setQuery] = useState('');
+  const addTrigger = useRef<View>(null);
+  const returning = useRef(false);
+  const closePicker = useCallback(() => { Keyboard.dismiss(); returning.current = true; setChoosing(false); }, []);
+  const cancelCreation = useCallback(() => { Keyboard.dismiss(); setCreating(null); }, []);
+  useModalBackHandler(creating !== null ? cancelCreation : choosing ? closePicker : null);
+  useEffect(() => {
+    if (choosing || creating !== null || !returning.current) return;
+    const frame = requestAnimationFrame(() => { returning.current = false; focusFormControl(addTrigger.current); });
+    return () => cancelAnimationFrame(frame);
+  }, [choosing, creating]);
   const submit = useSave();
   function append(exercise: Exercise) {
     const key = `draft-${++sequence.current}`;
@@ -116,37 +133,43 @@ export function RoutineEditor({ routine, exercises, onSave, onCreateExercise, on
     });
   }
   // The editor remains mounted while the richer creation sheet temporarily replaces its content.
-  if (creating !== null) return <ExerciseEditor initialName={creating} onSave={onCreateExercise}
-    onDismiss={() => setCreating(null)} onCreated={(exercise) => { append(exercise); setCreating(null); }} />;
-  return <AdaptiveSheet title={routine ? 'Edit routine' : 'New routine'} action="Save" onDismiss={onDismiss} onConfirm={() => submit.save(() => {
+  if (creating !== null) return <ExerciseEditor appearance="v2" initialName={creating} onSave={onCreateExercise}
+    onDismiss={cancelCreation} onCreated={(exercise) => { append(exercise); setCreating(null); closePicker(); }} />;
+  if (choosing) return <RoutineExercisePicker exercises={exercises} query={query} onQueryChange={setQuery}
+    onDismiss={closePicker} onCreate={(name) => { Keyboard.dismiss(); setCreating(name); }}
+    onSelect={(exercise) => { if (exercise.deletedAt === null) { append(exercise); closePicker(); } }} />;
+  function save() { submit.save(() => {
     normalizeName(name); entries.forEach((entry) => validateTargets(entry.exercise.measurementType, entry.targets));
     onSave({ name, exercises: entries.map((entry) => ({ id: entry.id, exerciseId: entry.exercise.id, targets: entry.targets })) }); onDismiss();
-  })}>
-    <FormError message={submit.error} />
-    <ThemedText type="sectionHeading" accessibilityRole="header">Routine</ThemedText>
-    <FormField label="Routine name *" value={name} maxLength={120} onChangeText={(value) => { setName(value); submit.clearError(); }} />
-    <ThemedText type="sectionHeading" accessibilityRole="header">Exercises</ThemedText>
-    {!entries.length && <ThemedText type="secondary" themeColor="textSecondary">No exercises yet</ThemedText>}
-    {entries.map((entry, index) => <View key={entry.key} style={[styles.routineEntry, { borderColor: colors.border }]}>
-      <ThemedText type="cardTitle" accessibilityRole="header">{index + 1}. {entry.exercise.name}</ThemedText>
-      <ThemedText type="metadata" themeColor="textSecondary">{measurementLabel(entry.exercise.measurementType)} · {exerciseMeasurementLabel(entry.exercise.measurementType)}{entry.exercise.deletedAt !== null ? ' · Archived — omitted from new workouts' : ''}</ThemedText>
-      <ThemedText type="metadata" themeColor="textSecondary">{draftTargets(entry)}</ThemedText>
-      <View style={styles.actions}>
-        <FormButton variant="quiet" label="Targets" accessibilityLabel={`Configure targets for ${entry.exercise.name}`} expanded={targetEntry === entry.key}
+  }); }
+  const title = routine ? 'Edit routine' : 'New routine';
+  return <AdaptiveSheet appearance="v2" fillHeight title={title} action="Save" onDismiss={onDismiss} onConfirm={save}
+    header={<View><RoutineHeader title={title} onDismiss={onDismiss} onSave={save} />
+      {!!submit.error && <View style={styles.saveError}><FormError appearance="v2" message={submit.error} /></View>}</View>}
+    scrollBody={<RoutineComposition entries={entries} summary={draftTargets}
+      identity={<FormField appearance="v2" label="Routine name *" value={name} maxLength={120} placeholder="Routine name"
+        onChangeText={(value) => { setName(value); submit.clearError(); }} />}
+      addExercise={<FormButton ref={addTrigger} appearance="v2" tone="brand" leadingIcon="plus" label="Add exercise"
+        onPress={() => { Keyboard.dismiss(); setQuery(''); setChoosing(true); }} />}
+      renderActions={(entry, index) => <>
+        <FormButton appearance="v2" compact leadingIcon="target" label="Targets" accessibilityLabel={`Configure targets for ${entry.exercise.name}`} expanded={targetEntry === entry.key}
           onPress={() => setTargetEntry((current) => current === entry.key ? null : entry.key)} />
-        <FormButton variant="quiet" label="Up" accessibilityLabel={`Move ${entry.exercise.name} up`} disabled={index === 0} onPress={() => move(index, -1)} />
-        <FormButton variant="quiet" label="Down" accessibilityLabel={`Move ${entry.exercise.name} down`} disabled={index === entries.length - 1} onPress={() => move(index, 1)} />
-        <FormButton variant="quiet" label="Remove" accessibilityLabel={`Remove ${entry.exercise.name} from routine`} onPress={() => { setEntries((current) => current.filter((item) => item.key !== entry.key)); submit.clearError(); }} />
-      </View>
-      {targetEntry === entry.key && <TargetFields type={entry.exercise.measurementType} draft={entry.targets} onChange={(targets) => {
+        <FormButton appearance="v2" compact icon="up" label="Up" accessibilityLabel={`Move ${entry.exercise.name} up`} disabled={index === 0} onPress={() => move(index, -1)} />
+        <FormButton appearance="v2" compact icon="down" label="Down" accessibilityLabel={`Move ${entry.exercise.name} down`} disabled={index === entries.length - 1} onPress={() => move(index, 1)} />
+        <FormButton appearance="v2" compact variant="destructive" leadingIcon="trash" label="Remove" accessibilityLabel={`Remove ${entry.exercise.name} from routine`} onPress={() => { setEntries((current) => current.filter((item) => item.key !== entry.key)); submit.clearError(); }} />
+      </>}
+      renderTargets={(entry) => targetEntry === entry.key && <TargetFields appearance="v2" type={entry.exercise.measurementType} draft={entry.targets} onChange={(targets) => {
         setEntries((current) => current.map((item) => item.key === entry.key ? { ...item, targets } : item)); submit.clearError();
-      }} />}
-    </View>)}
-    <AutocompleteField<string | null> label="Add exercise" value={null} displayValue="Search exercises"
-      getResults={(query) => exerciseResults(exercises, query)} onSelect={(id) => {
-        const exercise = exercises.find((entry) => entry.id === id && entry.deletedAt === null); if (exercise) append(exercise);
-      }} onRequestCreate={setCreating} />
-  </AdaptiveSheet>;
+      }} />} />} />;
+}
+
+/** Archived routines retain their separate, strictly read-only entry point. */
+export function ArchivedRoutineEditor({ routine, onDismiss }: { routine: RoutineDetail; onDismiss: () => void }) {
+  const entries = routine.exercises.map((entry) => ({ key: entry.id, exercise: entry.exercise, summary: targetLabel(entry) || 'No targets' }));
+  return <AdaptiveSheet appearance="v2" fillHeight title={routine.name} onDismiss={onDismiss}
+    header={<RoutineHeader title="Archived routine" onDismiss={onDismiss} />}
+    scrollBody={<RoutineComposition readOnly entries={entries} summary={(entry) => entry.summary}
+      identity={<UiText type="editorSection" accessibilityRole="header">{routine.name}</UiText>} />} />;
 }
 
 export function AddExerciseSheet({ exercises, onAdd, onCreateExercise, onDismiss }: {
@@ -198,7 +221,7 @@ export function NoteEditor({ title, value, onSave, onDismiss }: { title: string;
 }
 
 const styles = StyleSheet.create({
+  saveError: { paddingHorizontal: Space.md, paddingBottom: Space.sm },
   duration: { flexDirection: 'row', flexWrap: 'wrap', gap: Space.md }, durationPart: { flexGrow: 1, flexShrink: 1 },
-  fields: { gap: Spacing.two }, actions: { flexDirection: 'row', flexWrap: 'wrap', gap: Spacing.two },
-  routineEntry: { borderBottomWidth: 1, paddingBottom: Space.lg, gap: Space.sm },
+  fields: { gap: Spacing.two },
 });

@@ -1,5 +1,5 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
-import { Keyboard, Modal, Platform, Pressable, ScrollView, StyleSheet, View, useWindowDimensions, type KeyboardEvent, type StyleProp, type TextInput, type ViewStyle } from 'react-native';
+import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode, type Ref } from 'react';
+import { Keyboard, Modal, Platform, Pressable, ScrollView, StyleSheet, View, useWindowDimensions, type KeyboardEvent, type ScrollViewProps, type StyleProp, type TextInput, type ViewStyle } from 'react-native';
 import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Radius, Space, SurfaceColors } from '@/constants/theme';
@@ -15,6 +15,21 @@ import { SheetRefreshNotice } from './sheet-refresh-notice';
 import { useDesignColors } from './design-system';
 
 const SheetBounds = createContext<{ height: number; bottomInset: number; leftInset: number; rightInset: number } | null>(null);
+const SheetScrollContext = createContext<(ScrollViewProps & { ref: Ref<ScrollView> }) | null>(null);
+const ModalBackContext = createContext<((handler: () => void) => () => void) | null>(null);
+
+/** Opt-in nested surfaces consume modal Back/outside/escape before the parent draft closes. */
+export function useModalBackHandler(handler: (() => void) | null) {
+  const register = useContext(ModalBackContext);
+  useEffect(() => handler ? register?.(handler) : undefined, [handler, register]);
+}
+
+/** A custom virtualized body shares the sheet's scroll measurements and focused-field reveal. */
+export function useSheetScrollProps() {
+  const props = useContext(SheetScrollContext);
+  if (!props) throw new Error('A sheet scroll body must be inside AdaptiveSheet.');
+  return props;
+}
 
 /** The native modal supplies stacking; the full safe-area host lets menus extend beyond short sheets. */
 export function AdaptiveModal({ children, onDismiss, visible = true, onClosed }: {
@@ -22,13 +37,18 @@ export function AdaptiveModal({ children, onDismiss, visible = true, onClosed }:
 }) {
   const colors = useTheme();
   const menu = useRef<FormSelectionHandle>(null);
-  function requestClose() { if (!menu.current?.dismiss()) onDismiss(); }
+  const nestedBack = useRef<(() => void) | null>(null);
+  const registerBack = useCallback((handler: () => void) => {
+    const previous = nestedBack.current; nestedBack.current = handler;
+    return () => { if (nestedBack.current === handler) nestedBack.current = previous; };
+  }, []);
+  function requestClose() { if (!menu.current?.dismiss()) (nestedBack.current ?? onDismiss)(); }
   return <Modal visible={visible} transparent presentationStyle="overFullScreen" statusBarTranslucent navigationBarTranslucent onRequestClose={requestClose} onDismiss={onClosed}>
     <SafeAreaProvider>
       <View style={styles.fill}>
         <FormSelectionHost ref={menu}>
           <Pressable style={[StyleSheet.absoluteFill, { backgroundColor: colors.scrim }]} accessibilityRole="button" accessibilityLabel="Close sheet" onPress={requestClose} />
-          <SheetViewport onDismiss={requestClose}>{children}</SheetViewport>
+          <ModalBackContext.Provider value={registerBack}><SheetViewport onDismiss={requestClose}>{children}</SheetViewport></ModalBackContext.Provider>
         </FormSelectionHost>
       </View>
     </SafeAreaProvider>
@@ -70,8 +90,10 @@ function SheetViewport({ children, onDismiss }: { children: ReactNode; onDismiss
 }
 
 /** Measure the fixed header and unconstrained scroll content separately, never the clipped body. */
-export function AdaptiveSheet({ title, header, children, onDismiss, action, onConfirm, contentContainerStyle, appearance }: {
-  title?: string; header?: ReactNode; children: ReactNode; onDismiss?: () => void; action?: string; onConfirm?: () => void; contentContainerStyle?: StyleProp<ViewStyle>; appearance?: 'v2';
+export function AdaptiveSheet({ title, header, children, onDismiss, action, onConfirm, contentContainerStyle, appearance, scrollBody, fillHeight = false }: {
+  title?: string; header?: ReactNode; children?: ReactNode; onDismiss?: () => void; action?: string; onConfirm?: () => void; contentContainerStyle?: StyleProp<ViewStyle>; appearance?: 'v2';
+  /** Virtualized bodies reuse the same focus/keyboard/selection host without nesting scroll views. */
+  scrollBody?: ReactNode; fillHeight?: boolean;
 }) {
   const colors = useTheme();
   const design = useDesignColors();
@@ -82,6 +104,7 @@ export function AdaptiveSheet({ title, header, children, onDismiss, action, onCo
   const [headerHeight, setHeaderHeight] = useState<number | null>(null);
   const [contentHeight, setContentHeight] = useState<number | null>(null);
   const body = useRef<ScrollView>(null);
+  const attachBody = useCallback((scroll: ScrollView | null) => { body.current = scroll; }, []);
   const bodyViewport = useRef<View>(null);
   const offset = useRef(0);
   const focused = useRef<TextInput | null>(null);
@@ -108,7 +131,12 @@ export function AdaptiveSheet({ title, header, children, onDismiss, action, onCo
     blur: (input: TextInput | null) => { if (focused.current === input) focused.current = null; } }), [revealFocused]);
   useEffect(() => { revealFocused(); }, [layout.height, headerHeight, contentHeight, revealFocused]);
   useEffect(() => () => { if (frame.current !== null) cancelAnimationFrame(frame.current); focused.current = null; }, []);
-  return <View onLayout={selection.reposition} style={[styles.sheet, { backgroundColor: appearance === 'v2' ? design.canvas : colors[SurfaceColors.overlay], borderColor: appearance === 'v2' ? design.border : colors.border, height: ready ? layout.height : maximum,
+  const scrollProps = { ref: attachBody, style: styles.body, contentContainerStyle: contentContainerStyle ?? styles.content,
+    keyboardShouldPersistTaps: 'handled' as const, automaticallyAdjustKeyboardInsets: false, contentInsetAdjustmentBehavior: 'never' as const,
+    scrollEnabled: fillHeight || !ready || layout.scroll,
+    onContentSizeChange: (_width: number, measuredHeight: number) => setContentHeight(Math.ceil(measuredHeight)),
+    onScroll: (event: Parameters<NonNullable<ScrollViewProps['onScroll']>>[0]) => { offset.current = event.nativeEvent.contentOffset.y; } };
+  return <View onLayout={selection.reposition} style={[styles.sheet, { backgroundColor: appearance === 'v2' ? design.canvas : colors[SurfaceColors.overlay], borderColor: appearance === 'v2' ? design.border : colors.border, height: fillHeight ? maximum : ready ? layout.height : maximum,
     paddingBottom: layout.paddingBottom, paddingLeft: bounds?.leftInset ?? 0, paddingRight: bounds?.rightInset ?? 0, opacity: ready ? 1 : 0 }]}>
     <View style={[styles.fixedHeader, styles.inner]} onLayout={(event) => setHeaderHeight(Math.ceil(event.nativeEvent.layout.height))}>
       {header ?? <View style={styles.header}>
@@ -121,13 +149,9 @@ export function AdaptiveSheet({ title, header, children, onDismiss, action, onCo
     </View>
     <FormFocusContext.Provider value={focus}>
       <View ref={bodyViewport} collapsable={false} style={[styles.body, styles.inner]} onLayout={() => { revealFocused(); selection.reposition(); }}>
-        <FormScrollView ref={body} style={styles.body} contentContainerStyle={contentContainerStyle ?? styles.content}
-          keyboardShouldPersistTaps="handled" automaticallyAdjustKeyboardInsets={false} contentInsetAdjustmentBehavior="never"
-          scrollEnabled={!ready || layout.scroll}
-          onContentSizeChange={(_width, measuredHeight) => setContentHeight(Math.ceil(measuredHeight))}
-          onScroll={(event) => { offset.current = event.nativeEvent.contentOffset.y; }}>
-          {children}
-        </FormScrollView>
+        <SheetScrollContext.Provider value={scrollProps}>
+          {scrollBody ?? <FormScrollView {...scrollProps}>{children}</FormScrollView>}
+        </SheetScrollContext.Provider>
       </View>
     </FormFocusContext.Provider>
   </View>;

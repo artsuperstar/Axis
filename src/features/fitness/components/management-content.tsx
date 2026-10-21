@@ -6,9 +6,9 @@ import { ThemedText } from '@/components/themed-text';
 import { ControlSize, Space } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
 
-import { measurementLabel, targetLabel } from '../form';
 import { exerciseMeasurementLabel, exerciseTypeLabel, workoutCounts, workoutHistoryGroups } from '../management-presentation';
 import type { Exercise, RoutineDetail, SessionSummary } from '../types';
+import { ArchivedRoutineEditor } from './fitness-forms';
 
 /** The object opens its detail; secondary actions have their own anchored trigger. */
 export function FitnessObjectRow({ name, summary, label, hint, onPress, actions }: {
@@ -46,20 +46,11 @@ export function ExerciseDetail({ exercise, onDismiss }: { exercise: Exercise; on
 }
 
 export function ArchivedRoutineDetail({ routine, onDismiss }: { routine: RoutineDetail; onDismiss: () => void }) {
-  return <AdaptiveSheet title={routine.name} onDismiss={onDismiss}>
-    <ThemedText type="secondary" themeColor="textSecondary">Archived routine · Read-only. Workout history is unchanged.</ThemedText>
-    <ThemedText type="sectionHeading" accessibilityRole="header">Exercises</ThemedText>
-    {!routine.exercises.length && <ThemedText themeColor="textSecondary">No exercises yet</ThemedText>}
-    {routine.exercises.map((entry, index) => <View key={entry.id} style={styles.detail}>
-      <ThemedText type="cardTitle">{index + 1}. {entry.exercise.name}</ThemedText>
-      <ThemedText type="metadata" themeColor="textSecondary">{measurementLabel(entry.measurementType)}{entry.exercise.deletedAt !== null ? ' · Archived' : ''}</ThemedText>
-      {!!targetLabel(entry) && <ThemedText type="secondary" themeColor="textSecondary">{targetLabel(entry)}</ThemedText>}
-    </View>)}
-  </AdaptiveSheet>;
+  return <ArchivedRoutineEditor routine={routine} onDismiss={onDismiss} />;
 }
 
 const styles = StyleSheet.create({
   row: { flexDirection: 'row', alignItems: 'center', borderBottomWidth: 1, gap: Space.sm },
   object: { flex: 1, minWidth: 0, minHeight: ControlSize.touch, paddingVertical: Space.md, gap: Space.xs },
-  groups: { gap: Space.xl }, date: { marginBottom: Space.sm }, detail: { gap: Space.xs, paddingVertical: Space.sm },
+  groups: { gap: Space.xl }, date: { marginBottom: Space.sm },
 });

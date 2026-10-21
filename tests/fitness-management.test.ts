@@ -58,7 +58,7 @@ test('routine drafts preserve name, ordered exercises and targets through failed
   assert.equal(app.find('FormField', 'Routine name *'), field); assert.equal(field.props.value, 'My plan');
   assert.equal(app.find('FormField', 'Planned sets (optional, 1–100)').props.value, '3');
   runtime.fixture.failures.clear(); await app.press('Retry'); assert.equal(app.find('FormField', 'Routine name *'), field);
-  await act(() => (app.find('AutocompleteField', 'Add exercise').props.onRequestCreate as (name: string) => void)('Custom stretch'));
+  await app.press('Add exercise'); await app.change('Search exercises', 'Custom stretch'); await app.press('Create new exercise');
   await act(() => (app.find('SelectField', 'Measurement type *').props.onChange as (type: string) => void)('duration'));
   await app.press('Create'); assert.equal(app.find('FormField', 'Routine name *').props.value, 'My plan');
   assert.ok(app.container.textContent.includes('Custom stretch')); await app.press('Save');

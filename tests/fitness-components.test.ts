@@ -3,6 +3,7 @@
 import assert from 'node:assert/strict';
 import { randomUUID } from 'node:crypto';
 import { test } from 'node:test';
+import type { ReactElement } from 'react';
 import { migrate } from 'drizzle-orm/expo-sqlite/migrator';
 
 import { createFitnessDataAccess } from '../src/features/fitness/data';
@@ -42,14 +43,16 @@ test('richer autocomplete creation dismisses the menu before handing off and pre
   assert.deepEqual(events, ['close menu', 'open rich sheet']);
 });
 
-test('routine and workout editors both use shared active exercise autocomplete and richer creation callbacks', async (t) => {
+test('routine exposes a focused-picker action while the existing workout autocomplete retains active search/creation', async (t) => {
   const { sqlite, fitness } = await initialized(); t.after(() => sqlite.close());
   const archived = fitness.createExercise({ name: 'Past Exercise', measurementType: 'strength' }); fitness.archiveExercise(archived.id);
   const exercises = fitness.read().exercises;
   const routine = renderControl(() => fitnessForms.RoutineEditor({ routine: null, exercises, onSave: () => {}, onCreateExercise: fitness.createExercise, onDismiss: () => {} }));
   const workout = renderControl(() => fitnessForms.AddExerciseSheet({ exercises, onAdd: () => {}, onCreateExercise: fitness.createExercise, onDismiss: () => {} }));
-  for (const form of [routine, workout]) {
-    const field = form.elements.find((element) => element.type === autocomplete.AutocompleteField)!;
+  const sheet = routine.elements[0] as unknown as ReactElement<{ scrollBody: ReactElement<{ addExercise: ReactElement<{ label: string; onPress: () => void }> }> }>;
+  const routineField = sheet.props.scrollBody.props.addExercise;
+  assert.equal(routineField.props.label, 'Add exercise'); assert.equal(typeof routineField.props.onPress, 'function');
+  for (const field of [workout.elements.find((element) => element.type === autocomplete.AutocompleteField)!]) {
     assert.equal(typeof field.props.onRequestCreate, 'function');
     assert.deepEqual(field.props.getResults!('ben'), exerciseResults(exercises, 'ben'));
     assert.equal(field.props.getResults!('Past').suggestions.length, 0);

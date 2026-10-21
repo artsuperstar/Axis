@@ -17,9 +17,10 @@ import { AddExerciseSheet, ExerciseEditor, NoteEditor, RoutineEditor, SetEditor 
 import { WorkoutSheet } from './components/workout-sheet';
 import { WorkoutContent } from './components/workout-content';
 import { WorkoutLanding } from './components/workout-landing';
+import { RoutinesContent } from './components/routines-content';
 import { ArchivedRoutineDetail, ExerciseDetail, FitnessObjectRow, WorkoutHistory } from './components/management-content';
 import { blankSet, fitnessError } from './form';
-import { exerciseMeasurementLabel, exerciseTypeLabel, workoutCounts } from './management-presentation';
+import { exerciseMeasurementLabel, exerciseTypeLabel } from './management-presentation';
 import type { Exercise, Routine, RoutineDetail, SessionDetail, WorkoutSet } from './types';
 import { useFitness } from './use-fitness';
 
@@ -142,18 +143,23 @@ export function FitnessScreen({ initialSessionId }: { initialSessionId?: string 
   const backToWorkout = close;
   const createExercise = (draft: Parameters<typeof access.createExercise>[0]) => mutate(() => access.createExercise(draft));
   const v2Workout = view === 'workout';
-  const ScreenTitle = v2Workout ? UiText : ThemedText;
+  const v2 = v2Workout || view === 'routines';
+  const ScreenTitle = v2 ? UiText : ThemedText;
   return <DesignProvider><SheetRefreshContext.Provider value={{ error: fitness.error, onRetry: fitness.reload }}>
-    <SafeAreaView edges={{ top: true, bottom: true, left: true, right: true }} style={{ flex: 1, backgroundColor: v2Workout ? design.canvas : colors.background }}>
-    <ContextMenuHost>
+    <SafeAreaView edges={{ top: true, bottom: true, left: true, right: true }} style={{ flex: 1, backgroundColor: v2 ? design.canvas : colors.background }}>
+    <ContextMenuHost safeAreaApplied={view === 'routines'}>
         <View style={[styles.inner, styles.header]}>
           <ScreenTitle type="screenTitle" accessibilityRole="header">Fitness</ScreenTitle>
-          <FormError message={fitness.error || actionError} />
-          {fitness.error && <FormButton label="Retry" onPress={fitness.reload} />}
-          {v2Workout || snapshot?.active ? <InternalNavigation value={view} options={views} onChange={navigateView} />
+          <FormError appearance={view === 'routines' ? 'v2' : undefined} message={fitness.error || actionError} />
+          {fitness.error && <FormButton appearance={view === 'routines' ? 'v2' : undefined} label="Retry" onPress={fitness.reload} />}
+          {v2 || snapshot?.active ? <InternalNavigation value={view} options={views} onChange={navigateView} />
             : <View style={styles.actions}>{views.map((option) => <FormButton variant="navigation" key={option.value} label={option.label} selected={view === option.value} onPress={() => navigateView(option.value)} />)}</View>}
         </View>
-      <FormScrollView key={view} style={{ flex: 1 }} contentInsetAdjustmentBehavior="never" keyboardShouldPersistTaps="handled"
+      {view === 'routines' ? <RoutinesContent routines={displayedRoutines} next={fitness.nextWorkout} sequence={fitness.rotationSteps}
+        archived={archivedRoutines} ready={!!snapshot} loaded={fitness.routinesLoaded} loading={!fitness.routinesLoaded && !fitness.error}
+        onArchivedChange={setArchivedRoutines} onCreate={() => setDialog({ kind: 'routine', routine: null })} onManage={() => router.push('/fitness/rotations')}
+        onOpen={openRoutine} onStart={start} onArchive={archiveRoutine} scrollOffset={scrollOffset} onScrollOffset={offset => { offsets.current.routines = offset; }} />
+        : <FormScrollView key={view} style={{ flex: 1 }} contentInsetAdjustmentBehavior="never" keyboardShouldPersistTaps="handled"
         contentOffset={{ x: 0, y: scrollOffset }} onScroll={(event) => { offsets.current[view] = event.nativeEvent.contentOffset.y; }}
         contentContainerStyle={styles.content}>
         <View style={styles.inner}>
@@ -168,28 +174,6 @@ export function FitnessScreen({ initialSessionId }: { initialSessionId?: string 
                 routines={activeRoutines} selected={selectedRoutine} next={fitness.nextWorkout} lastWorkout={fitness.lastWorkout} lastFinished={lastFinished}
                 onSelect={setRoutineId} onStart={start} onRoutines={() => navigateView('routines')}
                 onCreate={() => setDialog({ kind: 'routine', routine: null })} onHistory={openSession} />)}
-          {snapshot && view === 'routines' && <>
-            <View style={styles.description}>
-              <ThemedText type="sectionHeading" accessibilityRole="header">Workout rotation</ThemedText>
-              <ThemedText type="cardTitle">{fitness.nextWorkout?.rotation.name ?? 'No active rotation'}</ThemedText>
-              {fitness.nextWorkout && <ThemedText type="metadata" themeColor="textSecondary">{fitness.rotationSteps.join(' → ')}</ThemedText>}
-              {fitness.nextWorkout && <ThemedText type="secondary" themeColor="textSecondary">Next: {fitness.nextWorkout.routine.name}</ThemedText>}
-              <FormButton variant="quiet" label={fitness.nextWorkout ? 'Manage rotation →' : 'Set up rotation →'} onPress={() => router.push('/fitness/rotations')} />
-            </View>
-            <ThemedText type="sectionHeading" accessibilityRole="header">Your routines</ThemedText>
-            <FormButton variant="quiet" label="New routine" onPress={() => setDialog({ kind: 'routine', routine: null })} />
-            <SegmentedControl label="Routines" value={archivedRoutines ? 1 : 0} options={archiveOptions} onChange={(value) => setArchivedRoutines(value === 1)} />
-            {fitness.routinesLoaded && !displayedRoutines.length && <ThemedText themeColor="textSecondary">No {archivedRoutines ? 'archived' : 'active'} routines.</ThemedText>}
-            {!fitness.routinesLoaded && !fitness.error && <ActivityIndicator accessibilityLabel="Loading routines" color={colors.accent} />}
-            {displayedRoutines.map((routine) => <FitnessObjectRow key={routine.id} name={routine.name}
-              summary={workoutCounts(routine.exerciseCount)} label={`Open ${routine.name}, ${workoutCounts(routine.exerciseCount)}`}
-              hint={routine.deletedAt === null ? 'Opens the routine editor.' : 'Opens the archived routine. Read-only.'}
-              onPress={() => openRoutine(routine.id)} actions={routine.deletedAt === null ? [
-                { label: 'Start workout', accessibilityLabel: `Start ${routine.name}`, onPress: () => start(routine.id) },
-                { label: 'Edit', accessibilityLabel: `Edit ${routine.name}`, onPress: () => openRoutine(routine.id) },
-                { label: 'Archive', accessibilityLabel: `Archive ${routine.name}`, variant: 'destructive', onPress: () => archiveRoutine(routine) },
-              ] : undefined} />)}
-          </>}
           {snapshot && view === 'exercises' && <>
             <FormButton label="New exercise" onPress={() => setDialog({ kind: 'exercise' })} />
             <SegmentedControl label="Exercise library" value={archivedExercises ? 1 : 0} options={archiveOptions} onChange={(value) => setArchivedExercises(value === 1)} />
@@ -211,7 +195,7 @@ export function FitnessScreen({ initialSessionId }: { initialSessionId?: string 
             {snapshot.hasMoreHistory && <FormButton label="Load older workouts" onPress={fitness.loadMoreHistory} />}
           </>}
         </View>
-      </FormScrollView>
+      </FormScrollView>}
       {view === 'workout' && workout && <View testID="workout-footer" style={[styles.footer, { backgroundColor: design.canvas, borderTopWidth: 0 }]}>
         <View style={styles.inner}><FormButton appearance="v2" feature="fitness" variant="primary" label="Finish Workout" onPress={finish} /></View>
       </View>}
@@ -242,5 +226,5 @@ const styles = StyleSheet.create({
   header: { paddingHorizontal: Space.lg, paddingTop: Space.lg, paddingBottom: Space.sm },
   footer: { flexShrink: 0, paddingHorizontal: Space.lg, paddingVertical: Space.md, borderTopWidth: 1 },
   actions: { flexDirection: 'row', flexWrap: 'wrap', gap: Spacing.two },
-  card: { padding: Spacing.three, borderRadius: Spacing.two, gap: Spacing.two }, description: { gap: Spacing.one },
+  card: { padding: Spacing.three, borderRadius: Spacing.two, gap: Spacing.two },
 });

@@ -1,8 +1,8 @@
 import { useEffect, useId, useRef, useState, type Ref } from 'react';
-import { Pressable, ScrollView, StyleSheet, TextInput, View, type TextInputProps } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, TextInput, View, useWindowDimensions, type TextInputProps } from 'react-native';
 
 import { ThemedText } from '@/components/themed-text';
-import { UiButton, UiIcon, UiText, useDesignColors, useInterfaceFontStyle } from './design-system';
+import { UiButton, UiIcon, UiPressable, UiText, useDesignColors, useInterfaceFontStyle } from './design-system';
 import type { UiIconName } from './ui-icon';
 import { Shape, TouchTarget } from '@/constants/design-system-v2';
 import { ControlSize, Radius, Space, Typography } from '@/constants/theme';
@@ -16,11 +16,28 @@ import { focusFormControl, useFormSelection, type InlineActionControls, type Sel
 
 export { FormScrollView, FormSelectionHost, focusFormControl, type FormSelectionHandle } from './form-selection-host';
 
-export function SegmentedControl<T extends SelectionValue>({ label, value, options, onChange, disabled = false }: {
-  label: string; value: T; options: readonly SelectionOption<T>[]; onChange: (value: T) => void; disabled?: boolean;
+export function SegmentedControl<T extends SelectionValue>({ label, value, options, onChange, disabled = false, appearance, showLabel = true }: {
+  label: string; value: T; options: readonly (SelectionOption<T> & { icon?: UiIconName })[]; onChange: (value: T) => void; disabled?: boolean; appearance?: 'v2'; showLabel?: boolean;
 }) {
   const colors = useTheme();
+  const design = useDesignColors();
+  const largeSegments = useWindowDimensions().fontScale >= 1.5;
   const [focused, setFocused] = useState<number | null>(null);
+  if (appearance === 'v2') return <View style={{ gap: Space.xs }}>
+    {showLabel && <UiText type="fieldLabel">{label}</UiText>}
+    <View accessibilityRole="radiogroup" accessibilityLabel={label} style={{ flexDirection: largeSegments ? 'column' : 'row', gap: Space.xs, padding: Space.xs, borderWidth: 1, borderColor: design.border, borderRadius: Shape.control, backgroundColor: design.control }}>
+      {options.map(option => {
+        const selected = option.value === value, unavailable = disabled || !!option.disabled;
+        return <UiPressable key={String(option.value)} accessibilityRole="radio" accessibilityLabel={`${label}: ${option.label}`} accessibilityState={{ checked: selected, disabled: unavailable }}
+          aria-checked={selected} aria-disabled={unavailable} disabled={unavailable} onPress={() => onChange(option.value)}
+          style={{ ...(largeSegments ? { flexGrow: 0, flexShrink: 0, flexBasis: 'auto' as const } : { flex: 1 }), minWidth: 0, minHeight: TouchTarget, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: Space.sm, padding: Space.sm,
+            borderWidth: 1, borderRadius: Shape.control, borderColor: selected ? design.brand : 'transparent', backgroundColor: selected ? design.selected : 'transparent' }}>
+          {(selected || option.icon) && <UiIcon name={selected ? 'check' : option.icon!} size={20} color={unavailable ? design.textMuted : selected ? design.brand : design.textSecondary} />}
+          <UiText type="button" color={unavailable ? 'textMuted' : selected ? 'brand' : 'textSecondary'} style={{ flexShrink: 1, minWidth: 0, textAlign: 'center' }}>{option.label}</UiText>
+        </UiPressable>;
+      })}
+    </View>
+  </View>;
   return <View style={styles.field}>
     <ThemedText type="button">{label}</ThemedText>
     <View accessibilityRole="radiogroup" accessibilityLabel={label} style={[styles.segments, { borderColor: colors.border }]}>
@@ -134,7 +151,7 @@ export function InlineNameForm({ title, onCancel, onComplete, onSize, onSubmit, 
   </View>;
 }
 
-export function FormButton({ label, onPress, disabled = false, selected = false, accessibilityLabel, accessibilityHint, variant = 'secondary', compactNavigation = false, expanded, align = 'center', ref, appearance: visual, icon, leadingIcon, trailingIcon, showIndicator, feature, tone }: {
+export function FormButton({ label, onPress, disabled = false, selected = false, accessibilityLabel, accessibilityHint, variant = 'secondary', compactNavigation = false, expanded, align = 'center', ref, appearance: visual, icon, leadingIcon, trailingIcon, showIndicator, feature, tone, compact }: {
   label: string;
   onPress: () => void;
   disabled?: boolean;
@@ -152,12 +169,13 @@ export function FormButton({ label, onPress, disabled = false, selected = false,
   icon?: UiIconName;
   showIndicator?: boolean;
   feature?: 'fitness' | 'tasks';
+  compact?: boolean;
 }) {
   const colors = useTheme();
-  const compact = variant === 'navigation' && compactNavigation;
+  const navigationCompact = variant === 'navigation' && compactNavigation;
   const [focused, setFocused] = useState(false);
   const appearance = buttonAppearance(colors, variant, { disabled, selected, focused });
-  if (visual === 'v2') return <UiButton {...{ label, onPress, disabled, selected, accessibilityLabel, accessibilityHint, variant, expanded, align, ref, icon, leadingIcon, trailingIcon, showIndicator, feature, tone }} />;
+  if (visual === 'v2') return <UiButton {...{ label, onPress, disabled, selected, accessibilityLabel, accessibilityHint, variant, expanded, align, ref, icon, leadingIcon, trailingIcon, showIndicator, feature, tone, compact }} />;
   return (
     <Pressable
       ref={ref}
@@ -168,8 +186,8 @@ export function FormButton({ label, onPress, disabled = false, selected = false,
       disabled={disabled}
       onPress={onPress}
       onFocus={() => setFocused(true)} onBlur={() => setFocused(false)}
-      style={({ pressed }) => [styles.button, compact && styles.compactNavigation, buttonAppearance(colors, variant, { disabled, selected, focused, pressed }).style, { alignItems: align === 'start' ? 'flex-start' : 'center' }]}>
-      <ThemedText type="button" numberOfLines={compact ? 1 : undefined} style={{ color: appearance.textColor }}>{label}{variant === 'navigation' && selected && !compact ? ' ✓' : ''}</ThemedText>
+      style={({ pressed }) => [styles.button, navigationCompact && styles.compactNavigation, buttonAppearance(colors, variant, { disabled, selected, focused, pressed }).style, { alignItems: align === 'start' ? 'flex-start' : 'center' }]}>
+      <ThemedText type="button" numberOfLines={navigationCompact ? 1 : undefined} style={{ color: appearance.textColor }}>{label}{variant === 'navigation' && selected && !navigationCompact ? ' ✓' : ''}</ThemedText>
     </Pressable>
   );
 }
@@ -278,8 +296,8 @@ export function FormWeekday({ label, checked, onPress, appearance }: { label: st
   );
 }
 
-export function FormField({ label, style, ref, helperText, editable = true, readOnly: readOnlyProp = false, disabled = false, multiline = false, error, accessibilityState, onFocus, onBlur, appearance, ...props }: TextInputProps & {
-  label: string; helperText?: string; disabled?: boolean; error?: string | null; ref?: Ref<TextInput>; appearance?: 'v2';
+export function FormField({ label, style, ref, helperText, editable = true, readOnly: readOnlyProp = false, disabled = false, multiline = false, error, accessibilityState, onFocus, onBlur, appearance, showLabel = true, ...props }: TextInputProps & {
+  label: string; helperText?: string; disabled?: boolean; error?: string | null; ref?: Ref<TextInput>; appearance?: 'v2'; showLabel?: boolean;
 }) {
   const colors = useTheme();
   const design = useDesignColors();
@@ -291,10 +309,10 @@ export function FormField({ label, style, ref, helperText, editable = true, read
   const readOnly = (!editable || readOnlyProp) && !unavailable;
   return (
     <View style={styles.field}>
-      <View style={styles.fieldLabel}>
+      {(showLabel || readOnly) && <View style={styles.fieldLabel}>
         {appearance === 'v2' ? <UiText type="fieldLabel">{label}</UiText> : <ThemedText type="button">{label}</ThemedText>}
         {readOnly && <ThemedText type="metadata" themeColor="textSecondary">Read only</ThemedText>}
-      </View>
+      </View>}
       <TextInput
         ref={(node) => {
           input.current = node;

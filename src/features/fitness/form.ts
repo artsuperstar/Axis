@@ -123,11 +123,11 @@ export function targetLabel(targets: Targets) {
     targets.targetDurationSeconds === null ? '' : durationLabel(targets.targetDurationSeconds),
     targets.targetDistanceMeters === null ? '' : distanceLabel(targets.targetDistanceMeters)].filter(Boolean).join(' · ');
 }
-export function exerciseResults(exercises: readonly Exercise[], query: string) {
+export function exerciseResults(exercises: readonly Exercise[], query: string, limit = 20) {
   const name = normalizeIdentityDisplayName(query);
   const normalized = canonicalIdentityName(name);
   const active = exercises.filter((exercise) => exercise.deletedAt === null);
   return { suggestions: active.filter((exercise) => canonicalIdentityName(exercise.name).includes(normalized)).sort((a, b) => a.name.localeCompare(b.name))
-    .slice(0, 20).map((exercise) => ({ value: exercise.id, label: exercise.name })),
+    .slice(0, limit).map((exercise) => ({ value: exercise.id, label: exercise.name })),
     createLabel: name && name.length <= 120 && !active.some((exercise) => canonicalIdentityName(exercise.name) === normalized) ? `+ Create “${name}”` : undefined };
 }

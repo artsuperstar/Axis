@@ -69,13 +69,14 @@ export function UiPressable({ style, onPressIn, onPressOut, onHoverIn, onHoverOu
     onPressOut={(event) => { setPressed(false); progress.set(reduced ? 0 : withTiming(0, motionTiming(MotionTokens.press))); onPressOut?.(event); }} />;
 }
 
-export function UiButton({ label, onPress, disabled = false, selected = false, accessibilityLabel, accessibilityHint, variant = 'secondary', expanded, align = 'center', ref, icon, leadingIcon, trailingIcon, showIndicator = true, feature, tone }: {
+export function UiButton({ label, onPress, disabled = false, selected = false, accessibilityLabel, accessibilityHint, variant = 'secondary', expanded, align = 'center', ref, icon, leadingIcon, trailingIcon, showIndicator = true, feature, tone, compact = false }: {
   label: string; onPress: () => void; disabled?: boolean; selected?: boolean; accessibilityLabel?: string; variant?: ButtonVariant;
   expanded?: boolean; align?: 'start' | 'center'; ref?: Ref<View>; icon?: UiIconName;
   leadingIcon?: UiIconName; trailingIcon?: UiIconName; accessibilityHint?: string;
   showIndicator?: boolean;
   feature?: 'fitness' | 'tasks';
   tone?: 'brand';
+  compact?: boolean;
 }) {
   const colors = useDesignColors();
   const [focused, setFocused] = useState(false);
@@ -87,11 +88,11 @@ export function UiButton({ label, onPress, disabled = false, selected = false, a
     accessibilityState={{ disabled, selected, ...(expanded === undefined ? {} : { expanded }) }} aria-expanded={expanded}
     disabled={disabled} onPress={onPress} onFocus={() => setFocused(true)} onBlur={() => setFocused(false)}
     style={({ pressed }) => [styles.button, { alignItems: align === 'start' ? 'flex-start' : 'center',
-      paddingHorizontal: variant === 'navigation' ? Space.sm : Space.md,
+      paddingHorizontal: compact || variant === 'navigation' ? Space.sm : Space.md,
       backgroundColor: disabled ? colors.inset : primary ? feature === 'fitness' ? colors.fitnessAccent : colors.brandStrong : pressed || selected ? colors.selected
         : variant === 'quiet' || variant === 'navigation' ? 'transparent' : tone === 'brand' ? colors.brandSoft : feature === 'fitness' ? colors.fitnessAccentSoft : colors.control,
       borderColor: focused ? primary ? colors[textColor] : colors.brand : 'transparent' },
-      (leadingIcon || trailingIcon) && { flexDirection: 'row', justifyContent: 'center', gap: Space.sm }]}>
+      (leadingIcon || trailingIcon) && { flexDirection: 'row', justifyContent: 'center', gap: compact ? Space.xs : Space.sm }]}>
     {icon ? <UiIcon name={icon} color={colors[textColor]} /> : <>
       {leadingIcon && <UiIcon name={leadingIcon} color={colors[textColor]} />}
       <UiText type="button" color={textColor} style={trailingIcon ? { flex: 1, minWidth: 0 } : leadingIcon ? { flexShrink: 1, minWidth: 0 } : undefined}>{label}</UiText>

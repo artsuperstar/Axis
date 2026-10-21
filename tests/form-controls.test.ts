@@ -2,6 +2,7 @@
 
 import assert from 'node:assert/strict';
 import { randomUUID } from 'node:crypto';
+import { createRequire } from 'node:module';
 import { test } from 'node:test';
 import { migrate } from 'drizzle-orm/expo-sqlite/migrator';
 import { createElement } from 'react';
@@ -32,6 +33,27 @@ for (const checked of [false, true]) test(`v2 weekday exposes its full name and 
 });
 
 const today = '2026-10-03';
+for (const value of [0, 1]) test(`v2 segmented control preserves radio selection ${value}, visible check cue and callback without changing legacy semantics`, () => {
+  let selected = -1;
+  const result = renderControl(() => controls.SegmentedControl({ label: 'Routines', appearance: 'v2', showLabel: false, value,
+    options: [{ value: 0, label: 'Active' }, { value: 1, label: 'Archived', icon: 'archive' }], onChange: next => { selected = next; } }));
+  assert.match(result.markup, /role="radiogroup"/); assert.match(result.markup, /aria-label="Routines: Active"/); assert.match(result.markup, /aria-label="Routines: Archived"/);
+  assert.ok(result.markup.includes('icon-check')); assert.equal((result.markup.match(/aria-checked="true"/g) ?? []).length, 1);
+  const other = result.elements.find(element => element.props.accessibilityLabel === `Routines: ${value ? 'Active' : 'Archived'}`)!;
+  other.props.onPress!(); assert.equal(selected, value ? 0 : 1);
+});
+test('v2 segmented control gives accessibility-sized option labels full-width rows and retains both radio controls', () => {
+  const { Dimensions } = createRequire(import.meta.url)('react-native-web');
+  const previous = Dimensions.get('window'); Dimensions.set({ window: { ...previous, fontScale: 2 } });
+  try {
+    const result = renderControl(() => controls.SegmentedControl({ label: 'Routines', appearance: 'v2', value: 1,
+      options: [{ value: 0, label: 'Active' }, { value: 1, label: 'Archived', icon: 'archive' }], onChange() {} }));
+    const group = result.elements.find(element => (element.props as { accessibilityRole?: string }).accessibilityRole === 'radiogroup')!;
+    assert.equal((group.props.style as { flexDirection: string }).flexDirection, 'column');
+    assert.equal(result.elements.filter(element => (element.props as { accessibilityRole?: string }).accessibilityRole === 'radio').length, 2);
+    assert.ok(result.markup.includes('Archived')); assert.match(result.markup, /aria-checked="true"/);
+  } finally { Dimensions.set({ window: previous }); }
+});
 async function initialized() {
   const { sqlite, db } = database();
   await migrate(db, bundledMigrations);

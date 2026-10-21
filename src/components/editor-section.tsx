@@ -17,7 +17,7 @@ export function EditorSection({ title, description, icon, children, headingType 
       <View style={[styles.icon, { backgroundColor: colors.brandSoft }]}><UiIcon name={icon} color={colors.brand} size={22} /></View>
       <View style={styles.text}>
         <UiText type={headingType} accessibilityRole="header">{title}</UiText>
-        <UiText type="secondary" color="textSecondary">{description}</UiText>
+        {!!description && <UiText type="secondary" color="textSecondary">{description}</UiText>}
       </View>
     </View>
     {children}

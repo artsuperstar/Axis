@@ -1,0 +1,338 @@
+[
+  {
+    "name": "current-dark-390",
+    "width": 390,
+    "theme": "dark",
+    "cards": [
+      {
+        "id": "rotation-card-3e1ca81e-c138-4c57-9249-a3e8c357b68a",
+        "x": 16,
+        "y": 298,
+        "width": 358,
+        "height": 171,
+        "bottom": 469
+      }
+    ],
+    "overflow": [],
+    "scrollWidth": 390,
+    "errors": []
+  },
+  {
+    "name": "current-light-390",
+    "width": 390,
+    "theme": "light",
+    "cards": [
+      {
+        "id": "rotation-card-3e1ca81e-c138-4c57-9249-a3e8c357b68a",
+        "x": 16,
+        "y": 298,
+        "width": 358,
+        "height": 171,
+        "bottom": 469
+      }
+    ],
+    "overflow": [],
+    "scrollWidth": 390,
+    "errors": []
+  },
+  {
+    "name": "multiple-dark-390",
+    "width": 390,
+    "theme": "dark",
+    "cards": [
+      {
+        "id": "rotation-card-51737aa5-26c3-4e33-99b1-8c647603dfc0",
+        "x": 16,
+        "y": 298,
+        "width": 358,
+        "height": 171,
+        "bottom": 469
+      },
+      {
+        "id": "rotation-card-3e1ca81e-c138-4c57-9249-a3e8c357b68a",
+        "x": 16,
+        "y": 481,
+        "width": 358,
+        "height": 171,
+        "bottom": 652
+      }
+    ],
+    "overflow": [],
+    "scrollWidth": 390,
+    "errors": []
+  },
+  {
+    "name": "empty-dark-390",
+    "width": 390,
+    "theme": "dark",
+    "cards": [],
+    "overflow": [],
+    "scrollWidth": 390,
+    "errors": []
+  },
+  {
+    "name": "narrow-dark-320",
+    "width": 320,
+    "theme": "dark",
+    "cards": [
+      {
+        "id": "rotation-card-0df2a820-3c3d-4645-b00b-badc56d9ad8a",
+        "x": 16,
+        "y": 294,
+        "width": 288,
+        "height": 381,
+        "bottom": 675
+      },
+      {
+        "id": "rotation-card-51737aa5-26c3-4e33-99b1-8c647603dfc0",
+        "x": 16,
+        "y": 687,
+        "width": 288,
+        "height": 217,
+        "bottom": 904
+      },
+      {
+        "id": "rotation-card-3e1ca81e-c138-4c57-9249-a3e8c357b68a",
+        "x": 16,
+        "y": 916,
+        "width": 288,
+        "height": 217,
+        "bottom": 1133
+      }
+    ],
+    "overflow": [],
+    "scrollWidth": 320,
+    "errors": []
+  },
+  {
+    "name": "wide-light-430",
+    "width": 430,
+    "theme": "light",
+    "cards": [
+      {
+        "id": "rotation-card-51737aa5-26c3-4e33-99b1-8c647603dfc0",
+        "x": 16,
+        "y": 298,
+        "width": 398,
+        "height": 171,
+        "bottom": 469
+      },
+      {
+        "id": "rotation-card-3e1ca81e-c138-4c57-9249-a3e8c357b68a",
+        "x": 16,
+        "y": 481,
+        "width": 398,
+        "height": 171,
+        "bottom": 652
+      }
+    ],
+    "overflow": [],
+    "scrollWidth": 430,
+    "errors": []
+  },
+  {
+    "name": "large-dark-320",
+    "width": 320,
+    "theme": "dark",
+    "cards": [
+      {
+        "id": "rotation-card-0df2a820-3c3d-4645-b00b-badc56d9ad8a",
+        "x": 16,
+        "y": 700,
+        "width": 288,
+        "height": 1011,
+        "bottom": 1711
+      },
+      {
+        "id": "rotation-card-51737aa5-26c3-4e33-99b1-8c647603dfc0",
+        "x": 16,
+        "y": 1723,
+        "width": 288,
+        "height": 459,
+        "bottom": 2182
+      },
+      {
+        "id": "rotation-card-3e1ca81e-c138-4c57-9249-a3e8c357b68a",
+        "x": 16,
+        "y": 2194,
+        "width": 288,
+        "height": 555,
+        "bottom": 2749
+      }
+    ],
+    "overflow": [],
+    "scrollWidth": 320,
+    "errors": []
+  },
+  {
+    "name": "new-dark-390",
+    "width": 390,
+    "theme": "dark",
+    "cards": [],
+    "overflow": [],
+    "scrollWidth": 390,
+    "errors": []
+  },
+  {
+    "name": "edit-dark-390",
+    "width": 390,
+    "theme": "dark",
+    "cards": [
+      {
+        "id": "rotation-step-694483e5-9698-40e9-a7e4-28ac30f50137",
+        "x": 12,
+        "y": 306,
+        "width": 366,
+        "height": 182,
+        "bottom": 488
+      },
+      {
+        "id": "rotation-step-e8918dc2-83a3-4fba-89ae-2abed78c6f0d",
+        "x": 12,
+        "y": 496,
+        "width": 366,
+        "height": 194,
+        "bottom": 690
+      },
+      {
+        "id": "rotation-step-31e1e31a-d1e6-4e86-bd89-319f0d462147",
+        "x": 12,
+        "y": 698,
+        "width": 366,
+        "height": 182,
+        "bottom": 880
+      }
+    ],
+    "overflow": [],
+    "scrollWidth": 390,
+    "errors": []
+  },
+  {
+    "name": "edit-light-390",
+    "width": 390,
+    "theme": "light",
+    "cards": [
+      {
+        "id": "rotation-step-694483e5-9698-40e9-a7e4-28ac30f50137",
+        "x": 12,
+        "y": 306,
+        "width": 366,
+        "height": 182,
+        "bottom": 488
+      },
+      {
+        "id": "rotation-step-e8918dc2-83a3-4fba-89ae-2abed78c6f0d",
+        "x": 12,
+        "y": 496,
+        "width": 366,
+        "height": 194,
+        "bottom": 690
+      },
+      {
+        "id": "rotation-step-31e1e31a-d1e6-4e86-bd89-319f0d462147",
+        "x": 12,
+        "y": 698,
+        "width": 366,
+        "height": 182,
+        "bottom": 880
+      }
+    ],
+    "overflow": [],
+    "scrollWidth": 390,
+    "errors": []
+  },
+  {
+    "name": "edit-locked-dark-390",
+    "width": 390,
+    "theme": "dark",
+    "cards": [
+      {
+        "id": "rotation-step-694483e5-9698-40e9-a7e4-28ac30f50137",
+        "x": 12,
+        "y": 362,
+        "width": 366,
+        "height": 182,
+        "bottom": 544
+      },
+      {
+        "id": "rotation-step-e8918dc2-83a3-4fba-89ae-2abed78c6f0d",
+        "x": 12,
+        "y": 552,
+        "width": 366,
+        "height": 194,
+        "bottom": 746
+      },
+      {
+        "id": "rotation-step-31e1e31a-d1e6-4e86-bd89-319f0d462147",
+        "x": 12,
+        "y": 754,
+        "width": 366,
+        "height": 182,
+        "bottom": 936
+      }
+    ],
+    "overflow": [],
+    "scrollWidth": 390,
+    "errors": []
+  },
+  {
+    "name": "edit-large-dark-320",
+    "width": 320,
+    "theme": "dark",
+    "cards": [
+      {
+        "id": "rotation-step-694483e5-9698-40e9-a7e4-28ac30f50137",
+        "x": 12,
+        "y": 478,
+        "width": 296,
+        "height": 278,
+        "bottom": 756
+      },
+      {
+        "id": "rotation-step-e8918dc2-83a3-4fba-89ae-2abed78c6f0d",
+        "x": 12,
+        "y": 764,
+        "width": 296,
+        "height": 422,
+        "bottom": 1186
+      },
+      {
+        "id": "rotation-step-31e1e31a-d1e6-4e86-bd89-319f0d462147",
+        "x": 12,
+        "y": 1194,
+        "width": 296,
+        "height": 278,
+        "bottom": 1472
+      }
+    ],
+    "overflow": [],
+    "scrollWidth": 320,
+    "errors": []
+  },
+  {
+    "virtualization": {
+      "total": 103,
+      "initialMounted": 12
+    }
+  },
+  {
+    "largeTextActionBounds": {
+      "left": 25,
+      "right": 295,
+      "cardLeft": 12,
+      "cardRight": 308,
+      "label": "Set as next workout"
+    },
+    "browserEditor": "real selector/add/Save payload passed"
+  },
+  {
+    "largeTextActionBounds": {
+      "left": 25,
+      "right": 295,
+      "cardLeft": 12,
+      "cardRight": 308,
+      "label": "Set as next workout"
+    },
+    "browserEditor": "real selector/add/Save payload passed"
+  }
+]

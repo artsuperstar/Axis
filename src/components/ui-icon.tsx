@@ -4,6 +4,10 @@ import { useMemo } from 'react';
 /** One small authored outline vocabulary, extending the prototype's two-unit action geometry. */
 export const iconGeometry = {
   plus: '<path d="M12 5v14M5 12h14"/>',
+  up: '<path d="M12 20V4m-6 6 6-6 6 6"/>',
+  down: '<path d="M12 4v16m-6-6 6 6 6-6"/>',
+  target: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><path d="m12 12 9-9M17 3h4v4"/>',
+  trash: '<path d="M3 6h18M9 6V3h6v3M5 6l1 15h12l1-15M10 10v7M14 10v7"/>',
   more: '<circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/>',
   chevron: '<path d="m7 10 5 5 5-5"/>',
   check: '<path d="m5 12 4 4 10-10"/>',
@@ -15,6 +19,8 @@ export const iconGeometry = {
   folder: '<path d="M3 7V5h6l2 2h10v13H3V7Z"/>',
   flag: '<path d="M5 21V3M5 4h14l-4 5 4 5H5"/>',
   repeat: '<path d="M20 8a8 8 0 0 0-14-3L3 8m0-5v5h5M4 16a8 8 0 0 0 14 3l3-3m0 5v-5h-5"/>',
+  archive: '<path d="M4 8h16v13H4V8Z"/><path d="M3 3h18v5H3V3ZM9 12h6"/>',
+  gear: '<path d="m9 3 1-1h4l1 1v2l2 1 2-1 2 3-1 2v3l1 2-2 3-2-1-2 1v2l-1 1h-4l-1-1v-2l-2-1-2 1-2-3 1-2v-3L3 8l2-3 2 1 2-1V3Z"/><circle cx="12" cy="11.5" r="3"/>',
   back: '<path d="m10 5-7 7 7 7M3 12h18"/>',
   forward: '<path d="m9 5 7 7-7 7"/>',
   calendar: '<rect x="3" y="5" width="18" height="16" rx="3"/><path d="M7 3v4M17 3v4M3 10h18M7 14h2M12 14h2M7 18h2"/>',

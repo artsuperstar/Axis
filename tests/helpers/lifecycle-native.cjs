@@ -16,7 +16,8 @@ const Modal = (props) => props.visible === false ? null : React.createElement(Mo
 const ListHost = host('FlatList');
 function FlatList(props) {
   return React.createElement(ListHost, props, props.ListHeaderComponent,
-    props.data.length ? props.data.map((item, index) => React.createElement(React.Fragment, { key: props.keyExtractor(item) }, props.renderItem({ item, index }))) : props.ListEmptyComponent);
+    props.data.length ? props.data.map((item, index) => React.createElement(React.Fragment, { key: props.keyExtractor(item) }, props.renderItem({ item, index }))) : props.ListEmptyComponent,
+    props.ListFooterComponent);
 }
 const SectionHost = host('SectionList');
 const SectionList = React.forwardRef(function SectionList(props, ref) {

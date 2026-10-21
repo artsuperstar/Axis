@@ -32,10 +32,10 @@ async function select(app: Awaited<ReturnType<typeof mount>>, label: string, id:
 test('Routines exposes planning via a pushed route, retaining four Fitness destinations and no planning modal', async (t) => {
   const f = await fixture(t); const app = await mount(createElement(screens.FitnessScreen), f.db); t.after(app.unmount);
   await app.press('Routines'); assert.ok(app.container.textContent.includes('No active rotation'));
-  await app.press('Set up rotation →'); assert.deepEqual(runtime.fixture.navigation.at(-1), { method: 'push', target: '/fitness/rotations' });
+  await app.press('Set up rotation'); assert.deepEqual(runtime.fixture.navigation.at(-1), { method: 'push', target: '/fitness/rotations' });
   const id = f.rotations.create(plan(f.routines)); f.rotations.activate(id); await app.resume();
   assert.ok(app.container.textContent.includes('Push → Pull → Legs')); assert.ok(app.container.textContent.includes('Next: Push'));
-  await app.press('Manage rotation →'); assert.equal(runtime.fixture.navigation.at(-1)!.target, '/fitness/rotations');
+  await app.press('Manage rotation'); assert.equal(runtime.fixture.navigation.at(-1)!.target, '/fitness/rotations');
   for (const label of ['Workout', 'Routines', 'Exercises', 'History']) assert.ok(app.find('FormButton', label));
   assert.ok(!app.nodes().some((node) => node.kind === 'Modal'));
 });
@@ -67,7 +67,7 @@ test('ordinary Routine Start recognizes expected step and discard restores uncha
 test('rotation editor creates duplicate steps, sets explicit next, persists once and returns with a back action', async (t) => {
   const f = await fixture(t); runtime.fixture.routeParams = {};
   const app = await mount(createElement(screens.WorkoutRotationEditorScreen), f.db); t.after(app.unmount);
-  await app.change('Name *', 'Gym Cycle');
+  await app.change('Rotation name *', 'Gym Cycle');
   for (const id of [f.routines[0], f.routines[1], f.routines[0]]) { await select(app, 'Routine to add', id); await app.press('+ Add routine'); }
   await app.press('Set Pull as next workout, workout 2 of 3'); await app.press('Move Pull up, workout 2 of 3');
   await app.press('Save');
@@ -79,7 +79,7 @@ test('rotation editor creates duplicate steps, sets explicit next, persists once
 test('editor validation and Cancel keep source data unchanged; archived routines never appear in add choices', async (t) => {
   const f = await fixture(t); f.fitness.archiveRoutine(f.routines[2]); runtime.fixture.routeParams = {};
   const app = await mount(createElement(screens.WorkoutRotationEditorScreen), f.db); t.after(app.unmount);
-  await app.change('Name *', 'Unfinished'); await app.press('Save'); assert.ok(app.container.textContent.includes('at least one'));
+  await app.change('Rotation name *', 'Unfinished'); await app.press('Save'); assert.ok(app.container.textContent.includes('at least one'));
   const options = app.find('SelectField', 'Routine to add').props.options as { value: string | null }[];
   assert.ok(!options.some((option) => option.value === f.routines[2]));
   await select(app, 'Routine to add', f.routines[0]); await app.press('+ Add routine'); await app.press('Cancel');
@@ -89,7 +89,7 @@ test('editor validation and Cancel keep source data unchanged; archived routines
 test('rotation management supports explicit activation, confirmed reset/deletion and preserves routines/history', async (t) => {
   const f = await fixture(t); const id = f.rotations.create(plan(f.routines));
   const app = await mount(createElement(screens.WorkoutRotationsScreen), f.db); t.after(app.unmount);
-  await menuAction(app, 'Gym Cycle', 'Set active Gym Cycle'); assert.ok(app.container.textContent.includes('Active · Next: Push'));
+  await menuAction(app, 'Gym Cycle', 'Set active Gym Cycle'); assert.ok(app.container.textContent.includes('Active') && app.container.textContent.includes('Next: Push'));
   const row = f.rotations.read()[0]; f.rotations.setNext(id, row.steps[1].id); await app.resume();
   await menuAction(app, 'Gym Cycle', 'Reset Gym Cycle'); assert.equal(f.rotations.readNext()!.stepId, row.steps[1].id, 'confirmation required');
   await app.confirm('Reset'); assert.equal(f.rotations.readNext()!.stepId, row.steps[0].id);
@@ -101,15 +101,15 @@ test('rotation management supports explicit activation, confirmed reset/deletion
 test('dirty editor name/order/next survives failed refresh and Retry without remounting or changing persisted progression', async (t) => {
   const f = await fixture(t); const id = f.rotations.create(plan(f.routines)); const original = f.rotations.read()[0]; runtime.fixture.routeParams = { rotationId: id };
   const app = await mount(createElement(screens.WorkoutRotationEditorScreen), f.db); t.after(app.unmount);
-  await app.change('Name *', 'Dirty rotation'); await app.press('Move Pull up, workout 2 of 3'); await app.press('Set Legs as next workout, workout 3 of 3');
-  const nameField = app.find('FormField', 'Name *');
+  await app.change('Rotation name *', 'Dirty rotation'); await app.press('Move Pull up, workout 2 of 3'); await app.press('Set Legs as next workout, workout 3 of 3');
+  const nameField = app.find('FormField', 'Rotation name *');
   // Fail the real SQLite read boundary, then restore it without changing any planning records.
   f.sqlite.exec('ALTER TABLE fitness_rotations RENAME TO unavailable_rotations'); await app.resume();
-  assert.equal(app.find('FormField', 'Name *'), nameField); assert.equal(nameField.props.value, 'Dirty rotation');
+  assert.equal(app.find('FormField', 'Rotation name *'), nameField); assert.equal(nameField.props.value, 'Dirty rotation');
   assert.ok(app.find('FormButton', 'Set Legs as next workout, workout 3 of 3').props.selected);
   assert.ok(app.find('FormButton', 'Move Pull down, workout 1 of 3')); assert.ok(app.find('FormButton', 'Retry'));
   f.sqlite.exec('ALTER TABLE unavailable_rotations RENAME TO fitness_rotations'); assert.deepEqual(f.rotations.read()[0], original);
-  await app.press('Retry'); assert.equal(app.find('FormField', 'Name *'), nameField);
+  await app.press('Retry'); assert.equal(app.find('FormField', 'Rotation name *'), nameField);
   await app.press('Save'); const saved = f.rotations.read()[0]; assert.equal(saved.name, 'Dirty rotation');
   assert.equal(saved.steps[0].routine.name, 'Pull'); assert.equal(saved.nextStepId, saved.steps[2].id);
 });
@@ -119,7 +119,7 @@ test('linked session leaves editor viewable and renameable but disables destruct
   runtime.fixture.routeParams = { rotationId: id }; const app = await mount(createElement(screens.WorkoutRotationEditorScreen), f.db); t.after(app.unmount);
   assert.ok(app.container.textContent.includes('Finish or discard'));
   for (const node of app.nodes().filter((node) => ['Move up', 'Move down', 'Remove', 'Set as next workout', '+ Add routine'].includes(String(node.props?.label)))) assert.equal(node.props.disabled, true);
-  await app.change('Name *', 'Rename while active'); await app.press('Save'); assert.equal(f.rotations.read()[0].name, 'Rename while active');
+  await app.change('Rotation name *', 'Rename while active'); await app.press('Save'); assert.equal(f.rotations.read()[0].name, 'Rename while active');
 });
 
 test('five-step long names wrap with accessible routine/position labels and no fixed text height or truncation', async (t) => {
@@ -128,7 +128,7 @@ test('five-step long names wrap with accessible routine/position labels and no f
   const name = 'Long rotation name for accessibility text sizes '.repeat(2).trim();
   const id = f.rotations.create(plan([long, ...f.routines, long], name)); runtime.fixture.routeParams = { rotationId: id };
   const app = await mount(createElement(screens.WorkoutRotationEditorScreen), f.db); t.after(app.unmount);
-  assert.equal(app.find('FormField', 'Name *').props.value, name);
+  assert.equal(app.find('FormField', 'Rotation name *').props.value, name);
   assert.ok(app.nodes().some((node) => node.props?.accessibilityLabel === `${longName}, workout 5 of 5`));
   assert.ok(app.find('FormButton', `Move ${longName} up, workout 5 of 5`));
   assert.ok(app.nodes().filter((node) => node.kind === 'ThemedText').every((node) => node.props.numberOfLines === undefined && node.props.allowFontScaling !== false));
