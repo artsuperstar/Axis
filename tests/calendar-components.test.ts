@@ -6,6 +6,7 @@ import { test } from 'node:test';
 import { migrate } from 'drizzle-orm/expo-sqlite/migrator';
 
 import { selectDate } from '../src/features/calendar/model';
+import { DesignColors } from '../src/constants/design-system-v2';
 import { calendarDateLabel, calendarWeekdays } from '../src/features/calendar/presentation';
 import { activityMarkers, calendarMarkerOrder, calendarMarkerPresentation } from '../src/features/calendar/markers';
 import type { CalendarItem, TaskCalendarItem } from '../src/features/calendar/types';
@@ -61,7 +62,7 @@ for (const [name, date, selected, today] of [
     assert.equal(cell.props.accessibilityState?.selected, date === selected);
     const style = Object.assign({}, ...(cell.props.style as unknown as (state: { pressed: boolean }) => object[])({ pressed: false }));
     assert.equal(style.borderColor, date === selected || date === today ? theme.Colors.light.accent : 'transparent');
-    assert.equal(style.backgroundColor, date === selected ? theme.Colors.light.accentMuted : theme.Colors.light.background);
+    assert.equal(style.backgroundColor, date === selected ? theme.Colors.light.accentMuted : DesignColors.light.group);
     assert.ok(cell.props.accessibilityLabel!.startsWith(calendarDateLabel(date)));
     if (date === today) assert.match(cell.props.accessibilityLabel!, /today/);
     if (name === 'adjacent month') assert.match(cell.props.accessibilityLabel!, /adjacent month/);
@@ -119,7 +120,8 @@ test('agenda preserves complete long source names and large amounts with no fake
     { id: 'bill', source: 'commitment', recordId: 'bill', occurrenceId: 'occ', date, title, secondary: 'Expected amount', status: 'Due today', amountMinor: 999999999999 },
     { id: 'work', source: 'work', recordId: 'work', date, title, clientName: 'Client · name with punctuation', secondary: '', status: 'Payment overdue', amountMinor: 999999999999 },
   ];
-  const result = renderControl(() => calendarAgenda.DayAgenda({ date, today: date, items, onOpen: () => {}, onToggleTask: () => {} }));
+  const rendered = items.map(item => renderControl(() => calendarAgenda.CalendarAgendaCard({ item, onOpen: () => {}, onToggleTask: () => {} })));
+  const result = { markup: rendered.map(view => view.markup).join(''), elements: rendered.flatMap(view => view.elements) };
   assert.ok(result.markup.includes(title)); assert.match(result.markup, /9\.999\.999\.999,99/);
   assert.match(result.markup, /Client · name with punctuation/); assert.match(result.markup, /outstanding/);
   assert.doesNotMatch(result.markup, /All day|00:00|text-overflow:ellipsis|white-space:nowrap/);
@@ -147,7 +149,7 @@ const task: TaskCalendarItem = { id: 'task:1', source: 'task', date: '2026-10-04
   occurrenceId: null, time: null, completed: true };
 test('agenda opens source identity and Task completion action; only populated sections render', () => {
   const opened: CalendarItem[] = []; const toggled: TaskCalendarItem[] = [];
-  const result = renderControl(() => calendarAgenda.DayAgenda({ date: task.date, items: [task], onOpen: (item) => opened.push(item), onToggleTask: (item) => toggled.push(item) }));
+  const result = renderControl(() => calendarAgenda.CalendarAgendaCard({ item: task, onOpen: (item) => opened.push(item), onToggleTask: (item) => toggled.push(item) }));
   result.elements.find((node) => node.props.accessibilityLabel?.startsWith('Open Report'))!.props.onPress!();
   result.elements.find((node) => node.props.accessibilityLabel?.startsWith('Reopen Report'))!.props.onPress!();
   assert.deepEqual(opened, [task]); assert.deepEqual(toggled, [task]);

@@ -1,0 +1,162 @@
+[
+  {
+    "name": "today-dark-390",
+    "width": 390,
+    "flags": "",
+    "stage": "top",
+    "errors": [],
+    "overflow": [],
+    "dateCells": 35,
+    "minCellWidth": 50.84375,
+    "minCellHeight": 54,
+    "mountedAgenda": 4
+  },
+  {
+    "name": "today-light-390",
+    "width": 390,
+    "flags": "",
+    "stage": "top",
+    "errors": [],
+    "overflow": [],
+    "dateCells": 35,
+    "minCellWidth": 50.84375,
+    "minCellHeight": 54,
+    "mountedAgenda": 4
+  },
+  {
+    "name": "mixed-dark-390",
+    "width": 390,
+    "flags": "",
+    "stage": "agenda",
+    "errors": [],
+    "overflow": [],
+    "dateCells": 35,
+    "minCellWidth": 50.84375,
+    "minCellHeight": 54,
+    "mountedAgenda": 4
+  },
+  {
+    "name": "mixed-light-390",
+    "width": 390,
+    "flags": "",
+    "stage": "agenda",
+    "errors": [],
+    "overflow": [],
+    "dateCells": 35,
+    "minCellWidth": 50.84375,
+    "minCellHeight": 54,
+    "mountedAgenda": 4
+  },
+  {
+    "name": "different-dark-390",
+    "width": 390,
+    "flags": "different",
+    "stage": "top",
+    "errors": [],
+    "overflow": [],
+    "dateCells": 35,
+    "minCellWidth": 50.84375,
+    "minCellHeight": 54,
+    "mountedAgenda": 2
+  },
+  {
+    "name": "empty-light-390",
+    "width": 390,
+    "flags": "empty",
+    "stage": "agenda",
+    "errors": [],
+    "overflow": [],
+    "dateCells": 42,
+    "minCellWidth": 50.84375,
+    "minCellHeight": 54,
+    "mountedAgenda": 0
+  },
+  {
+    "name": "narrow-dark-320",
+    "width": 320,
+    "flags": "",
+    "stage": "top",
+    "errors": [],
+    "overflow": [],
+    "dateCells": 35,
+    "minCellWidth": 44.28125,
+    "minCellHeight": 54,
+    "mountedAgenda": 4
+  },
+  {
+    "name": "wide-light-430",
+    "width": 430,
+    "flags": "",
+    "stage": "top",
+    "errors": [],
+    "overflow": [],
+    "dateCells": 35,
+    "minCellWidth": 56.5625,
+    "minCellHeight": 54,
+    "mountedAgenda": 4
+  },
+  {
+    "name": "large-dark-320",
+    "width": 320,
+    "flags": "large",
+    "stage": "top",
+    "errors": [],
+    "overflow": [],
+    "dateCells": 35,
+    "minCellWidth": 44.28125,
+    "minCellHeight": 74,
+    "mountedAgenda": 4
+  },
+  {
+    "name": "large-agenda-dark-320",
+    "width": 320,
+    "flags": "large",
+    "stage": "agenda",
+    "errors": [],
+    "overflow": [],
+    "dateCells": 35,
+    "minCellWidth": 44.28125,
+    "minCellHeight": 74,
+    "mountedAgenda": 4
+  },
+  {
+    "name": "chooser-dark-390",
+    "width": 390,
+    "flags": "",
+    "stage": "chooser",
+    "errors": [],
+    "overflow": [],
+    "dateCells": 35,
+    "minCellWidth": 50.84375,
+    "minCellHeight": 54,
+    "mountedAgenda": 4
+  },
+  {
+    "name": "chooser-large-light-320",
+    "width": 320,
+    "flags": "large",
+    "stage": "chooser",
+    "errors": [],
+    "overflow": [],
+    "dateCells": 35,
+    "minCellWidth": 44.28125,
+    "minCellHeight": 74,
+    "mountedAgenda": 4
+  },
+  {
+    "name": "busy-dark-390",
+    "width": 390,
+    "flags": "many",
+    "stage": "agenda",
+    "errors": [],
+    "overflow": [],
+    "dateCells": 35,
+    "minCellWidth": 50.84375,
+    "minCellHeight": 54,
+    "mountedAgenda": 29
+  },
+  {
+    "busyAfterScroll": 52,
+    "totalProjected": 124
+  }
+]

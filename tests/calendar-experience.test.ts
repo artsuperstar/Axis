@@ -20,6 +20,7 @@ import { mount, runtime, screens } from './helpers/refresh-lifecycle';
 
 const today = '2026-10-13';
 type App = Awaited<ReturnType<typeof mount>>;
+function flatten(style: unknown): Record<string, unknown> { return Object.assign({}, ...(Array.isArray(style) ? style.map(flatten) : [style ?? {}])); }
 async function initialized(t: TestContext, date = today) {
   const instant = pickerValue(date, '12:00').getTime(); t.mock.timers.enable({ apis: ['Date'], now: instant });
   t.mock.method(console, 'error', () => {});
@@ -164,9 +165,9 @@ for (const [width, fontScale, mode] of [[320, 1, 'light'], [390, 1, 'dark'], [32
     assert.ok(opener(app, title)); assert.ok(app.nodes(rows(app)[0]).every((node) => node.props?.numberOfLines === undefined && node.props?.allowFontScaling !== false));
     const cells = app.nodes().filter((node) => String(node.props?.testID ?? '').startsWith('calendar-date-'));
     assert.equal(cells.length, 35); assert.equal(cells[0].parentNode!.childNodes.length, 7);
-    const style = (cells[0].props.style as (state: { pressed: boolean }) => object[])({ pressed: false }); assert.equal(Object.assign({}, ...style).height, undefined);
+    assert.equal(flatten(cells[0].props.style).height, undefined);
     const heading = app.nodes().find((node) => node.kind === 'ThemedText' && node.props.accessibilityRole === 'header' && node.textContent.includes('2026') && !node.textContent.includes('13'))!;
-    assert.equal((heading.props.style as { minWidth: number }).minWidth, 0); assert.equal(heading.props.numberOfLines, undefined);
+    assert.equal(flatten(heading.props.style).minWidth, 0); assert.equal(heading.props.numberOfLines, undefined);
   });
 }
 

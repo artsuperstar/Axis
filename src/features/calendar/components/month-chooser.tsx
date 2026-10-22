@@ -3,7 +3,7 @@ import { StyleSheet, View, useWindowDimensions } from 'react-native';
 
 import { AdaptiveModal, AdaptiveSheet } from '@/components/adaptive-sheet';
 import { FormButton } from '@/components/form-controls';
-import { ThemedText } from '@/components/themed-text';
+import { UiText } from '@/components/design-system';
 import { Space } from '@/constants/theme';
 import { pickerValue } from '@/utils/calendar';
 
@@ -20,16 +20,16 @@ export function MonthChooser({ month, visible, onSelect, onDismiss, onClosed }: 
       name: pickerValue(date).toLocaleDateString(undefined, { month: 'long', year: 'numeric' }) };
   });
   return <AdaptiveModal visible={visible} onDismiss={onDismiss} onClosed={onClosed}>
-    <AdaptiveSheet title="Choose month" onDismiss={onDismiss} contentContainerStyle={styles.content}>
+    <AdaptiveSheet appearance="v2" title="Choose month" onDismiss={onDismiss} contentContainerStyle={styles.content}>
       <View style={styles.yearNavigation}>
-        <FormButton variant="quiet" label="‹" accessibilityLabel="Previous year" disabled={year === 1} onPress={() => setYear((current) => Math.max(1, current - 1))} />
-        <ThemedText type="sectionHeading" accessibilityRole="header" style={styles.year}>{String(year).padStart(4, '0')}</ThemedText>
-        <FormButton variant="quiet" label="›" accessibilityLabel="Next year" disabled={year === 9999} onPress={() => setYear((current) => Math.min(9999, current + 1))} />
+        <FormButton appearance="v2" variant="quiet" label="Previous year" icon="back" accessibilityLabel="Previous year" disabled={year === 1} onPress={() => setYear((current) => Math.max(1, current - 1))} />
+        <UiText type="editorSection" accessibilityRole="header" style={styles.year}>{String(year).padStart(4, '0')}</UiText>
+        <FormButton appearance="v2" variant="quiet" label="Next year" icon="forward" accessibilityLabel="Next year" disabled={year === 9999} onPress={() => setYear((current) => Math.min(9999, current + 1))} />
       </View>
       <View testID="calendar-month-options" style={styles.months}>
         {Array.from({ length: Math.ceil(12 / columns) }, (_, row) => <View key={row} style={styles.monthRow}>
           {months.slice(row * columns, row * columns + columns).map((option) => <View key={option.number} style={styles.month}>
-            <FormButton variant="navigation" label={option.label} accessibilityLabel={`${option.name}${option.selected ? ', selected' : ''}`} selected={option.selected}
+            <FormButton appearance="v2" variant="navigation" label={option.label} accessibilityLabel={`${option.name}${option.selected ? ', selected' : ''}`} selected={option.selected}
               onPress={() => onSelect(year, option.number)} />
           </View>)}
         </View>)}
