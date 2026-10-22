@@ -1,0 +1,643 @@
+[
+  {
+    "width": 320,
+    "theme": "light",
+    "large": false,
+    "errors": [],
+    "overflow": [],
+    "targets": [
+      {
+        "label": "1 Oct 2026 – 4 Oct 2026, Income R$ 800,00, Expenses R$ 199,25",
+        "height": 188,
+        "width": 46,
+        "aligned": true
+      },
+      {
+        "label": "5 Oct 2026 – 11 Oct 2026, Income R$ 0,00, Expenses R$ 771,25",
+        "height": 188,
+        "width": 46,
+        "aligned": true
+      },
+      {
+        "label": "12 Oct 2026 – 18 Oct 2026, Income R$ 0,00, Expenses R$ 1.113,50",
+        "height": 188,
+        "width": 46,
+        "aligned": true
+      },
+      {
+        "label": "19 Oct 2026 – 25 Oct 2026, Income R$ 4.250,00, Expenses R$ 3.514,00",
+        "height": 188,
+        "width": 46,
+        "aligned": true
+      },
+      {
+        "label": "26 Oct 2026 – 31 Oct 2026, Income R$ 0,00, Expenses R$ 0,00",
+        "height": 188,
+        "width": 46,
+        "aligned": true
+      }
+    ],
+    "images": [
+      {
+        "id": "cash-flow-svg",
+        "complete": true,
+        "naturalWidth": 300
+      },
+      {
+        "id": "expense-donut-svg",
+        "complete": true,
+        "naturalWidth": 150
+      }
+    ],
+    "summary": "column",
+    "spending": "column"
+  },
+  {
+    "width": 320,
+    "theme": "light",
+    "large": true,
+    "errors": [],
+    "overflow": [],
+    "targets": [
+      {
+        "label": "1 Oct 2026 – 4 Oct 2026, Income R$ 800,00, Expenses R$ 199,25",
+        "height": 242,
+        "width": 40.796875,
+        "aligned": true
+      },
+      {
+        "label": "5 Oct 2026 – 11 Oct 2026, Income R$ 0,00, Expenses R$ 771,25",
+        "height": 242,
+        "width": 40.796875,
+        "aligned": true
+      },
+      {
+        "label": "12 Oct 2026 – 18 Oct 2026, Income R$ 0,00, Expenses R$ 1.113,50",
+        "height": 242,
+        "width": 40.796875,
+        "aligned": true
+      },
+      {
+        "label": "19 Oct 2026 – 25 Oct 2026, Income R$ 4.250,00, Expenses R$ 3.514,00",
+        "height": 242,
+        "width": 40.796875,
+        "aligned": true
+      },
+      {
+        "label": "26 Oct 2026 – 31 Oct 2026, Income R$ 0,00, Expenses R$ 0,00",
+        "height": 242,
+        "width": 40.796875,
+        "aligned": true
+      }
+    ],
+    "images": [
+      {
+        "id": "cash-flow-svg",
+        "complete": true,
+        "naturalWidth": 300
+      },
+      {
+        "id": "expense-donut-svg",
+        "complete": true,
+        "naturalWidth": 150
+      }
+    ],
+    "summary": "column",
+    "spending": "column"
+  },
+  {
+    "width": 320,
+    "theme": "dark",
+    "large": false,
+    "errors": [],
+    "overflow": [],
+    "targets": [
+      {
+        "label": "1 Oct 2026 – 4 Oct 2026, Income R$ 800,00, Expenses R$ 199,25",
+        "height": 188,
+        "width": 46,
+        "aligned": true
+      },
+      {
+        "label": "5 Oct 2026 – 11 Oct 2026, Income R$ 0,00, Expenses R$ 771,25",
+        "height": 188,
+        "width": 46,
+        "aligned": true
+      },
+      {
+        "label": "12 Oct 2026 – 18 Oct 2026, Income R$ 0,00, Expenses R$ 1.113,50",
+        "height": 188,
+        "width": 46,
+        "aligned": true
+      },
+      {
+        "label": "19 Oct 2026 – 25 Oct 2026, Income R$ 4.250,00, Expenses R$ 3.514,00",
+        "height": 188,
+        "width": 46,
+        "aligned": true
+      },
+      {
+        "label": "26 Oct 2026 – 31 Oct 2026, Income R$ 0,00, Expenses R$ 0,00",
+        "height": 188,
+        "width": 46,
+        "aligned": true
+      }
+    ],
+    "images": [
+      {
+        "id": "cash-flow-svg",
+        "complete": true,
+        "naturalWidth": 300
+      },
+      {
+        "id": "expense-donut-svg",
+        "complete": true,
+        "naturalWidth": 150
+      }
+    ],
+    "summary": "column",
+    "spending": "column"
+  },
+  {
+    "width": 320,
+    "theme": "dark",
+    "large": true,
+    "errors": [],
+    "overflow": [],
+    "targets": [
+      {
+        "label": "1 Oct 2026 – 4 Oct 2026, Income R$ 800,00, Expenses R$ 199,25",
+        "height": 242,
+        "width": 40.796875,
+        "aligned": true
+      },
+      {
+        "label": "5 Oct 2026 – 11 Oct 2026, Income R$ 0,00, Expenses R$ 771,25",
+        "height": 242,
+        "width": 40.796875,
+        "aligned": true
+      },
+      {
+        "label": "12 Oct 2026 – 18 Oct 2026, Income R$ 0,00, Expenses R$ 1.113,50",
+        "height": 242,
+        "width": 40.796875,
+        "aligned": true
+      },
+      {
+        "label": "19 Oct 2026 – 25 Oct 2026, Income R$ 4.250,00, Expenses R$ 3.514,00",
+        "height": 242,
+        "width": 40.796875,
+        "aligned": true
+      },
+      {
+        "label": "26 Oct 2026 – 31 Oct 2026, Income R$ 0,00, Expenses R$ 0,00",
+        "height": 242,
+        "width": 40.796875,
+        "aligned": true
+      }
+    ],
+    "images": [
+      {
+        "id": "cash-flow-svg",
+        "complete": true,
+        "naturalWidth": 300
+      },
+      {
+        "id": "expense-donut-svg",
+        "complete": true,
+        "naturalWidth": 150
+      }
+    ],
+    "summary": "column",
+    "spending": "column"
+  },
+  {
+    "width": 390,
+    "theme": "light",
+    "large": false,
+    "errors": [],
+    "overflow": [],
+    "targets": [
+      {
+        "label": "1 Oct 2026 – 4 Oct 2026, Income R$ 800,00, Expenses R$ 199,25",
+        "height": 188,
+        "width": 60,
+        "aligned": true
+      },
+      {
+        "label": "5 Oct 2026 – 11 Oct 2026, Income R$ 0,00, Expenses R$ 771,25",
+        "height": 188,
+        "width": 60,
+        "aligned": true
+      },
+      {
+        "label": "12 Oct 2026 – 18 Oct 2026, Income R$ 0,00, Expenses R$ 1.113,50",
+        "height": 188,
+        "width": 60,
+        "aligned": true
+      },
+      {
+        "label": "19 Oct 2026 – 25 Oct 2026, Income R$ 4.250,00, Expenses R$ 3.514,00",
+        "height": 188,
+        "width": 60,
+        "aligned": true
+      },
+      {
+        "label": "26 Oct 2026 – 31 Oct 2026, Income R$ 0,00, Expenses R$ 0,00",
+        "height": 188,
+        "width": 60,
+        "aligned": true
+      }
+    ],
+    "images": [
+      {
+        "id": "cash-flow-svg",
+        "complete": true,
+        "naturalWidth": 300
+      },
+      {
+        "id": "expense-donut-svg",
+        "complete": true,
+        "naturalWidth": 150
+      }
+    ],
+    "summary": "row",
+    "spending": "row"
+  },
+  {
+    "width": 390,
+    "theme": "light",
+    "large": true,
+    "errors": [],
+    "overflow": [],
+    "targets": [
+      {
+        "label": "1 Oct 2026 – 4 Oct 2026, Income R$ 800,00, Expenses R$ 199,25",
+        "height": 206,
+        "width": 54.796875,
+        "aligned": true
+      },
+      {
+        "label": "5 Oct 2026 – 11 Oct 2026, Income R$ 0,00, Expenses R$ 771,25",
+        "height": 206,
+        "width": 54.796875,
+        "aligned": true
+      },
+      {
+        "label": "12 Oct 2026 – 18 Oct 2026, Income R$ 0,00, Expenses R$ 1.113,50",
+        "height": 206,
+        "width": 54.796875,
+        "aligned": true
+      },
+      {
+        "label": "19 Oct 2026 – 25 Oct 2026, Income R$ 4.250,00, Expenses R$ 3.514,00",
+        "height": 206,
+        "width": 54.796875,
+        "aligned": true
+      },
+      {
+        "label": "26 Oct 2026 – 31 Oct 2026, Income R$ 0,00, Expenses R$ 0,00",
+        "height": 206,
+        "width": 54.796875,
+        "aligned": true
+      }
+    ],
+    "images": [
+      {
+        "id": "cash-flow-svg",
+        "complete": true,
+        "naturalWidth": 300
+      },
+      {
+        "id": "expense-donut-svg",
+        "complete": true,
+        "naturalWidth": 150
+      }
+    ],
+    "summary": "column",
+    "spending": "column"
+  },
+  {
+    "width": 390,
+    "theme": "dark",
+    "large": false,
+    "errors": [],
+    "overflow": [],
+    "targets": [
+      {
+        "label": "1 Oct 2026 – 4 Oct 2026, Income R$ 800,00, Expenses R$ 199,25",
+        "height": 188,
+        "width": 60,
+        "aligned": true
+      },
+      {
+        "label": "5 Oct 2026 – 11 Oct 2026, Income R$ 0,00, Expenses R$ 771,25",
+        "height": 188,
+        "width": 60,
+        "aligned": true
+      },
+      {
+        "label": "12 Oct 2026 – 18 Oct 2026, Income R$ 0,00, Expenses R$ 1.113,50",
+        "height": 188,
+        "width": 60,
+        "aligned": true
+      },
+      {
+        "label": "19 Oct 2026 – 25 Oct 2026, Income R$ 4.250,00, Expenses R$ 3.514,00",
+        "height": 188,
+        "width": 60,
+        "aligned": true
+      },
+      {
+        "label": "26 Oct 2026 – 31 Oct 2026, Income R$ 0,00, Expenses R$ 0,00",
+        "height": 188,
+        "width": 60,
+        "aligned": true
+      }
+    ],
+    "images": [
+      {
+        "id": "cash-flow-svg",
+        "complete": true,
+        "naturalWidth": 300
+      },
+      {
+        "id": "expense-donut-svg",
+        "complete": true,
+        "naturalWidth": 150
+      }
+    ],
+    "summary": "row",
+    "spending": "row"
+  },
+  {
+    "width": 390,
+    "theme": "dark",
+    "large": true,
+    "errors": [],
+    "overflow": [],
+    "targets": [
+      {
+        "label": "1 Oct 2026 – 4 Oct 2026, Income R$ 800,00, Expenses R$ 199,25",
+        "height": 206,
+        "width": 54.796875,
+        "aligned": true
+      },
+      {
+        "label": "5 Oct 2026 – 11 Oct 2026, Income R$ 0,00, Expenses R$ 771,25",
+        "height": 206,
+        "width": 54.796875,
+        "aligned": true
+      },
+      {
+        "label": "12 Oct 2026 – 18 Oct 2026, Income R$ 0,00, Expenses R$ 1.113,50",
+        "height": 206,
+        "width": 54.796875,
+        "aligned": true
+      },
+      {
+        "label": "19 Oct 2026 – 25 Oct 2026, Income R$ 4.250,00, Expenses R$ 3.514,00",
+        "height": 206,
+        "width": 54.796875,
+        "aligned": true
+      },
+      {
+        "label": "26 Oct 2026 – 31 Oct 2026, Income R$ 0,00, Expenses R$ 0,00",
+        "height": 206,
+        "width": 54.796875,
+        "aligned": true
+      }
+    ],
+    "images": [
+      {
+        "id": "cash-flow-svg",
+        "complete": true,
+        "naturalWidth": 300
+      },
+      {
+        "id": "expense-donut-svg",
+        "complete": true,
+        "naturalWidth": 150
+      }
+    ],
+    "summary": "column",
+    "spending": "column"
+  },
+  {
+    "width": 430,
+    "theme": "light",
+    "large": false,
+    "errors": [],
+    "overflow": [],
+    "targets": [
+      {
+        "label": "1 Oct 2026 – 4 Oct 2026, Income R$ 800,00, Expenses R$ 199,25",
+        "height": 188,
+        "width": 68,
+        "aligned": true
+      },
+      {
+        "label": "5 Oct 2026 – 11 Oct 2026, Income R$ 0,00, Expenses R$ 771,25",
+        "height": 188,
+        "width": 68,
+        "aligned": true
+      },
+      {
+        "label": "12 Oct 2026 – 18 Oct 2026, Income R$ 0,00, Expenses R$ 1.113,50",
+        "height": 188,
+        "width": 68,
+        "aligned": true
+      },
+      {
+        "label": "19 Oct 2026 – 25 Oct 2026, Income R$ 4.250,00, Expenses R$ 3.514,00",
+        "height": 188,
+        "width": 68,
+        "aligned": true
+      },
+      {
+        "label": "26 Oct 2026 – 31 Oct 2026, Income R$ 0,00, Expenses R$ 0,00",
+        "height": 188,
+        "width": 68,
+        "aligned": true
+      }
+    ],
+    "images": [
+      {
+        "id": "cash-flow-svg",
+        "complete": true,
+        "naturalWidth": 300
+      },
+      {
+        "id": "expense-donut-svg",
+        "complete": true,
+        "naturalWidth": 150
+      }
+    ],
+    "summary": "row",
+    "spending": "row"
+  },
+  {
+    "width": 430,
+    "theme": "light",
+    "large": true,
+    "errors": [],
+    "overflow": [],
+    "targets": [
+      {
+        "label": "1 Oct 2026 – 4 Oct 2026, Income R$ 800,00, Expenses R$ 199,25",
+        "height": 206,
+        "width": 62.796875,
+        "aligned": true
+      },
+      {
+        "label": "5 Oct 2026 – 11 Oct 2026, Income R$ 0,00, Expenses R$ 771,25",
+        "height": 206,
+        "width": 62.796875,
+        "aligned": true
+      },
+      {
+        "label": "12 Oct 2026 – 18 Oct 2026, Income R$ 0,00, Expenses R$ 1.113,50",
+        "height": 206,
+        "width": 62.796875,
+        "aligned": true
+      },
+      {
+        "label": "19 Oct 2026 – 25 Oct 2026, Income R$ 4.250,00, Expenses R$ 3.514,00",
+        "height": 206,
+        "width": 62.796875,
+        "aligned": true
+      },
+      {
+        "label": "26 Oct 2026 – 31 Oct 2026, Income R$ 0,00, Expenses R$ 0,00",
+        "height": 206,
+        "width": 62.796875,
+        "aligned": true
+      }
+    ],
+    "images": [
+      {
+        "id": "cash-flow-svg",
+        "complete": true,
+        "naturalWidth": 300
+      },
+      {
+        "id": "expense-donut-svg",
+        "complete": true,
+        "naturalWidth": 150
+      }
+    ],
+    "summary": "column",
+    "spending": "column"
+  },
+  {
+    "width": 430,
+    "theme": "dark",
+    "large": false,
+    "errors": [],
+    "overflow": [],
+    "targets": [
+      {
+        "label": "1 Oct 2026 – 4 Oct 2026, Income R$ 800,00, Expenses R$ 199,25",
+        "height": 188,
+        "width": 68,
+        "aligned": true
+      },
+      {
+        "label": "5 Oct 2026 – 11 Oct 2026, Income R$ 0,00, Expenses R$ 771,25",
+        "height": 188,
+        "width": 68,
+        "aligned": true
+      },
+      {
+        "label": "12 Oct 2026 – 18 Oct 2026, Income R$ 0,00, Expenses R$ 1.113,50",
+        "height": 188,
+        "width": 68,
+        "aligned": true
+      },
+      {
+        "label": "19 Oct 2026 – 25 Oct 2026, Income R$ 4.250,00, Expenses R$ 3.514,00",
+        "height": 188,
+        "width": 68,
+        "aligned": true
+      },
+      {
+        "label": "26 Oct 2026 – 31 Oct 2026, Income R$ 0,00, Expenses R$ 0,00",
+        "height": 188,
+        "width": 68,
+        "aligned": true
+      }
+    ],
+    "images": [
+      {
+        "id": "cash-flow-svg",
+        "complete": true,
+        "naturalWidth": 300
+      },
+      {
+        "id": "expense-donut-svg",
+        "complete": true,
+        "naturalWidth": 150
+      }
+    ],
+    "summary": "row",
+    "spending": "row"
+  },
+  {
+    "width": 430,
+    "theme": "dark",
+    "large": true,
+    "errors": [],
+    "overflow": [],
+    "targets": [
+      {
+        "label": "1 Oct 2026 – 4 Oct 2026, Income R$ 800,00, Expenses R$ 199,25",
+        "height": 206,
+        "width": 62.796875,
+        "aligned": true
+      },
+      {
+        "label": "5 Oct 2026 – 11 Oct 2026, Income R$ 0,00, Expenses R$ 771,25",
+        "height": 206,
+        "width": 62.796875,
+        "aligned": true
+      },
+      {
+        "label": "12 Oct 2026 – 18 Oct 2026, Income R$ 0,00, Expenses R$ 1.113,50",
+        "height": 206,
+        "width": 62.796875,
+        "aligned": true
+      },
+      {
+        "label": "19 Oct 2026 – 25 Oct 2026, Income R$ 4.250,00, Expenses R$ 3.514,00",
+        "height": 206,
+        "width": 62.796875,
+        "aligned": true
+      },
+      {
+        "label": "26 Oct 2026 – 31 Oct 2026, Income R$ 0,00, Expenses R$ 0,00",
+        "height": 206,
+        "width": 62.796875,
+        "aligned": true
+      }
+    ],
+    "images": [
+      {
+        "id": "cash-flow-svg",
+        "complete": true,
+        "naturalWidth": 300
+      },
+      {
+        "id": "expense-donut-svg",
+        "complete": true,
+        "naturalWidth": 150
+      }
+    ],
+    "summary": "column",
+    "spending": "column"
+  },
+  {
+    "interaction": "direct zero selection, vertical scrolling, inline expansion",
+    "inspection": "26 Oct 2026 – 31 Oct 2026\nIncome\nR$ 0,00\nExpenses\nR$ 0,00",
+    "rows": 8
+  }
+]

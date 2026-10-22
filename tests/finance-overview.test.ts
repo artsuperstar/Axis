@@ -6,6 +6,8 @@ import { test, type TestContext } from 'node:test';
 import { migrate } from 'drizzle-orm/expo-sqlite/migrator';
 import { act, createElement, type ReactNode } from 'react';
 
+import { DesignColors } from '../src/constants/design-system-v2';
+import { overviewColors } from '../src/features/finance/overview-presentation';
 import { createFinanceDataAccess } from '../src/features/finance/data';
 import { createCommitmentDataAccess } from '../src/features/finance/commitments/data';
 import { commitmentDraft } from '../src/features/finance/commitments/form';
@@ -117,7 +119,7 @@ test('Week / Month / Year selection and compact previous/next/current actions re
   for (const kind of ['week', 'month', 'year'] as const) {
     await period(app, kind); assert.equal(app.find('SegmentedControl', 'Period').props.value, kind);
     assert.equal(app.find('FormButton', `Next ${kind}`).props.disabled, true);
-    assert.equal(app.find('FormButton', `Previous ${kind}`).props.variant, 'quiet');
+    assert.equal(app.find('FormButton', `Previous ${kind}`).props.appearance, 'v2');
     assert.ok(app.nodes().some((node) => node.kind === 'ThemedText' && node.textContent === periodLabel(periodBounds(kind, today))));
     await app.press(`Previous ${kind}`); assert.equal(app.find('FormButton', `Next ${kind}`).props.disabled, false);
     await app.press(`Next ${kind}`); assert.equal(app.find('FormButton', `Next ${kind}`).props.disabled, true);
@@ -138,7 +140,8 @@ for (const [name, income, expenses] of [['positive', '4250', '850,50'], ['negati
     ]);
     assert.equal(metric(app, 'Net Flow').props.accessibilityLabel, `Net Flow, ${name}, ${formatBrlAmount(analytics.netFlowMinor)}`);
     const netValue = metric(app, 'Net Flow').childNodes.find((node) => node.props?.type === 'metric')!;
-    assert.equal(netValue.props.themeColor, 'textPrimary');
+    const palette = overviewColors(DesignColors.light);
+    assert.equal(flatten(netValue.props.style).color, name === 'negative' ? palette.expenses : name === 'positive' ? palette.income : DesignColors.light.textPrimary);
     assert.ok(app.nodes().indexOf(metric(app, 'Net Flow')) < app.nodes().indexOf(metric(app, 'Income')));
     assert.ok(!app.nodes().some((node) => node.props?.accessibilityRole === 'alert'));
     assert.equal(categories(app)[0].props.accessibilityLabel, `No category, ${formatBrlAmount(analytics.expensesMinor)}, approximately 100% of expenses`);
@@ -163,13 +166,13 @@ test('many categories use a bounded exact preview, View all and Show less withou
   }
   const full = f.finance.readDashboard(periodBounds('month', today)).analytics;
   const app = await mount(createElement(screens.FinanceScreen), f.db); t.after(app.unmount);
-  assert.equal(categories(app).length, 5); const initial = amounts(app);
-  await app.press('View all'); assert.equal(categories(app).length, 8);
+  assert.equal(categories(app).length, 6); const initial = amounts(app);
+  await app.press('View all categories'); assert.equal(categories(app).length, 8);
   for (const category of full.spending) assert.ok(categories(app).some((row) => String(row.props.accessibilityLabel).startsWith(`${category.name}, ${formatBrlAmount(category.amountMinor)}, `)));
   assert.equal(full.spending.reduce((sum, row) => sum + row.amountMinor, 0n), full.expensesMinor);
   assert.deepEqual(amounts(app), initial);
   await app.press('Transactions'); await app.press('Overview'); assert.equal(categories(app).length, 8);
-  await app.press('Show less'); assert.equal(categories(app).length, 5);
+  await app.press('Show less'); assert.equal(categories(app).length, 6);
   assert.deepEqual(f.finance.readDashboard(periodBounds('month', today)).analytics, full);
 });
 
@@ -191,10 +194,18 @@ test('huge BigInt totals and tiny shares remain exact and secondary amounts stac
   assert.equal(full.spending.reduce((sum, row) => sum + row.amountMinor, 0n), full.expensesMinor);
 });
 
-for (const [width, fontScale, expected] of [[390, 1, 'row'], [390, 2, 'column'], [280, 1, 'column']] as const) {
+for (const [width, fontScale, expected] of [[390, 1, 'row'], [390, 2, 'column'], [280, 1, 'row']] as const) {
   test(`metrics adapt at width ${width}, font scale ${fontScale} while internal navigation remains a single row`, async (t) => {
     t.mock.method(runtime.native as { useWindowDimensions: () => object }, 'useWindowDimensions', () => ({ width, height: 800, fontScale, scale: 1 }));
     const f = await initialized(t); const app = await mount(createElement(screens.FinanceScreen), f.db); t.after(app.unmount);
+    await act(() => {
+      const content = app.nodes().find(node => node.props?.testID === 'finance-summary-content')!;
+      (content.props.onLayout as (event: unknown) => void)({ nativeEvent: { layout: { width: width - 58 } } });
+      [60, 90, 48, 80, 70, 90].forEach((measured, index) => {
+        const probe = app.nodes().find(node => node.props?.testID === `finance-metric-probe-${index}`)!;
+        (probe.props.onLayout as (event: unknown) => void)({ nativeEvent: { layout: { width: measured * fontScale } } });
+      });
+    });
     const secondary = app.nodes().find((node) => node.props?.testID === 'finance-secondary-metrics')!;
     assert.equal(flatten(secondary.props.style).flexDirection, expected);
     const navigation = app.nodes().find((node) => node.props?.accessibilityLabel === 'Finance destinations')!;

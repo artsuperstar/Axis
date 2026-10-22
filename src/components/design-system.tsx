@@ -69,7 +69,7 @@ export function UiPressable({ style, onPressIn, onPressOut, onHoverIn, onHoverOu
     onPressOut={(event) => { setPressed(false); progress.set(reduced ? 0 : withTiming(0, motionTiming(MotionTokens.press))); onPressOut?.(event); }} />;
 }
 
-export function UiButton({ label, onPress, disabled = false, selected = false, accessibilityLabel, accessibilityHint, variant = 'secondary', expanded, align = 'center', ref, icon, leadingIcon, trailingIcon, showIndicator = true, feature, tone, compact = false }: {
+export function UiButton({ label, onPress, disabled = false, selected = false, accessibilityLabel, accessibilityHint, variant = 'secondary', expanded, align = 'center', ref, icon, leadingIcon, trailingIcon, showIndicator = true, feature, tone, compact = false, compactNavigation = false }: {
   label: string; onPress: () => void; disabled?: boolean; selected?: boolean; accessibilityLabel?: string; variant?: ButtonVariant;
   expanded?: boolean; align?: 'start' | 'center'; ref?: Ref<View>; icon?: UiIconName;
   leadingIcon?: UiIconName; trailingIcon?: UiIconName; accessibilityHint?: string;
@@ -77,6 +77,7 @@ export function UiButton({ label, onPress, disabled = false, selected = false, a
   feature?: 'fitness' | 'tasks';
   tone?: 'brand';
   compact?: boolean;
+  compactNavigation?: boolean;
 }) {
   const colors = useDesignColors();
   const [focused, setFocused] = useState(false);
@@ -88,7 +89,7 @@ export function UiButton({ label, onPress, disabled = false, selected = false, a
     accessibilityState={{ disabled, selected, ...(expanded === undefined ? {} : { expanded }) }} aria-expanded={expanded}
     disabled={disabled} onPress={onPress} onFocus={() => setFocused(true)} onBlur={() => setFocused(false)}
     style={({ pressed }) => [styles.button, { alignItems: align === 'start' ? 'flex-start' : 'center',
-      paddingHorizontal: compact || variant === 'navigation' ? Space.sm : Space.md,
+      paddingHorizontal: compactNavigation && variant === 'navigation' ? 2 : compact || variant === 'navigation' ? Space.sm : Space.md,
       backgroundColor: disabled ? colors.inset : primary ? feature === 'fitness' ? colors.fitnessAccent : colors.brandStrong : pressed || selected ? colors.selected
         : variant === 'quiet' || variant === 'navigation' ? 'transparent' : tone === 'brand' ? colors.brandSoft : feature === 'fitness' ? colors.fitnessAccentSoft : colors.control,
       borderColor: focused ? primary ? colors[textColor] : colors.brand : 'transparent' },

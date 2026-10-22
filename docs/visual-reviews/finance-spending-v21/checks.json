@@ -1,0 +1,884 @@
+[
+  {
+    "width": 320,
+    "theme": "light",
+    "large": false,
+    "scenario": "stress",
+    "expanded": false,
+    "errors": [],
+    "overflow": [],
+    "bounds": {
+      "left": 29,
+      "right": 291
+    },
+    "listWidth": 262,
+    "contentWidth": 262,
+    "listBelowIntro": true,
+    "introDirection": "column",
+    "rows": 6,
+    "diameter": 78.59375,
+    "imageDecoded": true,
+    "exactTotal": "Total expenses, R$ 180.144.725.835.553,88",
+    "amounts": [
+      "Long household expense category with archived historical details 1, R$ 90.071.992.547.409,91, approximately 50% of expenses",
+      "VeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryName 0, R$ 90.071.992.547.409,91, approximately 50% of expenses",
+      "Long household expense category with archived historical details 3, R$ 123.456.789,01, less than 1% of expenses",
+      "Long household expense category with archived historical details 5, R$ 123.456.789,01, less than 1% of expenses",
+      "No category, R$ 123.456.789,01, less than 1% of expenses",
+      "Other, R$ 370.370.367,03, less than 1% of expenses"
+    ]
+  },
+  {
+    "width": 320,
+    "theme": "light",
+    "large": false,
+    "scenario": "stress",
+    "expanded": true,
+    "errors": [],
+    "overflow": [],
+    "bounds": {
+      "left": 29,
+      "right": 291
+    },
+    "listWidth": 262,
+    "contentWidth": 262,
+    "listBelowIntro": true,
+    "introDirection": "column",
+    "rows": 8,
+    "diameter": 78.59375,
+    "imageDecoded": true,
+    "exactTotal": "Total expenses, R$ 180.144.725.835.553,88",
+    "amounts": [
+      "Long household expense category with archived historical details 1, R$ 90.071.992.547.409,91, approximately 50% of expenses",
+      "VeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryName 0, R$ 90.071.992.547.409,91, approximately 50% of expenses",
+      "Long household expense category with archived historical details 3, R$ 123.456.789,01, less than 1% of expenses",
+      "Long household expense category with archived historical details 5, R$ 123.456.789,01, less than 1% of expenses",
+      "No category, R$ 123.456.789,01, less than 1% of expenses",
+      "VeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryName 2, R$ 123.456.789,01, less than 1% of expenses",
+      "VeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryName 4, R$ 123.456.789,01, less than 1% of expenses",
+      "VeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryName 6, R$ 123.456.789,01, less than 1% of expenses"
+    ]
+  },
+  {
+    "width": 320,
+    "theme": "light",
+    "large": true,
+    "scenario": "stress",
+    "expanded": false,
+    "errors": [],
+    "overflow": [],
+    "bounds": {
+      "left": 29,
+      "right": 291
+    },
+    "listWidth": 262,
+    "contentWidth": 262,
+    "listBelowIntro": true,
+    "introDirection": "column",
+    "rows": 6,
+    "diameter": 78.59375,
+    "imageDecoded": true,
+    "exactTotal": "Total expenses, R$ 180.144.725.835.553,88",
+    "amounts": [
+      "Long household expense category with archived historical details 1, R$ 90.071.992.547.409,91, approximately 50% of expenses",
+      "VeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryName 0, R$ 90.071.992.547.409,91, approximately 50% of expenses",
+      "Long household expense category with archived historical details 3, R$ 123.456.789,01, less than 1% of expenses",
+      "Long household expense category with archived historical details 5, R$ 123.456.789,01, less than 1% of expenses",
+      "No category, R$ 123.456.789,01, less than 1% of expenses",
+      "Other, R$ 370.370.367,03, less than 1% of expenses"
+    ]
+  },
+  {
+    "width": 320,
+    "theme": "light",
+    "large": true,
+    "scenario": "stress",
+    "expanded": true,
+    "errors": [],
+    "overflow": [],
+    "bounds": {
+      "left": 29,
+      "right": 291
+    },
+    "listWidth": 262,
+    "contentWidth": 262,
+    "listBelowIntro": true,
+    "introDirection": "column",
+    "rows": 8,
+    "diameter": 78.59375,
+    "imageDecoded": true,
+    "exactTotal": "Total expenses, R$ 180.144.725.835.553,88",
+    "amounts": [
+      "Long household expense category with archived historical details 1, R$ 90.071.992.547.409,91, approximately 50% of expenses",
+      "VeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryName 0, R$ 90.071.992.547.409,91, approximately 50% of expenses",
+      "Long household expense category with archived historical details 3, R$ 123.456.789,01, less than 1% of expenses",
+      "Long household expense category with archived historical details 5, R$ 123.456.789,01, less than 1% of expenses",
+      "No category, R$ 123.456.789,01, less than 1% of expenses",
+      "VeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryName 2, R$ 123.456.789,01, less than 1% of expenses",
+      "VeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryName 4, R$ 123.456.789,01, less than 1% of expenses",
+      "VeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryName 6, R$ 123.456.789,01, less than 1% of expenses"
+    ]
+  },
+  {
+    "width": 320,
+    "theme": "dark",
+    "large": false,
+    "scenario": "stress",
+    "expanded": false,
+    "errors": [],
+    "overflow": [],
+    "bounds": {
+      "left": 29,
+      "right": 291
+    },
+    "listWidth": 262,
+    "contentWidth": 262,
+    "listBelowIntro": true,
+    "introDirection": "column",
+    "rows": 6,
+    "diameter": 78.59375,
+    "imageDecoded": true,
+    "exactTotal": "Total expenses, R$ 180.144.725.835.553,88",
+    "amounts": [
+      "Long household expense category with archived historical details 1, R$ 90.071.992.547.409,91, approximately 50% of expenses",
+      "VeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryName 0, R$ 90.071.992.547.409,91, approximately 50% of expenses",
+      "Long household expense category with archived historical details 3, R$ 123.456.789,01, less than 1% of expenses",
+      "Long household expense category with archived historical details 5, R$ 123.456.789,01, less than 1% of expenses",
+      "No category, R$ 123.456.789,01, less than 1% of expenses",
+      "Other, R$ 370.370.367,03, less than 1% of expenses"
+    ]
+  },
+  {
+    "width": 320,
+    "theme": "dark",
+    "large": false,
+    "scenario": "stress",
+    "expanded": true,
+    "errors": [],
+    "overflow": [],
+    "bounds": {
+      "left": 29,
+      "right": 291
+    },
+    "listWidth": 262,
+    "contentWidth": 262,
+    "listBelowIntro": true,
+    "introDirection": "column",
+    "rows": 8,
+    "diameter": 78.59375,
+    "imageDecoded": true,
+    "exactTotal": "Total expenses, R$ 180.144.725.835.553,88",
+    "amounts": [
+      "Long household expense category with archived historical details 1, R$ 90.071.992.547.409,91, approximately 50% of expenses",
+      "VeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryName 0, R$ 90.071.992.547.409,91, approximately 50% of expenses",
+      "Long household expense category with archived historical details 3, R$ 123.456.789,01, less than 1% of expenses",
+      "Long household expense category with archived historical details 5, R$ 123.456.789,01, less than 1% of expenses",
+      "No category, R$ 123.456.789,01, less than 1% of expenses",
+      "VeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryName 2, R$ 123.456.789,01, less than 1% of expenses",
+      "VeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryName 4, R$ 123.456.789,01, less than 1% of expenses",
+      "VeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryName 6, R$ 123.456.789,01, less than 1% of expenses"
+    ]
+  },
+  {
+    "width": 320,
+    "theme": "dark",
+    "large": true,
+    "scenario": "stress",
+    "expanded": false,
+    "errors": [],
+    "overflow": [],
+    "bounds": {
+      "left": 29,
+      "right": 291
+    },
+    "listWidth": 262,
+    "contentWidth": 262,
+    "listBelowIntro": true,
+    "introDirection": "column",
+    "rows": 6,
+    "diameter": 78.59375,
+    "imageDecoded": true,
+    "exactTotal": "Total expenses, R$ 180.144.725.835.553,88",
+    "amounts": [
+      "Long household expense category with archived historical details 1, R$ 90.071.992.547.409,91, approximately 50% of expenses",
+      "VeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryName 0, R$ 90.071.992.547.409,91, approximately 50% of expenses",
+      "Long household expense category with archived historical details 3, R$ 123.456.789,01, less than 1% of expenses",
+      "Long household expense category with archived historical details 5, R$ 123.456.789,01, less than 1% of expenses",
+      "No category, R$ 123.456.789,01, less than 1% of expenses",
+      "Other, R$ 370.370.367,03, less than 1% of expenses"
+    ]
+  },
+  {
+    "width": 320,
+    "theme": "dark",
+    "large": true,
+    "scenario": "stress",
+    "expanded": true,
+    "errors": [],
+    "overflow": [],
+    "bounds": {
+      "left": 29,
+      "right": 291
+    },
+    "listWidth": 262,
+    "contentWidth": 262,
+    "listBelowIntro": true,
+    "introDirection": "column",
+    "rows": 8,
+    "diameter": 78.59375,
+    "imageDecoded": true,
+    "exactTotal": "Total expenses, R$ 180.144.725.835.553,88",
+    "amounts": [
+      "Long household expense category with archived historical details 1, R$ 90.071.992.547.409,91, approximately 50% of expenses",
+      "VeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryName 0, R$ 90.071.992.547.409,91, approximately 50% of expenses",
+      "Long household expense category with archived historical details 3, R$ 123.456.789,01, less than 1% of expenses",
+      "Long household expense category with archived historical details 5, R$ 123.456.789,01, less than 1% of expenses",
+      "No category, R$ 123.456.789,01, less than 1% of expenses",
+      "VeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryName 2, R$ 123.456.789,01, less than 1% of expenses",
+      "VeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryName 4, R$ 123.456.789,01, less than 1% of expenses",
+      "VeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryName 6, R$ 123.456.789,01, less than 1% of expenses"
+    ]
+  },
+  {
+    "width": 390,
+    "theme": "light",
+    "large": false,
+    "scenario": "stress",
+    "expanded": false,
+    "errors": [],
+    "overflow": [],
+    "bounds": {
+      "left": 29,
+      "right": 361
+    },
+    "listWidth": 332,
+    "contentWidth": 332,
+    "listBelowIntro": true,
+    "introDirection": "row",
+    "rows": 6,
+    "diameter": 99.59375,
+    "imageDecoded": true,
+    "exactTotal": "Total expenses, R$ 180.144.725.835.553,88",
+    "amounts": [
+      "Long household expense category with archived historical details 1, R$ 90.071.992.547.409,91, approximately 50% of expenses",
+      "VeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryName 0, R$ 90.071.992.547.409,91, approximately 50% of expenses",
+      "Long household expense category with archived historical details 3, R$ 123.456.789,01, less than 1% of expenses",
+      "Long household expense category with archived historical details 5, R$ 123.456.789,01, less than 1% of expenses",
+      "No category, R$ 123.456.789,01, less than 1% of expenses",
+      "Other, R$ 370.370.367,03, less than 1% of expenses"
+    ]
+  },
+  {
+    "width": 390,
+    "theme": "light",
+    "large": false,
+    "scenario": "stress",
+    "expanded": true,
+    "errors": [],
+    "overflow": [],
+    "bounds": {
+      "left": 29,
+      "right": 361
+    },
+    "listWidth": 332,
+    "contentWidth": 332,
+    "listBelowIntro": true,
+    "introDirection": "row",
+    "rows": 8,
+    "diameter": 99.59375,
+    "imageDecoded": true,
+    "exactTotal": "Total expenses, R$ 180.144.725.835.553,88",
+    "amounts": [
+      "Long household expense category with archived historical details 1, R$ 90.071.992.547.409,91, approximately 50% of expenses",
+      "VeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryName 0, R$ 90.071.992.547.409,91, approximately 50% of expenses",
+      "Long household expense category with archived historical details 3, R$ 123.456.789,01, less than 1% of expenses",
+      "Long household expense category with archived historical details 5, R$ 123.456.789,01, less than 1% of expenses",
+      "No category, R$ 123.456.789,01, less than 1% of expenses",
+      "VeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryName 2, R$ 123.456.789,01, less than 1% of expenses",
+      "VeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryName 4, R$ 123.456.789,01, less than 1% of expenses",
+      "VeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryName 6, R$ 123.456.789,01, less than 1% of expenses"
+    ]
+  },
+  {
+    "width": 390,
+    "theme": "light",
+    "large": true,
+    "scenario": "stress",
+    "expanded": false,
+    "errors": [],
+    "overflow": [],
+    "bounds": {
+      "left": 29,
+      "right": 361
+    },
+    "listWidth": 332,
+    "contentWidth": 332,
+    "listBelowIntro": true,
+    "introDirection": "column",
+    "rows": 6,
+    "diameter": 99.59375,
+    "imageDecoded": true,
+    "exactTotal": "Total expenses, R$ 180.144.725.835.553,88",
+    "amounts": [
+      "Long household expense category with archived historical details 1, R$ 90.071.992.547.409,91, approximately 50% of expenses",
+      "VeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryName 0, R$ 90.071.992.547.409,91, approximately 50% of expenses",
+      "Long household expense category with archived historical details 3, R$ 123.456.789,01, less than 1% of expenses",
+      "Long household expense category with archived historical details 5, R$ 123.456.789,01, less than 1% of expenses",
+      "No category, R$ 123.456.789,01, less than 1% of expenses",
+      "Other, R$ 370.370.367,03, less than 1% of expenses"
+    ]
+  },
+  {
+    "width": 390,
+    "theme": "light",
+    "large": true,
+    "scenario": "stress",
+    "expanded": true,
+    "errors": [],
+    "overflow": [],
+    "bounds": {
+      "left": 29,
+      "right": 361
+    },
+    "listWidth": 332,
+    "contentWidth": 332,
+    "listBelowIntro": true,
+    "introDirection": "column",
+    "rows": 8,
+    "diameter": 99.59375,
+    "imageDecoded": true,
+    "exactTotal": "Total expenses, R$ 180.144.725.835.553,88",
+    "amounts": [
+      "Long household expense category with archived historical details 1, R$ 90.071.992.547.409,91, approximately 50% of expenses",
+      "VeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryName 0, R$ 90.071.992.547.409,91, approximately 50% of expenses",
+      "Long household expense category with archived historical details 3, R$ 123.456.789,01, less than 1% of expenses",
+      "Long household expense category with archived historical details 5, R$ 123.456.789,01, less than 1% of expenses",
+      "No category, R$ 123.456.789,01, less than 1% of expenses",
+      "VeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryName 2, R$ 123.456.789,01, less than 1% of expenses",
+      "VeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryName 4, R$ 123.456.789,01, less than 1% of expenses",
+      "VeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryName 6, R$ 123.456.789,01, less than 1% of expenses"
+    ]
+  },
+  {
+    "width": 390,
+    "theme": "dark",
+    "large": false,
+    "scenario": "stress",
+    "expanded": false,
+    "errors": [],
+    "overflow": [],
+    "bounds": {
+      "left": 29,
+      "right": 361
+    },
+    "listWidth": 332,
+    "contentWidth": 332,
+    "listBelowIntro": true,
+    "introDirection": "row",
+    "rows": 6,
+    "diameter": 99.59375,
+    "imageDecoded": true,
+    "exactTotal": "Total expenses, R$ 180.144.725.835.553,88",
+    "amounts": [
+      "Long household expense category with archived historical details 1, R$ 90.071.992.547.409,91, approximately 50% of expenses",
+      "VeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryName 0, R$ 90.071.992.547.409,91, approximately 50% of expenses",
+      "Long household expense category with archived historical details 3, R$ 123.456.789,01, less than 1% of expenses",
+      "Long household expense category with archived historical details 5, R$ 123.456.789,01, less than 1% of expenses",
+      "No category, R$ 123.456.789,01, less than 1% of expenses",
+      "Other, R$ 370.370.367,03, less than 1% of expenses"
+    ]
+  },
+  {
+    "width": 390,
+    "theme": "dark",
+    "large": false,
+    "scenario": "stress",
+    "expanded": true,
+    "errors": [],
+    "overflow": [],
+    "bounds": {
+      "left": 29,
+      "right": 361
+    },
+    "listWidth": 332,
+    "contentWidth": 332,
+    "listBelowIntro": true,
+    "introDirection": "row",
+    "rows": 8,
+    "diameter": 99.59375,
+    "imageDecoded": true,
+    "exactTotal": "Total expenses, R$ 180.144.725.835.553,88",
+    "amounts": [
+      "Long household expense category with archived historical details 1, R$ 90.071.992.547.409,91, approximately 50% of expenses",
+      "VeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryName 0, R$ 90.071.992.547.409,91, approximately 50% of expenses",
+      "Long household expense category with archived historical details 3, R$ 123.456.789,01, less than 1% of expenses",
+      "Long household expense category with archived historical details 5, R$ 123.456.789,01, less than 1% of expenses",
+      "No category, R$ 123.456.789,01, less than 1% of expenses",
+      "VeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryName 2, R$ 123.456.789,01, less than 1% of expenses",
+      "VeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryName 4, R$ 123.456.789,01, less than 1% of expenses",
+      "VeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryName 6, R$ 123.456.789,01, less than 1% of expenses"
+    ]
+  },
+  {
+    "width": 390,
+    "theme": "dark",
+    "large": true,
+    "scenario": "stress",
+    "expanded": false,
+    "errors": [],
+    "overflow": [],
+    "bounds": {
+      "left": 29,
+      "right": 361
+    },
+    "listWidth": 332,
+    "contentWidth": 332,
+    "listBelowIntro": true,
+    "introDirection": "column",
+    "rows": 6,
+    "diameter": 99.59375,
+    "imageDecoded": true,
+    "exactTotal": "Total expenses, R$ 180.144.725.835.553,88",
+    "amounts": [
+      "Long household expense category with archived historical details 1, R$ 90.071.992.547.409,91, approximately 50% of expenses",
+      "VeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryName 0, R$ 90.071.992.547.409,91, approximately 50% of expenses",
+      "Long household expense category with archived historical details 3, R$ 123.456.789,01, less than 1% of expenses",
+      "Long household expense category with archived historical details 5, R$ 123.456.789,01, less than 1% of expenses",
+      "No category, R$ 123.456.789,01, less than 1% of expenses",
+      "Other, R$ 370.370.367,03, less than 1% of expenses"
+    ]
+  },
+  {
+    "width": 390,
+    "theme": "dark",
+    "large": true,
+    "scenario": "stress",
+    "expanded": true,
+    "errors": [],
+    "overflow": [],
+    "bounds": {
+      "left": 29,
+      "right": 361
+    },
+    "listWidth": 332,
+    "contentWidth": 332,
+    "listBelowIntro": true,
+    "introDirection": "column",
+    "rows": 8,
+    "diameter": 99.59375,
+    "imageDecoded": true,
+    "exactTotal": "Total expenses, R$ 180.144.725.835.553,88",
+    "amounts": [
+      "Long household expense category with archived historical details 1, R$ 90.071.992.547.409,91, approximately 50% of expenses",
+      "VeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryName 0, R$ 90.071.992.547.409,91, approximately 50% of expenses",
+      "Long household expense category with archived historical details 3, R$ 123.456.789,01, less than 1% of expenses",
+      "Long household expense category with archived historical details 5, R$ 123.456.789,01, less than 1% of expenses",
+      "No category, R$ 123.456.789,01, less than 1% of expenses",
+      "VeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryName 2, R$ 123.456.789,01, less than 1% of expenses",
+      "VeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryName 4, R$ 123.456.789,01, less than 1% of expenses",
+      "VeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryName 6, R$ 123.456.789,01, less than 1% of expenses"
+    ]
+  },
+  {
+    "width": 430,
+    "theme": "light",
+    "large": false,
+    "scenario": "stress",
+    "expanded": false,
+    "errors": [],
+    "overflow": [],
+    "bounds": {
+      "left": 29,
+      "right": 401
+    },
+    "listWidth": 372,
+    "contentWidth": 372,
+    "listBelowIntro": true,
+    "introDirection": "row",
+    "rows": 6,
+    "diameter": 104,
+    "imageDecoded": true,
+    "exactTotal": "Total expenses, R$ 180.144.725.835.553,88",
+    "amounts": [
+      "Long household expense category with archived historical details 1, R$ 90.071.992.547.409,91, approximately 50% of expenses",
+      "VeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryName 0, R$ 90.071.992.547.409,91, approximately 50% of expenses",
+      "Long household expense category with archived historical details 3, R$ 123.456.789,01, less than 1% of expenses",
+      "Long household expense category with archived historical details 5, R$ 123.456.789,01, less than 1% of expenses",
+      "No category, R$ 123.456.789,01, less than 1% of expenses",
+      "Other, R$ 370.370.367,03, less than 1% of expenses"
+    ]
+  },
+  {
+    "width": 430,
+    "theme": "light",
+    "large": false,
+    "scenario": "stress",
+    "expanded": true,
+    "errors": [],
+    "overflow": [],
+    "bounds": {
+      "left": 29,
+      "right": 401
+    },
+    "listWidth": 372,
+    "contentWidth": 372,
+    "listBelowIntro": true,
+    "introDirection": "row",
+    "rows": 8,
+    "diameter": 104,
+    "imageDecoded": true,
+    "exactTotal": "Total expenses, R$ 180.144.725.835.553,88",
+    "amounts": [
+      "Long household expense category with archived historical details 1, R$ 90.071.992.547.409,91, approximately 50% of expenses",
+      "VeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryName 0, R$ 90.071.992.547.409,91, approximately 50% of expenses",
+      "Long household expense category with archived historical details 3, R$ 123.456.789,01, less than 1% of expenses",
+      "Long household expense category with archived historical details 5, R$ 123.456.789,01, less than 1% of expenses",
+      "No category, R$ 123.456.789,01, less than 1% of expenses",
+      "VeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryName 2, R$ 123.456.789,01, less than 1% of expenses",
+      "VeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryName 4, R$ 123.456.789,01, less than 1% of expenses",
+      "VeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryName 6, R$ 123.456.789,01, less than 1% of expenses"
+    ]
+  },
+  {
+    "width": 430,
+    "theme": "light",
+    "large": true,
+    "scenario": "stress",
+    "expanded": false,
+    "errors": [],
+    "overflow": [],
+    "bounds": {
+      "left": 29,
+      "right": 401
+    },
+    "listWidth": 372,
+    "contentWidth": 372,
+    "listBelowIntro": true,
+    "introDirection": "column",
+    "rows": 6,
+    "diameter": 104,
+    "imageDecoded": true,
+    "exactTotal": "Total expenses, R$ 180.144.725.835.553,88",
+    "amounts": [
+      "Long household expense category with archived historical details 1, R$ 90.071.992.547.409,91, approximately 50% of expenses",
+      "VeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryName 0, R$ 90.071.992.547.409,91, approximately 50% of expenses",
+      "Long household expense category with archived historical details 3, R$ 123.456.789,01, less than 1% of expenses",
+      "Long household expense category with archived historical details 5, R$ 123.456.789,01, less than 1% of expenses",
+      "No category, R$ 123.456.789,01, less than 1% of expenses",
+      "Other, R$ 370.370.367,03, less than 1% of expenses"
+    ]
+  },
+  {
+    "width": 430,
+    "theme": "light",
+    "large": true,
+    "scenario": "stress",
+    "expanded": true,
+    "errors": [],
+    "overflow": [],
+    "bounds": {
+      "left": 29,
+      "right": 401
+    },
+    "listWidth": 372,
+    "contentWidth": 372,
+    "listBelowIntro": true,
+    "introDirection": "column",
+    "rows": 8,
+    "diameter": 104,
+    "imageDecoded": true,
+    "exactTotal": "Total expenses, R$ 180.144.725.835.553,88",
+    "amounts": [
+      "Long household expense category with archived historical details 1, R$ 90.071.992.547.409,91, approximately 50% of expenses",
+      "VeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryName 0, R$ 90.071.992.547.409,91, approximately 50% of expenses",
+      "Long household expense category with archived historical details 3, R$ 123.456.789,01, less than 1% of expenses",
+      "Long household expense category with archived historical details 5, R$ 123.456.789,01, less than 1% of expenses",
+      "No category, R$ 123.456.789,01, less than 1% of expenses",
+      "VeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryName 2, R$ 123.456.789,01, less than 1% of expenses",
+      "VeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryName 4, R$ 123.456.789,01, less than 1% of expenses",
+      "VeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryName 6, R$ 123.456.789,01, less than 1% of expenses"
+    ]
+  },
+  {
+    "width": 430,
+    "theme": "dark",
+    "large": false,
+    "scenario": "stress",
+    "expanded": false,
+    "errors": [],
+    "overflow": [],
+    "bounds": {
+      "left": 29,
+      "right": 401
+    },
+    "listWidth": 372,
+    "contentWidth": 372,
+    "listBelowIntro": true,
+    "introDirection": "row",
+    "rows": 6,
+    "diameter": 104,
+    "imageDecoded": true,
+    "exactTotal": "Total expenses, R$ 180.144.725.835.553,88",
+    "amounts": [
+      "Long household expense category with archived historical details 1, R$ 90.071.992.547.409,91, approximately 50% of expenses",
+      "VeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryName 0, R$ 90.071.992.547.409,91, approximately 50% of expenses",
+      "Long household expense category with archived historical details 3, R$ 123.456.789,01, less than 1% of expenses",
+      "Long household expense category with archived historical details 5, R$ 123.456.789,01, less than 1% of expenses",
+      "No category, R$ 123.456.789,01, less than 1% of expenses",
+      "Other, R$ 370.370.367,03, less than 1% of expenses"
+    ]
+  },
+  {
+    "width": 430,
+    "theme": "dark",
+    "large": false,
+    "scenario": "stress",
+    "expanded": true,
+    "errors": [],
+    "overflow": [],
+    "bounds": {
+      "left": 29,
+      "right": 401
+    },
+    "listWidth": 372,
+    "contentWidth": 372,
+    "listBelowIntro": true,
+    "introDirection": "row",
+    "rows": 8,
+    "diameter": 104,
+    "imageDecoded": true,
+    "exactTotal": "Total expenses, R$ 180.144.725.835.553,88",
+    "amounts": [
+      "Long household expense category with archived historical details 1, R$ 90.071.992.547.409,91, approximately 50% of expenses",
+      "VeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryName 0, R$ 90.071.992.547.409,91, approximately 50% of expenses",
+      "Long household expense category with archived historical details 3, R$ 123.456.789,01, less than 1% of expenses",
+      "Long household expense category with archived historical details 5, R$ 123.456.789,01, less than 1% of expenses",
+      "No category, R$ 123.456.789,01, less than 1% of expenses",
+      "VeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryName 2, R$ 123.456.789,01, less than 1% of expenses",
+      "VeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryName 4, R$ 123.456.789,01, less than 1% of expenses",
+      "VeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryName 6, R$ 123.456.789,01, less than 1% of expenses"
+    ]
+  },
+  {
+    "width": 430,
+    "theme": "dark",
+    "large": true,
+    "scenario": "stress",
+    "expanded": false,
+    "errors": [],
+    "overflow": [],
+    "bounds": {
+      "left": 29,
+      "right": 401
+    },
+    "listWidth": 372,
+    "contentWidth": 372,
+    "listBelowIntro": true,
+    "introDirection": "column",
+    "rows": 6,
+    "diameter": 104,
+    "imageDecoded": true,
+    "exactTotal": "Total expenses, R$ 180.144.725.835.553,88",
+    "amounts": [
+      "Long household expense category with archived historical details 1, R$ 90.071.992.547.409,91, approximately 50% of expenses",
+      "VeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryName 0, R$ 90.071.992.547.409,91, approximately 50% of expenses",
+      "Long household expense category with archived historical details 3, R$ 123.456.789,01, less than 1% of expenses",
+      "Long household expense category with archived historical details 5, R$ 123.456.789,01, less than 1% of expenses",
+      "No category, R$ 123.456.789,01, less than 1% of expenses",
+      "Other, R$ 370.370.367,03, less than 1% of expenses"
+    ]
+  },
+  {
+    "width": 430,
+    "theme": "dark",
+    "large": true,
+    "scenario": "stress",
+    "expanded": true,
+    "errors": [],
+    "overflow": [],
+    "bounds": {
+      "left": 29,
+      "right": 401
+    },
+    "listWidth": 372,
+    "contentWidth": 372,
+    "listBelowIntro": true,
+    "introDirection": "column",
+    "rows": 8,
+    "diameter": 104,
+    "imageDecoded": true,
+    "exactTotal": "Total expenses, R$ 180.144.725.835.553,88",
+    "amounts": [
+      "Long household expense category with archived historical details 1, R$ 90.071.992.547.409,91, approximately 50% of expenses",
+      "VeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryName 0, R$ 90.071.992.547.409,91, approximately 50% of expenses",
+      "Long household expense category with archived historical details 3, R$ 123.456.789,01, less than 1% of expenses",
+      "Long household expense category with archived historical details 5, R$ 123.456.789,01, less than 1% of expenses",
+      "No category, R$ 123.456.789,01, less than 1% of expenses",
+      "VeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryName 2, R$ 123.456.789,01, less than 1% of expenses",
+      "VeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryName 4, R$ 123.456.789,01, less than 1% of expenses",
+      "VeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryNameVeryLongUnbrokenCategoryName 6, R$ 123.456.789,01, less than 1% of expenses"
+    ]
+  },
+  {
+    "width": 390,
+    "theme": "light",
+    "large": false,
+    "scenario": "normal",
+    "expanded": false,
+    "errors": [],
+    "overflow": [],
+    "bounds": {
+      "left": 29,
+      "right": 361
+    },
+    "listWidth": 332,
+    "contentWidth": 332,
+    "listBelowIntro": true,
+    "introDirection": "row",
+    "rows": 6,
+    "diameter": 99.59375,
+    "imageDecoded": true,
+    "exactTotal": "Total expenses, R$ 5.598,00",
+    "amounts": [
+      "Housing, R$ 1.200,25, approximately 21,4% of expenses",
+      "Food, R$ 1.057,25, approximately 18,9% of expenses",
+      "Transport, R$ 914,25, approximately 16,3% of expenses",
+      "Health, R$ 771,25, approximately 13,8% of expenses",
+      "Subscriptions, R$ 628,25, approximately 11,2% of expenses",
+      "Other, R$ 1.026,75, approximately 18,3% of expenses"
+    ]
+  },
+  {
+    "width": 390,
+    "theme": "light",
+    "large": false,
+    "scenario": "one",
+    "expanded": false,
+    "errors": [],
+    "overflow": [],
+    "bounds": {
+      "left": 29,
+      "right": 361
+    },
+    "listWidth": 332,
+    "contentWidth": 332,
+    "listBelowIntro": true,
+    "introDirection": "row",
+    "rows": 1,
+    "diameter": 99.59375,
+    "imageDecoded": true,
+    "exactTotal": "Total expenses, R$ 1.200,25",
+    "amounts": [
+      "Housing, R$ 1.200,25, approximately 100% of expenses"
+    ]
+  },
+  {
+    "width": 390,
+    "theme": "light",
+    "large": false,
+    "scenario": "five",
+    "expanded": false,
+    "errors": [],
+    "overflow": [],
+    "bounds": {
+      "left": 29,
+      "right": 361
+    },
+    "listWidth": 332,
+    "contentWidth": 332,
+    "listBelowIntro": true,
+    "introDirection": "row",
+    "rows": 5,
+    "diameter": 99.59375,
+    "imageDecoded": true,
+    "exactTotal": "Total expenses, R$ 4.571,25",
+    "amounts": [
+      "Housing, R$ 1.200,25, approximately 26,3% of expenses",
+      "Food, R$ 1.057,25, approximately 23,1% of expenses",
+      "Transport, R$ 914,25, approximately 20% of expenses",
+      "Health, R$ 771,25, approximately 16,9% of expenses",
+      "Subscriptions, R$ 628,25, approximately 13,7% of expenses"
+    ]
+  },
+  {
+    "width": 390,
+    "theme": "dark",
+    "large": false,
+    "scenario": "normal",
+    "expanded": false,
+    "errors": [],
+    "overflow": [],
+    "bounds": {
+      "left": 29,
+      "right": 361
+    },
+    "listWidth": 332,
+    "contentWidth": 332,
+    "listBelowIntro": true,
+    "introDirection": "row",
+    "rows": 6,
+    "diameter": 99.59375,
+    "imageDecoded": true,
+    "exactTotal": "Total expenses, R$ 5.598,00",
+    "amounts": [
+      "Housing, R$ 1.200,25, approximately 21,4% of expenses",
+      "Food, R$ 1.057,25, approximately 18,9% of expenses",
+      "Transport, R$ 914,25, approximately 16,3% of expenses",
+      "Health, R$ 771,25, approximately 13,8% of expenses",
+      "Subscriptions, R$ 628,25, approximately 11,2% of expenses",
+      "Other, R$ 1.026,75, approximately 18,3% of expenses"
+    ]
+  },
+  {
+    "width": 390,
+    "theme": "dark",
+    "large": false,
+    "scenario": "one",
+    "expanded": false,
+    "errors": [],
+    "overflow": [],
+    "bounds": {
+      "left": 29,
+      "right": 361
+    },
+    "listWidth": 332,
+    "contentWidth": 332,
+    "listBelowIntro": true,
+    "introDirection": "row",
+    "rows": 1,
+    "diameter": 99.59375,
+    "imageDecoded": true,
+    "exactTotal": "Total expenses, R$ 1.200,25",
+    "amounts": [
+      "Housing, R$ 1.200,25, approximately 100% of expenses"
+    ]
+  },
+  {
+    "width": 390,
+    "theme": "dark",
+    "large": false,
+    "scenario": "five",
+    "expanded": false,
+    "errors": [],
+    "overflow": [],
+    "bounds": {
+      "left": 29,
+      "right": 361
+    },
+    "listWidth": 332,
+    "contentWidth": 332,
+    "listBelowIntro": true,
+    "introDirection": "row",
+    "rows": 5,
+    "diameter": 99.59375,
+    "imageDecoded": true,
+    "exactTotal": "Total expenses, R$ 4.571,25",
+    "amounts": [
+      "Housing, R$ 1.200,25, approximately 26,3% of expenses",
+      "Food, R$ 1.057,25, approximately 23,1% of expenses",
+      "Transport, R$ 914,25, approximately 20% of expenses",
+      "Health, R$ 771,25, approximately 16,9% of expenses",
+      "Subscriptions, R$ 628,25, approximately 13,7% of expenses"
+    ]
+  }
+]

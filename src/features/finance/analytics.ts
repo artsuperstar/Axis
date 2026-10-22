@@ -4,6 +4,7 @@ import type { AxisDatabase } from '@/database/client';
 import { financeCategories, financeTransactions } from '@/database/schema';
 
 import { validateAmountMinor } from './money';
+import { aggregateCashFlow, type CashFlowBucket } from './charts';
 import type { FinancePeriod } from './periods';
 import type { FinanceTransaction } from './types';
 
@@ -16,6 +17,8 @@ export type FinanceAnalytics<T extends Pick<FinancePeriod, 'startDate' | 'endDat
   netFlowMinor: bigint;
   transactionCount: number;
   spending: CategorySpending[];
+  /** Only full Overview periods have chart buckets; day-context callers keep their existing projection. */
+  cashFlow?: CashFlowBucket[];
 };
 
 /** Only eligible rows enter this reducer. Money stays integer even above Number's safe total. */
@@ -41,11 +44,13 @@ export function aggregateFinance<T extends Pick<FinancePeriod, 'startDate' | 'en
 
 /** The existing partial date index filters SQLite rows before any JS monetary arithmetic. */
 export function readFinanceAnalytics<T extends Pick<FinancePeriod, 'startDate' | 'endDate'>>(db: AxisDatabase, period: T) {
-  const rows = db.select({ type: financeTransactions.type, amountMinor: financeTransactions.amountMinor,
+  const rows = db.select({ type: financeTransactions.type, amountMinor: financeTransactions.amountMinor, transactionDate: financeTransactions.transactionDate,
     categoryId: financeTransactions.categoryId, categoryName: financeCategories.name })
     .from(financeTransactions).leftJoin(financeCategories, eq(financeTransactions.categoryId, financeCategories.id))
     .where(and(isNull(financeTransactions.deletedAt), gte(financeTransactions.transactionDate, period.startDate), lte(financeTransactions.transactionDate, period.endDate))).all();
-  return aggregateFinance(rows, period);
+  const analytics = aggregateFinance(rows, period);
+  if ('kind' in period) analytics.cashFlow = aggregateCashFlow(rows, period as T & FinancePeriod);
+  return analytics;
 }
 
 /** A display-only ratio; no floating-point operation feeds back into monetary totals. */

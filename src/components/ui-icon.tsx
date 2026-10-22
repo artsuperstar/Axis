@@ -1,6 +1,8 @@
 import { Image } from 'expo-image';
 import { useMemo } from 'react';
 
+import { svgImageSource } from '@/utils/svg-source';
+
 /** One small authored outline vocabulary, extending the prototype's two-unit action geometry. */
 export const iconGeometry = {
   plus: '<path d="M12 5v14M5 12h14"/>',
@@ -16,6 +18,8 @@ export const iconGeometry = {
   trash: '<path d="M3 6h18M9 6V3h6v3M5 6l1 15h12l1-15M10 10v7M14 10v7"/>',
   more: '<circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/>',
   chevron: '<path d="m7 10 5 5 5-5"/>',
+  chevronLeft: '<path d="m15 5-7 7 7 7"/>',
+  chevronUp: '<path d="m7 14 5-5 5 5"/>',
   check: '<path d="m5 12 4 4 10-10"/>',
   sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M5 19l1.5-1.5M17.5 6.5 19 5"/>',
   list: '<path d="m3 6 1.5 1.5L7 5M10 6h11M3 12h4M10 12h11M3 18h4M10 18h11"/>',
@@ -47,23 +51,10 @@ export const iconGeometry = {
 } as const;
 export type UiIconName = keyof typeof iconGeometry;
 
-// These authored SVGs contain ASCII only. Encode locally without depending on a browser global,
-// a Node Buffer polyfill, or another package in the native runtime.
-function asciiBase64(value: string) {
-  const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
-  let result = '';
-  for (let i = 0; i < value.length; i += 3) {
-    const bits = (value.charCodeAt(i) << 16) | ((value.charCodeAt(i + 1) || 0) << 8) | (value.charCodeAt(i + 2) || 0);
-    result += alphabet[(bits >>> 18) & 63] + alphabet[(bits >>> 12) & 63]
-      + (i + 1 < value.length ? alphabet[(bits >>> 6) & 63] : '=') + (i + 2 < value.length ? alphabet[bits & 63] : '=');
-  }
-  return result;
-}
-
 export function iconSource(name: UiIconName, color: string) {
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="${color}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${iconGeometry[name]}</svg>`;
   // Expo Image's Android data-URL loader decodes base64, not percent-encoded SVG.
-  return { uri: `data:image/svg+xml;base64,${asciiBase64(svg)}` };
+  return svgImageSource(svg);
 }
 
 /** Decorative companion to a named control/heading; no additional screen-reader stop. */

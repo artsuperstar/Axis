@@ -175,7 +175,7 @@ export function FormButton({ label, onPress, disabled = false, selected = false,
   const navigationCompact = variant === 'navigation' && compactNavigation;
   const [focused, setFocused] = useState(false);
   const appearance = buttonAppearance(colors, variant, { disabled, selected, focused });
-  if (visual === 'v2') return <UiButton {...{ label, onPress, disabled, selected, accessibilityLabel, accessibilityHint, variant, expanded, align, ref, icon, leadingIcon, trailingIcon, showIndicator, feature, tone, compact }} />;
+  if (visual === 'v2') return <UiButton {...{ label, onPress, disabled, selected, accessibilityLabel, accessibilityHint, variant, expanded, align, ref, icon, leadingIcon, trailingIcon, showIndicator, feature, tone, compact, compactNavigation }} />;
   return (
     <Pressable
       ref={ref}

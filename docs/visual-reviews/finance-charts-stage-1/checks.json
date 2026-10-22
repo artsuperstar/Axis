@@ -1,0 +1,810 @@
+[
+  {
+    "width": 320,
+    "theme": "light",
+    "large": false,
+    "errors": [],
+    "overflow": [],
+    "images": [
+      {
+        "id": "cash-flow-svg",
+        "complete": true,
+        "naturalWidth": 293,
+        "rect": {
+          "x": 16,
+          "y": 658,
+          "width": 288,
+          "height": 184,
+          "top": 658,
+          "right": 304,
+          "bottom": 842,
+          "left": 16
+        }
+      },
+      {
+        "id": "expense-donut-svg",
+        "complete": true,
+        "naturalWidth": 150,
+        "rect": {
+          "x": 40,
+          "y": 1178,
+          "width": 240,
+          "height": 240,
+          "top": 1178,
+          "right": 280,
+          "bottom": 1418,
+          "left": 40
+        }
+      }
+    ],
+    "buttons": [
+      {
+        "label": "1–4",
+        "width": 54.703125,
+        "height": 44
+      },
+      {
+        "label": "5–11",
+        "width": 60.046875,
+        "height": 44
+      },
+      {
+        "label": "12–18",
+        "width": 67.8125,
+        "height": 44
+      },
+      {
+        "label": "19–25",
+        "width": 70,
+        "height": 44
+      },
+      {
+        "label": "26–31",
+        "width": 70,
+        "height": 44
+      }
+    ],
+    "rootWidth": 320
+  },
+  {
+    "width": 320,
+    "theme": "light",
+    "large": true,
+    "errors": [],
+    "overflow": [],
+    "images": [
+      {
+        "id": "cash-flow-svg",
+        "complete": true,
+        "naturalWidth": 293,
+        "rect": {
+          "x": 16,
+          "y": 1162,
+          "width": 288,
+          "height": 184,
+          "top": 1162,
+          "right": 304,
+          "bottom": 1346,
+          "left": 16
+        }
+      },
+      {
+        "id": "expense-donut-svg",
+        "complete": true,
+        "naturalWidth": 150,
+        "rect": {
+          "x": 40,
+          "y": 1994,
+          "width": 240,
+          "height": 240,
+          "top": 1994,
+          "right": 280,
+          "bottom": 2234,
+          "left": 40
+        }
+      }
+    ],
+    "buttons": [
+      {
+        "label": "1–4",
+        "width": 75.40625,
+        "height": 58
+      },
+      {
+        "label": "5–11",
+        "width": 86.078125,
+        "height": 58
+      },
+      {
+        "label": "12–18",
+        "width": 101.625,
+        "height": 58
+      },
+      {
+        "label": "19–25",
+        "width": 105.984375,
+        "height": 58
+      },
+      {
+        "label": "26–31",
+        "width": 105.984375,
+        "height": 58
+      }
+    ],
+    "rootWidth": 320
+  },
+  {
+    "width": 320,
+    "theme": "dark",
+    "large": false,
+    "errors": [],
+    "overflow": [],
+    "images": [
+      {
+        "id": "cash-flow-svg",
+        "complete": true,
+        "naturalWidth": 293,
+        "rect": {
+          "x": 16,
+          "y": 658,
+          "width": 288,
+          "height": 184,
+          "top": 658,
+          "right": 304,
+          "bottom": 842,
+          "left": 16
+        }
+      },
+      {
+        "id": "expense-donut-svg",
+        "complete": true,
+        "naturalWidth": 150,
+        "rect": {
+          "x": 40,
+          "y": 1178,
+          "width": 240,
+          "height": 240,
+          "top": 1178,
+          "right": 280,
+          "bottom": 1418,
+          "left": 40
+        }
+      }
+    ],
+    "buttons": [
+      {
+        "label": "1–4",
+        "width": 54.703125,
+        "height": 44
+      },
+      {
+        "label": "5–11",
+        "width": 60.046875,
+        "height": 44
+      },
+      {
+        "label": "12–18",
+        "width": 67.8125,
+        "height": 44
+      },
+      {
+        "label": "19–25",
+        "width": 70,
+        "height": 44
+      },
+      {
+        "label": "26–31",
+        "width": 70,
+        "height": 44
+      }
+    ],
+    "rootWidth": 320
+  },
+  {
+    "width": 320,
+    "theme": "dark",
+    "large": true,
+    "errors": [],
+    "overflow": [],
+    "images": [
+      {
+        "id": "cash-flow-svg",
+        "complete": true,
+        "naturalWidth": 293,
+        "rect": {
+          "x": 16,
+          "y": 1162,
+          "width": 288,
+          "height": 184,
+          "top": 1162,
+          "right": 304,
+          "bottom": 1346,
+          "left": 16
+        }
+      },
+      {
+        "id": "expense-donut-svg",
+        "complete": true,
+        "naturalWidth": 150,
+        "rect": {
+          "x": 40,
+          "y": 1994,
+          "width": 240,
+          "height": 240,
+          "top": 1994,
+          "right": 280,
+          "bottom": 2234,
+          "left": 40
+        }
+      }
+    ],
+    "buttons": [
+      {
+        "label": "1–4",
+        "width": 75.40625,
+        "height": 58
+      },
+      {
+        "label": "5–11",
+        "width": 86.078125,
+        "height": 58
+      },
+      {
+        "label": "12–18",
+        "width": 101.625,
+        "height": 58
+      },
+      {
+        "label": "19–25",
+        "width": 105.984375,
+        "height": 58
+      },
+      {
+        "label": "26–31",
+        "width": 105.984375,
+        "height": 58
+      }
+    ],
+    "rootWidth": 320
+  },
+  {
+    "width": 390,
+    "theme": "light",
+    "large": false,
+    "errors": [],
+    "overflow": [],
+    "images": [
+      {
+        "id": "cash-flow-svg",
+        "complete": true,
+        "naturalWidth": 293,
+        "rect": {
+          "x": 16,
+          "y": 586,
+          "width": 358,
+          "height": 184,
+          "top": 586,
+          "right": 374,
+          "bottom": 770,
+          "left": 16
+        }
+      },
+      {
+        "id": "expense-donut-svg",
+        "complete": true,
+        "naturalWidth": 150,
+        "rect": {
+          "x": 75,
+          "y": 1054,
+          "width": 240,
+          "height": 240,
+          "top": 1054,
+          "right": 315,
+          "bottom": 1294,
+          "left": 75
+        }
+      }
+    ],
+    "buttons": [
+      {
+        "label": "1–4",
+        "width": 54.703125,
+        "height": 44
+      },
+      {
+        "label": "5–11",
+        "width": 60.046875,
+        "height": 44
+      },
+      {
+        "label": "12–18",
+        "width": 67.8125,
+        "height": 44
+      },
+      {
+        "label": "19–25",
+        "width": 70,
+        "height": 44
+      },
+      {
+        "label": "26–31",
+        "width": 70,
+        "height": 44
+      }
+    ],
+    "rootWidth": 390
+  },
+  {
+    "width": 390,
+    "theme": "light",
+    "large": true,
+    "errors": [],
+    "overflow": [],
+    "images": [
+      {
+        "id": "cash-flow-svg",
+        "complete": true,
+        "naturalWidth": 293,
+        "rect": {
+          "x": 16,
+          "y": 1084,
+          "width": 358,
+          "height": 184,
+          "top": 1084,
+          "right": 374,
+          "bottom": 1268,
+          "left": 16
+        }
+      },
+      {
+        "id": "expense-donut-svg",
+        "complete": true,
+        "naturalWidth": 150,
+        "rect": {
+          "x": 75,
+          "y": 1868,
+          "width": 240,
+          "height": 240,
+          "top": 1868,
+          "right": 315,
+          "bottom": 2108,
+          "left": 75
+        }
+      }
+    ],
+    "buttons": [
+      {
+        "label": "1–4",
+        "width": 75.40625,
+        "height": 58
+      },
+      {
+        "label": "5–11",
+        "width": 86.078125,
+        "height": 58
+      },
+      {
+        "label": "12–18",
+        "width": 101.625,
+        "height": 58
+      },
+      {
+        "label": "19–25",
+        "width": 105.984375,
+        "height": 58
+      },
+      {
+        "label": "26–31",
+        "width": 105.984375,
+        "height": 58
+      }
+    ],
+    "rootWidth": 390
+  },
+  {
+    "width": 390,
+    "theme": "dark",
+    "large": false,
+    "errors": [],
+    "overflow": [],
+    "images": [
+      {
+        "id": "cash-flow-svg",
+        "complete": true,
+        "naturalWidth": 293,
+        "rect": {
+          "x": 16,
+          "y": 586,
+          "width": 358,
+          "height": 184,
+          "top": 586,
+          "right": 374,
+          "bottom": 770,
+          "left": 16
+        }
+      },
+      {
+        "id": "expense-donut-svg",
+        "complete": true,
+        "naturalWidth": 150,
+        "rect": {
+          "x": 75,
+          "y": 1054,
+          "width": 240,
+          "height": 240,
+          "top": 1054,
+          "right": 315,
+          "bottom": 1294,
+          "left": 75
+        }
+      }
+    ],
+    "buttons": [
+      {
+        "label": "1–4",
+        "width": 54.703125,
+        "height": 44
+      },
+      {
+        "label": "5–11",
+        "width": 60.046875,
+        "height": 44
+      },
+      {
+        "label": "12–18",
+        "width": 67.8125,
+        "height": 44
+      },
+      {
+        "label": "19–25",
+        "width": 70,
+        "height": 44
+      },
+      {
+        "label": "26–31",
+        "width": 70,
+        "height": 44
+      }
+    ],
+    "rootWidth": 390
+  },
+  {
+    "width": 390,
+    "theme": "dark",
+    "large": true,
+    "errors": [],
+    "overflow": [],
+    "images": [
+      {
+        "id": "cash-flow-svg",
+        "complete": true,
+        "naturalWidth": 293,
+        "rect": {
+          "x": 16,
+          "y": 1084,
+          "width": 358,
+          "height": 184,
+          "top": 1084,
+          "right": 374,
+          "bottom": 1268,
+          "left": 16
+        }
+      },
+      {
+        "id": "expense-donut-svg",
+        "complete": true,
+        "naturalWidth": 150,
+        "rect": {
+          "x": 75,
+          "y": 1868,
+          "width": 240,
+          "height": 240,
+          "top": 1868,
+          "right": 315,
+          "bottom": 2108,
+          "left": 75
+        }
+      }
+    ],
+    "buttons": [
+      {
+        "label": "1–4",
+        "width": 75.40625,
+        "height": 58
+      },
+      {
+        "label": "5–11",
+        "width": 86.078125,
+        "height": 58
+      },
+      {
+        "label": "12–18",
+        "width": 101.625,
+        "height": 58
+      },
+      {
+        "label": "19–25",
+        "width": 105.984375,
+        "height": 58
+      },
+      {
+        "label": "26–31",
+        "width": 105.984375,
+        "height": 58
+      }
+    ],
+    "rootWidth": 390
+  },
+  {
+    "width": 430,
+    "theme": "light",
+    "large": false,
+    "errors": [],
+    "overflow": [],
+    "images": [
+      {
+        "id": "cash-flow-svg",
+        "complete": true,
+        "naturalWidth": 293,
+        "rect": {
+          "x": 16,
+          "y": 586,
+          "width": 398,
+          "height": 184,
+          "top": 586,
+          "right": 414,
+          "bottom": 770,
+          "left": 16
+        }
+      },
+      {
+        "id": "expense-donut-svg",
+        "complete": true,
+        "naturalWidth": 150,
+        "rect": {
+          "x": 95,
+          "y": 1054,
+          "width": 240,
+          "height": 240,
+          "top": 1054,
+          "right": 335,
+          "bottom": 1294,
+          "left": 95
+        }
+      }
+    ],
+    "buttons": [
+      {
+        "label": "1–4",
+        "width": 54.703125,
+        "height": 44
+      },
+      {
+        "label": "5–11",
+        "width": 60.046875,
+        "height": 44
+      },
+      {
+        "label": "12–18",
+        "width": 67.8125,
+        "height": 44
+      },
+      {
+        "label": "19–25",
+        "width": 70,
+        "height": 44
+      },
+      {
+        "label": "26–31",
+        "width": 70,
+        "height": 44
+      }
+    ],
+    "rootWidth": 430
+  },
+  {
+    "width": 430,
+    "theme": "light",
+    "large": true,
+    "errors": [],
+    "overflow": [],
+    "images": [
+      {
+        "id": "cash-flow-svg",
+        "complete": true,
+        "naturalWidth": 293,
+        "rect": {
+          "x": 16,
+          "y": 1044,
+          "width": 398,
+          "height": 184,
+          "top": 1044,
+          "right": 414,
+          "bottom": 1228,
+          "left": 16
+        }
+      },
+      {
+        "id": "expense-donut-svg",
+        "complete": true,
+        "naturalWidth": 150,
+        "rect": {
+          "x": 95,
+          "y": 1828,
+          "width": 240,
+          "height": 240,
+          "top": 1828,
+          "right": 335,
+          "bottom": 2068,
+          "left": 95
+        }
+      }
+    ],
+    "buttons": [
+      {
+        "label": "1–4",
+        "width": 75.40625,
+        "height": 58
+      },
+      {
+        "label": "5–11",
+        "width": 86.078125,
+        "height": 58
+      },
+      {
+        "label": "12–18",
+        "width": 101.625,
+        "height": 58
+      },
+      {
+        "label": "19–25",
+        "width": 105.984375,
+        "height": 58
+      },
+      {
+        "label": "26–31",
+        "width": 105.984375,
+        "height": 58
+      }
+    ],
+    "rootWidth": 430
+  },
+  {
+    "width": 430,
+    "theme": "dark",
+    "large": false,
+    "errors": [],
+    "overflow": [],
+    "images": [
+      {
+        "id": "cash-flow-svg",
+        "complete": true,
+        "naturalWidth": 293,
+        "rect": {
+          "x": 16,
+          "y": 586,
+          "width": 398,
+          "height": 184,
+          "top": 586,
+          "right": 414,
+          "bottom": 770,
+          "left": 16
+        }
+      },
+      {
+        "id": "expense-donut-svg",
+        "complete": true,
+        "naturalWidth": 150,
+        "rect": {
+          "x": 95,
+          "y": 1054,
+          "width": 240,
+          "height": 240,
+          "top": 1054,
+          "right": 335,
+          "bottom": 1294,
+          "left": 95
+        }
+      }
+    ],
+    "buttons": [
+      {
+        "label": "1–4",
+        "width": 54.703125,
+        "height": 44
+      },
+      {
+        "label": "5–11",
+        "width": 60.046875,
+        "height": 44
+      },
+      {
+        "label": "12–18",
+        "width": 67.8125,
+        "height": 44
+      },
+      {
+        "label": "19–25",
+        "width": 70,
+        "height": 44
+      },
+      {
+        "label": "26–31",
+        "width": 70,
+        "height": 44
+      }
+    ],
+    "rootWidth": 430
+  },
+  {
+    "width": 430,
+    "theme": "dark",
+    "large": true,
+    "errors": [],
+    "overflow": [],
+    "images": [
+      {
+        "id": "cash-flow-svg",
+        "complete": true,
+        "naturalWidth": 293,
+        "rect": {
+          "x": 16,
+          "y": 1044,
+          "width": 398,
+          "height": 184,
+          "top": 1044,
+          "right": 414,
+          "bottom": 1228,
+          "left": 16
+        }
+      },
+      {
+        "id": "expense-donut-svg",
+        "complete": true,
+        "naturalWidth": 150,
+        "rect": {
+          "x": 95,
+          "y": 1828,
+          "width": 240,
+          "height": 240,
+          "top": 1828,
+          "right": 335,
+          "bottom": 2068,
+          "left": 95
+        }
+      }
+    ],
+    "buttons": [
+      {
+        "label": "1–4",
+        "width": 75.40625,
+        "height": 58
+      },
+      {
+        "label": "5–11",
+        "width": 86.078125,
+        "height": 58
+      },
+      {
+        "label": "12–18",
+        "width": 101.625,
+        "height": 58
+      },
+      {
+        "label": "19–25",
+        "width": 105.984375,
+        "height": 58
+      },
+      {
+        "label": "26–31",
+        "width": 105.984375,
+        "height": 58
+      }
+    ],
+    "rootWidth": 430
+  },
+  {
+    "interaction": "period/inspection/full breakdown/vertical scrolling",
+    "inspection": "20 Oct 2026\nIncome R$ 4.250,00\nExpenses R$ 3.171,75"
+  }
+]

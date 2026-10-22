@@ -9,6 +9,7 @@ import type { FormSelectionHandle } from '@/components/form-selection-host';
 import { SheetRefreshContext } from '@/components/sheet-refresh-notice';
 import { StatusText } from '@/components/status-text';
 import { ThemedText } from '@/components/themed-text';
+import { DesignProvider, UiText, useDesignColors } from '@/components/design-system';
 import { Space } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
 
@@ -43,6 +44,8 @@ export function FinanceScreen({ initialView, initialRecordId, initialDueDate }: 
   const [actionError, setActionError] = useState<string | null>(null);
   const [spendingExpanded, setSpendingExpanded] = useState(false);
   const [scrollOffset, setScrollOffset] = useState(0);
+  const design = useDesignColors();
+  const overview = selection.view === 'dashboard';
   const menuHost = useRef<FormSelectionHandle>(null);
   const offsets = useRef<Record<FinanceView, number>>({ dashboard: 0, transactions: 0, commitments: 0, work: 0 });
   const categories = snapshot?.categories ?? [];
@@ -89,16 +92,16 @@ export function FinanceScreen({ initialView, initialRecordId, initialDueDate }: 
     ]);
   }
 
-  return <SheetRefreshContext.Provider value={{ error, onRetry: reload }}>
-    <SafeAreaView edges={{ top: true, bottom: true, left: true, right: true }} style={{ flex: 1, backgroundColor: colors.background }}>
+  return <DesignProvider><SheetRefreshContext.Provider value={{ error, onRetry: reload }}>
+    <SafeAreaView edges={{ top: true, bottom: true, left: true, right: true }} style={{ flex: 1, backgroundColor: overview ? design.canvas : colors.background }}>
     <ContextMenuHost ref={menuHost} safeAreaApplied>
     <View style={[styles.inner, styles.shell]}>
-      <ThemedText type="screenTitle" accessibilityRole="header">Finance</ThemedText>
+      {overview ? <UiText type="screenTitle" accessibilityRole="header">Finance</UiText> : <ThemedText type="screenTitle" accessibilityRole="header">Finance</ThemedText>}
       <ScrollView horizontal style={styles.navigationViewport} contentContainerStyle={styles.navigation}
         contentInsetAdjustmentBehavior="never" showsHorizontalScrollIndicator
         accessibilityLabel="Finance destinations" accessibilityHint="Swipe horizontally if enlarged text extends beyond the screen.">
         {destinations.map((destination) => <View key={destination.value} style={styles.navigationItem}>
-          <FormButton variant="navigation" compactNavigation label={destination.label} selected={selection.view === destination.value} onPress={() => navigateView(destination.value)} />
+          <FormButton appearance={overview ? 'v2' : undefined} variant="navigation" compactNavigation label={destination.label} selected={selection.view === destination.value} onPress={() => navigateView(destination.value)} />
         </View>)}
       </ScrollView>
       {!!error && <View style={styles.notice}>
@@ -136,13 +139,13 @@ export function FinanceScreen({ initialView, initialRecordId, initialDueDate }: 
       key={selection.view}
       style={styles.list}
       contentInsetAdjustmentBehavior="never"
-      contentContainerStyle={[styles.inner, styles.content]}
+      contentContainerStyle={[styles.inner, styles.content, overview && { paddingTop: 8 }]}
       contentOffset={{ x: 0, y: scrollOffset }}
       onScroll={onScroll}
       scrollEventThrottle={16}
       keyboardShouldPersistTaps="handled"
       data={[]}
-      ListHeaderComponent={<View style={styles.header}>
+      ListHeaderComponent={<View style={[styles.header, overview && { gap: 12 }]}>
         {selection.view === 'dashboard' && <>
           <FinancePeriodControls period={selection.period} today={today} onKind={setPeriodKind} onMove={navigatePeriod} onCurrent={returnToCurrent} />
           {snapshot?.analytics && <FinanceDashboard analytics={snapshot.analytics} spendingExpanded={spendingExpanded} onToggleSpending={() => setSpendingExpanded((expanded) => !expanded)} />}
@@ -176,7 +179,7 @@ export function FinanceScreen({ initialView, initialRecordId, initialDueDate }: 
     {categoriesOpen && <FinanceCategoryManager categories={categories}
       onCreate={(name, type) => mutate(() => access.createCategory(name, type))}
       onDelete={(id) => mutate(() => access.deleteCategory(id))} onDismiss={() => setCategoriesOpen(false)} />}
-  </SheetRefreshContext.Provider>;
+  </SheetRefreshContext.Provider></DesignProvider>;
 }
 
 const styles = StyleSheet.create({

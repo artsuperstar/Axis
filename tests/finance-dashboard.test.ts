@@ -25,6 +25,6 @@ test('real dashboard typography emphasizes Net Flow and keeps signed full amount
   assert.match(markup, /Net Flow, negative, -R\$ 1\.234\.567,89/);
   assert.match(markup, /Income, positive, R\$ 9\.999\.999,99/);
   assert.match(markup, /Food, R\$ 11\.234\.567,88, approximately 100% of expenses/);
-  assert.match(markup, /font-size:28px/); assert.ok(!markup.includes('Balance'));
+  assert.match(markup, /font-size:20px/); assert.ok(!markup.includes('Balance'));
   assert.ok(!markup.includes('text-overflow:ellipsis')); assert.ok(!markup.includes('line-clamp'));
 });
