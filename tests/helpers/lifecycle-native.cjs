@@ -83,14 +83,14 @@ const fixture = {
     return wrapped;
   },
 };
+function usePreventRemove(enabled, callback) {
+  React.useEffect(() => {
+    if (!enabled) return;
+    removalListeners.add(callback); return () => removalListeners.delete(callback);
+  }, [enabled, callback]);
+}
 module.exports = {
   fixture, controls,
-  navigation: { usePreventRemove(enabled, callback) {
-    React.useEffect(() => {
-      if (!enabled) return;
-      removalListeners.add(callback); return () => removalListeners.delete(callback);
-    }, [enabled, callback]);
-  } },
   selection: { FormSelectionHost, FormScrollView, useFormSelection: () => selection, focusFormControl: (target) => target?.focus() },
   autocomplete: { AutocompleteField: host('AutocompleteField') },
   themedText: { ThemedText: host('ThemedText') },
@@ -98,7 +98,7 @@ module.exports = {
   screenSafeArea: { SafeAreaView: host('SafeAreaView') },
   crypto: { randomUUID }, database: { useDatabase: () => fixture.db },
   picker: { __esModule: true, default: host('DateTimePicker'), DateTimePickerAndroid: { open: (options) => fixture.pickers.push(options) } },
-  router: { router: { push: (target) => fixture.navigation.push({ method: 'push', target }), navigate: (target) => fixture.navigation.push({ method: 'navigate', target }),
+  router: { usePreventRemove, router: { push: (target) => fixture.navigation.push({ method: 'push', target }), navigate: (target) => fixture.navigation.push({ method: 'navigate', target }),
     canGoBack: () => true, back: () => fixture.navigation.push({ method: 'back' }), replace: (target) => fixture.navigation.push({ method: 'replace', target }) }, useFocusEffect(callback) {
     React.useEffect(() => {
       const effect = { callback, cleanup: callback() }; focusEffects.add(effect);
@@ -123,7 +123,7 @@ module.exports = {
   refocus() { for (const effect of [...focusEffects]) { effect.cleanup?.(); effect.cleanup = effect.callback(); } },
   blur() { for (const effect of [...focusEffects]) { effect.cleanup?.(); effect.cleanup = undefined; } },
   back() { for (const callback of [...backListeners].reverse()) if (callback()) return true; return false; },
-  removeRoute(action) { for (const callback of [...removalListeners]) callback({ data: { action } }); },
+  removeRoute(action) { for (const callback of [...removalListeners]) callback({ repeat: () => fixture.navigation.push({ method: 'repeat', target: action }) }); },
   reduceMotion(value) { for (const callback of [...reducedMotionListeners]) callback(value); },
   reducedMotionListenerCount: () => reducedMotionListeners.size,
 };

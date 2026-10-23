@@ -80,7 +80,7 @@ export function RoutinesContent({ routines, next, sequence, archived, ready, loa
       <UiIcon name={archived ? 'archive' : 'dumbbell'} size={28} color={colors.brand} />
       <UiText type="cardTitle">No {archived ? 'archived' : 'active'} routines yet.</UiText>
       <UiText type="secondary" color="textSecondary">{archived ? 'Archived routines will appear here.' : 'Create a routine to build your workout library.'}</UiText>
-    </GroupSurface> : null}
+    </GroupSurface> : undefined}
     ItemSeparatorComponent={() => <View style={styles.separator} />}
     renderItem={({ item }) => <RoutineCard routine={item} {...actions} />} />;
 }

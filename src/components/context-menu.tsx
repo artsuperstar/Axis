@@ -1,6 +1,6 @@
 import { useFocusEffect } from 'expo-router';
 import { useCallback, useEffect, useId, useRef } from 'react';
-import { BackHandler, Platform, View } from 'react-native';
+import { BackHandler, Platform, type ViewInstance } from 'react-native';
 
 import { ControlSize, Space } from '@/constants/theme';
 
@@ -15,8 +15,8 @@ export function ContextMenu({ label, actions, disabled = false, onOpen, appearan
   label: string; actions: readonly ContextMenuAction[]; disabled?: boolean; onOpen?: () => void; appearance?: 'v2';
 }) {
   const id = useId();
-  const trigger = useRef<View>(null);
-  const firstAction = useRef<View>(null);
+  const trigger = useRef<ViewInstance>(null);
+  const firstAction = useRef<ViewInstance>(null);
   const { activeId, open, close } = useFormSelection();
   const expanded = activeId === id;
   // A pushed route or tab switch must never leave an overlay on the retained screen.

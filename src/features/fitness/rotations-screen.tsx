@@ -76,7 +76,7 @@ function RotationList({ rotations, loaded, error, onRetry, renderCard }: {
       <UiIcon name="repeat" color={colors.brand} size={28} />
       <UiText type="cardTitle">No workout rotations yet.</UiText>
       <UiText color="textSecondary">Create a rotation to organize the order of your routines.</UiText>
-    </GroupSurface> : null}
+    </GroupSurface> : undefined}
     renderItem={({ item }) => <>{renderCard(item)}</>} />;
 }
 

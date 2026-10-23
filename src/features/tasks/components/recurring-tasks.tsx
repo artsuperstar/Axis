@@ -97,7 +97,7 @@ export function RecurringTasks({ tasks, recurrences, onEdit, onHistory, onDelete
       <UiIcon name="repeat" color={colors.taskText} size={32} />
       <UiText type="cardTitle" style={styles.centered}>No repeating tasks yet.</UiText>
       <UiText type="secondary" color="textSecondary" style={styles.centered}>Create a recurring task from New Task to see it here.</UiText>
-    </GroupSurface> : null}
+    </GroupSurface> : undefined}
     renderSectionHeader={({ section }) => <View style={styles.sectionHeader}>
       <UiText type="editorSection" accessibilityRole="header" accessibilityLabel={`${section.title}, ${section.data.length} repeating ${section.data.length === 1 ? 'task' : 'tasks'}`}>{section.title}</UiText>
       <View style={[styles.badge, { backgroundColor: colors.brandSoft }]}><UiText type="metadata" color="brand" accessible={false} importantForAccessibility="no">{section.data.length}</UiText></View>

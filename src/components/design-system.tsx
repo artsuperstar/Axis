@@ -1,6 +1,6 @@
 import { useFonts } from 'expo-font';
 import { createContext, useContext, useEffect, useRef, useState, type ReactNode, type Ref } from 'react';
-import { Pressable, StyleSheet, View, type PressableProps, type ViewProps, type ViewStyle } from 'react-native';
+import { Pressable, StyleSheet, View, type PressableProps, type ViewProps, type ViewStyle, type ViewInstance } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
 import { DesignColors, DesignTypography, MotionTokens, Shape, TouchTarget, displayFontStyle, interfaceFontStyle, type DesignPalette, type DesignTextRole } from '@/constants/design-system-v2';
@@ -50,7 +50,7 @@ export function UiText({ color = 'textPrimary', type = 'body', style, ...props }
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
 /** UI-thread press feedback with unchanged hit bounds; rows can opt out of scaling. */
-export function UiPressable({ style, onPressIn, onPressOut, onHoverIn, onHoverOut, onFocus, onBlur, ref, scale = false, ...props }: PressableProps & { ref?: Ref<View>; scale?: boolean }) {
+export function UiPressable({ style, onPressIn, onPressOut, onHoverIn, onHoverOut, onFocus, onBlur, ref, scale = false, ...props }: PressableProps & { ref?: Ref<ViewInstance>; scale?: boolean }) {
   const reduced = useReducedMotion();
   const colors = useDesignColors();
   const progress = useSharedValue(0);
@@ -71,7 +71,7 @@ export function UiPressable({ style, onPressIn, onPressOut, onHoverIn, onHoverOu
 
 export function UiButton({ label, onPress, disabled = false, selected = false, accessibilityLabel, accessibilityHint, variant = 'secondary', expanded, align = 'center', ref, icon, leadingIcon, trailingIcon, showIndicator = true, feature, tone, compact = false, compactNavigation = false }: {
   label: string; onPress: () => void; disabled?: boolean; selected?: boolean; accessibilityLabel?: string; variant?: ButtonVariant;
-  expanded?: boolean; align?: 'start' | 'center'; ref?: Ref<View>; icon?: UiIconName;
+  expanded?: boolean; align?: 'start' | 'center'; ref?: Ref<ViewInstance>; icon?: UiIconName;
   leadingIcon?: UiIconName; trailingIcon?: UiIconName; accessibilityHint?: string;
   showIndicator?: boolean;
   feature?: 'fitness' | 'tasks';

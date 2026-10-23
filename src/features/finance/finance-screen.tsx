@@ -125,7 +125,7 @@ export function FinanceScreen({ initialView, initialRecordId, initialDueDate }: 
           { label: 'Categories', onPress: () => setCategoriesOpen(true) },
         ]} />
       </View>}
-      ListEmptyComponent={!snapshot ? (error ? null : <ActivityIndicator color={colors.accent} accessibilityLabel="Loading transactions" />) : <View style={styles.empty}>
+      ListEmptyComponent={!snapshot ? (error ? undefined : <ActivityIndicator color={colors.accent} accessibilityLabel="Loading transactions" />) : <View style={styles.empty}>
         <ThemedText type="cardTitle">No transactions yet</ThemedText>
         <ThemedText themeColor="textSecondary">Actual income received and expenses paid will appear here.</ThemedText>
       </View>}
@@ -134,7 +134,7 @@ export function FinanceScreen({ initialView, initialRecordId, initialDueDate }: 
         source={snapshot?.ledger?.sources[item.id]} onEdit={() => openTransaction(item)} onDelete={() => remove(item)} />}
       ListFooterComponent={snapshot?.ledger?.next ? <View style={styles.pageFooter}>
         <FormButton variant="quiet" label="Load older transactions" onPress={loadMoreTransactions} />
-      </View> : null}
+      </View> : undefined}
     /> : <FlatList
       key={selection.view}
       style={styles.list}
@@ -157,7 +157,7 @@ export function FinanceScreen({ initialView, initialRecordId, initialDueDate }: 
         {selection.view === 'work' && snapshot?.work && <WorkView data={snapshot.work} categories={categories} access={workAccess} mutate={mutate} initialEntryId={sourceWorkspace ? undefined : initialRecordId}
           onCreateCategory={(name) => mutate(() => access.createCategory(name, 'income'))} />}
       </View>}
-      ListEmptyComponent={!snapshot && !error && selection.view !== 'dashboard' ? <ActivityIndicator color={colors.accent} accessibilityLabel="Loading Finance" /> : null}
+      ListEmptyComponent={!snapshot && !error && selection.view !== 'dashboard' ? <ActivityIndicator color={colors.accent} accessibilityLabel="Loading Finance" /> : undefined}
       renderItem={() => null}
     />}
     {selection.view === 'transactions' && <FloatingAddButton label="Add transaction" disabled={!snapshot}

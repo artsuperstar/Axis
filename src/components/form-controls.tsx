@@ -1,5 +1,5 @@
 import { useEffect, useId, useRef, useState, type Ref } from 'react';
-import { Pressable, ScrollView, StyleSheet, TextInput, View, useWindowDimensions, type TextInputProps } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, TextInput, View, useWindowDimensions, type TextInputProps, type ViewInstance, type TextInputInstance, type ScrollViewInstance } from 'react-native';
 
 import { ThemedText } from '@/components/themed-text';
 import { UiButton, UiIcon, UiPressable, UiText, useDesignColors, useInterfaceFontStyle } from './design-system';
@@ -61,11 +61,11 @@ export function SegmentedControl<T extends SelectionValue>({ label, value, optio
 
 export function SelectField<T extends SelectionValue>({ label, value, options, onChange, displayValue, description, action, onOpen, disabled = false, error, ref, appearance, icon }: {
   label: string; value: T; options: readonly SelectionOption<T>[]; onChange: (value: T) => void; displayValue?: string; description?: string;
-  action?: SelectionInlineAction; onOpen?: () => void; disabled?: boolean; error?: string | null; ref?: Ref<View>;
+  action?: SelectionInlineAction; onOpen?: () => void; disabled?: boolean; error?: string | null; ref?: Ref<ViewInstance>;
   appearance?: 'v2'; icon?: UiIconName;
 }) {
   const id = useId();
-  const trigger = useRef<View>(null);
+  const trigger = useRef<ViewInstance>(null);
   const selection = useFormSelection();
   const expanded = selection.activeId === id;
   return <FormSelect ref={(node) => {
@@ -111,8 +111,8 @@ export function InlineNameForm({ title, onCancel, onComplete, onSize, onSubmit, 
   const [error, setError] = useState<string | null>(null);
   const [bodyHeight, setBodyHeight] = useState(0);
   const [footerHeight, setFooterHeight] = useState(0);
-  const input = useRef<TextInput>(null);
-  const scroll = useRef<ScrollView>(null);
+  const input = useRef<TextInputInstance>(null);
+  const scroll = useRef<ScrollViewInstance>(null);
   const inputBounds = useRef({ y: 0, height: 0 });
   const viewportHeight = useRef(0);
   const submitting = useRef(false);
@@ -162,7 +162,7 @@ export function FormButton({ label, onPress, disabled = false, selected = false,
   compactNavigation?: boolean;
   expanded?: boolean;
   align?: 'start' | 'center';
-  ref?: Ref<View>;
+  ref?: Ref<ViewInstance>;
   appearance?: 'v2';
   tone?: 'brand';
   leadingIcon?: UiIconName; trailingIcon?: UiIconName; accessibilityHint?: string;
@@ -199,7 +199,7 @@ export function FormSelect({ label, value, onPress, disabled = false, expanded =
   disabled?: boolean;
   expanded?: boolean;
   accessibilityHint?: string;
-  ref?: Ref<View>;
+  ref?: Ref<ViewInstance>;
   error?: string | null;
   appearance?: 'v2'; icon?: UiIconName;
 }) {
@@ -297,12 +297,12 @@ export function FormWeekday({ label, checked, onPress, appearance }: { label: st
 }
 
 export function FormField({ label, style, ref, helperText, editable = true, readOnly: readOnlyProp = false, disabled = false, multiline = false, error, accessibilityState, onFocus, onBlur, appearance, showLabel = true, ...props }: TextInputProps & {
-  label: string; helperText?: string; disabled?: boolean; error?: string | null; ref?: Ref<TextInput>; appearance?: 'v2'; showLabel?: boolean;
+  label: string; helperText?: string; disabled?: boolean; error?: string | null; ref?: Ref<TextInputInstance>; appearance?: 'v2'; showLabel?: boolean;
 }) {
   const colors = useTheme();
   const design = useDesignColors();
   const font = useInterfaceFontStyle();
-  const input = useRef<TextInput>(null);
+  const input = useRef<TextInputInstance>(null);
   const focus = useFormFocus();
   const [focused, setFocused] = useState(false);
   const unavailable = disabled || !!accessibilityState?.disabled;

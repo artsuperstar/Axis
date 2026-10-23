@@ -1,5 +1,4 @@
-import { router, useLocalSearchParams, useNavigation } from 'expo-router';
-import { usePreventRemove } from 'expo-router/react-navigation';
+import { router, useLocalSearchParams, usePreventRemove } from 'expo-router';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, Alert, Keyboard, KeyboardAvoidingView, Platform, StyleSheet, View, useWindowDimensions } from 'react-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -29,7 +28,6 @@ function JournalContent() {
   const requestedDate = typeof params.date === 'string' ? params.date : undefined;
   const journal = useJournal(requestedDate);
   const { editor, targetDate, loadDate } = journal;
-  const navigation = useNavigation();
   const colors = useDesignColors(); const insets = useSafeAreaInsets(); const { fontScale } = useWindowDimensions();
   const selection = useRef<FormSelectionHandle>(null);
   const pendingChoice = useRef<((choice: JournalLeaveChoice) => void) | null>(null);
@@ -48,10 +46,11 @@ function JournalContent() {
     pendingChoice.current = null; setSurface(null); choose?.(choice);
   }
   function closeSurface() { if (pendingChoice.current) finishChoice('keep'); else setSurface(null); }
-  usePreventRemove(journal.editor.dirty(), ({ data }) => {
+  usePreventRemove(journal.editor.dirty(), ({ repeat }) => {
     if (surface) { closeSurface(); return; }
     if (selection.current?.dismiss()) return;
-    guarded(() => navigation.dispatch(data.action));
+    // Save/Discard makes the editor clean before resuming the exact blocked removal.
+    guarded(repeat);
   });
   const selectDate = useCallback((date: string) => {
     if (date === targetDate && date === editor.getState().date) { setSurface(null); return; }

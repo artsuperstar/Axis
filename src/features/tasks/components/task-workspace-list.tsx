@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useImperativeHandle, useRef, useState, type ReactElement, type Ref } from 'react';
-import { SectionList, StyleSheet, View, type ViewToken } from 'react-native';
+import { useCallback, useEffect, useImperativeHandle, useRef, useState, type ComponentRef, type ReactElement, type Ref } from 'react';
+import { SectionList, StyleSheet, View, type SectionListProps } from 'react-native';
 
 import { UiText, useDesignColors } from '@/components/design-system';
 import { InternalNavigation } from '@/components/internal-navigation';
@@ -33,7 +33,7 @@ export function TaskWorkspaceList({ ref, sections, disabled, loading, renderRow,
   const reduced = useReducedMotion();
   const disclosureMotion = useTaskDisclosureMotion(sections);
   useImperativeHandle(ref, () => ({ cancelDisclosure: disclosureMotion.cancel }), [disclosureMotion.cancel]);
-  const list = useRef<SectionList<TaskListItem, TaskWorkspaceSection>>(null);
+  const list = useRef<ComponentRef<typeof SectionList<TaskListItem, TaskWorkspaceSection>>>(null);
   const [active, setActive] = useState<Destination>('Earlier');
   const jump = useRef<{ sectionIndex: number; attempts: number; animated: boolean } | null>(null);
   const retry = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -45,7 +45,7 @@ export function TaskWorkspaceList({ ref, sections, disabled, loading, renderRow,
   }, []);
   useEffect(() => clearJump, [clearJump]);
   // Stable callbacks/config are required by VirtualizedList. Update only on section changes, never per frame.
-  const onViewableItemsChanged = useCallback(({ viewableItems }: { viewableItems: ViewToken<TaskListItem>[] }) => {
+  const onViewableItemsChanged = useCallback<NonNullable<SectionListProps<TaskListItem, TaskWorkspaceSection>['onViewableItemsChanged']>>(({ viewableItems }) => {
     if (jump.current) return;
     // SectionList also reports header/footer tokens (index null), including empty/collapsed sections.
     const title = viewableItems.find((token) => token.isViewable && isDestination(token.section?.title ?? ''))?.section?.title;
@@ -85,7 +85,7 @@ export function TaskWorkspaceList({ ref, sections, disabled, loading, renderRow,
       keyExtractor={(item: TaskListItem | TaskWorkspaceSection) => 'task' in item ? item.key : `section:${item.title}`}
       viewabilityConfig={viewability} onViewableItemsChanged={onViewableItemsChanged}
       onScrollToIndexFailed={scrollFailed} onScrollBeginDrag={clearJump}
-      ListHeaderComponent={loading}
+      ListHeaderComponent={loading ?? undefined}
       renderSectionHeader={({ section }) => renderHeader(section, () => disclosureMotion.begin(section))} renderSectionFooter={({ section }) => renderFooter(section)}
       renderItem={({ item, index, section }) => <>
         {section.title === 'Today' && index === section.completedStartIndex && <View testID="completed-today-label"

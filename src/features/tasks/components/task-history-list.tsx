@@ -99,7 +99,7 @@ export function TaskHistoryList({ sections, categories, recurrences, now, header
       <UiIcon name="check" color={theme.success} size={32} />
       <UiText type="cardTitle">No completed tasks yet.</UiText>
       <UiText type="secondary" color="textSecondary" style={styles.centered}>Completed tasks will appear here.</UiText>
-    </GroupSurface> : null}
+    </GroupSurface> : undefined}
     renderSectionHeader={({ section }) => {
       const tone = section.title === 'Completed' ? theme.success : colors.textSecondary;
       const icon = <View style={[styles.sectionIcon, { backgroundColor: `${tone}24`, borderColor: `${tone}99` }]}><UiIcon name={section.title === 'Completed' ? 'check' : 'forward'} color={tone} size={22} /></View>;

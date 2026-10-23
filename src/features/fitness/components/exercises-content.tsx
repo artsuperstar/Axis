@@ -78,7 +78,7 @@ export function ExercisesContent({ exercises, archived, query, ready, loading, o
       <UiIcon name={searching ? 'search' : archived ? 'archive' : 'dumbbell'} size={28} color={colors.brand} />
       <UiText type="cardTitle">{searching ? 'No exercises found.' : `No ${archived ? 'archived' : 'active'} exercises yet.`}</UiText>
       <UiText type="secondary" color="textSecondary">{searching ? 'Try a different search.' : archived ? 'Archived exercises will appear here.' : 'Create an exercise to build your library.'}</UiText>
-    </GroupSurface> : null}
+    </GroupSurface> : undefined}
     ItemSeparatorComponent={() => <View style={styles.separator} />}
     renderItem={({ item }) => <ExerciseLibraryCard exercise={item} onOpen={onOpen} onArchive={onArchive} />} />;
 }

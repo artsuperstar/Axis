@@ -78,10 +78,10 @@ export function HistoryContent({ sessions, loaded, loading, hasMore, onLoadMore,
     ListEmptyComponent={loaded ? <GroupSurface style={[styles.bounded, styles.empty, { borderColor: colors.border }]}>
       <UiIcon name="clock" size={28} color={colors.brand} /><UiText type="cardTitle">No workouts yet.</UiText>
       <UiText type="secondary" color="textSecondary">Completed workouts will appear here.</UiText>
-    </GroupSurface> : null}
+    </GroupSurface> : undefined}
     ListFooterComponent={hasMore ? <View style={[styles.bounded, styles.footer]}>
       <FormButton appearance="v2" variant="secondary" label="Load older workouts" onPress={onLoadMore} />
-    </View> : null} />;
+    </View> : undefined} />;
 }
 
 const styles = StyleSheet.create({

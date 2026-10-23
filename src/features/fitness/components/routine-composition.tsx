@@ -1,5 +1,5 @@
 import { useCallback, type ReactNode, type Ref } from 'react';
-import { FlatList, StyleSheet, View, useWindowDimensions, type ScrollView, type ScrollViewProps } from 'react-native';
+import { FlatList, StyleSheet, View, useWindowDimensions, type ScrollViewInstance, type ScrollViewProps } from 'react-native';
 
 import { BackButton } from '@/components/back-button';
 import { useSheetScrollProps } from '@/components/adaptive-sheet';
@@ -33,8 +33,8 @@ type CompositionEntry = { key: string; exercise: Exercise };
 
 // VirtualizedList replaces the returned element's ref. Forward it to both owners:
 // its measurement/scroll machinery and AdaptiveSheet's focused-input reveal.
-export function RoutineScrollView({ sheetRef, ref, ...props }: ScrollViewProps & { sheetRef: Ref<ScrollView>; ref?: Ref<ScrollView> }) {
-  const attach = useCallback((node: ScrollView | null) => {
+export function RoutineScrollView({ sheetRef, ref, ...props }: ScrollViewProps & { sheetRef: Ref<ScrollViewInstance>; ref?: Ref<ScrollViewInstance> }) {
+  const attach = useCallback((node: ScrollViewInstance | null) => {
     for (const target of [sheetRef, ref]) {
       if (typeof target === 'function') target(node);
       else if (target) target.current = node;

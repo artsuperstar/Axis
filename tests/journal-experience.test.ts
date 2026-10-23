@@ -90,7 +90,29 @@ test('native removal guard retains the draft on Keep and replays the requested B
   await act(() => (runtime.removeRoute as (action: unknown) => void)(action)); await app.press('Keep editing');
   assert.equal(app.find('FormField', 'Entry').props.value, 'Swipe-back draft'); assert.equal(runtime.fixture.navigation.length, 0);
   await act(() => (runtime.removeRoute as (action: unknown) => void)(action)); await app.press('Discard changes');
-  assert.deepEqual(runtime.fixture.navigation.at(-1), { method: 'dispatch', target: action });
+  assert.deepEqual(runtime.fixture.navigation, [{ method: 'repeat', target: action }]);
+});
+
+test('Router removal resumes the exact blocked action once after Save and protects the next dirty draft', async (t) => {
+  const f = await fixture(t); const app = await mount(createElement(screens.JournalScreen), f.db); t.after(app.unmount);
+  await app.change('Entry', 'Saved before native Back'); const action = { type: 'GO_BACK', source: 'journal' };
+  await act(() => (runtime.removeRoute as (action: unknown) => void)(action)); await app.press('Save');
+  assert.equal(f.access.getEntry(today)!.content, 'Saved before native Back'); assert.equal(f.access.getDraft(today), null);
+  assert.deepEqual(runtime.fixture.navigation, [{ method: 'repeat', target: action }]);
+  runtime.fixture.navigation.length = 0;
+  await app.change('Entry', 'Another protected draft');
+  await act(() => (runtime.removeRoute as (action: unknown) => void)(action)); await app.press('Keep editing');
+  assert.equal(runtime.fixture.navigation.length, 0); assert.equal(app.find('FormField', 'Entry').props.value, 'Another protected draft');
+});
+
+test('failed Save during native removal keeps writing and does not resume navigation', async (t) => {
+  const f = await fixture(t); const app = await mount(createElement(screens.JournalScreen), f.db); t.after(app.unmount);
+  await app.change('Entry', 'Writing survives a failed Save');
+  f.sqlite.exec("CREATE TRIGGER sdk58_fail_journal BEFORE INSERT ON journal_entries BEGIN SELECT RAISE(ABORT, 'Injected save failure'); END;");
+  await act(() => (runtime.removeRoute as (action: unknown) => void)({ type: 'GO_BACK', source: 'journal' })); await app.press('Save');
+  assert.equal(runtime.fixture.navigation.length, 0); assert.equal(f.access.getEntry(today), null);
+  assert.equal(app.find('FormField', 'Entry').props.value, 'Writing survives a failed Save');
+  assert.equal(f.access.getDraft(today)!.content, 'Writing survives a failed Save');
 });
 
 test('restarting restores a saved-entry-plus-draft without autosaving; Save clears draft atomically', async (t) => {

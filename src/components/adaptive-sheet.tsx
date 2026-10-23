@@ -1,5 +1,5 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode, type Ref } from 'react';
-import { Keyboard, Modal, Platform, Pressable, ScrollView, StyleSheet, View, useWindowDimensions, type KeyboardEvent, type ScrollViewProps, type StyleProp, type TextInput, type ViewStyle } from 'react-native';
+import { Keyboard, Modal, Platform, Pressable, StyleSheet, View, useWindowDimensions, type KeyboardEvent, type ScrollViewProps, type StyleProp, type TextInputInstance, type ViewStyle, type ScrollViewInstance, type ViewInstance } from 'react-native';
 import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Radius, Space, SurfaceColors } from '@/constants/theme';
@@ -15,7 +15,7 @@ import { SheetRefreshNotice } from './sheet-refresh-notice';
 import { useDesignColors } from './design-system';
 
 const SheetBounds = createContext<{ height: number; bottomInset: number; leftInset: number; rightInset: number } | null>(null);
-const SheetScrollContext = createContext<(ScrollViewProps & { ref: Ref<ScrollView> }) | null>(null);
+const SheetScrollContext = createContext<(ScrollViewProps & { ref: Ref<ScrollViewInstance> }) | null>(null);
 const ModalBackContext = createContext<((handler: () => void) => () => void) | null>(null);
 
 /** Opt-in nested surfaces consume modal Back/outside/escape before the parent draft closes. */
@@ -58,7 +58,7 @@ export function AdaptiveModal({ children, onDismiss, visible = true, onClosed }:
 function SheetViewport({ children, onDismiss }: { children: ReactNode; onDismiss: () => void }) {
   const { height, width } = useWindowDimensions();
   const insets = useSafeAreaInsets();
-  const viewport = useRef<View>(null);
+  const viewport = useRef<ViewInstance>(null);
   const [keyboardTop, setKeyboardTop] = useState<number | null>(() => Keyboard.metrics?.()?.screenY ?? null);
   const revision = useRef(0);
   const [windowFrame, setWindowFrame] = useState({ height, top: 0 });
@@ -103,11 +103,11 @@ export function AdaptiveSheet({ title, header, children, onDismiss, action, onCo
   const selection = useFormSelection();
   const [headerHeight, setHeaderHeight] = useState<number | null>(null);
   const [contentHeight, setContentHeight] = useState<number | null>(null);
-  const body = useRef<ScrollView>(null);
-  const attachBody = useCallback((scroll: ScrollView | null) => { body.current = scroll; }, []);
-  const bodyViewport = useRef<View>(null);
+  const body = useRef<ScrollViewInstance>(null);
+  const attachBody = useCallback((scroll: ScrollViewInstance | null) => { body.current = scroll; }, []);
+  const bodyViewport = useRef<ViewInstance>(null);
   const offset = useRef(0);
-  const focused = useRef<TextInput | null>(null);
+  const focused = useRef<TextInputInstance | null>(null);
   const frame = useRef<number | null>(null);
   const layout = adaptiveSheetLayout(headerHeight ?? 0, contentHeight ?? maximum, maximum, bounds?.bottomInset);
   const ready = headerHeight !== null && contentHeight !== null;
@@ -127,8 +127,8 @@ export function AdaptiveSheet({ title, header, children, onDismiss, action, onCo
       });
     });
   }, []);
-  const focus = useMemo(() => ({ focus: (input: TextInput | null) => { focused.current = input; revealFocused(); },
-    blur: (input: TextInput | null) => { if (focused.current === input) focused.current = null; } }), [revealFocused]);
+  const focus = useMemo(() => ({ focus: (input: TextInputInstance | null) => { focused.current = input; revealFocused(); },
+    blur: (input: TextInputInstance | null) => { if (focused.current === input) focused.current = null; } }), [revealFocused]);
   useEffect(() => { revealFocused(); }, [layout.height, headerHeight, contentHeight, revealFocused]);
   useEffect(() => () => { if (frame.current !== null) cancelAnimationFrame(frame.current); focused.current = null; }, []);
   const scrollProps = { ref: attachBody, style: styles.body, contentContainerStyle: contentContainerStyle ?? styles.content,

@@ -1,5 +1,5 @@
 import { useEffect, useId, useRef, useState } from 'react';
-import { ScrollView, StyleSheet, TextInput, View } from 'react-native';
+import { ScrollView, StyleSheet, View, type ViewInstance, type TextInputInstance } from 'react-native';
 
 import { Space } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
@@ -23,7 +23,7 @@ type AutocompleteProps<T extends SelectionValue> = {
 /** Search and persistence are feature callbacks. The field only owns the overlay interaction. */
 export function AutocompleteField<T extends SelectionValue>(props: AutocompleteProps<T>) {
   const id = useId();
-  const trigger = useRef<View>(null);
+  const trigger = useRef<ViewInstance>(null);
   const selection = useFormSelection();
   const expanded = selection.activeId === id;
   function open() {
@@ -42,7 +42,7 @@ export function AutocompletePanel<T extends SelectionValue>({ label, value, getR
 }) {
   const [query, setQuery] = useState('');
   const [error, setError] = useState<string | null>(null);
-  const input = useRef<TextInput>(null);
+  const input = useRef<TextInputInstance>(null);
   const creating = useRef(false);
   const topHeight = useRef(0);
   const resultsHeight = useRef(0);

@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { Keyboard, Platform, StyleSheet, View, useWindowDimensions } from 'react-native';
+import { Keyboard, Platform, StyleSheet, View, useWindowDimensions, type ViewInstance } from 'react-native';
 
 import { AdaptiveSheet, useModalBackHandler } from '@/components/adaptive-sheet';
 import { AutocompleteField } from '@/components/autocomplete-field';
@@ -112,7 +112,7 @@ export function RoutineEditor({ routine, exercises, onSave, onCreateExercise, on
   const [targetEntry, setTargetEntry] = useState<string | null>(null);
   const [choosing, setChoosing] = useState(false);
   const [query, setQuery] = useState('');
-  const addTrigger = useRef<View>(null);
+  const addTrigger = useRef<ViewInstance>(null);
   const returning = useRef(false);
   const closePicker = useCallback(() => { Keyboard.dismiss(); returning.current = true; setChoosing(false); }, []);
   const cancelCreation = useCallback(() => { Keyboard.dismiss(); setCreating(null); }, []);

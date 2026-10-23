@@ -19,7 +19,6 @@ const boundaries: Record<string, string> = {
   'react-native': 'native', 'expo-router': 'router', 'expo-crypto': 'crypto', 'react-native-safe-area-context': 'safeArea',
   '@react-native-community/datetimepicker': 'picker',
   'react-native-screens/experimental': 'screenSafeArea',
-  'expo-router/react-navigation': 'navigation',
   '@/database/database-provider': 'database', '@/components/form-controls': 'controls', './form-controls': 'controls',
   '@/components/form-selection-host': 'selection', './form-selection-host': 'selection',
   '@/components/autocomplete-field': 'autocomplete', '@/components/themed-text': 'themedText', './themed-text': 'themedText',

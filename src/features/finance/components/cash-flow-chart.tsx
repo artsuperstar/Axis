@@ -60,10 +60,10 @@ export const CashFlowChart = memo(function CashFlowChart({ buckets, periodDescri
       </View>
     </View>
     {selected && <View testID="cash-flow-inspection" style={[styles.detail, { borderColor: theme.border }]}>
-      <UiText type="cardTitle" selectable style={styles.date}>{bucketDescription(selected)}</UiText>
-      <View style={styles.detailValues}>
-        <Detail label="Income" amount={selected.incomeMinor} color={colors.income} />
-        <Detail label="Expenses" amount={selected.expensesMinor} color={colors.expenses} />
+      <UiText testID="cash-flow-inspection-date" type="cardTitle" selectable style={styles.date}>{bucketDescription(selected)}</UiText>
+      <View testID="cash-flow-inspection-values" style={styles.detailValues}>
+        <Detail label="Income" amount={selected.incomeMinor} color={colors.income} basis={100 * fontScale} />
+        <Detail label="Expenses" amount={selected.expensesMinor} color={colors.expenses} basis={100 * fontScale} />
       </View>
     </View>}
   </View>;
@@ -72,8 +72,10 @@ export const CashFlowChart = memo(function CashFlowChart({ buckets, periodDescri
 function SeriesLabel({ label, color }: { label: string; color: string }) {
   return <View style={styles.series}><View accessible={false} style={[styles.dot, { backgroundColor: color }]} /><UiText type="smallLabel" color="textSecondary">{label}</UiText></View>;
 }
-function Detail({ label, amount, color }: { label: string; amount: bigint; color: string }) {
-  return <View style={styles.detailValue}><SeriesLabel label={label} color={color} /><UiText type="numeric" selectable>{formatBrlAmount(amount)}</UiText></View>;
+function Detail({ label, amount, color, basis }: { label: string; amount: bigint; color: string; basis: number }) {
+  return <View testID={`cash-flow-inspection-${label.toLowerCase()}`} style={[styles.detailValue, { flexBasis: basis }]}>
+    <SeriesLabel label={label} color={color} /><UiText type="numeric" selectable style={styles.detailAmount}>{formatBrlAmount(amount)}</UiText>
+  </View>;
 }
 const styles = StyleSheet.create({
   section: { gap: 12, borderWidth: 1, borderRadius: Shape.group, padding: 12 },
@@ -82,6 +84,9 @@ const styles = StyleSheet.create({
   graph: { flexDirection: 'row', alignItems: 'flex-start' }, axis: { justifyContent: 'space-between', paddingRight: 6 }, axisText: { textAlign: 'right' },
   plot: { flex: 1, minWidth: 0 }, image: { position: 'absolute', top: 0, left: 0, width: '100%' }, targets: { flexDirection: 'row', alignItems: 'stretch' },
   target: { alignItems: 'center', minHeight: 48 }, tick: { minHeight: 28, paddingVertical: 4, alignItems: 'center', borderRadius: 6, borderBottomWidth: 2 },
-  detail: { borderWidth: 1, borderRadius: Shape.control, padding: 12, flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', gap: 12 },
-  date: { flexGrow: 1, flexShrink: 1, flexBasis: 140 }, detailValues: { flexDirection: 'row', flexWrap: 'wrap', gap: 16, flexShrink: 1, maxWidth: '100%' }, detailValue: { gap: 4, flexShrink: 1, maxWidth: '100%' },
+  detail: { borderWidth: 1, borderRadius: Shape.control, padding: 12, flexDirection: 'column', alignItems: 'stretch', gap: 12 },
+  date: { width: '100%', minWidth: 0 },
+  detailValues: { width: '100%', flexDirection: 'row', flexWrap: 'wrap', gap: 16 },
+  detailValue: { gap: 4, flexGrow: 1, flexShrink: 1, minWidth: 0, maxWidth: '100%' },
+  detailAmount: { minWidth: 0, maxWidth: '100%', flexShrink: 1 },
 });

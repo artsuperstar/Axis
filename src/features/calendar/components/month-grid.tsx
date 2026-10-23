@@ -1,6 +1,6 @@
 import { useFocusEffect } from 'expo-router';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { Platform, StyleSheet, View, useWindowDimensions } from 'react-native';
+import { Platform, StyleSheet, View, useWindowDimensions, type ViewInstance } from 'react-native';
 
 import { FormButton } from '@/components/form-controls';
 import { focusFormControl } from '@/components/form-selection-host';
@@ -20,7 +20,7 @@ export function MonthGrid({ selection, today, markers, onDate, onMove, onToday }
   onMove: (direction: -1 | 1) => void; onToday: () => void;
 }) {
   const colors = useCalendarColors();
-  const trigger = useRef<View>(null);
+  const trigger = useRef<ViewInstance>(null);
   const restoreFocus = useRef(false);
   const [picker, setPicker] = useState<{ month: string; visible: boolean } | null>(null);
   const monthLabel = pickerValue(selection.month).toLocaleDateString(undefined, { month: 'long', year: 'numeric' });

@@ -1,5 +1,5 @@
 import { createContext, useCallback, useContext, useEffect, useImperativeHandle, useLayoutEffect, useMemo, useReducer, useRef, useState, type ReactNode, type Ref, type RefObject } from 'react';
-import { AccessibilityInfo, Keyboard, Platform, Pressable, ScrollView, StyleSheet, View, useWindowDimensions, type KeyboardEvent as NativeKeyboardEvent, type ScrollViewProps, type TextInput } from 'react-native';
+import { AccessibilityInfo, Keyboard, Platform, Pressable, ScrollView, StyleSheet, View, useWindowDimensions, type KeyboardEvent as NativeKeyboardEvent, type ScrollViewProps, type TextInputInstance, type ViewInstance, type ScrollViewInstance } from 'react-native';
 import { SafeAreaInsetsContext } from 'react-native-safe-area-context';
 
 import { ThemedText } from '@/components/themed-text';
@@ -11,8 +11,8 @@ import { ContentInsertion, raisedSurfaceShadow, useDesignColors } from './design
 import { selectionMenuLayout, selectionOverlayReducer, type SelectionOverlayState } from './form-selection';
 
 type CloseMenu = (restoreFocus?: boolean) => boolean;
-type MenuRequest = { id: string; label: string; trigger: View; estimatedHeight: number; content: ReactNode; keyboardInput?: boolean;
-  presentation?: 'actions'; appearance?: 'v2'; preferredWidth?: number; align?: 'start' | 'end'; initialFocus?: RefObject<View | null> };
+type MenuRequest = { id: string; label: string; trigger: ViewInstance; estimatedHeight: number; content: ReactNode; keyboardInput?: boolean;
+  presentation?: 'actions'; appearance?: 'v2'; preferredWidth?: number; align?: 'start' | 'end'; initialFocus?: RefObject<ViewInstance | null> };
 export type InlineActionControls = { title: string; onCancel: () => void; onComplete: () => void; onSize: (height: number) => void };
 export type SelectionInlineAction = { label: string; title: string; accessibilityLabel?: string; render: (controls: InlineActionControls) => ReactNode };
 type InlineRequest = { title: string; content: ReactNode };
@@ -27,7 +27,7 @@ export function useFormSelection() {
   return context;
 }
 
-export function focusFormControl(target: View | TextInput | null) {
+export function focusFormControl(target: ViewInstance | TextInputInstance | null) {
   if (!target) return;
   if (Platform.OS === 'web') target.focus();
   else AccessibilityInfo.sendAccessibilityEvent(target, 'focus');
@@ -38,11 +38,11 @@ export function FormSelectionHost({ children, ref, safeAreaApplied = false }: { 
   const { width, height, fontScale } = useWindowDimensions();
   const contextInsets = useContext(SafeAreaInsetsContext);
   const insets = safeAreaApplied ? zeroInsets : contextInsets ?? zeroInsets;
-  const host = useRef<View>(null);
-  const heading = useRef<View>(null);
-  const panel = useRef<View>(null);
+  const host = useRef<ViewInstance>(null);
+  const heading = useRef<ViewInstance>(null);
+  const panel = useRef<ViewInstance>(null);
   const request = useRef<MenuRequest | null>(null);
-  const returnFocus = useRef<View | null>(null);
+  const returnFocus = useRef<ViewInstance | null>(null);
   const measurement = useRef(0);
   const inlineRevision = useRef(0);
   const contentHeight = useRef(0);
@@ -182,7 +182,7 @@ export function FormSelectionHost({ children, ref, safeAreaApplied = false }: { 
 /** Both states render in this absolute surface, outside the editor's layout and scroll container. */
 export function SelectionOverlay({ label, content, inline, layout, presentation, appearance, panelRef, headingRef, onClose, onHeadingHeight, onOptionsHeight }: {
   label: string; content: ReactNode; inline: InlineRequest | null; layout: ReturnType<typeof selectionMenuLayout>;
-  panelRef?: Ref<View>; headingRef?: Ref<View>; onClose: () => void; onHeadingHeight: (height: number) => void; onOptionsHeight: (height: number) => void;
+  panelRef?: Ref<ViewInstance>; headingRef?: Ref<ViewInstance>; onClose: () => void; onHeadingHeight: (height: number) => void; onOptionsHeight: (height: number) => void;
   presentation?: 'actions';
   appearance?: 'v2';
 }) {
@@ -207,7 +207,7 @@ export function SelectionOverlay({ label, content, inline, layout, presentation,
 }
 
 /** Stop underlying form gestures while a menu is open; remeasure if scrolling was already in flight. */
-export function FormScrollView({ onScroll, scrollEnabled = true, ref, ...props }: ScrollViewProps & { ref?: Ref<ScrollView> }) {
+export function FormScrollView({ onScroll, scrollEnabled = true, ref, ...props }: ScrollViewProps & { ref?: Ref<ScrollViewInstance> }) {
   const selection = useFormSelection();
   return <ScrollView {...props} ref={ref} scrollEnabled={scrollEnabled && !selection.activeId} scrollEventThrottle={16}
     onScroll={(event) => { selection.reposition(); onScroll?.(event); }} />;

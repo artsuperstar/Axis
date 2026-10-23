@@ -55,7 +55,7 @@ export function DayAgenda({ date, today, items, onOpen, onToggleTask, header, lo
     initialNumToRender={8} maxToRenderPerBatch={8} windowSize={5} removeClippedSubviews={false} contentInsetAdjustmentBehavior="never"
     contentContainerStyle={[styles.content, width < 360 && { paddingHorizontal: Space.xs }]}
     ListHeaderComponent={<View style={styles.header}>{header}{loaded && <CalendarAgendaHeading date={date} today={today} />}</View>}
-    ListEmptyComponent={loaded ? <GroupSurface><UiText type="secondary" color="textSecondary">Nothing scheduled</UiText></GroupSurface> : null}
+    ListEmptyComponent={loaded ? <GroupSurface><UiText type="secondary" color="textSecondary">Nothing scheduled</UiText></GroupSurface> : undefined}
     renderItem={({ item }) => <CalendarAgendaCard item={item} onOpen={onOpen} onToggleTask={onToggleTask} />}
     ItemSeparatorComponent={() => <View style={{ height: Space.sm }} />} />;
 }
