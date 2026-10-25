@@ -114,7 +114,7 @@ test('Task/Transaction editors and both category managers use the shared adaptiv
     () => taskForms.TaskEditor({ task: null, recurrence: null, categories: [], onSave: () => {}, onCreateCategory: () => { throw Error(); }, onDismiss: () => {} }),
     () => transactionForms.TransactionEditor({ transaction: null, categories: [], onSave: () => {}, onCreateCategory: () => { throw Error(); }, onDismiss: () => {} }),
     () => taskCategories.CategoryManager({ categories: [], onCreate: () => {}, onDelete: () => {}, onDismiss: () => {} }),
-    () => financeCategories.FinanceCategoryManager({ categories: [], onCreate: () => {}, onDelete: () => {}, onDismiss: () => {} }),
+    () => financeCategories.FinanceCategoryManager({ categories: [], onCreate: () => { throw Error(); }, onDelete: () => {}, onDismiss: () => {} }),
     () => taskHistory.OccurrenceHistory({ task: { title: 'Task' } as Parameters<typeof taskHistory.OccurrenceHistory>[0]['task'], categories: [], recurrences: [], now: 1,
       readPage: () => ({ occurrences: [], nextBefore: null }), onStatus: () => { throw Error(); }, onDismiss: () => {} }),
   ];

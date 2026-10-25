@@ -1,0 +1,146 @@
+[
+  {
+    "width": 320,
+    "theme": "dark",
+    "title": "Rock in Rio Ticket",
+    "before": 178,
+    "after": 186,
+    "reduction": -8
+  },
+  {
+    "width": 320,
+    "theme": "dark",
+    "title": "Netflix",
+    "before": 154,
+    "after": 186,
+    "reduction": -32
+  },
+  {
+    "width": 320,
+    "theme": "dark",
+    "title": "Internet",
+    "before": 154,
+    "after": 186,
+    "reduction": -32
+  },
+  {
+    "width": 390,
+    "theme": "dark",
+    "title": "Rock in Rio Ticket",
+    "before": 154,
+    "after": 138,
+    "reduction": 16
+  },
+  {
+    "width": 390,
+    "theme": "dark",
+    "title": "Netflix",
+    "before": 154,
+    "after": 106,
+    "reduction": 48
+  },
+  {
+    "width": 390,
+    "theme": "dark",
+    "title": "Internet",
+    "before": 154,
+    "after": 106,
+    "reduction": 48
+  },
+  {
+    "width": 430,
+    "theme": "dark",
+    "title": "Rock in Rio Ticket",
+    "before": 154,
+    "after": 106,
+    "reduction": 48
+  },
+  {
+    "width": 430,
+    "theme": "dark",
+    "title": "Netflix",
+    "before": 154,
+    "after": 106,
+    "reduction": 48
+  },
+  {
+    "width": 430,
+    "theme": "dark",
+    "title": "Internet",
+    "before": 154,
+    "after": 106,
+    "reduction": 48
+  },
+  {
+    "width": 320,
+    "theme": "light",
+    "title": "Rock in Rio Ticket",
+    "before": 178,
+    "after": 186,
+    "reduction": -8
+  },
+  {
+    "width": 320,
+    "theme": "light",
+    "title": "Netflix",
+    "before": 154,
+    "after": 186,
+    "reduction": -32
+  },
+  {
+    "width": 320,
+    "theme": "light",
+    "title": "Internet",
+    "before": 154,
+    "after": 186,
+    "reduction": -32
+  },
+  {
+    "width": 390,
+    "theme": "light",
+    "title": "Rock in Rio Ticket",
+    "before": 154,
+    "after": 138,
+    "reduction": 16
+  },
+  {
+    "width": 390,
+    "theme": "light",
+    "title": "Netflix",
+    "before": 154,
+    "after": 106,
+    "reduction": 48
+  },
+  {
+    "width": 390,
+    "theme": "light",
+    "title": "Internet",
+    "before": 154,
+    "after": 106,
+    "reduction": 48
+  },
+  {
+    "width": 430,
+    "theme": "light",
+    "title": "Rock in Rio Ticket",
+    "before": 154,
+    "after": 106,
+    "reduction": 48
+  },
+  {
+    "width": 430,
+    "theme": "light",
+    "title": "Netflix",
+    "before": 154,
+    "after": 106,
+    "reduction": 48
+  },
+  {
+    "width": 430,
+    "theme": "light",
+    "title": "Internet",
+    "before": 154,
+    "after": 106,
+    "reduction": 48
+  }
+]

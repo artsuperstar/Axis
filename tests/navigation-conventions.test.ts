@@ -107,7 +107,7 @@ test('Axis picker top-left Back finishes date selection; Cancel discards and Sav
   const platform = (runtime.native as { Platform: { OS: string } }).Platform;
   const previous = platform.OS; platform.OS = 'ios'; t.after(() => { platform.OS = previous; });
   const app = await mount(createElement(screens.FinanceScreen, { initialView: 'transactions' }), f.db); t.after(app.unmount);
-  await app.tapSet('Add transaction'); await app.change('Description *', 'Working draft'); await app.change('Amount *', '25,90');
+  await app.tapSet('New transaction'); await app.change('Description *', 'Working draft'); await app.change('Amount *', '25,90');
   const modal = app.find('Modal');
   await act(() => (app.find('FormSelect', 'Date *').props.onPress as () => void)()); assert.ok(app.find('DateTimePicker'));
   const back = app.find('FormButton', 'Back from date picker');
@@ -119,7 +119,7 @@ test('Axis picker top-left Back finishes date selection; Cancel discards and Sav
   assert.ok(app.find('FormButton', 'Cancel')); assert.ok(app.find('FormButton', 'Save'));
   await app.press('Cancel'); assert.ok(!app.nodes().some((node) => node.kind === 'Modal'));
   assert.equal(f.finance.readLedgerPage().transactions.length, 0); assert.deepEqual(runtime.fixture.navigation, []);
-  await app.tapSet('Add transaction'); await app.change('Description *', 'Saved explicitly'); await app.change('Amount *', '25,90'); await app.press('Save');
+  await app.tapSet('New transaction'); await app.change('Description *', 'Saved explicitly'); await app.change('Amount *', '25,90'); await app.press('Save');
   assert.equal(f.finance.readLedgerPage().transactions[0].description, 'Saved explicitly');
   assert.equal(f.finance.readLedgerPage().transactions[0].amountMinor, 2590);
   assert.deepEqual(runtime.fixture.navigation, []);

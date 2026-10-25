@@ -1,0 +1,1769 @@
+[
+  {
+    "case": "stress-320-dark-1",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "icons": [
+      {
+        "title": "VeryLongUnbrokenTransactionNameVeryLongUnbrokenTransactionNameVeryLongUnbrokenTransactionName",
+        "icon": "icon-receipt",
+        "menu": true
+      },
+      {
+        "title": "A long transaction name identifying a purchase with a complete maximum monetary value",
+        "icon": "icon-tag",
+        "menu": true
+      },
+      {
+        "title": "ChatGPT",
+        "icon": "icon-receipt",
+        "menu": false
+      },
+      {
+        "title": "Internet",
+        "icon": "icon-home",
+        "menu": false
+      },
+      {
+        "title": "Água",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Popeyes",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Uncategorized receipt",
+        "icon": "icon-receipt",
+        "menu": true
+      },
+      {
+        "title": "Salary received",
+        "icon": "icon-briefcase",
+        "menu": true
+      }
+    ],
+    "filterLines": [
+      {
+        "label": "Transaction type: All",
+        "lines": 1
+      },
+      {
+        "label": "Transaction type: Expenses",
+        "lines": 1
+      },
+      {
+        "label": "Transaction type: Income",
+        "lines": 1
+      }
+    ],
+    "errors": []
+  },
+  {
+    "case": "stress-320-dark-2",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "icons": [
+      {
+        "title": "VeryLongUnbrokenTransactionNameVeryLongUnbrokenTransactionNameVeryLongUnbrokenTransactionName",
+        "icon": "icon-receipt",
+        "menu": true
+      },
+      {
+        "title": "A long transaction name identifying a purchase with a complete maximum monetary value",
+        "icon": "icon-tag",
+        "menu": true
+      },
+      {
+        "title": "ChatGPT",
+        "icon": "icon-receipt",
+        "menu": false
+      },
+      {
+        "title": "Internet",
+        "icon": "icon-home",
+        "menu": false
+      },
+      {
+        "title": "Água",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Popeyes",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Uncategorized receipt",
+        "icon": "icon-receipt",
+        "menu": true
+      },
+      {
+        "title": "Salary received",
+        "icon": "icon-briefcase",
+        "menu": true
+      }
+    ],
+    "filterLines": [
+      {
+        "label": "Transaction type: All",
+        "lines": 1
+      },
+      {
+        "label": "Transaction type: Expenses",
+        "lines": 1
+      },
+      {
+        "label": "Transaction type: Income",
+        "lines": 1
+      }
+    ],
+    "errors": []
+  },
+  {
+    "case": "stress-320-light-1",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "icons": [
+      {
+        "title": "VeryLongUnbrokenTransactionNameVeryLongUnbrokenTransactionNameVeryLongUnbrokenTransactionName",
+        "icon": "icon-receipt",
+        "menu": true
+      },
+      {
+        "title": "A long transaction name identifying a purchase with a complete maximum monetary value",
+        "icon": "icon-tag",
+        "menu": true
+      },
+      {
+        "title": "ChatGPT",
+        "icon": "icon-receipt",
+        "menu": false
+      },
+      {
+        "title": "Internet",
+        "icon": "icon-home",
+        "menu": false
+      },
+      {
+        "title": "Água",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Popeyes",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Uncategorized receipt",
+        "icon": "icon-receipt",
+        "menu": true
+      },
+      {
+        "title": "Salary received",
+        "icon": "icon-briefcase",
+        "menu": true
+      }
+    ],
+    "filterLines": [
+      {
+        "label": "Transaction type: All",
+        "lines": 1
+      },
+      {
+        "label": "Transaction type: Expenses",
+        "lines": 1
+      },
+      {
+        "label": "Transaction type: Income",
+        "lines": 1
+      }
+    ],
+    "errors": []
+  },
+  {
+    "case": "stress-320-light-2",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "icons": [
+      {
+        "title": "VeryLongUnbrokenTransactionNameVeryLongUnbrokenTransactionNameVeryLongUnbrokenTransactionName",
+        "icon": "icon-receipt",
+        "menu": true
+      },
+      {
+        "title": "A long transaction name identifying a purchase with a complete maximum monetary value",
+        "icon": "icon-tag",
+        "menu": true
+      },
+      {
+        "title": "ChatGPT",
+        "icon": "icon-receipt",
+        "menu": false
+      },
+      {
+        "title": "Internet",
+        "icon": "icon-home",
+        "menu": false
+      },
+      {
+        "title": "Água",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Popeyes",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Uncategorized receipt",
+        "icon": "icon-receipt",
+        "menu": true
+      },
+      {
+        "title": "Salary received",
+        "icon": "icon-briefcase",
+        "menu": true
+      }
+    ],
+    "filterLines": [
+      {
+        "label": "Transaction type: All",
+        "lines": 1
+      },
+      {
+        "label": "Transaction type: Expenses",
+        "lines": 1
+      },
+      {
+        "label": "Transaction type: Income",
+        "lines": 1
+      }
+    ],
+    "errors": []
+  },
+  {
+    "case": "stress-390-dark-1",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "icons": [
+      {
+        "title": "VeryLongUnbrokenTransactionNameVeryLongUnbrokenTransactionNameVeryLongUnbrokenTransactionName",
+        "icon": "icon-receipt",
+        "menu": true
+      },
+      {
+        "title": "A long transaction name identifying a purchase with a complete maximum monetary value",
+        "icon": "icon-tag",
+        "menu": true
+      },
+      {
+        "title": "ChatGPT",
+        "icon": "icon-receipt",
+        "menu": false
+      },
+      {
+        "title": "Internet",
+        "icon": "icon-home",
+        "menu": false
+      },
+      {
+        "title": "Água",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Popeyes",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Uncategorized receipt",
+        "icon": "icon-receipt",
+        "menu": true
+      },
+      {
+        "title": "Salary received",
+        "icon": "icon-briefcase",
+        "menu": true
+      }
+    ],
+    "filterLines": [
+      {
+        "label": "Transaction type: All",
+        "lines": 1
+      },
+      {
+        "label": "Transaction type: Expenses",
+        "lines": 1
+      },
+      {
+        "label": "Transaction type: Income",
+        "lines": 1
+      }
+    ],
+    "errors": []
+  },
+  {
+    "case": "stress-390-dark-2",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "icons": [
+      {
+        "title": "VeryLongUnbrokenTransactionNameVeryLongUnbrokenTransactionNameVeryLongUnbrokenTransactionName",
+        "icon": "icon-receipt",
+        "menu": true
+      },
+      {
+        "title": "A long transaction name identifying a purchase with a complete maximum monetary value",
+        "icon": "icon-tag",
+        "menu": true
+      },
+      {
+        "title": "ChatGPT",
+        "icon": "icon-receipt",
+        "menu": false
+      },
+      {
+        "title": "Internet",
+        "icon": "icon-home",
+        "menu": false
+      },
+      {
+        "title": "Água",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Popeyes",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Uncategorized receipt",
+        "icon": "icon-receipt",
+        "menu": true
+      },
+      {
+        "title": "Salary received",
+        "icon": "icon-briefcase",
+        "menu": true
+      }
+    ],
+    "filterLines": [
+      {
+        "label": "Transaction type: All",
+        "lines": 1
+      },
+      {
+        "label": "Transaction type: Expenses",
+        "lines": 1
+      },
+      {
+        "label": "Transaction type: Income",
+        "lines": 1
+      }
+    ],
+    "errors": []
+  },
+  {
+    "case": "stress-390-light-1",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "icons": [
+      {
+        "title": "VeryLongUnbrokenTransactionNameVeryLongUnbrokenTransactionNameVeryLongUnbrokenTransactionName",
+        "icon": "icon-receipt",
+        "menu": true
+      },
+      {
+        "title": "A long transaction name identifying a purchase with a complete maximum monetary value",
+        "icon": "icon-tag",
+        "menu": true
+      },
+      {
+        "title": "ChatGPT",
+        "icon": "icon-receipt",
+        "menu": false
+      },
+      {
+        "title": "Internet",
+        "icon": "icon-home",
+        "menu": false
+      },
+      {
+        "title": "Água",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Popeyes",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Uncategorized receipt",
+        "icon": "icon-receipt",
+        "menu": true
+      },
+      {
+        "title": "Salary received",
+        "icon": "icon-briefcase",
+        "menu": true
+      }
+    ],
+    "filterLines": [
+      {
+        "label": "Transaction type: All",
+        "lines": 1
+      },
+      {
+        "label": "Transaction type: Expenses",
+        "lines": 1
+      },
+      {
+        "label": "Transaction type: Income",
+        "lines": 1
+      }
+    ],
+    "errors": []
+  },
+  {
+    "case": "stress-390-light-2",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "icons": [
+      {
+        "title": "VeryLongUnbrokenTransactionNameVeryLongUnbrokenTransactionNameVeryLongUnbrokenTransactionName",
+        "icon": "icon-receipt",
+        "menu": true
+      },
+      {
+        "title": "A long transaction name identifying a purchase with a complete maximum monetary value",
+        "icon": "icon-tag",
+        "menu": true
+      },
+      {
+        "title": "ChatGPT",
+        "icon": "icon-receipt",
+        "menu": false
+      },
+      {
+        "title": "Internet",
+        "icon": "icon-home",
+        "menu": false
+      },
+      {
+        "title": "Água",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Popeyes",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Uncategorized receipt",
+        "icon": "icon-receipt",
+        "menu": true
+      },
+      {
+        "title": "Salary received",
+        "icon": "icon-briefcase",
+        "menu": true
+      }
+    ],
+    "filterLines": [
+      {
+        "label": "Transaction type: All",
+        "lines": 1
+      },
+      {
+        "label": "Transaction type: Expenses",
+        "lines": 1
+      },
+      {
+        "label": "Transaction type: Income",
+        "lines": 1
+      }
+    ],
+    "errors": []
+  },
+  {
+    "case": "stress-430-dark-1",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "icons": [
+      {
+        "title": "VeryLongUnbrokenTransactionNameVeryLongUnbrokenTransactionNameVeryLongUnbrokenTransactionName",
+        "icon": "icon-receipt",
+        "menu": true
+      },
+      {
+        "title": "A long transaction name identifying a purchase with a complete maximum monetary value",
+        "icon": "icon-tag",
+        "menu": true
+      },
+      {
+        "title": "ChatGPT",
+        "icon": "icon-receipt",
+        "menu": false
+      },
+      {
+        "title": "Internet",
+        "icon": "icon-home",
+        "menu": false
+      },
+      {
+        "title": "Água",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Popeyes",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Uncategorized receipt",
+        "icon": "icon-receipt",
+        "menu": true
+      },
+      {
+        "title": "Salary received",
+        "icon": "icon-briefcase",
+        "menu": true
+      }
+    ],
+    "filterLines": [
+      {
+        "label": "Transaction type: All",
+        "lines": 1
+      },
+      {
+        "label": "Transaction type: Expenses",
+        "lines": 1
+      },
+      {
+        "label": "Transaction type: Income",
+        "lines": 1
+      }
+    ],
+    "errors": []
+  },
+  {
+    "case": "stress-430-dark-2",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "icons": [
+      {
+        "title": "VeryLongUnbrokenTransactionNameVeryLongUnbrokenTransactionNameVeryLongUnbrokenTransactionName",
+        "icon": "icon-receipt",
+        "menu": true
+      },
+      {
+        "title": "A long transaction name identifying a purchase with a complete maximum monetary value",
+        "icon": "icon-tag",
+        "menu": true
+      },
+      {
+        "title": "ChatGPT",
+        "icon": "icon-receipt",
+        "menu": false
+      },
+      {
+        "title": "Internet",
+        "icon": "icon-home",
+        "menu": false
+      },
+      {
+        "title": "Água",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Popeyes",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Uncategorized receipt",
+        "icon": "icon-receipt",
+        "menu": true
+      },
+      {
+        "title": "Salary received",
+        "icon": "icon-briefcase",
+        "menu": true
+      }
+    ],
+    "filterLines": [
+      {
+        "label": "Transaction type: All",
+        "lines": 1
+      },
+      {
+        "label": "Transaction type: Expenses",
+        "lines": 1
+      },
+      {
+        "label": "Transaction type: Income",
+        "lines": 1
+      }
+    ],
+    "errors": []
+  },
+  {
+    "case": "stress-430-light-1",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "icons": [
+      {
+        "title": "VeryLongUnbrokenTransactionNameVeryLongUnbrokenTransactionNameVeryLongUnbrokenTransactionName",
+        "icon": "icon-receipt",
+        "menu": true
+      },
+      {
+        "title": "A long transaction name identifying a purchase with a complete maximum monetary value",
+        "icon": "icon-tag",
+        "menu": true
+      },
+      {
+        "title": "ChatGPT",
+        "icon": "icon-receipt",
+        "menu": false
+      },
+      {
+        "title": "Internet",
+        "icon": "icon-home",
+        "menu": false
+      },
+      {
+        "title": "Água",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Popeyes",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Uncategorized receipt",
+        "icon": "icon-receipt",
+        "menu": true
+      },
+      {
+        "title": "Salary received",
+        "icon": "icon-briefcase",
+        "menu": true
+      }
+    ],
+    "filterLines": [
+      {
+        "label": "Transaction type: All",
+        "lines": 1
+      },
+      {
+        "label": "Transaction type: Expenses",
+        "lines": 1
+      },
+      {
+        "label": "Transaction type: Income",
+        "lines": 1
+      }
+    ],
+    "errors": []
+  },
+  {
+    "case": "stress-430-light-2",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "icons": [
+      {
+        "title": "VeryLongUnbrokenTransactionNameVeryLongUnbrokenTransactionNameVeryLongUnbrokenTransactionName",
+        "icon": "icon-receipt",
+        "menu": true
+      },
+      {
+        "title": "A long transaction name identifying a purchase with a complete maximum monetary value",
+        "icon": "icon-tag",
+        "menu": true
+      },
+      {
+        "title": "ChatGPT",
+        "icon": "icon-receipt",
+        "menu": false
+      },
+      {
+        "title": "Internet",
+        "icon": "icon-home",
+        "menu": false
+      },
+      {
+        "title": "Água",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Popeyes",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Uncategorized receipt",
+        "icon": "icon-receipt",
+        "menu": true
+      },
+      {
+        "title": "Salary received",
+        "icon": "icon-briefcase",
+        "menu": true
+      }
+    ],
+    "filterLines": [
+      {
+        "label": "Transaction type: All",
+        "lines": 1
+      },
+      {
+        "label": "Transaction type: Expenses",
+        "lines": 1
+      },
+      {
+        "label": "Transaction type: Income",
+        "lines": 1
+      }
+    ],
+    "errors": []
+  },
+  {
+    "case": "expenses-320-dark-1",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "icons": [
+      {
+        "title": "A long transaction name identifying a purchase with a complete maximum monetary value",
+        "icon": "icon-tag",
+        "menu": true
+      },
+      {
+        "title": "ChatGPT",
+        "icon": "icon-receipt",
+        "menu": false
+      },
+      {
+        "title": "Internet",
+        "icon": "icon-home",
+        "menu": false
+      },
+      {
+        "title": "Água",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Popeyes",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Uncategorized receipt",
+        "icon": "icon-receipt",
+        "menu": true
+      }
+    ],
+    "filterLines": [
+      {
+        "label": "Transaction type: All",
+        "lines": 1
+      },
+      {
+        "label": "Transaction type: Expenses",
+        "lines": 1
+      },
+      {
+        "label": "Transaction type: Income",
+        "lines": 1
+      }
+    ],
+    "errors": []
+  },
+  {
+    "case": "expenses-320-dark-2",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "icons": [
+      {
+        "title": "A long transaction name identifying a purchase with a complete maximum monetary value",
+        "icon": "icon-tag",
+        "menu": true
+      },
+      {
+        "title": "ChatGPT",
+        "icon": "icon-receipt",
+        "menu": false
+      },
+      {
+        "title": "Internet",
+        "icon": "icon-home",
+        "menu": false
+      },
+      {
+        "title": "Água",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Popeyes",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Uncategorized receipt",
+        "icon": "icon-receipt",
+        "menu": true
+      }
+    ],
+    "filterLines": [
+      {
+        "label": "Transaction type: All",
+        "lines": 1
+      },
+      {
+        "label": "Transaction type: Expenses",
+        "lines": 1
+      },
+      {
+        "label": "Transaction type: Income",
+        "lines": 1
+      }
+    ],
+    "errors": []
+  },
+  {
+    "case": "expenses-320-light-1",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "icons": [
+      {
+        "title": "A long transaction name identifying a purchase with a complete maximum monetary value",
+        "icon": "icon-tag",
+        "menu": true
+      },
+      {
+        "title": "ChatGPT",
+        "icon": "icon-receipt",
+        "menu": false
+      },
+      {
+        "title": "Internet",
+        "icon": "icon-home",
+        "menu": false
+      },
+      {
+        "title": "Água",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Popeyes",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Uncategorized receipt",
+        "icon": "icon-receipt",
+        "menu": true
+      }
+    ],
+    "filterLines": [
+      {
+        "label": "Transaction type: All",
+        "lines": 1
+      },
+      {
+        "label": "Transaction type: Expenses",
+        "lines": 1
+      },
+      {
+        "label": "Transaction type: Income",
+        "lines": 1
+      }
+    ],
+    "errors": []
+  },
+  {
+    "case": "expenses-320-light-2",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "icons": [
+      {
+        "title": "A long transaction name identifying a purchase with a complete maximum monetary value",
+        "icon": "icon-tag",
+        "menu": true
+      },
+      {
+        "title": "ChatGPT",
+        "icon": "icon-receipt",
+        "menu": false
+      },
+      {
+        "title": "Internet",
+        "icon": "icon-home",
+        "menu": false
+      },
+      {
+        "title": "Água",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Popeyes",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Uncategorized receipt",
+        "icon": "icon-receipt",
+        "menu": true
+      }
+    ],
+    "filterLines": [
+      {
+        "label": "Transaction type: All",
+        "lines": 1
+      },
+      {
+        "label": "Transaction type: Expenses",
+        "lines": 1
+      },
+      {
+        "label": "Transaction type: Income",
+        "lines": 1
+      }
+    ],
+    "errors": []
+  },
+  {
+    "case": "expenses-390-dark-1",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "icons": [
+      {
+        "title": "A long transaction name identifying a purchase with a complete maximum monetary value",
+        "icon": "icon-tag",
+        "menu": true
+      },
+      {
+        "title": "ChatGPT",
+        "icon": "icon-receipt",
+        "menu": false
+      },
+      {
+        "title": "Internet",
+        "icon": "icon-home",
+        "menu": false
+      },
+      {
+        "title": "Água",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Popeyes",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Uncategorized receipt",
+        "icon": "icon-receipt",
+        "menu": true
+      }
+    ],
+    "filterLines": [
+      {
+        "label": "Transaction type: All",
+        "lines": 1
+      },
+      {
+        "label": "Transaction type: Expenses",
+        "lines": 1
+      },
+      {
+        "label": "Transaction type: Income",
+        "lines": 1
+      }
+    ],
+    "errors": []
+  },
+  {
+    "case": "expenses-390-dark-2",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "icons": [
+      {
+        "title": "A long transaction name identifying a purchase with a complete maximum monetary value",
+        "icon": "icon-tag",
+        "menu": true
+      },
+      {
+        "title": "ChatGPT",
+        "icon": "icon-receipt",
+        "menu": false
+      },
+      {
+        "title": "Internet",
+        "icon": "icon-home",
+        "menu": false
+      },
+      {
+        "title": "Água",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Popeyes",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Uncategorized receipt",
+        "icon": "icon-receipt",
+        "menu": true
+      }
+    ],
+    "filterLines": [
+      {
+        "label": "Transaction type: All",
+        "lines": 1
+      },
+      {
+        "label": "Transaction type: Expenses",
+        "lines": 1
+      },
+      {
+        "label": "Transaction type: Income",
+        "lines": 1
+      }
+    ],
+    "errors": []
+  },
+  {
+    "case": "expenses-390-light-1",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "icons": [
+      {
+        "title": "A long transaction name identifying a purchase with a complete maximum monetary value",
+        "icon": "icon-tag",
+        "menu": true
+      },
+      {
+        "title": "ChatGPT",
+        "icon": "icon-receipt",
+        "menu": false
+      },
+      {
+        "title": "Internet",
+        "icon": "icon-home",
+        "menu": false
+      },
+      {
+        "title": "Água",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Popeyes",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Uncategorized receipt",
+        "icon": "icon-receipt",
+        "menu": true
+      }
+    ],
+    "filterLines": [
+      {
+        "label": "Transaction type: All",
+        "lines": 1
+      },
+      {
+        "label": "Transaction type: Expenses",
+        "lines": 1
+      },
+      {
+        "label": "Transaction type: Income",
+        "lines": 1
+      }
+    ],
+    "errors": []
+  },
+  {
+    "case": "expenses-390-light-2",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "icons": [
+      {
+        "title": "A long transaction name identifying a purchase with a complete maximum monetary value",
+        "icon": "icon-tag",
+        "menu": true
+      },
+      {
+        "title": "ChatGPT",
+        "icon": "icon-receipt",
+        "menu": false
+      },
+      {
+        "title": "Internet",
+        "icon": "icon-home",
+        "menu": false
+      },
+      {
+        "title": "Água",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Popeyes",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Uncategorized receipt",
+        "icon": "icon-receipt",
+        "menu": true
+      }
+    ],
+    "filterLines": [
+      {
+        "label": "Transaction type: All",
+        "lines": 1
+      },
+      {
+        "label": "Transaction type: Expenses",
+        "lines": 1
+      },
+      {
+        "label": "Transaction type: Income",
+        "lines": 1
+      }
+    ],
+    "errors": []
+  },
+  {
+    "case": "mixed-390-dark",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "icons": [
+      {
+        "title": "Internet",
+        "icon": "icon-home",
+        "menu": false
+      },
+      {
+        "title": "ChatGPT",
+        "icon": "icon-receipt",
+        "menu": false
+      },
+      {
+        "title": "Popeyes",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Água",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Uncategorized receipt",
+        "icon": "icon-receipt",
+        "menu": true
+      },
+      {
+        "title": "Salary received",
+        "icon": "icon-briefcase",
+        "menu": true
+      }
+    ],
+    "filterLines": [
+      {
+        "label": "Transaction type: All",
+        "lines": 1
+      },
+      {
+        "label": "Transaction type: Expenses",
+        "lines": 1
+      },
+      {
+        "label": "Transaction type: Income",
+        "lines": 1
+      }
+    ],
+    "errors": []
+  },
+  {
+    "case": "mixed-390-light",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "icons": [
+      {
+        "title": "Internet",
+        "icon": "icon-home",
+        "menu": false
+      },
+      {
+        "title": "ChatGPT",
+        "icon": "icon-receipt",
+        "menu": false
+      },
+      {
+        "title": "Popeyes",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Água",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Uncategorized receipt",
+        "icon": "icon-receipt",
+        "menu": true
+      },
+      {
+        "title": "Salary received",
+        "icon": "icon-briefcase",
+        "menu": true
+      }
+    ],
+    "filterLines": [
+      {
+        "label": "Transaction type: All",
+        "lines": 1
+      },
+      {
+        "label": "Transaction type: Expenses",
+        "lines": 1
+      },
+      {
+        "label": "Transaction type: Income",
+        "lines": 1
+      }
+    ],
+    "errors": []
+  },
+  {
+    "case": "expenses",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "icons": [
+      {
+        "title": "Internet",
+        "icon": "icon-home",
+        "menu": false
+      },
+      {
+        "title": "ChatGPT",
+        "icon": "icon-receipt",
+        "menu": false
+      },
+      {
+        "title": "Popeyes",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Água",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Uncategorized receipt",
+        "icon": "icon-receipt",
+        "menu": true
+      }
+    ],
+    "filterLines": [
+      {
+        "label": "Transaction type: All",
+        "lines": 1
+      },
+      {
+        "label": "Transaction type: Expenses",
+        "lines": 1
+      },
+      {
+        "label": "Transaction type: Income",
+        "lines": 1
+      }
+    ],
+    "errors": []
+  },
+  {
+    "case": "income",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "icons": [
+      {
+        "title": "Salary received",
+        "icon": "icon-briefcase",
+        "menu": true
+      }
+    ],
+    "filterLines": [
+      {
+        "label": "Transaction type: All",
+        "lines": 1
+      },
+      {
+        "label": "Transaction type: Expenses",
+        "lines": 1
+      },
+      {
+        "label": "Transaction type: Income",
+        "lines": 1
+      }
+    ],
+    "errors": []
+  },
+  {
+    "case": "match",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "icons": [
+      {
+        "title": "Água",
+        "icon": "icon-utensils",
+        "menu": true
+      }
+    ],
+    "filterLines": [
+      {
+        "label": "Transaction type: All",
+        "lines": 1
+      },
+      {
+        "label": "Transaction type: Expenses",
+        "lines": 1
+      },
+      {
+        "label": "Transaction type: Income",
+        "lines": 1
+      }
+    ],
+    "errors": []
+  },
+  {
+    "case": "noResults",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "icons": [],
+    "filterLines": [
+      {
+        "label": "Transaction type: All",
+        "lines": 1
+      },
+      {
+        "label": "Transaction type: Expenses",
+        "lines": 1
+      },
+      {
+        "label": "Transaction type: Income",
+        "lines": 1
+      }
+    ],
+    "errors": []
+  },
+  {
+    "case": "empty",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "icons": [],
+    "filterLines": [
+      {
+        "label": "Transaction type: All",
+        "lines": 1
+      },
+      {
+        "label": "Transaction type: Expenses",
+        "lines": 1
+      },
+      {
+        "label": "Transaction type: Income",
+        "lines": 1
+      }
+    ],
+    "errors": []
+  },
+  {
+    "case": "history-pagination",
+    "pages": 4,
+    "totalFixture": 151,
+    "lastPage": 31,
+    "shown": 151,
+    "errors": []
+  },
+  {
+    "case": "history",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "icons": [
+      {
+        "title": "ChatGPT",
+        "icon": "icon-receipt",
+        "menu": false
+      },
+      {
+        "title": "Internet",
+        "icon": "icon-home",
+        "menu": false
+      },
+      {
+        "title": "Popeyes",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Água",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Uncategorized receipt",
+        "icon": "icon-receipt",
+        "menu": true
+      },
+      {
+        "title": "Salary received",
+        "icon": "icon-briefcase",
+        "menu": true
+      },
+      {
+        "title": "Historical movement 67",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Historical movement 130",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Historical movement 60",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Historical movement 118",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Historical movement 68",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Historical movement 32",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Historical movement 48",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Historical movement 111",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Historical movement 40",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Historical movement 52",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Historical movement 88",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Historical movement 22",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Historical movement 100",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Historical movement 34",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Historical movement 123",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Historical movement 106",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Historical movement 30",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Historical movement 81",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Historical movement 114",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Historical movement 77",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Historical movement 137",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Historical movement 10",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Historical movement 92",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Historical movement 26",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Historical movement 72",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Historical movement 127",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Historical movement 119",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Historical movement 41",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Historical movement 70",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Historical movement 86",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Historical movement 53",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Historical movement 14",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Historical movement 102",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Historical movement 122",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Historical movement 24",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Historical movement 96",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Historical movement 134",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Historical movement 101",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Historical movement 54",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Historical movement 31",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Historical movement 55",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Historical movement 78",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Historical movement 99",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Historical movement 98",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Historical movement 117",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Historical movement 144",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Historical movement 6",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Historical movement 139",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Historical movement 84",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Historical movement 56",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Historical movement 87",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Historical movement 33",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Historical movement 116",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Historical movement 25",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Historical movement 46",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Historical movement 45",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Historical movement 3",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Historical movement 143",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Historical movement 125",
+        "icon": "icon-utensils",
+        "menu": true
+      },
+      {
+        "title": "Historical movement 141",
+        "icon": "icon-utensils",
+        "menu": true
+      }
+    ],
+    "filterLines": [
+      {
+        "label": "Transaction type: All",
+        "lines": 1
+      },
+      {
+        "label": "Transaction type: Expenses",
+        "lines": 1
+      },
+      {
+        "label": "Transaction type: Income",
+        "lines": 1
+      }
+    ],
+    "errors": []
+  }
+]

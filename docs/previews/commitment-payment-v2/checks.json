@@ -1,0 +1,2548 @@
+[
+  {
+    "name": "bill-dark",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Actual amount paid *",
+        "label": {
+          "x": 12,
+          "y": 815,
+          "width": 138.765625,
+          "height": 20,
+          "bottom": 835
+        },
+        "field": {
+          "x": 12,
+          "y": 843,
+          "width": 366,
+          "height": 48,
+          "bottom": 891
+        },
+        "above": true
+      },
+      {
+        "text": "Payment date *",
+        "label": {
+          "x": 12,
+          "y": 963,
+          "width": 366,
+          "height": 20,
+          "bottom": 983
+        },
+        "field": {
+          "x": 12,
+          "y": 991,
+          "width": 366,
+          "height": 48,
+          "bottom": 1039
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 536,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 584
+      },
+      {
+        "label": "Confirm",
+        "busy": null,
+        "disabled": null,
+        "x": 291.890625,
+        "y": 536,
+        "width": 86.109375,
+        "height": 48,
+        "bottom": 584
+      }
+    ],
+    "summary": "Bill, Household bill. Due 8 de nov. de 2026. Expected amount R$ 43,50. Expense category Entertainment.",
+    "errors": []
+  },
+  {
+    "name": "subscription-dark",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Actual amount paid *",
+        "label": {
+          "x": 12,
+          "y": 815,
+          "width": 138.765625,
+          "height": 20,
+          "bottom": 835
+        },
+        "field": {
+          "x": 12,
+          "y": 843,
+          "width": 366,
+          "height": 48,
+          "bottom": 891
+        },
+        "above": true
+      },
+      {
+        "text": "Payment date *",
+        "label": {
+          "x": 12,
+          "y": 963,
+          "width": 366,
+          "height": 20,
+          "bottom": 983
+        },
+        "field": {
+          "x": 12,
+          "y": 991,
+          "width": 366,
+          "height": 48,
+          "bottom": 1039
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 536,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 584
+      },
+      {
+        "label": "Confirm",
+        "busy": null,
+        "disabled": null,
+        "x": 291.890625,
+        "y": 536,
+        "width": 86.109375,
+        "height": 48,
+        "bottom": 584
+      }
+    ],
+    "summary": "Subscription, Monthly subscription. Due 8 de nov. de 2026. Expected amount R$ 43,50. Expense category Entertainment.",
+    "errors": []
+  },
+  {
+    "name": "installment-dark",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Actual amount paid *",
+        "label": {
+          "x": 12,
+          "y": 815,
+          "width": 138.765625,
+          "height": 20,
+          "bottom": 835
+        },
+        "field": {
+          "x": 12,
+          "y": 843,
+          "width": 366,
+          "height": 48,
+          "bottom": 891
+        },
+        "above": true
+      },
+      {
+        "text": "Payment date *",
+        "label": {
+          "x": 12,
+          "y": 963,
+          "width": 366,
+          "height": 20,
+          "bottom": 983
+        },
+        "field": {
+          "x": 12,
+          "y": 991,
+          "width": 366,
+          "height": 48,
+          "bottom": 1039
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 536,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 584
+      },
+      {
+        "label": "Confirm",
+        "busy": null,
+        "disabled": null,
+        "x": 291.890625,
+        "y": 536,
+        "width": 86.109375,
+        "height": 48,
+        "bottom": 584
+      }
+    ],
+    "summary": "Installment, Rock in Rio Ticket. Due 8 de nov. de 2026. Expected amount R$ 43,50. Expense category Entertainment.",
+    "errors": []
+  },
+  {
+    "name": "installment-320-dark",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Actual amount paid *",
+        "label": {
+          "x": 12,
+          "y": 795,
+          "width": 138.765625,
+          "height": 20,
+          "bottom": 815
+        },
+        "field": {
+          "x": 12,
+          "y": 823,
+          "width": 296,
+          "height": 48,
+          "bottom": 871
+        },
+        "above": true
+      },
+      {
+        "text": "Payment date *",
+        "label": {
+          "x": 12,
+          "y": 963,
+          "width": 296,
+          "height": 20,
+          "bottom": 983
+        },
+        "field": {
+          "x": 12,
+          "y": 991,
+          "width": 296,
+          "height": 48,
+          "bottom": 1039
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 496,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 544
+      },
+      {
+        "label": "Confirm",
+        "busy": null,
+        "disabled": null,
+        "x": 221.890625,
+        "y": 496,
+        "width": 86.109375,
+        "height": 48,
+        "bottom": 544
+      }
+    ],
+    "summary": "Installment, Rock in Rio Ticket. Due 8 de nov. de 2026. Expected amount R$ 43,50. Expense category Entertainment.",
+    "errors": []
+  },
+  {
+    "name": "installment-430-dark",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Actual amount paid *",
+        "label": {
+          "x": 12,
+          "y": 815,
+          "width": 138.765625,
+          "height": 20,
+          "bottom": 835
+        },
+        "field": {
+          "x": 12,
+          "y": 843,
+          "width": 406,
+          "height": 48,
+          "bottom": 891
+        },
+        "above": true
+      },
+      {
+        "text": "Payment date *",
+        "label": {
+          "x": 12,
+          "y": 963,
+          "width": 406,
+          "height": 20,
+          "bottom": 983
+        },
+        "field": {
+          "x": 12,
+          "y": 991,
+          "width": 406,
+          "height": 48,
+          "bottom": 1039
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 536,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 584
+      },
+      {
+        "label": "Confirm",
+        "busy": null,
+        "disabled": null,
+        "x": 331.890625,
+        "y": 536,
+        "width": 86.109375,
+        "height": 48,
+        "bottom": 584
+      }
+    ],
+    "summary": "Installment, Rock in Rio Ticket. Due 8 de nov. de 2026. Expected amount R$ 43,50. Expense category Entertainment.",
+    "errors": []
+  },
+  {
+    "name": "stress-320-dark-1",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Actual amount paid *",
+        "label": {
+          "x": 12,
+          "y": 757,
+          "width": 138.765625,
+          "height": 20,
+          "bottom": 777
+        },
+        "field": {
+          "x": 12,
+          "y": 785,
+          "width": 296,
+          "height": 48,
+          "bottom": 833
+        },
+        "above": true
+      },
+      {
+        "text": "Payment date *",
+        "label": {
+          "x": 12,
+          "y": 963,
+          "width": 296,
+          "height": 20,
+          "bottom": 983
+        },
+        "field": {
+          "x": 12,
+          "y": 991,
+          "width": 296,
+          "height": 48,
+          "bottom": 1039
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 302,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 350
+      },
+      {
+        "label": "Confirm",
+        "busy": null,
+        "disabled": null,
+        "x": 221.890625,
+        "y": 302,
+        "width": 86.109375,
+        "height": 48,
+        "bottom": 350
+      }
+    ],
+    "summary": "Installment, A long household commitment describing the complete purchase purpose without losing any of its saved title. Due 8 de nov. de 2026. Expected amount R$ 90.071.992.547.409,91. Expense category Historical household education and entertainment category with a long name.",
+    "errors": []
+  },
+  {
+    "name": "stress-320-dark-2",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Actual amount paid *",
+        "label": {
+          "x": 12,
+          "y": 1360,
+          "width": 277.53125,
+          "height": 40,
+          "bottom": 1400
+        },
+        "field": {
+          "x": 12,
+          "y": 1408,
+          "width": 296,
+          "height": 48,
+          "bottom": 1456
+        },
+        "above": true
+      },
+      {
+        "text": "Payment date *",
+        "label": {
+          "x": 12,
+          "y": 1792,
+          "width": 296,
+          "height": 40,
+          "bottom": 1832
+        },
+        "field": {
+          "x": 12,
+          "y": 1840,
+          "width": 296,
+          "height": 114,
+          "bottom": 1954
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 165,
+        "width": 119.703125,
+        "height": 64,
+        "bottom": 229
+      },
+      {
+        "label": "Confirm",
+        "busy": null,
+        "disabled": null,
+        "x": 163.78125,
+        "y": 165,
+        "width": 144.21875,
+        "height": 64,
+        "bottom": 229
+      }
+    ],
+    "summary": "Installment, A long household commitment describing the complete purchase purpose without losing any of its saved title. Due 8 de nov. de 2026. Expected amount R$ 90.071.992.547.409,91. Expense category Historical household education and entertainment category with a long name.",
+    "errors": []
+  },
+  {
+    "name": "stress-390-dark-1",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Actual amount paid *",
+        "label": {
+          "x": 12,
+          "y": 777,
+          "width": 138.765625,
+          "height": 20,
+          "bottom": 797
+        },
+        "field": {
+          "x": 12,
+          "y": 805,
+          "width": 366,
+          "height": 48,
+          "bottom": 853
+        },
+        "above": true
+      },
+      {
+        "text": "Payment date *",
+        "label": {
+          "x": 12,
+          "y": 963,
+          "width": 366,
+          "height": 20,
+          "bottom": 983
+        },
+        "field": {
+          "x": 12,
+          "y": 991,
+          "width": 366,
+          "height": 48,
+          "bottom": 1039
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 366,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 414
+      },
+      {
+        "label": "Confirm",
+        "busy": null,
+        "disabled": null,
+        "x": 291.890625,
+        "y": 366,
+        "width": 86.109375,
+        "height": 48,
+        "bottom": 414
+      }
+    ],
+    "summary": "Installment, A long household commitment describing the complete purchase purpose without losing any of its saved title. Due 8 de nov. de 2026. Expected amount R$ 90.071.992.547.409,91. Expense category Historical household education and entertainment category with a long name.",
+    "errors": []
+  },
+  {
+    "name": "stress-390-dark-2",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Actual amount paid *",
+        "label": {
+          "x": 12,
+          "y": 1052,
+          "width": 277.53125,
+          "height": 40,
+          "bottom": 1092
+        },
+        "field": {
+          "x": 12,
+          "y": 1100,
+          "width": 366,
+          "height": 48,
+          "bottom": 1148
+        },
+        "above": true
+      },
+      {
+        "text": "Payment date *",
+        "label": {
+          "x": 12,
+          "y": 1400,
+          "width": 366,
+          "height": 40,
+          "bottom": 1440
+        },
+        "field": {
+          "x": 12,
+          "y": 1448,
+          "width": 366,
+          "height": 66,
+          "bottom": 1514
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 105,
+        "width": 119.703125,
+        "height": 64,
+        "bottom": 169
+      },
+      {
+        "label": "Confirm",
+        "busy": null,
+        "disabled": null,
+        "x": 233.78125,
+        "y": 105,
+        "width": 144.21875,
+        "height": 64,
+        "bottom": 169
+      }
+    ],
+    "summary": "Installment, A long household commitment describing the complete purchase purpose without losing any of its saved title. Due 8 de nov. de 2026. Expected amount R$ 90.071.992.547.409,91. Expense category Historical household education and entertainment category with a long name.",
+    "errors": []
+  },
+  {
+    "name": "stress-430-dark-1",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Actual amount paid *",
+        "label": {
+          "x": 12,
+          "y": 777,
+          "width": 138.765625,
+          "height": 20,
+          "bottom": 797
+        },
+        "field": {
+          "x": 12,
+          "y": 805,
+          "width": 406,
+          "height": 48,
+          "bottom": 853
+        },
+        "above": true
+      },
+      {
+        "text": "Payment date *",
+        "label": {
+          "x": 12,
+          "y": 963,
+          "width": 406,
+          "height": 20,
+          "bottom": 983
+        },
+        "field": {
+          "x": 12,
+          "y": 991,
+          "width": 406,
+          "height": 48,
+          "bottom": 1039
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 410,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 458
+      },
+      {
+        "label": "Confirm",
+        "busy": null,
+        "disabled": null,
+        "x": 331.890625,
+        "y": 410,
+        "width": 86.109375,
+        "height": 48,
+        "bottom": 458
+      }
+    ],
+    "summary": "Installment, A long household commitment describing the complete purchase purpose without losing any of its saved title. Due 8 de nov. de 2026. Expected amount R$ 90.071.992.547.409,91. Expense category Historical household education and entertainment category with a long name.",
+    "errors": []
+  },
+  {
+    "name": "stress-430-dark-2",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Actual amount paid *",
+        "label": {
+          "x": 12,
+          "y": 956,
+          "width": 277.53125,
+          "height": 40,
+          "bottom": 996
+        },
+        "field": {
+          "x": 12,
+          "y": 1004,
+          "width": 406,
+          "height": 48,
+          "bottom": 1052
+        },
+        "above": true
+      },
+      {
+        "text": "Payment date *",
+        "label": {
+          "x": 12,
+          "y": 1304,
+          "width": 406,
+          "height": 40,
+          "bottom": 1344
+        },
+        "field": {
+          "x": 12,
+          "y": 1352,
+          "width": 406,
+          "height": 66,
+          "bottom": 1418
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 105,
+        "width": 119.703125,
+        "height": 64,
+        "bottom": 169
+      },
+      {
+        "label": "Confirm",
+        "busy": null,
+        "disabled": null,
+        "x": 273.78125,
+        "y": 105,
+        "width": 144.21875,
+        "height": 64,
+        "bottom": 169
+      }
+    ],
+    "summary": "Installment, A long household commitment describing the complete purchase purpose without losing any of its saved title. Due 8 de nov. de 2026. Expected amount R$ 90.071.992.547.409,91. Expense category Historical household education and entertainment category with a long name.",
+    "errors": []
+  },
+  {
+    "name": "bill-light",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Actual amount paid *",
+        "label": {
+          "x": 12,
+          "y": 815,
+          "width": 138.765625,
+          "height": 20,
+          "bottom": 835
+        },
+        "field": {
+          "x": 12,
+          "y": 843,
+          "width": 366,
+          "height": 48,
+          "bottom": 891
+        },
+        "above": true
+      },
+      {
+        "text": "Payment date *",
+        "label": {
+          "x": 12,
+          "y": 963,
+          "width": 366,
+          "height": 20,
+          "bottom": 983
+        },
+        "field": {
+          "x": 12,
+          "y": 991,
+          "width": 366,
+          "height": 48,
+          "bottom": 1039
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 536,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 584
+      },
+      {
+        "label": "Confirm",
+        "busy": null,
+        "disabled": null,
+        "x": 291.890625,
+        "y": 536,
+        "width": 86.109375,
+        "height": 48,
+        "bottom": 584
+      }
+    ],
+    "summary": "Bill, Household bill. Due 8 de nov. de 2026. Expected amount R$ 43,50. Expense category Entertainment.",
+    "errors": []
+  },
+  {
+    "name": "subscription-light",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Actual amount paid *",
+        "label": {
+          "x": 12,
+          "y": 815,
+          "width": 138.765625,
+          "height": 20,
+          "bottom": 835
+        },
+        "field": {
+          "x": 12,
+          "y": 843,
+          "width": 366,
+          "height": 48,
+          "bottom": 891
+        },
+        "above": true
+      },
+      {
+        "text": "Payment date *",
+        "label": {
+          "x": 12,
+          "y": 963,
+          "width": 366,
+          "height": 20,
+          "bottom": 983
+        },
+        "field": {
+          "x": 12,
+          "y": 991,
+          "width": 366,
+          "height": 48,
+          "bottom": 1039
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 536,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 584
+      },
+      {
+        "label": "Confirm",
+        "busy": null,
+        "disabled": null,
+        "x": 291.890625,
+        "y": 536,
+        "width": 86.109375,
+        "height": 48,
+        "bottom": 584
+      }
+    ],
+    "summary": "Subscription, Monthly subscription. Due 8 de nov. de 2026. Expected amount R$ 43,50. Expense category Entertainment.",
+    "errors": []
+  },
+  {
+    "name": "installment-light",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Actual amount paid *",
+        "label": {
+          "x": 12,
+          "y": 815,
+          "width": 138.765625,
+          "height": 20,
+          "bottom": 835
+        },
+        "field": {
+          "x": 12,
+          "y": 843,
+          "width": 366,
+          "height": 48,
+          "bottom": 891
+        },
+        "above": true
+      },
+      {
+        "text": "Payment date *",
+        "label": {
+          "x": 12,
+          "y": 963,
+          "width": 366,
+          "height": 20,
+          "bottom": 983
+        },
+        "field": {
+          "x": 12,
+          "y": 991,
+          "width": 366,
+          "height": 48,
+          "bottom": 1039
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 536,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 584
+      },
+      {
+        "label": "Confirm",
+        "busy": null,
+        "disabled": null,
+        "x": 291.890625,
+        "y": 536,
+        "width": 86.109375,
+        "height": 48,
+        "bottom": 584
+      }
+    ],
+    "summary": "Installment, Rock in Rio Ticket. Due 8 de nov. de 2026. Expected amount R$ 43,50. Expense category Entertainment.",
+    "errors": []
+  },
+  {
+    "name": "installment-320-light",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Actual amount paid *",
+        "label": {
+          "x": 12,
+          "y": 795,
+          "width": 138.765625,
+          "height": 20,
+          "bottom": 815
+        },
+        "field": {
+          "x": 12,
+          "y": 823,
+          "width": 296,
+          "height": 48,
+          "bottom": 871
+        },
+        "above": true
+      },
+      {
+        "text": "Payment date *",
+        "label": {
+          "x": 12,
+          "y": 963,
+          "width": 296,
+          "height": 20,
+          "bottom": 983
+        },
+        "field": {
+          "x": 12,
+          "y": 991,
+          "width": 296,
+          "height": 48,
+          "bottom": 1039
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 496,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 544
+      },
+      {
+        "label": "Confirm",
+        "busy": null,
+        "disabled": null,
+        "x": 221.890625,
+        "y": 496,
+        "width": 86.109375,
+        "height": 48,
+        "bottom": 544
+      }
+    ],
+    "summary": "Installment, Rock in Rio Ticket. Due 8 de nov. de 2026. Expected amount R$ 43,50. Expense category Entertainment.",
+    "errors": []
+  },
+  {
+    "name": "installment-430-light",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Actual amount paid *",
+        "label": {
+          "x": 12,
+          "y": 815,
+          "width": 138.765625,
+          "height": 20,
+          "bottom": 835
+        },
+        "field": {
+          "x": 12,
+          "y": 843,
+          "width": 406,
+          "height": 48,
+          "bottom": 891
+        },
+        "above": true
+      },
+      {
+        "text": "Payment date *",
+        "label": {
+          "x": 12,
+          "y": 963,
+          "width": 406,
+          "height": 20,
+          "bottom": 983
+        },
+        "field": {
+          "x": 12,
+          "y": 991,
+          "width": 406,
+          "height": 48,
+          "bottom": 1039
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 536,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 584
+      },
+      {
+        "label": "Confirm",
+        "busy": null,
+        "disabled": null,
+        "x": 331.890625,
+        "y": 536,
+        "width": 86.109375,
+        "height": 48,
+        "bottom": 584
+      }
+    ],
+    "summary": "Installment, Rock in Rio Ticket. Due 8 de nov. de 2026. Expected amount R$ 43,50. Expense category Entertainment.",
+    "errors": []
+  },
+  {
+    "name": "stress-320-light-1",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Actual amount paid *",
+        "label": {
+          "x": 12,
+          "y": 757,
+          "width": 138.765625,
+          "height": 20,
+          "bottom": 777
+        },
+        "field": {
+          "x": 12,
+          "y": 785,
+          "width": 296,
+          "height": 48,
+          "bottom": 833
+        },
+        "above": true
+      },
+      {
+        "text": "Payment date *",
+        "label": {
+          "x": 12,
+          "y": 963,
+          "width": 296,
+          "height": 20,
+          "bottom": 983
+        },
+        "field": {
+          "x": 12,
+          "y": 991,
+          "width": 296,
+          "height": 48,
+          "bottom": 1039
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 302,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 350
+      },
+      {
+        "label": "Confirm",
+        "busy": null,
+        "disabled": null,
+        "x": 221.890625,
+        "y": 302,
+        "width": 86.109375,
+        "height": 48,
+        "bottom": 350
+      }
+    ],
+    "summary": "Installment, A long household commitment describing the complete purchase purpose without losing any of its saved title. Due 8 de nov. de 2026. Expected amount R$ 90.071.992.547.409,91. Expense category Historical household education and entertainment category with a long name.",
+    "errors": []
+  },
+  {
+    "name": "stress-320-light-2",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Actual amount paid *",
+        "label": {
+          "x": 12,
+          "y": 1360,
+          "width": 277.53125,
+          "height": 40,
+          "bottom": 1400
+        },
+        "field": {
+          "x": 12,
+          "y": 1408,
+          "width": 296,
+          "height": 48,
+          "bottom": 1456
+        },
+        "above": true
+      },
+      {
+        "text": "Payment date *",
+        "label": {
+          "x": 12,
+          "y": 1792,
+          "width": 296,
+          "height": 40,
+          "bottom": 1832
+        },
+        "field": {
+          "x": 12,
+          "y": 1840,
+          "width": 296,
+          "height": 114,
+          "bottom": 1954
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 165,
+        "width": 119.703125,
+        "height": 64,
+        "bottom": 229
+      },
+      {
+        "label": "Confirm",
+        "busy": null,
+        "disabled": null,
+        "x": 163.78125,
+        "y": 165,
+        "width": 144.21875,
+        "height": 64,
+        "bottom": 229
+      }
+    ],
+    "summary": "Installment, A long household commitment describing the complete purchase purpose without losing any of its saved title. Due 8 de nov. de 2026. Expected amount R$ 90.071.992.547.409,91. Expense category Historical household education and entertainment category with a long name.",
+    "errors": []
+  },
+  {
+    "name": "stress-390-light-1",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Actual amount paid *",
+        "label": {
+          "x": 12,
+          "y": 777,
+          "width": 138.765625,
+          "height": 20,
+          "bottom": 797
+        },
+        "field": {
+          "x": 12,
+          "y": 805,
+          "width": 366,
+          "height": 48,
+          "bottom": 853
+        },
+        "above": true
+      },
+      {
+        "text": "Payment date *",
+        "label": {
+          "x": 12,
+          "y": 963,
+          "width": 366,
+          "height": 20,
+          "bottom": 983
+        },
+        "field": {
+          "x": 12,
+          "y": 991,
+          "width": 366,
+          "height": 48,
+          "bottom": 1039
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 366,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 414
+      },
+      {
+        "label": "Confirm",
+        "busy": null,
+        "disabled": null,
+        "x": 291.890625,
+        "y": 366,
+        "width": 86.109375,
+        "height": 48,
+        "bottom": 414
+      }
+    ],
+    "summary": "Installment, A long household commitment describing the complete purchase purpose without losing any of its saved title. Due 8 de nov. de 2026. Expected amount R$ 90.071.992.547.409,91. Expense category Historical household education and entertainment category with a long name.",
+    "errors": []
+  },
+  {
+    "name": "stress-390-light-2",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Actual amount paid *",
+        "label": {
+          "x": 12,
+          "y": 1052,
+          "width": 277.53125,
+          "height": 40,
+          "bottom": 1092
+        },
+        "field": {
+          "x": 12,
+          "y": 1100,
+          "width": 366,
+          "height": 48,
+          "bottom": 1148
+        },
+        "above": true
+      },
+      {
+        "text": "Payment date *",
+        "label": {
+          "x": 12,
+          "y": 1400,
+          "width": 366,
+          "height": 40,
+          "bottom": 1440
+        },
+        "field": {
+          "x": 12,
+          "y": 1448,
+          "width": 366,
+          "height": 66,
+          "bottom": 1514
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 105,
+        "width": 119.703125,
+        "height": 64,
+        "bottom": 169
+      },
+      {
+        "label": "Confirm",
+        "busy": null,
+        "disabled": null,
+        "x": 233.78125,
+        "y": 105,
+        "width": 144.21875,
+        "height": 64,
+        "bottom": 169
+      }
+    ],
+    "summary": "Installment, A long household commitment describing the complete purchase purpose without losing any of its saved title. Due 8 de nov. de 2026. Expected amount R$ 90.071.992.547.409,91. Expense category Historical household education and entertainment category with a long name.",
+    "errors": []
+  },
+  {
+    "name": "stress-430-light-1",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Actual amount paid *",
+        "label": {
+          "x": 12,
+          "y": 777,
+          "width": 138.765625,
+          "height": 20,
+          "bottom": 797
+        },
+        "field": {
+          "x": 12,
+          "y": 805,
+          "width": 406,
+          "height": 48,
+          "bottom": 853
+        },
+        "above": true
+      },
+      {
+        "text": "Payment date *",
+        "label": {
+          "x": 12,
+          "y": 963,
+          "width": 406,
+          "height": 20,
+          "bottom": 983
+        },
+        "field": {
+          "x": 12,
+          "y": 991,
+          "width": 406,
+          "height": 48,
+          "bottom": 1039
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 410,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 458
+      },
+      {
+        "label": "Confirm",
+        "busy": null,
+        "disabled": null,
+        "x": 331.890625,
+        "y": 410,
+        "width": 86.109375,
+        "height": 48,
+        "bottom": 458
+      }
+    ],
+    "summary": "Installment, A long household commitment describing the complete purchase purpose without losing any of its saved title. Due 8 de nov. de 2026. Expected amount R$ 90.071.992.547.409,91. Expense category Historical household education and entertainment category with a long name.",
+    "errors": []
+  },
+  {
+    "name": "stress-430-light-2",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Actual amount paid *",
+        "label": {
+          "x": 12,
+          "y": 956,
+          "width": 277.53125,
+          "height": 40,
+          "bottom": 996
+        },
+        "field": {
+          "x": 12,
+          "y": 1004,
+          "width": 406,
+          "height": 48,
+          "bottom": 1052
+        },
+        "above": true
+      },
+      {
+        "text": "Payment date *",
+        "label": {
+          "x": 12,
+          "y": 1304,
+          "width": 406,
+          "height": 40,
+          "bottom": 1344
+        },
+        "field": {
+          "x": 12,
+          "y": 1352,
+          "width": 406,
+          "height": 66,
+          "bottom": 1418
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 105,
+        "width": 119.703125,
+        "height": 64,
+        "bottom": 169
+      },
+      {
+        "label": "Confirm",
+        "busy": null,
+        "disabled": null,
+        "x": 273.78125,
+        "y": 105,
+        "width": 144.21875,
+        "height": 64,
+        "bottom": 169
+      }
+    ],
+    "summary": "Installment, A long household commitment describing the complete purchase purpose without losing any of its saved title. Due 8 de nov. de 2026. Expected amount R$ 90.071.992.547.409,91. Expense category Historical household education and entertainment category with a long name.",
+    "errors": []
+  },
+  {
+    "name": "different",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Actual amount paid *",
+        "label": {
+          "x": 12,
+          "y": 815,
+          "width": 138.765625,
+          "height": 20,
+          "bottom": 835
+        },
+        "field": {
+          "x": 12,
+          "y": 843,
+          "width": 366,
+          "height": 48,
+          "bottom": 891
+        },
+        "above": true
+      },
+      {
+        "text": "Payment date *",
+        "label": {
+          "x": 12,
+          "y": 963,
+          "width": 366,
+          "height": 20,
+          "bottom": 983
+        },
+        "field": {
+          "x": 12,
+          "y": 991,
+          "width": 366,
+          "height": 48,
+          "bottom": 1039
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 536,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 584
+      },
+      {
+        "label": "Confirm",
+        "busy": null,
+        "disabled": null,
+        "x": 291.890625,
+        "y": 536,
+        "width": 86.109375,
+        "height": 48,
+        "bottom": 584
+      }
+    ],
+    "summary": "Installment, Rock in Rio Ticket. Due 8 de nov. de 2026. Expected amount R$ 43,50. Expense category Entertainment.",
+    "errors": []
+  },
+  {
+    "name": "early",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Actual amount paid *",
+        "label": {
+          "x": 12,
+          "y": 815,
+          "width": 138.765625,
+          "height": 20,
+          "bottom": 835
+        },
+        "field": {
+          "x": 12,
+          "y": 843,
+          "width": 366,
+          "height": 48,
+          "bottom": 891
+        },
+        "above": true
+      },
+      {
+        "text": "Payment date *",
+        "label": {
+          "x": 12,
+          "y": 963,
+          "width": 366,
+          "height": 20,
+          "bottom": 983
+        },
+        "field": {
+          "x": 12,
+          "y": 991,
+          "width": 366,
+          "height": 48,
+          "bottom": 1039
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 536,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 584
+      },
+      {
+        "label": "Confirm",
+        "busy": null,
+        "disabled": null,
+        "x": 291.890625,
+        "y": 536,
+        "width": 86.109375,
+        "height": 48,
+        "bottom": 584
+      }
+    ],
+    "summary": "Installment, Rock in Rio Ticket. Due 8 de nov. de 2026. Expected amount R$ 43,50. Expense category Entertainment.",
+    "errors": []
+  },
+  {
+    "name": "overdue",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Actual amount paid *",
+        "label": {
+          "x": 12,
+          "y": 815,
+          "width": 138.765625,
+          "height": 20,
+          "bottom": 835
+        },
+        "field": {
+          "x": 12,
+          "y": 843,
+          "width": 366,
+          "height": 48,
+          "bottom": 891
+        },
+        "above": true
+      },
+      {
+        "text": "Payment date *",
+        "label": {
+          "x": 12,
+          "y": 963,
+          "width": 366,
+          "height": 20,
+          "bottom": 983
+        },
+        "field": {
+          "x": 12,
+          "y": 991,
+          "width": 366,
+          "height": 48,
+          "bottom": 1039
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 536,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 584
+      },
+      {
+        "label": "Confirm",
+        "busy": null,
+        "disabled": null,
+        "x": 291.890625,
+        "y": 536,
+        "width": 86.109375,
+        "height": 48,
+        "bottom": 584
+      }
+    ],
+    "summary": "Installment, Rock in Rio Ticket. Due 20 de out. de 2026. Expected amount R$ 43,50. Expense category Entertainment.",
+    "errors": []
+  },
+  {
+    "name": "uncategorized",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Actual amount paid *",
+        "label": {
+          "x": 12,
+          "y": 815,
+          "width": 138.765625,
+          "height": 20,
+          "bottom": 835
+        },
+        "field": {
+          "x": 12,
+          "y": 843,
+          "width": 366,
+          "height": 48,
+          "bottom": 891
+        },
+        "above": true
+      },
+      {
+        "text": "Payment date *",
+        "label": {
+          "x": 12,
+          "y": 963,
+          "width": 366,
+          "height": 20,
+          "bottom": 983
+        },
+        "field": {
+          "x": 12,
+          "y": 991,
+          "width": 366,
+          "height": 48,
+          "bottom": 1039
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 536,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 584
+      },
+      {
+        "label": "Confirm",
+        "busy": null,
+        "disabled": null,
+        "x": 291.890625,
+        "y": 536,
+        "width": 86.109375,
+        "height": 48,
+        "bottom": 584
+      }
+    ],
+    "summary": "Bill, Household bill. Due 8 de nov. de 2026. Expected amount R$ 43,50. Expense category No category.",
+    "errors": []
+  },
+  {
+    "name": "archived",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Actual amount paid *",
+        "label": {
+          "x": 12,
+          "y": 815,
+          "width": 138.765625,
+          "height": 20,
+          "bottom": 835
+        },
+        "field": {
+          "x": 12,
+          "y": 843,
+          "width": 366,
+          "height": 48,
+          "bottom": 891
+        },
+        "above": true
+      },
+      {
+        "text": "Payment date *",
+        "label": {
+          "x": 12,
+          "y": 963,
+          "width": 366,
+          "height": 20,
+          "bottom": 983
+        },
+        "field": {
+          "x": 12,
+          "y": 991,
+          "width": 366,
+          "height": 48,
+          "bottom": 1039
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 496,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 544
+      },
+      {
+        "label": "Confirm",
+        "busy": null,
+        "disabled": null,
+        "x": 291.890625,
+        "y": 496,
+        "width": 86.109375,
+        "height": 48,
+        "bottom": 544
+      }
+    ],
+    "summary": "Installment, Rock in Rio Ticket. Due 8 de nov. de 2026. Expected amount R$ 43,50. Expense category Historical household education and entertainment category with a long name.",
+    "errors": []
+  },
+  {
+    "name": "long-title",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Actual amount paid *",
+        "label": {
+          "x": 12,
+          "y": 815,
+          "width": 138.765625,
+          "height": 20,
+          "bottom": 835
+        },
+        "field": {
+          "x": 12,
+          "y": 843,
+          "width": 366,
+          "height": 48,
+          "bottom": 891
+        },
+        "above": true
+      },
+      {
+        "text": "Payment date *",
+        "label": {
+          "x": 12,
+          "y": 963,
+          "width": 366,
+          "height": 20,
+          "bottom": 983
+        },
+        "field": {
+          "x": 12,
+          "y": 991,
+          "width": 366,
+          "height": 48,
+          "bottom": 1039
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 464,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 512
+      },
+      {
+        "label": "Confirm",
+        "busy": null,
+        "disabled": null,
+        "x": 291.890625,
+        "y": 464,
+        "width": 86.109375,
+        "height": 48,
+        "bottom": 512
+      }
+    ],
+    "summary": "Installment, A long household commitment describing the complete purchase purpose without losing any of its saved title. Due 8 de nov. de 2026. Expected amount R$ 43,50. Expense category Entertainment.",
+    "errors": []
+  },
+  {
+    "name": "long-category",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Actual amount paid *",
+        "label": {
+          "x": 12,
+          "y": 815,
+          "width": 138.765625,
+          "height": 20,
+          "bottom": 835
+        },
+        "field": {
+          "x": 12,
+          "y": 843,
+          "width": 366,
+          "height": 48,
+          "bottom": 891
+        },
+        "above": true
+      },
+      {
+        "text": "Payment date *",
+        "label": {
+          "x": 12,
+          "y": 963,
+          "width": 366,
+          "height": 20,
+          "bottom": 983
+        },
+        "field": {
+          "x": 12,
+          "y": 991,
+          "width": 366,
+          "height": 48,
+          "bottom": 1039
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 496,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 544
+      },
+      {
+        "label": "Confirm",
+        "busy": null,
+        "disabled": null,
+        "x": 291.890625,
+        "y": 496,
+        "width": 86.109375,
+        "height": 48,
+        "bottom": 544
+      }
+    ],
+    "summary": "Installment, Rock in Rio Ticket. Due 8 de nov. de 2026. Expected amount R$ 43,50. Expense category Historical household education and entertainment category with a long name.",
+    "errors": []
+  },
+  {
+    "name": "max-expected",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Actual amount paid *",
+        "label": {
+          "x": 12,
+          "y": 815,
+          "width": 138.765625,
+          "height": 20,
+          "bottom": 835
+        },
+        "field": {
+          "x": 12,
+          "y": 843,
+          "width": 366,
+          "height": 48,
+          "bottom": 891
+        },
+        "above": true
+      },
+      {
+        "text": "Payment date *",
+        "label": {
+          "x": 12,
+          "y": 963,
+          "width": 366,
+          "height": 20,
+          "bottom": 983
+        },
+        "field": {
+          "x": 12,
+          "y": 991,
+          "width": 366,
+          "height": 48,
+          "bottom": 1039
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 516,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 564
+      },
+      {
+        "label": "Confirm",
+        "busy": null,
+        "disabled": null,
+        "x": 291.890625,
+        "y": 516,
+        "width": 86.109375,
+        "height": 48,
+        "bottom": 564
+      }
+    ],
+    "summary": "Installment, Rock in Rio Ticket. Due 8 de nov. de 2026. Expected amount R$ 90.071.992.547.409,91. Expense category Entertainment.",
+    "errors": []
+  },
+  {
+    "name": "max-actual",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Actual amount paid *",
+        "label": {
+          "x": 12,
+          "y": 777,
+          "width": 138.765625,
+          "height": 20,
+          "bottom": 797
+        },
+        "field": {
+          "x": 12,
+          "y": 805,
+          "width": 366,
+          "height": 48,
+          "bottom": 853
+        },
+        "above": true
+      },
+      {
+        "text": "Payment date *",
+        "label": {
+          "x": 12,
+          "y": 963,
+          "width": 366,
+          "height": 20,
+          "bottom": 983
+        },
+        "field": {
+          "x": 12,
+          "y": 991,
+          "width": 366,
+          "height": 48,
+          "bottom": 1039
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 498,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 546
+      },
+      {
+        "label": "Confirm",
+        "busy": null,
+        "disabled": null,
+        "x": 291.890625,
+        "y": 498,
+        "width": 86.109375,
+        "height": 48,
+        "bottom": 546
+      }
+    ],
+    "summary": "Installment, Rock in Rio Ticket. Due 8 de nov. de 2026. Expected amount R$ 43,50. Expense category Entertainment.",
+    "errors": []
+  },
+  {
+    "name": "invalid-amount",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Actual amount paid *",
+        "label": {
+          "x": 12,
+          "y": 767,
+          "width": 138.765625,
+          "height": 20,
+          "bottom": 787
+        },
+        "field": {
+          "x": 12,
+          "y": 795,
+          "width": 366,
+          "height": 48,
+          "bottom": 843
+        },
+        "above": true
+      },
+      {
+        "text": "Payment date *",
+        "label": {
+          "x": 12,
+          "y": 963,
+          "width": 366,
+          "height": 20,
+          "bottom": 983
+        },
+        "field": {
+          "x": 12,
+          "y": 991,
+          "width": 366,
+          "height": 48,
+          "bottom": 1039
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 488,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 536
+      },
+      {
+        "label": "Confirm",
+        "busy": null,
+        "disabled": null,
+        "x": 291.890625,
+        "y": 488,
+        "width": 86.109375,
+        "height": 48,
+        "bottom": 536
+      }
+    ],
+    "summary": "Installment, Rock in Rio Ticket. Due 8 de nov. de 2026. Expected amount R$ 43,50. Expense category Entertainment.",
+    "errors": []
+  },
+  {
+    "name": "invalid-date",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Actual amount paid *",
+        "label": {
+          "x": 12,
+          "y": 787,
+          "width": 138.765625,
+          "height": 20,
+          "bottom": 807
+        },
+        "field": {
+          "x": 12,
+          "y": 815,
+          "width": 366,
+          "height": 48,
+          "bottom": 863
+        },
+        "above": true
+      },
+      {
+        "text": "Payment date *",
+        "label": {
+          "x": 12,
+          "y": 935,
+          "width": 101.09375,
+          "height": 20,
+          "bottom": 955
+        },
+        "field": {
+          "x": 12,
+          "y": 963,
+          "width": 366,
+          "height": 48,
+          "bottom": 1011
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 508,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 556
+      },
+      {
+        "label": "Confirm",
+        "busy": null,
+        "disabled": null,
+        "x": 291.890625,
+        "y": 508,
+        "width": 86.109375,
+        "height": 48,
+        "bottom": 556
+      }
+    ],
+    "summary": "Installment, Rock in Rio Ticket. Due 8 de nov. de 2026. Expected amount R$ 43,50. Expense category Entertainment.",
+    "errors": []
+  },
+  {
+    "name": "picker",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Actual amount paid *",
+        "label": {
+          "x": 12,
+          "y": 675,
+          "width": 138.765625,
+          "height": 20,
+          "bottom": 695
+        },
+        "field": {
+          "x": 12,
+          "y": 703,
+          "width": 366,
+          "height": 48,
+          "bottom": 751
+        },
+        "above": true
+      },
+      {
+        "text": "Payment date *",
+        "label": {
+          "x": 12,
+          "y": 823,
+          "width": 366,
+          "height": 20,
+          "bottom": 843
+        },
+        "field": {
+          "x": 12,
+          "y": 851,
+          "width": 366,
+          "height": 48,
+          "bottom": 899
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 396,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 444
+      },
+      {
+        "label": "Confirm",
+        "busy": null,
+        "disabled": null,
+        "x": 291.890625,
+        "y": 396,
+        "width": 86.109375,
+        "height": 48,
+        "bottom": 444
+      }
+    ],
+    "summary": "Installment, Rock in Rio Ticket. Due 8 de nov. de 2026. Expected amount R$ 43,50. Expense category Entertainment.",
+    "errors": []
+  },
+  {
+    "name": "keyboard",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Actual amount paid *",
+        "label": {
+          "x": 12,
+          "y": 325,
+          "width": 138.765625,
+          "height": 20,
+          "bottom": 345
+        },
+        "field": {
+          "x": 12,
+          "y": 353,
+          "width": 366,
+          "height": 48,
+          "bottom": 401
+        },
+        "above": true
+      },
+      {
+        "text": "Payment date *",
+        "label": {
+          "x": 12,
+          "y": 473,
+          "width": 366,
+          "height": 20,
+          "bottom": 493
+        },
+        "field": {
+          "x": 12,
+          "y": 501,
+          "width": 366,
+          "height": 48,
+          "bottom": 549
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 46,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 94
+      },
+      {
+        "label": "Confirm",
+        "busy": null,
+        "disabled": null,
+        "x": 291.890625,
+        "y": 46,
+        "width": 86.109375,
+        "height": 48,
+        "bottom": 94
+      }
+    ],
+    "summary": "Installment, Rock in Rio Ticket. Due 8 de nov. de 2026. Expected amount R$ 43,50. Expense category Entertainment.",
+    "errors": []
+  },
+  {
+    "name": "bottom",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Actual amount paid *",
+        "label": {
+          "x": 12,
+          "y": 815,
+          "width": 138.765625,
+          "height": 20,
+          "bottom": 835
+        },
+        "field": {
+          "x": 12,
+          "y": 843,
+          "width": 366,
+          "height": 48,
+          "bottom": 891
+        },
+        "above": true
+      },
+      {
+        "text": "Payment date *",
+        "label": {
+          "x": 12,
+          "y": 963,
+          "width": 366,
+          "height": 20,
+          "bottom": 983
+        },
+        "field": {
+          "x": 12,
+          "y": 991,
+          "width": 366,
+          "height": 48,
+          "bottom": 1039
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 536,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 584
+      },
+      {
+        "label": "Confirm",
+        "busy": null,
+        "disabled": null,
+        "x": 291.890625,
+        "y": 536,
+        "width": 86.109375,
+        "height": 48,
+        "bottom": 584
+      }
+    ],
+    "summary": "Installment, Rock in Rio Ticket. Due 8 de nov. de 2026. Expected amount R$ 43,50. Expense category Entertainment.",
+    "errors": []
+  },
+  {
+    "name": "loading",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Actual amount paid *",
+        "label": {
+          "x": 12,
+          "y": 815,
+          "width": 138.765625,
+          "height": 20,
+          "bottom": 835
+        },
+        "field": {
+          "x": 12,
+          "y": 843,
+          "width": 366,
+          "height": 48,
+          "bottom": 891
+        },
+        "above": true
+      },
+      {
+        "text": "Payment date *",
+        "label": {
+          "x": 12,
+          "y": 963,
+          "width": 366,
+          "height": 20,
+          "bottom": 983
+        },
+        "field": {
+          "x": 12,
+          "y": 991,
+          "width": 366,
+          "height": 48,
+          "bottom": 1039
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 530,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 578
+      },
+      {
+        "label": "Confirm",
+        "busy": "true",
+        "disabled": "true",
+        "x": 263.890625,
+        "y": 530,
+        "width": 114.109375,
+        "height": 48,
+        "bottom": 578
+      }
+    ],
+    "summary": "Installment, Rock in Rio Ticket. Due 8 de nov. de 2026. Expected amount R$ 43,50. Expense category Entertainment.",
+    "errors": []
+  },
+  {
+    "name": "save-error",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Actual amount paid *",
+        "label": {
+          "x": 12,
+          "y": 815,
+          "width": 138.765625,
+          "height": 20,
+          "bottom": 835
+        },
+        "field": {
+          "x": 12,
+          "y": 843,
+          "width": 366,
+          "height": 48,
+          "bottom": 891
+        },
+        "above": true
+      },
+      {
+        "text": "Payment date *",
+        "label": {
+          "x": 12,
+          "y": 963,
+          "width": 366,
+          "height": 20,
+          "bottom": 983
+        },
+        "field": {
+          "x": 12,
+          "y": 991,
+          "width": 366,
+          "height": 48,
+          "bottom": 1039
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 504,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 552
+      },
+      {
+        "label": "Confirm",
+        "busy": null,
+        "disabled": null,
+        "x": 291.890625,
+        "y": 504,
+        "width": 86.109375,
+        "height": 48,
+        "bottom": 552
+      }
+    ],
+    "summary": "Installment, Rock in Rio Ticket. Due 8 de nov. de 2026. Expected amount R$ 43,50. Expense category Entertainment.",
+    "errors": []
+  }
+]

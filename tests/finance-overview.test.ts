@@ -101,7 +101,7 @@ test('Overview / Transactions / Commitments / Work / Overview preserves ledger r
   const app = await mount(createElement(screens.FinanceScreen), f.db); t.after(app.unmount);
   await app.press('Previous month'); const oldPeriod = app.nodes().find((node) => node.kind === 'ThemedText' && node.props.type === 'cardTitle')!.textContent;
   await act(() => (app.find('FlatList').props.onScroll as (event: unknown) => void)({ nativeEvent: { contentOffset: { y: 240 } } }));
-  await app.press('Transactions'); assert.equal(app.find('Pressable', 'Add transaction').props.accessibilityRole, 'button');
+  await app.press('Transactions'); assert.equal(app.find('Pressable', 'New transaction').props.accessibilityRole, 'button');
   await act(() => (app.find('SectionList').props.onScroll as (event: unknown) => void)({ nativeEvent: { contentOffset: { y: 100 } } }));
   await app.press('Commitments'); assert.ok(app.find('FormButton', 'Add commitment'));
   await app.press('Work'); assert.ok(app.find('FormButton', 'Add work'));
@@ -241,7 +241,7 @@ test('failed dashboard refresh retains exact last-good metrics and successful Re
 
 test('transaction drafts survive failed refresh in the new shell and saved transactions immediately update Overview', async (t) => {
   const f = await initialized(t); const app = await mount(createElement(screens.FinanceScreen), f.db); t.after(app.unmount);
-  await app.press('Transactions'); await app.tapSet('Add transaction');
+  await app.press('Transactions'); await app.tapSet('New transaction');
   await app.change('Description *', 'Working transaction'); await app.change('Amount *', '123,45');
   const description = app.find('FormField', 'Description *'); const modal = app.find('Modal');
   runtime.fixture.failures.add('finance.readLedgerPage'); await app.resume(); await app.refocus();

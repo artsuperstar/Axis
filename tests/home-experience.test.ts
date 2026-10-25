@@ -281,7 +281,7 @@ test('invalid quick-add draft stays mounted with no transaction or false spendin
   await app.press('Add transaction'); await app.change('Amount *', '0'); await app.change('Description *', 'Invalid draft');
   const field = app.find('FormField', 'Amount *'); const modal = app.find('Modal');
   await app.press('Save'); assert.equal(app.find('Modal'), modal); assert.equal(app.find('FormField', 'Amount *'), field);
-  assert.ok(app.nodes().some((node) => node.kind === 'FormError'));
+  assert.ok(app.find('FormField', 'Amount *').props.error, 'The existing amount error is attached to its v2 field');
   assert.equal(f.finance.read().transactions.length, 0); assert.ok(app.find('View', 'Spent today, R$ 0,00'));
   await app.change('Amount *', '25'); await app.press('Save');
   assert.ok(!app.nodes().some((node) => node.kind === 'Modal')); assert.ok(app.find('View', 'Spent today, R$ 25,00'));

@@ -1,10 +1,10 @@
 import { useRef, useState } from 'react';
-import { ActivityIndicator, Alert, FlatList, Platform, ScrollView, SectionList, StyleSheet, View, type NativeScrollEvent, type NativeSyntheticEvent } from 'react-native';
+import { ActivityIndicator, Alert, FlatList, Platform, ScrollView, Keyboard, StyleSheet, View, type NativeScrollEvent, type NativeSyntheticEvent } from 'react-native';
 import { SafeAreaView } from 'react-native-screens/experimental';
 
 import { FormButton, FormError } from '@/components/form-controls';
-import { ContextMenu, ContextMenuHost } from '@/components/context-menu';
-import { FloatingAddButton, floatingAddClearance } from '@/components/floating-add-button';
+import { FloatingAddButton } from '@/components/floating-add-button';
+import { ContextMenuHost } from '@/components/context-menu';
 import type { FormSelectionHandle } from '@/components/form-selection-host';
 import { SheetRefreshContext } from '@/components/sheet-refresh-notice';
 import { StatusText } from '@/components/status-text';
@@ -18,10 +18,9 @@ import { CommitmentsView } from './commitments/components/commitments-view';
 import { FinanceDashboard, FinancePeriodControls } from './components/finance-dashboard';
 import { TransactionEditor } from './components/transaction-editor';
 import { TransactionDetail } from './components/transaction-detail';
-import { TransactionRow } from './components/transaction-row';
+import { TransactionsContent } from './components/transactions-content';
 import { financeError } from './errors';
 import type { FinanceTransaction, TransactionSource } from './types';
-import { transactionSections } from './transactions-presentation';
 import { useFinance, type FinanceView } from './use-finance';
 import { WorkView } from './work/components/work-view';
 
@@ -34,7 +33,7 @@ export function FinanceScreen({ initialView, initialRecordId, initialDueDate }: 
   initialView?: FinanceView; initialRecordId?: string; initialDueDate?: string;
 } = {}) {
   const colors = useTheme();
-  const { access, commitmentAccess, workAccess, snapshot, error, reload, mutate, selection, today, setView, setPeriodKind, navigatePeriod, returnToCurrent, loadMoreTransactions } = useFinance(initialView, initialRecordId, initialDueDate);
+  const { access, commitmentAccess, workAccess, snapshot, error, reload, mutate, selection, today, setView, setPeriodKind, navigatePeriod, returnToCurrent, loadMoreTransactions, setTransactionType, setTransactionQuery, searchingTransactions, transactionResultsCurrent } = useFinance(initialView, initialRecordId, initialDueDate);
   const [editor, setEditor] = useState<{ transaction: FinanceTransaction | null; source?: TransactionSource } | null>(null);
   const [linkedDetail, setLinkedDetail] = useState<{ transaction: FinanceTransaction; source: TransactionSource } | null>(null);
   const [linkedDetailOpen, setLinkedDetailOpen] = useState(false);
@@ -46,11 +45,13 @@ export function FinanceScreen({ initialView, initialRecordId, initialDueDate }: 
   const [scrollOffset, setScrollOffset] = useState(0);
   const design = useDesignColors();
   const overview = selection.view === 'dashboard';
+  const v2 = overview || selection.view === 'transactions' || selection.view === 'commitments';
   const menuHost = useRef<FormSelectionHandle>(null);
   const offsets = useRef<Record<FinanceView, number>>({ dashboard: 0, transactions: 0, commitments: 0, work: 0 });
   const categories = snapshot?.categories ?? [];
 
   function navigateView(view: FinanceView) {
+    Keyboard.dismiss();
     menuHost.current?.dismiss(false);
     setScrollOffset(offsets.current[view]);
     setView(view);
@@ -83,6 +84,23 @@ export function FinanceScreen({ initialView, initialRecordId, initialDueDate }: 
   }
 
   function remove(transaction: FinanceTransaction) {
+    const source = snapshot?.ledger?.sources[transaction.id];
+    if (source?.kind === 'work') {
+      setActionError('Use Undo payment in Work to remove this payment.');
+      return;
+    }
+    if (source?.kind === 'commitment') {
+      try { commitmentAccess.readPayment(transaction.id, source); }
+      catch (cause) { setActionError(financeError(cause, 'Unable to verify this payment. Please refresh and try again.')); return; }
+      Alert.alert('Delete payment?', 'This will remove the recorded expense and mark this commitment occurrence as unpaid.', [
+        { text: 'Cancel', style: 'cancel' },
+        { text: 'Delete payment', style: 'destructive', onPress: () => {
+          try { mutate(() => commitmentAccess.deletePayment(transaction.id, source)); setActionError(null); }
+          catch (cause) { setActionError(financeError(cause, 'Unable to delete this payment. Please refresh and try again.')); }
+        } },
+      ]);
+      return;
+    }
     Alert.alert('Delete transaction?', `Delete “${transaction.description}”?`, [
       { text: 'Cancel', style: 'cancel' },
       { text: 'Delete', style: 'destructive', onPress: () => {
@@ -93,15 +111,15 @@ export function FinanceScreen({ initialView, initialRecordId, initialDueDate }: 
   }
 
   return <DesignProvider><SheetRefreshContext.Provider value={{ error, onRetry: reload }}>
-    <SafeAreaView edges={{ top: true, bottom: true, left: true, right: true }} style={{ flex: 1, backgroundColor: overview ? design.canvas : colors.background }}>
+    <SafeAreaView edges={{ top: true, bottom: true, left: true, right: true }} style={{ flex: 1, backgroundColor: v2 ? design.canvas : colors.background }}>
     <ContextMenuHost ref={menuHost} safeAreaApplied>
     <View style={[styles.inner, styles.shell]}>
-      {overview ? <UiText type="screenTitle" accessibilityRole="header">Finance</UiText> : <ThemedText type="screenTitle" accessibilityRole="header">Finance</ThemedText>}
+      {v2 ? <UiText type="screenTitle" accessibilityRole="header">Finance</UiText> : <ThemedText type="screenTitle" accessibilityRole="header">Finance</ThemedText>}
       <ScrollView horizontal style={styles.navigationViewport} contentContainerStyle={styles.navigation}
         contentInsetAdjustmentBehavior="never" showsHorizontalScrollIndicator
         accessibilityLabel="Finance destinations" accessibilityHint="Swipe horizontally if enlarged text extends beyond the screen.">
         {destinations.map((destination) => <View key={destination.value} style={styles.navigationItem}>
-          <FormButton appearance={overview ? 'v2' : undefined} variant="navigation" compactNavigation label={destination.label} selected={selection.view === destination.value} onPress={() => navigateView(destination.value)} />
+          <FormButton appearance={v2 ? 'v2' : undefined} variant="navigation" compactNavigation label={destination.label} selected={selection.view === destination.value} onPress={() => navigateView(destination.value)} />
         </View>)}
       </ScrollView>
       {!!error && <View style={styles.notice}>
@@ -110,32 +128,16 @@ export function FinanceScreen({ initialView, initialRecordId, initialDueDate }: 
       </View>}
       <FormError message={actionError} />
     </View>
-    {selection.view === 'transactions' ? <SectionList
-      style={styles.list}
-      contentInsetAdjustmentBehavior="never"
-      contentContainerStyle={[styles.inner, styles.content, styles.ledgerContent]}
-      contentOffset={{ x: 0, y: scrollOffset }}
-      onScroll={onScroll} scrollEventThrottle={16} keyboardShouldPersistTaps="handled"
-      stickySectionHeadersEnabled={false}
-      sections={transactionSections(snapshot?.transactions ?? [], today)}
-      keyExtractor={(transaction) => transaction.id}
-      ListHeaderComponent={<View style={styles.ledgerHeader}>
-        <ThemedText type="sectionHeading" accessibilityRole="header" style={styles.destinationHeading}>Transactions</ThemedText>
-        <ContextMenu label="Transactions options" disabled={!snapshot} actions={[
-          { label: 'Categories', onPress: () => setCategoriesOpen(true) },
-        ]} />
-      </View>}
-      ListEmptyComponent={!snapshot ? (error ? undefined : <ActivityIndicator color={colors.accent} accessibilityLabel="Loading transactions" />) : <View style={styles.empty}>
-        <ThemedText type="cardTitle">No transactions yet</ThemedText>
-        <ThemedText themeColor="textSecondary">Actual income received and expenses paid will appear here.</ThemedText>
-      </View>}
-      renderSectionHeader={({ section }) => <ThemedText type="cardTitle" themeColor="textSecondary" accessibilityRole="header" style={styles.dateHeading}>{section.title}</ThemedText>}
-      renderItem={({ item }) => <TransactionRow transaction={item} categories={categories} today={today}
-        source={snapshot?.ledger?.sources[item.id]} onEdit={() => openTransaction(item)} onDelete={() => remove(item)} />}
-      ListFooterComponent={snapshot?.ledger?.next ? <View style={styles.pageFooter}>
-        <FormButton variant="quiet" label="Load older transactions" onPress={loadMoreTransactions} />
-      </View> : undefined}
-    /> : <FlatList
+    {selection.view === 'transactions' ? <TransactionsContent
+      transactions={snapshot?.transactions ?? []} categories={categories} sources={snapshot?.ledger?.sources ?? {}} today={today}
+      filter={selection.ledgerFilter} ready={!!snapshot} error={!!error} searching={searchingTransactions} current={transactionResultsCurrent}
+      hasMore={!!snapshot?.ledger?.next} onType={type => { setScrollOffset(0); setTransactionType(type); }}
+      onQuery={query => { setScrollOffset(0); setTransactionQuery(query); }}
+      onCategories={() => setCategoriesOpen(true)}
+      onOpen={openTransaction} onDelete={remove} onLoadMore={loadMoreTransactions} scrollOffset={scrollOffset} onScroll={onScroll}
+    /> : selection.view === 'commitments' && snapshot ? <CommitmentsView items={snapshot.items} categories={categories} access={commitmentAccess} today={today} mutate={mutate}
+      scrollOffset={scrollOffset} onScroll={onScroll} initialDetail={sourceWorkspace ? undefined : snapshot.initialCommitment}
+      onCreateCategory={name => mutate(() => access.createCategory(name, 'expense'))} /> : <FlatList
       key={selection.view}
       style={styles.list}
       contentInsetAdjustmentBehavior="never"
@@ -151,16 +153,14 @@ export function FinanceScreen({ initialView, initialRecordId, initialDueDate }: 
           {snapshot?.analytics && <FinanceDashboard analytics={snapshot.analytics} spendingExpanded={spendingExpanded} onToggleSpending={() => setSpendingExpanded((expanded) => !expanded)} />}
           {!snapshot?.analytics && !error && <ActivityIndicator color={colors.accent} accessibilityLabel="Loading Finance Overview" />}
         </>}
-        {selection.view === 'commitments' && snapshot && <CommitmentsView items={snapshot.items} categories={categories} access={commitmentAccess} today={today} mutate={mutate}
-          initialDetail={sourceWorkspace ? undefined : snapshot.initialCommitment}
-          onCreateCategory={(name) => mutate(() => access.createCategory(name, 'expense'))} />}
         {selection.view === 'work' && snapshot?.work && <WorkView data={snapshot.work} categories={categories} access={workAccess} mutate={mutate} initialEntryId={sourceWorkspace ? undefined : initialRecordId}
           onCreateCategory={(name) => mutate(() => access.createCategory(name, 'income'))} />}
       </View>}
       ListEmptyComponent={!snapshot && !error && selection.view !== 'dashboard' ? <ActivityIndicator color={colors.accent} accessibilityLabel="Loading Finance" /> : undefined}
       renderItem={() => null}
     />}
-    {selection.view === 'transactions' && <FloatingAddButton label="Add transaction" disabled={!snapshot}
+
+    {selection.view === 'transactions' && !editor && !linkedDetail && !categoriesOpen && <FloatingAddButton label="New transaction" disabled={!snapshot}
       onPress={() => { setActionError(null); setEditor({ transaction: null }); }} />}
     </ContextMenuHost>
     </SafeAreaView>
@@ -176,7 +176,7 @@ export function FinanceScreen({ initialView, initialRecordId, initialDueDate }: 
         setSourceWorkspace(true);
         navigateView(linkedDetail.source.kind === 'work' ? 'work' : 'commitments');
       })} />}
-    {categoriesOpen && <FinanceCategoryManager categories={categories}
+    {categoriesOpen && <FinanceCategoryManager categories={categories} categoriesReady={!!snapshot}
       onCreate={(name, type) => mutate(() => access.createCategory(name, type))}
       onDelete={(id) => mutate(() => access.deleteCategory(id))} onDismiss={() => setCategoriesOpen(false)} />}
   </SheetRefreshContext.Provider></DesignProvider>;
@@ -188,8 +188,4 @@ const styles = StyleSheet.create({
   navigationItem: { flexGrow: 1, flexShrink: 0 },
   notice: { flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', gap: Space.sm }, noticeText: { flexGrow: 1, flexShrink: 1, flexBasis: 200 },
   list: { flex: 1 }, content: { padding: Space.lg, paddingBottom: Space.xl, flexGrow: 1 }, header: { gap: Space.xl, paddingBottom: Space.lg },
-  ledgerContent: { paddingBottom: floatingAddClearance },
-  ledgerHeader: { flexDirection: 'row', alignItems: 'center', gap: Space.sm, paddingBottom: Space.sm }, destinationHeading: { flex: 1 },
-  dateHeading: { paddingTop: Space.lg, paddingBottom: Space.xs }, pageFooter: { paddingTop: Space.lg },
-  empty: { paddingVertical: Space.xxl, gap: Space.sm },
 });

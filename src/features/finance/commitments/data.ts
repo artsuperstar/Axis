@@ -81,7 +81,48 @@ export function createCommitmentDataAccess(db: AxisDatabase, newId: () => string
     const resolved = rows(query, id).filter((row) => row.status !== 'pending').length;
     const completed = resolved === commitment.installmentCount;
     if (completed && commitment.status !== 'completed') query.update(commitments).set({ status: 'completed', completedAt: now(), updatedAt: stamp(commitment) }).where(eq(commitments.id, id)).run();
-    else if (!completed && commitment.status === 'completed') query.update(commitments).set({ status: 'active', completedAt: null, updatedAt: stamp(commitment) }).where(eq(commitments.id, id)).run();
+    else if (!completed && commitment.status === 'completed') {
+      // Completing a paused plan does not erase its closed schedules. Reversal must
+      // restore that pause, rather than implicitly restarting monthly generation.
+      const status = rules(query, id).some(rule => rule.effectiveUntil === null) ? 'active' : 'paused';
+      query.update(commitments).set({ status, completedAt: null, updatedAt: stamp(commitment) }).where(eq(commitments.id, id)).run();
+    }
+  }
+
+  function paymentFor(query: Query, row: CommitmentOccurrence) {
+    parent(query, row.commitmentId);
+    const payment = row.paidTransactionId ? query.select().from(financeTransactions).where(eq(financeTransactions.id, row.paidTransactionId)).get() : undefined;
+    if (row.status !== 'paid' || !payment || payment.deletedAt !== null || payment.type !== 'expense') {
+      throw new FinanceValidationError('This payment needs reconciliation before it can be undone.');
+    }
+    validateAmountMinor(payment.amountMinor);
+    return payment;
+  }
+
+  function paymentOccurrence(query: Query, transactionId: string, expected: { commitmentId: string; dueDate: string }) {
+    const row = query.select().from(occurrences).where(eq(occurrences.paidTransactionId, transactionId)).get();
+    if (!row || row.deletedAt !== null || row.status !== 'paid' || row.commitmentId !== expected.commitmentId || row.dueDate !== expected.dueDate) {
+      throw new FinanceValidationError('This payment changed or is no longer available. Refresh Transactions and try again.');
+    }
+    return row;
+  }
+
+  /** One reversal implementation for Commitments Undo and Transactions Delete payment. */
+  function reopenOccurrence(query: Query, id: string, expectedPaymentId?: string) {
+    const row = query.select().from(occurrences).where(and(eq(occurrences.id, id), isNull(occurrences.deletedAt))).get();
+    if (!row || row.status === 'pending') throw new FinanceValidationError('Choose a Paid or Skipped occurrence.');
+    if (expectedPaymentId && (row.status !== 'paid' || row.paidTransactionId !== expectedPaymentId)) {
+      throw new FinanceValidationError('This payment changed. Refresh Transactions and try again.');
+    }
+    parent(query, row.commitmentId);
+    const timestamp = stamp(row);
+    if (row.status === 'paid') {
+      const payment = paymentFor(query, row);
+      const paymentTimestamp = Math.max(timestamp, payment.updatedAt + 1);
+      query.update(financeTransactions).set({ deletedAt: paymentTimestamp, updatedAt: paymentTimestamp }).where(eq(financeTransactions.id, payment.id)).run();
+    }
+    query.update(occurrences).set({ status: 'pending', paidTransactionId: null, resolvedAt: null, updatedAt: timestamp }).where(eq(occurrences.id, id)).run();
+    completion(query, row.commitmentId);
   }
 
   function targetRow(query: Query, target: OccurrenceTarget) {
@@ -260,20 +301,22 @@ export function createCommitmentDataAccess(db: AxisDatabase, newId: () => string
     },
 
     reopen(id: string) {
-      db.transaction((query) => {
-        const row = query.select().from(occurrences).where(and(eq(occurrences.id, id), isNull(occurrences.deletedAt))).get();
-        if (!row || row.status === 'pending') throw new FinanceValidationError('Choose a Paid or Skipped occurrence.');
-        parent(query, row.commitmentId);
-        const timestamp = stamp(row);
-        if (row.status === 'paid') {
-          const payment = query.select().from(financeTransactions).where(eq(financeTransactions.id, row.paidTransactionId!)).get();
-          if (!payment || payment.deletedAt !== null || payment.type !== 'expense') throw new FinanceValidationError('This payment needs reconciliation before it can be undone.');
-          const paymentTimestamp = Math.max(timestamp, payment.updatedAt + 1);
-          query.update(financeTransactions).set({ deletedAt: paymentTimestamp, updatedAt: paymentTimestamp }).where(eq(financeTransactions.id, payment.id)).run();
-        }
-        query.update(occurrences).set({ status: 'pending', paidTransactionId: null, resolvedAt: null, updatedAt: timestamp }).where(eq(occurrences.id, id)).run();
-        completion(query, row.commitmentId);
+      db.transaction(query => reopenOccurrence(query, id), { behavior: 'immediate' });
+    },
+
+    /** Read-only preflight. Confirmation must not mutate or repair historical data. */
+    readPayment(transactionId: string, expected: { commitmentId: string; dueDate: string }) {
+      return db.transaction(query => {
+        const occurrence = paymentOccurrence(query, transactionId, expected);
+        return { occurrence, payment: paymentFor(query, occurrence) };
       });
+    },
+
+    deletePayment(transactionId: string, expected: { commitmentId: string; dueDate: string }) {
+      db.transaction(query => {
+        const occurrence = paymentOccurrence(query, transactionId, expected);
+        reopenOccurrence(query, occurrence.id, transactionId);
+      }, { behavior: 'immediate' });
     },
 
     pause(id: string) {

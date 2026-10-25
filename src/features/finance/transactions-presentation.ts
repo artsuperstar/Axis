@@ -20,12 +20,16 @@ export function transactionSections(transactions: FinanceTransaction[], today: s
   return [...groups.values()];
 }
 
-export function transactionPresentation(transaction: FinanceTransaction, categories: FinanceCategory[], today: string, source?: TransactionSource) {
-  const title = source?.kind === 'commitment' ? source.name : source?.kind === 'work' && source.jobs.length
+export function transactionTitle(transaction: FinanceTransaction, source?: TransactionSource) {
+  return source?.kind === 'commitment' ? source.name : source?.kind === 'work' && source.jobs.length
     ? `${source.jobs[0].title}${source.jobs.length > 1 ? ` + ${source.jobs.length - 1} more` : ''} payment` : transaction.description;
+}
+
+export function transactionPresentation(transaction: FinanceTransaction, categories: FinanceCategory[], today: string, source?: TransactionSource) {
+  const title = transactionTitle(transaction, source);
   const category = financeCategoryName(transaction, categories);
   const context = source?.kind === 'work' ? `${source.clientName} · Work` : source?.kind === 'commitment' ? 'Commitment' : null;
-  const amount = `${transaction.type === 'income' ? '+' : '-'}${formatBrlAmount(transaction.amountMinor)}`;
+  const amount = `${transaction.type === 'income' ? '' : '-'}${formatBrlAmount(transaction.amountMinor)}`;
   return { title, amount, category, context,
     accessibilityLabel: [title, transactionTypeLabels[transaction.type], formatBrlAmount(transaction.amountMinor),
       transactionDateHeading(transaction.transactionDate, today), category, context].filter(Boolean).join(', ') };

@@ -5,6 +5,17 @@ import { svgImageSource } from '@/utils/svg-source';
 
 /** One small authored outline vocabulary, extending the prototype's two-unit action geometry. */
 export const iconGeometry = {
+  creditCard: '<rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 9h20M6 15h4"/>',
+  home: '<path d="m3 10 9-7 9 7M5 9v12h14V9M9 21v-8h6v8"/>',
+  utensils: '<path d="M5 3v6M2 3v5a3 3 0 0 0 6 0V3M5 11v10M16 21V3c-5 4-5 10 0 10"/>',
+  car: '<path d="m4 9 2-6h12l2 6M3 9h18v9H3V9ZM5 18v3M19 18v3M6 13h2M16 13h2"/>',
+  shoppingBag: '<path d="M4 7h16l1 14H3L4 7ZM8 9V6a4 4 0 0 1 8 0v3"/>',
+  paw: '<ellipse cx="5" cy="8" rx="2" ry="3"/><ellipse cx="10" cy="5" rx="2" ry="3"/><ellipse cx="16" cy="5" rx="2" ry="3"/><ellipse cx="21" cy="9" rx="2" ry="3"/><path d="M7 21c-5-1-3-6 0-8s5-3 7-1 8 6 4 9c-3 1-7-2-11 0Z"/>',
+  ticket: '<path d="M3 5h18v5a2 2 0 0 0 0 4v5H3v-5a2 2 0 0 0 0-4V5ZM15 5v3M15 11v2M15 16v3"/>',
+  layers: '<path d="m12 3 10 5-10 5L2 8l10-5ZM2 12l10 5 10-5M2 16l10 5 10-5"/>',
+  receipt: '<path d="M5 2l3 2 4-2 4 2 3-2v20l-3-2-4 2-4-2-3 2V2ZM9 8h6M9 12h6M9 16h3"/>',
+  info: '<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7h.01"/>',
+  close: '<path d="m6 6 12 12M6 18 18 6"/>',
   plus: '<path d="M12 5v14M5 12h14"/>',
   search: '<circle cx="10.5" cy="10.5" r="7.5"/><path d="m16 16 5 5"/>',
   moodGreat: '<circle cx="12" cy="12" r="9"/><path d="M7 9h1M16 9h1M7 13h10a5 5 0 0 1-10 0Z"/>',

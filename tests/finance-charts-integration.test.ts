@@ -113,7 +113,7 @@ test('mutations and refocus refresh chart values, deleted transactions disappear
 test('an in-app transaction save refreshes the charts through the existing mutation lifecycle', async t => {
   const f = await journalDatabase(); t.after(() => f.sqlite.close()); f.setTime(today);
   const app = await mount(createElement(screens.FinanceScreen), f.db); t.after(app.unmount);
-  await app.press('Transactions'); await app.tapSet('Add transaction');
+  await app.press('Transactions'); await app.tapSet('New transaction');
   await app.change('Description *', 'Chart mutation'); await app.change('Amount *', '42,37');
   await app.press('Save'); await app.press('Overview');
   assert.ok(donut(app).textContent.includes('R$ 42,37'));

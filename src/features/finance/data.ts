@@ -3,15 +3,16 @@ import { and, asc, desc, eq, gt, inArray, isNull, lt, or, sql } from 'drizzle-or
 import type { AxisDatabase } from '@/database/client';
 import { commitmentOccurrences, financeCategories, financeCommitments, financeTransactions, workCounterparties, workEntries, workPaymentAllocations } from '@/database/schema';
 import { localDateString, validDate } from '@/utils/calendar';
-import { canonicalIdentityName, normalizeIdentityDisplayName } from '@/utils/text-normalization';
+import { canonicalIdentityName, canonicalSearchText, normalizeIdentityDisplayName } from '@/utils/text-normalization';
 
+import { defaultLedgerFilter, transactionMatches } from './transactions-filter';
 import { FinanceValidationError } from './errors';
 import { readFinanceAnalytics } from './analytics';
 import { validateTransactionDraft } from './form';
 import { validateAmountMinor } from './money';
 import { jobTitle } from './work/presentation';
 import type { FinancePeriod } from './periods';
-import { transactionTypes, type FinanceTransaction, type TransactionDraft, type TransactionType, type TransactionCursor, type TransactionLedgerPage, type TransactionSource } from './types';
+import { transactionTypes, type FinanceTransaction, type TransactionDraft, type TransactionType, type TransactionCursor, type TransactionLedgerPage, type TransactionSource, type TransactionLedgerFilter } from './types';
 
 export function createFinanceDataAccess(db: AxisDatabase, newId: () => string, now = Date.now) {
   function readCategories(query: Pick<AxisDatabase, 'select'> = db) {
@@ -28,7 +29,7 @@ export function createFinanceDataAccess(db: AxisDatabase, newId: () => string, n
 
   function linkedPayment(id: string) {
     return db.select({ id: commitmentOccurrences.id }).from(commitmentOccurrences)
-      .where(and(eq(commitmentOccurrences.paidTransactionId, id), eq(commitmentOccurrences.status, 'paid'), isNull(commitmentOccurrences.deletedAt))).get();
+      .where(eq(commitmentOccurrences.paidTransactionId, id)).get();
   }
 
   function linkedWorkPayment(id: string) {
@@ -60,37 +61,75 @@ export function createFinanceDataAccess(db: AxisDatabase, newId: () => string, n
       return groups.reduce((sum, group) => sum + BigInt(validateAmountMinor(group.amountMinor)) * BigInt(group.count), 0n);
     },
     /** Ledger-only projection. Stable date/timestamp/ID cursors preserve the existing order. */
-    readLedgerPage(limit = 40, before?: TransactionCursor): TransactionLedgerPage {
+    readLedgerPage(limit = 40, before?: TransactionCursor, filter: TransactionLedgerFilter = defaultLedgerFilter): TransactionLedgerPage {
       if (!Number.isSafeInteger(limit) || limit < 1) throw new FinanceValidationError('Invalid transaction page size.');
+      if (filter.type !== 'all' && !transactionTypes.includes(filter.type)) throw new FinanceValidationError('Invalid transaction filter.');
       return db.transaction((query) => {
-        const rows = query.select().from(financeTransactions).where(and(isNull(financeTransactions.deletedAt), before ? or(
-          lt(financeTransactions.transactionDate, before.date),
-          and(eq(financeTransactions.transactionDate, before.date), lt(financeTransactions.createdAt, before.createdAt)),
-          and(eq(financeTransactions.transactionDate, before.date), eq(financeTransactions.createdAt, before.createdAt), gt(financeTransactions.id, before.id))) : undefined))
-          .orderBy(desc(financeTransactions.transactionDate), desc(financeTransactions.createdAt), asc(financeTransactions.id)).limit(limit + 1).all();
-        const transactions = rows.slice(0, limit); const ids = transactions.map((row) => row.id);
-        const sources: Record<string, TransactionSource> = {};
-        if (ids.length) {
-          const work = query.select({ transactionId: workPaymentAllocations.financeTransactionId, id: workEntries.id,
-            title: workEntries.title, description: workEntries.description, clientName: workCounterparties.name })
-            .from(workPaymentAllocations).innerJoin(workEntries, eq(workEntries.id, workPaymentAllocations.workEntryId))
-            .innerJoin(workCounterparties, eq(workCounterparties.id, workEntries.counterpartyId))
-            .where(and(inArray(workPaymentAllocations.financeTransactionId, ids), isNull(workPaymentAllocations.deletedAt)))
-            .orderBy(asc(workPaymentAllocations.createdAt), asc(workPaymentAllocations.id)).all();
-          for (const row of work) {
-            const source = sources[row.transactionId] ?? { kind: 'work' as const, clientName: row.clientName, jobs: [] };
-            if (source.kind === 'work') source.jobs.push({ id: row.id, title: jobTitle(row) });
-            sources[row.transactionId] = source;
+        const categories = readCategories(query);
+        const categoryMap = new Map(categories.map(category => [category.id, category]));
+        const needle = canonicalSearchText(filter.query);
+        function readSources(ids: string[]): Record<string, TransactionSource> {
+          const sources: Record<string, TransactionSource> = {};
+          if (ids.length) {
+            const work = query.select({ transactionId: workPaymentAllocations.financeTransactionId, id: workEntries.id,
+              title: workEntries.title, description: workEntries.description, clientName: workCounterparties.name })
+              .from(workPaymentAllocations).innerJoin(workEntries, eq(workEntries.id, workPaymentAllocations.workEntryId))
+              .innerJoin(workCounterparties, eq(workCounterparties.id, workEntries.counterpartyId))
+              .where(and(inArray(workPaymentAllocations.financeTransactionId, ids), isNull(workPaymentAllocations.deletedAt)))
+              .orderBy(asc(workPaymentAllocations.createdAt), asc(workPaymentAllocations.id)).all();
+            for (const row of work) {
+              const source = sources[row.transactionId] ?? { kind: 'work' as const, clientName: row.clientName, jobs: [] };
+              if (source.kind === 'work') source.jobs.push({ id: row.id, title: jobTitle(row) });
+              sources[row.transactionId] = source;
+            }
+            const commitments = query.select({ transactionId: commitmentOccurrences.paidTransactionId, commitmentId: financeCommitments.id,
+              name: financeCommitments.title, dueDate: commitmentOccurrences.dueDate }).from(commitmentOccurrences)
+              .innerJoin(financeCommitments, eq(financeCommitments.id, commitmentOccurrences.commitmentId))
+              // Retained historical ownership must not silently become a manual entry.
+              // The source service validates active relationship/parent before reversal.
+              .where(inArray(commitmentOccurrences.paidTransactionId, ids)).all();
+            for (const row of commitments) if (row.transactionId) sources[row.transactionId] = { kind: 'commitment', name: row.name, commitmentId: row.commitmentId, dueDate: row.dueDate };
           }
-          const commitments = query.select({ transactionId: commitmentOccurrences.paidTransactionId, commitmentId: financeCommitments.id,
-            name: financeCommitments.title, dueDate: commitmentOccurrences.dueDate }).from(commitmentOccurrences)
-            .innerJoin(financeCommitments, eq(financeCommitments.id, commitmentOccurrences.commitmentId))
-            .where(and(inArray(commitmentOccurrences.paidTransactionId, ids), eq(commitmentOccurrences.status, 'paid'), isNull(commitmentOccurrences.deletedAt))).all();
-          for (const row of commitments) if (row.transactionId) sources[row.transactionId] = { kind: 'commitment', name: row.name, commitmentId: row.commitmentId, dueDate: row.dueDate };
+          return sources;
         }
+        function candidates(size: number, cursor?: TransactionCursor) {
+          return query.select().from(financeTransactions).where(and(isNull(financeTransactions.deletedAt),
+            filter.type === 'all' ? undefined : eq(financeTransactions.type, filter.type), cursor ? or(
+              lt(financeTransactions.transactionDate, cursor.date),
+              and(eq(financeTransactions.transactionDate, cursor.date), lt(financeTransactions.createdAt, cursor.createdAt)),
+              and(eq(financeTransactions.transactionDate, cursor.date), eq(financeTransactions.createdAt, cursor.createdAt), gt(financeTransactions.id, cursor.id))) : undefined))
+            .orderBy(desc(financeTransactions.transactionDate), desc(financeTransactions.createdAt), asc(financeTransactions.id)).limit(size).all();
+        }
+        const cursorFor = (row: FinanceTransaction): TransactionCursor => ({ date: row.transactionDate, createdAt: row.createdAt, id: row.id });
+        let rows: FinanceTransaction[];
+        let sources: Record<string, TransactionSource>;
+        if (!needle) {
+          // Preserve the inexpensive indexed path and its bounded lookahead for ordinary browsing.
+          rows = candidates(limit + 1, before);
+          sources = readSources(rows.slice(0, limit).map(row => row.id));
+        } else {
+          rows = []; sources = {};
+          let cursor = before;
+          // Unicode normalization cannot use SQLite's ASCII-only lower(). Scan bounded batches
+          // inside one snapshot, retaining only page + lookahead matches, never the lifetime ledger.
+          while (rows.length <= limit) {
+            const batch = candidates(128, cursor);
+            const batchSources = readSources(batch.map(row => row.id));
+            for (const row of batch) {
+              if (!transactionMatches(row, needle, categoryMap, batchSources[row.id])) continue;
+              rows.push(row);
+              if (batchSources[row.id]) sources[row.id] = batchSources[row.id];
+              if (rows.length > limit) break;
+            }
+            if (rows.length > limit || batch.length < 128) break;
+            cursor = cursorFor(batch[batch.length - 1]);
+          }
+        }
+        const transactions = rows.slice(0, limit);
         const last = transactions.at(-1);
-        return { transactions, categories: readCategories(query), sources,
-          next: rows.length > limit && last ? { date: last.transactionDate, createdAt: last.createdAt, id: last.id } : null };
+        // Cursor belongs to the last returned match, not a scanned candidate or lookahead.
+        const visibleSources = Object.fromEntries(transactions.filter(row => sources[row.id]).map(row => [row.id, sources[row.id]]));
+        return { transactions, categories, sources: visibleSources, next: rows.length > limit && last ? cursorFor(last) : null };
       });
     },
     read() {

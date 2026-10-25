@@ -17,6 +17,7 @@ import { maxAmountMinor, formatBrlInput } from '../src/features/finance/money';
 import { periodBounds } from '../src/features/finance/periods';
 import { seedFinanceCategories } from '../src/features/finance/seed';
 import { createHomeDataAccess } from '../src/features/home/data';
+import { DesignColors } from '../src/constants/design-system-v2';
 import { addDays, addMonths, dateLabel, localDateString, pickerValue } from '../src/utils/calendar';
 import { bundledMigrations, database } from './helpers/database';
 import { mount, runtime, screens } from './helpers/refresh-lifecycle';
@@ -69,7 +70,7 @@ test('feed orders Overdue, Today, Upcoming with primary Pay, secondary anchored 
   await app.press('Commitment options'); assert.equal(app.nodes().filter((node) => node.kind === 'Modal').length, 0);
   assert.ok(app.find('FormButton', 'Manage commitments')); assert.ok(app.find('FormButton', 'History'));
   await app.tapSet('Close commitment options'); assert.equal(app.find('FormButton', 'Commitment options').props.expanded, false);
-  await app.press('Commitment options'); await act(() => (app.find('FlatList').props.onScroll as (event: unknown) => void)({ nativeEvent: { contentOffset: { y: 50 } } }));
+  await app.press('Commitment options'); await act(() => (app.find('SectionList').props.onScroll as (event: unknown) => void)({ nativeEvent: { contentOffset: { y: 50 } } }));
   assert.equal(app.find('FormButton', 'Commitment options').props.expanded, false);
 });
 
@@ -94,10 +95,10 @@ test('body opens details without payment; Pay defaults expected amount and inval
   await act(() => (body.props.onPress as () => void)()); assert.equal(f.finance.read().transactions.length, 0);
   await app.press('Pay'); assert.equal(app.find('FormField', 'Actual amount paid *').props.value, '180,20');
   assert.equal(app.find('FormField', 'Payment date *').props.value, today);
-  assert.ok(String(app.find('FormField', 'Actual amount paid *').props.helperText).includes('whole occurrence'));
+  assert.ok(app.container.textContent.includes('This payment resolves the whole occurrence, even if the amount differs from expected.'));
   for (const amount of ['0', 'abc', '1,001']) { await app.change('Actual amount paid *', amount); await app.press('Confirm'); assert.equal(app.find('FormField', 'Actual amount paid *').props.value, amount); assert.equal(f.finance.read().transactions.length, 0); }
   await app.change('Actual amount paid *', '201,09'); await app.change('Payment date *', addDays(today, 1)); await app.press('Confirm');
-  assert.ok(app.find('FormError').textContent.includes('today or earlier')); assert.equal(f.finance.read().transactions.length, 0);
+  assert.ok(String(app.find('FormField', 'Payment date *').props.error).includes('today or earlier')); assert.equal(f.finance.read().transactions.length, 0);
   await app.change('Payment date *', addDays(today, -1)); await app.press('Confirm');
   assert.equal(f.finance.read().transactions[0].amountMinor, 20109); assert.equal(f.finance.read().transactions[0].transactionDate, addDays(today, -1));
 });
@@ -117,7 +118,7 @@ test('Pay / Skip / Undo update feed, exact Overview, linked Transactions, Home a
   assert.ok(!sections(app).some((section) => section.props.testID === 'commitment-section-today'));
   await app.press('Overview'); assert.ok(app.container.textContent.includes('ExpensesR$ 185,21')); assert.ok(app.container.textContent.includes('Veterinary care'));
   assert.equal(f.finance.readDashboard(periodBounds('month', today)).analytics.expensesMinor, 18521n);
-  await app.press('Transactions'); assert.ok(app.nodes().some((node) => node.textContent === 'Commitment'));
+  await app.press('Transactions'); assert.ok(app.nodes().some((node) => node.textContent === 'Veterinary care · Commitment'));
   assert.ok(!app.nodes().some((node) => node.props?.label === 'Delete'));
   await app.press('Commitments'); await menu(app, 'Commitment options', 'History');
   const readsBefore = runtime.fixture.reads.filter((read) => read === 'commitments.readHistory').length;
@@ -182,8 +183,11 @@ for (const fontScale of [1, 2]) test(`long names, maximum BRL and installment pr
   const row = rows(app, 'commitment-obligation')[0]; assert.ok(row.textContent.includes('1 of 1200')); assert.ok(row.textContent.includes('R$ 90.071.992.547.409,91'));
   const body = app.nodes(row).find((node) => node.kind === 'Pressable')!;
   assert.ok(String(body.props.accessibilityLabel).includes('installment 1 of 1200'));
-  assert.equal((body.props.style as { minHeight: number }).minHeight, 44);
-  const pair = app.nodes(row).find((node) => node.kind === 'View' && (node.props.style as { flexWrap?: string })?.flexWrap === 'wrap'); assert.ok(pair);
+  assert.ok(Object.assign({}, ...[body.props.style].flat(Infinity)).minHeight >= 44);
+  const content = app.nodes(row).find(node => node.props?.testID === 'commitment-content')!;
+  const layout = Object.assign({}, ...[content.props.style].flat(Infinity));
+  assert.equal(layout.flexDirection, fontScale >= 1.5 ? 'column' : 'row');
+  assert.equal(layout.flexWrap, fontScale >= 1.5 ? 'nowrap' : 'wrap');
   for (const text of app.nodes(row).filter((node) => node.kind === 'ThemedText')) { assert.equal(text.props.numberOfLines, undefined); assert.equal(text.props.ellipsizeMode, undefined); }
 });
 
@@ -213,7 +217,7 @@ for (const mode of ['light', 'dark'] as const) test(`${mode} mode uses attention
   t.mock.method(runtime.native as { useColorScheme: () => string }, 'useColorScheme', () => mode);
   const app = await mount(createElement(screens.FinanceScreen, { initialView: 'commitments' }), f.db); t.after(app.unmount);
   const oldRow = rows(app, 'commitment-obligation')[0]; assert.ok(oldRow.textContent.includes('Overdue'));
-  assert.ok(app.nodes(oldRow).some((node) => node.props?.themeColor === 'warning'));
+  assert.ok(app.nodes(oldRow).some((node) => Object.assign({}, ...[node.props?.style].flat(Infinity)).color === DesignColors[mode].attention));
   assert.ok(!app.nodes(oldRow).some((node) => node.props?.themeColor === 'danger' || node.props?.accessibilityRole === 'alert'));
   await app.press(`Pay ${subject('Old debt', oldDate)}`); await app.press('Confirm');
   await menu(app, 'Commitment options', 'History'); await app.tapSet('History for Old debt');

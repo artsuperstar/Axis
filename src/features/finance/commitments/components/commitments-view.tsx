@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { Alert, Pressable, StyleSheet, View } from 'react-native';
+import { Alert, Pressable, SectionList, StyleSheet, View, useWindowDimensions, type NativeScrollEvent, type NativeSyntheticEvent } from 'react-native';
 
 import { ContextMenu, type ContextMenuAction } from '@/components/context-menu';
 import { FormButton, FormError } from '@/components/form-controls';
 import { BackButton } from '@/components/back-button';
+import { UiText } from '@/components/design-system';
 import { StatusText } from '@/components/status-text';
 import { ThemedText } from '@/components/themed-text';
 import { ControlSize, Space } from '@/constants/theme';
@@ -19,18 +20,22 @@ import { commitmentSections, commitmentStatusLabel, focusedCommitmentOccurrence,
 import { occurrenceLabel } from '../scheduling';
 import { commitmentKindLabels, type CommitmentItem, type DisplayOccurrence } from '../types';
 import { CommitmentEditor, CommitmentModal, CommitmentPayment, CommitmentResume, CommitmentSheet } from './commitment-forms';
+import { CommitmentCard } from './commitment-card';
 
 type Details = { kind: 'details'; data: CommitmentHistory; historyVisible: boolean; focus?: DisplayOccurrence | null };
 type Dialog = { kind: 'edit'; item: CommitmentItem | null } | Details
   | { kind: 'payment'; item: CommitmentItem; occurrence: DisplayOccurrence }
   | { kind: 'resume'; item: CommitmentItem; date: string };
 
-export function CommitmentsView({ items, categories, access, today, mutate, onCreateCategory, initialDetail }: {
+export function CommitmentsView({ items, categories, access, today, mutate, onCreateCategory, initialDetail, scrollOffset = 0, onScroll }: {
   items: CommitmentItem[]; categories: FinanceCategory[]; access: CommitmentDataAccess; today: string; mutate: <T>(action: () => T) => T;
   onCreateCategory: (name: string) => FinanceCategory;
   initialDetail?: { data: CommitmentHistory; occurrence: DisplayOccurrence | null };
+  scrollOffset?: number; onScroll?: (event: NativeSyntheticEvent<NativeScrollEvent>) => void;
 }) {
   const colors = useTheme();
+  const { width, fontScale } = useWindowDimensions();
+  const stackCreation = width < 390 && fontScale >= 1.5;
   const [surface, setSurface] = useState<'obligations' | 'manage' | 'history'>('obligations');
   const [dialog, setDialog] = useState<Dialog | null>(() => initialDetail
     ? { kind: 'details', data: initialDetail.data, historyVisible: false, focus: initialDetail.occurrence } : null);
@@ -143,40 +148,49 @@ export function CommitmentsView({ items, categories, access, today, mutate, onCr
   const detailPending = detail ? focused ? [focused] : [...detail.data.outstanding,
     ...(detail.data.upcoming && detail.data.upcoming.dueDate > today ? [detail.data.upcoming] : [])] : [];
   const resolved = detail?.data.history.filter(({ occurrence }) => occurrence.status !== 'pending') ?? [];
-  return <View style={styles.section}>
-    <View style={styles.heading}>
-      {surface !== 'obligations' && <BackButton accessibilityLabel="Back to Commitments" onPress={() => { setSurface('obligations'); setError(null); }} />}
-      <ThemedText type="sectionHeading" accessibilityRole="header" style={styles.title}>{surface === 'obligations' ? 'Commitments' : surface === 'manage' ? 'Manage commitments' : 'Commitment History'}</ThemedText>
-      {surface === 'obligations' && <ContextMenu label="Commitment options" onOpen={() => setError(null)} actions={[
+  type ListRow = { key: string; item: CommitmentItem; occurrence?: DisplayOccurrence; historical?: boolean };
+  const listSections: { key: string; title: string | null; count: number; data: ListRow[] }[] = surface === 'obligations'
+    ? sections.map(section => ({ key: section.title, title: section.title, count: section.rows.length,
+      data: section.rows.map(row => ({ ...row, key: `${row.item.commitment.id}:${row.occurrence.dueDate}` })) }))
+    : (surface === 'manage' ? items : historyItems).length ? [{ key: surface, title: null, count: 0,
+      data: (surface === 'manage' ? items : historyItems).map(item => ({ key: item.commitment.id, item, historical: surface === 'history' })) }] : [];
+  return <View style={styles.container}>
+    <SectionList testID="commitments-list" sections={listSections} keyExtractor={row => row.key} stickySectionHeadersEnabled={false}
+      initialNumToRender={6} maxToRenderPerBatch={6} windowSize={5} removeClippedSubviews={false}
+      contentInsetAdjustmentBehavior="never" contentContainerStyle={styles.mainContent} contentOffset={{ x: 0, y: scrollOffset }}
+      onScroll={onScroll} scrollEventThrottle={16} keyboardShouldPersistTaps="handled" keyboardDismissMode="on-drag"
+      ListHeaderComponent={<View style={styles.section}>
+    {surface === 'obligations' ? <View style={[styles.toolbar, stackCreation && styles.toolbarStack]}>
+      <View style={[styles.creation, stackCreation && styles.creationFull]}><FormButton appearance="v2" variant="primary" leadingIcon="plus" label="Add commitment" onPress={() => { setError(null); setDialog({ kind: 'edit', item: null }); }} /></View>
+      <View style={stackCreation && styles.optionsEnd}><ContextMenu appearance="v2" label="Commitment options" onOpen={() => setError(null)} actions={[
         { label: 'Manage commitments', onPress: () => setSurface('manage') }, { label: 'History', onPress: () => setSurface('history') },
-      ]} />}
+      ]} /></View>
+    </View> : <>
+    <View style={styles.heading}>
+      <BackButton accessibilityLabel="Back to Commitments" onPress={() => { setSurface('obligations'); setError(null); }} />
+      <ThemedText type="sectionHeading" accessibilityRole="header" style={styles.title}>{surface === 'manage' ? 'Manage commitments' : 'Commitment History'}</ThemedText>
     </View>
-    <FormError message={error} />
-    {surface === 'obligations' && <>
-      <View style={styles.creation}><FormButton variant="primary" label="Add commitment" onPress={() => { setError(null); setDialog({ kind: 'edit', item: null }); }} /></View>
-      {!sections.length && <View style={styles.empty}>
-        <ThemedText type="cardTitle">{!items.length ? 'No commitments yet' : 'No obligations to resolve in this preview'}</ThemedText>
-        <ThemedText type="secondary" themeColor="textSecondary">{!items.length ? 'Add a Bill, Subscription, or Installment. Expenses are recorded when you pay.' : 'Manage commitments to review schedules and statuses.'}</ThemedText>
-      </View>}
-      {sections.map((section) => <View key={section.title} testID={`commitment-section-${section.title.toLowerCase()}`} style={styles.section}>
-        <ThemedText type="sectionHeading" themeColor={section.title === 'Overdue' ? 'warning' : 'textPrimary'} accessibilityRole="header">{section.title}{section.title === 'Overdue' ? ` (${section.rows.length})` : ''}</ThemedText>
-        {section.rows.map(({ item, occurrence }) => pending(item, occurrence))}
-      </View>)}
+    {surface === 'history' && <ThemedText type="secondary" themeColor="textSecondary">Choose a commitment to view its paid and skipped occurrences.</ThemedText>}
     </>}
-    {surface === 'manage' && <>
-      {!items.length && <ThemedText type="secondary" themeColor="textSecondary">No commitment series yet. Return to Commitments to add one.</ThemedText>}
-      {items.map((item) => seriesRow(item))}
-    </>}
-    {surface === 'history' && <>
-      <ThemedText type="secondary" themeColor="textSecondary">Choose a commitment to view its paid and skipped occurrences.</ThemedText>
-      {!historyItems.length && <ThemedText type="secondary" themeColor="textSecondary">No paid or skipped occurrences yet.</ThemedText>}
-      {historyItems.map((item) => seriesRow(item, true))}
-    </>}
+    <FormError appearance={surface === 'obligations' ? 'v2' : undefined} message={error} />
+    </View>}
+      ListEmptyComponent={surface === 'obligations' ? <View style={styles.empty}>
+        <UiText type="cardTitle">{!items.length ? 'No commitments yet' : 'No obligations to resolve in this preview'}</UiText>
+        <UiText type="secondary" color="textSecondary">{!items.length ? 'Add a Bill, Subscription, or Installment. Expenses are recorded when you pay.' : 'Manage commitments to review schedules and statuses.'}</UiText>
+      </View> : <ThemedText type="secondary" themeColor="textSecondary">{surface === 'manage' ? 'No commitment series yet. Return to Commitments to add one.' : 'No paid or skipped occurrences yet.'}</ThemedText>}
+      renderSectionHeader={({ section }) => section.title ? <View testID={`commitment-section-${section.title.toLowerCase()}`} style={styles.sectionHeader}>
+        <UiText type="editorSection" accessibilityRole="header" color={section.title === 'Overdue' ? 'attention' : 'textPrimary'}>{section.title}{section.title === 'Overdue' ? ` (${section.count})` : ''}</UiText>
+      </View> : null}
+      ItemSeparatorComponent={CommitmentSeparator}
+      renderItem={({ item: row }) => row.occurrence ? <CommitmentCard item={row.item} occurrence={row.occurrence} categories={categories} today={today}
+        onView={() => openDetails(row.item, false, row.occurrence)} onViewSeries={() => openDetails(row.item)}
+        onPay={() => setDialog({ kind: 'payment', item: row.item, occurrence: row.occurrence! })} onSkip={() => skip(row.item, row.occurrence!)} />
+        : seriesRow(row.item, row.historical)} />
 
     {dialog && <CommitmentModal onDismiss={() => setDialog(null)}>
       {dialog.kind === 'edit' && <CommitmentEditor item={dialog.item} categories={categories} onCreateCategory={onCreateCategory} onDismiss={() => setDialog(null)}
         onSave={(draft) => mutate(() => dialog.item ? access.edit(dialog.item.commitment.id, draft) : access.create(draft))} />}
-      {dialog.kind === 'payment' && <CommitmentPayment occurrence={dialog.occurrence} title={dialog.item.commitment.title} categoryName={categoryLabel(dialog.item)} onDismiss={() => setDialog(null)}
+      {dialog.kind === 'payment' && <CommitmentPayment occurrence={dialog.occurrence} kind={dialog.item.commitment.kind} title={dialog.item.commitment.title} categoryName={categoryLabel(dialog.item)} onDismiss={() => setDialog(null)}
         onSave={(amount, date) => mutate(() => access.pay(dialog.occurrence, amount, date))} />}
       {dialog.kind === 'resume' && <CommitmentResume title={dialog.item.commitment.title} proposedDate={dialog.date} onDismiss={() => setDialog(null)}
         onResume={(date) => mutate(() => access.resume(dialog.item.commitment.id, date))} />}
@@ -230,9 +244,14 @@ export function CommitmentsView({ items, categories, access, today, mutate, onCr
   </View>;
 }
 
+function CommitmentSeparator() { return <View style={styles.separator} />; }
+
 const styles = StyleSheet.create({
   section: { gap: Space.lg }, heading: { flexDirection: 'row', alignItems: 'center', gap: Space.sm }, title: { flex: 1, flexShrink: 1 },
-  creation: { alignItems: 'flex-start' }, empty: { paddingVertical: Space.lg, gap: Space.sm },
+  container: { flex: 1 }, mainContent: { width: '100%', maxWidth: 640, alignSelf: 'center', padding: Space.lg, paddingTop: Space.sm, paddingBottom: 32, flexGrow: 1 },
+  toolbar: { flexDirection: 'row', alignItems: 'flex-start', gap: Space.sm }, creation: { flexGrow: 1, flexShrink: 1, flexBasis: 'auto', minWidth: 0 },
+  toolbarStack: { flexDirection: 'column', alignItems: 'stretch' }, creationFull: { flexGrow: 0, flexShrink: 0, flexBasis: 'auto', width: '100%' }, optionsEnd: { alignSelf: 'flex-end' },
+  sectionHeader: { paddingTop: 20, paddingBottom: 8 }, separator: { height: 8 }, empty: { paddingVertical: Space.lg, gap: Space.sm },
   row: { paddingVertical: Space.md, gap: Space.sm, borderBottomWidth: 1 }, body: { minHeight: ControlSize.touch, gap: Space.xs },
   nameAmount: { flexDirection: 'row', flexWrap: 'wrap', gap: Space.sm }, name: { flexGrow: 1, flexShrink: 1, flexBasis: 160 },
   amount: { flexShrink: 1, fontVariant: ['tabular-nums'] }, actions: { flexDirection: 'row', alignItems: 'center', gap: Space.sm },

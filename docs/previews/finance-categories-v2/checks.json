@@ -1,0 +1,302 @@
+[
+  {
+    "case": "builtin-320-dark-1",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "rendered": 10,
+    "menus": 0,
+    "errors": []
+  },
+  {
+    "case": "builtin-320-dark-2",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "rendered": 10,
+    "menus": 0,
+    "errors": []
+  },
+  {
+    "case": "builtin-320-light-1",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "rendered": 10,
+    "menus": 0,
+    "errors": []
+  },
+  {
+    "case": "builtin-320-light-2",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "rendered": 10,
+    "menus": 0,
+    "errors": []
+  },
+  {
+    "case": "builtin-390-dark-1",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "rendered": 10,
+    "menus": 0,
+    "errors": []
+  },
+  {
+    "case": "builtin-390-dark-2",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "rendered": 10,
+    "menus": 0,
+    "errors": []
+  },
+  {
+    "case": "builtin-390-light-1",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "rendered": 10,
+    "menus": 0,
+    "errors": []
+  },
+  {
+    "case": "builtin-390-light-2",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "rendered": 10,
+    "menus": 0,
+    "errors": []
+  },
+  {
+    "case": "builtin-430-dark-1",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "rendered": 10,
+    "menus": 0,
+    "errors": []
+  },
+  {
+    "case": "builtin-430-dark-2",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "rendered": 10,
+    "menus": 0,
+    "errors": []
+  },
+  {
+    "case": "builtin-430-light-1",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "rendered": 10,
+    "menus": 0,
+    "errors": []
+  },
+  {
+    "case": "builtin-430-light-2",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "rendered": 10,
+    "menus": 0,
+    "errors": []
+  },
+  {
+    "case": "income-390-dark",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "rendered": 3,
+    "menus": 0,
+    "errors": []
+  },
+  {
+    "case": "empty-390-dark",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "rendered": 0,
+    "menus": 0,
+    "errors": []
+  },
+  {
+    "case": "custom-390-dark",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "rendered": 2,
+    "menus": 2,
+    "errors": []
+  },
+  {
+    "case": "archive-menu-390-dark",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "rendered": 2,
+    "menus": 2,
+    "errors": []
+  },
+  {
+    "case": "archived-390-dark",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "rendered": 1,
+    "menus": 0,
+    "errors": []
+  },
+  {
+    "case": "invalid-390-dark",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "rendered": 10,
+    "menus": 0,
+    "errors": []
+  },
+  {
+    "case": "duplicate-390-dark",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "rendered": 10,
+    "menus": 0,
+    "errors": []
+  },
+  {
+    "case": "success-390-dark",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "rendered": 1,
+    "menus": 1,
+    "errors": []
+  },
+  {
+    "case": "long-390-dark",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "rendered": 3,
+    "menus": 3,
+    "errors": []
+  },
+  {
+    "case": "large-390-dark-virtualization",
+    "fixture": 227,
+    "mounted": 18,
+    "errors": []
+  },
+  {
+    "case": "large-390-dark",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "rendered": 18,
+    "menus": 18,
+    "errors": []
+  },
+  {
+    "case": "keyboard-390-dark",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "rendered": 10,
+    "menus": 0,
+    "errors": []
+  },
+  {
+    "case": "parent-390-dark",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "rendered": 0,
+    "menus": 0,
+    "errors": []
+  },
+  {
+    "case": "income-390-light",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "rendered": 3,
+    "menus": 0,
+    "errors": []
+  },
+  {
+    "case": "empty-390-light",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "rendered": 0,
+    "menus": 0,
+    "errors": []
+  },
+  {
+    "case": "custom-390-light",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "rendered": 2,
+    "menus": 2,
+    "errors": []
+  },
+  {
+    "case": "archive-menu-390-light",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "rendered": 2,
+    "menus": 2,
+    "errors": []
+  },
+  {
+    "case": "archived-390-light",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "rendered": 1,
+    "menus": 0,
+    "errors": []
+  },
+  {
+    "case": "invalid-390-light",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "rendered": 10,
+    "menus": 0,
+    "errors": []
+  },
+  {
+    "case": "duplicate-390-light",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "rendered": 10,
+    "menus": 0,
+    "errors": []
+  },
+  {
+    "case": "success-390-light",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "rendered": 1,
+    "menus": 1,
+    "errors": []
+  },
+  {
+    "case": "long-390-light",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "rendered": 3,
+    "menus": 3,
+    "errors": []
+  },
+  {
+    "case": "large-390-light-virtualization",
+    "fixture": 227,
+    "mounted": 18,
+    "errors": []
+  },
+  {
+    "case": "large-390-light",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "rendered": 18,
+    "menus": 18,
+    "errors": []
+  },
+  {
+    "case": "keyboard-390-light",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "rendered": 10,
+    "menus": 0,
+    "errors": []
+  },
+  {
+    "case": "parent-390-light",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "rendered": 0,
+    "menus": 0,
+    "errors": []
+  }
+]

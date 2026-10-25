@@ -1,0 +1,1448 @@
+[
+  {
+    "case": "stress-320-dark-1",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "cards": [
+      {
+        "title": "VeryLongUnbrokenCommitmentTitleVeryLongUnbrokenCommitmentTitleVeryLongUnbrokenCommitmentTitle",
+        "icon": "icon-layers",
+        "amount": "R$ 90.071.992.547.409,91"
+      },
+      {
+        "title": "Rock in Rio Ticket",
+        "icon": "icon-layers",
+        "amount": "R$ 43,50"
+      },
+      {
+        "title": "Netflix",
+        "icon": "icon-repeat",
+        "amount": "R$ 40,00"
+      },
+      {
+        "title": "Internet",
+        "icon": "icon-receipt",
+        "amount": "R$ 150,00"
+      }
+    ],
+    "addBounds": {
+      "x": 16,
+      "y": 134,
+      "width": 232,
+      "height": 48
+    },
+    "optionsBounds": {
+      "x": 256,
+      "y": 134,
+      "width": 48,
+      "height": 48
+    },
+    "errors": []
+  },
+  {
+    "case": "stress-320-dark-2",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "cards": [
+      {
+        "title": "VeryLongUnbrokenCommitmentTitleVeryLongUnbrokenCommitmentTitleVeryLongUnbrokenCommitmentTitle",
+        "icon": "icon-layers",
+        "amount": "R$ 90.071.992.547.409,91"
+      },
+      {
+        "title": "Rock in Rio Ticket",
+        "icon": "icon-layers",
+        "amount": "R$ 43,50"
+      },
+      {
+        "title": "Netflix",
+        "icon": "icon-repeat",
+        "amount": "R$ 40,00"
+      },
+      {
+        "title": "Internet",
+        "icon": "icon-receipt",
+        "amount": "R$ 150,00"
+      }
+    ],
+    "addBounds": {
+      "x": 16,
+      "y": 196,
+      "width": 288,
+      "height": 108
+    },
+    "optionsBounds": {
+      "x": 256,
+      "y": 312,
+      "width": 48,
+      "height": 48
+    },
+    "errors": []
+  },
+  {
+    "case": "stress-320-light-1",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "cards": [
+      {
+        "title": "VeryLongUnbrokenCommitmentTitleVeryLongUnbrokenCommitmentTitleVeryLongUnbrokenCommitmentTitle",
+        "icon": "icon-layers",
+        "amount": "R$ 90.071.992.547.409,91"
+      },
+      {
+        "title": "Rock in Rio Ticket",
+        "icon": "icon-layers",
+        "amount": "R$ 43,50"
+      },
+      {
+        "title": "Netflix",
+        "icon": "icon-repeat",
+        "amount": "R$ 40,00"
+      },
+      {
+        "title": "Internet",
+        "icon": "icon-receipt",
+        "amount": "R$ 150,00"
+      }
+    ],
+    "addBounds": {
+      "x": 16,
+      "y": 134,
+      "width": 232,
+      "height": 48
+    },
+    "optionsBounds": {
+      "x": 256,
+      "y": 134,
+      "width": 48,
+      "height": 48
+    },
+    "errors": []
+  },
+  {
+    "case": "stress-320-light-2",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "cards": [
+      {
+        "title": "VeryLongUnbrokenCommitmentTitleVeryLongUnbrokenCommitmentTitleVeryLongUnbrokenCommitmentTitle",
+        "icon": "icon-layers",
+        "amount": "R$ 90.071.992.547.409,91"
+      },
+      {
+        "title": "Rock in Rio Ticket",
+        "icon": "icon-layers",
+        "amount": "R$ 43,50"
+      },
+      {
+        "title": "Netflix",
+        "icon": "icon-repeat",
+        "amount": "R$ 40,00"
+      },
+      {
+        "title": "Internet",
+        "icon": "icon-receipt",
+        "amount": "R$ 150,00"
+      }
+    ],
+    "addBounds": {
+      "x": 16,
+      "y": 196,
+      "width": 288,
+      "height": 108
+    },
+    "optionsBounds": {
+      "x": 256,
+      "y": 312,
+      "width": 48,
+      "height": 48
+    },
+    "errors": []
+  },
+  {
+    "case": "stress-390-dark-1",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "cards": [
+      {
+        "title": "VeryLongUnbrokenCommitmentTitleVeryLongUnbrokenCommitmentTitleVeryLongUnbrokenCommitmentTitle",
+        "icon": "icon-layers",
+        "amount": "R$ 90.071.992.547.409,91"
+      },
+      {
+        "title": "Rock in Rio Ticket",
+        "icon": "icon-layers",
+        "amount": "R$ 43,50"
+      },
+      {
+        "title": "Netflix",
+        "icon": "icon-repeat",
+        "amount": "R$ 40,00"
+      },
+      {
+        "title": "Internet",
+        "icon": "icon-receipt",
+        "amount": "R$ 150,00"
+      }
+    ],
+    "addBounds": {
+      "x": 16,
+      "y": 134,
+      "width": 302,
+      "height": 48
+    },
+    "optionsBounds": {
+      "x": 326,
+      "y": 134,
+      "width": 48,
+      "height": 48
+    },
+    "errors": []
+  },
+  {
+    "case": "stress-390-dark-2",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "cards": [
+      {
+        "title": "VeryLongUnbrokenCommitmentTitleVeryLongUnbrokenCommitmentTitleVeryLongUnbrokenCommitmentTitle",
+        "icon": "icon-layers",
+        "amount": "R$ 90.071.992.547.409,91"
+      },
+      {
+        "title": "Rock in Rio Ticket",
+        "icon": "icon-layers",
+        "amount": "R$ 43,50"
+      },
+      {
+        "title": "Netflix",
+        "icon": "icon-repeat",
+        "amount": "R$ 40,00"
+      },
+      {
+        "title": "Internet",
+        "icon": "icon-receipt",
+        "amount": "R$ 150,00"
+      }
+    ],
+    "addBounds": {
+      "x": 16,
+      "y": 196,
+      "width": 302,
+      "height": 64
+    },
+    "optionsBounds": {
+      "x": 326,
+      "y": 196,
+      "width": 48,
+      "height": 48
+    },
+    "errors": []
+  },
+  {
+    "case": "stress-390-light-1",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "cards": [
+      {
+        "title": "VeryLongUnbrokenCommitmentTitleVeryLongUnbrokenCommitmentTitleVeryLongUnbrokenCommitmentTitle",
+        "icon": "icon-layers",
+        "amount": "R$ 90.071.992.547.409,91"
+      },
+      {
+        "title": "Rock in Rio Ticket",
+        "icon": "icon-layers",
+        "amount": "R$ 43,50"
+      },
+      {
+        "title": "Netflix",
+        "icon": "icon-repeat",
+        "amount": "R$ 40,00"
+      },
+      {
+        "title": "Internet",
+        "icon": "icon-receipt",
+        "amount": "R$ 150,00"
+      }
+    ],
+    "addBounds": {
+      "x": 16,
+      "y": 134,
+      "width": 302,
+      "height": 48
+    },
+    "optionsBounds": {
+      "x": 326,
+      "y": 134,
+      "width": 48,
+      "height": 48
+    },
+    "errors": []
+  },
+  {
+    "case": "stress-390-light-2",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "cards": [
+      {
+        "title": "VeryLongUnbrokenCommitmentTitleVeryLongUnbrokenCommitmentTitleVeryLongUnbrokenCommitmentTitle",
+        "icon": "icon-layers",
+        "amount": "R$ 90.071.992.547.409,91"
+      },
+      {
+        "title": "Rock in Rio Ticket",
+        "icon": "icon-layers",
+        "amount": "R$ 43,50"
+      },
+      {
+        "title": "Netflix",
+        "icon": "icon-repeat",
+        "amount": "R$ 40,00"
+      },
+      {
+        "title": "Internet",
+        "icon": "icon-receipt",
+        "amount": "R$ 150,00"
+      }
+    ],
+    "addBounds": {
+      "x": 16,
+      "y": 196,
+      "width": 302,
+      "height": 64
+    },
+    "optionsBounds": {
+      "x": 326,
+      "y": 196,
+      "width": 48,
+      "height": 48
+    },
+    "errors": []
+  },
+  {
+    "case": "stress-430-dark-1",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "cards": [
+      {
+        "title": "VeryLongUnbrokenCommitmentTitleVeryLongUnbrokenCommitmentTitleVeryLongUnbrokenCommitmentTitle",
+        "icon": "icon-layers",
+        "amount": "R$ 90.071.992.547.409,91"
+      },
+      {
+        "title": "Rock in Rio Ticket",
+        "icon": "icon-layers",
+        "amount": "R$ 43,50"
+      },
+      {
+        "title": "Netflix",
+        "icon": "icon-repeat",
+        "amount": "R$ 40,00"
+      },
+      {
+        "title": "Internet",
+        "icon": "icon-receipt",
+        "amount": "R$ 150,00"
+      }
+    ],
+    "addBounds": {
+      "x": 16,
+      "y": 134,
+      "width": 342,
+      "height": 48
+    },
+    "optionsBounds": {
+      "x": 366,
+      "y": 134,
+      "width": 48,
+      "height": 48
+    },
+    "errors": []
+  },
+  {
+    "case": "stress-430-dark-2",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "cards": [
+      {
+        "title": "VeryLongUnbrokenCommitmentTitleVeryLongUnbrokenCommitmentTitleVeryLongUnbrokenCommitmentTitle",
+        "icon": "icon-layers",
+        "amount": "R$ 90.071.992.547.409,91"
+      },
+      {
+        "title": "Rock in Rio Ticket",
+        "icon": "icon-layers",
+        "amount": "R$ 43,50"
+      },
+      {
+        "title": "Netflix",
+        "icon": "icon-repeat",
+        "amount": "R$ 40,00"
+      },
+      {
+        "title": "Internet",
+        "icon": "icon-receipt",
+        "amount": "R$ 150,00"
+      }
+    ],
+    "addBounds": {
+      "x": 16,
+      "y": 196,
+      "width": 342,
+      "height": 64
+    },
+    "optionsBounds": {
+      "x": 366,
+      "y": 196,
+      "width": 48,
+      "height": 48
+    },
+    "errors": []
+  },
+  {
+    "case": "stress-430-light-1",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "cards": [
+      {
+        "title": "VeryLongUnbrokenCommitmentTitleVeryLongUnbrokenCommitmentTitleVeryLongUnbrokenCommitmentTitle",
+        "icon": "icon-layers",
+        "amount": "R$ 90.071.992.547.409,91"
+      },
+      {
+        "title": "Rock in Rio Ticket",
+        "icon": "icon-layers",
+        "amount": "R$ 43,50"
+      },
+      {
+        "title": "Netflix",
+        "icon": "icon-repeat",
+        "amount": "R$ 40,00"
+      },
+      {
+        "title": "Internet",
+        "icon": "icon-receipt",
+        "amount": "R$ 150,00"
+      }
+    ],
+    "addBounds": {
+      "x": 16,
+      "y": 134,
+      "width": 342,
+      "height": 48
+    },
+    "optionsBounds": {
+      "x": 366,
+      "y": 134,
+      "width": 48,
+      "height": 48
+    },
+    "errors": []
+  },
+  {
+    "case": "stress-430-light-2",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "cards": [
+      {
+        "title": "VeryLongUnbrokenCommitmentTitleVeryLongUnbrokenCommitmentTitleVeryLongUnbrokenCommitmentTitle",
+        "icon": "icon-layers",
+        "amount": "R$ 90.071.992.547.409,91"
+      },
+      {
+        "title": "Rock in Rio Ticket",
+        "icon": "icon-layers",
+        "amount": "R$ 43,50"
+      },
+      {
+        "title": "Netflix",
+        "icon": "icon-repeat",
+        "amount": "R$ 40,00"
+      },
+      {
+        "title": "Internet",
+        "icon": "icon-receipt",
+        "amount": "R$ 150,00"
+      }
+    ],
+    "addBounds": {
+      "x": 16,
+      "y": 196,
+      "width": 342,
+      "height": 64
+    },
+    "optionsBounds": {
+      "x": 366,
+      "y": 196,
+      "width": 48,
+      "height": 48
+    },
+    "errors": []
+  },
+  {
+    "case": "upcoming-390-dark",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "cards": [
+      {
+        "title": "Rock in Rio Ticket",
+        "icon": "icon-layers",
+        "amount": "R$ 43,50"
+      },
+      {
+        "title": "Netflix",
+        "icon": "icon-repeat",
+        "amount": "R$ 40,00"
+      },
+      {
+        "title": "Internet",
+        "icon": "icon-receipt",
+        "amount": "R$ 150,00"
+      }
+    ],
+    "addBounds": {
+      "x": 16,
+      "y": 134,
+      "width": 302,
+      "height": 48
+    },
+    "optionsBounds": {
+      "x": 326,
+      "y": 134,
+      "width": 48,
+      "height": 48
+    },
+    "errors": []
+  },
+  {
+    "case": "same-types-390-dark",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "cards": [
+      {
+        "title": "Rock in Rio Ticket",
+        "icon": "icon-layers",
+        "amount": "R$ 43,50"
+      },
+      {
+        "title": "Netflix",
+        "icon": "icon-repeat",
+        "amount": "R$ 40,00"
+      },
+      {
+        "title": "ChatGPT",
+        "icon": "icon-receipt",
+        "amount": "R$ 150,00"
+      },
+      {
+        "title": "Computer",
+        "icon": "icon-layers",
+        "amount": "R$ 150,00"
+      },
+      {
+        "title": "Internet",
+        "icon": "icon-receipt",
+        "amount": "R$ 150,00"
+      },
+      {
+        "title": "Spotify",
+        "icon": "icon-repeat",
+        "amount": "R$ 150,00"
+      }
+    ],
+    "addBounds": {
+      "x": 16,
+      "y": 134,
+      "width": 302,
+      "height": 48
+    },
+    "optionsBounds": {
+      "x": 326,
+      "y": 134,
+      "width": 48,
+      "height": 48
+    },
+    "errors": []
+  },
+  {
+    "case": "mixed-390-dark",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "cards": [
+      {
+        "title": "Past obligation",
+        "icon": "icon-receipt",
+        "amount": "R$ 150,00"
+      },
+      {
+        "title": "Due today",
+        "icon": "icon-receipt",
+        "amount": "R$ 150,00"
+      },
+      {
+        "title": "Rock in Rio Ticket",
+        "icon": "icon-layers",
+        "amount": "R$ 43,50"
+      },
+      {
+        "title": "Netflix",
+        "icon": "icon-repeat",
+        "amount": "R$ 40,00"
+      },
+      {
+        "title": "Internet",
+        "icon": "icon-receipt",
+        "amount": "R$ 150,00"
+      },
+      {
+        "title": "Past obligation",
+        "icon": "icon-receipt",
+        "amount": "R$ 150,00"
+      },
+      {
+        "title": "Due today",
+        "icon": "icon-receipt",
+        "amount": "R$ 150,00"
+      }
+    ],
+    "addBounds": {
+      "x": 16,
+      "y": 134,
+      "width": 302,
+      "height": 48
+    },
+    "optionsBounds": {
+      "x": 326,
+      "y": 134,
+      "width": 48,
+      "height": 48
+    },
+    "errors": []
+  },
+  {
+    "case": "overdue-390-dark",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "cards": [
+      {
+        "title": "Overdue installment",
+        "icon": "icon-layers",
+        "amount": "R$ 150,00"
+      }
+    ],
+    "addBounds": {
+      "x": 16,
+      "y": 134,
+      "width": 302,
+      "height": 48
+    },
+    "optionsBounds": {
+      "x": 326,
+      "y": 134,
+      "width": 48,
+      "height": 48
+    },
+    "errors": []
+  },
+  {
+    "case": "empty-390-dark",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "cards": [],
+    "addBounds": {
+      "x": 16,
+      "y": 134,
+      "width": 302,
+      "height": 48
+    },
+    "optionsBounds": {
+      "x": 326,
+      "y": 134,
+      "width": 48,
+      "height": 48
+    },
+    "errors": []
+  },
+  {
+    "case": "quiet-390-dark",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "cards": [],
+    "addBounds": {
+      "x": 16,
+      "y": 134,
+      "width": 302,
+      "height": 48
+    },
+    "optionsBounds": {
+      "x": 326,
+      "y": 134,
+      "width": 48,
+      "height": 48
+    },
+    "errors": []
+  },
+  {
+    "case": "actions-390-dark",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "cards": [
+      {
+        "title": "Rock in Rio Ticket",
+        "icon": "icon-layers",
+        "amount": "R$ 43,50"
+      },
+      {
+        "title": "Netflix",
+        "icon": "icon-repeat",
+        "amount": "R$ 40,00"
+      },
+      {
+        "title": "Internet",
+        "icon": "icon-receipt",
+        "amount": "R$ 150,00"
+      }
+    ],
+    "addBounds": {
+      "x": 16,
+      "y": 134,
+      "width": 302,
+      "height": 48
+    },
+    "optionsBounds": {
+      "x": 326,
+      "y": 134,
+      "width": 48,
+      "height": 48
+    },
+    "errors": []
+  },
+  {
+    "case": "options-390-dark",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "cards": [
+      {
+        "title": "Rock in Rio Ticket",
+        "icon": "icon-layers",
+        "amount": "R$ 43,50"
+      },
+      {
+        "title": "Netflix",
+        "icon": "icon-repeat",
+        "amount": "R$ 40,00"
+      },
+      {
+        "title": "Internet",
+        "icon": "icon-receipt",
+        "amount": "R$ 150,00"
+      }
+    ],
+    "addBounds": {
+      "x": 16,
+      "y": 134,
+      "width": 302,
+      "height": 48
+    },
+    "optionsBounds": {
+      "x": 326,
+      "y": 134,
+      "width": 48,
+      "height": 48
+    },
+    "errors": []
+  },
+  {
+    "case": "pay-390-dark",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "cards": [
+      {
+        "title": "Rock in Rio Ticket",
+        "icon": "icon-layers",
+        "amount": "R$ 43,50"
+      },
+      {
+        "title": "Netflix",
+        "icon": "icon-repeat",
+        "amount": "R$ 40,00"
+      },
+      {
+        "title": "Internet",
+        "icon": "icon-receipt",
+        "amount": "R$ 150,00"
+      }
+    ],
+    "addBounds": {
+      "x": 16,
+      "y": 134,
+      "width": 302,
+      "height": 48
+    },
+    "optionsBounds": {
+      "x": 326,
+      "y": 134,
+      "width": 48,
+      "height": 48
+    },
+    "errors": []
+  },
+  {
+    "case": "manage-390-dark",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "cards": [],
+    "addBounds": {
+      "x": 16,
+      "y": 134,
+      "width": 302,
+      "height": 48
+    },
+    "optionsBounds": {
+      "x": 326,
+      "y": 134,
+      "width": 48,
+      "height": 48
+    },
+    "errors": []
+  },
+  {
+    "case": "history-390-dark",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "cards": [],
+    "addBounds": {
+      "x": 16,
+      "y": 134,
+      "width": 302,
+      "height": 48
+    },
+    "optionsBounds": {
+      "x": 326,
+      "y": 134,
+      "width": 48,
+      "height": 48
+    },
+    "errors": []
+  },
+  {
+    "case": "long-bottom-390-dark-virtualization",
+    "mountedInitially": 16,
+    "fixture": 100,
+    "bottom": 968,
+    "errors": []
+  },
+  {
+    "case": "long-bottom-390-dark",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "cards": [
+      {
+        "title": "Series 000",
+        "icon": "icon-receipt",
+        "amount": "R$ 150,00"
+      },
+      {
+        "title": "Series 001",
+        "icon": "icon-repeat",
+        "amount": "R$ 150,00"
+      },
+      {
+        "title": "Series 002",
+        "icon": "icon-layers",
+        "amount": "R$ 150,00"
+      },
+      {
+        "title": "Series 003",
+        "icon": "icon-receipt",
+        "amount": "R$ 150,00"
+      },
+      {
+        "title": "Series 004",
+        "icon": "icon-repeat",
+        "amount": "R$ 150,00"
+      },
+      {
+        "title": "Series 083",
+        "icon": "icon-layers",
+        "amount": "R$ 150,00"
+      },
+      {
+        "title": "Series 084",
+        "icon": "icon-receipt",
+        "amount": "R$ 150,00"
+      },
+      {
+        "title": "Series 085",
+        "icon": "icon-repeat",
+        "amount": "R$ 150,00"
+      },
+      {
+        "title": "Series 086",
+        "icon": "icon-layers",
+        "amount": "R$ 150,00"
+      },
+      {
+        "title": "Series 087",
+        "icon": "icon-receipt",
+        "amount": "R$ 150,00"
+      },
+      {
+        "title": "Series 088",
+        "icon": "icon-repeat",
+        "amount": "R$ 150,00"
+      },
+      {
+        "title": "Series 089",
+        "icon": "icon-layers",
+        "amount": "R$ 150,00"
+      },
+      {
+        "title": "Series 090",
+        "icon": "icon-receipt",
+        "amount": "R$ 150,00"
+      },
+      {
+        "title": "Series 091",
+        "icon": "icon-repeat",
+        "amount": "R$ 150,00"
+      },
+      {
+        "title": "Series 092",
+        "icon": "icon-layers",
+        "amount": "R$ 150,00"
+      },
+      {
+        "title": "Series 093",
+        "icon": "icon-receipt",
+        "amount": "R$ 150,00"
+      },
+      {
+        "title": "Series 094",
+        "icon": "icon-repeat",
+        "amount": "R$ 150,00"
+      },
+      {
+        "title": "Series 095",
+        "icon": "icon-layers",
+        "amount": "R$ 150,00"
+      },
+      {
+        "title": "Series 096",
+        "icon": "icon-receipt",
+        "amount": "R$ 150,00"
+      },
+      {
+        "title": "Series 097",
+        "icon": "icon-repeat",
+        "amount": "R$ 150,00"
+      },
+      {
+        "title": "Series 098",
+        "icon": "icon-layers",
+        "amount": "R$ 150,00"
+      },
+      {
+        "title": "Series 099",
+        "icon": "icon-receipt",
+        "amount": "R$ 150,00"
+      }
+    ],
+    "addBounds": {
+      "x": 16,
+      "y": 134,
+      "width": 302,
+      "height": 48
+    },
+    "optionsBounds": {
+      "x": 326,
+      "y": 134,
+      "width": 48,
+      "height": 48
+    },
+    "errors": []
+  },
+  {
+    "case": "upcoming-390-light",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "cards": [
+      {
+        "title": "Rock in Rio Ticket",
+        "icon": "icon-layers",
+        "amount": "R$ 43,50"
+      },
+      {
+        "title": "Netflix",
+        "icon": "icon-repeat",
+        "amount": "R$ 40,00"
+      },
+      {
+        "title": "Internet",
+        "icon": "icon-receipt",
+        "amount": "R$ 150,00"
+      }
+    ],
+    "addBounds": {
+      "x": 16,
+      "y": 134,
+      "width": 302,
+      "height": 48
+    },
+    "optionsBounds": {
+      "x": 326,
+      "y": 134,
+      "width": 48,
+      "height": 48
+    },
+    "errors": []
+  },
+  {
+    "case": "same-types-390-light",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "cards": [
+      {
+        "title": "Rock in Rio Ticket",
+        "icon": "icon-layers",
+        "amount": "R$ 43,50"
+      },
+      {
+        "title": "Netflix",
+        "icon": "icon-repeat",
+        "amount": "R$ 40,00"
+      },
+      {
+        "title": "ChatGPT",
+        "icon": "icon-receipt",
+        "amount": "R$ 150,00"
+      },
+      {
+        "title": "Computer",
+        "icon": "icon-layers",
+        "amount": "R$ 150,00"
+      },
+      {
+        "title": "Internet",
+        "icon": "icon-receipt",
+        "amount": "R$ 150,00"
+      },
+      {
+        "title": "Spotify",
+        "icon": "icon-repeat",
+        "amount": "R$ 150,00"
+      }
+    ],
+    "addBounds": {
+      "x": 16,
+      "y": 134,
+      "width": 302,
+      "height": 48
+    },
+    "optionsBounds": {
+      "x": 326,
+      "y": 134,
+      "width": 48,
+      "height": 48
+    },
+    "errors": []
+  },
+  {
+    "case": "mixed-390-light",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "cards": [
+      {
+        "title": "Past obligation",
+        "icon": "icon-receipt",
+        "amount": "R$ 150,00"
+      },
+      {
+        "title": "Due today",
+        "icon": "icon-receipt",
+        "amount": "R$ 150,00"
+      },
+      {
+        "title": "Rock in Rio Ticket",
+        "icon": "icon-layers",
+        "amount": "R$ 43,50"
+      },
+      {
+        "title": "Netflix",
+        "icon": "icon-repeat",
+        "amount": "R$ 40,00"
+      },
+      {
+        "title": "Internet",
+        "icon": "icon-receipt",
+        "amount": "R$ 150,00"
+      },
+      {
+        "title": "Past obligation",
+        "icon": "icon-receipt",
+        "amount": "R$ 150,00"
+      },
+      {
+        "title": "Due today",
+        "icon": "icon-receipt",
+        "amount": "R$ 150,00"
+      }
+    ],
+    "addBounds": {
+      "x": 16,
+      "y": 134,
+      "width": 302,
+      "height": 48
+    },
+    "optionsBounds": {
+      "x": 326,
+      "y": 134,
+      "width": 48,
+      "height": 48
+    },
+    "errors": []
+  },
+  {
+    "case": "overdue-390-light",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "cards": [
+      {
+        "title": "Overdue installment",
+        "icon": "icon-layers",
+        "amount": "R$ 150,00"
+      }
+    ],
+    "addBounds": {
+      "x": 16,
+      "y": 134,
+      "width": 302,
+      "height": 48
+    },
+    "optionsBounds": {
+      "x": 326,
+      "y": 134,
+      "width": 48,
+      "height": 48
+    },
+    "errors": []
+  },
+  {
+    "case": "empty-390-light",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "cards": [],
+    "addBounds": {
+      "x": 16,
+      "y": 134,
+      "width": 302,
+      "height": 48
+    },
+    "optionsBounds": {
+      "x": 326,
+      "y": 134,
+      "width": 48,
+      "height": 48
+    },
+    "errors": []
+  },
+  {
+    "case": "quiet-390-light",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "cards": [],
+    "addBounds": {
+      "x": 16,
+      "y": 134,
+      "width": 302,
+      "height": 48
+    },
+    "optionsBounds": {
+      "x": 326,
+      "y": 134,
+      "width": 48,
+      "height": 48
+    },
+    "errors": []
+  },
+  {
+    "case": "actions-390-light",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "cards": [
+      {
+        "title": "Rock in Rio Ticket",
+        "icon": "icon-layers",
+        "amount": "R$ 43,50"
+      },
+      {
+        "title": "Netflix",
+        "icon": "icon-repeat",
+        "amount": "R$ 40,00"
+      },
+      {
+        "title": "Internet",
+        "icon": "icon-receipt",
+        "amount": "R$ 150,00"
+      }
+    ],
+    "addBounds": {
+      "x": 16,
+      "y": 134,
+      "width": 302,
+      "height": 48
+    },
+    "optionsBounds": {
+      "x": 326,
+      "y": 134,
+      "width": 48,
+      "height": 48
+    },
+    "errors": []
+  },
+  {
+    "case": "options-390-light",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "cards": [
+      {
+        "title": "Rock in Rio Ticket",
+        "icon": "icon-layers",
+        "amount": "R$ 43,50"
+      },
+      {
+        "title": "Netflix",
+        "icon": "icon-repeat",
+        "amount": "R$ 40,00"
+      },
+      {
+        "title": "Internet",
+        "icon": "icon-receipt",
+        "amount": "R$ 150,00"
+      }
+    ],
+    "addBounds": {
+      "x": 16,
+      "y": 134,
+      "width": 302,
+      "height": 48
+    },
+    "optionsBounds": {
+      "x": 326,
+      "y": 134,
+      "width": 48,
+      "height": 48
+    },
+    "errors": []
+  },
+  {
+    "case": "pay-390-light",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "cards": [
+      {
+        "title": "Rock in Rio Ticket",
+        "icon": "icon-layers",
+        "amount": "R$ 43,50"
+      },
+      {
+        "title": "Netflix",
+        "icon": "icon-repeat",
+        "amount": "R$ 40,00"
+      },
+      {
+        "title": "Internet",
+        "icon": "icon-receipt",
+        "amount": "R$ 150,00"
+      }
+    ],
+    "addBounds": {
+      "x": 16,
+      "y": 134,
+      "width": 302,
+      "height": 48
+    },
+    "optionsBounds": {
+      "x": 326,
+      "y": 134,
+      "width": 48,
+      "height": 48
+    },
+    "errors": []
+  },
+  {
+    "case": "manage-390-light",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "cards": [],
+    "addBounds": {
+      "x": 16,
+      "y": 134,
+      "width": 302,
+      "height": 48
+    },
+    "optionsBounds": {
+      "x": 326,
+      "y": 134,
+      "width": 48,
+      "height": 48
+    },
+    "errors": []
+  },
+  {
+    "case": "history-390-light",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "cards": [],
+    "addBounds": {
+      "x": 16,
+      "y": 134,
+      "width": 302,
+      "height": 48
+    },
+    "optionsBounds": {
+      "x": 326,
+      "y": 134,
+      "width": 48,
+      "height": 48
+    },
+    "errors": []
+  },
+  {
+    "case": "long-bottom-390-light-virtualization",
+    "mountedInitially": 16,
+    "fixture": 100,
+    "bottom": 968,
+    "errors": []
+  },
+  {
+    "case": "long-bottom-390-light",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "cards": [
+      {
+        "title": "Series 000",
+        "icon": "icon-receipt",
+        "amount": "R$ 150,00"
+      },
+      {
+        "title": "Series 001",
+        "icon": "icon-repeat",
+        "amount": "R$ 150,00"
+      },
+      {
+        "title": "Series 002",
+        "icon": "icon-layers",
+        "amount": "R$ 150,00"
+      },
+      {
+        "title": "Series 003",
+        "icon": "icon-receipt",
+        "amount": "R$ 150,00"
+      },
+      {
+        "title": "Series 004",
+        "icon": "icon-repeat",
+        "amount": "R$ 150,00"
+      },
+      {
+        "title": "Series 083",
+        "icon": "icon-layers",
+        "amount": "R$ 150,00"
+      },
+      {
+        "title": "Series 084",
+        "icon": "icon-receipt",
+        "amount": "R$ 150,00"
+      },
+      {
+        "title": "Series 085",
+        "icon": "icon-repeat",
+        "amount": "R$ 150,00"
+      },
+      {
+        "title": "Series 086",
+        "icon": "icon-layers",
+        "amount": "R$ 150,00"
+      },
+      {
+        "title": "Series 087",
+        "icon": "icon-receipt",
+        "amount": "R$ 150,00"
+      },
+      {
+        "title": "Series 088",
+        "icon": "icon-repeat",
+        "amount": "R$ 150,00"
+      },
+      {
+        "title": "Series 089",
+        "icon": "icon-layers",
+        "amount": "R$ 150,00"
+      },
+      {
+        "title": "Series 090",
+        "icon": "icon-receipt",
+        "amount": "R$ 150,00"
+      },
+      {
+        "title": "Series 091",
+        "icon": "icon-repeat",
+        "amount": "R$ 150,00"
+      },
+      {
+        "title": "Series 092",
+        "icon": "icon-layers",
+        "amount": "R$ 150,00"
+      },
+      {
+        "title": "Series 093",
+        "icon": "icon-receipt",
+        "amount": "R$ 150,00"
+      },
+      {
+        "title": "Series 094",
+        "icon": "icon-repeat",
+        "amount": "R$ 150,00"
+      },
+      {
+        "title": "Series 095",
+        "icon": "icon-layers",
+        "amount": "R$ 150,00"
+      },
+      {
+        "title": "Series 096",
+        "icon": "icon-receipt",
+        "amount": "R$ 150,00"
+      },
+      {
+        "title": "Series 097",
+        "icon": "icon-repeat",
+        "amount": "R$ 150,00"
+      },
+      {
+        "title": "Series 098",
+        "icon": "icon-layers",
+        "amount": "R$ 150,00"
+      },
+      {
+        "title": "Series 099",
+        "icon": "icon-receipt",
+        "amount": "R$ 150,00"
+      }
+    ],
+    "addBounds": {
+      "x": 16,
+      "y": 134,
+      "width": 302,
+      "height": 48
+    },
+    "optionsBounds": {
+      "x": 326,
+      "y": 134,
+      "width": 48,
+      "height": 48
+    },
+    "errors": []
+  }
+]

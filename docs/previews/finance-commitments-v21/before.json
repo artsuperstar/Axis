@@ -1,0 +1,818 @@
+[
+  {
+    "name": "before-upcoming-320-dark-1",
+    "theme": "dark",
+    "width": 320,
+    "scale": 1,
+    "scenario": "upcoming",
+    "cards": [
+      {
+        "title": "Rock in Rio Ticket",
+        "amount": "R$ 43,50",
+        "card": {
+          "x": 16,
+          "y": 238,
+          "width": 288,
+          "height": 178
+        },
+        "info": null,
+        "trailing": null,
+        "amountBounds": {
+          "x": 223.21875,
+          "y": 251,
+          "width": 67.78125,
+          "height": 24
+        },
+        "targets": [
+          {
+            "label": "Rock in Rio Ticket, expected R$ 43,50, Upcoming, due 8 de nov. de 2026, installment 2 of 10, Installment, category Entertainment",
+            "x": 81,
+            "y": 251,
+            "width": 210,
+            "height": 96
+          },
+          {
+            "label": "Pay Rock in Rio Ticket, due 8 de nov. de 2026",
+            "x": 181.515625,
+            "y": 355,
+            "width": 53.484375,
+            "height": 48
+          },
+          {
+            "label": "Actions for Rock in Rio Ticket, due 8 de nov. de 2026",
+            "x": 243,
+            "y": 355,
+            "width": 48,
+            "height": 48
+          }
+        ],
+        "overflow": false
+      },
+      {
+        "title": "Netflix",
+        "amount": "R$ 40,00",
+        "card": {
+          "x": 16,
+          "y": 424,
+          "width": 288,
+          "height": 154
+        },
+        "info": null,
+        "trailing": null,
+        "amountBounds": {
+          "x": 223.21875,
+          "y": 437,
+          "width": 67.78125,
+          "height": 24
+        },
+        "targets": [
+          {
+            "label": "Netflix, expected R$ 40,00, Upcoming, due 11 de nov. de 2026, Subscription, category Utilities",
+            "x": 81,
+            "y": 437,
+            "width": 210,
+            "height": 72
+          },
+          {
+            "label": "Pay Netflix, due 11 de nov. de 2026",
+            "x": 181.515625,
+            "y": 517,
+            "width": 53.484375,
+            "height": 48
+          },
+          {
+            "label": "Actions for Netflix, due 11 de nov. de 2026",
+            "x": 243,
+            "y": 517,
+            "width": 48,
+            "height": 48
+          }
+        ],
+        "overflow": false
+      },
+      {
+        "title": "Internet",
+        "amount": "R$ 150,00",
+        "card": {
+          "x": 16,
+          "y": 586,
+          "width": 288,
+          "height": 154
+        },
+        "info": null,
+        "trailing": null,
+        "amountBounds": {
+          "x": 213.296875,
+          "y": 599,
+          "width": 77.703125,
+          "height": 24
+        },
+        "targets": [
+          {
+            "label": "Internet, expected R$ 150,00, Upcoming, due 15 de nov. de 2026, Bill, category Utilities",
+            "x": 81,
+            "y": 599,
+            "width": 210,
+            "height": 72
+          },
+          {
+            "label": "Pay Internet, due 15 de nov. de 2026",
+            "x": 181.515625,
+            "y": 679,
+            "width": 53.484375,
+            "height": 48
+          },
+          {
+            "label": "Actions for Internet, due 15 de nov. de 2026",
+            "x": 243,
+            "y": 679,
+            "width": 48,
+            "height": 48
+          }
+        ],
+        "overflow": false
+      }
+    ],
+    "errors": []
+  },
+  {
+    "name": "before-upcoming-390-dark-1",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "scenario": "upcoming",
+    "cards": [
+      {
+        "title": "Rock in Rio Ticket",
+        "amount": "R$ 43,50",
+        "card": {
+          "x": 16,
+          "y": 238,
+          "width": 358,
+          "height": 154
+        },
+        "info": null,
+        "trailing": null,
+        "amountBounds": {
+          "x": 293.21875,
+          "y": 251,
+          "width": 67.78125,
+          "height": 24
+        },
+        "targets": [
+          {
+            "label": "Rock in Rio Ticket, expected R$ 43,50, Upcoming, due 8 de nov. de 2026, installment 2 of 10, Installment, category Entertainment",
+            "x": 81,
+            "y": 251,
+            "width": 280,
+            "height": 72
+          },
+          {
+            "label": "Pay Rock in Rio Ticket, due 8 de nov. de 2026",
+            "x": 251.515625,
+            "y": 331,
+            "width": 53.484375,
+            "height": 48
+          },
+          {
+            "label": "Actions for Rock in Rio Ticket, due 8 de nov. de 2026",
+            "x": 313,
+            "y": 331,
+            "width": 48,
+            "height": 48
+          }
+        ],
+        "overflow": false
+      },
+      {
+        "title": "Netflix",
+        "amount": "R$ 40,00",
+        "card": {
+          "x": 16,
+          "y": 400,
+          "width": 358,
+          "height": 154
+        },
+        "info": null,
+        "trailing": null,
+        "amountBounds": {
+          "x": 293.21875,
+          "y": 413,
+          "width": 67.78125,
+          "height": 24
+        },
+        "targets": [
+          {
+            "label": "Netflix, expected R$ 40,00, Upcoming, due 11 de nov. de 2026, Subscription, category Utilities",
+            "x": 81,
+            "y": 413,
+            "width": 280,
+            "height": 72
+          },
+          {
+            "label": "Pay Netflix, due 11 de nov. de 2026",
+            "x": 251.515625,
+            "y": 493,
+            "width": 53.484375,
+            "height": 48
+          },
+          {
+            "label": "Actions for Netflix, due 11 de nov. de 2026",
+            "x": 313,
+            "y": 493,
+            "width": 48,
+            "height": 48
+          }
+        ],
+        "overflow": false
+      },
+      {
+        "title": "Internet",
+        "amount": "R$ 150,00",
+        "card": {
+          "x": 16,
+          "y": 562,
+          "width": 358,
+          "height": 154
+        },
+        "info": null,
+        "trailing": null,
+        "amountBounds": {
+          "x": 283.296875,
+          "y": 575,
+          "width": 77.703125,
+          "height": 24
+        },
+        "targets": [
+          {
+            "label": "Internet, expected R$ 150,00, Upcoming, due 15 de nov. de 2026, Bill, category Utilities",
+            "x": 81,
+            "y": 575,
+            "width": 280,
+            "height": 72
+          },
+          {
+            "label": "Pay Internet, due 15 de nov. de 2026",
+            "x": 251.515625,
+            "y": 655,
+            "width": 53.484375,
+            "height": 48
+          },
+          {
+            "label": "Actions for Internet, due 15 de nov. de 2026",
+            "x": 313,
+            "y": 655,
+            "width": 48,
+            "height": 48
+          }
+        ],
+        "overflow": false
+      }
+    ],
+    "errors": []
+  },
+  {
+    "name": "before-upcoming-430-dark-1",
+    "theme": "dark",
+    "width": 430,
+    "scale": 1,
+    "scenario": "upcoming",
+    "cards": [
+      {
+        "title": "Rock in Rio Ticket",
+        "amount": "R$ 43,50",
+        "card": {
+          "x": 16,
+          "y": 238,
+          "width": 398,
+          "height": 154
+        },
+        "info": null,
+        "trailing": null,
+        "amountBounds": {
+          "x": 333.21875,
+          "y": 251,
+          "width": 67.78125,
+          "height": 24
+        },
+        "targets": [
+          {
+            "label": "Rock in Rio Ticket, expected R$ 43,50, Upcoming, due 8 de nov. de 2026, installment 2 of 10, Installment, category Entertainment",
+            "x": 81,
+            "y": 251,
+            "width": 320,
+            "height": 72
+          },
+          {
+            "label": "Pay Rock in Rio Ticket, due 8 de nov. de 2026",
+            "x": 291.515625,
+            "y": 331,
+            "width": 53.484375,
+            "height": 48
+          },
+          {
+            "label": "Actions for Rock in Rio Ticket, due 8 de nov. de 2026",
+            "x": 353,
+            "y": 331,
+            "width": 48,
+            "height": 48
+          }
+        ],
+        "overflow": false
+      },
+      {
+        "title": "Netflix",
+        "amount": "R$ 40,00",
+        "card": {
+          "x": 16,
+          "y": 400,
+          "width": 398,
+          "height": 154
+        },
+        "info": null,
+        "trailing": null,
+        "amountBounds": {
+          "x": 333.21875,
+          "y": 413,
+          "width": 67.78125,
+          "height": 24
+        },
+        "targets": [
+          {
+            "label": "Netflix, expected R$ 40,00, Upcoming, due 11 de nov. de 2026, Subscription, category Utilities",
+            "x": 81,
+            "y": 413,
+            "width": 320,
+            "height": 72
+          },
+          {
+            "label": "Pay Netflix, due 11 de nov. de 2026",
+            "x": 291.515625,
+            "y": 493,
+            "width": 53.484375,
+            "height": 48
+          },
+          {
+            "label": "Actions for Netflix, due 11 de nov. de 2026",
+            "x": 353,
+            "y": 493,
+            "width": 48,
+            "height": 48
+          }
+        ],
+        "overflow": false
+      },
+      {
+        "title": "Internet",
+        "amount": "R$ 150,00",
+        "card": {
+          "x": 16,
+          "y": 562,
+          "width": 398,
+          "height": 154
+        },
+        "info": null,
+        "trailing": null,
+        "amountBounds": {
+          "x": 323.296875,
+          "y": 575,
+          "width": 77.703125,
+          "height": 24
+        },
+        "targets": [
+          {
+            "label": "Internet, expected R$ 150,00, Upcoming, due 15 de nov. de 2026, Bill, category Utilities",
+            "x": 81,
+            "y": 575,
+            "width": 320,
+            "height": 72
+          },
+          {
+            "label": "Pay Internet, due 15 de nov. de 2026",
+            "x": 291.515625,
+            "y": 655,
+            "width": 53.484375,
+            "height": 48
+          },
+          {
+            "label": "Actions for Internet, due 15 de nov. de 2026",
+            "x": 353,
+            "y": 655,
+            "width": 48,
+            "height": 48
+          }
+        ],
+        "overflow": false
+      }
+    ],
+    "errors": []
+  },
+  {
+    "name": "before-upcoming-320-light-1",
+    "theme": "light",
+    "width": 320,
+    "scale": 1,
+    "scenario": "upcoming",
+    "cards": [
+      {
+        "title": "Rock in Rio Ticket",
+        "amount": "R$ 43,50",
+        "card": {
+          "x": 16,
+          "y": 238,
+          "width": 288,
+          "height": 178
+        },
+        "info": null,
+        "trailing": null,
+        "amountBounds": {
+          "x": 223.21875,
+          "y": 251,
+          "width": 67.78125,
+          "height": 24
+        },
+        "targets": [
+          {
+            "label": "Rock in Rio Ticket, expected R$ 43,50, Upcoming, due 8 de nov. de 2026, installment 2 of 10, Installment, category Entertainment",
+            "x": 81,
+            "y": 251,
+            "width": 210,
+            "height": 96
+          },
+          {
+            "label": "Pay Rock in Rio Ticket, due 8 de nov. de 2026",
+            "x": 181.515625,
+            "y": 355,
+            "width": 53.484375,
+            "height": 48
+          },
+          {
+            "label": "Actions for Rock in Rio Ticket, due 8 de nov. de 2026",
+            "x": 243,
+            "y": 355,
+            "width": 48,
+            "height": 48
+          }
+        ],
+        "overflow": false
+      },
+      {
+        "title": "Netflix",
+        "amount": "R$ 40,00",
+        "card": {
+          "x": 16,
+          "y": 424,
+          "width": 288,
+          "height": 154
+        },
+        "info": null,
+        "trailing": null,
+        "amountBounds": {
+          "x": 223.21875,
+          "y": 437,
+          "width": 67.78125,
+          "height": 24
+        },
+        "targets": [
+          {
+            "label": "Netflix, expected R$ 40,00, Upcoming, due 11 de nov. de 2026, Subscription, category Utilities",
+            "x": 81,
+            "y": 437,
+            "width": 210,
+            "height": 72
+          },
+          {
+            "label": "Pay Netflix, due 11 de nov. de 2026",
+            "x": 181.515625,
+            "y": 517,
+            "width": 53.484375,
+            "height": 48
+          },
+          {
+            "label": "Actions for Netflix, due 11 de nov. de 2026",
+            "x": 243,
+            "y": 517,
+            "width": 48,
+            "height": 48
+          }
+        ],
+        "overflow": false
+      },
+      {
+        "title": "Internet",
+        "amount": "R$ 150,00",
+        "card": {
+          "x": 16,
+          "y": 586,
+          "width": 288,
+          "height": 154
+        },
+        "info": null,
+        "trailing": null,
+        "amountBounds": {
+          "x": 213.296875,
+          "y": 599,
+          "width": 77.703125,
+          "height": 24
+        },
+        "targets": [
+          {
+            "label": "Internet, expected R$ 150,00, Upcoming, due 15 de nov. de 2026, Bill, category Utilities",
+            "x": 81,
+            "y": 599,
+            "width": 210,
+            "height": 72
+          },
+          {
+            "label": "Pay Internet, due 15 de nov. de 2026",
+            "x": 181.515625,
+            "y": 679,
+            "width": 53.484375,
+            "height": 48
+          },
+          {
+            "label": "Actions for Internet, due 15 de nov. de 2026",
+            "x": 243,
+            "y": 679,
+            "width": 48,
+            "height": 48
+          }
+        ],
+        "overflow": false
+      }
+    ],
+    "errors": []
+  },
+  {
+    "name": "before-upcoming-390-light-1",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "scenario": "upcoming",
+    "cards": [
+      {
+        "title": "Rock in Rio Ticket",
+        "amount": "R$ 43,50",
+        "card": {
+          "x": 16,
+          "y": 238,
+          "width": 358,
+          "height": 154
+        },
+        "info": null,
+        "trailing": null,
+        "amountBounds": {
+          "x": 293.21875,
+          "y": 251,
+          "width": 67.78125,
+          "height": 24
+        },
+        "targets": [
+          {
+            "label": "Rock in Rio Ticket, expected R$ 43,50, Upcoming, due 8 de nov. de 2026, installment 2 of 10, Installment, category Entertainment",
+            "x": 81,
+            "y": 251,
+            "width": 280,
+            "height": 72
+          },
+          {
+            "label": "Pay Rock in Rio Ticket, due 8 de nov. de 2026",
+            "x": 251.515625,
+            "y": 331,
+            "width": 53.484375,
+            "height": 48
+          },
+          {
+            "label": "Actions for Rock in Rio Ticket, due 8 de nov. de 2026",
+            "x": 313,
+            "y": 331,
+            "width": 48,
+            "height": 48
+          }
+        ],
+        "overflow": false
+      },
+      {
+        "title": "Netflix",
+        "amount": "R$ 40,00",
+        "card": {
+          "x": 16,
+          "y": 400,
+          "width": 358,
+          "height": 154
+        },
+        "info": null,
+        "trailing": null,
+        "amountBounds": {
+          "x": 293.21875,
+          "y": 413,
+          "width": 67.78125,
+          "height": 24
+        },
+        "targets": [
+          {
+            "label": "Netflix, expected R$ 40,00, Upcoming, due 11 de nov. de 2026, Subscription, category Utilities",
+            "x": 81,
+            "y": 413,
+            "width": 280,
+            "height": 72
+          },
+          {
+            "label": "Pay Netflix, due 11 de nov. de 2026",
+            "x": 251.515625,
+            "y": 493,
+            "width": 53.484375,
+            "height": 48
+          },
+          {
+            "label": "Actions for Netflix, due 11 de nov. de 2026",
+            "x": 313,
+            "y": 493,
+            "width": 48,
+            "height": 48
+          }
+        ],
+        "overflow": false
+      },
+      {
+        "title": "Internet",
+        "amount": "R$ 150,00",
+        "card": {
+          "x": 16,
+          "y": 562,
+          "width": 358,
+          "height": 154
+        },
+        "info": null,
+        "trailing": null,
+        "amountBounds": {
+          "x": 283.296875,
+          "y": 575,
+          "width": 77.703125,
+          "height": 24
+        },
+        "targets": [
+          {
+            "label": "Internet, expected R$ 150,00, Upcoming, due 15 de nov. de 2026, Bill, category Utilities",
+            "x": 81,
+            "y": 575,
+            "width": 280,
+            "height": 72
+          },
+          {
+            "label": "Pay Internet, due 15 de nov. de 2026",
+            "x": 251.515625,
+            "y": 655,
+            "width": 53.484375,
+            "height": 48
+          },
+          {
+            "label": "Actions for Internet, due 15 de nov. de 2026",
+            "x": 313,
+            "y": 655,
+            "width": 48,
+            "height": 48
+          }
+        ],
+        "overflow": false
+      }
+    ],
+    "errors": []
+  },
+  {
+    "name": "before-upcoming-430-light-1",
+    "theme": "light",
+    "width": 430,
+    "scale": 1,
+    "scenario": "upcoming",
+    "cards": [
+      {
+        "title": "Rock in Rio Ticket",
+        "amount": "R$ 43,50",
+        "card": {
+          "x": 16,
+          "y": 238,
+          "width": 398,
+          "height": 154
+        },
+        "info": null,
+        "trailing": null,
+        "amountBounds": {
+          "x": 333.21875,
+          "y": 251,
+          "width": 67.78125,
+          "height": 24
+        },
+        "targets": [
+          {
+            "label": "Rock in Rio Ticket, expected R$ 43,50, Upcoming, due 8 de nov. de 2026, installment 2 of 10, Installment, category Entertainment",
+            "x": 81,
+            "y": 251,
+            "width": 320,
+            "height": 72
+          },
+          {
+            "label": "Pay Rock in Rio Ticket, due 8 de nov. de 2026",
+            "x": 291.515625,
+            "y": 331,
+            "width": 53.484375,
+            "height": 48
+          },
+          {
+            "label": "Actions for Rock in Rio Ticket, due 8 de nov. de 2026",
+            "x": 353,
+            "y": 331,
+            "width": 48,
+            "height": 48
+          }
+        ],
+        "overflow": false
+      },
+      {
+        "title": "Netflix",
+        "amount": "R$ 40,00",
+        "card": {
+          "x": 16,
+          "y": 400,
+          "width": 398,
+          "height": 154
+        },
+        "info": null,
+        "trailing": null,
+        "amountBounds": {
+          "x": 333.21875,
+          "y": 413,
+          "width": 67.78125,
+          "height": 24
+        },
+        "targets": [
+          {
+            "label": "Netflix, expected R$ 40,00, Upcoming, due 11 de nov. de 2026, Subscription, category Utilities",
+            "x": 81,
+            "y": 413,
+            "width": 320,
+            "height": 72
+          },
+          {
+            "label": "Pay Netflix, due 11 de nov. de 2026",
+            "x": 291.515625,
+            "y": 493,
+            "width": 53.484375,
+            "height": 48
+          },
+          {
+            "label": "Actions for Netflix, due 11 de nov. de 2026",
+            "x": 353,
+            "y": 493,
+            "width": 48,
+            "height": 48
+          }
+        ],
+        "overflow": false
+      },
+      {
+        "title": "Internet",
+        "amount": "R$ 150,00",
+        "card": {
+          "x": 16,
+          "y": 562,
+          "width": 398,
+          "height": 154
+        },
+        "info": null,
+        "trailing": null,
+        "amountBounds": {
+          "x": 323.296875,
+          "y": 575,
+          "width": 77.703125,
+          "height": 24
+        },
+        "targets": [
+          {
+            "label": "Internet, expected R$ 150,00, Upcoming, due 15 de nov. de 2026, Bill, category Utilities",
+            "x": 81,
+            "y": 575,
+            "width": 320,
+            "height": 72
+          },
+          {
+            "label": "Pay Internet, due 15 de nov. de 2026",
+            "x": 291.515625,
+            "y": 655,
+            "width": 53.484375,
+            "height": 48
+          },
+          {
+            "label": "Actions for Internet, due 15 de nov. de 2026",
+            "x": 353,
+            "y": 655,
+            "width": 48,
+            "height": 48
+          }
+        ],
+        "overflow": false
+      }
+    ],
+    "errors": []
+  }
+]

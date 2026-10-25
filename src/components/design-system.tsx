@@ -1,6 +1,6 @@
 import { useFonts } from 'expo-font';
 import { createContext, useContext, useEffect, useRef, useState, type ReactNode, type Ref } from 'react';
-import { Pressable, StyleSheet, View, type PressableProps, type ViewProps, type ViewStyle, type ViewInstance } from 'react-native';
+import { ActivityIndicator, Pressable, StyleSheet, View, type PressableProps, type ViewProps, type ViewStyle, type ViewInstance } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
 import { DesignColors, DesignTypography, MotionTokens, Shape, TouchTarget, displayFontStyle, interfaceFontStyle, type DesignPalette, type DesignTextRole } from '@/constants/design-system-v2';
@@ -69,7 +69,7 @@ export function UiPressable({ style, onPressIn, onPressOut, onHoverIn, onHoverOu
     onPressOut={(event) => { setPressed(false); progress.set(reduced ? 0 : withTiming(0, motionTiming(MotionTokens.press))); onPressOut?.(event); }} />;
 }
 
-export function UiButton({ label, onPress, disabled = false, selected = false, accessibilityLabel, accessibilityHint, variant = 'secondary', expanded, align = 'center', ref, icon, leadingIcon, trailingIcon, showIndicator = true, feature, tone, compact = false, compactNavigation = false }: {
+export function UiButton({ label, onPress, disabled = false, busy = false, selected = false, accessibilityLabel, accessibilityHint, variant = 'secondary', expanded, align = 'center', ref, icon, leadingIcon, trailingIcon, showIndicator = true, feature, tone, compact = false, compactNavigation = false }: {
   label: string; onPress: () => void; disabled?: boolean; selected?: boolean; accessibilityLabel?: string; variant?: ButtonVariant;
   expanded?: boolean; align?: 'start' | 'center'; ref?: Ref<ViewInstance>; icon?: UiIconName;
   leadingIcon?: UiIconName; trailingIcon?: UiIconName; accessibilityHint?: string;
@@ -78,22 +78,25 @@ export function UiButton({ label, onPress, disabled = false, selected = false, a
   tone?: 'brand';
   compact?: boolean;
   compactNavigation?: boolean;
+  busy?: boolean;
 }) {
   const colors = useDesignColors();
   const [focused, setFocused] = useState(false);
-  const primary = variant === 'primary' && !disabled;
-  const textColor = disabled ? 'textMuted' : primary ? feature === 'fitness' ? 'onFitness' : 'onBrand'
+  const unavailable = disabled || busy;
+  const primary = variant === 'primary' && !unavailable;
+  const textColor = unavailable ? 'textMuted' : primary ? feature === 'fitness' ? 'onFitness' : 'onBrand'
     : variant === 'destructive' ? 'danger' : selected || tone === 'brand' ? 'brand' : feature === 'fitness' && variant === 'secondary' ? 'fitnessText' : 'textPrimary';
   return <UiPressable ref={ref} scale accessibilityRole="button" accessibilityLabel={accessibilityLabel ?? label}
     accessibilityHint={accessibilityHint}
-    accessibilityState={{ disabled, selected, ...(expanded === undefined ? {} : { expanded }) }} aria-expanded={expanded}
-    disabled={disabled} onPress={onPress} onFocus={() => setFocused(true)} onBlur={() => setFocused(false)}
+    accessibilityState={{ disabled: unavailable, selected, ...(busy ? { busy: true } : {}), ...(expanded === undefined ? {} : { expanded }) }} aria-expanded={expanded} aria-busy={busy || undefined}
+    disabled={unavailable} onPress={onPress} onFocus={() => setFocused(true)} onBlur={() => setFocused(false)}
     style={({ pressed }) => [styles.button, { alignItems: align === 'start' ? 'flex-start' : 'center',
       paddingHorizontal: compactNavigation && variant === 'navigation' ? 2 : compact || variant === 'navigation' ? Space.sm : Space.md,
-      backgroundColor: disabled ? colors.inset : primary ? feature === 'fitness' ? colors.fitnessAccent : colors.brandStrong : pressed || selected ? colors.selected
+      backgroundColor: unavailable ? colors.inset : primary ? feature === 'fitness' ? colors.fitnessAccent : colors.brandStrong : pressed || selected ? colors.selected
         : variant === 'quiet' || variant === 'navigation' ? 'transparent' : tone === 'brand' ? colors.brandSoft : feature === 'fitness' ? colors.fitnessAccentSoft : colors.control,
       borderColor: focused ? primary ? colors[textColor] : colors.brand : 'transparent' },
-      (leadingIcon || trailingIcon) && { flexDirection: 'row', justifyContent: 'center', gap: compact ? Space.xs : Space.sm }]}>
+      (busy || leadingIcon || trailingIcon) && { flexDirection: 'row', justifyContent: 'center', gap: compact ? Space.xs : Space.sm }]}>
+    {busy && <ActivityIndicator accessible={false} size="small" color={colors[textColor]} />}
     {icon ? <UiIcon name={icon} color={colors[textColor]} /> : <>
       {leadingIcon && <UiIcon name={leadingIcon} color={colors[textColor]} />}
       <UiText type="button" color={textColor} style={trailingIcon ? { flex: 1, minWidth: 0 } : leadingIcon ? { flexShrink: 1, minWidth: 0 } : undefined}>{label}</UiText>

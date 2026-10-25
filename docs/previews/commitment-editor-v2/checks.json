@@ -1,0 +1,2916 @@
+[
+  {
+    "name": "new-bill-dark",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "verticalFields": [
+      {
+        "label": "Title *",
+        "labelBounds": {
+          "x": 25,
+          "y": 458,
+          "width": 39.3125,
+          "height": 20,
+          "bottom": 478
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 486,
+          "width": 340,
+          "height": 52,
+          "bottom": 538
+        },
+        "above": true
+      },
+      {
+        "label": "Expected amount *",
+        "labelBounds": {
+          "x": 25,
+          "y": 550,
+          "width": 126.890625,
+          "height": 20,
+          "bottom": 570
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 578,
+          "width": 340,
+          "height": 48,
+          "bottom": 626
+        },
+        "above": true
+      }
+    ],
+    "titleSizing": [
+      {
+        "label": "Title, required",
+        "client": 50,
+        "scroll": 50,
+        "clipped": false
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 219,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 267
+      },
+      {
+        "label": "Save",
+        "x": 315.375,
+        "y": 219,
+        "width": 62.625,
+        "height": 48,
+        "bottom": 267
+      }
+    ],
+    "errors": []
+  },
+  {
+    "name": "edit-bill-dark",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "verticalFields": [
+      {
+        "label": "Title *",
+        "labelBounds": {
+          "x": 25,
+          "y": 412,
+          "width": 39.3125,
+          "height": 20,
+          "bottom": 432
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 440,
+          "width": 340,
+          "height": 52,
+          "bottom": 492
+        },
+        "above": true
+      },
+      {
+        "label": "Expected amount *",
+        "labelBounds": {
+          "x": 25,
+          "y": 504,
+          "width": 126.890625,
+          "height": 20,
+          "bottom": 524
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 532,
+          "width": 340,
+          "height": 48,
+          "bottom": 580
+        },
+        "above": true
+      }
+    ],
+    "titleSizing": [
+      {
+        "label": "Title, required",
+        "client": 50,
+        "scroll": 50,
+        "clipped": false
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 173,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 221
+      },
+      {
+        "label": "Save",
+        "x": 315.375,
+        "y": 173,
+        "width": 62.625,
+        "height": 48,
+        "bottom": 221
+      }
+    ],
+    "errors": []
+  },
+  {
+    "name": "new-subscription-dark",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "verticalFields": [
+      {
+        "label": "Title *",
+        "labelBounds": {
+          "x": 25,
+          "y": 458,
+          "width": 39.3125,
+          "height": 20,
+          "bottom": 478
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 486,
+          "width": 340,
+          "height": 52,
+          "bottom": 538
+        },
+        "above": true
+      },
+      {
+        "label": "Expected amount *",
+        "labelBounds": {
+          "x": 25,
+          "y": 550,
+          "width": 126.890625,
+          "height": 20,
+          "bottom": 570
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 578,
+          "width": 340,
+          "height": 48,
+          "bottom": 626
+        },
+        "above": true
+      }
+    ],
+    "titleSizing": [
+      {
+        "label": "Title, required",
+        "client": 50,
+        "scroll": 50,
+        "clipped": false
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 219,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 267
+      },
+      {
+        "label": "Save",
+        "x": 315.375,
+        "y": 219,
+        "width": 62.625,
+        "height": 48,
+        "bottom": 267
+      }
+    ],
+    "errors": []
+  },
+  {
+    "name": "edit-subscription-dark",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "verticalFields": [
+      {
+        "label": "Title *",
+        "labelBounds": {
+          "x": 25,
+          "y": 412,
+          "width": 39.3125,
+          "height": 20,
+          "bottom": 432
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 440,
+          "width": 340,
+          "height": 52,
+          "bottom": 492
+        },
+        "above": true
+      },
+      {
+        "label": "Expected amount *",
+        "labelBounds": {
+          "x": 25,
+          "y": 504,
+          "width": 126.890625,
+          "height": 20,
+          "bottom": 524
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 532,
+          "width": 340,
+          "height": 48,
+          "bottom": 580
+        },
+        "above": true
+      }
+    ],
+    "titleSizing": [
+      {
+        "label": "Title, required",
+        "client": 50,
+        "scroll": 50,
+        "clipped": false
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 173,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 221
+      },
+      {
+        "label": "Save",
+        "x": 315.375,
+        "y": 173,
+        "width": 62.625,
+        "height": 48,
+        "bottom": 221
+      }
+    ],
+    "errors": []
+  },
+  {
+    "name": "new-installment-dark",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "verticalFields": [
+      {
+        "label": "Title *",
+        "labelBounds": {
+          "x": 25,
+          "y": 370,
+          "width": 39.3125,
+          "height": 20,
+          "bottom": 390
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 398,
+          "width": 340,
+          "height": 52,
+          "bottom": 450
+        },
+        "above": true
+      },
+      {
+        "label": "Installment amount *",
+        "labelBounds": {
+          "x": 25,
+          "y": 462,
+          "width": 139.921875,
+          "height": 20,
+          "bottom": 482
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 490,
+          "width": 340,
+          "height": 48,
+          "bottom": 538
+        },
+        "above": true
+      },
+      {
+        "label": "Number of installments *",
+        "labelBounds": {
+          "x": 25,
+          "y": 724,
+          "width": 165.171875,
+          "height": 20,
+          "bottom": 744
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 752,
+          "width": 340,
+          "height": 48,
+          "bottom": 800
+        },
+        "above": true
+      }
+    ],
+    "titleSizing": [
+      {
+        "label": "Title, required",
+        "client": 50,
+        "scroll": 50,
+        "clipped": false
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 131,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 179
+      },
+      {
+        "label": "Save",
+        "x": 315.375,
+        "y": 131,
+        "width": 62.625,
+        "height": 48,
+        "bottom": 179
+      }
+    ],
+    "errors": []
+  },
+  {
+    "name": "edit-installment-dark",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "verticalFields": [
+      {
+        "label": "Title *",
+        "labelBounds": {
+          "x": 25,
+          "y": 324,
+          "width": 39.3125,
+          "height": 20,
+          "bottom": 344
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 352,
+          "width": 340,
+          "height": 52,
+          "bottom": 404
+        },
+        "above": true
+      },
+      {
+        "label": "Installment amount *",
+        "labelBounds": {
+          "x": 25,
+          "y": 416,
+          "width": 139.921875,
+          "height": 20,
+          "bottom": 436
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 444,
+          "width": 340,
+          "height": 48,
+          "bottom": 492
+        },
+        "above": true
+      },
+      {
+        "label": "Number of installments *",
+        "labelBounds": {
+          "x": 25,
+          "y": 682,
+          "width": 165.171875,
+          "height": 20,
+          "bottom": 702
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 710,
+          "width": 340,
+          "height": 48,
+          "bottom": 758
+        },
+        "above": true
+      }
+    ],
+    "titleSizing": [
+      {
+        "label": "Title, required",
+        "client": 50,
+        "scroll": 50,
+        "clipped": false
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 85,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 133
+      },
+      {
+        "label": "Save",
+        "x": 315.375,
+        "y": 85,
+        "width": 62.625,
+        "height": 48,
+        "bottom": 133
+      }
+    ],
+    "errors": []
+  },
+  {
+    "name": "new-bill-320-dark",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "verticalFields": [
+      {
+        "label": "Title *",
+        "labelBounds": {
+          "x": 25,
+          "y": 458,
+          "width": 39.3125,
+          "height": 20,
+          "bottom": 478
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 486,
+          "width": 270,
+          "height": 52,
+          "bottom": 538
+        },
+        "above": true
+      },
+      {
+        "label": "Expected amount *",
+        "labelBounds": {
+          "x": 25,
+          "y": 550,
+          "width": 126.890625,
+          "height": 20,
+          "bottom": 570
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 578,
+          "width": 270,
+          "height": 48,
+          "bottom": 626
+        },
+        "above": true
+      }
+    ],
+    "titleSizing": [
+      {
+        "label": "Title, required",
+        "client": 50,
+        "scroll": 50,
+        "clipped": false
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 95,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 143
+      },
+      {
+        "label": "Save",
+        "x": 245.375,
+        "y": 95,
+        "width": 62.625,
+        "height": 48,
+        "bottom": 143
+      }
+    ],
+    "errors": []
+  },
+  {
+    "name": "new-bill-430-dark",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "verticalFields": [
+      {
+        "label": "Title *",
+        "labelBounds": {
+          "x": 25,
+          "y": 458,
+          "width": 39.3125,
+          "height": 20,
+          "bottom": 478
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 486,
+          "width": 380,
+          "height": 52,
+          "bottom": 538
+        },
+        "above": true
+      },
+      {
+        "label": "Expected amount *",
+        "labelBounds": {
+          "x": 25,
+          "y": 550,
+          "width": 126.890625,
+          "height": 20,
+          "bottom": 570
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 578,
+          "width": 380,
+          "height": 48,
+          "bottom": 626
+        },
+        "above": true
+      }
+    ],
+    "titleSizing": [
+      {
+        "label": "Title, required",
+        "client": 50,
+        "scroll": 50,
+        "clipped": false
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 219,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 267
+      },
+      {
+        "label": "Save",
+        "x": 355.375,
+        "y": 219,
+        "width": 62.625,
+        "height": 48,
+        "bottom": 267
+      }
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-320-dark-1",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "verticalFields": [
+      {
+        "label": "Title *",
+        "labelBounds": {
+          "x": 25,
+          "y": 438,
+          "width": 39.3125,
+          "height": 20,
+          "bottom": 458
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 466,
+          "width": 270,
+          "height": 256,
+          "bottom": 722
+        },
+        "above": true
+      },
+      {
+        "label": "Installment amount *",
+        "labelBounds": {
+          "x": 25,
+          "y": 734,
+          "width": 139.921875,
+          "height": 20,
+          "bottom": 754
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 762,
+          "width": 270,
+          "height": 48,
+          "bottom": 810
+        },
+        "above": true
+      },
+      {
+        "label": "Number of installments *",
+        "labelBounds": {
+          "x": 25,
+          "y": 1030,
+          "width": 165.171875,
+          "height": 20,
+          "bottom": 1050
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 1058,
+          "width": 270,
+          "height": 48,
+          "bottom": 1106
+        },
+        "above": true
+      }
+    ],
+    "titleSizing": [
+      {
+        "label": "Title, required",
+        "client": 254,
+        "scroll": 256,
+        "clipped": false
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 75,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 123
+      },
+      {
+        "label": "Save",
+        "x": 245.375,
+        "y": 75,
+        "width": 62.625,
+        "height": 48,
+        "bottom": 123
+      }
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-320-dark-2",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "verticalFields": [
+      {
+        "label": "Title *",
+        "labelBounds": {
+          "x": 25,
+          "y": 762,
+          "width": 78.609375,
+          "height": 40,
+          "bottom": 802
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 810,
+          "width": 270,
+          "height": 928,
+          "bottom": 1738
+        },
+        "above": true
+      },
+      {
+        "label": "Installment amount *",
+        "labelBounds": {
+          "x": 25,
+          "y": 1750,
+          "width": 270,
+          "height": 80,
+          "bottom": 1830
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 1838,
+          "width": 270,
+          "height": 48,
+          "bottom": 1886
+        },
+        "above": true
+      },
+      {
+        "label": "Number of installments *",
+        "labelBounds": {
+          "x": 25,
+          "y": 2394,
+          "width": 270,
+          "height": 80,
+          "bottom": 2474
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 2482,
+          "width": 270,
+          "height": 48,
+          "bottom": 2530
+        },
+        "above": true
+      }
+    ],
+    "titleSizing": [
+      {
+        "label": "Title, required",
+        "client": 926,
+        "scroll": 928,
+        "clipped": false
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 165,
+        "width": 119.703125,
+        "height": 64,
+        "bottom": 229
+      },
+      {
+        "label": "Save",
+        "x": 210.765625,
+        "y": 165,
+        "width": 97.234375,
+        "height": 64,
+        "bottom": 229
+      }
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-390-dark-1",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "verticalFields": [
+      {
+        "label": "Title *",
+        "labelBounds": {
+          "x": 25,
+          "y": 276,
+          "width": 39.3125,
+          "height": 20,
+          "bottom": 296
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 304,
+          "width": 340,
+          "height": 184,
+          "bottom": 488
+        },
+        "above": true
+      },
+      {
+        "label": "Installment amount *",
+        "labelBounds": {
+          "x": 25,
+          "y": 500,
+          "width": 139.921875,
+          "height": 20,
+          "bottom": 520
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 528,
+          "width": 340,
+          "height": 48,
+          "bottom": 576
+        },
+        "above": true
+      },
+      {
+        "label": "Number of installments *",
+        "labelBounds": {
+          "x": 25,
+          "y": 796,
+          "width": 165.171875,
+          "height": 20,
+          "bottom": 816
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 824,
+          "width": 340,
+          "height": 48,
+          "bottom": 872
+        },
+        "above": true
+      }
+    ],
+    "titleSizing": [
+      {
+        "label": "Title, required",
+        "client": 182,
+        "scroll": 184,
+        "clipped": false
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 37,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 85
+      },
+      {
+        "label": "Save",
+        "x": 315.375,
+        "y": 37,
+        "width": 62.625,
+        "height": 48,
+        "bottom": 85
+      }
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-390-dark-2",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "verticalFields": [
+      {
+        "label": "Title *",
+        "labelBounds": {
+          "x": 25,
+          "y": 714,
+          "width": 78.609375,
+          "height": 40,
+          "bottom": 754
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 762,
+          "width": 340,
+          "height": 736,
+          "bottom": 1498
+        },
+        "above": true
+      },
+      {
+        "label": "Installment amount *",
+        "labelBounds": {
+          "x": 25,
+          "y": 1510,
+          "width": 279.828125,
+          "height": 40,
+          "bottom": 1550
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 1558,
+          "width": 340,
+          "height": 48,
+          "bottom": 1606
+        },
+        "above": true
+      },
+      {
+        "label": "Number of installments *",
+        "labelBounds": {
+          "x": 25,
+          "y": 2066,
+          "width": 330.328125,
+          "height": 40,
+          "bottom": 2106
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 2114,
+          "width": 340,
+          "height": 48,
+          "bottom": 2162
+        },
+        "above": true
+      }
+    ],
+    "titleSizing": [
+      {
+        "label": "Title, required",
+        "client": 734,
+        "scroll": 736,
+        "clipped": false
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 165,
+        "width": 119.703125,
+        "height": 64,
+        "bottom": 229
+      },
+      {
+        "label": "Save",
+        "x": 280.765625,
+        "y": 165,
+        "width": 97.234375,
+        "height": 64,
+        "bottom": 229
+      }
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-430-dark-1",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "verticalFields": [
+      {
+        "label": "Title *",
+        "labelBounds": {
+          "x": 25,
+          "y": 276,
+          "width": 39.3125,
+          "height": 20,
+          "bottom": 296
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 304,
+          "width": 380,
+          "height": 184,
+          "bottom": 488
+        },
+        "above": true
+      },
+      {
+        "label": "Installment amount *",
+        "labelBounds": {
+          "x": 25,
+          "y": 500,
+          "width": 139.921875,
+          "height": 20,
+          "bottom": 520
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 528,
+          "width": 380,
+          "height": 48,
+          "bottom": 576
+        },
+        "above": true
+      },
+      {
+        "label": "Number of installments *",
+        "labelBounds": {
+          "x": 25,
+          "y": 796,
+          "width": 165.171875,
+          "height": 20,
+          "bottom": 816
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 824,
+          "width": 380,
+          "height": 48,
+          "bottom": 872
+        },
+        "above": true
+      }
+    ],
+    "titleSizing": [
+      {
+        "label": "Title, required",
+        "client": 182,
+        "scroll": 184,
+        "clipped": false
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 37,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 85
+      },
+      {
+        "label": "Save",
+        "x": 355.375,
+        "y": 37,
+        "width": 62.625,
+        "height": 48,
+        "bottom": 85
+      }
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-430-dark-2",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "verticalFields": [
+      {
+        "label": "Title *",
+        "labelBounds": {
+          "x": 25,
+          "y": 614,
+          "width": 78.609375,
+          "height": 40,
+          "bottom": 654
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 662,
+          "width": 380,
+          "height": 736,
+          "bottom": 1398
+        },
+        "above": true
+      },
+      {
+        "label": "Installment amount *",
+        "labelBounds": {
+          "x": 25,
+          "y": 1410,
+          "width": 279.828125,
+          "height": 40,
+          "bottom": 1450
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 1458,
+          "width": 380,
+          "height": 48,
+          "bottom": 1506
+        },
+        "above": true
+      },
+      {
+        "label": "Number of installments *",
+        "labelBounds": {
+          "x": 25,
+          "y": 1874,
+          "width": 330.328125,
+          "height": 40,
+          "bottom": 1914
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 1922,
+          "width": 380,
+          "height": 48,
+          "bottom": 1970
+        },
+        "above": true
+      }
+    ],
+    "titleSizing": [
+      {
+        "label": "Title, required",
+        "client": 734,
+        "scroll": 736,
+        "clipped": false
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 105,
+        "width": 119.703125,
+        "height": 64,
+        "bottom": 169
+      },
+      {
+        "label": "Save",
+        "x": 320.765625,
+        "y": 105,
+        "width": 97.234375,
+        "height": 64,
+        "bottom": 169
+      }
+    ],
+    "errors": []
+  },
+  {
+    "name": "new-bill-light",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "verticalFields": [
+      {
+        "label": "Title *",
+        "labelBounds": {
+          "x": 25,
+          "y": 458,
+          "width": 39.3125,
+          "height": 20,
+          "bottom": 478
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 486,
+          "width": 340,
+          "height": 52,
+          "bottom": 538
+        },
+        "above": true
+      },
+      {
+        "label": "Expected amount *",
+        "labelBounds": {
+          "x": 25,
+          "y": 550,
+          "width": 126.890625,
+          "height": 20,
+          "bottom": 570
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 578,
+          "width": 340,
+          "height": 48,
+          "bottom": 626
+        },
+        "above": true
+      }
+    ],
+    "titleSizing": [
+      {
+        "label": "Title, required",
+        "client": 50,
+        "scroll": 50,
+        "clipped": false
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 219,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 267
+      },
+      {
+        "label": "Save",
+        "x": 315.375,
+        "y": 219,
+        "width": 62.625,
+        "height": 48,
+        "bottom": 267
+      }
+    ],
+    "errors": []
+  },
+  {
+    "name": "edit-bill-light",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "verticalFields": [
+      {
+        "label": "Title *",
+        "labelBounds": {
+          "x": 25,
+          "y": 412,
+          "width": 39.3125,
+          "height": 20,
+          "bottom": 432
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 440,
+          "width": 340,
+          "height": 52,
+          "bottom": 492
+        },
+        "above": true
+      },
+      {
+        "label": "Expected amount *",
+        "labelBounds": {
+          "x": 25,
+          "y": 504,
+          "width": 126.890625,
+          "height": 20,
+          "bottom": 524
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 532,
+          "width": 340,
+          "height": 48,
+          "bottom": 580
+        },
+        "above": true
+      }
+    ],
+    "titleSizing": [
+      {
+        "label": "Title, required",
+        "client": 50,
+        "scroll": 50,
+        "clipped": false
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 173,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 221
+      },
+      {
+        "label": "Save",
+        "x": 315.375,
+        "y": 173,
+        "width": 62.625,
+        "height": 48,
+        "bottom": 221
+      }
+    ],
+    "errors": []
+  },
+  {
+    "name": "new-subscription-light",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "verticalFields": [
+      {
+        "label": "Title *",
+        "labelBounds": {
+          "x": 25,
+          "y": 458,
+          "width": 39.3125,
+          "height": 20,
+          "bottom": 478
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 486,
+          "width": 340,
+          "height": 52,
+          "bottom": 538
+        },
+        "above": true
+      },
+      {
+        "label": "Expected amount *",
+        "labelBounds": {
+          "x": 25,
+          "y": 550,
+          "width": 126.890625,
+          "height": 20,
+          "bottom": 570
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 578,
+          "width": 340,
+          "height": 48,
+          "bottom": 626
+        },
+        "above": true
+      }
+    ],
+    "titleSizing": [
+      {
+        "label": "Title, required",
+        "client": 50,
+        "scroll": 50,
+        "clipped": false
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 219,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 267
+      },
+      {
+        "label": "Save",
+        "x": 315.375,
+        "y": 219,
+        "width": 62.625,
+        "height": 48,
+        "bottom": 267
+      }
+    ],
+    "errors": []
+  },
+  {
+    "name": "edit-subscription-light",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "verticalFields": [
+      {
+        "label": "Title *",
+        "labelBounds": {
+          "x": 25,
+          "y": 412,
+          "width": 39.3125,
+          "height": 20,
+          "bottom": 432
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 440,
+          "width": 340,
+          "height": 52,
+          "bottom": 492
+        },
+        "above": true
+      },
+      {
+        "label": "Expected amount *",
+        "labelBounds": {
+          "x": 25,
+          "y": 504,
+          "width": 126.890625,
+          "height": 20,
+          "bottom": 524
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 532,
+          "width": 340,
+          "height": 48,
+          "bottom": 580
+        },
+        "above": true
+      }
+    ],
+    "titleSizing": [
+      {
+        "label": "Title, required",
+        "client": 50,
+        "scroll": 50,
+        "clipped": false
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 173,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 221
+      },
+      {
+        "label": "Save",
+        "x": 315.375,
+        "y": 173,
+        "width": 62.625,
+        "height": 48,
+        "bottom": 221
+      }
+    ],
+    "errors": []
+  },
+  {
+    "name": "new-installment-light",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "verticalFields": [
+      {
+        "label": "Title *",
+        "labelBounds": {
+          "x": 25,
+          "y": 370,
+          "width": 39.3125,
+          "height": 20,
+          "bottom": 390
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 398,
+          "width": 340,
+          "height": 52,
+          "bottom": 450
+        },
+        "above": true
+      },
+      {
+        "label": "Installment amount *",
+        "labelBounds": {
+          "x": 25,
+          "y": 462,
+          "width": 139.921875,
+          "height": 20,
+          "bottom": 482
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 490,
+          "width": 340,
+          "height": 48,
+          "bottom": 538
+        },
+        "above": true
+      },
+      {
+        "label": "Number of installments *",
+        "labelBounds": {
+          "x": 25,
+          "y": 724,
+          "width": 165.171875,
+          "height": 20,
+          "bottom": 744
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 752,
+          "width": 340,
+          "height": 48,
+          "bottom": 800
+        },
+        "above": true
+      }
+    ],
+    "titleSizing": [
+      {
+        "label": "Title, required",
+        "client": 50,
+        "scroll": 50,
+        "clipped": false
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 131,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 179
+      },
+      {
+        "label": "Save",
+        "x": 315.375,
+        "y": 131,
+        "width": 62.625,
+        "height": 48,
+        "bottom": 179
+      }
+    ],
+    "errors": []
+  },
+  {
+    "name": "edit-installment-light",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "verticalFields": [
+      {
+        "label": "Title *",
+        "labelBounds": {
+          "x": 25,
+          "y": 324,
+          "width": 39.3125,
+          "height": 20,
+          "bottom": 344
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 352,
+          "width": 340,
+          "height": 52,
+          "bottom": 404
+        },
+        "above": true
+      },
+      {
+        "label": "Installment amount *",
+        "labelBounds": {
+          "x": 25,
+          "y": 416,
+          "width": 139.921875,
+          "height": 20,
+          "bottom": 436
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 444,
+          "width": 340,
+          "height": 48,
+          "bottom": 492
+        },
+        "above": true
+      },
+      {
+        "label": "Number of installments *",
+        "labelBounds": {
+          "x": 25,
+          "y": 682,
+          "width": 165.171875,
+          "height": 20,
+          "bottom": 702
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 710,
+          "width": 340,
+          "height": 48,
+          "bottom": 758
+        },
+        "above": true
+      }
+    ],
+    "titleSizing": [
+      {
+        "label": "Title, required",
+        "client": 50,
+        "scroll": 50,
+        "clipped": false
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 85,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 133
+      },
+      {
+        "label": "Save",
+        "x": 315.375,
+        "y": 85,
+        "width": 62.625,
+        "height": 48,
+        "bottom": 133
+      }
+    ],
+    "errors": []
+  },
+  {
+    "name": "new-bill-320-light",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "verticalFields": [
+      {
+        "label": "Title *",
+        "labelBounds": {
+          "x": 25,
+          "y": 458,
+          "width": 39.3125,
+          "height": 20,
+          "bottom": 478
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 486,
+          "width": 270,
+          "height": 52,
+          "bottom": 538
+        },
+        "above": true
+      },
+      {
+        "label": "Expected amount *",
+        "labelBounds": {
+          "x": 25,
+          "y": 550,
+          "width": 126.890625,
+          "height": 20,
+          "bottom": 570
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 578,
+          "width": 270,
+          "height": 48,
+          "bottom": 626
+        },
+        "above": true
+      }
+    ],
+    "titleSizing": [
+      {
+        "label": "Title, required",
+        "client": 50,
+        "scroll": 50,
+        "clipped": false
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 95,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 143
+      },
+      {
+        "label": "Save",
+        "x": 245.375,
+        "y": 95,
+        "width": 62.625,
+        "height": 48,
+        "bottom": 143
+      }
+    ],
+    "errors": []
+  },
+  {
+    "name": "new-bill-430-light",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "verticalFields": [
+      {
+        "label": "Title *",
+        "labelBounds": {
+          "x": 25,
+          "y": 458,
+          "width": 39.3125,
+          "height": 20,
+          "bottom": 478
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 486,
+          "width": 380,
+          "height": 52,
+          "bottom": 538
+        },
+        "above": true
+      },
+      {
+        "label": "Expected amount *",
+        "labelBounds": {
+          "x": 25,
+          "y": 550,
+          "width": 126.890625,
+          "height": 20,
+          "bottom": 570
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 578,
+          "width": 380,
+          "height": 48,
+          "bottom": 626
+        },
+        "above": true
+      }
+    ],
+    "titleSizing": [
+      {
+        "label": "Title, required",
+        "client": 50,
+        "scroll": 50,
+        "clipped": false
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 219,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 267
+      },
+      {
+        "label": "Save",
+        "x": 355.375,
+        "y": 219,
+        "width": 62.625,
+        "height": 48,
+        "bottom": 267
+      }
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-320-light-1",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "verticalFields": [
+      {
+        "label": "Title *",
+        "labelBounds": {
+          "x": 25,
+          "y": 438,
+          "width": 39.3125,
+          "height": 20,
+          "bottom": 458
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 466,
+          "width": 270,
+          "height": 256,
+          "bottom": 722
+        },
+        "above": true
+      },
+      {
+        "label": "Installment amount *",
+        "labelBounds": {
+          "x": 25,
+          "y": 734,
+          "width": 139.921875,
+          "height": 20,
+          "bottom": 754
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 762,
+          "width": 270,
+          "height": 48,
+          "bottom": 810
+        },
+        "above": true
+      },
+      {
+        "label": "Number of installments *",
+        "labelBounds": {
+          "x": 25,
+          "y": 1030,
+          "width": 165.171875,
+          "height": 20,
+          "bottom": 1050
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 1058,
+          "width": 270,
+          "height": 48,
+          "bottom": 1106
+        },
+        "above": true
+      }
+    ],
+    "titleSizing": [
+      {
+        "label": "Title, required",
+        "client": 254,
+        "scroll": 256,
+        "clipped": false
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 75,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 123
+      },
+      {
+        "label": "Save",
+        "x": 245.375,
+        "y": 75,
+        "width": 62.625,
+        "height": 48,
+        "bottom": 123
+      }
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-320-light-2",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "verticalFields": [
+      {
+        "label": "Title *",
+        "labelBounds": {
+          "x": 25,
+          "y": 762,
+          "width": 78.609375,
+          "height": 40,
+          "bottom": 802
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 810,
+          "width": 270,
+          "height": 928,
+          "bottom": 1738
+        },
+        "above": true
+      },
+      {
+        "label": "Installment amount *",
+        "labelBounds": {
+          "x": 25,
+          "y": 1750,
+          "width": 270,
+          "height": 80,
+          "bottom": 1830
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 1838,
+          "width": 270,
+          "height": 48,
+          "bottom": 1886
+        },
+        "above": true
+      },
+      {
+        "label": "Number of installments *",
+        "labelBounds": {
+          "x": 25,
+          "y": 2394,
+          "width": 270,
+          "height": 80,
+          "bottom": 2474
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 2482,
+          "width": 270,
+          "height": 48,
+          "bottom": 2530
+        },
+        "above": true
+      }
+    ],
+    "titleSizing": [
+      {
+        "label": "Title, required",
+        "client": 926,
+        "scroll": 928,
+        "clipped": false
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 165,
+        "width": 119.703125,
+        "height": 64,
+        "bottom": 229
+      },
+      {
+        "label": "Save",
+        "x": 210.765625,
+        "y": 165,
+        "width": 97.234375,
+        "height": 64,
+        "bottom": 229
+      }
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-390-light-1",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "verticalFields": [
+      {
+        "label": "Title *",
+        "labelBounds": {
+          "x": 25,
+          "y": 276,
+          "width": 39.3125,
+          "height": 20,
+          "bottom": 296
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 304,
+          "width": 340,
+          "height": 184,
+          "bottom": 488
+        },
+        "above": true
+      },
+      {
+        "label": "Installment amount *",
+        "labelBounds": {
+          "x": 25,
+          "y": 500,
+          "width": 139.921875,
+          "height": 20,
+          "bottom": 520
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 528,
+          "width": 340,
+          "height": 48,
+          "bottom": 576
+        },
+        "above": true
+      },
+      {
+        "label": "Number of installments *",
+        "labelBounds": {
+          "x": 25,
+          "y": 796,
+          "width": 165.171875,
+          "height": 20,
+          "bottom": 816
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 824,
+          "width": 340,
+          "height": 48,
+          "bottom": 872
+        },
+        "above": true
+      }
+    ],
+    "titleSizing": [
+      {
+        "label": "Title, required",
+        "client": 182,
+        "scroll": 184,
+        "clipped": false
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 37,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 85
+      },
+      {
+        "label": "Save",
+        "x": 315.375,
+        "y": 37,
+        "width": 62.625,
+        "height": 48,
+        "bottom": 85
+      }
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-390-light-2",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "verticalFields": [
+      {
+        "label": "Title *",
+        "labelBounds": {
+          "x": 25,
+          "y": 714,
+          "width": 78.609375,
+          "height": 40,
+          "bottom": 754
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 762,
+          "width": 340,
+          "height": 736,
+          "bottom": 1498
+        },
+        "above": true
+      },
+      {
+        "label": "Installment amount *",
+        "labelBounds": {
+          "x": 25,
+          "y": 1510,
+          "width": 279.828125,
+          "height": 40,
+          "bottom": 1550
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 1558,
+          "width": 340,
+          "height": 48,
+          "bottom": 1606
+        },
+        "above": true
+      },
+      {
+        "label": "Number of installments *",
+        "labelBounds": {
+          "x": 25,
+          "y": 2066,
+          "width": 330.328125,
+          "height": 40,
+          "bottom": 2106
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 2114,
+          "width": 340,
+          "height": 48,
+          "bottom": 2162
+        },
+        "above": true
+      }
+    ],
+    "titleSizing": [
+      {
+        "label": "Title, required",
+        "client": 734,
+        "scroll": 736,
+        "clipped": false
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 165,
+        "width": 119.703125,
+        "height": 64,
+        "bottom": 229
+      },
+      {
+        "label": "Save",
+        "x": 280.765625,
+        "y": 165,
+        "width": 97.234375,
+        "height": 64,
+        "bottom": 229
+      }
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-430-light-1",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "verticalFields": [
+      {
+        "label": "Title *",
+        "labelBounds": {
+          "x": 25,
+          "y": 276,
+          "width": 39.3125,
+          "height": 20,
+          "bottom": 296
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 304,
+          "width": 380,
+          "height": 184,
+          "bottom": 488
+        },
+        "above": true
+      },
+      {
+        "label": "Installment amount *",
+        "labelBounds": {
+          "x": 25,
+          "y": 500,
+          "width": 139.921875,
+          "height": 20,
+          "bottom": 520
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 528,
+          "width": 380,
+          "height": 48,
+          "bottom": 576
+        },
+        "above": true
+      },
+      {
+        "label": "Number of installments *",
+        "labelBounds": {
+          "x": 25,
+          "y": 796,
+          "width": 165.171875,
+          "height": 20,
+          "bottom": 816
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 824,
+          "width": 380,
+          "height": 48,
+          "bottom": 872
+        },
+        "above": true
+      }
+    ],
+    "titleSizing": [
+      {
+        "label": "Title, required",
+        "client": 182,
+        "scroll": 184,
+        "clipped": false
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 37,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 85
+      },
+      {
+        "label": "Save",
+        "x": 355.375,
+        "y": 37,
+        "width": 62.625,
+        "height": 48,
+        "bottom": 85
+      }
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-430-light-2",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "verticalFields": [
+      {
+        "label": "Title *",
+        "labelBounds": {
+          "x": 25,
+          "y": 614,
+          "width": 78.609375,
+          "height": 40,
+          "bottom": 654
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 662,
+          "width": 380,
+          "height": 736,
+          "bottom": 1398
+        },
+        "above": true
+      },
+      {
+        "label": "Installment amount *",
+        "labelBounds": {
+          "x": 25,
+          "y": 1410,
+          "width": 279.828125,
+          "height": 40,
+          "bottom": 1450
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 1458,
+          "width": 380,
+          "height": 48,
+          "bottom": 1506
+        },
+        "above": true
+      },
+      {
+        "label": "Number of installments *",
+        "labelBounds": {
+          "x": 25,
+          "y": 1874,
+          "width": 330.328125,
+          "height": 40,
+          "bottom": 1914
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 1922,
+          "width": 380,
+          "height": 48,
+          "bottom": 1970
+        },
+        "above": true
+      }
+    ],
+    "titleSizing": [
+      {
+        "label": "Title, required",
+        "client": 734,
+        "scroll": 736,
+        "clipped": false
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 105,
+        "width": 119.703125,
+        "height": 64,
+        "bottom": 169
+      },
+      {
+        "label": "Save",
+        "x": 320.765625,
+        "y": 105,
+        "width": 97.234375,
+        "height": 64,
+        "bottom": 169
+      }
+    ],
+    "errors": []
+  },
+  {
+    "name": "empty",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "verticalFields": [
+      {
+        "label": "Title *",
+        "labelBounds": {
+          "x": 25,
+          "y": 458,
+          "width": 39.3125,
+          "height": 20,
+          "bottom": 478
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 486,
+          "width": 340,
+          "height": 52,
+          "bottom": 538
+        },
+        "above": true
+      },
+      {
+        "label": "Expected amount *",
+        "labelBounds": {
+          "x": 25,
+          "y": 550,
+          "width": 126.890625,
+          "height": 20,
+          "bottom": 570
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 578,
+          "width": 340,
+          "height": 48,
+          "bottom": 626
+        },
+        "above": true
+      }
+    ],
+    "titleSizing": [
+      {
+        "label": "Title, required",
+        "client": 50,
+        "scroll": 50,
+        "clipped": false
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 187,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 235
+      },
+      {
+        "label": "Save",
+        "x": 315.375,
+        "y": 187,
+        "width": 62.625,
+        "height": 48,
+        "bottom": 235
+      }
+    ],
+    "errors": []
+  },
+  {
+    "name": "invalid-amount",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "verticalFields": [
+      {
+        "label": "Title *",
+        "labelBounds": {
+          "x": 25,
+          "y": 458,
+          "width": 39.3125,
+          "height": 20,
+          "bottom": 478
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 486,
+          "width": 340,
+          "height": 52,
+          "bottom": 538
+        },
+        "above": true
+      },
+      {
+        "label": "Expected amount *",
+        "labelBounds": {
+          "x": 25,
+          "y": 550,
+          "width": 126.890625,
+          "height": 20,
+          "bottom": 570
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 578,
+          "width": 340,
+          "height": 48,
+          "bottom": 626
+        },
+        "above": true
+      }
+    ],
+    "titleSizing": [
+      {
+        "label": "Title, required",
+        "client": 50,
+        "scroll": 50,
+        "clipped": false
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 167,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 215
+      },
+      {
+        "label": "Save",
+        "x": 315.375,
+        "y": 167,
+        "width": 62.625,
+        "height": 48,
+        "bottom": 215
+      }
+    ],
+    "errors": []
+  },
+  {
+    "name": "invalid-count",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "verticalFields": [
+      {
+        "label": "Title *",
+        "labelBounds": {
+          "x": 25,
+          "y": 370,
+          "width": 39.3125,
+          "height": 20,
+          "bottom": 390
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 398,
+          "width": 340,
+          "height": 52,
+          "bottom": 450
+        },
+        "above": true
+      },
+      {
+        "label": "Installment amount *",
+        "labelBounds": {
+          "x": 25,
+          "y": 462,
+          "width": 139.921875,
+          "height": 20,
+          "bottom": 482
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 490,
+          "width": 340,
+          "height": 48,
+          "bottom": 538
+        },
+        "above": true
+      },
+      {
+        "label": "Number of installments *",
+        "labelBounds": {
+          "x": 25,
+          "y": 724,
+          "width": 165.171875,
+          "height": 20,
+          "bottom": 744
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 752,
+          "width": 340,
+          "height": 48,
+          "bottom": 800
+        },
+        "above": true
+      }
+    ],
+    "titleSizing": [
+      {
+        "label": "Title, required",
+        "client": 50,
+        "scroll": 50,
+        "clipped": false
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 99,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 147
+      },
+      {
+        "label": "Save",
+        "x": 315.375,
+        "y": 99,
+        "width": 62.625,
+        "height": 48,
+        "bottom": 147
+      }
+    ],
+    "errors": []
+  },
+  {
+    "name": "invalid-date",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "verticalFields": [
+      {
+        "label": "Title *",
+        "labelBounds": {
+          "x": 25,
+          "y": 458,
+          "width": 39.3125,
+          "height": 20,
+          "bottom": 478
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 486,
+          "width": 340,
+          "height": 52,
+          "bottom": 538
+        },
+        "above": true
+      },
+      {
+        "label": "Expected amount *",
+        "labelBounds": {
+          "x": 25,
+          "y": 550,
+          "width": 126.890625,
+          "height": 20,
+          "bottom": 570
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 578,
+          "width": 340,
+          "height": 48,
+          "bottom": 626
+        },
+        "above": true
+      },
+      {
+        "label": "First due date *",
+        "labelBounds": {
+          "x": 25,
+          "y": 724,
+          "width": 100.15625,
+          "height": 20,
+          "bottom": 744
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 752,
+          "width": 340,
+          "height": 48,
+          "bottom": 800
+        },
+        "above": true
+      }
+    ],
+    "titleSizing": [
+      {
+        "label": "Title, required",
+        "client": 50,
+        "scroll": 50,
+        "clipped": false
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 187,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 235
+      },
+      {
+        "label": "Save",
+        "x": 315.375,
+        "y": 187,
+        "width": 62.625,
+        "height": 48,
+        "bottom": 235
+      }
+    ],
+    "errors": []
+  },
+  {
+    "name": "category",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "verticalFields": [
+      {
+        "label": "Title *",
+        "labelBounds": {
+          "x": 25,
+          "y": 458,
+          "width": 39.3125,
+          "height": 20,
+          "bottom": 478
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 486,
+          "width": 340,
+          "height": 52,
+          "bottom": 538
+        },
+        "above": true
+      },
+      {
+        "label": "Expected amount *",
+        "labelBounds": {
+          "x": 25,
+          "y": 550,
+          "width": 126.890625,
+          "height": 20,
+          "bottom": 570
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 578,
+          "width": 340,
+          "height": 48,
+          "bottom": 626
+        },
+        "above": true
+      }
+    ],
+    "titleSizing": [
+      {
+        "label": "Title, required",
+        "client": 50,
+        "scroll": 50,
+        "clipped": false
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 219,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 267
+      },
+      {
+        "label": "Save",
+        "x": 315.375,
+        "y": 219,
+        "width": 62.625,
+        "height": 48,
+        "bottom": 267
+      }
+    ],
+    "errors": []
+  },
+  {
+    "name": "date",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "verticalFields": [
+      {
+        "label": "Title *",
+        "labelBounds": {
+          "x": 25,
+          "y": 326,
+          "width": 39.3125,
+          "height": 20,
+          "bottom": 346
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 354,
+          "width": 340,
+          "height": 52,
+          "bottom": 406
+        },
+        "above": true
+      },
+      {
+        "label": "Expected amount *",
+        "labelBounds": {
+          "x": 25,
+          "y": 418,
+          "width": 126.890625,
+          "height": 20,
+          "bottom": 438
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 446,
+          "width": 340,
+          "height": 48,
+          "bottom": 494
+        },
+        "above": true
+      }
+    ],
+    "titleSizing": [
+      {
+        "label": "Title, required",
+        "client": 50,
+        "scroll": 50,
+        "clipped": false
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 87,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 135
+      },
+      {
+        "label": "Save",
+        "x": 315.375,
+        "y": 87,
+        "width": 62.625,
+        "height": 48,
+        "bottom": 135
+      }
+    ],
+    "errors": []
+  },
+  {
+    "name": "keyboard",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "verticalFields": [
+      {
+        "label": "Title *",
+        "labelBounds": {
+          "x": 25,
+          "y": 276,
+          "width": 39.3125,
+          "height": 20,
+          "bottom": 296
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 304,
+          "width": 340,
+          "height": 52,
+          "bottom": 356
+        },
+        "above": true
+      },
+      {
+        "label": "Expected amount *",
+        "labelBounds": {
+          "x": 25,
+          "y": 368,
+          "width": 126.890625,
+          "height": 20,
+          "bottom": 388
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 396,
+          "width": 340,
+          "height": 48,
+          "bottom": 444
+        },
+        "above": true
+      }
+    ],
+    "titleSizing": [
+      {
+        "label": "Title, required",
+        "client": 50,
+        "scroll": 50,
+        "clipped": false
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 37,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 85
+      },
+      {
+        "label": "Save",
+        "x": 315.375,
+        "y": 37,
+        "width": 62.625,
+        "height": 48,
+        "bottom": 85
+      }
+    ],
+    "errors": []
+  },
+  {
+    "name": "bottom",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "verticalFields": [
+      {
+        "label": "Title *",
+        "labelBounds": {
+          "x": 25,
+          "y": 458,
+          "width": 39.3125,
+          "height": 20,
+          "bottom": 478
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 486,
+          "width": 340,
+          "height": 52,
+          "bottom": 538
+        },
+        "above": true
+      },
+      {
+        "label": "Expected amount *",
+        "labelBounds": {
+          "x": 25,
+          "y": 550,
+          "width": 126.890625,
+          "height": 20,
+          "bottom": 570
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 578,
+          "width": 340,
+          "height": 48,
+          "bottom": 626
+        },
+        "above": true
+      }
+    ],
+    "titleSizing": [
+      {
+        "label": "Title, required",
+        "client": 50,
+        "scroll": 50,
+        "clipped": false
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 219,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 267
+      },
+      {
+        "label": "Save",
+        "x": 315.375,
+        "y": 219,
+        "width": 62.625,
+        "height": 48,
+        "bottom": 267
+      }
+    ],
+    "errors": []
+  },
+  {
+    "name": "save-error",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "verticalFields": [
+      {
+        "label": "Title *",
+        "labelBounds": {
+          "x": 25,
+          "y": 458,
+          "width": 39.3125,
+          "height": 20,
+          "bottom": 478
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 486,
+          "width": 340,
+          "height": 52,
+          "bottom": 538
+        },
+        "above": true
+      },
+      {
+        "label": "Expected amount *",
+        "labelBounds": {
+          "x": 25,
+          "y": 550,
+          "width": 126.890625,
+          "height": 20,
+          "bottom": 570
+        },
+        "fieldBounds": {
+          "x": 25,
+          "y": 578,
+          "width": 340,
+          "height": 48,
+          "bottom": 626
+        },
+        "above": true
+      }
+    ],
+    "titleSizing": [
+      {
+        "label": "Title, required",
+        "client": 50,
+        "scroll": 50,
+        "clipped": false
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 187,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 235
+      },
+      {
+        "label": "Save",
+        "x": 315.375,
+        "y": 187,
+        "width": 62.625,
+        "height": 48,
+        "bottom": 235
+      }
+    ],
+    "errors": []
+  }
+]

@@ -170,8 +170,11 @@ test('Calendar launch opens the existing commitment sheet with the selected dist
     onCreateCategory: () => { throw new Error('unused'); }, initialDetail: { data: access.readHistory(id), occurrence } }));
   assert.ok(result.elements.some((node) => node.type === sheets.AdaptiveModal));
   assert.ok(result.elements.some((node) => node.type === sheets.AdaptiveSheet));
-  assert.equal(result.elements.filter((node) => node.props.label === 'Pay' && node.props.accessibilityLabel?.includes('Rent')).length, 2,
-    'one normal upcoming row plus the selected future occurrence in details');
+  const list = result.elements.find(node => node.props.testID === 'commitments-list')!;
+  const sections = (list.props as unknown as { sections: { data: { occurrence: { dueDate: string } }[] }[] }).sections;
+  assert.deepEqual(sections.flatMap(section => section.data.map(row => row.occurrence.dueDate)), ['2026-10-10'], 'the normal upcoming occurrence remains in the virtualized feed');
+  assert.equal(result.elements.filter((node) => node.props.label === 'Pay' && node.props.accessibilityLabel?.includes('Rent')).length, 1,
+    'the shallow tree contains the selected distant occurrence in details; feed rows render through SectionList');
   assert.ok(result.elements.some((node) => node.props.accessibilityLabel === `Pay Rent, due ${dateLabel(occurrence.dueDate)}`));
   assert.ok(result.elements.some((node) => node.props.label === 'Series options for Rent'));
   assert.ok(!result.elements.some((node) => ['Skip', 'Pause', 'Edit'].includes(node.props.label ?? '')), 'secondary actions are contextual');

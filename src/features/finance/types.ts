@@ -3,6 +3,7 @@ import type { financeCategories, financeTransactions } from '@/database/schema';
 export type FinanceTransaction = typeof financeTransactions.$inferSelect;
 export type FinanceCategory = typeof financeCategories.$inferSelect;
 export type TransactionType = FinanceTransaction['type'];
+export type TransactionLedgerFilter = { type: 'all' | TransactionType; query: string };
 export type TransactionCursor = { date: string; createdAt: number; id: string };
 export type TransactionSource =
   | { kind: 'work'; clientName: string; jobs: { id: string; title: string }[] }

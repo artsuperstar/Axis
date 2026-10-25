@@ -11,9 +11,10 @@ import { createFinanceDataAccess } from '../src/features/finance/data';
 import { createCommitmentDataAccess } from '../src/features/finance/commitments/data';
 import { commitmentDraft } from '../src/features/finance/commitments/form';
 import { transactionDraft } from '../src/features/finance/form';
+import { financeCategoryIcon } from '../src/features/finance/category-icons';
 import { formatBrlAmount, formatBrlInput, maxAmountMinor } from '../src/features/finance/money';
 import { periodBounds } from '../src/features/finance/periods';
-import { seedFinanceCategories } from '../src/features/finance/seed';
+import { builtInFinanceCategories, seedFinanceCategories } from '../src/features/finance/seed';
 import { transactionDateHeading, transactionPresentation, transactionSections } from '../src/features/finance/transactions-presentation';
 import type { FinanceTransaction, TransactionDraft } from '../src/features/finance/types';
 import { createWorkDataAccess } from '../src/features/finance/work/data';
@@ -25,7 +26,6 @@ import { mount, runtime, screens } from './helpers/refresh-lifecycle';
 const require = createRequire(import.meta.url);
 const { TransactionRow } = require('../src/features/finance/components/transaction-row') as typeof import('../src/features/finance/components/transaction-row');
 const { ContextMenuHost } = require('../src/components/context-menu') as typeof import('../src/components/context-menu');
-const { floatingAddClearance } = require('../src/components/floating-add-button') as typeof import('../src/components/floating-add-button');
 const today = localDateString(new Date());
 type App = Awaited<ReturnType<typeof mount>>;
 async function initialized(t: TestContext) {
@@ -39,19 +39,100 @@ async function initialized(t: TestContext) {
   return { ...f, finance, work, commitments, create };
 }
 const flatten = (style: unknown) => Object.assign({}, ...[style].flat(Infinity));
+const searchSettled = () => act(async () => { await new Promise(resolve => setTimeout(resolve, 210)); });
 async function settle() { await act(async () => { await new Promise((resolve) => setTimeout(resolve, 10)); }); }
 async function menu(app: App, trigger: string, action: string) { await app.press(trigger); await app.press(action); await settle(); }
 function rows(app: App) { return app.nodes().filter((node) => node.props?.testID === 'transaction-row'); }
 async function open(app: App, title: string) {
   const row = rows(app).find((row) => app.nodes(row).some((node) => node.props?.testID === 'transaction-description' && node.textContent === title));
   assert.ok(row, `Missing transaction ${title}`);
-  const body = app.nodes(row).find((node) => node.kind === 'Pressable')!;
-  await app.tapSet(String(body.props.accessibilityLabel));
+  await app.press(`Transaction options for ${title}`);
+  const linked = app.nodes().some(node => node.props?.accessibilityLabel === `View payment details for ${title}`);
+  await app.press(linked ? `View payment details for ${title}` : `Edit ${title}`); await settle();
 }
 function integrity(f: Awaited<ReturnType<typeof initialized>>) {
   assert.deepEqual(f.sqlite.prepare('PRAGMA integrity_check').all().map((row) => row.integrity_check), ['ok']);
   assert.deepEqual(f.sqlite.prepare('PRAGMA foreign_key_check').all(), []);
 }
+
+test('category icons use only actual seed identity, including archived, custom and uncategorized fallbacks', async (t) => {
+  const f = await initialized(t);
+  const food = builtInFinanceCategories.find(category => category.name === 'Food')!;
+  const utilities = builtInFinanceCategories.find(category => category.name === 'Utilities')!;
+  for (const description of ['Água', 'Popeyes', 'Internet', 'ChatGPT']) {
+    const id = f.create({ description, categoryId: food.id });
+    assert.equal(financeCategoryIcon(f.finance.readLedgerPage().transactions.find(row => row.id === id)!.categoryId), 'utensils');
+  }
+  assert.equal(financeCategoryIcon(utilities.id), 'home');
+  assert.equal(financeCategoryIcon(null), 'receipt');
+  assert.equal(financeCategoryIcon('custom-called-Food'), 'tag');
+  assert.equal(financeCategoryIcon('unknown'), 'tag');
+  assert.deepEqual(builtInFinanceCategories.map(category => financeCategoryIcon(category.id)),
+    ['home', 'utensils', 'car', 'shoppingBag', 'heart', 'paw', 'ticket', 'home', 'repeat', 'tag', 'briefcase', 'briefcase', 'tag']);
+  const custom = f.finance.createCategory('Historical custom', 'expense');
+  f.finance.deleteCategory(custom.id);
+  assert.equal(financeCategoryIcon(custom.id), 'tag');
+  assert.equal(financeCategoryIcon(food.id), 'utensils');
+  const app = await mount(createElement(screens.FinanceScreen, { initialView: 'transactions' }), f.db); t.after(app.unmount);
+  assert.equal(rows(app).length, 4);
+  for (const row of rows(app)) assert.ok(app.nodes(row).some(node => node.props?.testID === 'icon-utensils'));
+});
+
+test('authoritative filtered pages find old Unicode descriptions and archived names with bounded scans and stable matching cursors', async (t) => {
+  const f = await initialized(t);
+  const archived = f.finance.createCategory('Educação histórica', 'expense');
+  for (let index = 0; index < 310; index++) f.create({ description: `Recent ${index}`, transactionDate: today });
+  const ids: string[] = [];
+  for (let index = 0; index < 85; index++) ids.push(f.create({ description: index % 2 ? 'ÁGUA  e refeição' : 'A\u0301gua e refeição', categoryId: archived.id, transactionDate: addDays(today, -2) }));
+  f.create({ type: 'income', description: 'Água income', transactionDate: addDays(today, -2) });
+  f.finance.deleteCategory(archived.id);
+  const filter = { type: 'expense' as const, query: ' agua   e ' };
+  const first = f.measure(() => f.finance.readLedgerPage(40, undefined, filter));
+  const second = f.finance.readLedgerPage(40, first.value.next!, filter);
+  const third = f.finance.readLedgerPage(40, second.next!, filter);
+  assert.deepEqual([first.value.transactions.length, second.transactions.length, third.transactions.length], [40, 40, 5]);
+  assert.equal(third.next, null);
+  const expected = f.finance.read().transactions.filter(row => ids.includes(row.id)).map(row => row.id);
+  assert.deepEqual([...first.value.transactions, ...second.transactions, ...third.transactions].map(row => row.id), expected);
+  assert.equal(new Set(expected).size, 85);
+  for (const statement of first.statements.filter(statement => /^select .* from "finance_transactions"/i.test(statement.sql))) {
+    assert.ok(statement.rows <= 128); assert.match(statement.sql, /limit \?/);
+  }
+  assert.equal(f.finance.readLedgerPage(40, undefined, { type: 'all', query: 'educacao historica' }).transactions.length, 40);
+  assert.equal(f.finance.readLedgerPage(40, undefined, { type: 'income', query: 'agua' }).transactions.length, 1);
+  assert.equal(f.finance.readLedgerPage(40, undefined, { type: 'all', query: '%' }).transactions.length, 0, 'Literal search, not SQL wildcards');
+  assert.equal(f.finance.readLedgerPage(40, undefined, { type: 'all', query: 'missing' }).next, null);
+  const income = f.finance.readLedgerPage(40, undefined, { type: 'income', query: '' });
+  assert.ok(income.transactions.every(row => row.type === 'income')); assert.equal(income.next, null);
+  integrity(f);
+});
+
+test('search and type changes reset paging, retain the input instance, compose, clear, refresh and recover last-good results', async (t) => {
+  const f = await initialized(t);
+  for (let index = 0; index < 90; index++) f.create({ description: `Expense ${index}` });
+  f.create({ description: 'Água old', transactionDate: addDays(today, -5) });
+  f.create({ type: 'income', description: 'Água received', transactionDate: addDays(today, -6) });
+  const app = await mount(createElement(screens.FinanceScreen, { initialView: 'transactions' }), f.db); t.after(app.unmount);
+  await app.press('Load older transactions'); assert.equal(rows(app).length, 80);
+  const input = app.find('FormField', 'Search transactions');
+  await app.change('Search transactions', 'agua'); await searchSettled();
+  assert.equal(app.find('FormField', 'Search transactions'), input, 'Typing must not remount search');
+  assert.equal(rows(app).length, 2);
+  await act(() => (app.find('SegmentedControl', 'Transaction type').props.onChange as (value: string) => void)('income'));
+  assert.equal(rows(app).length, 1); assert.ok(app.container.textContent.includes('Água received'));
+  await app.change('Search transactions', 'absent'); await searchSettled(); assert.ok(app.container.textContent.includes('No matching transactions'));
+  await app.press('Clear search'); await searchSettled(); assert.equal(rows(app).length, 1);
+  await act(() => (app.find('SegmentedControl', 'Transaction type').props.onChange as (value: string) => void)('all'));
+  assert.equal(rows(app).length, 40);
+  runtime.fixture.failures.add('finance.readLedgerPage');
+  await app.change('Search transactions', 'agua'); await searchSettled();
+  assert.equal(rows(app).length, 40); assert.ok(app.container.textContent.includes('Showing previous results'));
+  assert.equal(app.find('FormButton', 'Load older transactions').props.disabled, true);
+  runtime.fixture.failures.clear(); await app.press('Retry'); assert.equal(rows(app).length, 2);
+  f.create({ description: 'agua refreshed' }); await app.resume(); assert.equal(rows(app).length, 3);
+  await app.change('Search transactions', 'Expense'); await app.press('Work'); await searchSettled();
+  await app.press('Transactions'); assert.equal(app.find('FormField', 'Search transactions').props.value, 'Expense'); assert.equal(rows(app).length, 40);
+});
 
 test('civil-date sections preserve authoritative ties, Today/Yesterday and month/year/leap boundaries', () => {
   const record = (id: string, date: string) => ({ id, transactionDate: date }) as FinanceTransaction;
@@ -86,7 +167,6 @@ for (const type of ['income', 'expense'] as const) test(`manual ${type} row prio
   const id = f.create({ type, categoryId: category.id, amount: formatBrlInput(maxAmountMinor), description: title, note: 'Private supporting note, not a row preview' });
   f.finance.deleteCategory(category.id);
   const page = f.finance.readLedgerPage(); const transaction = page.transactions.find((row) => row.id === id)!;
-  const display = transactionPresentation(transaction, page.categories, today);
   t.mock.method(runtime.native as { useWindowDimensions: () => unknown }, 'useWindowDimensions', () => ({ width: 280, height: 800, fontScale: 2, scale: 1 }));
   let edits = 0, deletes = 0;
   const app = await mount(createElement(ContextMenuHost, { children: createElement(TransactionRow, { transaction, categories: page.categories, today, onEdit() { edits++; }, onDelete() { deletes++; } }) }), f.db); t.after(app.unmount);
@@ -95,15 +175,18 @@ for (const type of ['income', 'expense'] as const) test(`manual ${type} row prio
   assert.ok(app.container.textContent.includes(category.name));
   const amount = app.nodes().find((node) => node.props?.testID === 'transaction-amount')!;
   const description = app.nodes().find((node) => node.props?.testID === 'transaction-description')!;
-  assert.equal(amount.textContent, `${type === 'income' ? '+' : '-'}${formatBrlAmount(maxAmountMinor)}`);
+  assert.equal(amount.textContent, `${type === 'income' ? '' : '-'}${formatBrlAmount(maxAmountMinor)}`);
   assert.equal(amount.props.numberOfLines, undefined); assert.equal(description.props.numberOfLines, undefined);
-  assert.equal(amount.props.themeColor, type === 'income' ? 'success' : 'textPrimary');
+  assert.ok(flatten(amount.props.style).color, 'Scoped semantic amount color');
   assert.equal(flatten(description.parentNode!.props.style).flexWrap, 'wrap');
-  const body = app.find('Pressable', display.accessibilityLabel);
+  const body = app.nodes().find(node => node.props?.testID === 'transaction-information')!;
   assert.ok(String(body.props.accessibilityLabel).includes(type === 'income' ? 'Income' : 'Expense'));
   assert.ok(flatten(body.props.style).minHeight >= 44);
+  assert.equal(body.kind, 'View'); assert.equal(body.props.accessibilityRole, undefined); assert.equal(body.props.onPress, undefined);
+  assert.ok(!app.nodes(body).some(node => node.kind === 'Pressable' || node.props?.onPress));
   assert.ok(!app.nodes().some((node) => node.props?.label === 'Delete'));
-  await app.tapSet(display.accessibilityLabel); assert.equal(edits, 1);
+  assert.equal(edits, 0);
+  await menu(app, `Transaction options for ${title}`, `Edit ${title}`); assert.equal(edits, 1);
   await menu(app, `Transaction options for ${title}`, `Delete ${title}`); assert.equal(deletes, 1);
   assert.equal(app.find('FormButton', `Transaction options for ${title}`).props.expanded, false);
   integrity(f);
@@ -153,20 +236,19 @@ test('Transactions UI loads older pages incrementally and retains the loaded spa
   await app.refocus(); assert.equal(rows(app).length, 95);
 });
 
-test('FAB belongs only to Transactions, clears final content, and header Categories uses the anchored host', async (t) => {
+test('single floating create action belongs only to Transactions and Categories keeps the anchored host', async (t) => {
   const f = await initialized(t); const app = await mount(createElement(screens.FinanceScreen), f.db); t.after(app.unmount);
   for (const destination of ['Overview', 'Commitments', 'Work']) {
     await app.press(destination); assert.ok(!app.nodes().some((node) => node.props?.accessibilityLabel === 'Add transaction'));
   }
   await app.press('Transactions');
-  const fab = app.find('Pressable', 'Add transaction'); assert.equal(fab.props.accessibilityRole, 'button');
-  const fabStyle = flatten((fab.props.style as (state: { pressed: boolean }) => unknown)({ pressed: false }));
-  assert.equal(fabStyle.position, 'absolute');
-  assert.equal(flatten(app.find('SectionList').props.contentContainerStyle).paddingBottom, floatingAddClearance);
-  assert.ok(floatingAddClearance >= fabStyle.height + fabStyle.bottom);
+  assert.equal(app.nodes().filter(node => node.kind === 'Pressable' && node.props.accessibilityLabel === 'New transaction').length, 1);
+  assert.ok(!app.nodes().some(node => node.kind === 'FormButton' && node.props.label === 'New transaction'));
+  assert.ok(!app.nodes().some(node => node.props?.accessibilityLabel === 'Add transaction'));
+  assert.ok(flatten(app.find('SectionList').props.contentContainerStyle).paddingBottom >= 32);
   assert.deepEqual(app.find('SafeAreaView').props.edges, { top: true, bottom: true, left: true, right: true });
   assert.ok(app.container.textContent.includes('No transactions yet'));
-  await app.tapSet('Add transaction'); assert.ok(app.find('FormField', 'Amount *')); await app.press('Cancel');
+  await app.tapSet('New transaction'); assert.ok(app.find('FormField', 'Amount *')); await app.press('Cancel');
   await app.press('Transactions options'); assert.equal(app.find('FormButton', 'Transactions options').props.expanded, true);
   const overlay = () => app.nodes().find((node) => node.props?.['aria-label'] === 'Transactions options' && node.props?.role === 'dialog');
   assert.ok(overlay()); assert.equal((overlay()!.props.style as { position: string }).position, 'absolute');
@@ -181,16 +263,16 @@ test('initial ledger failure does not show empty rows or enable Add until author
   const f = await initialized(t);
   const app = await mount(createElement(screens.FinanceScreen, { initialView: 'transactions' }), f.db, ['finance.readLedgerPage']); t.after(app.unmount);
   assert.ok(!app.container.textContent.includes('No transactions yet'));
-  assert.equal(app.find('Pressable', 'Add transaction').props.disabled, true);
+  assert.equal(app.find('Pressable', 'New transaction').props.disabled, true);
   runtime.fixture.failures.clear(); await app.press('Retry');
   assert.ok(app.container.textContent.includes('No transactions yet'));
-  assert.equal(app.find('Pressable', 'Add transaction').props.disabled, false);
+  assert.equal(app.find('Pressable', 'New transaction').props.disabled, false);
 });
 
 test('manual Create/Edit/Delete reconcile Overview exactly while editor retains native money/category/date rules', async (t) => {
   const f = await initialized(t); const category = f.finance.createCategory('Food custom', 'expense');
   const app = await mount(createElement(screens.FinanceScreen, { initialView: 'transactions' }), f.db); t.after(app.unmount);
-  await app.tapSet('Add transaction');
+  await app.tapSet('New transaction');
   for (const heading of ['Transaction', 'Details', 'Date']) assert.ok(app.nodes().some((node) => node.props?.accessibilityRole === 'header' && node.textContent === heading));
   await app.change('Description *', 'Groceries'); await app.change('Amount *', 'R$ 82,40'); await app.change('Note', 'Remember the receipt');
   const categoryField = app.find('SelectField', 'Category');
@@ -300,7 +382,10 @@ test('combined Work receipt shows Job Title first, all covered jobs in detail, p
   assert.equal(transactionSections(page.transactions, today)[0].title, 'Yesterday');
   const app = await mount(createElement(screens.FinanceScreen, { initialView: 'transactions', initialRecordId: 'unrelated-opening-context' }), f.db); t.after(app.unmount);
   assert.ok(app.container.textContent.includes(title)); assert.ok(app.container.textContent.includes('João Inglês · Work'));
-  assert.ok(!app.nodes().some((node) => String(node.props?.accessibilityLabel).startsWith('Transaction options for')));
+  await app.press(`Transaction options for ${title}`);
+  assert.ok(app.find('FormButton', `View payment details for ${title}`));
+  assert.ok(!app.nodes().some(node => node.props?.variant === 'destructive'));
+  await app.tapSet(`Close transaction options for ${title.toLowerCase()}`);
   await open(app, title);
   const detail = app.find('Modal');
   assert.ok(detail.textContent.includes(title)); assert.ok(detail.textContent.includes('João Inglês'));
@@ -354,7 +439,7 @@ test('linked iOS detail waits for native dismissal before opening the protected 
   const app = await mount(createElement(screens.FinanceScreen, { initialView: 'transactions' }), f.db); t.after(app.unmount);
   const page = f.finance.readLedgerPage(); const title = transactionPresentation(page.transactions[0], page.categories, today, page.sources[paid.id]).title;
   await open(app, title); const closed = app.find('Modal').props.onDismiss as () => void;
-  await app.press('Edit details'); assert.ok(!app.nodes().some((node) => node.kind === 'FormField'));
+  await app.press('Edit details'); assert.ok(!app.nodes().some((node) => node.kind === 'FormField' && node.props.label === 'Description *'));
   await act(closed); assert.ok(app.find('FormField', 'Description *')); assert.equal(app.nodes().filter((node) => node.kind === 'Modal').length, 1);
   assert.equal(app.find('FormField', 'Amount *').props.editable, false);
 });
@@ -362,7 +447,7 @@ test('linked iOS detail waits for native dismissal before opening the protected 
 test('Android editor retains native date picker with a today maximum and local callback date', async (t) => {
   const f = await initialized(t);
   const platform = (runtime.native as { Platform: { OS: string } }).Platform; const previous = platform.OS; platform.OS = 'android'; t.after(() => { platform.OS = previous; });
-  const app = await mount(createElement(screens.FinanceScreen, { initialView: 'transactions' }), f.db); t.after(app.unmount); await app.tapSet('Add transaction');
+  const app = await mount(createElement(screens.FinanceScreen, { initialView: 'transactions' }), f.db); t.after(app.unmount); await app.tapSet('New transaction');
   await act(() => (app.find('FormSelect', 'Date *').props.onPress as () => void)());
   const picker = runtime.fixture.pickers.at(-1)!; assert.equal(picker.mode, 'date'); assert.equal(localDateString(picker.maximumDate as Date), today);
   await act(() => (picker.onValueChange as (event: unknown, date: Date) => void)({}, pickerValue(addDays(today, -1))));
