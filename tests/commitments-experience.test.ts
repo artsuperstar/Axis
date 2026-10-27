@@ -125,7 +125,7 @@ test('Pay / Skip / Undo update feed, exact Overview, linked Transactions, Home a
   await app.tapSet('History for Vet'); assert.ok(runtime.fixture.reads.filter((read) => read === 'commitments.readHistory').length > readsBefore);
   assert.equal(rows(app, 'commitment-history-row').length, 1); assert.ok(app.container.textContent.includes('Paid R$ 185,21'));
   assert.ok(app.container.textContent.includes('Expected R$ 180,20')); assert.ok(app.container.textContent.includes(`Payment date ${dateLabel(today)}`));
-  assert.equal(app.find('FormButton', 'Undo payment').props.variant, 'quiet'); await app.press('Undo payment'); await app.confirm('Confirm');
+  assert.equal(app.find('FormButton', 'Undo payment').props.variant, 'secondary'); await app.press('Undo payment'); await app.confirm('Confirm');
   assert.equal(f.finance.read().transactions.length, 0); assert.equal(dueHome().length, 1); assert.equal(dueCalendar().length, 1);
   await app.press('Back'); await app.press('Back to Commitments');
   assert.ok(sections(app).some((section) => section.props.testID === 'commitment-section-today'));

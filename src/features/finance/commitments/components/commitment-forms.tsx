@@ -6,7 +6,6 @@ import { FormButton, FormError, FormField, FormSelect, InlineNameForm, Segmented
 import { DesignProvider, GroupSurface, UiIcon, UiText, useDesignColors } from '@/components/design-system';
 import { EditorSection } from '@/components/editor-section';
 import { PickerBackHeader } from '@/components/back-button';
-import { ThemedText } from '@/components/themed-text';
 import { Space } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { dateLabel, localDateString, pickerValue } from '@/utils/calendar';
@@ -19,6 +18,7 @@ import type { FinanceCategory } from '../../types';
 import { commitmentDraft, validateCommitmentDraft, validatePayment } from '../form';
 import { commitmentKindLabels, type CommitmentDraft, type CommitmentItem, type CommitmentKind, type OccurrenceTarget } from '../types';
 import { commitmentTypeIcon } from '../type-icons';
+import { commitmentStatusLabel } from '../presentation';
 
 import { AdaptiveSheet as CommitmentSheet } from '@/components/adaptive-sheet';
 export { AdaptiveModal as CommitmentModal, AdaptiveSheet as CommitmentSheet } from '@/components/adaptive-sheet';
@@ -168,27 +168,75 @@ export function CommitmentPayment({ occurrence, title, kind, categoryName, onSav
   </CommitmentSheet></DesignProvider>;
 }
 
-export function CommitmentResume({ title, proposedDate, onResume, onDismiss }: {
-  title: string; proposedDate: string; onResume: (date: string) => void; onDismiss: () => void;
+export function CommitmentResume({ item, categoryName, proposedDate, onResume, onDismiss }: {
+  item: CommitmentItem; categoryName?: string | null; proposedDate: string; onResume: (date: string) => unknown; onDismiss: () => void;
 }) {
+  const colors = useDesignColors();
+  const { width, fontScale } = useWindowDimensions();
+  const stackedHeader = width < 390 || fontScale >= 1.5;
+  const { commitment } = item;
+  const identity = `${commitmentKindLabels[commitment.kind]} · ${commitmentStatusLabel(item)}`;
   const [date, setDate] = useState(proposedDate);
   const [error, setError] = useState<string | null>(null);
+  const [submitting, setSubmitting] = useState(false);
   const saving = useRef(false);
-  function save() {
+  const dateError = error?.includes('date') ? error : null;
+  async function save() {
     if (saving.current) return;
     saving.current = true;
-    try { onResume(date); onDismiss(); }
-    catch (cause) { saving.current = false; setError(financeError(cause, 'Unable to resume this commitment.')); }
+    try {
+      setSubmitting(true);
+      const result = onResume(date);
+      if (result instanceof Promise) await result;
+      onDismiss();
+    }
+    catch (cause) { saving.current = false; setSubmitting(false); setError(financeError(cause, 'Unable to resume this commitment.')); }
   }
-  return <CommitmentSheet title="Resume commitment" action="Resume" onConfirm={save} onDismiss={onDismiss}>
-    <FormError message={error} />
-    <ThemedText>{title}</ThemedText>
-    <CommitmentDate label="Next due date *" value={date} minimumDate={pickerValue(localDateString(new Date()), '00:00')} onChange={(value) => { setDate(value); setError(null); }} />
-    <ThemedText type="secondary" themeColor="textSecondary">Resuming starts the schedule again from the new due date. Keep the suggested date to preserve the billing day, or choose another date to change it. Existing unpaid occurrences still need payment. Paused months stay empty.</ThemedText>
-  </CommitmentSheet>;
+  return <DesignProvider><CommitmentSheet appearance="v2" contentContainerStyle={styles.editorContent} header={<View style={styles.editorHeader}>
+    <View accessible={false} accessibilityElementsHidden importantForAccessibility="no-hide-descendants" style={[styles.handle, { backgroundColor: colors.borderStrong }]} />
+    <View style={[styles.headerRow, stackedHeader && styles.headerStack]}>
+      {stackedHeader && <UiText type="editorTitle" accessibilityRole="header" style={styles.editorTitle}>Resume commitment</UiText>}
+      <View style={[styles.headerRow, stackedHeader && styles.headerActions]}>
+        <FormButton appearance="v2" compact variant="quiet" label="Cancel" onPress={onDismiss} />
+        {!stackedHeader && <UiText type="editorTitle" accessibilityRole="header" style={[styles.editorTitle, styles.heading]}>Resume commitment</UiText>}
+        <FormButton appearance="v2" variant="primary" label="Resume" busy={submitting} disabled={submitting} accessibilityHint={submitting ? 'Resuming commitment. Please wait.' : 'Resume future scheduling from the selected next due date.'} onPress={save} />
+      </View>
+    </View>
+  </View>}>
+    <FormError appearance="v2" message={dateError ? null : error} />
+    <GroupSurface testID="commitment-resume-summary" accessible
+      accessibilityLabel={`${commitment.title}. ${identity}. Expected amount ${formatBrlAmount(commitment.expectedAmountMinor)}. Category ${categoryName || 'No category'}.`}
+      style={[styles.resumeSummary, { borderColor: colors.border }]}>
+      <View style={[styles.resumeIdentity, fontScale >= 1.5 && styles.summaryStack]}>
+        <View style={[styles.paymentTile, { backgroundColor: colors.brandSoft }]}><UiIcon name={commitmentTypeIcon(commitment.kind)} color={colors.brand} size={24} /></View>
+        <View style={[styles.paymentIdentity, fontScale >= 1.5 && styles.summaryFull]}>
+          <UiText type="cardTitle">{commitment.title}</UiText>
+          <UiText type="metadata" color="textSecondary">{identity}</UiText>
+        </View>
+      </View>
+      {[
+        { icon: 'creditCard' as const, text: `Expected amount · ${formatBrlAmount(commitment.expectedAmountMinor)}` },
+        { icon: 'tag' as const, text: `Category · ${categoryName || 'No category'}` },
+      ].map(row => <View key={row.icon} style={styles.paymentMetadata}><UiIcon name={row.icon} color={colors.textSecondary} size={18} /><UiText type="metadata" color="textSecondary" style={styles.noteText}>{row.text}</UiText></View>)}
+    </GroupSurface>
+    <View testID="commitment-resume-schedule" style={styles.resumeSchedule}>
+      <View style={styles.resumeScheduleHeading}>
+        <UiText type="editorSection" accessibilityRole="header">Schedule</UiText>
+        <UiText type="metadata" color="textSecondary">Choose when the next occurrence should be due.</UiText>
+      </View>
+      <CommitmentDate appearance="v2" label="Next due date *" value={date} minimumDate={pickerValue(localDateString(new Date()), '00:00')} error={dateError} disabled={submitting} onChange={(value) => { setDate(value); setError(null); }} />
+    </View>
+    <GroupSurface testID="commitment-resume-explanation" style={[styles.resumeExplanation, { borderColor: colors.border }]}>
+      <UiIcon name="info" color={colors.textSecondary} size={20} />
+      <UiText type="metadata" color="textSecondary" style={styles.noteText}>Resuming starts the schedule again from the new due date. Keep the suggested date to preserve the billing day, or choose another date to change it. Existing unpaid occurrences still need payment. Paused months stay empty.</UiText>
+    </GroupSurface>
+  </CommitmentSheet></DesignProvider>;
 }
 
 const styles = StyleSheet.create({
+  resumeSummary: { padding: Space.md, gap: Space.md, borderWidth: 1 }, resumeIdentity: { flexDirection: 'row', alignItems: 'flex-start', gap: Space.md },
+  resumeSchedule: { paddingTop: Space.md, gap: Space.lg }, resumeScheduleHeading: { gap: Space.xs },
+  resumeExplanation: { flexDirection: 'row', alignItems: 'flex-start', gap: Space.sm, padding: Space.md, borderWidth: 1 },
   paymentSummary: { flexDirection: 'row', alignItems: 'flex-start', padding: Space.md, gap: Space.md, borderWidth: 1 },
   paymentTile: { width: 40, height: 40, borderRadius: 16, alignItems: 'center', justifyContent: 'center', flexShrink: 0 },
   paymentIdentity: { flex: 1, minWidth: 0, gap: Space.sm }, paymentMetadata: { flexDirection: 'row', alignItems: 'flex-start', gap: Space.sm },

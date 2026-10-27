@@ -9,18 +9,20 @@ import { StatusText } from '@/components/status-text';
 import { ThemedText } from '@/components/themed-text';
 import { ControlSize, Space } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
-import { dateLabel } from '@/utils/calendar';
+import { addDays, dateLabel } from '@/utils/calendar';
 
-import { financeError } from '../../errors';
+import { FinanceValidationError, financeError } from '../../errors';
 import { financeCategoryName } from '../../form';
 import { formatBrlAmount } from '../../money';
 import type { FinanceCategory } from '../../types';
 import { appendCommitmentHistory, type CommitmentDataAccess, type CommitmentHistory } from '../data';
-import { commitmentSections, commitmentStatusLabel, focusedCommitmentOccurrence, installmentLabel } from '../presentation';
-import { occurrenceLabel } from '../scheduling';
+import { commitmentSections, commitmentStatusLabel, focusedCommitmentOccurrence } from '../presentation';
 import { commitmentKindLabels, type CommitmentItem, type DisplayOccurrence } from '../types';
-import { CommitmentEditor, CommitmentModal, CommitmentPayment, CommitmentResume, CommitmentSheet } from './commitment-forms';
+import { CommitmentEditor, CommitmentModal, CommitmentPayment, CommitmentResume } from './commitment-forms';
 import { CommitmentCard } from './commitment-card';
+import { CommitmentHistoryIndexCard, CommitmentHistoryIndexHeader } from './commitment-history-index';
+import { CommitmentDetails } from './commitment-details';
+import { CommitmentHistory as IndividualCommitmentHistory } from './commitment-history';
 
 type Details = { kind: 'details'; data: CommitmentHistory; historyVisible: boolean; focus?: DisplayOccurrence | null };
 type Dialog = { kind: 'edit'; item: CommitmentItem | null } | Details
@@ -99,31 +101,6 @@ export function CommitmentsView({ items, categories, access, today, mutate, onCr
       { label: 'History', accessibilityLabel: `History for ${name}`, onPress: () => openDetails(item, true) },
     ];
   }
-  function pending(item: CommitmentItem, row: DisplayOccurrence, inDetails = false) {
-    const state = occurrenceLabel(row.status, row.dueDate, today);
-    const installment = installmentLabel(item, row);
-    const due = row.dueDate === today ? 'Due today' : `Due ${dateLabel(row.dueDate)}`;
-    const subject = `${item.commitment.title}, due ${dateLabel(row.dueDate)}`;
-    const show = () => inDetails && detail ? setDialog({ ...detail, historyVisible: false, focus: row }) : openDetails(item, false, row);
-    return <View key={row.id ?? `${row.scheduleId}:${row.dueDate}`} testID="commitment-obligation" style={[styles.row, { borderColor: colors.border }]}>
-      <Pressable accessibilityRole="button" accessibilityLabel={`${item.commitment.title}, expected ${formatBrlAmount(row.expectedAmountMinor)}, ${state}, due ${dateLabel(row.dueDate)}${installment ? `, installment ${installment}` : ''}`}
-        accessibilityHint="View obligation details. Payment requires confirmation." onPress={show} style={styles.body}>
-        <View style={styles.nameAmount}>
-          <ThemedText type="cardTitle" style={styles.name}>{item.commitment.title}</ThemedText>
-          <ThemedText type="cardTitle" style={styles.amount}>{formatBrlAmount(row.expectedAmountMinor)}</ThemedText>
-        </View>
-        <StatusText tone={state === 'Overdue' ? 'attention' : 'neutral'}>{[installment, state === 'Overdue' ? `Overdue · ${due}` : due].filter(Boolean).join(' · ')}</StatusText>
-        <ThemedText type="metadata" themeColor="textSecondary">{commitmentKindLabels[item.commitment.kind]}{categoryLabel(item) ? ` · ${categoryLabel(item)}` : ''}</ThemedText>
-      </Pressable>
-      <View style={styles.actions}>
-        <FormButton variant="primary" label="Pay" accessibilityLabel={`Pay ${subject}`} onPress={() => setDialog({ kind: 'payment', item, occurrence: row })} />
-        <ContextMenu label={`Actions for ${subject}`} actions={[
-          { label: 'Skip', accessibilityLabel: `Skip ${subject}`, onPress: () => skip(item, row) },
-          { label: 'View commitment', accessibilityLabel: `View ${item.commitment.title} commitment`, onPress: () => openDetails(item) },
-        ]} />
-      </View>
-    </View>;
-  }
   function seriesRow(item: CommitmentItem, historical = false) {
     const name = item.commitment.title;
     return <View key={item.commitment.id} style={[styles.row, { borderColor: colors.border }]}>
@@ -147,7 +124,6 @@ export function CommitmentsView({ items, categories, access, today, mutate, onCr
   const focused = detail ? focusedCommitmentOccurrence(detail.data, detail.focus) : null;
   const detailPending = detail ? focused ? [focused] : [...detail.data.outstanding,
     ...(detail.data.upcoming && detail.data.upcoming.dueDate > today ? [detail.data.upcoming] : [])] : [];
-  const resolved = detail?.data.history.filter(({ occurrence }) => occurrence.status !== 'pending') ?? [];
   type ListRow = { key: string; item: CommitmentItem; occurrence?: DisplayOccurrence; historical?: boolean };
   const listSections: { key: string; title: string | null; count: number; data: ListRow[] }[] = surface === 'obligations'
     ? sections.map(section => ({ key: section.title, title: section.title, count: section.rows.length,
@@ -159,25 +135,25 @@ export function CommitmentsView({ items, categories, access, today, mutate, onCr
       initialNumToRender={6} maxToRenderPerBatch={6} windowSize={5} removeClippedSubviews={false}
       contentInsetAdjustmentBehavior="never" contentContainerStyle={styles.mainContent} contentOffset={{ x: 0, y: scrollOffset }}
       onScroll={onScroll} scrollEventThrottle={16} keyboardShouldPersistTaps="handled" keyboardDismissMode="on-drag"
-      ListHeaderComponent={<View style={styles.section}>
+      ListHeaderComponent={<View style={[styles.section, surface === 'history' && { paddingBottom: Space.lg }]}>
     {surface === 'obligations' ? <View style={[styles.toolbar, stackCreation && styles.toolbarStack]}>
       <View style={[styles.creation, stackCreation && styles.creationFull]}><FormButton appearance="v2" variant="primary" leadingIcon="plus" label="Add commitment" onPress={() => { setError(null); setDialog({ kind: 'edit', item: null }); }} /></View>
       <View style={stackCreation && styles.optionsEnd}><ContextMenu appearance="v2" label="Commitment options" onOpen={() => setError(null)} actions={[
         { label: 'Manage commitments', onPress: () => setSurface('manage') }, { label: 'History', onPress: () => setSurface('history') },
       ]} /></View>
-    </View> : <>
+    </View> : surface === 'history' ? <CommitmentHistoryIndexHeader onBack={() => { setSurface('obligations'); setError(null); }} /> : <>
     <View style={styles.heading}>
       <BackButton accessibilityLabel="Back to Commitments" onPress={() => { setSurface('obligations'); setError(null); }} />
       <ThemedText type="sectionHeading" accessibilityRole="header" style={styles.title}>{surface === 'manage' ? 'Manage commitments' : 'Commitment History'}</ThemedText>
     </View>
-    {surface === 'history' && <ThemedText type="secondary" themeColor="textSecondary">Choose a commitment to view its paid and skipped occurrences.</ThemedText>}
     </>}
-    <FormError appearance={surface === 'obligations' ? 'v2' : undefined} message={error} />
+    <FormError appearance={surface !== 'manage' ? 'v2' : undefined} message={error} />
     </View>}
       ListEmptyComponent={surface === 'obligations' ? <View style={styles.empty}>
         <UiText type="cardTitle">{!items.length ? 'No commitments yet' : 'No obligations to resolve in this preview'}</UiText>
         <UiText type="secondary" color="textSecondary">{!items.length ? 'Add a Bill, Subscription, or Installment. Expenses are recorded when you pay.' : 'Manage commitments to review schedules and statuses.'}</UiText>
-      </View> : <ThemedText type="secondary" themeColor="textSecondary">{surface === 'manage' ? 'No commitment series yet. Return to Commitments to add one.' : 'No paid or skipped occurrences yet.'}</ThemedText>}
+      </View> : surface === 'history' ? <UiText type="secondary" color="textSecondary">No paid or skipped occurrences yet.</UiText>
+        : <ThemedText type="secondary" themeColor="textSecondary">No commitment series yet. Return to Commitments to add one.</ThemedText>}
       renderSectionHeader={({ section }) => section.title ? <View testID={`commitment-section-${section.title.toLowerCase()}`} style={styles.sectionHeader}>
         <UiText type="editorSection" accessibilityRole="header" color={section.title === 'Overdue' ? 'attention' : 'textPrimary'}>{section.title}{section.title === 'Overdue' ? ` (${section.count})` : ''}</UiText>
       </View> : null}
@@ -185,61 +161,42 @@ export function CommitmentsView({ items, categories, access, today, mutate, onCr
       renderItem={({ item: row }) => row.occurrence ? <CommitmentCard item={row.item} occurrence={row.occurrence} categories={categories} today={today}
         onView={() => openDetails(row.item, false, row.occurrence)} onViewSeries={() => openDetails(row.item)}
         onPay={() => setDialog({ kind: 'payment', item: row.item, occurrence: row.occurrence! })} onSkip={() => skip(row.item, row.occurrence!)} />
-        : seriesRow(row.item, row.historical)} />
+        : row.historical ? <CommitmentHistoryIndexCard item={row.item} onOpen={() => openDetails(row.item, true)} /> : seriesRow(row.item)} />
 
     {dialog && <CommitmentModal onDismiss={() => setDialog(null)}>
       {dialog.kind === 'edit' && <CommitmentEditor item={dialog.item} categories={categories} onCreateCategory={onCreateCategory} onDismiss={() => setDialog(null)}
         onSave={(draft) => mutate(() => dialog.item ? access.edit(dialog.item.commitment.id, draft) : access.create(draft))} />}
       {dialog.kind === 'payment' && <CommitmentPayment occurrence={dialog.occurrence} kind={dialog.item.commitment.kind} title={dialog.item.commitment.title} categoryName={categoryLabel(dialog.item)} onDismiss={() => setDialog(null)}
         onSave={(amount, date) => mutate(() => access.pay(dialog.occurrence, amount, date))} />}
-      {dialog.kind === 'resume' && <CommitmentResume title={dialog.item.commitment.title} proposedDate={dialog.date} onDismiss={() => setDialog(null)}
+      {dialog.kind === 'resume' && <CommitmentResume item={dialog.item} categoryName={categoryLabel(dialog.item)} proposedDate={dialog.date} onDismiss={() => setDialog(null)}
         onResume={(date) => mutate(() => access.resume(dialog.item.commitment.id, date))} />}
-      {detail && <CommitmentSheet title={detail.historyVisible ? `${detail.data.commitment.title} · History` : detail.data.commitment.title} onDismiss={() => setDialog(null)}>
-        <FormError message={error} />
-        <View style={styles.heading}>
-          <StatusText tone="neutral" style={styles.title}>{commitmentKindLabels[detail.data.commitment.kind]} · {commitmentStatusLabel(detail.data)}</StatusText>
-          <ContextMenu label={`Series options for ${detail.data.commitment.title}`} actions={seriesActions(detail.data)} />
-        </View>
-        {!detail.historyVisible && <>
-          <ThemedText type="body">Expected {formatBrlAmount(detail.data.commitment.expectedAmountMinor)}</ThemedText>
-          {!!categoryLabel(detail.data) && <ThemedText type="secondary" themeColor="textSecondary">{categoryLabel(detail.data)}</ThemedText>}
-          <ThemedText type="secondary" themeColor="textSecondary">Monthly on day {detail.data.schedule.billingDay} · From {dateLabel(detail.data.schedule.startDate)}</ThemedText>
-          {!!progress(detail.data) && <ThemedText type="secondary" themeColor="textSecondary">{progress(detail.data)}</ThemedText>}
-          <ThemedText type="secondary" themeColor="textSecondary">Total paid: {formatBrlAmount(detail.data.totalPaidMinor)}</ThemedText>
-          {detail.data.versions.length > 1 && <>
-            <ThemedText type="cardTitle" accessibilityRole="header">Schedules</ThemedText>
-            {detail.data.versions.map((version) => <ThemedText key={version.id} type="metadata" themeColor="textSecondary">
-              From {dateLabel(version.startDate)} · day {version.billingDay} · {formatBrlAmount(version.expectedAmountMinor)}{version.effectiveUntil ? ` · ends before ${dateLabel(version.effectiveUntil)}` : ' · current'}
-            </ThemedText>)}
-          </>}
-          <ThemedText type="cardTitle" accessibilityRole="header">{focused ? 'Selected obligation' : 'Unpaid occurrences'}</ThemedText>
-          {!detailPending.length && <ThemedText type="secondary" themeColor="textSecondary">No unresolved occurrences in this preview.</ThemedText>}
-          {detailPending.map((row) => pending(detail.data, row, true))}
-          <FormButton variant="quiet" label="View history" onPress={() => setDialog({ ...detail, historyVisible: true })} />
-        </>}
-        {detail.historyVisible && <>
-          <ThemedText type="cardTitle" accessibilityRole="header">Paid and skipped</ThemedText>
-          {!resolved.length && <ThemedText type="secondary" themeColor="textSecondary">No paid or skipped occurrences in this page.</ThemedText>}
-          {resolved.map(({ occurrence: row, payment }) => <View key={row.id} testID="commitment-history-row" style={[styles.row, { borderColor: colors.border }]}>
-            <StatusText tone={row.status === 'paid' ? 'success' : 'subdued'}>{occurrenceLabel(row.status, row.dueDate, today)} · Due {dateLabel(row.dueDate)}{installmentLabel(detail.data, row) ? ` · ${installmentLabel(detail.data, row)}` : ''}</StatusText>
-            <ThemedText type="secondary">Expected {formatBrlAmount(row.expectedAmountMinor)}</ThemedText>
-            {payment && <>
-              <ThemedText type="cardTitle" style={styles.amount}>Paid {formatBrlAmount(payment.amountMinor)}</ThemedText>
-              <ThemedText type="metadata" themeColor="textSecondary">Payment date {dateLabel(payment.transactionDate)}</ThemedText>
-              {!!financeCategoryName(payment, categories) && <ThemedText type="metadata" themeColor="textSecondary">{financeCategoryName(payment, categories)}</ThemedText>}
-            </>}
-            <View style={styles.creation}><FormButton variant="quiet" label={row.status === 'paid' ? 'Undo payment' : 'Reopen'} accessibilityLabel={`${row.status === 'paid' ? 'Undo payment for' : 'Reopen'} ${detail.data.commitment.title}, due ${dateLabel(row.dueDate)}`}
-              onPress={() => confirm(row.status === 'paid' ? 'Undo payment?' : 'Reopen occurrence?',
-                row.status === 'paid' ? 'The linked Expense will be removed from ledger totals and this occurrence will need payment again.' : 'This occurrence will need payment again.',
-                () => { mutate(() => access.reopen(row.id)); refreshDetails(detail.data.commitment.id); })} /></View>
-          </View>)}
-          {detail.data.nextBefore && <FormButton variant="quiet" label="Load earlier history" onPress={() => run(() => {
-            const page = access.readHistory(detail.data.commitment.id, detail.data.nextBefore!);
-            setDialog({ ...detail, data: appendCommitmentHistory(detail.data, page) });
+      {detail && !detail.historyVisible && <CommitmentDetails data={detail.data} pending={detailPending} focused={!!focused} categories={categories} today={today} error={error}
+        actions={seriesActions(detail.data)} onDismiss={() => setDialog(null)} onHistory={() => setDialog({ ...detail, historyVisible: true })}
+        onPay={occurrence => setDialog({ kind: 'payment', item: detail.data, occurrence })} onSkip={occurrence => skip(detail.data, occurrence)} onViewSeries={() => openDetails(detail.data)} />}
+      {detail?.historyVisible && <IndividualCommitmentHistory data={detail.data} categories={categories} error={error} actions={seriesActions(detail.data)}
+        onDismiss={() => setDialog(null)} onViewCommitment={() => setDialog({ ...detail, historyVisible: false, focus: null })}
+        onLoadEarlier={() => run(() => {
+          const page = access.readHistory(detail.data.commitment.id, detail.data.nextBefore!);
+          setDialog({ ...detail, data: appendCommitmentHistory(detail.data, page) });
+        })}
+        onReopen={({ occurrence: row, payment }) => confirm(row.status === 'paid' ? 'Undo payment?' : 'Reopen occurrence?',
+          row.status === 'paid' ? 'The linked Expense will be removed from ledger totals and this occurrence will need payment again.' : 'This occurrence will need payment again.',
+          () => {
+            mutate(() => {
+              if (row.status === 'paid') {
+                if (!payment) throw new FinanceValidationError('The linked payment is no longer available. Refresh History and try again.');
+                access.deletePayment(payment.id, { commitmentId: row.commitmentId, dueDate: row.dueDate });
+              } else {
+                // Do not let a stale Skipped confirmation reverse a later payment.
+                // Query only the existing source window containing this occurrence.
+                const current = access.readHistory(row.commitmentId, row.dueDate < today ? addDays(row.dueDate, 1) : undefined)
+                  .history.find(entry => entry.occurrence.id === row.id)?.occurrence;
+                if (current?.status !== 'skipped') throw new FinanceValidationError('This skipped occurrence changed. Refresh History and try again.');
+                access.reopen(row.id);
+              }
+            });
+            refreshDetails(detail.data.commitment.id);
           })} />}
-          <FormButton variant="quiet" label="View commitment" onPress={() => setDialog({ ...detail, historyVisible: false, focus: null })} />
-        </>}
-      </CommitmentSheet>}
     </CommitmentModal>}
   </View>;
 }

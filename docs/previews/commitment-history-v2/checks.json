@@ -1,0 +1,3227 @@
+[
+  {
+    "name": "mixed-dark",
+    "regions": 6,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "actions": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Series options for Equipment purchase",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de out. de 2026",
+        "x": 241.03125,
+        "y": 370,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de set. de 2026",
+        "x": 241.03125,
+        "y": 562,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Reopen Equipment purchase, due 12 de ago. de 2026",
+        "x": 290.078125,
+        "y": 754,
+        "width": 74.921875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de jul. de 2026",
+        "x": 241.03125,
+        "y": 852,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "View commitment",
+        "x": 12,
+        "y": 1043,
+        "width": 366,
+        "height": 56
+      }
+    ],
+    "rows": [
+      {
+        "text": "Paid · Due 12 de out. de 2026 · 4 of 8Expected R$ 180,20Paid R$ 180,20Payment date 10 de out. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de set. de 2026 · 3 of 8Expected R$ 180,20Paid R$ 175,35Payment date 12 de set. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Skipped · Due 12 de ago. de 2026 · 2 of 8Expected R$ 180,20Reopen",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de jul. de 2026 · 1 of 8Expected R$ 180,20Paid R$ 175,35Payment date 12 de jul. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      }
+    ],
+    "sourceCount": 4,
+    "cursor": null,
+    "errors": []
+  },
+  {
+    "name": "bill-dark",
+    "regions": 6,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "actions": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Series options for Equipment service",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment service, due 12 de out. de 2026",
+        "x": 241.03125,
+        "y": 338,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment service, due 12 de set. de 2026",
+        "x": 241.03125,
+        "y": 530,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Reopen Equipment service, due 12 de ago. de 2026",
+        "x": 290.078125,
+        "y": 722,
+        "width": 74.921875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment service, due 12 de jul. de 2026",
+        "x": 241.03125,
+        "y": 820,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "View commitment",
+        "x": 12,
+        "y": 1011,
+        "width": 366,
+        "height": 56
+      }
+    ],
+    "rows": [
+      {
+        "text": "Paid · Due 12 de out. de 2026Expected R$ 180,20Paid R$ 180,20Payment date 10 de out. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de set. de 2026Expected R$ 180,20Paid R$ 175,35Payment date 12 de set. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Skipped · Due 12 de ago. de 2026Expected R$ 180,20Reopen",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de jul. de 2026Expected R$ 180,20Paid R$ 175,35Payment date 12 de jul. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      }
+    ],
+    "sourceCount": 4,
+    "cursor": null,
+    "errors": []
+  },
+  {
+    "name": "subscription-dark",
+    "regions": 6,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "actions": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Series options for Learning subscription",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Learning subscription, due 12 de out. de 2026",
+        "x": 241.03125,
+        "y": 338,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Learning subscription, due 12 de set. de 2026",
+        "x": 241.03125,
+        "y": 530,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Reopen Learning subscription, due 12 de ago. de 2026",
+        "x": 290.078125,
+        "y": 722,
+        "width": 74.921875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Learning subscription, due 12 de jul. de 2026",
+        "x": 241.03125,
+        "y": 820,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "View commitment",
+        "x": 12,
+        "y": 1011,
+        "width": 366,
+        "height": 56
+      }
+    ],
+    "rows": [
+      {
+        "text": "Paid · Due 12 de out. de 2026Expected R$ 180,20Paid R$ 180,20Payment date 10 de out. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de set. de 2026Expected R$ 180,20Paid R$ 175,35Payment date 12 de set. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Skipped · Due 12 de ago. de 2026Expected R$ 180,20Reopen",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de jul. de 2026Expected R$ 180,20Paid R$ 175,35Payment date 12 de jul. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      }
+    ],
+    "sourceCount": 4,
+    "cursor": null,
+    "errors": []
+  },
+  {
+    "name": "paid-dark",
+    "regions": 6,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "actions": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Series options for Equipment purchase",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de out. de 2026",
+        "x": 241.03125,
+        "y": 370,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de set. de 2026",
+        "x": 241.03125,
+        "y": 562,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de ago. de 2026",
+        "x": 241.03125,
+        "y": 754,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de jul. de 2026",
+        "x": 241.03125,
+        "y": 946,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "View commitment",
+        "x": 12,
+        "y": 1137,
+        "width": 366,
+        "height": 56
+      }
+    ],
+    "rows": [
+      {
+        "text": "Paid · Due 12 de out. de 2026 · 4 of 8Expected R$ 180,20Paid R$ 180,20Payment date 10 de out. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de set. de 2026 · 3 of 8Expected R$ 180,20Paid R$ 175,35Payment date 12 de set. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de ago. de 2026 · 2 of 8Expected R$ 180,20Paid R$ 180,20Payment date 12 de ago. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de jul. de 2026 · 1 of 8Expected R$ 180,20Paid R$ 175,35Payment date 12 de jul. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      }
+    ],
+    "sourceCount": 4,
+    "cursor": null,
+    "errors": []
+  },
+  {
+    "name": "skipped-dark",
+    "regions": 6,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "actions": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Series options for Equipment purchase",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Reopen Equipment purchase, due 12 de out. de 2026",
+        "x": 290.078125,
+        "y": 370,
+        "width": 74.921875,
+        "height": 48
+      },
+      {
+        "label": "Reopen Equipment purchase, due 12 de set. de 2026",
+        "x": 290.078125,
+        "y": 468,
+        "width": 74.921875,
+        "height": 48
+      },
+      {
+        "label": "Reopen Equipment purchase, due 12 de ago. de 2026",
+        "x": 290.078125,
+        "y": 566,
+        "width": 74.921875,
+        "height": 48
+      },
+      {
+        "label": "Reopen Equipment purchase, due 12 de jul. de 2026",
+        "x": 290.078125,
+        "y": 664,
+        "width": 74.921875,
+        "height": 48
+      },
+      {
+        "label": "View commitment",
+        "x": 12,
+        "y": 761,
+        "width": 366,
+        "height": 56
+      }
+    ],
+    "rows": [
+      {
+        "text": "Skipped · Due 12 de out. de 2026 · 4 of 8Expected R$ 180,20Reopen",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Skipped · Due 12 de set. de 2026 · 3 of 8Expected R$ 180,20Reopen",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Skipped · Due 12 de ago. de 2026 · 2 of 8Expected R$ 180,20Reopen",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Skipped · Due 12 de jul. de 2026 · 1 of 8Expected R$ 180,20Reopen",
+        "falseBodyButtons": 0
+      }
+    ],
+    "sourceCount": 4,
+    "cursor": null,
+    "errors": []
+  },
+  {
+    "name": "completed-dark",
+    "regions": 6,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "actions": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Series options for Equipment purchase",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de out. de 2026",
+        "x": 241.03125,
+        "y": 370,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de set. de 2026",
+        "x": 241.03125,
+        "y": 562,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Reopen Equipment purchase, due 12 de ago. de 2026",
+        "x": 290.078125,
+        "y": 754,
+        "width": 74.921875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de jul. de 2026",
+        "x": 241.03125,
+        "y": 852,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "View commitment",
+        "x": 12,
+        "y": 1043,
+        "width": 366,
+        "height": 56
+      }
+    ],
+    "rows": [
+      {
+        "text": "Paid · Due 12 de out. de 2026 · 4 of 4Expected R$ 180,20Paid R$ 180,20Payment date 10 de out. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de set. de 2026 · 3 of 4Expected R$ 180,20Paid R$ 175,35Payment date 12 de set. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Skipped · Due 12 de ago. de 2026 · 2 of 4Expected R$ 180,20Reopen",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de jul. de 2026 · 1 of 4Expected R$ 180,20Paid R$ 175,35Payment date 12 de jul. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      }
+    ],
+    "sourceCount": 4,
+    "cursor": null,
+    "errors": []
+  },
+  {
+    "name": "mixed-320-dark",
+    "regions": 6,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "actions": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 71,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Series options for Equipment purchase",
+        "x": 260,
+        "y": 71,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de out. de 2026",
+        "x": 171.03125,
+        "y": 614,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de set. de 2026",
+        "x": 171.03125,
+        "y": 842,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Reopen Equipment purchase, due 12 de ago. de 2026",
+        "x": 220.078125,
+        "y": 996,
+        "width": 74.921875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de jul. de 2026",
+        "x": 171.03125,
+        "y": 1224,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "View commitment",
+        "x": 12,
+        "y": 1305,
+        "width": 296,
+        "height": 56
+      }
+    ],
+    "rows": [
+      {
+        "text": "Paid · Due 12 de out. de 2026 · 4 of 8Expected R$ 180,20Paid R$ 180,20Payment date 10 de out. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de set. de 2026 · 3 of 8Expected R$ 180,20Paid R$ 175,35Payment date 12 de set. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Skipped · Due 12 de ago. de 2026 · 2 of 8Expected R$ 180,20Reopen",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de jul. de 2026 · 1 of 8Expected R$ 180,20Paid R$ 175,35Payment date 12 de jul. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      }
+    ],
+    "sourceCount": 4,
+    "cursor": null,
+    "errors": []
+  },
+  {
+    "name": "mixed-430-dark",
+    "regions": 6,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "actions": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Series options for Equipment purchase",
+        "x": 370,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de out. de 2026",
+        "x": 281.03125,
+        "y": 370,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de set. de 2026",
+        "x": 281.03125,
+        "y": 562,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Reopen Equipment purchase, due 12 de ago. de 2026",
+        "x": 330.078125,
+        "y": 754,
+        "width": 74.921875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de jul. de 2026",
+        "x": 281.03125,
+        "y": 852,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "View commitment",
+        "x": 12,
+        "y": 1043,
+        "width": 406,
+        "height": 56
+      }
+    ],
+    "rows": [
+      {
+        "text": "Paid · Due 12 de out. de 2026 · 4 of 8Expected R$ 180,20Paid R$ 180,20Payment date 10 de out. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de set. de 2026 · 3 of 8Expected R$ 180,20Paid R$ 175,35Payment date 12 de set. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Skipped · Due 12 de ago. de 2026 · 2 of 8Expected R$ 180,20Reopen",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de jul. de 2026 · 1 of 8Expected R$ 180,20Paid R$ 175,35Payment date 12 de jul. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      }
+    ],
+    "sourceCount": 4,
+    "cursor": null,
+    "errors": []
+  },
+  {
+    "name": "stress-320-dark-2",
+    "regions": 6,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "actions": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 161,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Series options for Complete household equipment commitment name retained without losing the full original purchase purpose",
+        "x": 260,
+        "y": 161,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Complete household equipment commitment name retained without losing the full original purchase purpose, due 12 de out. de 2026",
+        "x": 67.0625,
+        "y": 2680,
+        "width": 227.9375,
+        "height": 64
+      },
+      {
+        "label": "Undo payment for Complete household equipment commitment name retained without losing the full original purchase purpose, due 12 de set. de 2026",
+        "x": 67.0625,
+        "y": 3614,
+        "width": 227.9375,
+        "height": 64
+      },
+      {
+        "label": "Reopen Complete household equipment commitment name retained without losing the full original purchase purpose, due 12 de ago. de 2026",
+        "x": 165.15625,
+        "y": 3964,
+        "width": 129.84375,
+        "height": 64
+      },
+      {
+        "label": "Undo payment for Complete household equipment commitment name retained without losing the full original purchase purpose, due 12 de jul. de 2026",
+        "x": 67.0625,
+        "y": 4898,
+        "width": 227.9375,
+        "height": 64
+      },
+      {
+        "label": "View commitment",
+        "x": 12,
+        "y": 4995,
+        "width": 296,
+        "height": 122
+      }
+    ],
+    "rows": [
+      {
+        "text": "Paid · Due 12 de out. de 2026 · 4 of 8Expected R$ 90.071.992.547.409,91Paid R$ 90.071.992.547.409,91Payment date 10 de out. de 2026Category · Historical household equipment and education category with its complete saved nameUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de set. de 2026 · 3 of 8Expected R$ 90.071.992.547.409,91Paid R$ 90.071.992.547.409,91Payment date 12 de set. de 2026Category · Historical household equipment and education category with its complete saved nameUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Skipped · Due 12 de ago. de 2026 · 2 of 8Expected R$ 90.071.992.547.409,91Reopen",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de jul. de 2026 · 1 of 8Expected R$ 90.071.992.547.409,91Paid R$ 90.071.992.547.409,91Payment date 12 de jul. de 2026Category · Historical household equipment and education category with its complete saved nameUndo payment",
+        "falseBodyButtons": 0
+      }
+    ],
+    "sourceCount": 4,
+    "cursor": null,
+    "errors": []
+  },
+  {
+    "name": "stress-390-dark-2",
+    "regions": 6,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "actions": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 161,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Series options for Complete household equipment commitment name retained without losing the full original purchase purpose",
+        "x": 330,
+        "y": 161,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Complete household equipment commitment name retained without losing the full original purchase purpose, due 12 de out. de 2026",
+        "x": 137.0625,
+        "y": 2200,
+        "width": 227.9375,
+        "height": 64
+      },
+      {
+        "label": "Undo payment for Complete household equipment commitment name retained without losing the full original purchase purpose, due 12 de set. de 2026",
+        "x": 137.0625,
+        "y": 2974,
+        "width": 227.9375,
+        "height": 64
+      },
+      {
+        "label": "Reopen Complete household equipment commitment name retained without losing the full original purchase purpose, due 12 de ago. de 2026",
+        "x": 235.15625,
+        "y": 3284,
+        "width": 129.84375,
+        "height": 64
+      },
+      {
+        "label": "Undo payment for Complete household equipment commitment name retained without losing the full original purchase purpose, due 12 de jul. de 2026",
+        "x": 137.0625,
+        "y": 4058,
+        "width": 227.9375,
+        "height": 64
+      },
+      {
+        "label": "View commitment",
+        "x": 12,
+        "y": 4155,
+        "width": 366,
+        "height": 74
+      }
+    ],
+    "rows": [
+      {
+        "text": "Paid · Due 12 de out. de 2026 · 4 of 8Expected R$ 90.071.992.547.409,91Paid R$ 90.071.992.547.409,91Payment date 10 de out. de 2026Category · Historical household equipment and education category with its complete saved nameUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de set. de 2026 · 3 of 8Expected R$ 90.071.992.547.409,91Paid R$ 90.071.992.547.409,91Payment date 12 de set. de 2026Category · Historical household equipment and education category with its complete saved nameUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Skipped · Due 12 de ago. de 2026 · 2 of 8Expected R$ 90.071.992.547.409,91Reopen",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de jul. de 2026 · 1 of 8Expected R$ 90.071.992.547.409,91Paid R$ 90.071.992.547.409,91Payment date 12 de jul. de 2026Category · Historical household equipment and education category with its complete saved nameUndo payment",
+        "falseBodyButtons": 0
+      }
+    ],
+    "sourceCount": 4,
+    "cursor": null,
+    "errors": []
+  },
+  {
+    "name": "stress-430-dark-2",
+    "regions": 6,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "actions": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 161,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Series options for Complete household equipment commitment name retained without losing the full original purchase purpose",
+        "x": 370,
+        "y": 161,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Complete household equipment commitment name retained without losing the full original purchase purpose, due 12 de out. de 2026",
+        "x": 177.0625,
+        "y": 2028,
+        "width": 227.9375,
+        "height": 64
+      },
+      {
+        "label": "Undo payment for Complete household equipment commitment name retained without losing the full original purchase purpose, due 12 de set. de 2026",
+        "x": 177.0625,
+        "y": 2722,
+        "width": 227.9375,
+        "height": 64
+      },
+      {
+        "label": "Reopen Complete household equipment commitment name retained without losing the full original purchase purpose, due 12 de ago. de 2026",
+        "x": 275.15625,
+        "y": 2992,
+        "width": 129.84375,
+        "height": 64
+      },
+      {
+        "label": "Undo payment for Complete household equipment commitment name retained without losing the full original purchase purpose, due 12 de jul. de 2026",
+        "x": 177.0625,
+        "y": 3686,
+        "width": 227.9375,
+        "height": 64
+      },
+      {
+        "label": "View commitment",
+        "x": 12,
+        "y": 3783,
+        "width": 406,
+        "height": 74
+      }
+    ],
+    "rows": [
+      {
+        "text": "Paid · Due 12 de out. de 2026 · 4 of 8Expected R$ 90.071.992.547.409,91Paid R$ 90.071.992.547.409,91Payment date 10 de out. de 2026Category · Historical household equipment and education category with its complete saved nameUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de set. de 2026 · 3 of 8Expected R$ 90.071.992.547.409,91Paid R$ 90.071.992.547.409,91Payment date 12 de set. de 2026Category · Historical household equipment and education category with its complete saved nameUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Skipped · Due 12 de ago. de 2026 · 2 of 8Expected R$ 90.071.992.547.409,91Reopen",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de jul. de 2026 · 1 of 8Expected R$ 90.071.992.547.409,91Paid R$ 90.071.992.547.409,91Payment date 12 de jul. de 2026Category · Historical household equipment and education category with its complete saved nameUndo payment",
+        "falseBodyButtons": 0
+      }
+    ],
+    "sourceCount": 4,
+    "cursor": null,
+    "errors": []
+  },
+  {
+    "name": "stress-390-dark-1",
+    "regions": 6,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "actions": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Series options for Complete household equipment commitment name retained without losing the full original purchase purpose",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Complete household equipment commitment name retained without losing the full original purchase purpose, due 12 de out. de 2026",
+        "x": 241.03125,
+        "y": 708,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Complete household equipment commitment name retained without losing the full original purchase purpose, due 12 de set. de 2026",
+        "x": 241.03125,
+        "y": 956,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Reopen Complete household equipment commitment name retained without losing the full original purchase purpose, due 12 de ago. de 2026",
+        "x": 290.078125,
+        "y": 1090,
+        "width": 74.921875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Complete household equipment commitment name retained without losing the full original purchase purpose, due 12 de jul. de 2026",
+        "x": 241.03125,
+        "y": 1338,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "View commitment",
+        "x": 12,
+        "y": 1419,
+        "width": 366,
+        "height": 56
+      }
+    ],
+    "rows": [
+      {
+        "text": "Paid · Due 12 de out. de 2026 · 4 of 8Expected R$ 90.071.992.547.409,91Paid R$ 90.071.992.547.409,91Payment date 10 de out. de 2026Category · Historical household equipment and education category with its complete saved nameUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de set. de 2026 · 3 of 8Expected R$ 90.071.992.547.409,91Paid R$ 90.071.992.547.409,91Payment date 12 de set. de 2026Category · Historical household equipment and education category with its complete saved nameUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Skipped · Due 12 de ago. de 2026 · 2 of 8Expected R$ 90.071.992.547.409,91Reopen",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de jul. de 2026 · 1 of 8Expected R$ 90.071.992.547.409,91Paid R$ 90.071.992.547.409,91Payment date 12 de jul. de 2026Category · Historical household equipment and education category with its complete saved nameUndo payment",
+        "falseBodyButtons": 0
+      }
+    ],
+    "sourceCount": 4,
+    "cursor": null,
+    "errors": []
+  },
+  {
+    "name": "mixed-light",
+    "regions": 6,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "actions": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Series options for Equipment purchase",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de out. de 2026",
+        "x": 241.03125,
+        "y": 370,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de set. de 2026",
+        "x": 241.03125,
+        "y": 562,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Reopen Equipment purchase, due 12 de ago. de 2026",
+        "x": 290.078125,
+        "y": 754,
+        "width": 74.921875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de jul. de 2026",
+        "x": 241.03125,
+        "y": 852,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "View commitment",
+        "x": 12,
+        "y": 1043,
+        "width": 366,
+        "height": 56
+      }
+    ],
+    "rows": [
+      {
+        "text": "Paid · Due 12 de out. de 2026 · 4 of 8Expected R$ 180,20Paid R$ 180,20Payment date 10 de out. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de set. de 2026 · 3 of 8Expected R$ 180,20Paid R$ 175,35Payment date 12 de set. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Skipped · Due 12 de ago. de 2026 · 2 of 8Expected R$ 180,20Reopen",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de jul. de 2026 · 1 of 8Expected R$ 180,20Paid R$ 175,35Payment date 12 de jul. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      }
+    ],
+    "sourceCount": 4,
+    "cursor": null,
+    "errors": []
+  },
+  {
+    "name": "bill-light",
+    "regions": 6,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "actions": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Series options for Equipment service",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment service, due 12 de out. de 2026",
+        "x": 241.03125,
+        "y": 338,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment service, due 12 de set. de 2026",
+        "x": 241.03125,
+        "y": 530,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Reopen Equipment service, due 12 de ago. de 2026",
+        "x": 290.078125,
+        "y": 722,
+        "width": 74.921875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment service, due 12 de jul. de 2026",
+        "x": 241.03125,
+        "y": 820,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "View commitment",
+        "x": 12,
+        "y": 1011,
+        "width": 366,
+        "height": 56
+      }
+    ],
+    "rows": [
+      {
+        "text": "Paid · Due 12 de out. de 2026Expected R$ 180,20Paid R$ 180,20Payment date 10 de out. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de set. de 2026Expected R$ 180,20Paid R$ 175,35Payment date 12 de set. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Skipped · Due 12 de ago. de 2026Expected R$ 180,20Reopen",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de jul. de 2026Expected R$ 180,20Paid R$ 175,35Payment date 12 de jul. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      }
+    ],
+    "sourceCount": 4,
+    "cursor": null,
+    "errors": []
+  },
+  {
+    "name": "subscription-light",
+    "regions": 6,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "actions": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Series options for Learning subscription",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Learning subscription, due 12 de out. de 2026",
+        "x": 241.03125,
+        "y": 338,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Learning subscription, due 12 de set. de 2026",
+        "x": 241.03125,
+        "y": 530,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Reopen Learning subscription, due 12 de ago. de 2026",
+        "x": 290.078125,
+        "y": 722,
+        "width": 74.921875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Learning subscription, due 12 de jul. de 2026",
+        "x": 241.03125,
+        "y": 820,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "View commitment",
+        "x": 12,
+        "y": 1011,
+        "width": 366,
+        "height": 56
+      }
+    ],
+    "rows": [
+      {
+        "text": "Paid · Due 12 de out. de 2026Expected R$ 180,20Paid R$ 180,20Payment date 10 de out. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de set. de 2026Expected R$ 180,20Paid R$ 175,35Payment date 12 de set. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Skipped · Due 12 de ago. de 2026Expected R$ 180,20Reopen",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de jul. de 2026Expected R$ 180,20Paid R$ 175,35Payment date 12 de jul. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      }
+    ],
+    "sourceCount": 4,
+    "cursor": null,
+    "errors": []
+  },
+  {
+    "name": "paid-light",
+    "regions": 6,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "actions": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Series options for Equipment purchase",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de out. de 2026",
+        "x": 241.03125,
+        "y": 370,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de set. de 2026",
+        "x": 241.03125,
+        "y": 562,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de ago. de 2026",
+        "x": 241.03125,
+        "y": 754,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de jul. de 2026",
+        "x": 241.03125,
+        "y": 946,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "View commitment",
+        "x": 12,
+        "y": 1137,
+        "width": 366,
+        "height": 56
+      }
+    ],
+    "rows": [
+      {
+        "text": "Paid · Due 12 de out. de 2026 · 4 of 8Expected R$ 180,20Paid R$ 180,20Payment date 10 de out. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de set. de 2026 · 3 of 8Expected R$ 180,20Paid R$ 175,35Payment date 12 de set. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de ago. de 2026 · 2 of 8Expected R$ 180,20Paid R$ 180,20Payment date 12 de ago. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de jul. de 2026 · 1 of 8Expected R$ 180,20Paid R$ 175,35Payment date 12 de jul. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      }
+    ],
+    "sourceCount": 4,
+    "cursor": null,
+    "errors": []
+  },
+  {
+    "name": "skipped-light",
+    "regions": 6,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "actions": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Series options for Equipment purchase",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Reopen Equipment purchase, due 12 de out. de 2026",
+        "x": 290.078125,
+        "y": 370,
+        "width": 74.921875,
+        "height": 48
+      },
+      {
+        "label": "Reopen Equipment purchase, due 12 de set. de 2026",
+        "x": 290.078125,
+        "y": 468,
+        "width": 74.921875,
+        "height": 48
+      },
+      {
+        "label": "Reopen Equipment purchase, due 12 de ago. de 2026",
+        "x": 290.078125,
+        "y": 566,
+        "width": 74.921875,
+        "height": 48
+      },
+      {
+        "label": "Reopen Equipment purchase, due 12 de jul. de 2026",
+        "x": 290.078125,
+        "y": 664,
+        "width": 74.921875,
+        "height": 48
+      },
+      {
+        "label": "View commitment",
+        "x": 12,
+        "y": 761,
+        "width": 366,
+        "height": 56
+      }
+    ],
+    "rows": [
+      {
+        "text": "Skipped · Due 12 de out. de 2026 · 4 of 8Expected R$ 180,20Reopen",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Skipped · Due 12 de set. de 2026 · 3 of 8Expected R$ 180,20Reopen",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Skipped · Due 12 de ago. de 2026 · 2 of 8Expected R$ 180,20Reopen",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Skipped · Due 12 de jul. de 2026 · 1 of 8Expected R$ 180,20Reopen",
+        "falseBodyButtons": 0
+      }
+    ],
+    "sourceCount": 4,
+    "cursor": null,
+    "errors": []
+  },
+  {
+    "name": "completed-light",
+    "regions": 6,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "actions": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Series options for Equipment purchase",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de out. de 2026",
+        "x": 241.03125,
+        "y": 370,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de set. de 2026",
+        "x": 241.03125,
+        "y": 562,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Reopen Equipment purchase, due 12 de ago. de 2026",
+        "x": 290.078125,
+        "y": 754,
+        "width": 74.921875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de jul. de 2026",
+        "x": 241.03125,
+        "y": 852,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "View commitment",
+        "x": 12,
+        "y": 1043,
+        "width": 366,
+        "height": 56
+      }
+    ],
+    "rows": [
+      {
+        "text": "Paid · Due 12 de out. de 2026 · 4 of 4Expected R$ 180,20Paid R$ 180,20Payment date 10 de out. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de set. de 2026 · 3 of 4Expected R$ 180,20Paid R$ 175,35Payment date 12 de set. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Skipped · Due 12 de ago. de 2026 · 2 of 4Expected R$ 180,20Reopen",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de jul. de 2026 · 1 of 4Expected R$ 180,20Paid R$ 175,35Payment date 12 de jul. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      }
+    ],
+    "sourceCount": 4,
+    "cursor": null,
+    "errors": []
+  },
+  {
+    "name": "mixed-320-light",
+    "regions": 6,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "actions": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 71,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Series options for Equipment purchase",
+        "x": 260,
+        "y": 71,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de out. de 2026",
+        "x": 171.03125,
+        "y": 614,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de set. de 2026",
+        "x": 171.03125,
+        "y": 842,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Reopen Equipment purchase, due 12 de ago. de 2026",
+        "x": 220.078125,
+        "y": 996,
+        "width": 74.921875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de jul. de 2026",
+        "x": 171.03125,
+        "y": 1224,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "View commitment",
+        "x": 12,
+        "y": 1305,
+        "width": 296,
+        "height": 56
+      }
+    ],
+    "rows": [
+      {
+        "text": "Paid · Due 12 de out. de 2026 · 4 of 8Expected R$ 180,20Paid R$ 180,20Payment date 10 de out. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de set. de 2026 · 3 of 8Expected R$ 180,20Paid R$ 175,35Payment date 12 de set. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Skipped · Due 12 de ago. de 2026 · 2 of 8Expected R$ 180,20Reopen",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de jul. de 2026 · 1 of 8Expected R$ 180,20Paid R$ 175,35Payment date 12 de jul. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      }
+    ],
+    "sourceCount": 4,
+    "cursor": null,
+    "errors": []
+  },
+  {
+    "name": "mixed-430-light",
+    "regions": 6,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "actions": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Series options for Equipment purchase",
+        "x": 370,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de out. de 2026",
+        "x": 281.03125,
+        "y": 370,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de set. de 2026",
+        "x": 281.03125,
+        "y": 562,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Reopen Equipment purchase, due 12 de ago. de 2026",
+        "x": 330.078125,
+        "y": 754,
+        "width": 74.921875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de jul. de 2026",
+        "x": 281.03125,
+        "y": 852,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "View commitment",
+        "x": 12,
+        "y": 1043,
+        "width": 406,
+        "height": 56
+      }
+    ],
+    "rows": [
+      {
+        "text": "Paid · Due 12 de out. de 2026 · 4 of 8Expected R$ 180,20Paid R$ 180,20Payment date 10 de out. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de set. de 2026 · 3 of 8Expected R$ 180,20Paid R$ 175,35Payment date 12 de set. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Skipped · Due 12 de ago. de 2026 · 2 of 8Expected R$ 180,20Reopen",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de jul. de 2026 · 1 of 8Expected R$ 180,20Paid R$ 175,35Payment date 12 de jul. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      }
+    ],
+    "sourceCount": 4,
+    "cursor": null,
+    "errors": []
+  },
+  {
+    "name": "stress-320-light-2",
+    "regions": 6,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "actions": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 161,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Series options for Complete household equipment commitment name retained without losing the full original purchase purpose",
+        "x": 260,
+        "y": 161,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Complete household equipment commitment name retained without losing the full original purchase purpose, due 12 de out. de 2026",
+        "x": 67.0625,
+        "y": 2680,
+        "width": 227.9375,
+        "height": 64
+      },
+      {
+        "label": "Undo payment for Complete household equipment commitment name retained without losing the full original purchase purpose, due 12 de set. de 2026",
+        "x": 67.0625,
+        "y": 3614,
+        "width": 227.9375,
+        "height": 64
+      },
+      {
+        "label": "Reopen Complete household equipment commitment name retained without losing the full original purchase purpose, due 12 de ago. de 2026",
+        "x": 165.15625,
+        "y": 3964,
+        "width": 129.84375,
+        "height": 64
+      },
+      {
+        "label": "Undo payment for Complete household equipment commitment name retained without losing the full original purchase purpose, due 12 de jul. de 2026",
+        "x": 67.0625,
+        "y": 4898,
+        "width": 227.9375,
+        "height": 64
+      },
+      {
+        "label": "View commitment",
+        "x": 12,
+        "y": 4995,
+        "width": 296,
+        "height": 122
+      }
+    ],
+    "rows": [
+      {
+        "text": "Paid · Due 12 de out. de 2026 · 4 of 8Expected R$ 90.071.992.547.409,91Paid R$ 90.071.992.547.409,91Payment date 10 de out. de 2026Category · Historical household equipment and education category with its complete saved nameUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de set. de 2026 · 3 of 8Expected R$ 90.071.992.547.409,91Paid R$ 90.071.992.547.409,91Payment date 12 de set. de 2026Category · Historical household equipment and education category with its complete saved nameUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Skipped · Due 12 de ago. de 2026 · 2 of 8Expected R$ 90.071.992.547.409,91Reopen",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de jul. de 2026 · 1 of 8Expected R$ 90.071.992.547.409,91Paid R$ 90.071.992.547.409,91Payment date 12 de jul. de 2026Category · Historical household equipment and education category with its complete saved nameUndo payment",
+        "falseBodyButtons": 0
+      }
+    ],
+    "sourceCount": 4,
+    "cursor": null,
+    "errors": []
+  },
+  {
+    "name": "stress-390-light-2",
+    "regions": 6,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "actions": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 161,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Series options for Complete household equipment commitment name retained without losing the full original purchase purpose",
+        "x": 330,
+        "y": 161,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Complete household equipment commitment name retained without losing the full original purchase purpose, due 12 de out. de 2026",
+        "x": 137.0625,
+        "y": 2200,
+        "width": 227.9375,
+        "height": 64
+      },
+      {
+        "label": "Undo payment for Complete household equipment commitment name retained without losing the full original purchase purpose, due 12 de set. de 2026",
+        "x": 137.0625,
+        "y": 2974,
+        "width": 227.9375,
+        "height": 64
+      },
+      {
+        "label": "Reopen Complete household equipment commitment name retained without losing the full original purchase purpose, due 12 de ago. de 2026",
+        "x": 235.15625,
+        "y": 3284,
+        "width": 129.84375,
+        "height": 64
+      },
+      {
+        "label": "Undo payment for Complete household equipment commitment name retained without losing the full original purchase purpose, due 12 de jul. de 2026",
+        "x": 137.0625,
+        "y": 4058,
+        "width": 227.9375,
+        "height": 64
+      },
+      {
+        "label": "View commitment",
+        "x": 12,
+        "y": 4155,
+        "width": 366,
+        "height": 74
+      }
+    ],
+    "rows": [
+      {
+        "text": "Paid · Due 12 de out. de 2026 · 4 of 8Expected R$ 90.071.992.547.409,91Paid R$ 90.071.992.547.409,91Payment date 10 de out. de 2026Category · Historical household equipment and education category with its complete saved nameUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de set. de 2026 · 3 of 8Expected R$ 90.071.992.547.409,91Paid R$ 90.071.992.547.409,91Payment date 12 de set. de 2026Category · Historical household equipment and education category with its complete saved nameUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Skipped · Due 12 de ago. de 2026 · 2 of 8Expected R$ 90.071.992.547.409,91Reopen",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de jul. de 2026 · 1 of 8Expected R$ 90.071.992.547.409,91Paid R$ 90.071.992.547.409,91Payment date 12 de jul. de 2026Category · Historical household equipment and education category with its complete saved nameUndo payment",
+        "falseBodyButtons": 0
+      }
+    ],
+    "sourceCount": 4,
+    "cursor": null,
+    "errors": []
+  },
+  {
+    "name": "stress-430-light-2",
+    "regions": 6,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "actions": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 161,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Series options for Complete household equipment commitment name retained without losing the full original purchase purpose",
+        "x": 370,
+        "y": 161,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Complete household equipment commitment name retained without losing the full original purchase purpose, due 12 de out. de 2026",
+        "x": 177.0625,
+        "y": 2028,
+        "width": 227.9375,
+        "height": 64
+      },
+      {
+        "label": "Undo payment for Complete household equipment commitment name retained without losing the full original purchase purpose, due 12 de set. de 2026",
+        "x": 177.0625,
+        "y": 2722,
+        "width": 227.9375,
+        "height": 64
+      },
+      {
+        "label": "Reopen Complete household equipment commitment name retained without losing the full original purchase purpose, due 12 de ago. de 2026",
+        "x": 275.15625,
+        "y": 2992,
+        "width": 129.84375,
+        "height": 64
+      },
+      {
+        "label": "Undo payment for Complete household equipment commitment name retained without losing the full original purchase purpose, due 12 de jul. de 2026",
+        "x": 177.0625,
+        "y": 3686,
+        "width": 227.9375,
+        "height": 64
+      },
+      {
+        "label": "View commitment",
+        "x": 12,
+        "y": 3783,
+        "width": 406,
+        "height": 74
+      }
+    ],
+    "rows": [
+      {
+        "text": "Paid · Due 12 de out. de 2026 · 4 of 8Expected R$ 90.071.992.547.409,91Paid R$ 90.071.992.547.409,91Payment date 10 de out. de 2026Category · Historical household equipment and education category with its complete saved nameUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de set. de 2026 · 3 of 8Expected R$ 90.071.992.547.409,91Paid R$ 90.071.992.547.409,91Payment date 12 de set. de 2026Category · Historical household equipment and education category with its complete saved nameUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Skipped · Due 12 de ago. de 2026 · 2 of 8Expected R$ 90.071.992.547.409,91Reopen",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de jul. de 2026 · 1 of 8Expected R$ 90.071.992.547.409,91Paid R$ 90.071.992.547.409,91Payment date 12 de jul. de 2026Category · Historical household equipment and education category with its complete saved nameUndo payment",
+        "falseBodyButtons": 0
+      }
+    ],
+    "sourceCount": 4,
+    "cursor": null,
+    "errors": []
+  },
+  {
+    "name": "stress-390-light-1",
+    "regions": 6,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "actions": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Series options for Complete household equipment commitment name retained without losing the full original purchase purpose",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Complete household equipment commitment name retained without losing the full original purchase purpose, due 12 de out. de 2026",
+        "x": 241.03125,
+        "y": 708,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Complete household equipment commitment name retained without losing the full original purchase purpose, due 12 de set. de 2026",
+        "x": 241.03125,
+        "y": 956,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Reopen Complete household equipment commitment name retained without losing the full original purchase purpose, due 12 de ago. de 2026",
+        "x": 290.078125,
+        "y": 1090,
+        "width": 74.921875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Complete household equipment commitment name retained without losing the full original purchase purpose, due 12 de jul. de 2026",
+        "x": 241.03125,
+        "y": 1338,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "View commitment",
+        "x": 12,
+        "y": 1419,
+        "width": 366,
+        "height": 56
+      }
+    ],
+    "rows": [
+      {
+        "text": "Paid · Due 12 de out. de 2026 · 4 of 8Expected R$ 90.071.992.547.409,91Paid R$ 90.071.992.547.409,91Payment date 10 de out. de 2026Category · Historical household equipment and education category with its complete saved nameUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de set. de 2026 · 3 of 8Expected R$ 90.071.992.547.409,91Paid R$ 90.071.992.547.409,91Payment date 12 de set. de 2026Category · Historical household equipment and education category with its complete saved nameUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Skipped · Due 12 de ago. de 2026 · 2 of 8Expected R$ 90.071.992.547.409,91Reopen",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de jul. de 2026 · 1 of 8Expected R$ 90.071.992.547.409,91Paid R$ 90.071.992.547.409,91Payment date 12 de jul. de 2026Category · Historical household equipment and education category with its complete saved nameUndo payment",
+        "falseBodyButtons": 0
+      }
+    ],
+    "sourceCount": 4,
+    "cursor": null,
+    "errors": []
+  },
+  {
+    "name": "paused",
+    "regions": 6,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "actions": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Series options for Equipment service",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment service, due 12 de out. de 2026",
+        "x": 241.03125,
+        "y": 338,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment service, due 12 de set. de 2026",
+        "x": 241.03125,
+        "y": 530,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Reopen Equipment service, due 12 de ago. de 2026",
+        "x": 290.078125,
+        "y": 722,
+        "width": 74.921875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment service, due 12 de jul. de 2026",
+        "x": 241.03125,
+        "y": 820,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "View commitment",
+        "x": 12,
+        "y": 1011,
+        "width": 366,
+        "height": 56
+      }
+    ],
+    "rows": [
+      {
+        "text": "Paid · Due 12 de out. de 2026Expected R$ 180,20Paid R$ 180,20Payment date 10 de out. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de set. de 2026Expected R$ 180,20Paid R$ 175,35Payment date 12 de set. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Skipped · Due 12 de ago. de 2026Expected R$ 180,20Reopen",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de jul. de 2026Expected R$ 180,20Paid R$ 175,35Payment date 12 de jul. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      }
+    ],
+    "sourceCount": 4,
+    "cursor": null,
+    "errors": []
+  },
+  {
+    "name": "ended",
+    "regions": 6,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "actions": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Series options for Equipment service",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment service, due 12 de out. de 2026",
+        "x": 241.03125,
+        "y": 338,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment service, due 12 de set. de 2026",
+        "x": 241.03125,
+        "y": 530,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Reopen Equipment service, due 12 de ago. de 2026",
+        "x": 290.078125,
+        "y": 722,
+        "width": 74.921875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment service, due 12 de jul. de 2026",
+        "x": 241.03125,
+        "y": 820,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "View commitment",
+        "x": 12,
+        "y": 1011,
+        "width": 366,
+        "height": 56
+      }
+    ],
+    "rows": [
+      {
+        "text": "Paid · Due 12 de out. de 2026Expected R$ 180,20Paid R$ 180,20Payment date 10 de out. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de set. de 2026Expected R$ 180,20Paid R$ 175,35Payment date 12 de set. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Skipped · Due 12 de ago. de 2026Expected R$ 180,20Reopen",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de jul. de 2026Expected R$ 180,20Paid R$ 175,35Payment date 12 de jul. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      }
+    ],
+    "sourceCount": 4,
+    "cursor": null,
+    "errors": []
+  },
+  {
+    "name": "empty",
+    "regions": 2,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "actions": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Series options for Equipment purchase",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "View commitment",
+        "x": 12,
+        "y": 389,
+        "width": 366,
+        "height": 56
+      }
+    ],
+    "rows": [],
+    "sourceCount": 0,
+    "cursor": null,
+    "errors": []
+  },
+  {
+    "name": "changed",
+    "regions": 6,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "actions": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Series options for Equipment purchase",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de out. de 2026",
+        "x": 241.03125,
+        "y": 370,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de set. de 2026",
+        "x": 241.03125,
+        "y": 562,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Reopen Equipment purchase, due 12 de ago. de 2026",
+        "x": 290.078125,
+        "y": 754,
+        "width": 74.921875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de jul. de 2026",
+        "x": 241.03125,
+        "y": 852,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "View commitment",
+        "x": 12,
+        "y": 1043,
+        "width": 366,
+        "height": 56
+      }
+    ],
+    "rows": [
+      {
+        "text": "Paid · Due 12 de out. de 2026 · 4 of 8Expected R$ 180,20Paid R$ 180,20Payment date 10 de out. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de set. de 2026 · 3 of 8Expected R$ 180,20Paid R$ 175,35Payment date 12 de set. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Skipped · Due 12 de ago. de 2026 · 2 of 8Expected R$ 180,20Reopen",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de jul. de 2026 · 1 of 8Expected R$ 180,20Paid R$ 175,35Payment date 12 de jul. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      }
+    ],
+    "sourceCount": 4,
+    "cursor": null,
+    "errors": []
+  },
+  {
+    "name": "early",
+    "regions": 3,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "actions": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Series options for Equipment service",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment service, due 12 de out. de 2026",
+        "x": 241.03125,
+        "y": 338,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "View commitment",
+        "x": 12,
+        "y": 529,
+        "width": 366,
+        "height": 56
+      }
+    ],
+    "rows": [
+      {
+        "text": "Paid · Due 12 de out. de 2026Expected R$ 180,20Paid R$ 175,35Payment date 10 de out. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      }
+    ],
+    "sourceCount": 1,
+    "cursor": null,
+    "errors": []
+  },
+  {
+    "name": "late",
+    "regions": 3,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "actions": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Series options for Equipment service",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment service, due 12 de out. de 2026",
+        "x": 241.03125,
+        "y": 338,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "View commitment",
+        "x": 12,
+        "y": 529,
+        "width": 366,
+        "height": 56
+      }
+    ],
+    "rows": [
+      {
+        "text": "Paid · Due 12 de out. de 2026Expected R$ 180,20Paid R$ 175,35Payment date 26 de out. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      }
+    ],
+    "sourceCount": 1,
+    "cursor": null,
+    "errors": []
+  },
+  {
+    "name": "long-title",
+    "regions": 6,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "actions": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Series options for Complete household equipment commitment name retained without losing the full original purchase purpose",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Complete household equipment commitment name retained without losing the full original purchase purpose, due 12 de out. de 2026",
+        "x": 241.03125,
+        "y": 454,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Complete household equipment commitment name retained without losing the full original purchase purpose, due 12 de set. de 2026",
+        "x": 241.03125,
+        "y": 646,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Reopen Complete household equipment commitment name retained without losing the full original purchase purpose, due 12 de ago. de 2026",
+        "x": 290.078125,
+        "y": 838,
+        "width": 74.921875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Complete household equipment commitment name retained without losing the full original purchase purpose, due 12 de jul. de 2026",
+        "x": 241.03125,
+        "y": 936,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "View commitment",
+        "x": 12,
+        "y": 1127,
+        "width": 366,
+        "height": 56
+      }
+    ],
+    "rows": [
+      {
+        "text": "Paid · Due 12 de out. de 2026 · 4 of 8Expected R$ 180,20Paid R$ 180,20Payment date 10 de out. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de set. de 2026 · 3 of 8Expected R$ 180,20Paid R$ 175,35Payment date 12 de set. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Skipped · Due 12 de ago. de 2026 · 2 of 8Expected R$ 180,20Reopen",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de jul. de 2026 · 1 of 8Expected R$ 180,20Paid R$ 175,35Payment date 12 de jul. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      }
+    ],
+    "sourceCount": 4,
+    "cursor": null,
+    "errors": []
+  },
+  {
+    "name": "long-category",
+    "regions": 6,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "actions": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Series options for Equipment purchase",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de out. de 2026",
+        "x": 241.03125,
+        "y": 448,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de set. de 2026",
+        "x": 241.03125,
+        "y": 720,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Reopen Equipment purchase, due 12 de ago. de 2026",
+        "x": 290.078125,
+        "y": 992,
+        "width": 74.921875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de jul. de 2026",
+        "x": 241.03125,
+        "y": 1090,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "View commitment",
+        "x": 12,
+        "y": 1361,
+        "width": 366,
+        "height": 56
+      }
+    ],
+    "rows": [
+      {
+        "text": "Paid · Due 12 de out. de 2026 · 4 of 8Expected R$ 180,20Paid R$ 180,20Payment date 10 de out. de 2026Category · Historical household equipment and education category with its complete saved nameUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de set. de 2026 · 3 of 8Expected R$ 180,20Paid R$ 175,35Payment date 12 de set. de 2026Category · Historical household equipment and education category with its complete saved nameUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Skipped · Due 12 de ago. de 2026 · 2 of 8Expected R$ 180,20Reopen",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de jul. de 2026 · 1 of 8Expected R$ 180,20Paid R$ 175,35Payment date 12 de jul. de 2026Category · Historical household equipment and education category with its complete saved nameUndo payment",
+        "falseBodyButtons": 0
+      }
+    ],
+    "sourceCount": 4,
+    "cursor": null,
+    "errors": []
+  },
+  {
+    "name": "archived",
+    "regions": 6,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "actions": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Series options for Equipment purchase",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de out. de 2026",
+        "x": 241.03125,
+        "y": 448,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de set. de 2026",
+        "x": 241.03125,
+        "y": 720,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Reopen Equipment purchase, due 12 de ago. de 2026",
+        "x": 290.078125,
+        "y": 992,
+        "width": 74.921875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de jul. de 2026",
+        "x": 241.03125,
+        "y": 1090,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "View commitment",
+        "x": 12,
+        "y": 1361,
+        "width": 366,
+        "height": 56
+      }
+    ],
+    "rows": [
+      {
+        "text": "Paid · Due 12 de out. de 2026 · 4 of 8Expected R$ 180,20Paid R$ 180,20Payment date 10 de out. de 2026Category · Historical household equipment and education category with its complete saved nameUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de set. de 2026 · 3 of 8Expected R$ 180,20Paid R$ 175,35Payment date 12 de set. de 2026Category · Historical household equipment and education category with its complete saved nameUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Skipped · Due 12 de ago. de 2026 · 2 of 8Expected R$ 180,20Reopen",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de jul. de 2026 · 1 of 8Expected R$ 180,20Paid R$ 175,35Payment date 12 de jul. de 2026Category · Historical household equipment and education category with its complete saved nameUndo payment",
+        "falseBodyButtons": 0
+      }
+    ],
+    "sourceCount": 4,
+    "cursor": null,
+    "errors": []
+  },
+  {
+    "name": "uncategorized",
+    "regions": 6,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "actions": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Series options for Equipment purchase",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de out. de 2026",
+        "x": 241.03125,
+        "y": 370,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de set. de 2026",
+        "x": 241.03125,
+        "y": 582,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Reopen Equipment purchase, due 12 de ago. de 2026",
+        "x": 290.078125,
+        "y": 794,
+        "width": 74.921875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de jul. de 2026",
+        "x": 241.03125,
+        "y": 892,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "View commitment",
+        "x": 12,
+        "y": 1103,
+        "width": 366,
+        "height": 56
+      }
+    ],
+    "rows": [
+      {
+        "text": "Paid · Due 12 de out. de 2026 · 4 of 8Expected R$ 180,20Paid R$ 180,20Payment date 10 de out. de 2026Category · No categoryUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de set. de 2026 · 3 of 8Expected R$ 180,20Paid R$ 175,35Payment date 12 de set. de 2026Category · No categoryUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Skipped · Due 12 de ago. de 2026 · 2 of 8Expected R$ 180,20Reopen",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de jul. de 2026 · 1 of 8Expected R$ 180,20Paid R$ 175,35Payment date 12 de jul. de 2026Category · No categoryUndo payment",
+        "falseBodyButtons": 0
+      }
+    ],
+    "sourceCount": 4,
+    "cursor": null,
+    "errors": []
+  },
+  {
+    "name": "max",
+    "regions": 6,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "actions": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Series options for Equipment purchase",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de out. de 2026",
+        "x": 241.03125,
+        "y": 536,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de set. de 2026",
+        "x": 241.03125,
+        "y": 744,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de ago. de 2026",
+        "x": 241.03125,
+        "y": 952,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de jul. de 2026",
+        "x": 241.03125,
+        "y": 1160,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "View commitment",
+        "x": 12,
+        "y": 1241,
+        "width": 366,
+        "height": 56
+      }
+    ],
+    "rows": [
+      {
+        "text": "Paid · Due 12 de out. de 2026 · 4 of 8Expected R$ 90.071.992.547.409,91Paid R$ 90.071.992.547.409,91Payment date 10 de out. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de set. de 2026 · 3 of 8Expected R$ 90.071.992.547.409,91Paid R$ 90.071.992.547.409,91Payment date 12 de set. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de ago. de 2026 · 2 of 8Expected R$ 90.071.992.547.409,91Paid R$ 90.071.992.547.409,91Payment date 12 de ago. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de jul. de 2026 · 1 of 8Expected R$ 90.071.992.547.409,91Paid R$ 90.071.992.547.409,91Payment date 12 de jul. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      }
+    ],
+    "sourceCount": 4,
+    "cursor": null,
+    "errors": []
+  },
+  {
+    "name": "pages",
+    "regions": 25,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "actions": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Series options for Equipment purchase",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de out. de 2026",
+        "x": 241.03125,
+        "y": -2941,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de set. de 2026",
+        "x": 241.03125,
+        "y": -2749,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Reopen Equipment purchase, due 12 de ago. de 2026",
+        "x": 290.078125,
+        "y": -2557,
+        "width": 74.921875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de jul. de 2026",
+        "x": 241.03125,
+        "y": -2459,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de jun. de 2026",
+        "x": 241.03125,
+        "y": -2267,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de abr. de 2026",
+        "x": 241.03125,
+        "y": -1977,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de mar. de 2026",
+        "x": 241.03125,
+        "y": -1785,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Reopen Equipment purchase, due 12 de fev. de 2026",
+        "x": 290.078125,
+        "y": -1593,
+        "width": 74.921875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de jan. de 2026",
+        "x": 241.03125,
+        "y": -1495,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de dez. de 2025",
+        "x": 241.03125,
+        "y": -1303,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Reopen Equipment purchase, due 12 de nov. de 2025",
+        "x": 290.078125,
+        "y": -1111,
+        "width": 74.921875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de out. de 2025",
+        "x": 241.03125,
+        "y": -1013,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de set. de 2025",
+        "x": 241.03125,
+        "y": -821,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Reopen Equipment purchase, due 12 de ago. de 2025",
+        "x": 290.078125,
+        "y": -629,
+        "width": 74.921875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de jul. de 2025",
+        "x": 241.03125,
+        "y": -531,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de jun. de 2025",
+        "x": 241.03125,
+        "y": -339,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Reopen Equipment purchase, due 12 de mai. de 2025",
+        "x": 290.078125,
+        "y": -147,
+        "width": 74.921875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de abr. de 2025",
+        "x": 241.03125,
+        "y": -49,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de mar. de 2025",
+        "x": 241.03125,
+        "y": 143,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Reopen Equipment purchase, due 12 de fev. de 2025",
+        "x": 290.078125,
+        "y": 335,
+        "width": 74.921875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de jan. de 2025",
+        "x": 241.03125,
+        "y": 433,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de dez. de 2024",
+        "x": 241.03125,
+        "y": 625,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Reopen Equipment purchase, due 12 de nov. de 2024",
+        "x": 290.078125,
+        "y": 817,
+        "width": 74.921875,
+        "height": 48
+      },
+      {
+        "label": "Load earlier history",
+        "x": 12,
+        "y": 914,
+        "width": 366,
+        "height": 48
+      },
+      {
+        "label": "View commitment",
+        "x": 12,
+        "y": 970,
+        "width": 366,
+        "height": 56
+      }
+    ],
+    "rows": [
+      {
+        "text": "Paid · Due 12 de out. de 2026 · 37 of 60Expected R$ 180,20Paid R$ 175,35Payment date 10 de out. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de set. de 2026 · 36 of 60Expected R$ 180,20Paid R$ 180,20Payment date 12 de set. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Skipped · Due 12 de ago. de 2026 · 35 of 60Expected R$ 180,20Reopen",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de jul. de 2026 · 34 of 60Expected R$ 180,20Paid R$ 180,20Payment date 12 de jul. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de jun. de 2026 · 33 of 60Expected R$ 180,20Paid R$ 175,35Payment date 12 de jun. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de abr. de 2026 · 31 of 60Expected R$ 180,20Paid R$ 175,35Payment date 12 de abr. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de mar. de 2026 · 30 of 60Expected R$ 180,20Paid R$ 180,20Payment date 12 de mar. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Skipped · Due 12 de fev. de 2026 · 29 of 60Expected R$ 180,20Reopen",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de jan. de 2026 · 28 of 60Expected R$ 180,20Paid R$ 180,20Payment date 12 de jan. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de dez. de 2025 · 27 of 60Expected R$ 180,20Paid R$ 175,35Payment date 12 de dez. de 2025Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Skipped · Due 12 de nov. de 2025 · 26 of 60Expected R$ 180,20Reopen",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de out. de 2025 · 25 of 60Expected R$ 180,20Paid R$ 175,35Payment date 12 de out. de 2025Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de set. de 2025 · 24 of 60Expected R$ 180,20Paid R$ 180,20Payment date 12 de set. de 2025Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Skipped · Due 12 de ago. de 2025 · 23 of 60Expected R$ 180,20Reopen",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de jul. de 2025 · 22 of 60Expected R$ 180,20Paid R$ 180,20Payment date 12 de jul. de 2025Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de jun. de 2025 · 21 of 60Expected R$ 180,20Paid R$ 175,35Payment date 12 de jun. de 2025Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Skipped · Due 12 de mai. de 2025 · 20 of 60Expected R$ 180,20Reopen",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de abr. de 2025 · 19 of 60Expected R$ 180,20Paid R$ 175,35Payment date 12 de abr. de 2025Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de mar. de 2025 · 18 of 60Expected R$ 180,20Paid R$ 180,20Payment date 12 de mar. de 2025Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Skipped · Due 12 de fev. de 2025 · 17 of 60Expected R$ 180,20Reopen",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de jan. de 2025 · 16 of 60Expected R$ 180,20Paid R$ 180,20Payment date 12 de jan. de 2025Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de dez. de 2024 · 15 of 60Expected R$ 180,20Paid R$ 175,35Payment date 12 de dez. de 2024Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Skipped · Due 12 de nov. de 2024 · 14 of 60Expected R$ 180,20Reopen",
+        "falseBodyButtons": 0
+      }
+    ],
+    "sourceCount": 24,
+    "cursor": "2024-11-01",
+    "errors": []
+  },
+  {
+    "name": "undo",
+    "regions": 6,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "actions": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Series options for Equipment purchase",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de out. de 2026",
+        "x": 241.03125,
+        "y": 370,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de set. de 2026",
+        "x": 241.03125,
+        "y": 562,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Reopen Equipment purchase, due 12 de ago. de 2026",
+        "x": 290.078125,
+        "y": 754,
+        "width": 74.921875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de jul. de 2026",
+        "x": 241.03125,
+        "y": 852,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "View commitment",
+        "x": 12,
+        "y": 1043,
+        "width": 366,
+        "height": 56
+      }
+    ],
+    "rows": [
+      {
+        "text": "Paid · Due 12 de out. de 2026 · 4 of 8Expected R$ 180,20Paid R$ 180,20Payment date 10 de out. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de set. de 2026 · 3 of 8Expected R$ 180,20Paid R$ 175,35Payment date 12 de set. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Skipped · Due 12 de ago. de 2026 · 2 of 8Expected R$ 180,20Reopen",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de jul. de 2026 · 1 of 8Expected R$ 180,20Paid R$ 175,35Payment date 12 de jul. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      }
+    ],
+    "sourceCount": 4,
+    "cursor": null,
+    "errors": []
+  },
+  {
+    "name": "reopen",
+    "regions": 6,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "actions": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Series options for Equipment purchase",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de out. de 2026",
+        "x": 241.03125,
+        "y": 370,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de set. de 2026",
+        "x": 241.03125,
+        "y": 562,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Reopen Equipment purchase, due 12 de ago. de 2026",
+        "x": 290.078125,
+        "y": 754,
+        "width": 74.921875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de jul. de 2026",
+        "x": 241.03125,
+        "y": 852,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "View commitment",
+        "x": 12,
+        "y": 1043,
+        "width": 366,
+        "height": 56
+      }
+    ],
+    "rows": [
+      {
+        "text": "Paid · Due 12 de out. de 2026 · 4 of 8Expected R$ 180,20Paid R$ 180,20Payment date 10 de out. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de set. de 2026 · 3 of 8Expected R$ 180,20Paid R$ 175,35Payment date 12 de set. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Skipped · Due 12 de ago. de 2026 · 2 of 8Expected R$ 180,20Reopen",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de jul. de 2026 · 1 of 8Expected R$ 180,20Paid R$ 175,35Payment date 12 de jul. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      }
+    ],
+    "sourceCount": 4,
+    "cursor": null,
+    "errors": []
+  },
+  {
+    "name": "menu",
+    "regions": 6,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "actions": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Series options for Equipment purchase",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de out. de 2026",
+        "x": 241.03125,
+        "y": 370,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de set. de 2026",
+        "x": 241.03125,
+        "y": 562,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Reopen Equipment purchase, due 12 de ago. de 2026",
+        "x": 290.078125,
+        "y": 754,
+        "width": 74.921875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de jul. de 2026",
+        "x": 241.03125,
+        "y": 852,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "View commitment",
+        "x": 12,
+        "y": 1043,
+        "width": 366,
+        "height": 56
+      }
+    ],
+    "rows": [
+      {
+        "text": "Paid · Due 12 de out. de 2026 · 4 of 8Expected R$ 180,20Paid R$ 180,20Payment date 10 de out. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de set. de 2026 · 3 of 8Expected R$ 180,20Paid R$ 175,35Payment date 12 de set. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Skipped · Due 12 de ago. de 2026 · 2 of 8Expected R$ 180,20Reopen",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de jul. de 2026 · 1 of 8Expected R$ 180,20Paid R$ 175,35Payment date 12 de jul. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      }
+    ],
+    "sourceCount": 4,
+    "cursor": null,
+    "errors": []
+  },
+  {
+    "name": "bottom",
+    "regions": 6,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "actions": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Series options for Equipment purchase",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de out. de 2026",
+        "x": 241.03125,
+        "y": 321,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de set. de 2026",
+        "x": 241.03125,
+        "y": 513,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "Reopen Equipment purchase, due 12 de ago. de 2026",
+        "x": 290.078125,
+        "y": 705,
+        "width": 74.921875,
+        "height": 48
+      },
+      {
+        "label": "Undo payment for Equipment purchase, due 12 de jul. de 2026",
+        "x": 241.03125,
+        "y": 803,
+        "width": 123.96875,
+        "height": 48
+      },
+      {
+        "label": "View commitment",
+        "x": 12,
+        "y": 994,
+        "width": 366,
+        "height": 56
+      }
+    ],
+    "rows": [
+      {
+        "text": "Paid · Due 12 de out. de 2026 · 4 of 8Expected R$ 180,20Paid R$ 180,20Payment date 10 de out. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de set. de 2026 · 3 of 8Expected R$ 180,20Paid R$ 175,35Payment date 12 de set. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Skipped · Due 12 de ago. de 2026 · 2 of 8Expected R$ 180,20Reopen",
+        "falseBodyButtons": 0
+      },
+      {
+        "text": "Paid · Due 12 de jul. de 2026 · 1 of 8Expected R$ 180,20Paid R$ 175,35Payment date 12 de jul. de 2026Category · ShoppingUndo payment",
+        "falseBodyButtons": 0
+      }
+    ],
+    "sourceCount": 4,
+    "cursor": null,
+    "errors": []
+  }
+]

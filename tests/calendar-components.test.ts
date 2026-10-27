@@ -14,7 +14,7 @@ import { createCommitmentDataAccess } from '../src/features/finance/commitments/
 import { commitmentDraft } from '../src/features/finance/commitments/form';
 import { createWorkDataAccess } from '../src/features/finance/work/data';
 import { workDraft } from '../src/features/finance/work/form';
-import { dateLabel, pickerValue } from '../src/utils/calendar';
+import { pickerValue } from '../src/utils/calendar';
 import { bundledMigrations, database } from './helpers/database';
 import { calendarAgenda, calendarGrid, commitmentViews, renderControl, sheets, theme, workViews } from './helpers/form-components';
 
@@ -169,14 +169,15 @@ test('Calendar launch opens the existing commitment sheet with the selected dist
   const result = renderControl(() => commitmentViews.CommitmentsView({ items: access.read().items, access, categories: [], today, mutate: (action) => action(),
     onCreateCategory: () => { throw new Error('unused'); }, initialDetail: { data: access.readHistory(id), occurrence } }));
   assert.ok(result.elements.some((node) => node.type === sheets.AdaptiveModal));
-  assert.ok(result.elements.some((node) => node.type === sheets.AdaptiveSheet));
+  const detailsNode = result.elements.find(node => 'pending' in node.props)!;
+  assert.ok(detailsNode, 'Calendar delegates to the shared virtualized commitment details sheet');
+  const detailsProps = detailsNode.props as unknown as import('react').ComponentProps<typeof import('../src/features/finance/commitments/components/commitment-details').CommitmentDetails>;
   const list = result.elements.find(node => node.props.testID === 'commitments-list')!;
   const sections = (list.props as unknown as { sections: { data: { occurrence: { dueDate: string } }[] }[] }).sections;
   assert.deepEqual(sections.flatMap(section => section.data.map(row => row.occurrence.dueDate)), ['2026-10-10'], 'the normal upcoming occurrence remains in the virtualized feed');
-  assert.equal(result.elements.filter((node) => node.props.label === 'Pay' && node.props.accessibilityLabel?.includes('Rent')).length, 1,
-    'the shallow tree contains the selected distant occurrence in details; feed rows render through SectionList');
-  assert.ok(result.elements.some((node) => node.props.accessibilityLabel === `Pay Rent, due ${dateLabel(occurrence.dueDate)}`));
-  assert.ok(result.elements.some((node) => node.props.label === 'Series options for Rent'));
+  assert.deepEqual(detailsProps.pending.map(row => row.dueDate), [occurrence.dueDate]);
+  assert.equal(detailsProps.focused, true); assert.equal(typeof detailsProps.onPay, 'function');
+  assert.deepEqual(detailsProps.actions.map(action => action.label), ['Edit', 'Pause', 'End', 'History']);
   assert.ok(!result.elements.some((node) => ['Skip', 'Pause', 'Edit'].includes(node.props.label ?? '')), 'secondary actions are contextual');
   assert.equal(access.readRange({ from: occurrence.dueDate, to: occurrence.dueDate })[0].occurrence.id, null, 'opening details does not resolve the preview');
 });

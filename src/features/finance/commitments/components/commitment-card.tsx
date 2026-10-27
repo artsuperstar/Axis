@@ -13,10 +13,10 @@ import { occurrenceLabel } from '../scheduling';
 import { commitmentTypeIcon } from '../type-icons';
 import { commitmentKindLabels, type CommitmentItem, type DisplayOccurrence } from '../types';
 
-/** Main feed only. Existing details, payment confirmation and history keep their UI. */
+/** Shared compact occurrence layout; Details can omit redundant navigation. */
 export function CommitmentCard({ item, occurrence, categories, today, onView, onPay, onSkip, onViewSeries }: {
   item: CommitmentItem; occurrence: DisplayOccurrence; categories: FinanceCategory[]; today: string;
-  onView: () => void; onPay: () => void; onSkip: () => void; onViewSeries: () => void;
+  onView?: () => void; onPay: () => void; onSkip: () => void; onViewSeries?: () => void;
 }) {
   const colors = useDesignColors();
   const { fontScale } = useWindowDimensions();
@@ -25,29 +25,31 @@ export function CommitmentCard({ item, occurrence, categories, today, onView, on
   const category = financeCategoryName({ type: 'expense', categoryId: item.commitment.categoryId }, categories);
   const due = occurrence.dueDate === today ? 'Due today' : `Due ${dateLabel(occurrence.dueDate)}`;
   const subject = `${item.commitment.title}, due ${dateLabel(occurrence.dueDate)}`;
+  const Body = onView ? UiPressable : View;
+  const actions = [
+    ...(occurrence.status === 'pending' ? [{ label: 'Skip', accessibilityLabel: `Skip ${subject}`, onPress: onSkip }] : []),
+    ...(onViewSeries ? [{ label: 'View commitment', accessibilityLabel: `View ${item.commitment.title} commitment`, onPress: onViewSeries }] : []),
+  ];
   return <GroupSurface testID="commitment-obligation" style={[styles.card, { borderColor: colors.border }]}>
     <View testID="commitment-content" style={[styles.content, fontScale >= 1.5 && styles.stacked]}>
     <View testID="commitment-info" style={[styles.identity, fontScale >= 1.5 && styles.fullWidth]}>
       <View style={[styles.tile, { backgroundColor: colors.brandSoft }]}><UiIcon name={commitmentTypeIcon(item.commitment.kind)} color={colors.brand} size={24} /></View>
-      <UiPressable accessibilityRole="button"
+      <Body accessible accessibilityRole={onView ? 'button' : undefined}
         accessibilityLabel={`${item.commitment.title}, expected ${formatBrlAmount(occurrence.expectedAmountMinor)}, ${state}, due ${dateLabel(occurrence.dueDate)}${installment ? `, installment ${installment}` : ''}, ${commitmentKindLabels[item.commitment.kind]}${category ? `, category ${category}` : ''}${item.commitment.status !== 'active' ? `, commitment ${item.commitment.status}` : ''}`}
-        accessibilityHint="View obligation details. Payment requires confirmation." onPress={onView} style={styles.body}>
+        accessibilityHint={onView ? 'View obligation details. Payment requires confirmation.' : undefined} onPress={onView} style={styles.body}>
         <UiText testID="commitment-title" type="cardTitle">{item.commitment.title}</UiText>
         <UiText type="metadata" style={{ color: state === 'Overdue' ? colors.attention : colors.textSecondary }}>
           {[installment, state === 'Overdue' ? `Overdue · ${due}` : due].filter(Boolean).join(' · ')}
         </UiText>
         <UiText type="metadata" color="textSecondary">{[commitmentKindLabels[item.commitment.kind], category].filter(Boolean).join(' · ')}</UiText>
         {item.commitment.status !== 'active' && <UiText type="smallLabel" color="textMuted">Commitment {item.commitment.status}</UiText>}
-      </UiPressable>
+      </Body>
     </View>
     <View testID="commitment-trailing" style={[styles.trailing, fontScale >= 1.5 && styles.fullWidth]}>
     <UiText testID="commitment-amount" accessible={false} type="cardTitle" style={styles.amount}>{formatBrlAmount(occurrence.expectedAmountMinor)}</UiText>
     <View testID="commitment-actions" style={styles.actions}>
       {occurrence.status === 'pending' && <FormButton appearance="v2" compact variant="primary" label="Pay" accessibilityLabel={`Pay ${subject}`} onPress={onPay} />}
-      <ContextMenu appearance="v2" label={`Actions for ${subject}`} actions={[
-        ...(occurrence.status === 'pending' ? [{ label: 'Skip', accessibilityLabel: `Skip ${subject}`, onPress: onSkip }] : []),
-        { label: 'View commitment', accessibilityLabel: `View ${item.commitment.title} commitment`, onPress: onViewSeries },
-      ]} />
+      {!!actions.length && <ContextMenu appearance="v2" label={`Actions for ${subject}`} actions={actions} />}
     </View>
     </View>
     </View>

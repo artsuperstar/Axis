@@ -1,0 +1,1668 @@
+[
+  {
+    "name": "bill-dark",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Next due date *",
+        "label": {
+          "x": 12,
+          "y": 825,
+          "width": 366,
+          "height": 20,
+          "bottom": 845
+        },
+        "field": {
+          "x": 12,
+          "y": 853,
+          "width": 366,
+          "height": 48,
+          "bottom": 901
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 513,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 561
+      },
+      {
+        "label": "Resume",
+        "busy": null,
+        "disabled": null,
+        "x": 291.9375,
+        "y": 513,
+        "width": 86.0625,
+        "height": 48,
+        "bottom": 561
+      }
+    ],
+    "summary": "Internet. Bill · Paused. Expected amount R$ 150,00. Category Utilities.",
+    "errors": []
+  },
+  {
+    "name": "subscription-dark",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Next due date *",
+        "label": {
+          "x": 12,
+          "y": 825,
+          "width": 366,
+          "height": 20,
+          "bottom": 845
+        },
+        "field": {
+          "x": 12,
+          "y": 853,
+          "width": 366,
+          "height": 48,
+          "bottom": 901
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 513,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 561
+      },
+      {
+        "label": "Resume",
+        "busy": null,
+        "disabled": null,
+        "x": 291.9375,
+        "y": 513,
+        "width": 86.0625,
+        "height": 48,
+        "bottom": 561
+      }
+    ],
+    "summary": "Monthly subscription. Subscription · Paused. Expected amount R$ 150,00. Category Utilities.",
+    "errors": []
+  },
+  {
+    "name": "installment-dark",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Next due date *",
+        "label": {
+          "x": 12,
+          "y": 825,
+          "width": 366,
+          "height": 20,
+          "bottom": 845
+        },
+        "field": {
+          "x": 12,
+          "y": 853,
+          "width": 366,
+          "height": 48,
+          "bottom": 901
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 513,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 561
+      },
+      {
+        "label": "Resume",
+        "busy": null,
+        "disabled": null,
+        "x": 291.9375,
+        "y": 513,
+        "width": 86.0625,
+        "height": 48,
+        "bottom": 561
+      }
+    ],
+    "summary": "Retained installments. Installment · Paused. Expected amount R$ 150,00. Category Utilities.",
+    "errors": []
+  },
+  {
+    "name": "bill-320-dark",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Next due date *",
+        "label": {
+          "x": 12,
+          "y": 785,
+          "width": 296,
+          "height": 20,
+          "bottom": 805
+        },
+        "field": {
+          "x": 12,
+          "y": 813,
+          "width": 296,
+          "height": 48,
+          "bottom": 861
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 459,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 507
+      },
+      {
+        "label": "Resume",
+        "busy": null,
+        "disabled": null,
+        "x": 221.9375,
+        "y": 459,
+        "width": 86.0625,
+        "height": 48,
+        "bottom": 507
+      }
+    ],
+    "summary": "Internet. Bill · Paused. Expected amount R$ 150,00. Category Utilities.",
+    "errors": []
+  },
+  {
+    "name": "bill-430-dark",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Next due date *",
+        "label": {
+          "x": 12,
+          "y": 825,
+          "width": 406,
+          "height": 20,
+          "bottom": 845
+        },
+        "field": {
+          "x": 12,
+          "y": 853,
+          "width": 406,
+          "height": 48,
+          "bottom": 901
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 519,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 567
+      },
+      {
+        "label": "Resume",
+        "busy": null,
+        "disabled": null,
+        "x": 331.9375,
+        "y": 519,
+        "width": 86.0625,
+        "height": 48,
+        "bottom": 567
+      }
+    ],
+    "summary": "Internet. Bill · Paused. Expected amount R$ 150,00. Category Utilities.",
+    "errors": []
+  },
+  {
+    "name": "stress-320-dark-1",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Next due date *",
+        "label": {
+          "x": 12,
+          "y": 785,
+          "width": 296,
+          "height": 20,
+          "bottom": 805
+        },
+        "field": {
+          "x": 12,
+          "y": 813,
+          "width": 296,
+          "height": 48,
+          "bottom": 861
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 303,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 351
+      },
+      {
+        "label": "Resume",
+        "busy": null,
+        "disabled": null,
+        "x": 221.9375,
+        "y": 303,
+        "width": 86.0625,
+        "height": 48,
+        "bottom": 351
+      }
+    ],
+    "summary": "A long household commitment describing the complete service purpose without losing any of its saved title. Bill · Paused. Expected amount R$ 90.071.992.547.409,91. Category Historical household education and entertainment category with a long saved name.",
+    "errors": []
+  },
+  {
+    "name": "stress-320-dark-2",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Next due date *",
+        "label": {
+          "x": 12,
+          "y": 1399,
+          "width": 296,
+          "height": 40,
+          "bottom": 1439
+        },
+        "field": {
+          "x": 12,
+          "y": 1447,
+          "width": 296,
+          "height": 114,
+          "bottom": 1561
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 165,
+        "width": 119.703125,
+        "height": 64,
+        "bottom": 229
+      },
+      {
+        "label": "Resume",
+        "busy": null,
+        "disabled": null,
+        "x": 163.890625,
+        "y": 165,
+        "width": 144.109375,
+        "height": 64,
+        "bottom": 229
+      }
+    ],
+    "summary": "A long household commitment describing the complete service purpose without losing any of its saved title. Bill · Paused. Expected amount R$ 90.071.992.547.409,91. Category Historical household education and entertainment category with a long saved name.",
+    "errors": []
+  },
+  {
+    "name": "stress-390-dark-1",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Next due date *",
+        "label": {
+          "x": 12,
+          "y": 825,
+          "width": 366,
+          "height": 20,
+          "bottom": 845
+        },
+        "field": {
+          "x": 12,
+          "y": 853,
+          "width": 366,
+          "height": 48,
+          "bottom": 901
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 421,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 469
+      },
+      {
+        "label": "Resume",
+        "busy": null,
+        "disabled": null,
+        "x": 291.9375,
+        "y": 421,
+        "width": 86.0625,
+        "height": 48,
+        "bottom": 469
+      }
+    ],
+    "summary": "A long household commitment describing the complete service purpose without losing any of its saved title. Bill · Paused. Expected amount R$ 90.071.992.547.409,91. Category Historical household education and entertainment category with a long saved name.",
+    "errors": []
+  },
+  {
+    "name": "stress-390-dark-2",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Next due date *",
+        "label": {
+          "x": 12,
+          "y": 1199,
+          "width": 366,
+          "height": 40,
+          "bottom": 1239
+        },
+        "field": {
+          "x": 12,
+          "y": 1247,
+          "width": 366,
+          "height": 66,
+          "bottom": 1313
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 165,
+        "width": 119.703125,
+        "height": 64,
+        "bottom": 229
+      },
+      {
+        "label": "Resume",
+        "busy": null,
+        "disabled": null,
+        "x": 233.890625,
+        "y": 165,
+        "width": 144.109375,
+        "height": 64,
+        "bottom": 229
+      }
+    ],
+    "summary": "A long household commitment describing the complete service purpose without losing any of its saved title. Bill · Paused. Expected amount R$ 90.071.992.547.409,91. Category Historical household education and entertainment category with a long saved name.",
+    "errors": []
+  },
+  {
+    "name": "stress-430-dark-1",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Next due date *",
+        "label": {
+          "x": 12,
+          "y": 825,
+          "width": 406,
+          "height": 20,
+          "bottom": 845
+        },
+        "field": {
+          "x": 12,
+          "y": 853,
+          "width": 406,
+          "height": 48,
+          "bottom": 901
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 451,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 499
+      },
+      {
+        "label": "Resume",
+        "busy": null,
+        "disabled": null,
+        "x": 331.9375,
+        "y": 451,
+        "width": 86.0625,
+        "height": 48,
+        "bottom": 499
+      }
+    ],
+    "summary": "A long household commitment describing the complete service purpose without losing any of its saved title. Bill · Paused. Expected amount R$ 90.071.992.547.409,91. Category Historical household education and entertainment category with a long saved name.",
+    "errors": []
+  },
+  {
+    "name": "stress-430-dark-2",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Next due date *",
+        "label": {
+          "x": 12,
+          "y": 1063,
+          "width": 406,
+          "height": 40,
+          "bottom": 1103
+        },
+        "field": {
+          "x": 12,
+          "y": 1111,
+          "width": 406,
+          "height": 66,
+          "bottom": 1177
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 165,
+        "width": 119.703125,
+        "height": 64,
+        "bottom": 229
+      },
+      {
+        "label": "Resume",
+        "busy": null,
+        "disabled": null,
+        "x": 273.890625,
+        "y": 165,
+        "width": 144.109375,
+        "height": 64,
+        "bottom": 229
+      }
+    ],
+    "summary": "A long household commitment describing the complete service purpose without losing any of its saved title. Bill · Paused. Expected amount R$ 90.071.992.547.409,91. Category Historical household education and entertainment category with a long saved name.",
+    "errors": []
+  },
+  {
+    "name": "bill-light",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Next due date *",
+        "label": {
+          "x": 12,
+          "y": 825,
+          "width": 366,
+          "height": 20,
+          "bottom": 845
+        },
+        "field": {
+          "x": 12,
+          "y": 853,
+          "width": 366,
+          "height": 48,
+          "bottom": 901
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 513,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 561
+      },
+      {
+        "label": "Resume",
+        "busy": null,
+        "disabled": null,
+        "x": 291.9375,
+        "y": 513,
+        "width": 86.0625,
+        "height": 48,
+        "bottom": 561
+      }
+    ],
+    "summary": "Internet. Bill · Paused. Expected amount R$ 150,00. Category Utilities.",
+    "errors": []
+  },
+  {
+    "name": "subscription-light",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Next due date *",
+        "label": {
+          "x": 12,
+          "y": 825,
+          "width": 366,
+          "height": 20,
+          "bottom": 845
+        },
+        "field": {
+          "x": 12,
+          "y": 853,
+          "width": 366,
+          "height": 48,
+          "bottom": 901
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 513,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 561
+      },
+      {
+        "label": "Resume",
+        "busy": null,
+        "disabled": null,
+        "x": 291.9375,
+        "y": 513,
+        "width": 86.0625,
+        "height": 48,
+        "bottom": 561
+      }
+    ],
+    "summary": "Monthly subscription. Subscription · Paused. Expected amount R$ 150,00. Category Utilities.",
+    "errors": []
+  },
+  {
+    "name": "installment-light",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Next due date *",
+        "label": {
+          "x": 12,
+          "y": 825,
+          "width": 366,
+          "height": 20,
+          "bottom": 845
+        },
+        "field": {
+          "x": 12,
+          "y": 853,
+          "width": 366,
+          "height": 48,
+          "bottom": 901
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 513,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 561
+      },
+      {
+        "label": "Resume",
+        "busy": null,
+        "disabled": null,
+        "x": 291.9375,
+        "y": 513,
+        "width": 86.0625,
+        "height": 48,
+        "bottom": 561
+      }
+    ],
+    "summary": "Retained installments. Installment · Paused. Expected amount R$ 150,00. Category Utilities.",
+    "errors": []
+  },
+  {
+    "name": "bill-320-light",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Next due date *",
+        "label": {
+          "x": 12,
+          "y": 785,
+          "width": 296,
+          "height": 20,
+          "bottom": 805
+        },
+        "field": {
+          "x": 12,
+          "y": 813,
+          "width": 296,
+          "height": 48,
+          "bottom": 861
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 459,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 507
+      },
+      {
+        "label": "Resume",
+        "busy": null,
+        "disabled": null,
+        "x": 221.9375,
+        "y": 459,
+        "width": 86.0625,
+        "height": 48,
+        "bottom": 507
+      }
+    ],
+    "summary": "Internet. Bill · Paused. Expected amount R$ 150,00. Category Utilities.",
+    "errors": []
+  },
+  {
+    "name": "bill-430-light",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Next due date *",
+        "label": {
+          "x": 12,
+          "y": 825,
+          "width": 406,
+          "height": 20,
+          "bottom": 845
+        },
+        "field": {
+          "x": 12,
+          "y": 853,
+          "width": 406,
+          "height": 48,
+          "bottom": 901
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 519,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 567
+      },
+      {
+        "label": "Resume",
+        "busy": null,
+        "disabled": null,
+        "x": 331.9375,
+        "y": 519,
+        "width": 86.0625,
+        "height": 48,
+        "bottom": 567
+      }
+    ],
+    "summary": "Internet. Bill · Paused. Expected amount R$ 150,00. Category Utilities.",
+    "errors": []
+  },
+  {
+    "name": "stress-320-light-1",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Next due date *",
+        "label": {
+          "x": 12,
+          "y": 785,
+          "width": 296,
+          "height": 20,
+          "bottom": 805
+        },
+        "field": {
+          "x": 12,
+          "y": 813,
+          "width": 296,
+          "height": 48,
+          "bottom": 861
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 303,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 351
+      },
+      {
+        "label": "Resume",
+        "busy": null,
+        "disabled": null,
+        "x": 221.9375,
+        "y": 303,
+        "width": 86.0625,
+        "height": 48,
+        "bottom": 351
+      }
+    ],
+    "summary": "A long household commitment describing the complete service purpose without losing any of its saved title. Bill · Paused. Expected amount R$ 90.071.992.547.409,91. Category Historical household education and entertainment category with a long saved name.",
+    "errors": []
+  },
+  {
+    "name": "stress-320-light-2",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Next due date *",
+        "label": {
+          "x": 12,
+          "y": 1399,
+          "width": 296,
+          "height": 40,
+          "bottom": 1439
+        },
+        "field": {
+          "x": 12,
+          "y": 1447,
+          "width": 296,
+          "height": 114,
+          "bottom": 1561
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 165,
+        "width": 119.703125,
+        "height": 64,
+        "bottom": 229
+      },
+      {
+        "label": "Resume",
+        "busy": null,
+        "disabled": null,
+        "x": 163.890625,
+        "y": 165,
+        "width": 144.109375,
+        "height": 64,
+        "bottom": 229
+      }
+    ],
+    "summary": "A long household commitment describing the complete service purpose without losing any of its saved title. Bill · Paused. Expected amount R$ 90.071.992.547.409,91. Category Historical household education and entertainment category with a long saved name.",
+    "errors": []
+  },
+  {
+    "name": "stress-390-light-1",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Next due date *",
+        "label": {
+          "x": 12,
+          "y": 825,
+          "width": 366,
+          "height": 20,
+          "bottom": 845
+        },
+        "field": {
+          "x": 12,
+          "y": 853,
+          "width": 366,
+          "height": 48,
+          "bottom": 901
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 421,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 469
+      },
+      {
+        "label": "Resume",
+        "busy": null,
+        "disabled": null,
+        "x": 291.9375,
+        "y": 421,
+        "width": 86.0625,
+        "height": 48,
+        "bottom": 469
+      }
+    ],
+    "summary": "A long household commitment describing the complete service purpose without losing any of its saved title. Bill · Paused. Expected amount R$ 90.071.992.547.409,91. Category Historical household education and entertainment category with a long saved name.",
+    "errors": []
+  },
+  {
+    "name": "stress-390-light-2",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Next due date *",
+        "label": {
+          "x": 12,
+          "y": 1199,
+          "width": 366,
+          "height": 40,
+          "bottom": 1239
+        },
+        "field": {
+          "x": 12,
+          "y": 1247,
+          "width": 366,
+          "height": 66,
+          "bottom": 1313
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 165,
+        "width": 119.703125,
+        "height": 64,
+        "bottom": 229
+      },
+      {
+        "label": "Resume",
+        "busy": null,
+        "disabled": null,
+        "x": 233.890625,
+        "y": 165,
+        "width": 144.109375,
+        "height": 64,
+        "bottom": 229
+      }
+    ],
+    "summary": "A long household commitment describing the complete service purpose without losing any of its saved title. Bill · Paused. Expected amount R$ 90.071.992.547.409,91. Category Historical household education and entertainment category with a long saved name.",
+    "errors": []
+  },
+  {
+    "name": "stress-430-light-1",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Next due date *",
+        "label": {
+          "x": 12,
+          "y": 825,
+          "width": 406,
+          "height": 20,
+          "bottom": 845
+        },
+        "field": {
+          "x": 12,
+          "y": 853,
+          "width": 406,
+          "height": 48,
+          "bottom": 901
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 451,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 499
+      },
+      {
+        "label": "Resume",
+        "busy": null,
+        "disabled": null,
+        "x": 331.9375,
+        "y": 451,
+        "width": 86.0625,
+        "height": 48,
+        "bottom": 499
+      }
+    ],
+    "summary": "A long household commitment describing the complete service purpose without losing any of its saved title. Bill · Paused. Expected amount R$ 90.071.992.547.409,91. Category Historical household education and entertainment category with a long saved name.",
+    "errors": []
+  },
+  {
+    "name": "stress-430-light-2",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Next due date *",
+        "label": {
+          "x": 12,
+          "y": 1063,
+          "width": 406,
+          "height": 40,
+          "bottom": 1103
+        },
+        "field": {
+          "x": 12,
+          "y": 1111,
+          "width": 406,
+          "height": 66,
+          "bottom": 1177
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 165,
+        "width": 119.703125,
+        "height": 64,
+        "bottom": 229
+      },
+      {
+        "label": "Resume",
+        "busy": null,
+        "disabled": null,
+        "x": 273.890625,
+        "y": 165,
+        "width": 144.109375,
+        "height": 64,
+        "bottom": 229
+      }
+    ],
+    "summary": "A long household commitment describing the complete service purpose without losing any of its saved title. Bill · Paused. Expected amount R$ 90.071.992.547.409,91. Category Historical household education and entertainment category with a long saved name.",
+    "errors": []
+  },
+  {
+    "name": "alternative",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Next due date *",
+        "label": {
+          "x": 12,
+          "y": 825,
+          "width": 366,
+          "height": 20,
+          "bottom": 845
+        },
+        "field": {
+          "x": 12,
+          "y": 853,
+          "width": 366,
+          "height": 48,
+          "bottom": 901
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 513,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 561
+      },
+      {
+        "label": "Resume",
+        "busy": null,
+        "disabled": null,
+        "x": 291.9375,
+        "y": 513,
+        "width": 86.0625,
+        "height": 48,
+        "bottom": 561
+      }
+    ],
+    "summary": "Internet. Bill · Paused. Expected amount R$ 150,00. Category Utilities.",
+    "errors": []
+  },
+  {
+    "name": "long-title",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Next due date *",
+        "label": {
+          "x": 12,
+          "y": 825,
+          "width": 366,
+          "height": 20,
+          "bottom": 845
+        },
+        "field": {
+          "x": 12,
+          "y": 853,
+          "width": 366,
+          "height": 48,
+          "bottom": 901
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 441,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 489
+      },
+      {
+        "label": "Resume",
+        "busy": null,
+        "disabled": null,
+        "x": 291.9375,
+        "y": 441,
+        "width": 86.0625,
+        "height": 48,
+        "bottom": 489
+      }
+    ],
+    "summary": "A long household commitment describing the complete service purpose without losing any of its saved title. Bill · Paused. Expected amount R$ 150,00. Category Utilities.",
+    "errors": []
+  },
+  {
+    "name": "long-category",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Next due date *",
+        "label": {
+          "x": 12,
+          "y": 825,
+          "width": 366,
+          "height": 20,
+          "bottom": 845
+        },
+        "field": {
+          "x": 12,
+          "y": 853,
+          "width": 366,
+          "height": 48,
+          "bottom": 901
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 493,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 541
+      },
+      {
+        "label": "Resume",
+        "busy": null,
+        "disabled": null,
+        "x": 291.9375,
+        "y": 493,
+        "width": 86.0625,
+        "height": 48,
+        "bottom": 541
+      }
+    ],
+    "summary": "Internet. Bill · Paused. Expected amount R$ 150,00. Category Historical household education and entertainment category with a long saved name.",
+    "errors": []
+  },
+  {
+    "name": "uncategorized",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Next due date *",
+        "label": {
+          "x": 12,
+          "y": 825,
+          "width": 366,
+          "height": 20,
+          "bottom": 845
+        },
+        "field": {
+          "x": 12,
+          "y": 853,
+          "width": 366,
+          "height": 48,
+          "bottom": 901
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 513,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 561
+      },
+      {
+        "label": "Resume",
+        "busy": null,
+        "disabled": null,
+        "x": 291.9375,
+        "y": 513,
+        "width": 86.0625,
+        "height": 48,
+        "bottom": 561
+      }
+    ],
+    "summary": "Internet. Bill · Paused. Expected amount R$ 150,00. Category No category.",
+    "errors": []
+  },
+  {
+    "name": "archived",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Next due date *",
+        "label": {
+          "x": 12,
+          "y": 825,
+          "width": 366,
+          "height": 20,
+          "bottom": 845
+        },
+        "field": {
+          "x": 12,
+          "y": 853,
+          "width": 366,
+          "height": 48,
+          "bottom": 901
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 493,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 541
+      },
+      {
+        "label": "Resume",
+        "busy": null,
+        "disabled": null,
+        "x": 291.9375,
+        "y": 493,
+        "width": 86.0625,
+        "height": 48,
+        "bottom": 541
+      }
+    ],
+    "summary": "Internet. Bill · Paused. Expected amount R$ 150,00. Category Historical household education and entertainment category with a long saved name.",
+    "errors": []
+  },
+  {
+    "name": "max",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Next due date *",
+        "label": {
+          "x": 12,
+          "y": 825,
+          "width": 366,
+          "height": 20,
+          "bottom": 845
+        },
+        "field": {
+          "x": 12,
+          "y": 853,
+          "width": 366,
+          "height": 48,
+          "bottom": 901
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 513,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 561
+      },
+      {
+        "label": "Resume",
+        "busy": null,
+        "disabled": null,
+        "x": 291.9375,
+        "y": 513,
+        "width": 86.0625,
+        "height": 48,
+        "bottom": 561
+      }
+    ],
+    "summary": "Internet. Bill · Paused. Expected amount R$ 90.071.992.547.409,91. Category Utilities.",
+    "errors": []
+  },
+  {
+    "name": "no-history",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Next due date *",
+        "label": {
+          "x": 12,
+          "y": 825,
+          "width": 366,
+          "height": 20,
+          "bottom": 845
+        },
+        "field": {
+          "x": 12,
+          "y": 853,
+          "width": 366,
+          "height": 48,
+          "bottom": 901
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 513,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 561
+      },
+      {
+        "label": "Resume",
+        "busy": null,
+        "disabled": null,
+        "x": 291.9375,
+        "y": 513,
+        "width": 86.0625,
+        "height": 48,
+        "bottom": 561
+      }
+    ],
+    "summary": "Internet. Bill · Paused. Expected amount R$ 150,00. Category Utilities.",
+    "errors": []
+  },
+  {
+    "name": "invalid",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Next due date *",
+        "label": {
+          "x": 12,
+          "y": 797,
+          "width": 102.1875,
+          "height": 20,
+          "bottom": 817
+        },
+        "field": {
+          "x": 12,
+          "y": 825,
+          "width": 366,
+          "height": 48,
+          "bottom": 873
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 485,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 533
+      },
+      {
+        "label": "Resume",
+        "busy": null,
+        "disabled": null,
+        "x": 291.9375,
+        "y": 485,
+        "width": 86.0625,
+        "height": 48,
+        "bottom": 533
+      }
+    ],
+    "summary": "Internet. Bill · Paused. Expected amount R$ 150,00. Category Utilities.",
+    "errors": []
+  },
+  {
+    "name": "loading",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Next due date *",
+        "label": {
+          "x": 12,
+          "y": 825,
+          "width": 366,
+          "height": 20,
+          "bottom": 845
+        },
+        "field": {
+          "x": 12,
+          "y": 853,
+          "width": 366,
+          "height": 48,
+          "bottom": 901
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 513,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 561
+      },
+      {
+        "label": "Resume",
+        "busy": "true",
+        "disabled": "true",
+        "x": 263.9375,
+        "y": 513,
+        "width": 114.0625,
+        "height": 48,
+        "bottom": 561
+      }
+    ],
+    "summary": "Internet. Bill · Paused. Expected amount R$ 150,00. Category Utilities.",
+    "errors": []
+  },
+  {
+    "name": "save-error",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Next due date *",
+        "label": {
+          "x": 12,
+          "y": 825,
+          "width": 366,
+          "height": 20,
+          "bottom": 845
+        },
+        "field": {
+          "x": 12,
+          "y": 853,
+          "width": 366,
+          "height": 48,
+          "bottom": 901
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 481,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 529
+      },
+      {
+        "label": "Resume",
+        "busy": null,
+        "disabled": null,
+        "x": 291.9375,
+        "y": 481,
+        "width": 86.0625,
+        "height": 48,
+        "bottom": 529
+      }
+    ],
+    "summary": "Internet. Bill · Paused. Expected amount R$ 150,00. Category Utilities.",
+    "errors": []
+  },
+  {
+    "name": "bottom",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Next due date *",
+        "label": {
+          "x": 12,
+          "y": 825,
+          "width": 366,
+          "height": 20,
+          "bottom": 845
+        },
+        "field": {
+          "x": 12,
+          "y": 853,
+          "width": 366,
+          "height": 48,
+          "bottom": 901
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 513,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 561
+      },
+      {
+        "label": "Resume",
+        "busy": null,
+        "disabled": null,
+        "x": 291.9375,
+        "y": 513,
+        "width": 86.0625,
+        "height": 48,
+        "bottom": 561
+      }
+    ],
+    "summary": "Internet. Bill · Paused. Expected amount R$ 150,00. Category Utilities.",
+    "errors": []
+  },
+  {
+    "name": "picker",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "labels": [
+      {
+        "text": "Next due date *",
+        "label": {
+          "x": 12,
+          "y": 685,
+          "width": 366,
+          "height": 20,
+          "bottom": 705
+        },
+        "field": {
+          "x": 12,
+          "y": 713,
+          "width": 366,
+          "height": 48,
+          "bottom": 761
+        },
+        "above": true
+      }
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "busy": null,
+        "disabled": null,
+        "x": 12,
+        "y": 373,
+        "width": 69.859375,
+        "height": 48,
+        "bottom": 421
+      },
+      {
+        "label": "Resume",
+        "busy": null,
+        "disabled": null,
+        "x": 291.9375,
+        "y": 373,
+        "width": 86.0625,
+        "height": 48,
+        "bottom": 421
+      }
+    ],
+    "summary": "Internet. Bill · Paused. Expected amount R$ 150,00. Category Utilities.",
+    "errors": []
+  }
+]

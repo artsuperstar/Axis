@@ -1,0 +1,1712 @@
+[
+  {
+    "name": "bill-dark",
+    "regions": 4,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "header": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "bottom": 81
+      },
+      {
+        "label": "Series options for Internet",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "bottom": 81
+      }
+    ],
+    "money": [
+      {
+        "label": "Expected",
+        "value": "R$ 150,00",
+        "width": 164,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 366
+      },
+      {
+        "label": "Total paid",
+        "value": "R$ 0,00",
+        "width": 164,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 366
+      }
+    ],
+    "renderedSchedules": 1,
+    "renderedObligations": 1,
+    "errors": []
+  },
+  {
+    "name": "subscription-dark",
+    "regions": 4,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "header": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "bottom": 81
+      },
+      {
+        "label": "Series options for Monthly subscription",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "bottom": 81
+      }
+    ],
+    "money": [
+      {
+        "label": "Expected",
+        "value": "R$ 150,00",
+        "width": 164,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 366
+      },
+      {
+        "label": "Total paid",
+        "value": "R$ 0,00",
+        "width": 164,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 366
+      }
+    ],
+    "renderedSchedules": 1,
+    "renderedObligations": 1,
+    "errors": []
+  },
+  {
+    "name": "installment-dark",
+    "regions": 4,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "header": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "bottom": 81
+      },
+      {
+        "label": "Series options for Retained installments",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "bottom": 81
+      }
+    ],
+    "money": [
+      {
+        "label": "Expected per installment",
+        "value": "R$ 150,00",
+        "width": 164,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 366
+      },
+      {
+        "label": "Total paid",
+        "value": "R$ 0,00",
+        "width": 164,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 366
+      }
+    ],
+    "renderedSchedules": 1,
+    "renderedObligations": 1,
+    "errors": []
+  },
+  {
+    "name": "multi-dark",
+    "regions": 5,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "header": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "bottom": 81
+      },
+      {
+        "label": "Series options for Internet",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "bottom": 81
+      }
+    ],
+    "money": [
+      {
+        "label": "Expected",
+        "value": "R$ 150,00",
+        "width": 164,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 366
+      },
+      {
+        "label": "Total paid",
+        "value": "R$ 150,00",
+        "width": 164,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 366
+      }
+    ],
+    "renderedSchedules": 2,
+    "renderedObligations": 1,
+    "errors": []
+  },
+  {
+    "name": "paused-dark",
+    "regions": 4,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "header": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "bottom": 81
+      },
+      {
+        "label": "Series options for Internet",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "bottom": 81
+      }
+    ],
+    "money": [
+      {
+        "label": "Expected",
+        "value": "R$ 150,00",
+        "width": 164,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 366
+      },
+      {
+        "label": "Total paid",
+        "value": "R$ 0,00",
+        "width": 164,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 366
+      }
+    ],
+    "renderedSchedules": 1,
+    "renderedObligations": 1,
+    "errors": []
+  },
+  {
+    "name": "ended-dark",
+    "regions": 4,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "header": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "bottom": 81
+      },
+      {
+        "label": "Series options for Internet",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "bottom": 81
+      }
+    ],
+    "money": [
+      {
+        "label": "Expected",
+        "value": "R$ 150,00",
+        "width": 164,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 366
+      },
+      {
+        "label": "Total paid",
+        "value": "R$ 0,00",
+        "width": 164,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 366
+      }
+    ],
+    "renderedSchedules": 1,
+    "renderedObligations": 1,
+    "errors": []
+  },
+  {
+    "name": "completed-dark",
+    "regions": 3,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "header": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "bottom": 81
+      },
+      {
+        "label": "Series options for Retained installments",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "bottom": 81
+      }
+    ],
+    "money": [
+      {
+        "label": "Expected per installment",
+        "value": "R$ 150,00",
+        "width": 164,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 366
+      },
+      {
+        "label": "Total paid",
+        "value": "R$ 125,37",
+        "width": 164,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 366
+      }
+    ],
+    "renderedSchedules": 1,
+    "renderedObligations": 0,
+    "errors": []
+  },
+  {
+    "name": "bill-320-dark",
+    "regions": 4,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "header": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 71,
+        "width": 48,
+        "height": 48,
+        "bottom": 119
+      },
+      {
+        "label": "Series options for Internet",
+        "x": 260,
+        "y": 71,
+        "width": 48,
+        "height": 48,
+        "bottom": 119
+      }
+    ],
+    "money": [
+      {
+        "label": "Expected",
+        "value": "R$ 150,00",
+        "width": 270,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 296
+      },
+      {
+        "label": "Total paid",
+        "value": "R$ 0,00",
+        "width": 270,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 296
+      }
+    ],
+    "renderedSchedules": 1,
+    "renderedObligations": 1,
+    "errors": []
+  },
+  {
+    "name": "bill-430-dark",
+    "regions": 4,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "header": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "bottom": 81
+      },
+      {
+        "label": "Series options for Internet",
+        "x": 370,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "bottom": 81
+      }
+    ],
+    "money": [
+      {
+        "label": "Expected",
+        "value": "R$ 150,00",
+        "width": 184,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 406
+      },
+      {
+        "label": "Total paid",
+        "value": "R$ 0,00",
+        "width": 184,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 406
+      }
+    ],
+    "renderedSchedules": 1,
+    "renderedObligations": 1,
+    "errors": []
+  },
+  {
+    "name": "stress-320-dark-2",
+    "regions": 4,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "header": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 161,
+        "width": 48,
+        "height": 48,
+        "bottom": 209
+      },
+      {
+        "label": "Series options for A complete long household commitment name describing the retained purpose without truncating its saved identity",
+        "x": 260,
+        "y": 161,
+        "width": 48,
+        "height": 48,
+        "bottom": 209
+      }
+    ],
+    "money": [
+      {
+        "label": "Expected",
+        "value": "R$ 90.071.992.547.409,91",
+        "width": 270,
+        "textHeight": 132,
+        "lineHeight": 44,
+        "overviewWidth": 296
+      },
+      {
+        "label": "Total paid",
+        "value": "R$ 90.071.992.547.409,91",
+        "width": 270,
+        "textHeight": 132,
+        "lineHeight": 44,
+        "overviewWidth": 296
+      }
+    ],
+    "renderedSchedules": 1,
+    "renderedObligations": 1,
+    "errors": []
+  },
+  {
+    "name": "stress-390-dark-2",
+    "regions": 4,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "header": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 161,
+        "width": 48,
+        "height": 48,
+        "bottom": 209
+      },
+      {
+        "label": "Series options for A complete long household commitment name describing the retained purpose without truncating its saved identity",
+        "x": 330,
+        "y": 161,
+        "width": 48,
+        "height": 48,
+        "bottom": 209
+      }
+    ],
+    "money": [
+      {
+        "label": "Expected",
+        "value": "R$ 90.071.992.547.409,91",
+        "width": 340,
+        "textHeight": 132,
+        "lineHeight": 44,
+        "overviewWidth": 366
+      },
+      {
+        "label": "Total paid",
+        "value": "R$ 90.071.992.547.409,91",
+        "width": 340,
+        "textHeight": 132,
+        "lineHeight": 44,
+        "overviewWidth": 366
+      }
+    ],
+    "renderedSchedules": 1,
+    "renderedObligations": 1,
+    "errors": []
+  },
+  {
+    "name": "stress-430-dark-2",
+    "regions": 4,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "header": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 161,
+        "width": 48,
+        "height": 48,
+        "bottom": 209
+      },
+      {
+        "label": "Series options for A complete long household commitment name describing the retained purpose without truncating its saved identity",
+        "x": 370,
+        "y": 161,
+        "width": 48,
+        "height": 48,
+        "bottom": 209
+      }
+    ],
+    "money": [
+      {
+        "label": "Expected",
+        "value": "R$ 90.071.992.547.409,91",
+        "width": 380,
+        "textHeight": 88,
+        "lineHeight": 44,
+        "overviewWidth": 406
+      },
+      {
+        "label": "Total paid",
+        "value": "R$ 90.071.992.547.409,91",
+        "width": 380,
+        "textHeight": 88,
+        "lineHeight": 44,
+        "overviewWidth": 406
+      }
+    ],
+    "renderedSchedules": 1,
+    "renderedObligations": 1,
+    "errors": []
+  },
+  {
+    "name": "stress-390-dark-1",
+    "regions": 4,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "header": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "bottom": 81
+      },
+      {
+        "label": "Series options for A complete long household commitment name describing the retained purpose without truncating its saved identity",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "bottom": 81
+      }
+    ],
+    "money": [
+      {
+        "label": "Expected",
+        "value": "R$ 90.071.992.547.409,91",
+        "width": 340,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 366
+      },
+      {
+        "label": "Total paid",
+        "value": "R$ 90.071.992.547.409,91",
+        "width": 340,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 366
+      }
+    ],
+    "renderedSchedules": 1,
+    "renderedObligations": 1,
+    "errors": []
+  },
+  {
+    "name": "bill-light",
+    "regions": 4,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "header": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "bottom": 81
+      },
+      {
+        "label": "Series options for Internet",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "bottom": 81
+      }
+    ],
+    "money": [
+      {
+        "label": "Expected",
+        "value": "R$ 150,00",
+        "width": 164,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 366
+      },
+      {
+        "label": "Total paid",
+        "value": "R$ 0,00",
+        "width": 164,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 366
+      }
+    ],
+    "renderedSchedules": 1,
+    "renderedObligations": 1,
+    "errors": []
+  },
+  {
+    "name": "subscription-light",
+    "regions": 4,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "header": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "bottom": 81
+      },
+      {
+        "label": "Series options for Monthly subscription",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "bottom": 81
+      }
+    ],
+    "money": [
+      {
+        "label": "Expected",
+        "value": "R$ 150,00",
+        "width": 164,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 366
+      },
+      {
+        "label": "Total paid",
+        "value": "R$ 0,00",
+        "width": 164,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 366
+      }
+    ],
+    "renderedSchedules": 1,
+    "renderedObligations": 1,
+    "errors": []
+  },
+  {
+    "name": "installment-light",
+    "regions": 4,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "header": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "bottom": 81
+      },
+      {
+        "label": "Series options for Retained installments",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "bottom": 81
+      }
+    ],
+    "money": [
+      {
+        "label": "Expected per installment",
+        "value": "R$ 150,00",
+        "width": 164,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 366
+      },
+      {
+        "label": "Total paid",
+        "value": "R$ 0,00",
+        "width": 164,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 366
+      }
+    ],
+    "renderedSchedules": 1,
+    "renderedObligations": 1,
+    "errors": []
+  },
+  {
+    "name": "multi-light",
+    "regions": 5,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "header": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "bottom": 81
+      },
+      {
+        "label": "Series options for Internet",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "bottom": 81
+      }
+    ],
+    "money": [
+      {
+        "label": "Expected",
+        "value": "R$ 150,00",
+        "width": 164,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 366
+      },
+      {
+        "label": "Total paid",
+        "value": "R$ 150,00",
+        "width": 164,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 366
+      }
+    ],
+    "renderedSchedules": 2,
+    "renderedObligations": 1,
+    "errors": []
+  },
+  {
+    "name": "paused-light",
+    "regions": 4,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "header": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "bottom": 81
+      },
+      {
+        "label": "Series options for Internet",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "bottom": 81
+      }
+    ],
+    "money": [
+      {
+        "label": "Expected",
+        "value": "R$ 150,00",
+        "width": 164,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 366
+      },
+      {
+        "label": "Total paid",
+        "value": "R$ 0,00",
+        "width": 164,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 366
+      }
+    ],
+    "renderedSchedules": 1,
+    "renderedObligations": 1,
+    "errors": []
+  },
+  {
+    "name": "ended-light",
+    "regions": 4,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "header": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "bottom": 81
+      },
+      {
+        "label": "Series options for Internet",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "bottom": 81
+      }
+    ],
+    "money": [
+      {
+        "label": "Expected",
+        "value": "R$ 150,00",
+        "width": 164,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 366
+      },
+      {
+        "label": "Total paid",
+        "value": "R$ 0,00",
+        "width": 164,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 366
+      }
+    ],
+    "renderedSchedules": 1,
+    "renderedObligations": 1,
+    "errors": []
+  },
+  {
+    "name": "completed-light",
+    "regions": 3,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "header": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "bottom": 81
+      },
+      {
+        "label": "Series options for Retained installments",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "bottom": 81
+      }
+    ],
+    "money": [
+      {
+        "label": "Expected per installment",
+        "value": "R$ 150,00",
+        "width": 164,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 366
+      },
+      {
+        "label": "Total paid",
+        "value": "R$ 125,37",
+        "width": 164,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 366
+      }
+    ],
+    "renderedSchedules": 1,
+    "renderedObligations": 0,
+    "errors": []
+  },
+  {
+    "name": "bill-320-light",
+    "regions": 4,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "header": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 71,
+        "width": 48,
+        "height": 48,
+        "bottom": 119
+      },
+      {
+        "label": "Series options for Internet",
+        "x": 260,
+        "y": 71,
+        "width": 48,
+        "height": 48,
+        "bottom": 119
+      }
+    ],
+    "money": [
+      {
+        "label": "Expected",
+        "value": "R$ 150,00",
+        "width": 270,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 296
+      },
+      {
+        "label": "Total paid",
+        "value": "R$ 0,00",
+        "width": 270,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 296
+      }
+    ],
+    "renderedSchedules": 1,
+    "renderedObligations": 1,
+    "errors": []
+  },
+  {
+    "name": "bill-430-light",
+    "regions": 4,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "header": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "bottom": 81
+      },
+      {
+        "label": "Series options for Internet",
+        "x": 370,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "bottom": 81
+      }
+    ],
+    "money": [
+      {
+        "label": "Expected",
+        "value": "R$ 150,00",
+        "width": 184,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 406
+      },
+      {
+        "label": "Total paid",
+        "value": "R$ 0,00",
+        "width": 184,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 406
+      }
+    ],
+    "renderedSchedules": 1,
+    "renderedObligations": 1,
+    "errors": []
+  },
+  {
+    "name": "stress-320-light-2",
+    "regions": 4,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "header": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 161,
+        "width": 48,
+        "height": 48,
+        "bottom": 209
+      },
+      {
+        "label": "Series options for A complete long household commitment name describing the retained purpose without truncating its saved identity",
+        "x": 260,
+        "y": 161,
+        "width": 48,
+        "height": 48,
+        "bottom": 209
+      }
+    ],
+    "money": [
+      {
+        "label": "Expected",
+        "value": "R$ 90.071.992.547.409,91",
+        "width": 270,
+        "textHeight": 132,
+        "lineHeight": 44,
+        "overviewWidth": 296
+      },
+      {
+        "label": "Total paid",
+        "value": "R$ 90.071.992.547.409,91",
+        "width": 270,
+        "textHeight": 132,
+        "lineHeight": 44,
+        "overviewWidth": 296
+      }
+    ],
+    "renderedSchedules": 1,
+    "renderedObligations": 1,
+    "errors": []
+  },
+  {
+    "name": "stress-390-light-2",
+    "regions": 4,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "header": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 161,
+        "width": 48,
+        "height": 48,
+        "bottom": 209
+      },
+      {
+        "label": "Series options for A complete long household commitment name describing the retained purpose without truncating its saved identity",
+        "x": 330,
+        "y": 161,
+        "width": 48,
+        "height": 48,
+        "bottom": 209
+      }
+    ],
+    "money": [
+      {
+        "label": "Expected",
+        "value": "R$ 90.071.992.547.409,91",
+        "width": 340,
+        "textHeight": 132,
+        "lineHeight": 44,
+        "overviewWidth": 366
+      },
+      {
+        "label": "Total paid",
+        "value": "R$ 90.071.992.547.409,91",
+        "width": 340,
+        "textHeight": 132,
+        "lineHeight": 44,
+        "overviewWidth": 366
+      }
+    ],
+    "renderedSchedules": 1,
+    "renderedObligations": 1,
+    "errors": []
+  },
+  {
+    "name": "stress-430-light-2",
+    "regions": 4,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "header": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 161,
+        "width": 48,
+        "height": 48,
+        "bottom": 209
+      },
+      {
+        "label": "Series options for A complete long household commitment name describing the retained purpose without truncating its saved identity",
+        "x": 370,
+        "y": 161,
+        "width": 48,
+        "height": 48,
+        "bottom": 209
+      }
+    ],
+    "money": [
+      {
+        "label": "Expected",
+        "value": "R$ 90.071.992.547.409,91",
+        "width": 380,
+        "textHeight": 88,
+        "lineHeight": 44,
+        "overviewWidth": 406
+      },
+      {
+        "label": "Total paid",
+        "value": "R$ 90.071.992.547.409,91",
+        "width": 380,
+        "textHeight": 88,
+        "lineHeight": 44,
+        "overviewWidth": 406
+      }
+    ],
+    "renderedSchedules": 1,
+    "renderedObligations": 1,
+    "errors": []
+  },
+  {
+    "name": "stress-390-light-1",
+    "regions": 4,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "header": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "bottom": 81
+      },
+      {
+        "label": "Series options for A complete long household commitment name describing the retained purpose without truncating its saved identity",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "bottom": 81
+      }
+    ],
+    "money": [
+      {
+        "label": "Expected",
+        "value": "R$ 90.071.992.547.409,91",
+        "width": 340,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 366
+      },
+      {
+        "label": "Total paid",
+        "value": "R$ 90.071.992.547.409,91",
+        "width": 340,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 366
+      }
+    ],
+    "renderedSchedules": 1,
+    "renderedObligations": 1,
+    "errors": []
+  },
+  {
+    "name": "many-unpaid",
+    "regions": 17,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "header": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "bottom": 81
+      },
+      {
+        "label": "Series options for Internet",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "bottom": 81
+      }
+    ],
+    "money": [
+      {
+        "label": "Expected",
+        "value": "R$ 150,00",
+        "width": 164,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 366
+      },
+      {
+        "label": "Total paid",
+        "value": "R$ 0,00",
+        "width": 164,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 366
+      }
+    ],
+    "renderedSchedules": 1,
+    "renderedObligations": 14,
+    "errors": []
+  },
+  {
+    "name": "overdue",
+    "regions": 5,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "header": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "bottom": 81
+      },
+      {
+        "label": "Series options for Internet",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "bottom": 81
+      }
+    ],
+    "money": [
+      {
+        "label": "Expected",
+        "value": "R$ 150,00",
+        "width": 164,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 366
+      },
+      {
+        "label": "Total paid",
+        "value": "R$ 0,00",
+        "width": 164,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 366
+      }
+    ],
+    "renderedSchedules": 1,
+    "renderedObligations": 2,
+    "errors": []
+  },
+  {
+    "name": "empty",
+    "regions": 3,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "header": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "bottom": 81
+      },
+      {
+        "label": "Series options for Internet",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "bottom": 81
+      }
+    ],
+    "money": [
+      {
+        "label": "Expected",
+        "value": "R$ 150,00",
+        "width": 164,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 366
+      },
+      {
+        "label": "Total paid",
+        "value": "R$ 0,00",
+        "width": 164,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 366
+      }
+    ],
+    "renderedSchedules": 1,
+    "renderedObligations": 0,
+    "errors": []
+  },
+  {
+    "name": "long-title",
+    "regions": 4,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "header": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "bottom": 81
+      },
+      {
+        "label": "Series options for A complete long household commitment name describing the retained purpose without truncating its saved identity",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "bottom": 81
+      }
+    ],
+    "money": [
+      {
+        "label": "Expected",
+        "value": "R$ 150,00",
+        "width": 164,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 366
+      },
+      {
+        "label": "Total paid",
+        "value": "R$ 0,00",
+        "width": 164,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 366
+      }
+    ],
+    "renderedSchedules": 1,
+    "renderedObligations": 1,
+    "errors": []
+  },
+  {
+    "name": "long-category",
+    "regions": 4,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "header": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "bottom": 81
+      },
+      {
+        "label": "Series options for Internet",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "bottom": 81
+      }
+    ],
+    "money": [
+      {
+        "label": "Expected",
+        "value": "R$ 150,00",
+        "width": 164,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 366
+      },
+      {
+        "label": "Total paid",
+        "value": "R$ 0,00",
+        "width": 164,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 366
+      }
+    ],
+    "renderedSchedules": 1,
+    "renderedObligations": 1,
+    "errors": []
+  },
+  {
+    "name": "archived",
+    "regions": 4,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "header": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "bottom": 81
+      },
+      {
+        "label": "Series options for Internet",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "bottom": 81
+      }
+    ],
+    "money": [
+      {
+        "label": "Expected",
+        "value": "R$ 150,00",
+        "width": 164,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 366
+      },
+      {
+        "label": "Total paid",
+        "value": "R$ 0,00",
+        "width": 164,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 366
+      }
+    ],
+    "renderedSchedules": 1,
+    "renderedObligations": 1,
+    "errors": []
+  },
+  {
+    "name": "uncategorized",
+    "regions": 4,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "header": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "bottom": 81
+      },
+      {
+        "label": "Series options for Internet",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "bottom": 81
+      }
+    ],
+    "money": [
+      {
+        "label": "Expected",
+        "value": "R$ 150,00",
+        "width": 164,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 366
+      },
+      {
+        "label": "Total paid",
+        "value": "R$ 0,00",
+        "width": 164,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 366
+      }
+    ],
+    "renderedSchedules": 1,
+    "renderedObligations": 1,
+    "errors": []
+  },
+  {
+    "name": "max",
+    "regions": 4,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "header": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "bottom": 81
+      },
+      {
+        "label": "Series options for Internet",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "bottom": 81
+      }
+    ],
+    "money": [
+      {
+        "label": "Expected",
+        "value": "R$ 90.071.992.547.409,91",
+        "width": 340,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 366
+      },
+      {
+        "label": "Total paid",
+        "value": "R$ 90.071.992.547.409,91",
+        "width": 340,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 366
+      }
+    ],
+    "renderedSchedules": 1,
+    "renderedObligations": 1,
+    "errors": []
+  },
+  {
+    "name": "menu",
+    "regions": 5,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "header": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "bottom": 81
+      },
+      {
+        "label": "Series options for Internet",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "bottom": 81
+      }
+    ],
+    "money": [
+      {
+        "label": "Expected",
+        "value": "R$ 150,00",
+        "width": 164,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 366
+      },
+      {
+        "label": "Total paid",
+        "value": "R$ 150,00",
+        "width": 164,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 366
+      }
+    ],
+    "renderedSchedules": 2,
+    "renderedObligations": 1,
+    "errors": []
+  },
+  {
+    "name": "overflow",
+    "regions": 5,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "header": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "bottom": 81
+      },
+      {
+        "label": "Series options for Internet",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "bottom": 81
+      }
+    ],
+    "money": [
+      {
+        "label": "Expected",
+        "value": "R$ 150,00",
+        "width": 164,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 366
+      },
+      {
+        "label": "Total paid",
+        "value": "R$ 150,00",
+        "width": 164,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 366
+      }
+    ],
+    "renderedSchedules": 2,
+    "renderedObligations": 1,
+    "errors": []
+  },
+  {
+    "name": "history",
+    "regions": 5,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "header": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "bottom": 81
+      },
+      {
+        "label": "Series options for Internet",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "bottom": 81
+      }
+    ],
+    "money": [
+      {
+        "label": "Expected",
+        "value": "R$ 150,00",
+        "width": 164,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 366
+      },
+      {
+        "label": "Total paid",
+        "value": "R$ 150,00",
+        "width": 164,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 366
+      }
+    ],
+    "renderedSchedules": 2,
+    "renderedObligations": 1,
+    "errors": []
+  },
+  {
+    "name": "long-scroll",
+    "regions": 33,
+    "overflow": [],
+    "horizontalOverflow": false,
+    "header": [
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "bottom": 81
+      },
+      {
+        "label": "Series options for Internet",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "bottom": 81
+      }
+    ],
+    "money": [
+      {
+        "label": "Expected",
+        "value": "R$ 175,00",
+        "width": 164,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 366
+      },
+      {
+        "label": "Total paid",
+        "value": "R$ 0,00",
+        "width": 164,
+        "textHeight": 22,
+        "lineHeight": 22,
+        "overviewWidth": 366
+      }
+    ],
+    "renderedSchedules": 20,
+    "renderedObligations": 11,
+    "errors": []
+  }
+]
