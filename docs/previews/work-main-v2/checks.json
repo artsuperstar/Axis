@@ -1,0 +1,1442 @@
+[
+  {
+    "name": "mixed-320-dark",
+    "overflow": [],
+    "metricOverflow": [],
+    "metricOverlap": false,
+    "horizontalOverflow": false,
+    "cards": [
+      {
+        "name": "Quarterly stocktake, Independent studio, earned R$ 180,00, outstanding R$ 180,00, Overdue, expected 23 de out. de 2026, work 25 de out. de 2026, received R$ 0,00",
+        "text": "Quarterly stocktakeIndependent studioOn-site inventoryWork 25 de out. de 2026Overdue · Expected 23 de out. de 2026R$ 180,00outstanding",
+        "height": 218,
+        "nestedButtons": 0
+      },
+      {
+        "name": "Project handover, Independent studio, earned R$ 600,00, outstanding R$ 450,00, Overdue, expected 26 de out. de 2026, work 24 de out. de 2026, received R$ 150,00",
+        "text": "Project handoverIndependent studioFinal delivery and documentationWork 24 de out. de 2026Received R$ 150,00 of R$ 600,00Overdue · Expected 26 de out. de 2026R$ 450,00outstanding",
+        "height": 282,
+        "nestedButtons": 0
+      },
+      {
+        "name": "Current assignment, Independent studio, earned R$ 312,50, outstanding R$ 312,50, Outstanding, expected 31 de out. de 2026, work 26 de out. de 2026, received R$ 0,00",
+        "text": "Current assignmentIndependent studioOngoing consultationWork 26 de out. de 2026Outstanding · Expected 31 de out. de 2026R$ 312,50outstanding",
+        "height": 218,
+        "nestedButtons": 0
+      }
+    ],
+    "actions": [
+      {
+        "label": "Work options",
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Add work",
+        "width": 262,
+        "height": 48
+      },
+      {
+        "label": "Record payment",
+        "width": 262,
+        "height": 48
+      }
+    ],
+    "data": {
+      "totals": {
+        "earnedMinor": "209250",
+        "receivedMinor": "115000",
+        "outstandingMinor": "94250"
+      },
+      "count": 3,
+      "lastTitle": "Current assignment"
+    },
+    "errors": []
+  },
+  {
+    "name": "stress-320-dark-2",
+    "overflow": [],
+    "metricOverflow": [],
+    "metricOverlap": false,
+    "horizontalOverflow": false,
+    "cards": [
+      {
+        "name": "ExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentity, Independent regional design and equipment service client with the complete historical client identity retained, earned R$ 90.071.992.547.409,91, outstanding R$ 90.071.992.547.409,91, Overdue, expected 12 de jan. de 1999, work 12 de set. de 2026, received R$ 0,00",
+        "text": "ExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentityIndependent regional design and equipment service client with the complete historical client identity retainedComplete supporting context remains available in the existing Job details.Work 12 de set. de 2026Overdue · Expected 12 de jan. de 1999R$ 90.071.992.547.409,91outstanding",
+        "height": 1546,
+        "nestedButtons": 0
+      },
+      {
+        "name": "Second maximum receivable, Independent regional design and equipment service client with the complete historical client identity retained, earned R$ 90.071.992.547.409,91, outstanding R$ 90.071.992.547.409,91, Outstanding, work 26 de out. de 2026, received R$ 0,00",
+        "text": "Second maximum receivableIndependent regional design and equipment service client with the complete historical client identity retainedWork 26 de out. de 2026OutstandingR$ 90.071.992.547.409,91outstanding",
+        "height": 854,
+        "nestedButtons": 0
+      }
+    ],
+    "actions": [
+      {
+        "label": "Work options",
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Add work",
+        "width": 262,
+        "height": 64
+      },
+      {
+        "label": "Record payment",
+        "width": 262,
+        "height": 108
+      }
+    ],
+    "data": {
+      "totals": {
+        "earnedMinor": "27021597764222973",
+        "receivedMinor": "9007199254740991",
+        "outstandingMinor": "18014398509481982"
+      },
+      "count": 2,
+      "lastTitle": "Second maximum receivable"
+    },
+    "errors": []
+  },
+  {
+    "name": "mixed-390-dark",
+    "overflow": [],
+    "metricOverflow": [],
+    "metricOverlap": false,
+    "horizontalOverflow": false,
+    "cards": [
+      {
+        "name": "Quarterly stocktake, Independent studio, earned R$ 180,00, outstanding R$ 180,00, Overdue, expected 23 de out. de 2026, work 25 de out. de 2026, received R$ 0,00",
+        "text": "Quarterly stocktakeIndependent studioOn-site inventoryWork 25 de out. de 2026Overdue · Expected 23 de out. de 2026R$ 180,00outstanding",
+        "height": 166,
+        "nestedButtons": 0
+      },
+      {
+        "name": "Project handover, Independent studio, earned R$ 600,00, outstanding R$ 450,00, Overdue, expected 26 de out. de 2026, work 24 de out. de 2026, received R$ 150,00",
+        "text": "Project handoverIndependent studioFinal delivery and documentationWork 24 de out. de 2026Received R$ 150,00 of R$ 600,00Overdue · Expected 26 de out. de 2026R$ 450,00outstanding",
+        "height": 230,
+        "nestedButtons": 0
+      },
+      {
+        "name": "Current assignment, Independent studio, earned R$ 312,50, outstanding R$ 312,50, Outstanding, expected 31 de out. de 2026, work 26 de out. de 2026, received R$ 0,00",
+        "text": "Current assignmentIndependent studioOngoing consultationWork 26 de out. de 2026Outstanding · Expected 31 de out. de 2026R$ 312,50outstanding",
+        "height": 166,
+        "nestedButtons": 0
+      }
+    ],
+    "actions": [
+      {
+        "label": "Work options",
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Add work",
+        "width": 140,
+        "height": 48
+      },
+      {
+        "label": "Record payment",
+        "width": 184,
+        "height": 48
+      }
+    ],
+    "data": {
+      "totals": {
+        "earnedMinor": "209250",
+        "receivedMinor": "115000",
+        "outstandingMinor": "94250"
+      },
+      "count": 3,
+      "lastTitle": "Current assignment"
+    },
+    "errors": []
+  },
+  {
+    "name": "stress-390-dark-2",
+    "overflow": [],
+    "metricOverflow": [],
+    "metricOverlap": false,
+    "horizontalOverflow": false,
+    "cards": [
+      {
+        "name": "ExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentity, Independent regional design and equipment service client with the complete historical client identity retained, earned R$ 90.071.992.547.409,91, outstanding R$ 90.071.992.547.409,91, Overdue, expected 12 de jan. de 1999, work 12 de set. de 2026, received R$ 0,00",
+        "text": "ExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentityIndependent regional design and equipment service client with the complete historical client identity retainedComplete supporting context remains available in the existing Job details.Work 12 de set. de 2026Overdue · Expected 12 de jan. de 1999R$ 90.071.992.547.409,91outstanding",
+        "height": 1234,
+        "nestedButtons": 0
+      },
+      {
+        "name": "Second maximum receivable, Independent regional design and equipment service client with the complete historical client identity retained, earned R$ 90.071.992.547.409,91, outstanding R$ 90.071.992.547.409,91, Outstanding, work 26 de out. de 2026, received R$ 0,00",
+        "text": "Second maximum receivableIndependent regional design and equipment service client with the complete historical client identity retainedWork 26 de out. de 2026OutstandingR$ 90.071.992.547.409,91outstanding",
+        "height": 726,
+        "nestedButtons": 0
+      }
+    ],
+    "actions": [
+      {
+        "label": "Work options",
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Add work",
+        "width": 332,
+        "height": 64
+      },
+      {
+        "label": "Record payment",
+        "width": 332,
+        "height": 64
+      }
+    ],
+    "data": {
+      "totals": {
+        "earnedMinor": "27021597764222973",
+        "receivedMinor": "9007199254740991",
+        "outstandingMinor": "18014398509481982"
+      },
+      "count": 2,
+      "lastTitle": "Second maximum receivable"
+    },
+    "errors": []
+  },
+  {
+    "name": "mixed-430-dark",
+    "overflow": [],
+    "metricOverflow": [],
+    "metricOverlap": false,
+    "horizontalOverflow": false,
+    "cards": [
+      {
+        "name": "Quarterly stocktake, Independent studio, earned R$ 180,00, outstanding R$ 180,00, Overdue, expected 23 de out. de 2026, work 25 de out. de 2026, received R$ 0,00",
+        "text": "Quarterly stocktakeIndependent studioOn-site inventoryWork 25 de out. de 2026Overdue · Expected 23 de out. de 2026R$ 180,00outstanding",
+        "height": 166,
+        "nestedButtons": 0
+      },
+      {
+        "name": "Project handover, Independent studio, earned R$ 600,00, outstanding R$ 450,00, Overdue, expected 26 de out. de 2026, work 24 de out. de 2026, received R$ 150,00",
+        "text": "Project handoverIndependent studioFinal delivery and documentationWork 24 de out. de 2026Received R$ 150,00 of R$ 600,00Overdue · Expected 26 de out. de 2026R$ 450,00outstanding",
+        "height": 230,
+        "nestedButtons": 0
+      },
+      {
+        "name": "Current assignment, Independent studio, earned R$ 312,50, outstanding R$ 312,50, Outstanding, expected 31 de out. de 2026, work 26 de out. de 2026, received R$ 0,00",
+        "text": "Current assignmentIndependent studioOngoing consultationWork 26 de out. de 2026Outstanding · Expected 31 de out. de 2026R$ 312,50outstanding",
+        "height": 166,
+        "nestedButtons": 0
+      }
+    ],
+    "actions": [
+      {
+        "label": "Work options",
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Add work",
+        "width": 160,
+        "height": 48
+      },
+      {
+        "label": "Record payment",
+        "width": 204,
+        "height": 48
+      }
+    ],
+    "data": {
+      "totals": {
+        "earnedMinor": "209250",
+        "receivedMinor": "115000",
+        "outstandingMinor": "94250"
+      },
+      "count": 3,
+      "lastTitle": "Current assignment"
+    },
+    "errors": []
+  },
+  {
+    "name": "stress-430-dark-2",
+    "overflow": [],
+    "metricOverflow": [],
+    "metricOverlap": false,
+    "horizontalOverflow": false,
+    "cards": [
+      {
+        "name": "ExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentity, Independent regional design and equipment service client with the complete historical client identity retained, earned R$ 90.071.992.547.409,91, outstanding R$ 90.071.992.547.409,91, Overdue, expected 12 de jan. de 1999, work 12 de set. de 2026, received R$ 0,00",
+        "text": "ExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentityIndependent regional design and equipment service client with the complete historical client identity retainedComplete supporting context remains available in the existing Job details.Work 12 de set. de 2026Overdue · Expected 12 de jan. de 1999R$ 90.071.992.547.409,91outstanding",
+        "height": 1066,
+        "nestedButtons": 0
+      },
+      {
+        "name": "Second maximum receivable, Independent regional design and equipment service client with the complete historical client identity retained, earned R$ 90.071.992.547.409,91, outstanding R$ 90.071.992.547.409,91, Outstanding, work 26 de out. de 2026, received R$ 0,00",
+        "text": "Second maximum receivableIndependent regional design and equipment service client with the complete historical client identity retainedWork 26 de out. de 2026OutstandingR$ 90.071.992.547.409,91outstanding",
+        "height": 606,
+        "nestedButtons": 0
+      }
+    ],
+    "actions": [
+      {
+        "label": "Work options",
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Add work",
+        "width": 372,
+        "height": 64
+      },
+      {
+        "label": "Record payment",
+        "width": 372,
+        "height": 64
+      }
+    ],
+    "data": {
+      "totals": {
+        "earnedMinor": "27021597764222973",
+        "receivedMinor": "9007199254740991",
+        "outstandingMinor": "18014398509481982"
+      },
+      "count": 2,
+      "lastTitle": "Second maximum receivable"
+    },
+    "errors": []
+  },
+  {
+    "name": "stress-390-dark",
+    "overflow": [],
+    "metricOverflow": [],
+    "metricOverlap": false,
+    "horizontalOverflow": false,
+    "cards": [
+      {
+        "name": "ExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentity, Independent regional design and equipment service client with the complete historical client identity retained, earned R$ 90.071.992.547.409,91, outstanding R$ 90.071.992.547.409,91, Overdue, expected 12 de jan. de 1999, work 12 de set. de 2026, received R$ 0,00",
+        "text": "ExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentityIndependent regional design and equipment service client with the complete historical client identity retainedComplete supporting context remains available in the existing Job details.Work 12 de set. de 2026Overdue · Expected 12 de jan. de 1999R$ 90.071.992.547.409,91outstanding",
+        "height": 354,
+        "nestedButtons": 0
+      },
+      {
+        "name": "Second maximum receivable, Independent regional design and equipment service client with the complete historical client identity retained, earned R$ 90.071.992.547.409,91, outstanding R$ 90.071.992.547.409,91, Outstanding, work 26 de out. de 2026, received R$ 0,00",
+        "text": "Second maximum receivableIndependent regional design and equipment service client with the complete historical client identity retainedWork 26 de out. de 2026OutstandingR$ 90.071.992.547.409,91outstanding",
+        "height": 214,
+        "nestedButtons": 0
+      }
+    ],
+    "actions": [
+      {
+        "label": "Work options",
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Add work",
+        "width": 140,
+        "height": 48
+      },
+      {
+        "label": "Record payment",
+        "width": 184,
+        "height": 48
+      }
+    ],
+    "data": {
+      "totals": {
+        "earnedMinor": "27021597764222973",
+        "receivedMinor": "9007199254740991",
+        "outstandingMinor": "18014398509481982"
+      },
+      "count": 2,
+      "lastTitle": "Second maximum receivable"
+    },
+    "errors": []
+  },
+  {
+    "name": "empty-390-dark",
+    "overflow": [],
+    "metricOverflow": [],
+    "metricOverlap": false,
+    "horizontalOverflow": false,
+    "cards": [],
+    "actions": [
+      {
+        "label": "Work options",
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Add work",
+        "width": 332,
+        "height": 48
+      }
+    ],
+    "data": {
+      "totals": {
+        "earnedMinor": "0",
+        "receivedMinor": "0",
+        "outstandingMinor": "0"
+      },
+      "count": 0,
+      "lastTitle": null
+    },
+    "errors": []
+  },
+  {
+    "name": "zero-390-dark",
+    "overflow": [],
+    "metricOverflow": [],
+    "metricOverlap": false,
+    "horizontalOverflow": false,
+    "cards": [],
+    "actions": [
+      {
+        "label": "Work options",
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Add work",
+        "width": 332,
+        "height": 48
+      }
+    ],
+    "data": {
+      "totals": {
+        "earnedMinor": "0",
+        "receivedMinor": "0",
+        "outstandingMinor": "0"
+      },
+      "count": 0,
+      "lastTitle": null
+    },
+    "errors": []
+  },
+  {
+    "name": "earned-390-dark",
+    "overflow": [],
+    "metricOverflow": [],
+    "metricOverlap": false,
+    "horizontalOverflow": false,
+    "cards": [
+      {
+        "name": "Work awaiting its first receipt, Independent studio, earned R$ 600,00, outstanding R$ 600,00, Outstanding, expected 5 de nov. de 2026, work 26 de out. de 2026, received R$ 0,00",
+        "text": "Work awaiting its first receiptIndependent studioWork 26 de out. de 2026Outstanding · Expected 5 de nov. de 2026R$ 600,00outstanding",
+        "height": 166,
+        "nestedButtons": 0
+      }
+    ],
+    "actions": [
+      {
+        "label": "Work options",
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Add work",
+        "width": 140,
+        "height": 48
+      },
+      {
+        "label": "Record payment",
+        "width": 184,
+        "height": 48
+      }
+    ],
+    "data": {
+      "totals": {
+        "earnedMinor": "60000",
+        "receivedMinor": "0",
+        "outstandingMinor": "60000"
+      },
+      "count": 1,
+      "lastTitle": "Work awaiting its first receipt"
+    },
+    "errors": []
+  },
+  {
+    "name": "partial-390-dark",
+    "overflow": [],
+    "metricOverflow": [],
+    "metricOverlap": false,
+    "horizontalOverflow": false,
+    "cards": [
+      {
+        "name": "Partially received assignment, Independent studio, earned R$ 600,00, outstanding R$ 474,50, Overdue, expected 23 de out. de 2026, work 26 de out. de 2026, received R$ 125,50",
+        "text": "Partially received assignmentIndependent studioWork 26 de out. de 2026Received R$ 125,50 of R$ 600,00Overdue · Expected 23 de out. de 2026R$ 474,50outstanding",
+        "height": 210,
+        "nestedButtons": 0
+      }
+    ],
+    "actions": [
+      {
+        "label": "Work options",
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Add work",
+        "width": 140,
+        "height": 48
+      },
+      {
+        "label": "Record payment",
+        "width": 184,
+        "height": 48
+      }
+    ],
+    "data": {
+      "totals": {
+        "earnedMinor": "60000",
+        "receivedMinor": "12550",
+        "outstandingMinor": "47450"
+      },
+      "count": 1,
+      "lastTitle": "Partially received assignment"
+    },
+    "errors": []
+  },
+  {
+    "name": "settled-390-dark",
+    "overflow": [],
+    "metricOverflow": [],
+    "metricOverlap": false,
+    "horizontalOverflow": false,
+    "cards": [],
+    "actions": [
+      {
+        "label": "Work options",
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Add work",
+        "width": 332,
+        "height": 48
+      }
+    ],
+    "data": {
+      "totals": {
+        "earnedMinor": "60000",
+        "receivedMinor": "60000",
+        "outstandingMinor": "0"
+      },
+      "count": 0,
+      "lastTitle": null
+    },
+    "errors": []
+  },
+  {
+    "name": "no-attention-390-dark",
+    "overflow": [],
+    "metricOverflow": [],
+    "metricOverlap": false,
+    "horizontalOverflow": false,
+    "cards": [
+      {
+        "name": "Undated receivable, Independent studio, earned R$ 600,00, outstanding R$ 600,00, Outstanding, work 26 de out. de 2026, received R$ 0,00",
+        "text": "Undated receivableIndependent studioWork 26 de out. de 2026OutstandingR$ 600,00outstanding",
+        "height": 122,
+        "nestedButtons": 0
+      },
+      {
+        "name": "Expected today, Independent studio, earned R$ 600,00, outstanding R$ 600,00, Outstanding, expected 27 de out. de 2026, work 26 de out. de 2026, received R$ 0,00",
+        "text": "Expected todayIndependent studioWork 26 de out. de 2026Outstanding · Expected 27 de out. de 2026R$ 600,00outstanding",
+        "height": 142,
+        "nestedButtons": 0
+      }
+    ],
+    "actions": [
+      {
+        "label": "Work options",
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Add work",
+        "width": 140,
+        "height": 48
+      },
+      {
+        "label": "Record payment",
+        "width": 184,
+        "height": 48
+      }
+    ],
+    "data": {
+      "totals": {
+        "earnedMinor": "120000",
+        "receivedMinor": "0",
+        "outstandingMinor": "120000"
+      },
+      "count": 2,
+      "lastTitle": "Expected today"
+    },
+    "errors": []
+  },
+  {
+    "name": "long-client-390-dark",
+    "overflow": [],
+    "metricOverflow": [],
+    "metricOverlap": false,
+    "horizontalOverflow": false,
+    "cards": [
+      {
+        "name": "Extensive service assignment with the full saved project title available without a one-line limit, Independent regional design and equipment service client with the complete historical client identity retained, earned R$ 600,00, outstanding R$ 600,00, Overdue, expected 20 de out. de 2026, work 26 de out. de 2026, received R$ 0,00",
+        "text": "Extensive service assignment with the full saved project title available without a one-line limitIndependent regional design and equipment service client with the complete historical client identity retainedAdditional saved context, distinct from title and clientWork 26 de out. de 2026Overdue · Expected 20 de out. de 2026R$ 600,00outstanding",
+        "height": 306,
+        "nestedButtons": 0
+      }
+    ],
+    "actions": [
+      {
+        "label": "Work options",
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Add work",
+        "width": 140,
+        "height": 48
+      },
+      {
+        "label": "Record payment",
+        "width": 184,
+        "height": 48
+      }
+    ],
+    "data": {
+      "totals": {
+        "earnedMinor": "60000",
+        "receivedMinor": "0",
+        "outstandingMinor": "60000"
+      },
+      "count": 1,
+      "lastTitle": "Extensive service assignment with the full saved project title available without a one-line limit"
+    },
+    "errors": []
+  },
+  {
+    "name": "collection-390-dark",
+    "overflow": [],
+    "metricOverflow": [],
+    "metricOverlap": false,
+    "horizontalOverflow": false,
+    "cards": [
+      {
+        "name": "Service 053, Independent studio, earned R$ 600,00, outstanding R$ 600,00, Overdue, expected 20 de out. de 2026, work 26 de out. de 2026, received R$ 0,00",
+        "text": "Service 053Independent studioWork 26 de out. de 2026Overdue · Expected 20 de out. de 2026R$ 600,00outstanding",
+        "height": 142,
+        "nestedButtons": 0
+      },
+      {
+        "name": "Service 048, Independent studio, earned R$ 600,00, outstanding R$ 600,00, Overdue, expected 20 de out. de 2026, work 26 de out. de 2026, received R$ 0,00",
+        "text": "Service 048Independent studioWork 26 de out. de 2026Overdue · Expected 20 de out. de 2026R$ 600,00outstanding",
+        "height": 142,
+        "nestedButtons": 0
+      },
+      {
+        "name": "Service 041, Independent studio, earned R$ 600,00, outstanding R$ 600,00, Overdue, expected 20 de out. de 2026, work 26 de out. de 2026, received R$ 0,00",
+        "text": "Service 041Independent studioWork 26 de out. de 2026Overdue · Expected 20 de out. de 2026R$ 600,00outstanding",
+        "height": 142,
+        "nestedButtons": 0
+      },
+      {
+        "name": "Service 021, Independent studio, earned R$ 600,00, outstanding R$ 600,00, Overdue, expected 20 de out. de 2026, work 26 de out. de 2026, received R$ 0,00",
+        "text": "Service 021Independent studioWork 26 de out. de 2026Overdue · Expected 20 de out. de 2026R$ 600,00outstanding",
+        "height": 142,
+        "nestedButtons": 0
+      },
+      {
+        "name": "Service 010, Independent studio, earned R$ 600,00, outstanding R$ 600,00, Overdue, expected 20 de out. de 2026, work 26 de out. de 2026, received R$ 0,00",
+        "text": "Service 010Independent studioWork 26 de out. de 2026Overdue · Expected 20 de out. de 2026R$ 600,00outstanding",
+        "height": 142,
+        "nestedButtons": 0
+      },
+      {
+        "name": "Service 005, Independent studio, earned R$ 600,00, outstanding R$ 600,00, Overdue, expected 20 de out. de 2026, work 26 de out. de 2026, received R$ 0,00",
+        "text": "Service 005Independent studioWork 26 de out. de 2026Overdue · Expected 20 de out. de 2026R$ 600,00outstanding",
+        "height": 142,
+        "nestedButtons": 0
+      },
+      {
+        "name": "Service 050, Independent studio, earned R$ 600,00, outstanding R$ 600,00, Overdue, expected 20 de out. de 2026, work 26 de out. de 2026, received R$ 0,00",
+        "text": "Service 050Independent studioWork 26 de out. de 2026Overdue · Expected 20 de out. de 2026R$ 600,00outstanding",
+        "height": 142,
+        "nestedButtons": 0
+      },
+      {
+        "name": "Service 000, Independent studio, earned R$ 600,00, outstanding R$ 600,00, Overdue, expected 20 de out. de 2026, work 26 de out. de 2026, received R$ 0,00",
+        "text": "Service 000Independent studioWork 26 de out. de 2026Overdue · Expected 20 de out. de 2026R$ 600,00outstanding",
+        "height": 142,
+        "nestedButtons": 0
+      },
+      {
+        "name": "Service 014, Independent studio, earned R$ 600,00, outstanding R$ 600,00, Overdue, expected 20 de out. de 2026, work 26 de out. de 2026, received R$ 0,00",
+        "text": "Service 014Independent studioWork 26 de out. de 2026Overdue · Expected 20 de out. de 2026R$ 600,00outstanding",
+        "height": 142,
+        "nestedButtons": 0
+      },
+      {
+        "name": "Service 001, Independent studio, earned R$ 600,00, outstanding R$ 600,00, Overdue, expected 20 de out. de 2026, work 26 de out. de 2026, received R$ 0,00",
+        "text": "Service 001Independent studioWork 26 de out. de 2026Overdue · Expected 20 de out. de 2026R$ 600,00outstanding",
+        "height": 142,
+        "nestedButtons": 0
+      },
+      {
+        "name": "Service 025, Independent studio, earned R$ 600,00, outstanding R$ 600,00, Overdue, expected 20 de out. de 2026, work 26 de out. de 2026, received R$ 0,00",
+        "text": "Service 025Independent studioWork 26 de out. de 2026Overdue · Expected 20 de out. de 2026R$ 600,00outstanding",
+        "height": 142,
+        "nestedButtons": 0
+      }
+    ],
+    "actions": [
+      {
+        "label": "Work options",
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Add work",
+        "width": 140,
+        "height": 48
+      },
+      {
+        "label": "Record payment",
+        "width": 184,
+        "height": 48
+      }
+    ],
+    "data": {
+      "totals": {
+        "earnedMinor": "8400000",
+        "receivedMinor": "0",
+        "outstandingMinor": "8400000"
+      },
+      "count": 140,
+      "lastTitle": "Service 128"
+    },
+    "errors": []
+  },
+  {
+    "name": "mixed-320-light",
+    "overflow": [],
+    "metricOverflow": [],
+    "metricOverlap": false,
+    "horizontalOverflow": false,
+    "cards": [
+      {
+        "name": "Quarterly stocktake, Independent studio, earned R$ 180,00, outstanding R$ 180,00, Overdue, expected 23 de out. de 2026, work 25 de out. de 2026, received R$ 0,00",
+        "text": "Quarterly stocktakeIndependent studioOn-site inventoryWork 25 de out. de 2026Overdue · Expected 23 de out. de 2026R$ 180,00outstanding",
+        "height": 218,
+        "nestedButtons": 0
+      },
+      {
+        "name": "Project handover, Independent studio, earned R$ 600,00, outstanding R$ 450,00, Overdue, expected 26 de out. de 2026, work 24 de out. de 2026, received R$ 150,00",
+        "text": "Project handoverIndependent studioFinal delivery and documentationWork 24 de out. de 2026Received R$ 150,00 of R$ 600,00Overdue · Expected 26 de out. de 2026R$ 450,00outstanding",
+        "height": 282,
+        "nestedButtons": 0
+      },
+      {
+        "name": "Current assignment, Independent studio, earned R$ 312,50, outstanding R$ 312,50, Outstanding, expected 31 de out. de 2026, work 26 de out. de 2026, received R$ 0,00",
+        "text": "Current assignmentIndependent studioOngoing consultationWork 26 de out. de 2026Outstanding · Expected 31 de out. de 2026R$ 312,50outstanding",
+        "height": 218,
+        "nestedButtons": 0
+      }
+    ],
+    "actions": [
+      {
+        "label": "Work options",
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Add work",
+        "width": 262,
+        "height": 48
+      },
+      {
+        "label": "Record payment",
+        "width": 262,
+        "height": 48
+      }
+    ],
+    "data": {
+      "totals": {
+        "earnedMinor": "209250",
+        "receivedMinor": "115000",
+        "outstandingMinor": "94250"
+      },
+      "count": 3,
+      "lastTitle": "Current assignment"
+    },
+    "errors": []
+  },
+  {
+    "name": "stress-320-light-2",
+    "overflow": [],
+    "metricOverflow": [],
+    "metricOverlap": false,
+    "horizontalOverflow": false,
+    "cards": [
+      {
+        "name": "ExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentity, Independent regional design and equipment service client with the complete historical client identity retained, earned R$ 90.071.992.547.409,91, outstanding R$ 90.071.992.547.409,91, Overdue, expected 12 de jan. de 1999, work 12 de set. de 2026, received R$ 0,00",
+        "text": "ExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentityIndependent regional design and equipment service client with the complete historical client identity retainedComplete supporting context remains available in the existing Job details.Work 12 de set. de 2026Overdue · Expected 12 de jan. de 1999R$ 90.071.992.547.409,91outstanding",
+        "height": 1546,
+        "nestedButtons": 0
+      },
+      {
+        "name": "Second maximum receivable, Independent regional design and equipment service client with the complete historical client identity retained, earned R$ 90.071.992.547.409,91, outstanding R$ 90.071.992.547.409,91, Outstanding, work 26 de out. de 2026, received R$ 0,00",
+        "text": "Second maximum receivableIndependent regional design and equipment service client with the complete historical client identity retainedWork 26 de out. de 2026OutstandingR$ 90.071.992.547.409,91outstanding",
+        "height": 854,
+        "nestedButtons": 0
+      }
+    ],
+    "actions": [
+      {
+        "label": "Work options",
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Add work",
+        "width": 262,
+        "height": 64
+      },
+      {
+        "label": "Record payment",
+        "width": 262,
+        "height": 108
+      }
+    ],
+    "data": {
+      "totals": {
+        "earnedMinor": "27021597764222973",
+        "receivedMinor": "9007199254740991",
+        "outstandingMinor": "18014398509481982"
+      },
+      "count": 2,
+      "lastTitle": "Second maximum receivable"
+    },
+    "errors": []
+  },
+  {
+    "name": "mixed-390-light",
+    "overflow": [],
+    "metricOverflow": [],
+    "metricOverlap": false,
+    "horizontalOverflow": false,
+    "cards": [
+      {
+        "name": "Quarterly stocktake, Independent studio, earned R$ 180,00, outstanding R$ 180,00, Overdue, expected 23 de out. de 2026, work 25 de out. de 2026, received R$ 0,00",
+        "text": "Quarterly stocktakeIndependent studioOn-site inventoryWork 25 de out. de 2026Overdue · Expected 23 de out. de 2026R$ 180,00outstanding",
+        "height": 166,
+        "nestedButtons": 0
+      },
+      {
+        "name": "Project handover, Independent studio, earned R$ 600,00, outstanding R$ 450,00, Overdue, expected 26 de out. de 2026, work 24 de out. de 2026, received R$ 150,00",
+        "text": "Project handoverIndependent studioFinal delivery and documentationWork 24 de out. de 2026Received R$ 150,00 of R$ 600,00Overdue · Expected 26 de out. de 2026R$ 450,00outstanding",
+        "height": 230,
+        "nestedButtons": 0
+      },
+      {
+        "name": "Current assignment, Independent studio, earned R$ 312,50, outstanding R$ 312,50, Outstanding, expected 31 de out. de 2026, work 26 de out. de 2026, received R$ 0,00",
+        "text": "Current assignmentIndependent studioOngoing consultationWork 26 de out. de 2026Outstanding · Expected 31 de out. de 2026R$ 312,50outstanding",
+        "height": 166,
+        "nestedButtons": 0
+      }
+    ],
+    "actions": [
+      {
+        "label": "Work options",
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Add work",
+        "width": 140,
+        "height": 48
+      },
+      {
+        "label": "Record payment",
+        "width": 184,
+        "height": 48
+      }
+    ],
+    "data": {
+      "totals": {
+        "earnedMinor": "209250",
+        "receivedMinor": "115000",
+        "outstandingMinor": "94250"
+      },
+      "count": 3,
+      "lastTitle": "Current assignment"
+    },
+    "errors": []
+  },
+  {
+    "name": "stress-390-light-2",
+    "overflow": [],
+    "metricOverflow": [],
+    "metricOverlap": false,
+    "horizontalOverflow": false,
+    "cards": [
+      {
+        "name": "ExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentity, Independent regional design and equipment service client with the complete historical client identity retained, earned R$ 90.071.992.547.409,91, outstanding R$ 90.071.992.547.409,91, Overdue, expected 12 de jan. de 1999, work 12 de set. de 2026, received R$ 0,00",
+        "text": "ExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentityIndependent regional design and equipment service client with the complete historical client identity retainedComplete supporting context remains available in the existing Job details.Work 12 de set. de 2026Overdue · Expected 12 de jan. de 1999R$ 90.071.992.547.409,91outstanding",
+        "height": 1234,
+        "nestedButtons": 0
+      },
+      {
+        "name": "Second maximum receivable, Independent regional design and equipment service client with the complete historical client identity retained, earned R$ 90.071.992.547.409,91, outstanding R$ 90.071.992.547.409,91, Outstanding, work 26 de out. de 2026, received R$ 0,00",
+        "text": "Second maximum receivableIndependent regional design and equipment service client with the complete historical client identity retainedWork 26 de out. de 2026OutstandingR$ 90.071.992.547.409,91outstanding",
+        "height": 726,
+        "nestedButtons": 0
+      }
+    ],
+    "actions": [
+      {
+        "label": "Work options",
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Add work",
+        "width": 332,
+        "height": 64
+      },
+      {
+        "label": "Record payment",
+        "width": 332,
+        "height": 64
+      }
+    ],
+    "data": {
+      "totals": {
+        "earnedMinor": "27021597764222973",
+        "receivedMinor": "9007199254740991",
+        "outstandingMinor": "18014398509481982"
+      },
+      "count": 2,
+      "lastTitle": "Second maximum receivable"
+    },
+    "errors": []
+  },
+  {
+    "name": "mixed-430-light",
+    "overflow": [],
+    "metricOverflow": [],
+    "metricOverlap": false,
+    "horizontalOverflow": false,
+    "cards": [
+      {
+        "name": "Quarterly stocktake, Independent studio, earned R$ 180,00, outstanding R$ 180,00, Overdue, expected 23 de out. de 2026, work 25 de out. de 2026, received R$ 0,00",
+        "text": "Quarterly stocktakeIndependent studioOn-site inventoryWork 25 de out. de 2026Overdue · Expected 23 de out. de 2026R$ 180,00outstanding",
+        "height": 166,
+        "nestedButtons": 0
+      },
+      {
+        "name": "Project handover, Independent studio, earned R$ 600,00, outstanding R$ 450,00, Overdue, expected 26 de out. de 2026, work 24 de out. de 2026, received R$ 150,00",
+        "text": "Project handoverIndependent studioFinal delivery and documentationWork 24 de out. de 2026Received R$ 150,00 of R$ 600,00Overdue · Expected 26 de out. de 2026R$ 450,00outstanding",
+        "height": 230,
+        "nestedButtons": 0
+      },
+      {
+        "name": "Current assignment, Independent studio, earned R$ 312,50, outstanding R$ 312,50, Outstanding, expected 31 de out. de 2026, work 26 de out. de 2026, received R$ 0,00",
+        "text": "Current assignmentIndependent studioOngoing consultationWork 26 de out. de 2026Outstanding · Expected 31 de out. de 2026R$ 312,50outstanding",
+        "height": 166,
+        "nestedButtons": 0
+      }
+    ],
+    "actions": [
+      {
+        "label": "Work options",
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Add work",
+        "width": 160,
+        "height": 48
+      },
+      {
+        "label": "Record payment",
+        "width": 204,
+        "height": 48
+      }
+    ],
+    "data": {
+      "totals": {
+        "earnedMinor": "209250",
+        "receivedMinor": "115000",
+        "outstandingMinor": "94250"
+      },
+      "count": 3,
+      "lastTitle": "Current assignment"
+    },
+    "errors": []
+  },
+  {
+    "name": "stress-430-light-2",
+    "overflow": [],
+    "metricOverflow": [],
+    "metricOverlap": false,
+    "horizontalOverflow": false,
+    "cards": [
+      {
+        "name": "ExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentity, Independent regional design and equipment service client with the complete historical client identity retained, earned R$ 90.071.992.547.409,91, outstanding R$ 90.071.992.547.409,91, Overdue, expected 12 de jan. de 1999, work 12 de set. de 2026, received R$ 0,00",
+        "text": "ExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentityIndependent regional design and equipment service client with the complete historical client identity retainedComplete supporting context remains available in the existing Job details.Work 12 de set. de 2026Overdue · Expected 12 de jan. de 1999R$ 90.071.992.547.409,91outstanding",
+        "height": 1066,
+        "nestedButtons": 0
+      },
+      {
+        "name": "Second maximum receivable, Independent regional design and equipment service client with the complete historical client identity retained, earned R$ 90.071.992.547.409,91, outstanding R$ 90.071.992.547.409,91, Outstanding, work 26 de out. de 2026, received R$ 0,00",
+        "text": "Second maximum receivableIndependent regional design and equipment service client with the complete historical client identity retainedWork 26 de out. de 2026OutstandingR$ 90.071.992.547.409,91outstanding",
+        "height": 606,
+        "nestedButtons": 0
+      }
+    ],
+    "actions": [
+      {
+        "label": "Work options",
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Add work",
+        "width": 372,
+        "height": 64
+      },
+      {
+        "label": "Record payment",
+        "width": 372,
+        "height": 64
+      }
+    ],
+    "data": {
+      "totals": {
+        "earnedMinor": "27021597764222973",
+        "receivedMinor": "9007199254740991",
+        "outstandingMinor": "18014398509481982"
+      },
+      "count": 2,
+      "lastTitle": "Second maximum receivable"
+    },
+    "errors": []
+  },
+  {
+    "name": "stress-390-light",
+    "overflow": [],
+    "metricOverflow": [],
+    "metricOverlap": false,
+    "horizontalOverflow": false,
+    "cards": [
+      {
+        "name": "ExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentity, Independent regional design and equipment service client with the complete historical client identity retained, earned R$ 90.071.992.547.409,91, outstanding R$ 90.071.992.547.409,91, Overdue, expected 12 de jan. de 1999, work 12 de set. de 2026, received R$ 0,00",
+        "text": "ExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentityExtremelylongunbrokenworkidentityIndependent regional design and equipment service client with the complete historical client identity retainedComplete supporting context remains available in the existing Job details.Work 12 de set. de 2026Overdue · Expected 12 de jan. de 1999R$ 90.071.992.547.409,91outstanding",
+        "height": 354,
+        "nestedButtons": 0
+      },
+      {
+        "name": "Second maximum receivable, Independent regional design and equipment service client with the complete historical client identity retained, earned R$ 90.071.992.547.409,91, outstanding R$ 90.071.992.547.409,91, Outstanding, work 26 de out. de 2026, received R$ 0,00",
+        "text": "Second maximum receivableIndependent regional design and equipment service client with the complete historical client identity retainedWork 26 de out. de 2026OutstandingR$ 90.071.992.547.409,91outstanding",
+        "height": 214,
+        "nestedButtons": 0
+      }
+    ],
+    "actions": [
+      {
+        "label": "Work options",
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Add work",
+        "width": 140,
+        "height": 48
+      },
+      {
+        "label": "Record payment",
+        "width": 184,
+        "height": 48
+      }
+    ],
+    "data": {
+      "totals": {
+        "earnedMinor": "27021597764222973",
+        "receivedMinor": "9007199254740991",
+        "outstandingMinor": "18014398509481982"
+      },
+      "count": 2,
+      "lastTitle": "Second maximum receivable"
+    },
+    "errors": []
+  },
+  {
+    "name": "empty-390-light",
+    "overflow": [],
+    "metricOverflow": [],
+    "metricOverlap": false,
+    "horizontalOverflow": false,
+    "cards": [],
+    "actions": [
+      {
+        "label": "Work options",
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Add work",
+        "width": 332,
+        "height": 48
+      }
+    ],
+    "data": {
+      "totals": {
+        "earnedMinor": "0",
+        "receivedMinor": "0",
+        "outstandingMinor": "0"
+      },
+      "count": 0,
+      "lastTitle": null
+    },
+    "errors": []
+  },
+  {
+    "name": "zero-390-light",
+    "overflow": [],
+    "metricOverflow": [],
+    "metricOverlap": false,
+    "horizontalOverflow": false,
+    "cards": [],
+    "actions": [
+      {
+        "label": "Work options",
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Add work",
+        "width": 332,
+        "height": 48
+      }
+    ],
+    "data": {
+      "totals": {
+        "earnedMinor": "0",
+        "receivedMinor": "0",
+        "outstandingMinor": "0"
+      },
+      "count": 0,
+      "lastTitle": null
+    },
+    "errors": []
+  },
+  {
+    "name": "earned-390-light",
+    "overflow": [],
+    "metricOverflow": [],
+    "metricOverlap": false,
+    "horizontalOverflow": false,
+    "cards": [
+      {
+        "name": "Work awaiting its first receipt, Independent studio, earned R$ 600,00, outstanding R$ 600,00, Outstanding, expected 5 de nov. de 2026, work 26 de out. de 2026, received R$ 0,00",
+        "text": "Work awaiting its first receiptIndependent studioWork 26 de out. de 2026Outstanding · Expected 5 de nov. de 2026R$ 600,00outstanding",
+        "height": 166,
+        "nestedButtons": 0
+      }
+    ],
+    "actions": [
+      {
+        "label": "Work options",
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Add work",
+        "width": 140,
+        "height": 48
+      },
+      {
+        "label": "Record payment",
+        "width": 184,
+        "height": 48
+      }
+    ],
+    "data": {
+      "totals": {
+        "earnedMinor": "60000",
+        "receivedMinor": "0",
+        "outstandingMinor": "60000"
+      },
+      "count": 1,
+      "lastTitle": "Work awaiting its first receipt"
+    },
+    "errors": []
+  },
+  {
+    "name": "partial-390-light",
+    "overflow": [],
+    "metricOverflow": [],
+    "metricOverlap": false,
+    "horizontalOverflow": false,
+    "cards": [
+      {
+        "name": "Partially received assignment, Independent studio, earned R$ 600,00, outstanding R$ 474,50, Overdue, expected 23 de out. de 2026, work 26 de out. de 2026, received R$ 125,50",
+        "text": "Partially received assignmentIndependent studioWork 26 de out. de 2026Received R$ 125,50 of R$ 600,00Overdue · Expected 23 de out. de 2026R$ 474,50outstanding",
+        "height": 210,
+        "nestedButtons": 0
+      }
+    ],
+    "actions": [
+      {
+        "label": "Work options",
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Add work",
+        "width": 140,
+        "height": 48
+      },
+      {
+        "label": "Record payment",
+        "width": 184,
+        "height": 48
+      }
+    ],
+    "data": {
+      "totals": {
+        "earnedMinor": "60000",
+        "receivedMinor": "12550",
+        "outstandingMinor": "47450"
+      },
+      "count": 1,
+      "lastTitle": "Partially received assignment"
+    },
+    "errors": []
+  },
+  {
+    "name": "settled-390-light",
+    "overflow": [],
+    "metricOverflow": [],
+    "metricOverlap": false,
+    "horizontalOverflow": false,
+    "cards": [],
+    "actions": [
+      {
+        "label": "Work options",
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Add work",
+        "width": 332,
+        "height": 48
+      }
+    ],
+    "data": {
+      "totals": {
+        "earnedMinor": "60000",
+        "receivedMinor": "60000",
+        "outstandingMinor": "0"
+      },
+      "count": 0,
+      "lastTitle": null
+    },
+    "errors": []
+  },
+  {
+    "name": "no-attention-390-light",
+    "overflow": [],
+    "metricOverflow": [],
+    "metricOverlap": false,
+    "horizontalOverflow": false,
+    "cards": [
+      {
+        "name": "Undated receivable, Independent studio, earned R$ 600,00, outstanding R$ 600,00, Outstanding, work 26 de out. de 2026, received R$ 0,00",
+        "text": "Undated receivableIndependent studioWork 26 de out. de 2026OutstandingR$ 600,00outstanding",
+        "height": 122,
+        "nestedButtons": 0
+      },
+      {
+        "name": "Expected today, Independent studio, earned R$ 600,00, outstanding R$ 600,00, Outstanding, expected 27 de out. de 2026, work 26 de out. de 2026, received R$ 0,00",
+        "text": "Expected todayIndependent studioWork 26 de out. de 2026Outstanding · Expected 27 de out. de 2026R$ 600,00outstanding",
+        "height": 142,
+        "nestedButtons": 0
+      }
+    ],
+    "actions": [
+      {
+        "label": "Work options",
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Add work",
+        "width": 140,
+        "height": 48
+      },
+      {
+        "label": "Record payment",
+        "width": 184,
+        "height": 48
+      }
+    ],
+    "data": {
+      "totals": {
+        "earnedMinor": "120000",
+        "receivedMinor": "0",
+        "outstandingMinor": "120000"
+      },
+      "count": 2,
+      "lastTitle": "Expected today"
+    },
+    "errors": []
+  },
+  {
+    "name": "long-client-390-light",
+    "overflow": [],
+    "metricOverflow": [],
+    "metricOverlap": false,
+    "horizontalOverflow": false,
+    "cards": [
+      {
+        "name": "Extensive service assignment with the full saved project title available without a one-line limit, Independent regional design and equipment service client with the complete historical client identity retained, earned R$ 600,00, outstanding R$ 600,00, Overdue, expected 20 de out. de 2026, work 26 de out. de 2026, received R$ 0,00",
+        "text": "Extensive service assignment with the full saved project title available without a one-line limitIndependent regional design and equipment service client with the complete historical client identity retainedAdditional saved context, distinct from title and clientWork 26 de out. de 2026Overdue · Expected 20 de out. de 2026R$ 600,00outstanding",
+        "height": 306,
+        "nestedButtons": 0
+      }
+    ],
+    "actions": [
+      {
+        "label": "Work options",
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Add work",
+        "width": 140,
+        "height": 48
+      },
+      {
+        "label": "Record payment",
+        "width": 184,
+        "height": 48
+      }
+    ],
+    "data": {
+      "totals": {
+        "earnedMinor": "60000",
+        "receivedMinor": "0",
+        "outstandingMinor": "60000"
+      },
+      "count": 1,
+      "lastTitle": "Extensive service assignment with the full saved project title available without a one-line limit"
+    },
+    "errors": []
+  },
+  {
+    "name": "collection-390-light",
+    "overflow": [],
+    "metricOverflow": [],
+    "metricOverlap": false,
+    "horizontalOverflow": false,
+    "cards": [
+      {
+        "name": "Service 053, Independent studio, earned R$ 600,00, outstanding R$ 600,00, Overdue, expected 20 de out. de 2026, work 26 de out. de 2026, received R$ 0,00",
+        "text": "Service 053Independent studioWork 26 de out. de 2026Overdue · Expected 20 de out. de 2026R$ 600,00outstanding",
+        "height": 142,
+        "nestedButtons": 0
+      },
+      {
+        "name": "Service 048, Independent studio, earned R$ 600,00, outstanding R$ 600,00, Overdue, expected 20 de out. de 2026, work 26 de out. de 2026, received R$ 0,00",
+        "text": "Service 048Independent studioWork 26 de out. de 2026Overdue · Expected 20 de out. de 2026R$ 600,00outstanding",
+        "height": 142,
+        "nestedButtons": 0
+      },
+      {
+        "name": "Service 041, Independent studio, earned R$ 600,00, outstanding R$ 600,00, Overdue, expected 20 de out. de 2026, work 26 de out. de 2026, received R$ 0,00",
+        "text": "Service 041Independent studioWork 26 de out. de 2026Overdue · Expected 20 de out. de 2026R$ 600,00outstanding",
+        "height": 142,
+        "nestedButtons": 0
+      },
+      {
+        "name": "Service 021, Independent studio, earned R$ 600,00, outstanding R$ 600,00, Overdue, expected 20 de out. de 2026, work 26 de out. de 2026, received R$ 0,00",
+        "text": "Service 021Independent studioWork 26 de out. de 2026Overdue · Expected 20 de out. de 2026R$ 600,00outstanding",
+        "height": 142,
+        "nestedButtons": 0
+      },
+      {
+        "name": "Service 010, Independent studio, earned R$ 600,00, outstanding R$ 600,00, Overdue, expected 20 de out. de 2026, work 26 de out. de 2026, received R$ 0,00",
+        "text": "Service 010Independent studioWork 26 de out. de 2026Overdue · Expected 20 de out. de 2026R$ 600,00outstanding",
+        "height": 142,
+        "nestedButtons": 0
+      },
+      {
+        "name": "Service 005, Independent studio, earned R$ 600,00, outstanding R$ 600,00, Overdue, expected 20 de out. de 2026, work 26 de out. de 2026, received R$ 0,00",
+        "text": "Service 005Independent studioWork 26 de out. de 2026Overdue · Expected 20 de out. de 2026R$ 600,00outstanding",
+        "height": 142,
+        "nestedButtons": 0
+      },
+      {
+        "name": "Service 050, Independent studio, earned R$ 600,00, outstanding R$ 600,00, Overdue, expected 20 de out. de 2026, work 26 de out. de 2026, received R$ 0,00",
+        "text": "Service 050Independent studioWork 26 de out. de 2026Overdue · Expected 20 de out. de 2026R$ 600,00outstanding",
+        "height": 142,
+        "nestedButtons": 0
+      },
+      {
+        "name": "Service 000, Independent studio, earned R$ 600,00, outstanding R$ 600,00, Overdue, expected 20 de out. de 2026, work 26 de out. de 2026, received R$ 0,00",
+        "text": "Service 000Independent studioWork 26 de out. de 2026Overdue · Expected 20 de out. de 2026R$ 600,00outstanding",
+        "height": 142,
+        "nestedButtons": 0
+      },
+      {
+        "name": "Service 014, Independent studio, earned R$ 600,00, outstanding R$ 600,00, Overdue, expected 20 de out. de 2026, work 26 de out. de 2026, received R$ 0,00",
+        "text": "Service 014Independent studioWork 26 de out. de 2026Overdue · Expected 20 de out. de 2026R$ 600,00outstanding",
+        "height": 142,
+        "nestedButtons": 0
+      },
+      {
+        "name": "Service 001, Independent studio, earned R$ 600,00, outstanding R$ 600,00, Overdue, expected 20 de out. de 2026, work 26 de out. de 2026, received R$ 0,00",
+        "text": "Service 001Independent studioWork 26 de out. de 2026Overdue · Expected 20 de out. de 2026R$ 600,00outstanding",
+        "height": 142,
+        "nestedButtons": 0
+      },
+      {
+        "name": "Service 025, Independent studio, earned R$ 600,00, outstanding R$ 600,00, Overdue, expected 20 de out. de 2026, work 26 de out. de 2026, received R$ 0,00",
+        "text": "Service 025Independent studioWork 26 de out. de 2026Overdue · Expected 20 de out. de 2026R$ 600,00outstanding",
+        "height": 142,
+        "nestedButtons": 0
+      }
+    ],
+    "actions": [
+      {
+        "label": "Work options",
+        "width": 48,
+        "height": 48
+      },
+      {
+        "label": "Add work",
+        "width": 140,
+        "height": 48
+      },
+      {
+        "label": "Record payment",
+        "width": 184,
+        "height": 48
+      }
+    ],
+    "data": {
+      "totals": {
+        "earnedMinor": "8400000",
+        "receivedMinor": "0",
+        "outstandingMinor": "8400000"
+      },
+      "count": 140,
+      "lastTitle": "Service 128"
+    },
+    "errors": []
+  }
+]

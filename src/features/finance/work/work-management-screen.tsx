@@ -1,6 +1,6 @@
 import { router } from 'expo-router';
 import { useRef } from 'react';
-import { ActivityIndicator, ScrollView, StyleSheet, View } from 'react-native';
+import { ActivityIndicator, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-screens/experimental';
 
 import { ContextMenuHost } from '@/components/context-menu';
@@ -9,9 +9,8 @@ import { FormButton } from '@/components/form-controls';
 import type { FormSelectionHandle } from '@/components/form-selection-host';
 import { SheetRefreshContext } from '@/components/sheet-refresh-notice';
 import { StatusText } from '@/components/status-text';
-import { ThemedText } from '@/components/themed-text';
+import { DesignProvider, UiText, useDesignColors } from '@/components/design-system';
 import { Space } from '@/constants/theme';
-import { useTheme } from '@/hooks/use-theme';
 
 import { useFinance } from '../use-finance';
 import { WorkView } from './components/work-view';
@@ -21,30 +20,29 @@ export function WorkHistoryScreen() { return <WorkManagementScreen destination="
 
 /** Card routes retain the underlying Finance workspace; editors/details keep their shared sheets. */
 function WorkManagementScreen({ destination }: { destination: 'clients' | 'history' }) {
-  const colors = useTheme();
+  const design = useDesignColors();
+  const clients = destination === 'clients';
   const menuHost = useRef<FormSelectionHandle>(null);
   const { snapshot, workAccess, access, mutate, error, reload } = useFinance('work', undefined, undefined, true);
-  return <SheetRefreshContext.Provider value={{ error, onRetry: reload }}>
-    <SafeAreaView edges={{ top: true, bottom: true, left: true, right: true }} style={{ flex: 1, backgroundColor: colors.background }}>
+  const content = snapshot?.work ? <WorkView destination={destination} data={snapshot.work} categories={snapshot.categories} access={workAccess} mutate={mutate}
+    onScroll={() => menuHost.current?.dismiss(false)} onCreateCategory={(name) => mutate(() => access.createCategory(name, 'income'))} />
+    : !error && <ActivityIndicator color={design.brand} accessibilityLabel={`Loading Work ${destination}`} />;
+  return <DesignProvider><SheetRefreshContext.Provider value={{ error, onRetry: reload }}>
+    <SafeAreaView edges={{ top: true, bottom: true, left: true, right: true }} style={{ flex: 1, backgroundColor: design.canvas }}>
       <ContextMenuHost ref={menuHost} safeAreaApplied>
         <View testID="work-management-header" style={[styles.inner, styles.header]}>
           <View style={styles.titleRow}>
-            <BackButton accessibilityLabel="Back to Work" onPress={() => {
+            <BackButton appearance="v2" iconOnly accessibilityLabel="Back to Work" onPress={() => {
               if (router.canGoBack()) router.back(); else router.replace('/work');
             }} />
-            <ThemedText type="screenTitle" accessibilityRole="header">{destination === 'clients' ? 'Clients' : 'History'}</ThemedText>
+            <UiText type="editorTitle" accessibilityRole="header" style={{ flexShrink: 1 }}>{clients ? 'Clients' : 'History'}</UiText>
           </View>
           {!!error && <View style={styles.notice}><StatusText tone="attention" accessibilityRole="alert">{error}</StatusText><FormButton variant="quiet" label="Retry" onPress={reload} /></View>}
         </View>
-        <ScrollView style={{ flex: 1 }} contentInsetAdjustmentBehavior="never" keyboardShouldPersistTaps="handled"
-          onScroll={() => menuHost.current?.dismiss(false)} scrollEventThrottle={16} contentContainerStyle={[styles.inner, styles.content]}>
-          {snapshot?.work ? <WorkView destination={destination} data={snapshot.work} categories={snapshot.categories} access={workAccess} mutate={mutate}
-            onCreateCategory={(name) => mutate(() => access.createCategory(name, 'income'))} />
-            : !error && <ActivityIndicator color={colors.accent} accessibilityLabel={`Loading Work ${destination}`} />}
-        </ScrollView>
+        <View style={[styles.inner, { flex: 1 }]}>{content}</View>
       </ContextMenuHost>
     </SafeAreaView>
-  </SheetRefreshContext.Provider>;
+  </SheetRefreshContext.Provider></DesignProvider>;
 }
 const styles = StyleSheet.create({
   inner: { width: '100%', maxWidth: 640, alignSelf: 'center' },

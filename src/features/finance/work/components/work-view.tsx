@@ -1,45 +1,46 @@
 import { router } from 'expo-router';
 import { useEffect, useRef, useState } from 'react';
-import { Alert, Pressable, StyleSheet, View, useWindowDimensions } from 'react-native';
+import { Alert, StyleSheet, View, useWindowDimensions, type NativeScrollEvent, type NativeSyntheticEvent } from 'react-native';
 
 import { ContextMenu } from '@/components/context-menu';
-import { FormButton, FormError, FormField } from '@/components/form-controls';
+import { FormButton, FormError } from '@/components/form-controls';
 import { StatusText } from '@/components/status-text';
 import { ThemedText } from '@/components/themed-text';
 import { ControlSize, Space } from '@/constants/theme';
-import { useTheme } from '@/hooks/use-theme';
-import { dateLabel } from '@/utils/calendar';
-import { canonicalSearchText } from '@/utils/text-normalization';
+
+
 
 import { stackFinanceMetrics } from '../../dashboard-presentation';
 import { financeError } from '../../errors';
-import { financeCategoryName } from '../../form';
+
 import { formatBrlAmount } from '../../money';
 import type { FinanceCategory } from '../../types';
 import type { WorkDataAccess } from '../data';
-import { groupWorkItems, jobTitle } from '../presentation';
 import type { WorkItem, WorkOverview, WorkPayment, WorkSnapshot, WorkTotals } from '../types';
 import { WorkEditor, WorkModal, WorkPaymentEditor, WorkSheet } from './work-forms';
 import { WorkHistoryList } from './work-history-list';
+import { WorkHistoryReceiptCard } from './work-history-cards';
 import { WorkRow } from './work-row';
+import { WorkMainList } from './work-main';
+import { WorkJobDetails } from './work-job-details';
+import { WorkClientsList } from './work-clients';
 
 type Dialog = { kind: 'edit'; id: string | null; partyId?: string } | { kind: 'details'; id: string }
   | { kind: 'payment'; id?: string; partyId?: string } | { kind: 'client'; partyId: string }
   | { kind: 'history'; partyId: string };
 
-export function WorkView({ data, categories, access, mutate, onCreateCategory, initialEntryId, destination = 'main' }: {
+export function WorkView({ data, categories, access, mutate, onCreateCategory, initialEntryId, destination = 'main', scrollOffset = 0, onScroll }: {
   data: WorkOverview; categories: FinanceCategory[]; access: WorkDataAccess; mutate: <T>(action: () => T) => T; onCreateCategory: (name: string) => FinanceCategory;
   initialEntryId?: string; destination?: 'main' | 'clients' | 'history';
+  scrollOffset?: number; onScroll?: (event: NativeSyntheticEvent<NativeScrollEvent>) => void;
 }) {
-  const colors = useTheme();
   const [dialog, setDialog] = useState<Dialog | null>(() => initialEntryId ? { kind: 'details', id: initialEntryId } : null);
   const [error, setError] = useState<string | null>(null);
-  const [name, setName] = useState('');
+
   const [receiptId, setReceiptId] = useState<string | null>(null);
-  const [search, setSearch] = useState('');
+
   const [focusedData, setFocusedData] = useState<WorkOverview | null>(null);
   const [detail, setDetail] = useState<WorkSnapshot | null>(null);
-  const { overdue, outstanding } = groupWorkItems(data.items);
   const selectedId = dialog && 'id' in dialog ? dialog.id ?? undefined : undefined;
   const current = selectedId ? detail?.items.find((item) => item.entry.id === selectedId) ?? data.items.find((item) => item.entry.id === selectedId) : undefined;
 
@@ -96,70 +97,21 @@ export function WorkView({ data, categories, access, mutate, onCreateCategory, i
   function archive(id: string) {
     confirm('Archive client?', 'Historical work and payments keep this name. This client will no longer be available for new work.', () => mutate(() => access.archiveCounterparty(id)));
   }
-  function paymentRow(payment: WorkPayment) {
-    const category = financeCategoryName(payment.transaction, categories);
-    const subject = `${payment.counterparty.name} payment of ${formatBrlAmount(payment.transaction.amountMinor)}, ${dateLabel(payment.transaction.transactionDate)}`;
-    return <View key={payment.transaction.id} testID="work-receipt" style={[styles.row, { borderColor: colors.border }]}>
-      <View style={styles.pair}>
-        <Pressable style={styles.body} accessibilityRole="button" accessibilityLabel={`Receipt from ${subject}`} accessibilityState={{ expanded: receiptId === payment.transaction.id }}
-          accessibilityHint="View the work covered by this receipt" onPress={() => setReceiptId(receiptId === payment.transaction.id ? null : payment.transaction.id)}>
-          <View style={styles.pair}><ThemedText type="cardTitle" style={styles.name}>{payment.counterparty.name}</ThemedText>
-            <ThemedText type="cardTitle" style={styles.amount}>{formatBrlAmount(payment.transaction.amountMinor)}</ThemedText></View>
-          <ThemedText type="metadata" themeColor="textSecondary">Received {dateLabel(payment.transaction.transactionDate)} · {payment.allocations.length} work {payment.allocations.length === 1 ? 'entry' : 'entries'}</ThemedText>
-          {!!category && <ThemedText type="metadata" themeColor="textSecondary">{category}</ThemedText>}
-        </Pressable>
-        <ContextMenu label={`Receipt options for ${subject}`} actions={[{ label: 'Undo payment', accessibilityLabel: `Undo ${subject}`, onPress: () => undo(payment) }]} />
-      </View>
-      {receiptId === payment.transaction.id && payment.allocations.map((allocation) => <ThemedText key={allocation.id} type="secondary" themeColor="textSecondary">{jobTitle(allocation)} · Received {formatBrlAmount(allocation.amountMinor)}</ThemedText>)}
-    </View>;
+  function paymentRow(payment: WorkPayment, position: number, count: number) {
+    return <WorkHistoryReceiptCard key={payment.transaction.id} payment={payment} categories={categories} position={position} count={count}
+      expanded={receiptId === payment.transaction.id} onToggle={() => setReceiptId(receiptId === payment.transaction.id ? null : payment.transaction.id)} onUndo={() => undo(payment)} />;
   }
-  return <View style={styles.section}>
-    {destination === 'main' && <>
-    <View style={styles.heading}>
-      <ThemedText type="sectionHeading" accessibilityRole="header" style={styles.name}>Work</ThemedText>
-      <ContextMenu label="Work options" actions={[
-        { label: 'Clients', onPress: () => router.push('/work/clients') }, { label: 'History', onPress: () => router.push('/work/history') },
-      ]} />
-    </View>
-    <WorkSummary totals={data.totals} />
-    <ThemedText type="metadata" themeColor="textSecondary">All work, independent of the Overview period. Earned becomes Finance Income only when received.</ThemedText>
-    <View style={styles.actions}>
-      <FormButton variant={data.totals.outstandingMinor > 0n ? 'secondary' : 'primary'} label="Add work" onPress={() => open({ kind: 'edit', id: null })} />
-      {data.totals.outstandingMinor > 0n && <FormButton variant="primary" label="Record payment" onPress={() => open({ kind: 'payment' })} />}
-    </View>
-    <FormError message={error} />
-    {!data.items.length && !data.settledCount && <ThemedText type="secondary" themeColor="textSecondary">No work yet. Add Hourly or Fixed work, then record payments when money arrives.</ThemedText>}
-    {!!overdue.length && <View testID="work-attention" style={styles.section}>
-      <ThemedText type="sectionHeading" themeColor="warning" accessibilityRole="header">Needs attention ({overdue.length})</ThemedText>
-      {overdue.map((item) => <WorkRow key={item.entry.id} item={item} onPress={() => open({ kind: 'details', id: item.entry.id })} />)}
-    </View>}
-    <View testID="work-jobs" style={styles.section}>
-      <ThemedText type="sectionHeading" accessibilityRole="header">Jobs</ThemedText>
-      {outstanding.map((item) => <WorkRow key={item.entry.id} item={item} onPress={() => open({ kind: 'details', id: item.entry.id })} />)}
-      {!outstanding.length && !!overdue.length && <ThemedText type="secondary" themeColor="textSecondary">All open jobs need attention above.</ThemedText>}
-      {!!(data.items.length + data.settledCount) && !data.items.length && <ThemedText type="secondary" themeColor="textSecondary">Nothing outstanding. Open History to review settled jobs and receipts.</ThemedText>}
-    </View>
-    </>}
-    {destination === 'clients' && <View testID="work-clients-content" style={styles.section}>
-        <FormField label="Search clients" value={search} onChangeText={setSearch} />
-        <View style={styles.section}><ThemedText type="cardTitle" accessibilityRole="header">New client</ThemedText>
-          <FormField label="Name *" value={name} onChangeText={(value) => { setName(value); setError(null); }} />
-          <View style={styles.actions}><FormButton variant="primary" label="Create client" disabled={!name.trim()} onPress={() => run(() => { mutate(() => access.createCounterparty(name)); setName(''); })} /></View>
-        </View>
-        {(['Active', 'Archived'] as const).map((status) => <View key={status} style={styles.section}>
-          <ThemedText type="cardTitle" accessibilityRole="header">{status} clients</ThemedText>
-          {data.counterparties.filter((party) => (party.deletedAt !== null) === (status === 'Archived') && canonicalSearchText(party.name).includes(canonicalSearchText(search))).map((party) => <View key={party.id} style={[styles.row, styles.pair, { borderColor: colors.border }]}>
-            <Pressable style={styles.body} accessibilityRole="button" accessibilityLabel={`Open ${party.name} details`} onPress={() => open({ kind: 'client', partyId: party.id })}><ThemedText type="cardTitle">{party.name}</ThemedText><ThemedText type="secondary" themeColor="textSecondary">Outstanding {formatBrlAmount(totalsByClient.get(party.id)?.outstandingMinor ?? 0n)}</ThemedText></Pressable>
-            <ContextMenu label={`Client options for ${party.name}`} actions={[
-              { label: 'History', onPress: () => open({ kind: 'history', partyId: party.id }) },
-              ...(party.deletedAt === null ? [{ label: 'Archive', accessibilityLabel: `Archive ${party.name}`, onPress: () => archive(party.id) }] : []),
-            ]} />
-          </View>)}
-        </View>)}
-    </View>}
-    {destination === 'history' && <WorkHistoryList access={access} refreshToken={data}
+  return <View style={styles.main}>
+    {destination === 'main' && <WorkMainList data={data} error={error} scrollOffset={scrollOffset} onScroll={onScroll}
+      onAdd={() => open({ kind: 'edit', id: null })} onPayment={() => open({ kind: 'payment' })}
+      onOpen={item => open({ kind: 'details', id: item.entry.id })}
+      onClients={() => router.push('/work/clients')} onHistory={() => router.push('/work/history')} />}
+    {destination === 'clients' && <WorkClientsList data={data} error={error} onScroll={onScroll}
+      onCreate={value => mutate(() => access.createCounterparty(value))}
+      onOpen={id => open({ kind: 'client', partyId: id })} onHistory={id => open({ kind: 'history', partyId: id })} onArchive={archive} />}
+    {destination === 'history' && <WorkHistoryList access={access} refreshToken={data} actionError={error} onScroll={onScroll}
       onOpenJob={(item) => open({ kind: 'details', id: item.entry.id })} renderReceipt={paymentRow} />}
-    {destination !== 'main' && <FormError message={error} />}
+
     {dialog && <WorkModal onDismiss={() => setDialog(null)}>
       {dialog.kind === 'edit' && <WorkEditor key={dialog.id ?? `new:${dialog.partyId ?? ''}`} item={current ?? null} initialCounterpartyId={dialog.partyId} counterparties={data.counterparties}
         onCreateCounterparty={(value) => mutate(() => access.createCounterparty(value))} onDismiss={() => setDialog(null)}
@@ -182,28 +134,16 @@ export function WorkView({ data, categories, access, mutate, onCreateCategory, i
         {!openClientItems.length && <ThemedText type="secondary" themeColor="textSecondary">No open work. History keeps settled entries and receipts.</ThemedText>}
         {[...openClientItems].sort((a, b) => Number(b.overdue) - Number(a.overdue)).map((item) => <WorkRow key={item.entry.id} item={item} onPress={() => open({ kind: 'details', id: item.entry.id })} />)}
       </WorkSheet>}
-      {dialog.kind === 'details' && <WorkSheet title="Job details" onDismiss={() => setDialog(null)}>
-        <FormError message={error} />
-        {current ? <>
-          <WorkRow item={current} detail />
-          <View style={styles.actions}>
-            {!!current.outstandingMinor && <FormButton variant="primary" label="Record payment" accessibilityLabel={`Record payment for ${jobTitle(current.entry)}`} onPress={() => open({ kind: 'payment', id: current.entry.id })} />}
-            <ContextMenu label={`Work options for ${jobTitle(current.entry)}`} actions={[
-              { label: 'Edit', accessibilityLabel: `Edit ${jobTitle(current.entry)}`, onPress: () => open({ kind: 'edit', id: current.entry.id }) },
-              { label: 'Client details', onPress: () => open({ kind: 'client', partyId: current.counterparty.id }) },
-              ...(current.receivedMinor === 0 ? [{ label: 'Delete', variant: 'destructive' as const, accessibilityLabel: `Delete ${jobTitle(current.entry)}`, onPress: () => remove(current) }] : []),
-            ]} />
-          </View>
-          {current.receivedMinor > 0 && <ThemedText type="secondary" themeColor="textSecondary">Undo payments before deleting this work entry.</ThemedText>}
-          <ThemedText type="cardTitle" accessibilityRole="header">Receipts</ThemedText>
-          {detail?.payments.filter((payment) => payment.allocations.some((allocation) => allocation.workEntryId === current.entry.id)).map(paymentRow)}
-          {!current.receivedMinor && <ThemedText type="secondary" themeColor="textSecondary">No money received for this work yet.</ThemedText>}
-        </> : <ThemedText>This work entry is no longer available.</ThemedText>}
-      </WorkSheet>}
-      {dialog.kind === 'history' && <WorkSheet title={client ? client.name + ' · History' : 'Client history'} onDismiss={() => setDialog(null)}>
-        <WorkHistoryList access={access} refreshToken={data} counterpartyId={dialog.partyId}
-          onOpenJob={(item) => open({ kind: 'details', id: item.entry.id })} renderReceipt={paymentRow} />
-      </WorkSheet>}
+      {dialog.kind === 'details' && <WorkJobDetails item={current} payments={detail?.items.some(item => item.entry.id === dialog.id) ? detail.payments : null}
+        categories={categories} error={error} loading={detail === null && !error} expandedReceiptId={receiptId}
+        onToggleReceipt={id => setReceiptId(receiptId === id ? null : id)} onDismiss={() => setDialog(null)}
+        onPayment={() => current && open({ kind: 'payment', id: current.entry.id })}
+        onEdit={() => current && open({ kind: 'edit', id: current.entry.id })}
+        onClient={() => current && open({ kind: 'client', partyId: current.counterparty.id })}
+        onDelete={() => current && remove(current)} onUndo={undo} />}
+      {dialog.kind === 'history' && <WorkSheet appearance="v2" fillHeight title={client ? client.name + ' · History' : 'Client history'} onDismiss={() => setDialog(null)}
+        scrollBody={<WorkHistoryList sheet access={access} refreshToken={data} counterpartyId={dialog.partyId} actionError={error}
+          onOpenJob={(item) => open({ kind: 'details', id: item.entry.id })} renderReceipt={paymentRow} />} />}
     </WorkModal>}
   </View>;
 }
@@ -224,6 +164,7 @@ function WorkSummary({ totals }: { totals: WorkTotals }) {
   </View>;
 }
 const styles = StyleSheet.create({
+  main: { flex: 1 },
   section: { gap: Space.lg }, heading: { flexDirection: 'row', alignItems: 'center', gap: Space.sm },
   row: { paddingVertical: Space.md, gap: Space.sm, minHeight: ControlSize.touch, borderBottomWidth: 1 },
   pair: { flexDirection: 'row', flexWrap: 'wrap', gap: Space.sm, alignItems: 'center' },

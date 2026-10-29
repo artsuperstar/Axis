@@ -1,0 +1,706 @@
+[
+  {
+    "name": "unpaid-dark",
+    "scenario": "unpaid",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "unpaid-dark-top.png",
+      "unpaid-dark-overview-details.png",
+      "unpaid-dark-information.png",
+      "unpaid-dark-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "hourly-dark",
+    "scenario": "hourly",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "hourly-dark-top.png",
+      "hourly-dark-overview-details.png",
+      "hourly-dark-information.png",
+      "hourly-dark-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "partial-dark",
+    "scenario": "partial",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "partial-dark-top.png",
+      "partial-dark-overview-details.png",
+      "partial-dark-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "paid-dark",
+    "scenario": "paid",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "paid-dark-top.png",
+      "paid-dark-overview-details.png",
+      "paid-dark-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "future-dark",
+    "scenario": "future",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "future-dark-top.png",
+      "future-dark-overview-details.png",
+      "future-dark-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "noExpected-dark",
+    "scenario": "noExpected",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "noExpected-dark-top.png",
+      "noExpected-dark-overview-details.png",
+      "noExpected-dark-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "archived-dark",
+    "scenario": "archived",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "archived-dark-top.png",
+      "archived-dark-overview-details.png",
+      "archived-dark-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "longDescription-dark",
+    "scenario": "longDescription",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "longDescription-dark-top.png",
+      "longDescription-dark-overview-details.png",
+      "longDescription-dark-information.png",
+      "longDescription-dark-description.png",
+      "longDescription-dark-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "emptyDescription-dark",
+    "scenario": "emptyDescription",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "emptyDescription-dark-top.png",
+      "emptyDescription-dark-overview-details.png",
+      "emptyDescription-dark-information.png",
+      "emptyDescription-dark-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stressOutstanding-dark",
+    "scenario": "stressOutstanding",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "stressOutstanding-dark-top.png",
+      "stressOutstanding-dark-overview-details.png",
+      "stressOutstanding-dark-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stressReceived-dark",
+    "scenario": "stressReceived",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "stressReceived-dark-top.png",
+      "stressReceived-dark-overview-details.png",
+      "stressReceived-dark-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "shared-dark",
+    "scenario": "shared",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "shared-dark-top.png",
+      "shared-dark-overview-details.png",
+      "shared-dark-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "multiple-dark",
+    "scenario": "multiple",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "multiple-dark-top.png",
+      "multiple-dark-overview-details.png",
+      "multiple-dark-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "many-dark",
+    "scenario": "many",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "mounted": 15,
+    "captures": [
+      "many-dark-top.png",
+      "many-dark-overview-details.png",
+      "many-dark-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stressReceived-dark-320-1",
+    "scenario": "stressReceived",
+    "theme": "dark",
+    "width": 320,
+    "scale": 1,
+    "captures": [
+      "stressReceived-dark-320-1-top.png",
+      "stressReceived-dark-320-1-overview-details.png",
+      "stressReceived-dark-320-1-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stressReceived-dark-320-2",
+    "scenario": "stressReceived",
+    "theme": "dark",
+    "width": 320,
+    "scale": 2,
+    "captures": [
+      "stressReceived-dark-320-2-top.png",
+      "stressReceived-dark-320-2-overview-details.png",
+      "stressReceived-dark-320-2-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stressReceived-dark-390-2",
+    "scenario": "stressReceived",
+    "theme": "dark",
+    "width": 390,
+    "scale": 2,
+    "captures": [
+      "stressReceived-dark-390-2-top.png",
+      "stressReceived-dark-390-2-overview-details.png",
+      "stressReceived-dark-390-2-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stressReceived-dark-430-1",
+    "scenario": "stressReceived",
+    "theme": "dark",
+    "width": 430,
+    "scale": 1,
+    "captures": [
+      "stressReceived-dark-430-1-top.png",
+      "stressReceived-dark-430-1-overview-details.png",
+      "stressReceived-dark-430-1-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stressReceived-dark-430-2",
+    "scenario": "stressReceived",
+    "theme": "dark",
+    "width": 430,
+    "scale": 2,
+    "captures": [
+      "stressReceived-dark-430-2-top.png",
+      "stressReceived-dark-430-2-overview-details.png",
+      "stressReceived-dark-430-2-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stressOutstanding-dark-320-2",
+    "scenario": "stressOutstanding",
+    "theme": "dark",
+    "width": 320,
+    "scale": 2,
+    "captures": [
+      "stressOutstanding-dark-320-2-top.png",
+      "stressOutstanding-dark-320-2-overview-details.png",
+      "stressOutstanding-dark-320-2-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stressOutstanding-dark-390-2",
+    "scenario": "stressOutstanding",
+    "theme": "dark",
+    "width": 390,
+    "scale": 2,
+    "captures": [
+      "stressOutstanding-dark-390-2-top.png",
+      "stressOutstanding-dark-390-2-overview-details.png",
+      "stressOutstanding-dark-390-2-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stressOutstanding-dark-430-2",
+    "scenario": "stressOutstanding",
+    "theme": "dark",
+    "width": 430,
+    "scale": 2,
+    "captures": [
+      "stressOutstanding-dark-430-2-top.png",
+      "stressOutstanding-dark-430-2-overview-details.png",
+      "stressOutstanding-dark-430-2-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "payment-dark",
+    "scenario": "unpaid",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "action": "payment",
+    "captures": [
+      "payment-dark-action.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "edit-dark",
+    "scenario": "unpaid",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "action": "edit",
+    "captures": [
+      "edit-dark-action.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "menu-dark",
+    "scenario": "unpaid",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "action": "menu",
+    "captures": [
+      "menu-dark-action.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "client-dark",
+    "scenario": "unpaid",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "action": "client",
+    "captures": [
+      "client-dark-action.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "disclosure-dark",
+    "scenario": "shared",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "action": "disclosure",
+    "captures": [
+      "disclosure-dark-action.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "unpaid-light",
+    "scenario": "unpaid",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "unpaid-light-top.png",
+      "unpaid-light-overview-details.png",
+      "unpaid-light-information.png",
+      "unpaid-light-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "hourly-light",
+    "scenario": "hourly",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "hourly-light-top.png",
+      "hourly-light-overview-details.png",
+      "hourly-light-information.png",
+      "hourly-light-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "partial-light",
+    "scenario": "partial",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "partial-light-top.png",
+      "partial-light-overview-details.png",
+      "partial-light-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "paid-light",
+    "scenario": "paid",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "paid-light-top.png",
+      "paid-light-overview-details.png",
+      "paid-light-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "future-light",
+    "scenario": "future",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "future-light-top.png",
+      "future-light-overview-details.png",
+      "future-light-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "noExpected-light",
+    "scenario": "noExpected",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "noExpected-light-top.png",
+      "noExpected-light-overview-details.png",
+      "noExpected-light-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "archived-light",
+    "scenario": "archived",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "archived-light-top.png",
+      "archived-light-overview-details.png",
+      "archived-light-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "longDescription-light",
+    "scenario": "longDescription",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "longDescription-light-top.png",
+      "longDescription-light-overview-details.png",
+      "longDescription-light-information.png",
+      "longDescription-light-description.png",
+      "longDescription-light-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "emptyDescription-light",
+    "scenario": "emptyDescription",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "emptyDescription-light-top.png",
+      "emptyDescription-light-overview-details.png",
+      "emptyDescription-light-information.png",
+      "emptyDescription-light-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stressOutstanding-light",
+    "scenario": "stressOutstanding",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "stressOutstanding-light-top.png",
+      "stressOutstanding-light-overview-details.png",
+      "stressOutstanding-light-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stressReceived-light",
+    "scenario": "stressReceived",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "stressReceived-light-top.png",
+      "stressReceived-light-overview-details.png",
+      "stressReceived-light-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "shared-light",
+    "scenario": "shared",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "shared-light-top.png",
+      "shared-light-overview-details.png",
+      "shared-light-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "multiple-light",
+    "scenario": "multiple",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "multiple-light-top.png",
+      "multiple-light-overview-details.png",
+      "multiple-light-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "many-light",
+    "scenario": "many",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "mounted": 15,
+    "captures": [
+      "many-light-top.png",
+      "many-light-overview-details.png",
+      "many-light-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stressReceived-light-320-1",
+    "scenario": "stressReceived",
+    "theme": "light",
+    "width": 320,
+    "scale": 1,
+    "captures": [
+      "stressReceived-light-320-1-top.png",
+      "stressReceived-light-320-1-overview-details.png",
+      "stressReceived-light-320-1-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stressReceived-light-320-2",
+    "scenario": "stressReceived",
+    "theme": "light",
+    "width": 320,
+    "scale": 2,
+    "captures": [
+      "stressReceived-light-320-2-top.png",
+      "stressReceived-light-320-2-overview-details.png",
+      "stressReceived-light-320-2-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stressReceived-light-390-2",
+    "scenario": "stressReceived",
+    "theme": "light",
+    "width": 390,
+    "scale": 2,
+    "captures": [
+      "stressReceived-light-390-2-top.png",
+      "stressReceived-light-390-2-overview-details.png",
+      "stressReceived-light-390-2-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stressReceived-light-430-1",
+    "scenario": "stressReceived",
+    "theme": "light",
+    "width": 430,
+    "scale": 1,
+    "captures": [
+      "stressReceived-light-430-1-top.png",
+      "stressReceived-light-430-1-overview-details.png",
+      "stressReceived-light-430-1-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stressReceived-light-430-2",
+    "scenario": "stressReceived",
+    "theme": "light",
+    "width": 430,
+    "scale": 2,
+    "captures": [
+      "stressReceived-light-430-2-top.png",
+      "stressReceived-light-430-2-overview-details.png",
+      "stressReceived-light-430-2-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stressOutstanding-light-320-2",
+    "scenario": "stressOutstanding",
+    "theme": "light",
+    "width": 320,
+    "scale": 2,
+    "captures": [
+      "stressOutstanding-light-320-2-top.png",
+      "stressOutstanding-light-320-2-overview-details.png",
+      "stressOutstanding-light-320-2-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stressOutstanding-light-390-2",
+    "scenario": "stressOutstanding",
+    "theme": "light",
+    "width": 390,
+    "scale": 2,
+    "captures": [
+      "stressOutstanding-light-390-2-top.png",
+      "stressOutstanding-light-390-2-overview-details.png",
+      "stressOutstanding-light-390-2-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stressOutstanding-light-430-2",
+    "scenario": "stressOutstanding",
+    "theme": "light",
+    "width": 430,
+    "scale": 2,
+    "captures": [
+      "stressOutstanding-light-430-2-top.png",
+      "stressOutstanding-light-430-2-overview-details.png",
+      "stressOutstanding-light-430-2-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "payment-light",
+    "scenario": "unpaid",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "action": "payment",
+    "captures": [
+      "payment-light-action.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "edit-light",
+    "scenario": "unpaid",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "action": "edit",
+    "captures": [
+      "edit-light-action.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "menu-light",
+    "scenario": "unpaid",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "action": "menu",
+    "captures": [
+      "menu-light-action.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "client-light",
+    "scenario": "unpaid",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "action": "client",
+    "captures": [
+      "client-light-action.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "disclosure-light",
+    "scenario": "shared",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "action": "disclosure",
+    "captures": [
+      "disclosure-light-action.png"
+    ],
+    "errors": []
+  }
+]

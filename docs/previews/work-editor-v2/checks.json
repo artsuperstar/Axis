@@ -1,0 +1,1601 @@
+[
+  {
+    "name": "stress-fixed-320-dark-1",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "sections": [
+      "editor-section-job",
+      "editor-section-work details",
+      "editor-section-compensation",
+      "editor-section-payment expectation"
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "left": 12,
+        "right": 81.859375,
+        "top": 97,
+        "bottom": 145,
+        "width": 69.859375,
+        "height": 48
+      },
+      {
+        "label": "Save",
+        "left": 245.375,
+        "right": 308,
+        "top": 97,
+        "bottom": 145,
+        "width": 62.625,
+        "height": 48
+      }
+    ],
+    "multiline": [
+      {
+        "label": "Description",
+        "scrollHeight": 1096,
+        "clientHeight": 1094,
+        "clipped": false
+      }
+    ],
+    "earned": "Earned: R$ 90.071.992.547.409,91",
+    "errors": []
+  },
+  {
+    "name": "stress-fixed-320-dark-2",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "sections": [
+      "editor-section-job",
+      "editor-section-work details",
+      "editor-section-compensation",
+      "editor-section-payment expectation"
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "left": 12,
+        "right": 131.703125,
+        "top": 129,
+        "bottom": 193,
+        "width": 119.703125,
+        "height": 64
+      },
+      {
+        "label": "Save",
+        "left": 210.765625,
+        "right": 308,
+        "top": 129,
+        "bottom": 193,
+        "width": 97.234375,
+        "height": 64
+      }
+    ],
+    "multiline": [
+      {
+        "label": "Description",
+        "scrollHeight": 4336,
+        "clientHeight": 4334,
+        "clipped": false
+      }
+    ],
+    "earned": "Earned: R$ 90.071.992.547.409,91",
+    "errors": []
+  },
+  {
+    "name": "stress-fixed-390-dark-1",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "sections": [
+      "editor-section-job",
+      "editor-section-work details",
+      "editor-section-compensation",
+      "editor-section-payment expectation"
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "left": 12,
+        "right": 81.859375,
+        "top": 57,
+        "bottom": 105,
+        "width": 69.859375,
+        "height": 48
+      },
+      {
+        "label": "Save",
+        "left": 315.375,
+        "right": 378,
+        "top": 57,
+        "bottom": 105,
+        "width": 62.625,
+        "height": 48
+      }
+    ],
+    "multiline": [
+      {
+        "label": "Description",
+        "scrollHeight": 736,
+        "clientHeight": 734,
+        "clipped": false
+      }
+    ],
+    "earned": "Earned: R$ 90.071.992.547.409,91",
+    "errors": []
+  },
+  {
+    "name": "stress-fixed-390-dark-2",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "sections": [
+      "editor-section-job",
+      "editor-section-work details",
+      "editor-section-compensation",
+      "editor-section-payment expectation"
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "left": 12,
+        "right": 131.703125,
+        "top": 129,
+        "bottom": 193,
+        "width": 119.703125,
+        "height": 64
+      },
+      {
+        "label": "Save",
+        "left": 280.765625,
+        "right": 378,
+        "top": 129,
+        "bottom": 193,
+        "width": 97.234375,
+        "height": 64
+      }
+    ],
+    "multiline": [
+      {
+        "label": "Description",
+        "scrollHeight": 2896,
+        "clientHeight": 2894,
+        "clipped": false
+      }
+    ],
+    "earned": "Earned: R$ 90.071.992.547.409,91",
+    "errors": []
+  },
+  {
+    "name": "stress-fixed-430-dark-1",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "sections": [
+      "editor-section-job",
+      "editor-section-work details",
+      "editor-section-compensation",
+      "editor-section-payment expectation"
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "left": 12,
+        "right": 81.859375,
+        "top": 57,
+        "bottom": 105,
+        "width": 69.859375,
+        "height": 48
+      },
+      {
+        "label": "Save",
+        "left": 355.375,
+        "right": 418,
+        "top": 57,
+        "bottom": 105,
+        "width": 62.625,
+        "height": 48
+      }
+    ],
+    "multiline": [
+      {
+        "label": "Description",
+        "scrollHeight": 736,
+        "clientHeight": 734,
+        "clipped": false
+      }
+    ],
+    "earned": "Earned: R$ 90.071.992.547.409,91",
+    "errors": []
+  },
+  {
+    "name": "stress-fixed-430-dark-2",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "sections": [
+      "editor-section-job",
+      "editor-section-work details",
+      "editor-section-compensation",
+      "editor-section-payment expectation"
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "left": 12,
+        "right": 131.703125,
+        "top": 129,
+        "bottom": 193,
+        "width": 119.703125,
+        "height": 64
+      },
+      {
+        "label": "Save",
+        "left": 320.765625,
+        "right": 418,
+        "top": 129,
+        "bottom": 193,
+        "width": 97.234375,
+        "height": 64
+      }
+    ],
+    "multiline": [
+      {
+        "label": "Description",
+        "scrollHeight": 2896,
+        "clientHeight": 2894,
+        "clipped": false
+      }
+    ],
+    "earned": "Earned: R$ 90.071.992.547.409,91",
+    "errors": []
+  },
+  {
+    "name": "new-hourly-dark",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "sections": [
+      "editor-section-job",
+      "editor-section-work details",
+      "editor-section-compensation",
+      "editor-section-payment expectation"
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "left": 12,
+        "right": 81.859375,
+        "top": 57,
+        "bottom": 105,
+        "width": 69.859375,
+        "height": 48
+      },
+      {
+        "label": "Save",
+        "left": 315.375,
+        "right": 378,
+        "top": 57,
+        "bottom": 105,
+        "width": 62.625,
+        "height": 48
+      }
+    ],
+    "multiline": [
+      {
+        "label": "Description",
+        "scrollHeight": 94,
+        "clientHeight": 94,
+        "clipped": false
+      }
+    ],
+    "earned": "Earned: Enter compensation terms",
+    "errors": []
+  },
+  {
+    "name": "new-fixed-dark",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "sections": [
+      "editor-section-job",
+      "editor-section-work details",
+      "editor-section-compensation",
+      "editor-section-payment expectation"
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "left": 12,
+        "right": 81.859375,
+        "top": 57,
+        "bottom": 105,
+        "width": 69.859375,
+        "height": 48
+      },
+      {
+        "label": "Save",
+        "left": 315.375,
+        "right": 378,
+        "top": 57,
+        "bottom": 105,
+        "width": 62.625,
+        "height": 48
+      }
+    ],
+    "multiline": [
+      {
+        "label": "Description",
+        "scrollHeight": 94,
+        "clientHeight": 94,
+        "clipped": false
+      }
+    ],
+    "earned": "Earned: Enter compensation terms",
+    "errors": []
+  },
+  {
+    "name": "editHourly-dark",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "sections": [
+      "editor-section-job",
+      "editor-section-work details",
+      "editor-section-compensation",
+      "editor-section-payment expectation"
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "left": 12,
+        "right": 81.859375,
+        "top": 57,
+        "bottom": 105,
+        "width": 69.859375,
+        "height": 48
+      },
+      {
+        "label": "Save",
+        "left": 315.375,
+        "right": 378,
+        "top": 57,
+        "bottom": 105,
+        "width": 62.625,
+        "height": 48
+      }
+    ],
+    "multiline": [
+      {
+        "label": "Description",
+        "scrollHeight": 94,
+        "clientHeight": 94,
+        "clipped": false
+      }
+    ],
+    "earned": "Earned: R$ 125,00",
+    "errors": []
+  },
+  {
+    "name": "editFixed-dark",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "sections": [
+      "editor-section-job",
+      "editor-section-work details",
+      "editor-section-compensation",
+      "editor-section-payment expectation"
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "left": 12,
+        "right": 81.859375,
+        "top": 57,
+        "bottom": 105,
+        "width": 69.859375,
+        "height": 48
+      },
+      {
+        "label": "Save",
+        "left": 315.375,
+        "right": 378,
+        "top": 57,
+        "bottom": 105,
+        "width": 62.625,
+        "height": 48
+      }
+    ],
+    "multiline": [
+      {
+        "label": "Description",
+        "scrollHeight": 94,
+        "clientHeight": 94,
+        "clipped": false
+      }
+    ],
+    "earned": "Earned: R$ 1.000,00",
+    "errors": []
+  },
+  {
+    "name": "paid-dark",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "sections": [
+      "editor-section-job",
+      "editor-section-work details",
+      "editor-section-compensation",
+      "editor-section-payment expectation"
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "left": 12,
+        "right": 81.859375,
+        "top": 57,
+        "bottom": 105,
+        "width": 69.859375,
+        "height": 48
+      },
+      {
+        "label": "Save",
+        "left": 315.375,
+        "right": 378,
+        "top": 57,
+        "bottom": 105,
+        "width": 62.625,
+        "height": 48
+      }
+    ],
+    "multiline": [
+      {
+        "label": "Description",
+        "scrollHeight": 94,
+        "clientHeight": 94,
+        "clipped": false
+      }
+    ],
+    "earned": "Earned: R$ 1.000,00",
+    "errors": []
+  },
+  {
+    "name": "stressHourly-dark",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "sections": [
+      "editor-section-job",
+      "editor-section-work details",
+      "editor-section-compensation",
+      "editor-section-payment expectation"
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "left": 12,
+        "right": 131.703125,
+        "top": 129,
+        "bottom": 193,
+        "width": 119.703125,
+        "height": 64
+      },
+      {
+        "label": "Save",
+        "left": 280.765625,
+        "right": 378,
+        "top": 129,
+        "bottom": 193,
+        "width": 97.234375,
+        "height": 64
+      }
+    ],
+    "multiline": [
+      {
+        "label": "Description",
+        "scrollHeight": 2896,
+        "clientHeight": 2894,
+        "clipped": false
+      }
+    ],
+    "earned": "Earned: R$ 90.071.992.547.409,91",
+    "errors": []
+  },
+  {
+    "name": "stress-fixed-320-light-1",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "sections": [
+      "editor-section-job",
+      "editor-section-work details",
+      "editor-section-compensation",
+      "editor-section-payment expectation"
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "left": 12,
+        "right": 81.859375,
+        "top": 97,
+        "bottom": 145,
+        "width": 69.859375,
+        "height": 48
+      },
+      {
+        "label": "Save",
+        "left": 245.375,
+        "right": 308,
+        "top": 97,
+        "bottom": 145,
+        "width": 62.625,
+        "height": 48
+      }
+    ],
+    "multiline": [
+      {
+        "label": "Description",
+        "scrollHeight": 1096,
+        "clientHeight": 1094,
+        "clipped": false
+      }
+    ],
+    "earned": "Earned: R$ 90.071.992.547.409,91",
+    "errors": []
+  },
+  {
+    "name": "stress-fixed-320-light-2",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "sections": [
+      "editor-section-job",
+      "editor-section-work details",
+      "editor-section-compensation",
+      "editor-section-payment expectation"
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "left": 12,
+        "right": 131.703125,
+        "top": 129,
+        "bottom": 193,
+        "width": 119.703125,
+        "height": 64
+      },
+      {
+        "label": "Save",
+        "left": 210.765625,
+        "right": 308,
+        "top": 129,
+        "bottom": 193,
+        "width": 97.234375,
+        "height": 64
+      }
+    ],
+    "multiline": [
+      {
+        "label": "Description",
+        "scrollHeight": 4336,
+        "clientHeight": 4334,
+        "clipped": false
+      }
+    ],
+    "earned": "Earned: R$ 90.071.992.547.409,91",
+    "errors": []
+  },
+  {
+    "name": "stress-fixed-390-light-1",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "sections": [
+      "editor-section-job",
+      "editor-section-work details",
+      "editor-section-compensation",
+      "editor-section-payment expectation"
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "left": 12,
+        "right": 81.859375,
+        "top": 57,
+        "bottom": 105,
+        "width": 69.859375,
+        "height": 48
+      },
+      {
+        "label": "Save",
+        "left": 315.375,
+        "right": 378,
+        "top": 57,
+        "bottom": 105,
+        "width": 62.625,
+        "height": 48
+      }
+    ],
+    "multiline": [
+      {
+        "label": "Description",
+        "scrollHeight": 736,
+        "clientHeight": 734,
+        "clipped": false
+      }
+    ],
+    "earned": "Earned: R$ 90.071.992.547.409,91",
+    "errors": []
+  },
+  {
+    "name": "stress-fixed-390-light-2",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "sections": [
+      "editor-section-job",
+      "editor-section-work details",
+      "editor-section-compensation",
+      "editor-section-payment expectation"
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "left": 12,
+        "right": 131.703125,
+        "top": 129,
+        "bottom": 193,
+        "width": 119.703125,
+        "height": 64
+      },
+      {
+        "label": "Save",
+        "left": 280.765625,
+        "right": 378,
+        "top": 129,
+        "bottom": 193,
+        "width": 97.234375,
+        "height": 64
+      }
+    ],
+    "multiline": [
+      {
+        "label": "Description",
+        "scrollHeight": 2896,
+        "clientHeight": 2894,
+        "clipped": false
+      }
+    ],
+    "earned": "Earned: R$ 90.071.992.547.409,91",
+    "errors": []
+  },
+  {
+    "name": "stress-fixed-430-light-1",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "sections": [
+      "editor-section-job",
+      "editor-section-work details",
+      "editor-section-compensation",
+      "editor-section-payment expectation"
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "left": 12,
+        "right": 81.859375,
+        "top": 57,
+        "bottom": 105,
+        "width": 69.859375,
+        "height": 48
+      },
+      {
+        "label": "Save",
+        "left": 355.375,
+        "right": 418,
+        "top": 57,
+        "bottom": 105,
+        "width": 62.625,
+        "height": 48
+      }
+    ],
+    "multiline": [
+      {
+        "label": "Description",
+        "scrollHeight": 736,
+        "clientHeight": 734,
+        "clipped": false
+      }
+    ],
+    "earned": "Earned: R$ 90.071.992.547.409,91",
+    "errors": []
+  },
+  {
+    "name": "stress-fixed-430-light-2",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "sections": [
+      "editor-section-job",
+      "editor-section-work details",
+      "editor-section-compensation",
+      "editor-section-payment expectation"
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "left": 12,
+        "right": 131.703125,
+        "top": 129,
+        "bottom": 193,
+        "width": 119.703125,
+        "height": 64
+      },
+      {
+        "label": "Save",
+        "left": 320.765625,
+        "right": 418,
+        "top": 129,
+        "bottom": 193,
+        "width": 97.234375,
+        "height": 64
+      }
+    ],
+    "multiline": [
+      {
+        "label": "Description",
+        "scrollHeight": 2896,
+        "clientHeight": 2894,
+        "clipped": false
+      }
+    ],
+    "earned": "Earned: R$ 90.071.992.547.409,91",
+    "errors": []
+  },
+  {
+    "name": "new-hourly-light",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "sections": [
+      "editor-section-job",
+      "editor-section-work details",
+      "editor-section-compensation",
+      "editor-section-payment expectation"
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "left": 12,
+        "right": 81.859375,
+        "top": 57,
+        "bottom": 105,
+        "width": 69.859375,
+        "height": 48
+      },
+      {
+        "label": "Save",
+        "left": 315.375,
+        "right": 378,
+        "top": 57,
+        "bottom": 105,
+        "width": 62.625,
+        "height": 48
+      }
+    ],
+    "multiline": [
+      {
+        "label": "Description",
+        "scrollHeight": 94,
+        "clientHeight": 94,
+        "clipped": false
+      }
+    ],
+    "earned": "Earned: Enter compensation terms",
+    "errors": []
+  },
+  {
+    "name": "new-fixed-light",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "sections": [
+      "editor-section-job",
+      "editor-section-work details",
+      "editor-section-compensation",
+      "editor-section-payment expectation"
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "left": 12,
+        "right": 81.859375,
+        "top": 57,
+        "bottom": 105,
+        "width": 69.859375,
+        "height": 48
+      },
+      {
+        "label": "Save",
+        "left": 315.375,
+        "right": 378,
+        "top": 57,
+        "bottom": 105,
+        "width": 62.625,
+        "height": 48
+      }
+    ],
+    "multiline": [
+      {
+        "label": "Description",
+        "scrollHeight": 94,
+        "clientHeight": 94,
+        "clipped": false
+      }
+    ],
+    "earned": "Earned: Enter compensation terms",
+    "errors": []
+  },
+  {
+    "name": "editHourly-light",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "sections": [
+      "editor-section-job",
+      "editor-section-work details",
+      "editor-section-compensation",
+      "editor-section-payment expectation"
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "left": 12,
+        "right": 81.859375,
+        "top": 57,
+        "bottom": 105,
+        "width": 69.859375,
+        "height": 48
+      },
+      {
+        "label": "Save",
+        "left": 315.375,
+        "right": 378,
+        "top": 57,
+        "bottom": 105,
+        "width": 62.625,
+        "height": 48
+      }
+    ],
+    "multiline": [
+      {
+        "label": "Description",
+        "scrollHeight": 94,
+        "clientHeight": 94,
+        "clipped": false
+      }
+    ],
+    "earned": "Earned: R$ 125,00",
+    "errors": []
+  },
+  {
+    "name": "editFixed-light",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "sections": [
+      "editor-section-job",
+      "editor-section-work details",
+      "editor-section-compensation",
+      "editor-section-payment expectation"
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "left": 12,
+        "right": 81.859375,
+        "top": 57,
+        "bottom": 105,
+        "width": 69.859375,
+        "height": 48
+      },
+      {
+        "label": "Save",
+        "left": 315.375,
+        "right": 378,
+        "top": 57,
+        "bottom": 105,
+        "width": 62.625,
+        "height": 48
+      }
+    ],
+    "multiline": [
+      {
+        "label": "Description",
+        "scrollHeight": 94,
+        "clientHeight": 94,
+        "clipped": false
+      }
+    ],
+    "earned": "Earned: R$ 1.000,00",
+    "errors": []
+  },
+  {
+    "name": "paid-light",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "sections": [
+      "editor-section-job",
+      "editor-section-work details",
+      "editor-section-compensation",
+      "editor-section-payment expectation"
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "left": 12,
+        "right": 81.859375,
+        "top": 57,
+        "bottom": 105,
+        "width": 69.859375,
+        "height": 48
+      },
+      {
+        "label": "Save",
+        "left": 315.375,
+        "right": 378,
+        "top": 57,
+        "bottom": 105,
+        "width": 62.625,
+        "height": 48
+      }
+    ],
+    "multiline": [
+      {
+        "label": "Description",
+        "scrollHeight": 94,
+        "clientHeight": 94,
+        "clipped": false
+      }
+    ],
+    "earned": "Earned: R$ 1.000,00",
+    "errors": []
+  },
+  {
+    "name": "stressHourly-light",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "sections": [
+      "editor-section-job",
+      "editor-section-work details",
+      "editor-section-compensation",
+      "editor-section-payment expectation"
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "left": 12,
+        "right": 131.703125,
+        "top": 129,
+        "bottom": 193,
+        "width": 119.703125,
+        "height": 64
+      },
+      {
+        "label": "Save",
+        "left": 280.765625,
+        "right": 378,
+        "top": 129,
+        "bottom": 193,
+        "width": 97.234375,
+        "height": 64
+      }
+    ],
+    "multiline": [
+      {
+        "label": "Description",
+        "scrollHeight": 2896,
+        "clientHeight": 2894,
+        "clipped": false
+      }
+    ],
+    "earned": "Earned: R$ 90.071.992.547.409,91",
+    "errors": []
+  },
+  {
+    "name": "missing-title",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "sections": [
+      "editor-section-job",
+      "editor-section-work details",
+      "editor-section-compensation",
+      "editor-section-payment expectation"
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "left": 12,
+        "right": 81.859375,
+        "top": 57,
+        "bottom": 105,
+        "width": 69.859375,
+        "height": 48
+      },
+      {
+        "label": "Save",
+        "left": 315.375,
+        "right": 378,
+        "top": 57,
+        "bottom": 105,
+        "width": 62.625,
+        "height": 48
+      }
+    ],
+    "multiline": [
+      {
+        "label": "Description",
+        "scrollHeight": 94,
+        "clientHeight": 94,
+        "clipped": false
+      }
+    ],
+    "earned": "Earned: Enter compensation terms",
+    "errors": []
+  },
+  {
+    "name": "missing-client",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "sections": [
+      "editor-section-job",
+      "editor-section-work details",
+      "editor-section-compensation",
+      "editor-section-payment expectation"
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "left": 12,
+        "right": 81.859375,
+        "top": 57,
+        "bottom": 105,
+        "width": 69.859375,
+        "height": 48
+      },
+      {
+        "label": "Save",
+        "left": 315.375,
+        "right": 378,
+        "top": 57,
+        "bottom": 105,
+        "width": 62.625,
+        "height": 48
+      }
+    ],
+    "multiline": [
+      {
+        "label": "Description",
+        "scrollHeight": 94,
+        "clientHeight": 94,
+        "clipped": false
+      }
+    ],
+    "earned": "Earned: Enter compensation terms",
+    "errors": []
+  },
+  {
+    "name": "invalid-duration",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "sections": [
+      "editor-section-job",
+      "editor-section-work details",
+      "editor-section-compensation",
+      "editor-section-payment expectation"
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "left": 12,
+        "right": 81.859375,
+        "top": 57,
+        "bottom": 105,
+        "width": 69.859375,
+        "height": 48
+      },
+      {
+        "label": "Save",
+        "left": 315.375,
+        "right": 378,
+        "top": 57,
+        "bottom": 105,
+        "width": 62.625,
+        "height": 48
+      }
+    ],
+    "multiline": [
+      {
+        "label": "Description",
+        "scrollHeight": 94,
+        "clientHeight": 94,
+        "clipped": false
+      }
+    ],
+    "earned": "Earned: Enter compensation terms",
+    "errors": []
+  },
+  {
+    "name": "invalid-rate",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "sections": [
+      "editor-section-job",
+      "editor-section-work details",
+      "editor-section-compensation",
+      "editor-section-payment expectation"
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "left": 12,
+        "right": 81.859375,
+        "top": 57,
+        "bottom": 105,
+        "width": 69.859375,
+        "height": 48
+      },
+      {
+        "label": "Save",
+        "left": 315.375,
+        "right": 378,
+        "top": 57,
+        "bottom": 105,
+        "width": 62.625,
+        "height": 48
+      }
+    ],
+    "multiline": [
+      {
+        "label": "Description",
+        "scrollHeight": 94,
+        "clientHeight": 94,
+        "clipped": false
+      }
+    ],
+    "earned": "Earned: Enter compensation terms",
+    "errors": []
+  },
+  {
+    "name": "incomplete",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "sections": [
+      "editor-section-job",
+      "editor-section-work details",
+      "editor-section-compensation",
+      "editor-section-payment expectation"
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "left": 12,
+        "right": 81.859375,
+        "top": 57,
+        "bottom": 105,
+        "width": 69.859375,
+        "height": 48
+      },
+      {
+        "label": "Save",
+        "left": 315.375,
+        "right": 378,
+        "top": 57,
+        "bottom": 105,
+        "width": 62.625,
+        "height": 48
+      }
+    ],
+    "multiline": [
+      {
+        "label": "Description",
+        "scrollHeight": 94,
+        "clientHeight": 94,
+        "clipped": false
+      }
+    ],
+    "earned": "Earned: Enter compensation terms",
+    "errors": []
+  },
+  {
+    "name": "client",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "sections": [
+      "editor-section-job",
+      "editor-section-work details",
+      "editor-section-compensation",
+      "editor-section-payment expectation"
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "left": 12,
+        "right": 81.859375,
+        "top": 57,
+        "bottom": 105,
+        "width": 69.859375,
+        "height": 48
+      },
+      {
+        "label": "Save",
+        "left": 315.375,
+        "right": 378,
+        "top": 57,
+        "bottom": 105,
+        "width": 62.625,
+        "height": 48
+      }
+    ],
+    "multiline": [
+      {
+        "label": "Description",
+        "scrollHeight": 94,
+        "clientHeight": 94,
+        "clipped": false
+      }
+    ],
+    "earned": "Earned: Enter compensation terms",
+    "errors": []
+  },
+  {
+    "name": "create-client",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "sections": [
+      "editor-section-job",
+      "editor-section-work details",
+      "editor-section-compensation",
+      "editor-section-payment expectation"
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "left": 12,
+        "right": 81.859375,
+        "top": 57,
+        "bottom": 105,
+        "width": 69.859375,
+        "height": 48
+      },
+      {
+        "label": "Save",
+        "left": 315.375,
+        "right": 378,
+        "top": 57,
+        "bottom": 105,
+        "width": 62.625,
+        "height": 48
+      }
+    ],
+    "multiline": [
+      {
+        "label": "Description",
+        "scrollHeight": 94,
+        "clientHeight": 94,
+        "clipped": false
+      }
+    ],
+    "earned": "Earned: Enter compensation terms",
+    "errors": []
+  },
+  {
+    "name": "description",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "sections": [
+      "editor-section-job",
+      "editor-section-work details",
+      "editor-section-compensation",
+      "editor-section-payment expectation"
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "left": 12,
+        "right": 81.859375,
+        "top": 57,
+        "bottom": 105,
+        "width": 69.859375,
+        "height": 48
+      },
+      {
+        "label": "Save",
+        "left": 315.375,
+        "right": 378,
+        "top": 57,
+        "bottom": 105,
+        "width": 62.625,
+        "height": 48
+      }
+    ],
+    "multiline": [
+      {
+        "label": "Description",
+        "scrollHeight": 616,
+        "clientHeight": 614,
+        "clipped": false
+      }
+    ],
+    "earned": "Earned: Enter compensation terms",
+    "errors": []
+  },
+  {
+    "name": "work-date",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "sections": [
+      "editor-section-job",
+      "editor-section-work details",
+      "editor-section-compensation",
+      "editor-section-payment expectation"
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "left": 12,
+        "right": 81.859375,
+        "top": 57,
+        "bottom": 105,
+        "width": 69.859375,
+        "height": 48
+      },
+      {
+        "label": "Save",
+        "left": 315.375,
+        "right": 378,
+        "top": 57,
+        "bottom": 105,
+        "width": 62.625,
+        "height": 48
+      }
+    ],
+    "multiline": [
+      {
+        "label": "Description",
+        "scrollHeight": 94,
+        "clientHeight": 94,
+        "clipped": false
+      }
+    ],
+    "earned": "Earned: Enter compensation terms",
+    "errors": []
+  },
+  {
+    "name": "expected-date",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "sections": [
+      "editor-section-job",
+      "editor-section-work details",
+      "editor-section-compensation",
+      "editor-section-payment expectation"
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "left": 12,
+        "right": 81.859375,
+        "top": 57,
+        "bottom": 105,
+        "width": 69.859375,
+        "height": 48
+      },
+      {
+        "label": "Save",
+        "left": 315.375,
+        "right": 378,
+        "top": 57,
+        "bottom": 105,
+        "width": 62.625,
+        "height": 48
+      }
+    ],
+    "multiline": [
+      {
+        "label": "Description",
+        "scrollHeight": 94,
+        "clientHeight": 94,
+        "clipped": false
+      }
+    ],
+    "earned": "Earned: Enter compensation terms",
+    "errors": []
+  },
+  {
+    "name": "clear-date",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "sections": [
+      "editor-section-job",
+      "editor-section-work details",
+      "editor-section-compensation",
+      "editor-section-payment expectation"
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "left": 12,
+        "right": 81.859375,
+        "top": 57,
+        "bottom": 105,
+        "width": 69.859375,
+        "height": 48
+      },
+      {
+        "label": "Save",
+        "left": 315.375,
+        "right": 378,
+        "top": 57,
+        "bottom": 105,
+        "width": 62.625,
+        "height": 48
+      }
+    ],
+    "multiline": [
+      {
+        "label": "Description",
+        "scrollHeight": 94,
+        "clientHeight": 94,
+        "clipped": false
+      }
+    ],
+    "earned": "Earned: Enter compensation terms",
+    "errors": []
+  },
+  {
+    "name": "switch-fixed",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "sections": [
+      "editor-section-job",
+      "editor-section-work details",
+      "editor-section-compensation",
+      "editor-section-payment expectation"
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "left": 12,
+        "right": 81.859375,
+        "top": 57,
+        "bottom": 105,
+        "width": 69.859375,
+        "height": 48
+      },
+      {
+        "label": "Save",
+        "left": 315.375,
+        "right": 378,
+        "top": 57,
+        "bottom": 105,
+        "width": 62.625,
+        "height": 48
+      }
+    ],
+    "multiline": [
+      {
+        "label": "Description",
+        "scrollHeight": 94,
+        "clientHeight": 94,
+        "clipped": false
+      }
+    ],
+    "earned": "Earned: R$ 900,25",
+    "errors": []
+  },
+  {
+    "name": "switch-hourly",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "sections": [
+      "editor-section-job",
+      "editor-section-work details",
+      "editor-section-compensation",
+      "editor-section-payment expectation"
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "left": 12,
+        "right": 81.859375,
+        "top": 57,
+        "bottom": 105,
+        "width": 69.859375,
+        "height": 48
+      },
+      {
+        "label": "Save",
+        "left": 315.375,
+        "right": 378,
+        "top": 57,
+        "bottom": 105,
+        "width": 62.625,
+        "height": 48
+      }
+    ],
+    "multiline": [
+      {
+        "label": "Description",
+        "scrollHeight": 94,
+        "clientHeight": 94,
+        "clipped": false
+      }
+    ],
+    "earned": "Earned: R$ 125,00",
+    "errors": []
+  },
+  {
+    "name": "save-error",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "sections": [
+      "editor-section-job",
+      "editor-section-work details",
+      "editor-section-compensation",
+      "editor-section-payment expectation"
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "left": 12,
+        "right": 81.859375,
+        "top": 57,
+        "bottom": 105,
+        "width": 69.859375,
+        "height": 48
+      },
+      {
+        "label": "Save",
+        "left": 315.375,
+        "right": 378,
+        "top": 57,
+        "bottom": 105,
+        "width": 62.625,
+        "height": 48
+      }
+    ],
+    "multiline": [
+      {
+        "label": "Description",
+        "scrollHeight": 94,
+        "clientHeight": 94,
+        "clipped": false
+      }
+    ],
+    "earned": "Earned: R$ 125,00",
+    "errors": []
+  },
+  {
+    "name": "keyboard",
+    "overflow": [],
+    "horizontalOverflow": false,
+    "sections": [
+      "editor-section-job",
+      "editor-section-work details",
+      "editor-section-compensation",
+      "editor-section-payment expectation"
+    ],
+    "header": [
+      {
+        "label": "Cancel",
+        "left": 12,
+        "right": 81.859375,
+        "top": 57,
+        "bottom": 105,
+        "width": 69.859375,
+        "height": 48
+      },
+      {
+        "label": "Save",
+        "left": 315.375,
+        "right": 378,
+        "top": 57,
+        "bottom": 105,
+        "width": 62.625,
+        "height": 48
+      }
+    ],
+    "multiline": [
+      {
+        "label": "Description",
+        "scrollHeight": 94,
+        "clientHeight": 94,
+        "clipped": false
+      }
+    ],
+    "earned": "Earned: Enter compensation terms",
+    "errors": []
+  }
+]

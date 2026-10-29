@@ -70,7 +70,7 @@ test('Job title is required, persisted and editable independently of description
   await app.press('Add work');
   const field = app.find('AutocompleteField', 'Client *'); await act(() => (field.props.onSelect as (id: string) => void)(client.id));
   await app.change('Description', 'Warehouse stock control, distinct from the title');
-  const compensation = app.find('SegmentedControl', 'Compensation *'); await act(() => (compensation.props.onChange as (value: string) => void)('fixed'));
+  const compensation = app.find('SegmentedControl', 'Compensation type *'); await act(() => (compensation.props.onChange as (value: string) => void)('fixed'));
   await app.change('Fixed amount *', '1000'); await app.change('Expected payment date', addDays(today, -1));
   await app.press('Save'); assert.match(app.find('FormError').textContent, /job title/i);
   assert.equal(app.find('FormField', 'Description').props.value, 'Warehouse stock control, distinct from the title');
@@ -91,7 +91,7 @@ test('Job title is required, persisted and editable independently of description
   assert.equal(projected().title, 'Inventory Software'); assert.ok(projected().secondary.startsWith('Acme'));
   assert.ok(home.read().attention.flatMap((section) => section.items).some((row) => row.source === 'work' && row.title === 'Inventory Software'));
   const current = rows(app, 'work-entry')[0]; await act(() => (current.props.onPress as () => void)());
-  await menu(app, 'Work options for Inventory Software', 'Edit'); await app.change('Job title *', 'Inventory v2'); await app.press('Save');
+  await app.press('Edit Inventory Software'); await app.change('Job title *', 'Inventory v2'); await app.press('Save');
   const after = f.work.readDetail(id); assert.deepEqual(after.totals, before.totals); assert.deepEqual(f.finance.read(), ledger);
   assert.equal(after.items[0].entry.description, before.items[0].entry.description); assert.equal(after.items[0].entry.title, 'Inventory v2');
   assert.equal(after.payments[0].allocations[0].title, 'Inventory v2'); assert.equal(after.payments[0].allocations[0].amountMinor, 40000);
@@ -102,13 +102,13 @@ test('legacy Job editor starts from deterministic description fallback and estab
   const f = await initialized(t); const client = f.work.createCounterparty('Client'); const id = f.create(client.id, 'Original legacy details');
   f.sqlite.prepare('UPDATE work_entries SET title = NULL WHERE id = ?').run(id);
   const app = await mount(createElement(screens.FinanceScreen, { initialView: 'work', initialRecordId: id }), f.db); t.after(app.unmount);
-  await menu(app, 'Work options for Original legacy details', 'Edit');
+  await app.press('Edit Original legacy details');
   assert.equal(app.find('FormField', 'Job title *').props.value, 'Original legacy details');
   assert.equal(app.find('FormField', 'Description').props.value, 'Original legacy details');
   await app.change('Job title *', 'A proper job title'); await app.press('Save');
   assert.equal(f.work.readDetail(id).items[0].entry.title, 'A proper job title'); assert.equal(f.work.readDetail(id).items[0].entry.description, 'Original legacy details');
   await app.tapSet(String(rows(app, 'work-entry')[0].props.accessibilityLabel));
-  await menu(app, 'Work options for A proper job title', 'Edit'); await app.change('Description', ''); await app.press('Save');
+  await app.press('Edit A proper job title'); await app.change('Description', ''); await app.press('Save');
   assert.equal(f.work.readDetail(id).items[0].entry.description, ''); assert.equal(f.work.readDetail(id).items[0].entry.title, 'A proper job title');
 });
 
@@ -126,9 +126,9 @@ test('empty and whitespace-only Description save; clear/restore retain financial
   const label = String(rows(app, 'work-entry')[0].props.accessibilityLabel);
   assert.ok(label.startsWith('Logo Design, Acme, earned')); assert.ok(!/description|unavailable|, ,/i.test(label));
   const financial = f.work.readDetail(id).totals; const ledger = f.finance.read();
-  await menu(app, 'Work options for Logo Design', 'Edit'); await app.change('Description', 'Supporting details'); await app.press('Save');
+  await app.press('Edit Logo Design'); await app.change('Description', 'Supporting details'); await app.press('Save');
   assert.equal(f.work.readDetail(id).items[0].entry.description, 'Supporting details');
-  await app.tapSet(label); await menu(app, 'Work options for Logo Design', 'Edit'); await app.change('Description', ' \n\t '); await app.press('Save');
+  await app.tapSet(label); await app.press('Edit Logo Design'); await app.change('Description', ' \n\t '); await app.press('Save');
   assert.equal(f.work.readDetail(id).items[0].entry.description, ''); assert.deepEqual(f.work.readDetail(id).totals, financial); assert.deepEqual(f.finance.read(), ledger);
   const home = createHomeDataAccess(f.db, randomUUID).read();
   assert.ok(home.attention.flatMap((section) => section.items).some((row) => row.source === 'work' && row.title === 'Logo Design'));
@@ -136,7 +136,7 @@ test('empty and whitespace-only Description save; clear/restore retain financial
   // The real editor also accepts a new Job with no Description.
   await app.press('Add work'); await app.change('Job title *', 'Without details');
   const field = app.find('AutocompleteField', 'Client *'); await act(() => (field.props.onSelect as (id: string) => void)(client.id));
-  const compensation = app.find('SegmentedControl', 'Compensation *'); await act(() => (compensation.props.onChange as (value: string) => void)('fixed'));
+  const compensation = app.find('SegmentedControl', 'Compensation type *'); await act(() => (compensation.props.onChange as (value: string) => void)('fixed'));
   await app.change('Fixed amount *', '50'); await app.press('Save');
   assert.ok(f.work.readOverview().items.some((row) => row.entry.title === 'Without details' && row.entry.description === ''));
 });
@@ -152,7 +152,7 @@ for (const [action, path, screen] of [['Clients', '/work/clients', screens.WorkC
     const destination = await mount(createElement(screen), f.db); t.after(destination.unmount);
     assert.equal(destination.nodes().filter((node) => node.kind === 'Modal').length, 0);
     assert.equal(rows(destination, 'adaptive-sheet').length, 0);
-    assert.ok(destination.nodes().some((node) => node.props?.accessibilityRole === 'header' && node.props?.type === 'screenTitle' && node.textContent === action));
+    assert.ok(destination.nodes().some((node) => node.props?.accessibilityRole === 'header' && node.textContent === action));
     assert.ok(destination.nodes().some((node) => node.kind === 'SafeAreaView'));
     await destination.press('Back to Work'); assert.equal(runtime.fixture.navigation.at(-1)!.method, 'back');
     t.mock.method((runtime.router as { router: { canGoBack: () => boolean } }).router, 'canGoBack', () => false);
@@ -171,15 +171,15 @@ test('pushed Clients keeps dirty creation/search and last-good data through refr
   const focused = f.measure(() => f.work.readOverview({ counterpartyId: accented.id }));
   assert.equal(focused.value.items.length, 1); assert.equal(focused.value.items[0].entry.title, 'Accent job');
   const app = await mount(createElement(screens.WorkClientsScreen), f.db); t.after(app.unmount);
-  await app.change('Search clients', 'Alvaro'); await app.change('Name *', 'Alvaro');
+  await app.change('Search clients', 'Alvaro'); await app.press('New client'); await app.change('Name *', 'Alvaro');
   assert.ok(app.find('Pressable', 'Open Álvaro details'));
   runtime.fixture.failures.add('work.readOverview'); await app.refocus();
   assert.equal(app.find('FormField', 'Name *').props.value, 'Alvaro'); assert.equal(app.find('FormField', 'Search clients').props.value, 'Alvaro');
   assert.ok(app.find('Pressable', 'Open Álvaro details'));
   runtime.fixture.failures.clear(); await app.press('Retry'); await app.press('Create client');
   const plain = f.work.readOverview().counterparties.find((row) => row.name === 'Alvaro')!; assert.notEqual(plain.id, accented.id);
-  await app.change('Name *', 'ÁLVARO'); await app.press('Create client'); assert.match(app.find('FormError').textContent, /already exists/);
-  await app.change('Name *', 'A\u0301lvaro'); await app.press('Create client'); assert.match(app.find('FormError').textContent, /already exists/);
+  await app.press('New client'); await app.change('Name *', 'ÁLVARO'); await app.press('Create client'); assert.match(app.find('FormField', 'Name *').props.error as string, /already exists/);
+  await app.change('Name *', 'A\u0301lvaro'); await app.press('Create client'); assert.match(app.find('FormField', 'Name *').props.error as string, /already exists/);
   await app.tapSet('Open Álvaro details'); assertTotals(app, 100000n, 0n);
   assert.equal(rows(app, 'work-entry').length, 1); assert.ok(app.find('FormButton', 'Record payment from Álvaro'));
 });
@@ -188,7 +188,7 @@ test('global History retains appended rows and receipt disclosure on paging/summ
   const f = await initialized(t); const client = f.work.createCounterparty('Client');
   for (let i = 0; i < 25; i++) { const id = f.create(client.id, '', { title: 'Settled '+i, fixedAmount: '1' }); f.pay(client.id, [{ workEntryId: id, amount: '1' }]); }
   const app = await mountWorkStack(t, f.db); t.after(app.unmount);
-  const workspace = app.nodes().find((node) => node.kind === 'FlatList')!;
+  const workspace = app.nodes().find((node) => node.props?.testID === 'work-main-list')!;
   await menu(app, 'Work options', 'History'); assert.equal(rows(app, 'work-receipt').length, 20);
   runtime.fixture.failures.add('work.readHistory'); await app.press('Load more history'); assert.equal(rows(app, 'work-receipt').length, 20);
   runtime.fixture.failures.clear(); await app.press('Load more history'); assert.equal(rows(app, 'work-receipt').length, 25);
@@ -197,7 +197,7 @@ test('global History retains appended rows and receipt disclosure on paging/summ
   runtime.fixture.failures.add('work.readOverview'); await app.resume();
   assert.equal(rows(app, 'work-receipt').length, 25); assert.ok(receipt.textContent.includes('Settled'));
   runtime.fixture.failures.clear(); await app.refocus(); assert.equal(rows(app, 'work-receipt').length, 25);
-  await app.press('Back to Work'); assert.equal(app.nodes().find((node) => node.kind === 'FlatList'), workspace);
+  await app.press('Back to Work'); assert.equal(app.nodes().find((node) => node.props?.testID === 'work-main-list'), workspace);
   assertTotals(app, 2500n, 2500n);
 });
 
@@ -236,9 +236,11 @@ test('Job rows keep Title first, bound description previews, show partial/Paid/o
   const c = f.create(client.id, 'Settled description', { title: 'Paid job' }); f.pay(client.id, [{ workEntryId: c, amount: '1000' }]);
   const app = await mountWorkStack(t, f.db); t.after(app.unmount);
   assert.equal(rows(app, 'work-entry').length, 2); assert.equal(rows(app, 'work-clients').length, 0);
-  const attention = rows(app, 'work-attention')[0]; const jobs = rows(app, 'work-jobs')[0];
-  assert.equal(rows(app, 'work-attention').length, 1); assert.ok(attention.textContent.includes(title.trim())); assert.ok(!jobs.textContent.includes(title.trim()));
-  assert.ok(jobs.textContent.includes('Partially paid')); assert.ok(jobs.textContent.includes('R$ 600,00 outstanding of R$ 1.000,00'));
+  const sections = rows(app, 'work-main-list')[0].props.sections as { key: string; data: { entry: { id: string } }[] }[];
+  assert.equal(rows(app, 'work-attention').length, 1); assert.deepEqual(sections.find(section => section.key === 'attention')!.data.map(item => item.entry.id), [a]);
+  assert.deepEqual(sections.find(section => section.key === 'jobs')!.data.map(item => item.entry.id), [b]);
+  const partial = rows(app, 'work-entry').find(row => String(row.props.accessibilityLabel).startsWith('Partially paid job,'))!;
+  assert.ok(partial.textContent.includes('Partially paid')); assert.ok(partial.textContent.includes('Received R$ 400,00 of R$ 1.000,00')); assert.ok(partial.textContent.includes('R$ 600,00'));
   const row = rows(app, 'work-entry')[0]; assert.ok(row.textContent.includes(formatBrlAmount(maxAmountMinor)));
   const preview = app.nodes(row).find((node) => node.props?.testID === 'job-description')!; assert.equal(preview.props.numberOfLines, 2);
   const heading = app.nodes(row).find((node) => node.props?.testID === 'job-title')!; assert.equal(heading.props.numberOfLines, undefined);
@@ -288,7 +290,7 @@ test('Add Work groups existing fields, quick-creates accent-distinct Client, and
   const f = await initialized(t); const accented = f.work.createCounterparty('Álvaro');
   const app = await mount(createElement(screens.FinanceScreen, { initialView: 'work' }), f.db); t.after(app.unmount);
   await app.press('Add work');
-  for (const heading of ['Job', 'Pricing', 'Payment expectation']) assert.ok(app.nodes().some((node) => node.kind === 'ThemedText' && node.props.accessibilityRole === 'header' && node.textContent === heading));
+  for (const heading of ['Job', 'Work details', 'Compensation', 'Payment expectation']) assert.ok(app.nodes().some((node) => node.props?.accessibilityRole === 'header' && node.textContent === heading));
   const field = app.find('AutocompleteField', 'Client *'); const results = (field.props.getResults as (query: string) => { suggestions: { value: string }[]; createLabel: string })('Alvaro');
   assert.equal(results.suggestions[0].value, accented.id); assert.equal(results.createLabel, '+ Create "Alvaro"');
   let id = ''; await act(() => { id = (field.props.onCreate as (name: string) => string)('Alvaro'); (field.props.onSelect as (id: string) => void)(id); });
@@ -311,7 +313,7 @@ test('client payment supports partial receipt then multi-entry settlement and ex
   await openClient(app, 'Acme'); await app.press('Record payment from Acme');
   assert.equal(app.find('AutocompleteField', 'Client *').props.value, client.id);
   await app.tapSet('Allocate payment to Logo'); assert.equal(app.find('FormField', 'Allocation in reais for Logo').props.value, formatBrlInput(100000));
-  await app.change('Allocation in reais for Logo', '400'); assert.ok(app.container.textContent.includes('Receiving R$ 400,00')); assert.ok(app.container.textContent.includes('Remaining after payment R$ 600,00'));
+  await app.change('Allocation in reais for Logo', '400'); assert.ok(app.container.textContent.includes('Payment total: R$ 400,00')); assert.ok(app.container.textContent.includes('Remaining after payment R$ 600,00'));
   const confirm = app.find('FormButton', 'Confirm').props.onPress as () => void; await act(() => { confirm(); confirm(); });
   assert.equal(f.finance.read().transactions.length, 1); assertTotals(app, 100000n, 40000n);
   assert.equal(expectedItems()[0].amountMinor, 60000); assert.equal(homeDebt()[0].source, 'work');
@@ -345,8 +347,8 @@ test('client details prefill Add work and archived/settled Clients remain reacha
   await app.tapSet('Close work options'); assert.equal(app.find('FormButton', 'Work options').props.expanded, false);
   await openClient(app, 'Active'); await app.press('Add work for Active'); assert.equal(app.find('AutocompleteField', 'Client *').props.value, active.id); await app.press('Cancel');
   await menu(app, 'Work options', 'Clients'); assert.ok(app.container.textContent.includes('Active clients')); assert.ok(app.container.textContent.includes('Archived clients'));
-  assert.ok(app.find('Pressable', 'Open Active details').textContent.includes('Outstanding R$ 1.000,00'));
-  assert.ok(app.find('Pressable', 'Open Historical details').textContent.includes('Outstanding R$ 0,00'));
+  assert.ok(String(app.find('Pressable', 'Open Active details').props.accessibilityHint).includes('Outstanding R$ 1.000,00'));
+  assert.ok(String(app.find('Pressable', 'Open Historical details').props.accessibilityHint).includes('Outstanding R$ 0,00'));
   await app.tapSet('Open Historical details'); assert.ok(app.container.textContent.includes('No open work')); assertTotals(app, 0n, 0n);
   await app.press('Back');
   await menu(app, 'Client options for Active', 'Archive'); await app.confirm('Confirm');
@@ -387,7 +389,7 @@ for (const [width, fontScale] of [[390, 1], [390, 2], [280, 1]] as const) test(`
   assertTotals(app, BigInt(maxAmountMinor) * 12n, 0n); assert.equal(rows(app, 'work-entry').length, 12);
   const comparison = rows(app, 'work-secondary-metrics')[0]; assert.equal(Object.assign({}, ...(comparison.props.style as object[])).flexDirection, 'column');
   for (const node of app.nodes().filter((node) => node.kind === 'ThemedText' && node.props?.testID !== 'job-description')) { assert.equal(node.props.numberOfLines, undefined); assert.equal(node.props.ellipsizeMode, undefined); }
-  assert.equal((rows(app, 'work-entry')[0].props.style as { minHeight: number }[])[0].minHeight, 44);
+  assert.equal(Object.assign({}, ...(rows(app, 'work-entry')[0].props.style as object[]).flat(Infinity)).minHeight, 48);
   assert.ok(String(rows(app, 'work-entry')[0].props.accessibilityLabel).includes(name));
   const navigation = app.nodes().find((node) => node.props?.accessibilityLabel === 'Finance destinations')!; assert.equal(navigation.props.horizontal, true);
 });
@@ -395,7 +397,7 @@ for (const [width, fontScale] of [[390, 1], [390, 2], [280, 1]] as const) test(`
 test('paid Work editor retains readable locked Client and rejects reducing Earned below Received without losing input', async (t) => {
   const f = await initialized(t); const client = f.work.createCounterparty('Client'); const id = f.create(client.id, 'Paid work'); f.pay(client.id, [{ workEntryId: id, amount: '400' }]);
   const app = await mount(createElement(screens.FinanceScreen, { initialView: 'work', initialRecordId: id }), f.db); t.after(app.unmount);
-  await menu(app, 'Work options for Paid work', 'Edit'); assert.equal(app.find('FormField', 'Client *').props.editable, false); assert.equal(app.find('FormField', 'Client *').props.value, 'Client');
+  await app.press('Edit Paid work'); assert.equal(app.find('FormField', 'Client *').props.editable, false); assert.equal(app.find('FormField', 'Client *').props.value, 'Client');
   await app.change('Fixed amount *', '300'); await app.press('Save'); assert.equal(app.find('FormField', 'Fixed amount *').props.value, '300');
   assert.equal(f.work.readDetail(id).items[0].earnedMinor, 100000); assert.match(app.find('FormError').textContent, /received/i);
 });
@@ -417,7 +419,9 @@ for (const mode of ['light', 'dark'] as const) test(`${mode} overdue rows use se
   const f = await initialized(t); const client = f.work.createCounterparty('Client'); f.create(client.id, 'Old overdue', { expectedPaymentDate: '2020-01-01' });
   t.mock.method(runtime.native as { useColorScheme: () => string }, 'useColorScheme', () => mode);
   const app = await mount(createElement(screens.FinanceScreen, { initialView: 'work' }), f.db); t.after(app.unmount);
-  const attention = rows(app, 'work-attention')[0]; assert.ok(attention.textContent.includes('Overdue')); assert.ok(attention.textContent.includes(dateLabel('2020-01-01')));
-  assert.ok(app.nodes(attention).some((node) => node.props?.themeColor === 'warning'));
-  assert.ok(!app.nodes(attention).some((node) => node.props?.themeColor === 'danger' || node.props?.accessibilityRole === 'alert'));
+  const attention = rows(app, 'work-entry')[0]; assert.ok(attention.textContent.includes('Overdue')); assert.ok(attention.textContent.includes(dateLabel('2020-01-01')));
+  const status = app.nodes(attention).find(node => node.textContent.startsWith('Overdue') && node.kind === 'ThemedText')!;
+  const style = Object.assign({}, ...(status.props.style as object[]).flat(Infinity));
+  assert.equal(style.color, mode === 'dark' ? '#DFC18B' : '#805619');
+  assert.ok(!app.nodes(attention).some((node) => node.props?.accessibilityRole === 'alert'));
 });

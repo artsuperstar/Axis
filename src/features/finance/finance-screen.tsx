@@ -45,7 +45,7 @@ export function FinanceScreen({ initialView, initialRecordId, initialDueDate }: 
   const [scrollOffset, setScrollOffset] = useState(0);
   const design = useDesignColors();
   const overview = selection.view === 'dashboard';
-  const v2 = overview || selection.view === 'transactions' || selection.view === 'commitments';
+  const v2 = overview || selection.view === 'transactions' || selection.view === 'commitments' || selection.view === 'work';
   const menuHost = useRef<FormSelectionHandle>(null);
   const offsets = useRef<Record<FinanceView, number>>({ dashboard: 0, transactions: 0, commitments: 0, work: 0 });
   const categories = snapshot?.categories ?? [];
@@ -137,7 +137,9 @@ export function FinanceScreen({ initialView, initialRecordId, initialDueDate }: 
       onOpen={openTransaction} onDelete={remove} onLoadMore={loadMoreTransactions} scrollOffset={scrollOffset} onScroll={onScroll}
     /> : selection.view === 'commitments' && snapshot ? <CommitmentsView items={snapshot.items} categories={categories} access={commitmentAccess} today={today} mutate={mutate}
       scrollOffset={scrollOffset} onScroll={onScroll} initialDetail={sourceWorkspace ? undefined : snapshot.initialCommitment}
-      onCreateCategory={name => mutate(() => access.createCategory(name, 'expense'))} /> : <FlatList
+      onCreateCategory={name => mutate(() => access.createCategory(name, 'expense'))} /> : selection.view === 'work' && snapshot?.work ? <WorkView
+      data={snapshot.work} categories={categories} access={workAccess} mutate={mutate} initialEntryId={sourceWorkspace ? undefined : initialRecordId}
+      scrollOffset={scrollOffset} onScroll={onScroll} onCreateCategory={name => mutate(() => access.createCategory(name, 'income'))} /> : <FlatList
       key={selection.view}
       style={styles.list}
       contentInsetAdjustmentBehavior="never"
@@ -153,8 +155,6 @@ export function FinanceScreen({ initialView, initialRecordId, initialDueDate }: 
           {snapshot?.analytics && <FinanceDashboard analytics={snapshot.analytics} spendingExpanded={spendingExpanded} onToggleSpending={() => setSpendingExpanded((expanded) => !expanded)} />}
           {!snapshot?.analytics && !error && <ActivityIndicator color={colors.accent} accessibilityLabel="Loading Finance Overview" />}
         </>}
-        {selection.view === 'work' && snapshot?.work && <WorkView data={snapshot.work} categories={categories} access={workAccess} mutate={mutate} initialEntryId={sourceWorkspace ? undefined : initialRecordId}
-          onCreateCategory={(name) => mutate(() => access.createCategory(name, 'income'))} />}
       </View>}
       ListEmptyComponent={!snapshot && !error && selection.view !== 'dashboard' ? <ActivityIndicator color={colors.accent} accessibilityLabel="Loading Finance" /> : undefined}
       renderItem={() => null}

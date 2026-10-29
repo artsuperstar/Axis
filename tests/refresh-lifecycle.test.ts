@@ -58,7 +58,7 @@ test('Work editor survives failed resume/focus and successful Retry, then saves 
   const app = await mount(createElement(screens.FinanceScreen), db); t.after(app.unmount);
   await app.press('Work');
   const row = app.nodes().find((node) => node.kind === 'Pressable' && node.props.accessibilityHint === 'Job details and payments')!;
-  await act(() => (row.props.onPress as () => void)()); await app.press('Work options for Original work'); await app.press('Edit');
+  await act(() => (row.props.onPress as () => void)()); await app.press('Edit Original work');
   await act(async () => { await new Promise((resolve) => setTimeout(resolve, 10)); });
   const draftClient = work.createCounterparty('Draft client');
   await act(() => (app.find('AutocompleteField', 'Client *').props.onSelect as (id: string) => void)(draftClient.id));
@@ -196,7 +196,7 @@ test('Fitness note validation rejects a workout completed during Retry while kee
 test('Finance Save remains valid during a read failure, and write validation errors preserve the working draft', async (t) => {
   const { db, work } = await initialized(t); const client = work.createCounterparty('Client'); const id = work.create(fixed(client.id));
   const app = await mount(createElement(screens.FinanceScreen, { initialView: 'work', initialRecordId: id }), db); t.after(app.unmount);
-  await app.press('Work options for Original work'); await app.press('Edit');
+  await app.press('Edit Original work');
   await act(async () => { await new Promise((resolve) => setTimeout(resolve, 10)); });
   await app.change('Fixed amount *', 'invalid'); runtime.fixture.failures.add('work.readOverview'); await app.resume();
   const check = observeDraft(app, ['Description', 'Fixed amount *']); await app.press('Save'); check();

@@ -1,0 +1,604 @@
+[
+  {
+    "name": "populated-dark",
+    "scenario": "populated",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "populated-dark-top.png",
+      "populated-dark-archived.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "empty-dark",
+    "scenario": "empty",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "empty-dark-top.png",
+      "empty-dark-archived.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "activeOnly-dark",
+    "scenario": "activeOnly",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "activeOnly-dark-top.png",
+      "activeOnly-dark-archived.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "archivedOnly-dark",
+    "scenario": "archivedOnly",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "archivedOnly-dark-top.png",
+      "archivedOnly-dark-archived.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "accents-dark",
+    "scenario": "accents",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "accents-dark-top.png",
+      "accents-dark-archived.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "archivedDebt-dark",
+    "scenario": "archivedDebt",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "archivedDebt-dark-top.png",
+      "archivedDebt-dark-archived.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-dark",
+    "scenario": "stress",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "stress-dark-top.png",
+      "stress-dark-archived.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "many-dark",
+    "scenario": "many",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "mounted": 28,
+    "captures": [
+      "many-dark-top.png",
+      "many-dark-bottom.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-dark-320-1",
+    "scenario": "stress",
+    "theme": "dark",
+    "width": 320,
+    "scale": 1,
+    "captures": [
+      "stress-dark-320-1-top.png",
+      "stress-dark-320-1-archived.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-dark-320-2",
+    "scenario": "stress",
+    "theme": "dark",
+    "width": 320,
+    "scale": 2,
+    "captures": [
+      "stress-dark-320-2-top.png",
+      "stress-dark-320-2-archived.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-dark-390-2",
+    "scenario": "stress",
+    "theme": "dark",
+    "width": 390,
+    "scale": 2,
+    "captures": [
+      "stress-dark-390-2-top.png",
+      "stress-dark-390-2-archived.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-dark-430-1",
+    "scenario": "stress",
+    "theme": "dark",
+    "width": 430,
+    "scale": 1,
+    "captures": [
+      "stress-dark-430-1-top.png",
+      "stress-dark-430-1-archived.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-dark-430-2",
+    "scenario": "stress",
+    "theme": "dark",
+    "width": 430,
+    "scale": 2,
+    "captures": [
+      "stress-dark-430-2-top.png",
+      "stress-dark-430-2-archived.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "collapsed-dark",
+    "scenario": "populated",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "action": "collapsed",
+    "captures": [
+      "collapsed-dark-action.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "matches-dark",
+    "scenario": "populated",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "action": "matches",
+    "captures": [
+      "matches-dark-action.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "noMatch-dark",
+    "scenario": "populated",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "action": "noMatch",
+    "captures": [
+      "noMatch-dark-action.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "accentSearch-dark",
+    "scenario": "populated",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "action": "accentSearch",
+    "captures": [
+      "accentSearch-dark-action.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "form-dark",
+    "scenario": "populated",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "action": "form",
+    "captures": [
+      "form-dark-action.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "required-dark",
+    "scenario": "populated",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "action": "required",
+    "captures": [
+      "required-dark-action.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "duplicate-dark",
+    "scenario": "populated",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "action": "duplicate",
+    "captures": [
+      "duplicate-dark-action.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "distinct-dark",
+    "scenario": "populated",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "action": "distinct",
+    "captures": [
+      "distinct-dark-action.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "success-dark",
+    "scenario": "populated",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "action": "success",
+    "captures": [
+      "success-dark-action.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "menu-dark",
+    "scenario": "populated",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "action": "menu",
+    "captures": [
+      "menu-dark-action.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "archiveConfirmation-dark",
+    "scenario": "populated",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "action": "archiveConfirmation",
+    "captures": [
+      "archiveConfirmation-dark-action.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "form-dark-320-2",
+    "scenario": "populated",
+    "theme": "dark",
+    "width": 320,
+    "scale": 2,
+    "action": "duplicate",
+    "captures": [
+      "form-dark-320-2-action.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "populated-light",
+    "scenario": "populated",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "populated-light-top.png",
+      "populated-light-archived.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "empty-light",
+    "scenario": "empty",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "empty-light-top.png",
+      "empty-light-archived.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "activeOnly-light",
+    "scenario": "activeOnly",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "activeOnly-light-top.png",
+      "activeOnly-light-archived.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "archivedOnly-light",
+    "scenario": "archivedOnly",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "archivedOnly-light-top.png",
+      "archivedOnly-light-archived.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "accents-light",
+    "scenario": "accents",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "accents-light-top.png",
+      "accents-light-archived.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "archivedDebt-light",
+    "scenario": "archivedDebt",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "archivedDebt-light-top.png",
+      "archivedDebt-light-archived.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-light",
+    "scenario": "stress",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "stress-light-top.png",
+      "stress-light-archived.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "many-light",
+    "scenario": "many",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "mounted": 28,
+    "captures": [
+      "many-light-top.png",
+      "many-light-bottom.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-light-320-1",
+    "scenario": "stress",
+    "theme": "light",
+    "width": 320,
+    "scale": 1,
+    "captures": [
+      "stress-light-320-1-top.png",
+      "stress-light-320-1-archived.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-light-320-2",
+    "scenario": "stress",
+    "theme": "light",
+    "width": 320,
+    "scale": 2,
+    "captures": [
+      "stress-light-320-2-top.png",
+      "stress-light-320-2-archived.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-light-390-2",
+    "scenario": "stress",
+    "theme": "light",
+    "width": 390,
+    "scale": 2,
+    "captures": [
+      "stress-light-390-2-top.png",
+      "stress-light-390-2-archived.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-light-430-1",
+    "scenario": "stress",
+    "theme": "light",
+    "width": 430,
+    "scale": 1,
+    "captures": [
+      "stress-light-430-1-top.png",
+      "stress-light-430-1-archived.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-light-430-2",
+    "scenario": "stress",
+    "theme": "light",
+    "width": 430,
+    "scale": 2,
+    "captures": [
+      "stress-light-430-2-top.png",
+      "stress-light-430-2-archived.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "collapsed-light",
+    "scenario": "populated",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "action": "collapsed",
+    "captures": [
+      "collapsed-light-action.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "matches-light",
+    "scenario": "populated",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "action": "matches",
+    "captures": [
+      "matches-light-action.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "noMatch-light",
+    "scenario": "populated",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "action": "noMatch",
+    "captures": [
+      "noMatch-light-action.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "accentSearch-light",
+    "scenario": "populated",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "action": "accentSearch",
+    "captures": [
+      "accentSearch-light-action.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "form-light",
+    "scenario": "populated",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "action": "form",
+    "captures": [
+      "form-light-action.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "required-light",
+    "scenario": "populated",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "action": "required",
+    "captures": [
+      "required-light-action.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "duplicate-light",
+    "scenario": "populated",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "action": "duplicate",
+    "captures": [
+      "duplicate-light-action.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "distinct-light",
+    "scenario": "populated",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "action": "distinct",
+    "captures": [
+      "distinct-light-action.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "success-light",
+    "scenario": "populated",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "action": "success",
+    "captures": [
+      "success-light-action.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "menu-light",
+    "scenario": "populated",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "action": "menu",
+    "captures": [
+      "menu-light-action.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "archiveConfirmation-light",
+    "scenario": "populated",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "action": "archiveConfirmation",
+    "captures": [
+      "archiveConfirmation-light-action.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "form-light-320-2",
+    "scenario": "populated",
+    "theme": "light",
+    "width": 320,
+    "scale": 2,
+    "action": "duplicate",
+    "captures": [
+      "form-light-320-2-action.png"
+    ],
+    "errors": []
+  }
+]

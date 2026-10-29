@@ -1,0 +1,608 @@
+[
+  {
+    "name": "stress-dark-320-1",
+    "scenario": "stress",
+    "theme": "dark",
+    "width": 320,
+    "scale": 1,
+    "action": "stress",
+    "captures": [
+      "stress-dark-320-1-top.png",
+      "stress-dark-320-1-allocations.png",
+      "stress-dark-320-1-details.png",
+      "stress-dark-320-1-total.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-dark-320-2",
+    "scenario": "stress",
+    "theme": "dark",
+    "width": 320,
+    "scale": 2,
+    "action": "stress",
+    "captures": [
+      "stress-dark-320-2-top.png",
+      "stress-dark-320-2-allocations.png",
+      "stress-dark-320-2-details.png",
+      "stress-dark-320-2-total.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-dark-390-1",
+    "scenario": "stress",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "action": "stress",
+    "captures": [
+      "stress-dark-390-1-top.png",
+      "stress-dark-390-1-allocations.png",
+      "stress-dark-390-1-details.png",
+      "stress-dark-390-1-total.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-dark-390-2",
+    "scenario": "stress",
+    "theme": "dark",
+    "width": 390,
+    "scale": 2,
+    "action": "stress",
+    "captures": [
+      "stress-dark-390-2-top.png",
+      "stress-dark-390-2-allocations.png",
+      "stress-dark-390-2-details.png",
+      "stress-dark-390-2-total.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-dark-430-1",
+    "scenario": "stress",
+    "theme": "dark",
+    "width": 430,
+    "scale": 1,
+    "action": "stress",
+    "captures": [
+      "stress-dark-430-1-top.png",
+      "stress-dark-430-1-allocations.png",
+      "stress-dark-430-1-details.png",
+      "stress-dark-430-1-total.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-dark-430-2",
+    "scenario": "stress",
+    "theme": "dark",
+    "width": 430,
+    "scale": 2,
+    "action": "stress",
+    "captures": [
+      "stress-dark-430-2-top.png",
+      "stress-dark-430-2-allocations.png",
+      "stress-dark-430-2-details.png",
+      "stress-dark-430-2-total.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "empty-dark",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "scenario": "normal",
+    "action": "empty",
+    "captures": [
+      "empty-dark-top.png",
+      "empty-dark-details.png",
+      "empty-dark-total.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "client-dark",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "scenario": "normal",
+    "action": "client",
+    "captures": [
+      "client-dark-top.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "selected-dark",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "scenario": "normal",
+    "action": "selected",
+    "captures": [
+      "selected-dark-top.png",
+      "selected-dark-allocations.png",
+      "selected-dark-details.png",
+      "selected-dark-total.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "one-selected-dark",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "scenario": "one",
+    "action": "one-selected",
+    "captures": [
+      "one-selected-dark-top.png",
+      "one-selected-dark-allocations.png",
+      "one-selected-dark-details.png",
+      "one-selected-dark-total.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "mixed-dark",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "scenario": "normal",
+    "action": "mixed",
+    "captures": [
+      "mixed-dark-top.png",
+      "mixed-dark-allocations.png",
+      "mixed-dark-details.png",
+      "mixed-dark-total.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "multi-partial-dark",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "scenario": "normal",
+    "action": "multi-partial",
+    "captures": [
+      "multi-partial-dark-top.png",
+      "multi-partial-dark-allocations.png",
+      "multi-partial-dark-details.png",
+      "multi-partial-dark-total.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "targeted-dark",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "scenario": "normal",
+    "action": "targeted",
+    "captures": [
+      "targeted-dark-top.png",
+      "targeted-dark-allocations.png",
+      "targeted-dark-details.png",
+      "targeted-dark-total.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "invalid-dark",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "scenario": "normal",
+    "action": "invalid",
+    "captures": [
+      "invalid-dark-top.png",
+      "invalid-dark-allocations.png",
+      "invalid-dark-details.png",
+      "invalid-dark-total.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "excessive-dark",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "scenario": "normal",
+    "action": "excessive",
+    "captures": [
+      "excessive-dark-top.png",
+      "excessive-dark-allocations.png",
+      "excessive-dark-details.png",
+      "excessive-dark-total.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "date-dark",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "scenario": "normal",
+    "action": "date",
+    "captures": [
+      "date-dark-top.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "category-dark",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "scenario": "normal",
+    "action": "category",
+    "captures": [
+      "category-dark-top.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "client-change-dark",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "scenario": "normal",
+    "action": "client-change",
+    "captures": [
+      "client-change-dark-top.png",
+      "client-change-dark-allocations.png",
+      "client-change-dark-details.png",
+      "client-change-dark-total.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "save-error-dark",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "scenario": "normal",
+    "action": "save-error",
+    "captures": [
+      "save-error-dark-top.png",
+      "save-error-dark-allocations.png",
+      "save-error-dark-details.png",
+      "save-error-dark-total.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "keyboard-dark",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "scenario": "normal",
+    "action": "keyboard",
+    "captures": [
+      "keyboard-dark-top.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-light-320-1",
+    "scenario": "stress",
+    "theme": "light",
+    "width": 320,
+    "scale": 1,
+    "action": "stress",
+    "captures": [
+      "stress-light-320-1-top.png",
+      "stress-light-320-1-allocations.png",
+      "stress-light-320-1-details.png",
+      "stress-light-320-1-total.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-light-320-2",
+    "scenario": "stress",
+    "theme": "light",
+    "width": 320,
+    "scale": 2,
+    "action": "stress",
+    "captures": [
+      "stress-light-320-2-top.png",
+      "stress-light-320-2-allocations.png",
+      "stress-light-320-2-details.png",
+      "stress-light-320-2-total.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-light-390-1",
+    "scenario": "stress",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "action": "stress",
+    "captures": [
+      "stress-light-390-1-top.png",
+      "stress-light-390-1-allocations.png",
+      "stress-light-390-1-details.png",
+      "stress-light-390-1-total.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-light-390-2",
+    "scenario": "stress",
+    "theme": "light",
+    "width": 390,
+    "scale": 2,
+    "action": "stress",
+    "captures": [
+      "stress-light-390-2-top.png",
+      "stress-light-390-2-allocations.png",
+      "stress-light-390-2-details.png",
+      "stress-light-390-2-total.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-light-430-1",
+    "scenario": "stress",
+    "theme": "light",
+    "width": 430,
+    "scale": 1,
+    "action": "stress",
+    "captures": [
+      "stress-light-430-1-top.png",
+      "stress-light-430-1-allocations.png",
+      "stress-light-430-1-details.png",
+      "stress-light-430-1-total.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-light-430-2",
+    "scenario": "stress",
+    "theme": "light",
+    "width": 430,
+    "scale": 2,
+    "action": "stress",
+    "captures": [
+      "stress-light-430-2-top.png",
+      "stress-light-430-2-allocations.png",
+      "stress-light-430-2-details.png",
+      "stress-light-430-2-total.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "empty-light",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "scenario": "normal",
+    "action": "empty",
+    "captures": [
+      "empty-light-top.png",
+      "empty-light-details.png",
+      "empty-light-total.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "client-light",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "scenario": "normal",
+    "action": "client",
+    "captures": [
+      "client-light-top.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "selected-light",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "scenario": "normal",
+    "action": "selected",
+    "captures": [
+      "selected-light-top.png",
+      "selected-light-allocations.png",
+      "selected-light-details.png",
+      "selected-light-total.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "one-selected-light",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "scenario": "one",
+    "action": "one-selected",
+    "captures": [
+      "one-selected-light-top.png",
+      "one-selected-light-allocations.png",
+      "one-selected-light-details.png",
+      "one-selected-light-total.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "mixed-light",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "scenario": "normal",
+    "action": "mixed",
+    "captures": [
+      "mixed-light-top.png",
+      "mixed-light-allocations.png",
+      "mixed-light-details.png",
+      "mixed-light-total.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "multi-partial-light",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "scenario": "normal",
+    "action": "multi-partial",
+    "captures": [
+      "multi-partial-light-top.png",
+      "multi-partial-light-allocations.png",
+      "multi-partial-light-details.png",
+      "multi-partial-light-total.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "targeted-light",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "scenario": "normal",
+    "action": "targeted",
+    "captures": [
+      "targeted-light-top.png",
+      "targeted-light-allocations.png",
+      "targeted-light-details.png",
+      "targeted-light-total.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "invalid-light",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "scenario": "normal",
+    "action": "invalid",
+    "captures": [
+      "invalid-light-top.png",
+      "invalid-light-allocations.png",
+      "invalid-light-details.png",
+      "invalid-light-total.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "excessive-light",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "scenario": "normal",
+    "action": "excessive",
+    "captures": [
+      "excessive-light-top.png",
+      "excessive-light-allocations.png",
+      "excessive-light-details.png",
+      "excessive-light-total.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "date-light",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "scenario": "normal",
+    "action": "date",
+    "captures": [
+      "date-light-top.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "category-light",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "scenario": "normal",
+    "action": "category",
+    "captures": [
+      "category-light-top.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "client-change-light",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "scenario": "normal",
+    "action": "client-change",
+    "captures": [
+      "client-change-light-top.png",
+      "client-change-light-allocations.png",
+      "client-change-light-details.png",
+      "client-change-light-total.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "save-error-light",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "scenario": "normal",
+    "action": "save-error",
+    "captures": [
+      "save-error-light-top.png",
+      "save-error-light-allocations.png",
+      "save-error-light-details.png",
+      "save-error-light-total.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "keyboard-light",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "scenario": "normal",
+    "action": "keyboard",
+    "captures": [
+      "keyboard-light-top.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "many-dark",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "scenario": "many",
+    "action": "many",
+    "mounted": 17,
+    "captures": [
+      "many-dark-top.png",
+      "many-dark-allocations.png",
+      "many-dark-details.png",
+      "many-dark-total.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "many-light",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "scenario": "many",
+    "action": "many",
+    "mounted": 17,
+    "captures": [
+      "many-light-top.png",
+      "many-light-allocations.png",
+      "many-light-details.png",
+      "many-light-total.png"
+    ],
+    "errors": []
+  }
+]

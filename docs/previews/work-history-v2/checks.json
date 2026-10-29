@@ -1,0 +1,614 @@
+[
+  {
+    "name": "populated-dark",
+    "scenario": "populated",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "mounted": 5,
+    "captures": [
+      "populated-dark-top.png",
+      "populated-dark-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "empty-dark",
+    "scenario": "empty",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "mounted": 0,
+    "captures": [
+      "empty-dark-top.png",
+      "empty-dark-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "jobsOnly-dark",
+    "scenario": "jobsOnly",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "mounted": 1,
+    "captures": [
+      "jobsOnly-dark-top.png",
+      "jobsOnly-dark-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "receiptsOnly-dark",
+    "scenario": "receiptsOnly",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "mounted": 1,
+    "captures": [
+      "receiptsOnly-dark-top.png",
+      "receiptsOnly-dark-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "hourly-dark",
+    "scenario": "hourly",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "mounted": 2,
+    "captures": [
+      "hourly-dark-top.png",
+      "hourly-dark-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "archived-dark",
+    "scenario": "archived",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "mounted": 5,
+    "captures": [
+      "archived-dark-top.png",
+      "archived-dark-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "shared-dark",
+    "scenario": "shared",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "mounted": 2,
+    "captures": [
+      "shared-dark-top.png",
+      "shared-dark-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "multiple-dark",
+    "scenario": "multiple",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "mounted": 4,
+    "captures": [
+      "multiple-dark-top.png",
+      "multiple-dark-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-dark",
+    "scenario": "stress",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "mounted": 2,
+    "captures": [
+      "stress-dark-top.png",
+      "stress-dark-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "longCategory-dark",
+    "scenario": "longCategory",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "mounted": 5,
+    "captures": [
+      "longCategory-dark-top.png",
+      "longCategory-dark-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "many-dark",
+    "scenario": "many",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "mounted": 21,
+    "captures": [
+      "many-dark-top.png",
+      "many-dark-bottom.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-dark-320-1",
+    "scenario": "stress",
+    "theme": "dark",
+    "width": 320,
+    "scale": 1,
+    "mounted": 2,
+    "captures": [
+      "stress-dark-320-1-top.png",
+      "stress-dark-320-1-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-dark-320-2",
+    "scenario": "stress",
+    "theme": "dark",
+    "width": 320,
+    "scale": 2,
+    "mounted": 2,
+    "captures": [
+      "stress-dark-320-2-top.png",
+      "stress-dark-320-2-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-dark-390-2",
+    "scenario": "stress",
+    "theme": "dark",
+    "width": 390,
+    "scale": 2,
+    "mounted": 2,
+    "captures": [
+      "stress-dark-390-2-top.png",
+      "stress-dark-390-2-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-dark-430-1",
+    "scenario": "stress",
+    "theme": "dark",
+    "width": 430,
+    "scale": 1,
+    "mounted": 2,
+    "captures": [
+      "stress-dark-430-1-top.png",
+      "stress-dark-430-1-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-dark-430-2",
+    "scenario": "stress",
+    "theme": "dark",
+    "width": 430,
+    "scale": 2,
+    "mounted": 2,
+    "captures": [
+      "stress-dark-430-2-top.png",
+      "stress-dark-430-2-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "disclosure-dark",
+    "scenario": "shared",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "action": "disclosure",
+    "captures": [
+      "disclosure-dark-action.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "jobNavigation-dark",
+    "scenario": "populated",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "action": "jobNavigation",
+    "captures": [
+      "jobNavigation-dark-action.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "menu-dark",
+    "scenario": "populated",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "action": "menu",
+    "captures": [
+      "menu-dark-action.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "confirmation-dark",
+    "scenario": "populated",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "action": "confirmation",
+    "captures": [
+      "confirmation-dark-action.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "filtered-dark",
+    "scenario": "populated",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "action": "filtered",
+    "captures": [
+      "filtered-dark-action.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "pageError-dark",
+    "scenario": "many",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "action": "pageError",
+    "captures": [
+      "pageError-dark-failure.png",
+      "pageError-dark-recovered.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "retry-dark",
+    "scenario": "populated",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "action": "retry",
+    "captures": [
+      "retry-dark-failure.png",
+      "retry-dark-recovered.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "loading-dark",
+    "scenario": "populated",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "action": "loading",
+    "captures": [
+      "loading-dark-action.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "populated-light",
+    "scenario": "populated",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "mounted": 5,
+    "captures": [
+      "populated-light-top.png",
+      "populated-light-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "empty-light",
+    "scenario": "empty",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "mounted": 0,
+    "captures": [
+      "empty-light-top.png",
+      "empty-light-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "jobsOnly-light",
+    "scenario": "jobsOnly",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "mounted": 1,
+    "captures": [
+      "jobsOnly-light-top.png",
+      "jobsOnly-light-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "receiptsOnly-light",
+    "scenario": "receiptsOnly",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "mounted": 1,
+    "captures": [
+      "receiptsOnly-light-top.png",
+      "receiptsOnly-light-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "hourly-light",
+    "scenario": "hourly",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "mounted": 2,
+    "captures": [
+      "hourly-light-top.png",
+      "hourly-light-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "archived-light",
+    "scenario": "archived",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "mounted": 5,
+    "captures": [
+      "archived-light-top.png",
+      "archived-light-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "shared-light",
+    "scenario": "shared",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "mounted": 2,
+    "captures": [
+      "shared-light-top.png",
+      "shared-light-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "multiple-light",
+    "scenario": "multiple",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "mounted": 4,
+    "captures": [
+      "multiple-light-top.png",
+      "multiple-light-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-light",
+    "scenario": "stress",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "mounted": 2,
+    "captures": [
+      "stress-light-top.png",
+      "stress-light-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "longCategory-light",
+    "scenario": "longCategory",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "mounted": 5,
+    "captures": [
+      "longCategory-light-top.png",
+      "longCategory-light-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "many-light",
+    "scenario": "many",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "mounted": 21,
+    "captures": [
+      "many-light-top.png",
+      "many-light-bottom.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-light-320-1",
+    "scenario": "stress",
+    "theme": "light",
+    "width": 320,
+    "scale": 1,
+    "mounted": 2,
+    "captures": [
+      "stress-light-320-1-top.png",
+      "stress-light-320-1-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-light-320-2",
+    "scenario": "stress",
+    "theme": "light",
+    "width": 320,
+    "scale": 2,
+    "mounted": 2,
+    "captures": [
+      "stress-light-320-2-top.png",
+      "stress-light-320-2-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-light-390-2",
+    "scenario": "stress",
+    "theme": "light",
+    "width": 390,
+    "scale": 2,
+    "mounted": 2,
+    "captures": [
+      "stress-light-390-2-top.png",
+      "stress-light-390-2-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-light-430-1",
+    "scenario": "stress",
+    "theme": "light",
+    "width": 430,
+    "scale": 1,
+    "mounted": 2,
+    "captures": [
+      "stress-light-430-1-top.png",
+      "stress-light-430-1-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-light-430-2",
+    "scenario": "stress",
+    "theme": "light",
+    "width": 430,
+    "scale": 2,
+    "mounted": 2,
+    "captures": [
+      "stress-light-430-2-top.png",
+      "stress-light-430-2-receipts.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "disclosure-light",
+    "scenario": "shared",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "action": "disclosure",
+    "captures": [
+      "disclosure-light-action.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "jobNavigation-light",
+    "scenario": "populated",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "action": "jobNavigation",
+    "captures": [
+      "jobNavigation-light-action.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "menu-light",
+    "scenario": "populated",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "action": "menu",
+    "captures": [
+      "menu-light-action.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "confirmation-light",
+    "scenario": "populated",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "action": "confirmation",
+    "captures": [
+      "confirmation-light-action.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "filtered-light",
+    "scenario": "populated",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "action": "filtered",
+    "captures": [
+      "filtered-light-action.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "pageError-light",
+    "scenario": "many",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "action": "pageError",
+    "captures": [
+      "pageError-light-failure.png",
+      "pageError-light-recovered.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "retry-light",
+    "scenario": "populated",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "action": "retry",
+    "captures": [
+      "retry-light-failure.png",
+      "retry-light-recovered.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "loading-light",
+    "scenario": "populated",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "action": "loading",
+    "captures": [
+      "loading-light-action.png"
+    ],
+    "errors": []
+  }
+]
