@@ -1,0 +1,35 @@
+{
+  "origin": "Original generated texture plates adapted from the supplied conversation image. PNG originals retained outside the app; optimized with Chromium canvas WebP quality 0.84.",
+  "assets": {
+    "dark": {
+      "output": "dark.webp",
+      "bytes": 8032,
+      "width": 640,
+      "height": 1137,
+      "sourceWidth": 941,
+      "sourceHeight": 1672,
+      "minLuminance": 0.0018841133976810536,
+      "maxLuminance": 0.020530189764099996,
+      "titleContrast": 13.189732180247951,
+      "dateContrast": 8.12040789135254,
+      "opacity": 1,
+      "composedTitleContrast": 13.189732180247951,
+      "composedDateContrast": 8.12040789135254
+    },
+    "light": {
+      "output": "light.webp",
+      "bytes": 12130,
+      "width": 640,
+      "height": 1137,
+      "sourceWidth": 941,
+      "sourceHeight": 1672,
+      "minLuminance": 0.6146739511077084,
+      "maxLuminance": 0.9598208792991909,
+      "titleContrast": 10.40592799794618,
+      "dateContrast": 3.958549186710958,
+      "opacity": 0.6,
+      "composedTitleContrast": 11.908502904110401,
+      "composedDateContrast": 4.530148055542515
+    }
+  }
+}

@@ -10,15 +10,19 @@ import { TransactionCreate } from '@/features/finance/components/transaction-cre
 import { localDateString, pickerValue } from '@/utils/calendar';
 
 import { HomeContent } from './components/home-content';
+import { HomeBackground } from './components/home-background';
 import { useHome } from './use-home';
 
 export function HomeScreen() {
   const colors = useDesignColors();
   const home = useHome();
   const [transactionOpen, setTransactionOpen] = useState(false);
+  const [viewportHeight, setViewportHeight] = useState(0);
   const date = home.snapshot?.date ?? localDateString(new Date());
   return <SafeAreaView style={{ flex: 1, backgroundColor: colors.canvas }}>
-    <ScrollView contentInsetAdjustmentBehavior="never" contentContainerStyle={styles.content}>
+    <ScrollView contentInsetAdjustmentBehavior="never" contentContainerStyle={styles.content}
+      onLayout={({ nativeEvent }) => setViewportHeight(nativeEvent.layout.height)}>
+    <HomeBackground viewportHeight={viewportHeight} />
     <View style={styles.inner}>
       <View style={styles.header}>
         <UiText type="screenTitle" accessibilityRole="header">Home</UiText>
@@ -35,6 +39,6 @@ export function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
-  content: { flexGrow: 1, padding: Space.lg, paddingBottom: Space.xxl },
+  content: { padding: Space.lg, paddingBottom: Space.xxl },
   inner: { width: '100%', maxWidth: 640, alignSelf: 'center', gap: Space.section }, header: { gap: Space.xs },
 });
