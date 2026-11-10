@@ -15,6 +15,7 @@ export const iconGeometry = {
   layers: '<path d="m12 3 10 5-10 5L2 8l10-5ZM2 12l10 5 10-5M2 16l10 5 10-5"/>',
   receipt: '<path d="M5 2l3 2 4-2 4 2 3-2v20l-3-2-4 2-4-2-3 2V2ZM9 8h6M9 12h6M9 16h3"/>',
   info: '<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7h.01"/>',
+  alert: '<circle cx="12" cy="12" r="9"/><path d="M12 6v7M12 17h.01"/>',
   close: '<path d="m6 6 12 12M6 18 18 6"/>',
   plus: '<path d="M12 5v14M5 12h14"/>',
   search: '<circle cx="10.5" cy="10.5" r="7.5"/><path d="m16 16 5 5"/>',

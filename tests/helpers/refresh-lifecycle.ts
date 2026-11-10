@@ -59,7 +59,7 @@ registerHooks({
     return next(specifier, context);
   },
   load(url, context, next) {
-    if (url.endsWith('.ttf')) return { format: 'commonjs', source: 'module.exports = 1;', shortCircuit: true };
+    if (/\.(ttf|webp)$/.test(url)) return { format: 'commonjs', source: 'module.exports = 1;', shortCircuit: true };
     if (url.endsWith('.css')) return { format: 'commonjs', source: '', shortCircuit: true };
     return next(url, context);
   },

@@ -92,12 +92,11 @@ test('internal navigation preserves active Workout/scroll context and uses only 
   await app.press('Exercises'); await app.refocus(); assertInline(app); // Returning from Home lands on Workout.
 });
 
-test('Home Resume navigates to the Fitness tab and exposes the same active Workout inline', async (t) => {
+test('Home Fitness card directly navigates to the Fitness tab and exposes the same active Workout inline', async (t) => {
   const { db, fitness } = await initialized(t); const session = fitness.startWorkout(); fitness.saveNote(session.id, null, 'Same active session');
   const home = await mount(createElement(screens.HomeScreen), db);
   try {
     await home.tapSet(home.nodes().find((node) => String(node.props?.accessibilityLabel ?? '').startsWith('Fitness.'))!.props.accessibilityLabel as string);
-    await home.press('Resume workout');
     assert.deepEqual(runtime.fixture.navigation, [{ method: 'navigate', target: { pathname: '/(tabs)/fitness' } }]);
     assert.ok(!home.nodes().some((node) => node.kind === 'Modal'));
   } finally { await home.unmount(); }

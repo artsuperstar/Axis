@@ -1,0 +1,704 @@
+[
+  {
+    "name": "populated-dark",
+    "scenario": "populated",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "populated-dark-top.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "empty-dark",
+    "scenario": "empty",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "empty-dark-top.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "one-dark",
+    "scenario": "one",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "one-dark-top.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "mixed-dark",
+    "scenario": "mixed",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "mixed-dark-top.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "tasksOnly-dark",
+    "scenario": "tasksOnly",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "tasksOnly-dark-top.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "workOnly-dark",
+    "scenario": "workOnly",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "workOnly-dark-top.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "commitments-dark",
+    "scenario": "commitments",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "commitments-dark-top.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "completed-dark",
+    "scenario": "completed",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "completed-dark-top.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "next-dark",
+    "scenario": "next",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "next-dark-top.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "saved-dark",
+    "scenario": "saved",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "saved-dark-top.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-dark",
+    "scenario": "stress",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "stress-dark-top.png",
+      "stress-dark-bottom.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "fitnessPartial-dark",
+    "scenario": "fitnessPartial",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "fitnessPartial-dark-top.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "fitnessAll-dark",
+    "scenario": "fitnessAll",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "fitnessAll-dark-top.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "targetless-dark",
+    "scenario": "targetless",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "targetless-dark-top.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-dark-320-1",
+    "scenario": "stress",
+    "theme": "dark",
+    "width": 320,
+    "scale": 1,
+    "captures": [
+      "stress-dark-320-1-top.png",
+      "stress-dark-320-1-bottom.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-dark-320-2",
+    "scenario": "stress",
+    "theme": "dark",
+    "width": 320,
+    "scale": 2,
+    "captures": [
+      "stress-dark-320-2-top.png",
+      "stress-dark-320-2-bottom.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-dark-390-2",
+    "scenario": "stress",
+    "theme": "dark",
+    "width": 390,
+    "scale": 2,
+    "captures": [
+      "stress-dark-390-2-top.png",
+      "stress-dark-390-2-bottom.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-dark-430-1",
+    "scenario": "stress",
+    "theme": "dark",
+    "width": 430,
+    "scale": 1,
+    "captures": [
+      "stress-dark-430-1-top.png",
+      "stress-dark-430-1-bottom.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-dark-430-2",
+    "scenario": "stress",
+    "theme": "dark",
+    "width": 430,
+    "scale": 2,
+    "captures": [
+      "stress-dark-430-2-top.png",
+      "stress-dark-430-2-bottom.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-dark-768-1",
+    "scenario": "stress",
+    "theme": "dark",
+    "width": 768,
+    "scale": 1,
+    "captures": [
+      "stress-dark-768-1-top.png",
+      "stress-dark-768-1-bottom.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-dark-768-2",
+    "scenario": "stress",
+    "theme": "dark",
+    "width": 768,
+    "scale": 2,
+    "captures": [
+      "stress-dark-768-2-top.png",
+      "stress-dark-768-2-bottom.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "today-dark",
+    "scenario": "populated",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "action": "today",
+    "captures": [
+      "today-dark-top.png",
+      "today-dark-bottom.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "attention-dark",
+    "scenario": "populated",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "action": "attention",
+    "captures": [
+      "attention-dark-top.png",
+      "attention-dark-bottom.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "fitness-dark",
+    "scenario": "populated",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "action": "fitness",
+    "captures": [
+      "fitness-dark-top.png",
+      "fitness-dark-bottom.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "journal-dark",
+    "scenario": "populated",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "action": "journal",
+    "captures": [
+      "journal-dark-top.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "transaction-dark",
+    "scenario": "populated",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "action": "transaction",
+    "captures": [
+      "transaction-dark-top.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "fallback-dark",
+    "scenario": "populated",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "action": "fallback",
+    "captures": [
+      "fallback-dark-top.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "error-dark",
+    "scenario": "populated",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "action": "error",
+    "captures": [
+      "error-dark-top.png",
+      "error-dark-recovered.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "loading-dark",
+    "scenario": "populated",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "action": "loading",
+    "captures": [
+      "loading-dark-top.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "localized-dark",
+    "scenario": "populated",
+    "theme": "dark",
+    "width": 390,
+    "scale": 1,
+    "action": "localized",
+    "captures": [
+      "localized-dark-top.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "populated-light",
+    "scenario": "populated",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "populated-light-top.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "empty-light",
+    "scenario": "empty",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "empty-light-top.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "one-light",
+    "scenario": "one",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "one-light-top.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "mixed-light",
+    "scenario": "mixed",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "mixed-light-top.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "tasksOnly-light",
+    "scenario": "tasksOnly",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "tasksOnly-light-top.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "workOnly-light",
+    "scenario": "workOnly",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "workOnly-light-top.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "commitments-light",
+    "scenario": "commitments",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "commitments-light-top.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "completed-light",
+    "scenario": "completed",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "completed-light-top.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "next-light",
+    "scenario": "next",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "next-light-top.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "saved-light",
+    "scenario": "saved",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "saved-light-top.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-light",
+    "scenario": "stress",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "stress-light-top.png",
+      "stress-light-bottom.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "fitnessPartial-light",
+    "scenario": "fitnessPartial",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "fitnessPartial-light-top.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "fitnessAll-light",
+    "scenario": "fitnessAll",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "fitnessAll-light-top.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "targetless-light",
+    "scenario": "targetless",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "captures": [
+      "targetless-light-top.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-light-320-1",
+    "scenario": "stress",
+    "theme": "light",
+    "width": 320,
+    "scale": 1,
+    "captures": [
+      "stress-light-320-1-top.png",
+      "stress-light-320-1-bottom.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-light-320-2",
+    "scenario": "stress",
+    "theme": "light",
+    "width": 320,
+    "scale": 2,
+    "captures": [
+      "stress-light-320-2-top.png",
+      "stress-light-320-2-bottom.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-light-390-2",
+    "scenario": "stress",
+    "theme": "light",
+    "width": 390,
+    "scale": 2,
+    "captures": [
+      "stress-light-390-2-top.png",
+      "stress-light-390-2-bottom.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-light-430-1",
+    "scenario": "stress",
+    "theme": "light",
+    "width": 430,
+    "scale": 1,
+    "captures": [
+      "stress-light-430-1-top.png",
+      "stress-light-430-1-bottom.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-light-430-2",
+    "scenario": "stress",
+    "theme": "light",
+    "width": 430,
+    "scale": 2,
+    "captures": [
+      "stress-light-430-2-top.png",
+      "stress-light-430-2-bottom.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-light-768-1",
+    "scenario": "stress",
+    "theme": "light",
+    "width": 768,
+    "scale": 1,
+    "captures": [
+      "stress-light-768-1-top.png",
+      "stress-light-768-1-bottom.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "stress-light-768-2",
+    "scenario": "stress",
+    "theme": "light",
+    "width": 768,
+    "scale": 2,
+    "captures": [
+      "stress-light-768-2-top.png",
+      "stress-light-768-2-bottom.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "today-light",
+    "scenario": "populated",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "action": "today",
+    "captures": [
+      "today-light-top.png",
+      "today-light-bottom.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "attention-light",
+    "scenario": "populated",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "action": "attention",
+    "captures": [
+      "attention-light-top.png",
+      "attention-light-bottom.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "fitness-light",
+    "scenario": "populated",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "action": "fitness",
+    "captures": [
+      "fitness-light-top.png",
+      "fitness-light-bottom.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "journal-light",
+    "scenario": "populated",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "action": "journal",
+    "captures": [
+      "journal-light-top.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "transaction-light",
+    "scenario": "populated",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "action": "transaction",
+    "captures": [
+      "transaction-light-top.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "fallback-light",
+    "scenario": "populated",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "action": "fallback",
+    "captures": [
+      "fallback-light-top.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "error-light",
+    "scenario": "populated",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "action": "error",
+    "captures": [
+      "error-light-top.png",
+      "error-light-recovered.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "loading-light",
+    "scenario": "populated",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "action": "loading",
+    "captures": [
+      "loading-light-top.png"
+    ],
+    "errors": []
+  },
+  {
+    "name": "localized-light",
+    "scenario": "populated",
+    "theme": "light",
+    "width": 390,
+    "scale": 1,
+    "action": "localized",
+    "captures": [
+      "localized-light-top.png"
+    ],
+    "errors": []
+  }
+]

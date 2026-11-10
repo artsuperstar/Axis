@@ -74,12 +74,12 @@ test('active workout Resume navigates to inline Workout; finish/discard remove i
   const f = await initialized(t); const workout = f.fitness.startWorkout();
   const app = await mount(createElement(screens.HomeScreen), f.db); t.after(app.unmount);
   await app.tapSet(app.nodes().find((node) => String(node.props?.accessibilityLabel ?? '').startsWith('Fitness.'))!.props.accessibilityLabel as string);
-  await app.press('Resume workout'); assert.deepEqual(runtime.fixture.navigation.at(-1), { method: 'navigate', target: { pathname: '/(tabs)/fitness' } });
+  assert.deepEqual(runtime.fixture.navigation.at(-1), { method: 'navigate', target: { pathname: '/(tabs)/fitness' } });
   assert.ok(!app.nodes().some((node) => node.kind === 'Modal'));
   f.fitness.finishWorkout(workout.id); await app.refocus();
   assert.ok(!app.nodes().some((node) => node.props?.label === 'Resume workout'));
-  assert.ok(app.find('FormButton', `View ${f.home.read().completedWorkout!.session.name}, completed today`));
-  const next = f.fitness.startWorkout(); await app.resume(); assert.ok(app.find('FormButton', 'Resume workout'));
+  await app.tapSet(box(app, 'Fitness').props.accessibilityLabel as string); assert.deepEqual(runtime.fixture.navigation.at(-1), { method: 'push', target: f.home.read().completedWorkout!.target });
+  const next = f.fitness.startWorkout(); await app.resume(); assert.match(box(app, 'Fitness').props.accessibilityLabel as string, /Workout in progress/);
   f.fitness.discardWorkout(next.id); await app.resume();
   assert.ok(!app.nodes().some((node) => node.props?.label === 'Resume workout'));
   await app.tapSet(app.nodes().find((node) => String(node.props?.accessibilityLabel ?? '').startsWith('Journal.'))!.props.accessibilityLabel as string);
@@ -136,16 +136,15 @@ test('Home follows rotation selection, expected completion, manual completion an
   const app = await mount(createElement(screens.HomeScreen), f.db); t.after(app.unmount);
   assert.match(box(app, 'Fitness').props.accessibilityLabel as string, /Up next.*Pull/);
   await app.tapSet(box(app, 'Fitness').props.accessibilityLabel as string);
-  assert.ok(app.container.textContent.includes('Push → Pull → Legs')); assert.ok(app.container.textContent.includes('Gym Cycle'));
-  await app.press('Open Fitness');
+  assert.deepEqual(f.home.read().rotationSequence, ['Push', 'Pull', 'Legs']); assert.equal(f.home.read().nextWorkout!.rotation.name, 'Gym Cycle');
   assert.deepEqual(runtime.fixture.navigation.at(-1), { method: 'navigate', target: { pathname: '/(tabs)/fitness' } });
   const session = f.fitness.startWorkout(routines[1]);
   const entry = f.fitness.readSession(session.id).exercises[0]; f.fitness.addSet(entry.id, { ...blankSet(), weight: '20', reps: '8' });
   await app.refocus(); assert.match(box(app, 'Fitness').props.accessibilityLabel as string, /Pull.*Workout in progress.*1 exercises.*1 sets/);
-  await app.press('Resume workout'); f.fitness.finishWorkout(session.id); await app.refocus();
+  await app.tapSet(box(app, 'Fitness').props.accessibilityLabel as string); f.fitness.finishWorkout(session.id); await app.refocus();
   assert.match(box(app, 'Fitness').props.accessibilityLabel as string, /Workout done.*Pull.*Next: Legs/);
-  assert.ok(app.container.textContent.includes('1 sets logged'));
-  await app.press('View Pull, completed today');
+  assert.equal(f.home.read().completedWorkout!.session.setCount, 1);
+  await app.tapSet(box(app, 'Fitness').props.accessibilityLabel as string);
   assert.deepEqual(runtime.fixture.navigation.at(-1), { method: 'push', target: f.home.read().completedWorkout!.target });
   assert.equal(f.home.read().nextWorkout!.stepId, steps[2].id);
   f.fitness.finishWorkout(f.fitness.startWorkout(routines[0]).id); await app.refocus();
@@ -159,32 +158,32 @@ test('Home follows rotation selection, expected completion, manual completion an
   assert.doesNotMatch(box(app, 'Fitness').props.accessibilityLabel as string, /Next:/);
   const other = f.rotations.create({ name: 'Other cycle', steps: [{ id: null, routineId: routines[0] }] });
   f.rotations.activate(other); await app.refocus(); assert.match(box(app, 'Fitness').props.accessibilityLabel as string, /Next: Push/);
-  assert.equal((box(app, 'Fitness').props.accessibilityState as { expanded: boolean }).expanded, true);
+  assert.equal(box(app, 'Fitness').props.accessibilityState, undefined);
   assert.deepEqual(f.sqlite.prepare('PRAGMA foreign_key_check').all(), []);
   assert.equal(f.sqlite.prepare('PRAGMA integrity_check').get()!.integrity_check, 'ok');
 });
 
-test('failed refresh retains expanded rotation context and spending until Retry reads the new next routine', async (t) => {
+test('failed refresh retains selected Today, rotation summary and spending until Retry reads the new next routine', async (t) => {
   const f = await initialized(t);
   const routines = ['Push', 'Pull'].map((name) => f.fitness.createRoutine({ name, exercises: [] }));
   const id = f.rotations.create({ name: 'Cycle', steps: routines.map((routineId) => ({ id: null, routineId })) });
   f.rotations.activate(id); const step = f.rotations.read()[0].steps[1].id;
   f.finance.createTransaction({ ...transactionDraft(), description: 'Expense', amount: '20', transactionDate: today });
   const app = await mount(createElement(screens.HomeScreen), f.db); t.after(app.unmount);
-  await app.tapSet(box(app, 'Fitness').props.accessibilityLabel as string);
+  await app.tapSet(box(app, 'Today').props.accessibilityLabel as string);
   const original = box(app, 'Fitness'); const label = original.props.accessibilityLabel;
   runtime.fixture.failures.add('home.read'); f.rotations.setNext(id, step);
   f.finance.createTransaction({ ...transactionDraft(), description: 'Later expense', amount: '30', transactionDate: today });
   await app.resume();
   assert.equal(box(app, 'Fitness'), original); assert.equal(original.props.accessibilityLabel, label);
-  assert.ok(app.container.textContent.includes('Push → Pull')); assert.ok(app.find('View', 'Spent today, R$ 20,00'));
-  assert.equal((original.props.accessibilityState as { expanded: boolean }).expanded, true);
+  assert.match(box(app, 'Fitness').props.accessibilityLabel as string, /Up next.*Push/); assert.ok(app.find('View', 'Spent today, R$ 20,00'));
+  assert.equal((box(app, 'Today').props.accessibilityState as { expanded: boolean }).expanded, true);
   runtime.fixture.failures.clear(); await app.press('Retry');
   assert.match(original.props.accessibilityLabel as string, /Up next.*Pull/);
   assert.ok(app.find('View', 'Spent today, R$ 50,00'));
-  assert.equal((original.props.accessibilityState as { expanded: boolean }).expanded, true);
+  assert.equal((box(app, 'Today').props.accessibilityState as { expanded: boolean }).expanded, true);
 });
-test('summary boxes toggle exactly one detail after the complete grid and retain their identity during switching', async (t) => {
+test('summary boxes toggle exactly one detail in the contextual slot and retain their identity during switching', async (t) => {
   const f = await initialized(t); f.tasks.createTask({ ...taskDraft(), title: 'Scheduled task', date: today });
   const app = await mount(createElement(screens.HomeScreen), f.db); t.after(app.unmount);
   const summaries = ['Today', 'Needs attention', 'Fitness', 'Journal'].map((title) => box(app, title));
@@ -194,14 +193,14 @@ test('summary boxes toggle exactly one detail after the complete grid and retain
   await app.tapSet(box(app, 'Today').props.accessibilityLabel as string);
   assert.deepEqual(expanded(), [summaries[0]]); assert.ok(app.find('FormButton', 'View in Calendar'));
   const heading = app.nodes().find((node) => node.props?.accessibilityRole === 'header' && node.textContent.startsWith('Today'))!;
-  assert.ok(app.nodes().indexOf(summaries[3]) < app.nodes().indexOf(heading), 'Detail follows all four boxes');
+  assert.ok(app.nodes().indexOf(summaries[1]) < app.nodes().indexOf(heading)); assert.ok(app.nodes().indexOf(heading) < app.nodes().indexOf(summaries[2]), 'Detail precedes Fitness and Journal');
   await app.tapSet(box(app, 'Needs attention').props.accessibilityLabel as string);
   assert.deepEqual(expanded(), [summaries[1]]);
   assert.ok(!app.nodes().some((node) => node.props?.label === 'View in Calendar'));
   assert.ok(app.container.textContent.includes('Nothing needs attention.'));
   await app.tapSet(box(app, 'Fitness').props.accessibilityLabel as string);
-  assert.deepEqual(expanded(), [summaries[2]]); assert.ok(app.find('FormButton', 'Open Fitness'));
-  await app.tapSet(box(app, 'Fitness').props.accessibilityLabel as string);
+  assert.deepEqual(expanded(), [summaries[1]]); assert.deepEqual(runtime.fixture.navigation.at(-1), { method: 'navigate', target: { pathname: '/(tabs)/fitness' } });
+  await app.tapSet(box(app, 'Needs attention').props.accessibilityLabel as string);
   assert.equal(expanded().length, 0);
   for (let i = 0; i < summaries.length; i++) assert.equal(box(app, ['Today', 'Needs attention', 'Fitness', 'Journal'][i]), summaries[i]);
 });
@@ -216,7 +215,7 @@ for (const [width, fontScale, mode] of [[390, 1, 'light'], [320, 1, 'dark'], [39
     const summary = box(app, 'Today'); assert.ok(String(summary.props.accessibilityLabel).includes(title));
     const style = (summary.props.style as (state: { pressed: boolean }) => object[])({ pressed: false });
     assert.equal(Object.assign({}, ...style).height, undefined);
-    const row = summary.parentNode!; assert.equal(row.childNodes.filter((node) => node.kind === 'Pressable').length, fontScale === 2 ? 4 : 2);
+    const row = summary.parentNode!; assert.equal(row.childNodes.filter((node) => node.kind === 'Pressable').length, fontScale === 2 || width === 320 ? 1 : 2);
     assert.ok(app.nodes(summary).every((node) => node.props?.numberOfLines === undefined && node.props?.allowFontScaling !== false));
   });
 }
@@ -243,19 +242,19 @@ test('Spent today and amount are information; only the adjacent plus opens the e
 for (const [type, date, expected] of [
   ['expense', today, 'R$ 125,00'], ['income', today, 'R$ 100,00'], ['expense', addDays(today, -1), 'R$ 100,00'],
 ] as const) {
-  test(`quick add ${type} on ${date} returns to Home with authoritative ${expected} and retains Fitness expansion`, async (t) => {
+  test(`quick add ${type} on ${date} returns to Home with authoritative ${expected} and retains Today expansion`, async (t) => {
     const f = await initialized(t);
     f.finance.createTransaction({ ...transactionDraft(), description: 'Initial expense', amount: '100', transactionDate: today });
     const app = await mount(createElement(screens.HomeScreen), f.db); t.after(app.unmount);
-    await app.tapSet(box(app, 'Fitness').props.accessibilityLabel as string);
-    const fitness = box(app, 'Fitness'); const spent = app.find('View', 'Spent today, R$ 100,00');
+    await app.tapSet(box(app, 'Today').props.accessibilityLabel as string);
+    const fitness = box(app, 'Today'); const spent = app.find('View', 'Spent today, R$ 100,00');
     await app.press('Add transaction'); await app.change('Amount *', '25'); await app.change('Description *', 'Quick addition');
     await act(() => (app.find('SegmentedControl', 'Type *').props.onChange as (value: string) => void)(type));
     await app.change('Date *', date); await app.press('Save');
     assert.ok(!app.nodes().some((node) => node.kind === 'Modal')); assert.deepEqual(runtime.fixture.navigation, []);
     assert.equal(app.find('View', `Spent today, ${expected}`), spent);
-    assert.equal(box(app, 'Fitness'), fitness); assert.equal((fitness.props.accessibilityState as { expanded: boolean }).expanded, true);
-    assert.ok(app.find('FormButton', 'Open Fitness'));
+    assert.equal(box(app, 'Today'), fitness); assert.equal((fitness.props.accessibilityState as { expanded: boolean }).expanded, true);
+    assert.ok(app.find('FormButton', 'View in Calendar'));
     const created = f.finance.read().transactions.find((row) => row.description === 'Quick addition')!;
     assert.equal(created.type, type); assert.equal(created.transactionDate, date); assert.equal(created.amountMinor, 2500);
     assert.deepEqual(f.sqlite.prepare('PRAGMA foreign_key_check').all(), []);
@@ -265,14 +264,14 @@ for (const [type, date, expected] of [
 for (const dismiss of ['Cancel', 'Back'] as const) {
   test(`quick-add ${dismiss} returns to the unchanged Home and preserves expansion without saving the draft`, async (t) => {
     const f = await initialized(t); const app = await mount(createElement(screens.HomeScreen), f.db); t.after(app.unmount);
-    await app.tapSet(box(app, 'Fitness').props.accessibilityLabel as string);
-    const fitness = box(app, 'Fitness'); await app.press('Add transaction');
+    await app.tapSet(box(app, 'Today').props.accessibilityLabel as string);
+    const fitness = box(app, 'Today'); await app.press('Add transaction');
     await app.change('Amount *', '25'); await app.change('Description *', 'Unsaved draft');
     if (dismiss === 'Cancel') await app.press('Cancel');
     else await act(() => (app.find('Modal').props.onRequestClose as () => void)());
     assert.ok(!app.nodes().some((node) => node.kind === 'Modal')); assert.deepEqual(runtime.fixture.navigation, []);
     assert.equal(f.finance.read().transactions.length, 0); assert.ok(app.find('View', 'Spent today, R$ 0,00'));
-    assert.equal(box(app, 'Fitness'), fitness); assert.equal((fitness.props.accessibilityState as { expanded: boolean }).expanded, true);
+    assert.equal(box(app, 'Today'), fitness); assert.equal((fitness.props.accessibilityState as { expanded: boolean }).expanded, true);
   });
 }
 
@@ -309,14 +308,14 @@ test('quick add preserves shared type/category rules, archived filtering and aut
 
 test('returning from a committed quick-add write retains last-good Home on refresh failure until Retry', async (t) => {
   const f = await initialized(t); const app = await mount(createElement(screens.HomeScreen), f.db); t.after(app.unmount);
-  await app.tapSet(box(app, 'Fitness').props.accessibilityLabel as string); const fitness = box(app, 'Fitness');
+  await app.tapSet(box(app, 'Today').props.accessibilityLabel as string); const fitness = box(app, 'Today');
   await app.press('Add transaction'); await app.change('Amount *', '25'); await app.change('Description *', 'Committed expense');
   runtime.fixture.failures.add('home.read'); await app.press('Save');
   assert.ok(!app.nodes().some((node) => node.kind === 'Modal')); assert.equal(f.finance.read().transactions.length, 1);
-  assert.ok(app.find('View', 'Spent today, R$ 0,00')); assert.equal(box(app, 'Fitness'), fitness);
+  assert.ok(app.find('View', 'Spent today, R$ 0,00')); assert.equal(box(app, 'Today'), fitness);
   assert.equal((fitness.props.accessibilityState as { expanded: boolean }).expanded, true);
   runtime.fixture.failures.clear(); await app.press('Retry');
-  assert.ok(app.find('View', 'Spent today, R$ 25,00')); assert.equal(box(app, 'Fitness'), fitness);
+  assert.ok(app.find('View', 'Spent today, R$ 25,00')); assert.equal(box(app, 'Today'), fitness);
 });
 
 test('quick-add category refresh failures preserve the editor draft and last-good choices; initial failure is recoverable', async (t) => {

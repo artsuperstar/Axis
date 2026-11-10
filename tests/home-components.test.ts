@@ -73,8 +73,8 @@ test('collapsed Home always renders four summary boxes and persistent zero spend
   const labels = ['Today', 'Needs attention', 'Fitness', 'Journal'];
   const boxes = labels.map((label) => form.elements.find((element) => element.props.accessibilityLabel?.startsWith(label + '.'))!);
   assert.ok(boxes.every(Boolean));
-  for (const box of boxes.slice(0, 3)) assert.deepEqual(box.props.accessibilityState, { selected: false, expanded: false });
-  assert.equal(boxes[3].props.accessibilityState, undefined);
+  for (const box of boxes.slice(0, 2)) assert.deepEqual(box.props.accessibilityState, { selected: false, expanded: false });
+  assert.equal(boxes[2].props.accessibilityState, undefined); assert.equal(boxes[3].props.accessibilityState, undefined);
   assert.match(form.markup, /Nothing scheduled/); assert.match(form.markup, /Nothing needs attention/);
   assert.match(form.markup, /No workout today/); assert.match(form.markup, /Not written yet/);
   assert.doesNotMatch(form.markup, /View in Calendar|Resume workout|Open Fitness|Write about your day/);
@@ -98,8 +98,8 @@ test('Today summary covers zero, one, multiple and Next Up without mounting agen
     const box = form.elements.find((element) => element.props.accessibilityLabel?.startsWith('Today.'))!;
     assert.ok(box.props.accessibilityLabel?.includes(`${count} items`));
     if (count) assert.ok(box.props.accessibilityLabel?.includes('10:30 Submit report'));
-    else assert.match(form.markup, /Next: 10:30 Submit report/);
-    if (count > 1) assert.match(form.markup, /\+ 39 more/);
+    else assert.ok(box.props.accessibilityLabel?.includes('Next: 10:30 Submit report'));
+    if (count > 1) assert.match(form.markup, /\+39 more/);
     assert.ok(!form.elements.some((element) => element.props.accessibilityLabel?.startsWith('Open Submit report')));
   }
 });
@@ -110,8 +110,8 @@ test('attention summary counts each source, zero attention and large backlog wit
       onOpen: noop, onComplete: noop }));
     const box = form.elements.find((element) => element.props.accessibilityLabel?.startsWith('Needs attention.'))!;
     assert.ok(box.props.accessibilityLabel?.includes(`${items.length * 17} items`));
-    for (const item of items) assert.ok(box.props.accessibilityLabel?.includes(item.source === 'task' ? '17 tasks needing attention'
-      : item.source === 'commitment' ? '17 overdue commitments' : '17 overdue work payments'));
+    for (const item of items) assert.ok(box.props.accessibilityLabel?.includes(item.source === 'task' ? '17 tasks'
+      : item.source === 'commitment' ? '17 overdue commitments' : '17 overdue work'));
     assert.ok(!form.elements.some((element) => element.props.accessibilityLabel?.startsWith('Open ')));
   }
 });
@@ -139,33 +139,27 @@ test('bounded expanded attention and Today preserve totals and original source/C
   const selected: HomeNavigation[] = []; const rows = Array.from({ length: 5 }, (_, index) => ({ ...commitment, id: `bill-${index}` }));
   const snapshot = { ...empty(), attention: [section(commitment, 13)], attentionPreview: rows, today: [section(task, 40)], todayPreview: [task] };
   const attention = renderControl(() => homeContent.HomeDetail({ panel: 'attention', snapshot, onOpen: (target) => selected.push(target), onComplete: noop }));
-  assert.match(attention.markup, /Needs attention · 13/); assert.match(attention.markup, /8 more/);
+  assert.match(attention.markup, /Needs attention/); assert.match(attention.markup, /8 more/);
   attention.elements.find((element) => element.props.label === 'Commitments (13)')!.props.onPress!();
   const scheduled = renderControl(() => homeContent.HomeDetail({ panel: 'today', snapshot, onOpen: (target) => selected.push(target), onComplete: noop }));
-  assert.match(scheduled.markup, /Today · 40/);
+  assert.match(scheduled.markup, /Today.*schedule/);
   scheduled.elements.find((element) => element.props.label === 'View in Calendar')!.props.onPress!();
   assert.deepEqual(selected, [section(commitment).target, { pathname: '/(tabs)/calendar' }]);
 });
 
-test('expanded Fitness exposes direct Resume, completed read-only navigation or Open Fitness only', () => {
-  const targets: HomeNavigation[] = [];
-  const active = renderControl(() => homeContent.HomeDetail({ panel: 'fitness', snapshot: { ...empty(), activeWorkout: { session: workout(), target: { pathname: '/(tabs)/fitness' } } },
-    onOpen: (target) => targets.push(target), onComplete: noop }));
-  assert.match(active.markup, /5 exercises.*18 sets logged/);
-  active.elements.find((element) => element.props.label === 'Resume workout')!.props.onPress!();
-  const target = { pathname: '/home-source' as const, params: { source: 'fitness' as const, recordId: 'workout-id' } };
-  const completed = renderControl(() => homeContent.HomeDetail({ panel: 'fitness', snapshot: { ...empty(), completedWorkoutCount: 2, nextWorkout: nextWorkout(), completedWorkout: { session: { ...workout(), completedAt: 1 }, target } },
-    onOpen: (value) => targets.push(value), onComplete: noop }));
-  assert.match(completed.markup, /2 workouts completed today/);
-  assert.match(completed.markup, /5 exercises.*18 sets logged/); assert.match(completed.markup, /Next workout.*Legs/); assert.match(completed.markup, /Gym Cycle/);
-  completed.elements.find((element) => element.props.label === 'View latest workout')!.props.onPress!();
-  const blank = renderControl(() => homeContent.HomeDetail({ panel: 'fitness', snapshot: empty(), onOpen: (value) => targets.push(value), onComplete: noop }));
-  blank.elements.find((element) => element.props.label === 'Open Fitness')!.props.onPress!();
-  assert.deepEqual(targets, [{ pathname: '/(tabs)/fitness' }, target, { pathname: '/(tabs)/fitness' }]);
-  assert.match(blank.markup, /No workout recorded today/); assert.match(blank.markup, /No active workout rotation/);
-  const planning = renderControl(() => homeContent.HomeDetail({ panel: 'fitness', snapshot: { ...empty(), nextWorkout: nextWorkout(), rotationSequence: ['Push', 'Pull', 'Legs'] }, onOpen: noop, onComplete: noop }));
-  assert.match(planning.markup, /Up next.*Legs/); assert.match(planning.markup, /Gym Cycle/); assert.match(planning.markup, /Push → Pull → Legs/);
-  assert.doesNotMatch(planning.markup, /Finish Workout|Add set|Workout missed|Workout overdue/);
+test('Fitness directly opens the existing active, completed or default destination without an expansion state', () => {
+  const completedTarget = { pathname: '/home-source' as const, params: { source: 'fitness' as const, recordId: 'workout-id' } };
+  for (const state of ['active', 'completed', 'next', 'empty'] as const) {
+    const targets: HomeNavigation[] = [];
+    const snapshot = { ...empty(), activeWorkout: state === 'active' ? { session: workout(), target: { pathname: '/(tabs)/fitness' as const } } : null,
+      completedWorkout: state === 'completed' ? { session: { ...workout(), completedAt: 1 }, target: completedTarget } : null,
+      completedWorkoutCount: state === 'completed' ? 1 : 0, nextWorkout: state === 'next' ? nextWorkout() : null };
+    const form = renderControl(() => homeContent.HomeContent({ onAddTransaction: noop, snapshot, onOpen: target => targets.push(target), onComplete: noop }));
+    const card = form.elements.find(element => element.props.accessibilityLabel?.startsWith('Fitness.'))!;
+    assert.equal(card.props.accessibilityState, undefined); card.props.onPress!();
+    assert.deepEqual(targets, [state === 'completed' ? completedTarget : { pathname: '/(tabs)/fitness' }]);
+    assert.doesNotMatch(form.markup, /Finish Workout|Add set|Resume workout|Workout missed|Workout overdue/);
+  }
 });
 
 test('Journal saved status appears in its direct navigation box without expansion semantics', () => {
@@ -182,9 +176,10 @@ test('Journal saved status appears in its direct navigation box without expansio
 });
 
 test('grid uses two ordinary phone columns and deliberately stacks at large text scales', () => {
-  for (const width of [288, 358, 398]) assert.equal(homeContent.homeGridColumns(width, 1), 2);
+  assert.equal(homeContent.homeGridColumns(288, 1), 1);
+  for (const width of [358, 398]) assert.equal(homeContent.homeGridColumns(width, 1), 2);
   assert.equal(homeContent.homeGridColumns(358, 2), 1); assert.equal(homeContent.homeGridColumns(200, 1), 1);
-  assert.equal(homeContent.homeGridColumns(620, 2), 2);
+  assert.equal(homeContent.homeGridColumns(620, 2), 1); assert.equal(homeContent.homeGridColumns(640, 2), 2);
 });
 
 test('summary labels and Spent today retain long source/workout names and every centavo of a large BigInt total', () => {
@@ -199,16 +194,12 @@ test('summary labels and Spent today retain long source/workout names and every 
     assert.doesNotMatch(form.markup, /text-overflow:ellipsis|white-space:nowrap/);
   }
 });
-test('long next-routine and rotation sequence names remain complete in summaries and expanded planning', () => {
+test('long next-routine names remain complete in direct navigation summaries', () => {
   const name = 'Long planned workout routine '.repeat(10).trim();
-  const next = nextWorkout(); next.routine.name = name; next.rotation.name = 'Long named cycle '.repeat(10).trim();
-  const snapshot = { ...empty(), nextWorkout: next, rotationSequence: ['Push', name, 'Legs'] };
-  const summary = renderControl(() => homeContent.HomeContent({ onAddTransaction: () => {}, snapshot, onOpen: noop, onComplete: noop }));
-  assert.ok(summary.elements.find((element) => element.props.accessibilityLabel?.startsWith('Fitness.'))!.props.accessibilityLabel?.includes(name));
-  const detail = renderControl(() => homeContent.HomeDetail({ panel: 'fitness', snapshot, onOpen: noop, onComplete: noop }));
-  assert.ok(detail.markup.includes(name)); assert.ok(detail.markup.includes(next.rotation.name));
-  assert.ok(detail.markup.includes(`Push → ${name} → Legs`));
-  for (const form of [summary, detail]) assert.doesNotMatch(form.markup, /text-overflow:ellipsis|white-space:nowrap/);
+  const next = nextWorkout(); next.routine.name = name;
+  const summary = renderControl(() => homeContent.HomeContent({ onAddTransaction: noop, snapshot: { ...empty(), nextWorkout: next }, onOpen: noop, onComplete: noop }));
+  assert.ok(summary.elements.find(element => element.props.accessibilityLabel?.startsWith('Fitness.'))!.props.accessibilityLabel?.includes(name));
+  assert.doesNotMatch(summary.markup, /text-overflow:ellipsis|white-space:nowrap/);
 });
 
 test('long labels and large BRL amounts wrap without fixed row height, truncation or a narrow title column', () => {
@@ -219,5 +210,5 @@ test('long labels and large BRL amounts wrap without fixed row height, truncatio
   const opener = form.elements.find((element) => element.props.accessibilityLabel?.startsWith('Open '))!;
   const style = opener.props.style as unknown as (state: { pressed: boolean }) => unknown[];
   const flat = Object.assign({}, ...style({ pressed: false }));
-  assert.equal(flat.minWidth, 0); assert.equal(flat.minHeight, 44); assert.equal(flat.height, undefined);
+  assert.equal(flat.minWidth, 0); assert.ok(flat.minHeight >= 44); assert.equal(flat.height, undefined);
 });

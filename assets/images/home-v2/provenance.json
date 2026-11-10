@@ -1,0 +1,40 @@
+{
+  "origin": "Original decorative plates generated with the built-in image_gen tool for Axis Home v2. Inspected and downscaled/compressed using Chromium canvas; no external stock or user imagery. Exact generation prompts below.",
+  "assets": {
+    "today": {
+      "prompt": "Use case: photorealistic-natural. Asset type: decorative background plate for an Axis mobile dashboard card. Create an atmospheric editorial photograph of layered mountain ridges at sunset, dusty rose and muted coral sky, a small warm sun above the distant ridge on the upper right. Quiet hazy depth, dark wine foreground slopes. Square composition, broad calm darker lower left for live UI text to be added in code. Refined natural texture and cinematic soft light, no oversaturated colors. Full bleed image only, no app UI, no lettering, no logos, no frame, no watermark.",
+      "output": "today.webp",
+      "width": 512,
+      "height": 512,
+      "bytes": 11182
+    },
+    "attention": {
+      "prompt": "Use case: photorealistic-natural. Asset type: decorative background plate for an Axis mobile dashboard card. Create an atmospheric editorial photograph of a quiet planning desk in warm amber late-afternoon light: a closed neutral planner and pen subtly visible on the right, soft out-of-focus plant shadow in the upper right. Dark brown and bronze tonal depth with a softly illuminated honey corner. Square composition with the left and lower half calm and dark for live UI text added separately. Rich photographic materials, restrained and personal, no people, no readable writing, no lettering, no app UI, no logos, no watermark.",
+      "output": "attention.webp",
+      "width": 512,
+      "height": 512,
+      "bytes": 13976
+    },
+    "fitness": {
+      "prompt": "Use case: photorealistic-natural. Asset type: decorative background plate for an Axis mobile dashboard card. Create an atmospheric editorial photograph of two real matte black hex dumbbells resting on a dark gym surface, concentrated in the upper right, softly lit by emerald green side light. Deep forest green shadows with subtle tactile texture, calm energetic mood, cinematic shallow depth. Square composition with generous very dark lower left for live UI text added separately. Full bleed photograph, no people, no lettering, no app UI, no logos, no watermark.",
+      "output": "fitness.webp",
+      "width": 512,
+      "height": 512,
+      "bytes": 27004
+    },
+    "journal": {
+      "prompt": "Use case: photorealistic-natural. Asset type: decorative background plate for an Axis mobile dashboard card. Create an atmospheric editorial photograph of a closed softly worn notebook, a pen and a ceramic coffee cup on a wooden desk, arranged in the upper right. Gentle plum and mauve evening light, dark aubergine shadows, reflective quiet mood, tactile paper and ceramic. Square composition, lower left calm and dark for live UI text added separately. Full bleed photograph, no readable writing, no lettering, no app UI, no people, no logos, no watermark.",
+      "output": "journal.webp",
+      "width": 512,
+      "height": 512,
+      "bytes": 14932
+    },
+    "spent": {
+      "prompt": "Use case: photorealistic-natural. Asset type: shallow panoramic decorative background for an Axis mobile dashboard spending strip. Create an atmospheric editorial photograph of distant layered mountain ridges at dusk, a warm copper horizon glowing on the right, deep espresso hills and muted rust sky. Wide landscape composition, approximately three to one; the left half is quiet dark tonal haze for live UI text added separately. Refined soft natural texture, rich restrained copper light. Full bleed landscape only, no sun dominating the picture, no buildings, no lettering, no app UI, no logos, no watermark.",
+      "output": "spent.webp",
+      "width": 960,
+      "height": 320,
+      "bytes": 9754
+    }
+  }
+}

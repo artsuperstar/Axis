@@ -17,7 +17,7 @@ registerHooks({
       ? new URL('./date-time-picker.cjs', import.meta.url).href : specifier;
     return next(target, context);
   },
-  load(url, context, next) { return url.endsWith('.ttf') ? { format: 'commonjs', source: 'module.exports = 1;', shortCircuit: true }
+  load(url, context, next) { return /\.(ttf|webp)$/.test(url) ? { format: 'commonjs', source: 'module.exports = 1;', shortCircuit: true }
     : url.endsWith('.css') ? { format: 'commonjs', source: '', shortCircuit: true } : next(url, context); },
 });
 const require = createRequire(import.meta.url);
