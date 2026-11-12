@@ -1,0 +1,3463 @@
+{
+  "checks": [
+    {
+      "name": "populated-dark",
+      "scenario": "populated",
+      "theme": "dark",
+      "width": 390,
+      "scale": 1,
+      "captures": [
+        {
+          "file": "populated-dark-top.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-details-name",
+                "x": 120,
+                "y": 282,
+                "width": 254,
+                "height": 34
+              },
+              {
+                "id": "client-financial-overview",
+                "x": 16,
+                "y": 355,
+                "width": 358,
+                "height": 139
+              },
+              {
+                "id": "client-detail-actions",
+                "x": 16,
+                "y": 510,
+                "width": 358,
+                "height": 48
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 635,
+                "width": 358,
+                "height": 108
+              }
+            ],
+            "list": {
+              "height": 489,
+              "scrollHeight": 490,
+              "scrollTop": 0
+            }
+          }
+        },
+        {
+          "file": "populated-dark-bottom.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-details-name",
+                "x": 120,
+                "y": 282,
+                "width": 254,
+                "height": 34
+              },
+              {
+                "id": "client-financial-overview",
+                "x": 16,
+                "y": 354,
+                "width": 358,
+                "height": 139
+              },
+              {
+                "id": "client-detail-actions",
+                "x": 16,
+                "y": 509,
+                "width": 358,
+                "height": 48
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 634,
+                "width": 358,
+                "height": 108
+              }
+            ],
+            "list": {
+              "height": 489,
+              "scrollHeight": 490,
+              "scrollTop": 1
+            }
+          }
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "partial-dark",
+      "scenario": "partial",
+      "theme": "dark",
+      "width": 390,
+      "scale": 1,
+      "captures": [
+        {
+          "file": "partial-dark-top.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-details-name",
+                "x": 120,
+                "y": 56,
+                "width": 254,
+                "height": 34
+              },
+              {
+                "id": "client-financial-overview",
+                "x": 16,
+                "y": 129,
+                "width": 358,
+                "height": 139
+              },
+              {
+                "id": "client-detail-actions",
+                "x": 16,
+                "y": 284,
+                "width": 358,
+                "height": 48
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 409,
+                "width": 358,
+                "height": 156
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 577,
+                "width": 358,
+                "height": 156
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 745,
+                "width": 358,
+                "height": 108
+              }
+            ],
+            "list": {
+              "height": 715,
+              "scrollHeight": 826,
+              "scrollTop": 0
+            }
+          }
+        },
+        {
+          "file": "partial-dark-bottom.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-details-name",
+                "x": 120,
+                "y": 56,
+                "width": 254,
+                "height": 34
+              },
+              {
+                "id": "client-financial-overview",
+                "x": 16,
+                "y": 18,
+                "width": 358,
+                "height": 139
+              },
+              {
+                "id": "client-detail-actions",
+                "x": 16,
+                "y": 173,
+                "width": 358,
+                "height": 48
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 298,
+                "width": 358,
+                "height": 156
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 466,
+                "width": 358,
+                "height": 156
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 634,
+                "width": 358,
+                "height": 108
+              }
+            ],
+            "list": {
+              "height": 715,
+              "scrollHeight": 826,
+              "scrollTop": 111
+            }
+          }
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "settled-dark",
+      "scenario": "settled",
+      "theme": "dark",
+      "width": 390,
+      "scale": 1,
+      "captures": [
+        {
+          "file": "settled-dark-top.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-details-name",
+                "x": 120,
+                "y": 350,
+                "width": 254,
+                "height": 34
+              },
+              {
+                "id": "client-financial-overview",
+                "x": 16,
+                "y": 423,
+                "width": 358,
+                "height": 139
+              },
+              {
+                "id": "client-detail-actions",
+                "x": 16,
+                "y": 578,
+                "width": 358,
+                "height": 48
+              }
+            ],
+            "list": {
+              "height": 421,
+              "scrollHeight": 422,
+              "scrollTop": 0
+            }
+          }
+        },
+        {
+          "file": "settled-dark-bottom.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-details-name",
+                "x": 120,
+                "y": 350,
+                "width": 254,
+                "height": 34
+              },
+              {
+                "id": "client-financial-overview",
+                "x": 16,
+                "y": 422,
+                "width": 358,
+                "height": 139
+              },
+              {
+                "id": "client-detail-actions",
+                "x": 16,
+                "y": 577,
+                "width": 358,
+                "height": 48
+              }
+            ],
+            "list": {
+              "height": 421,
+              "scrollHeight": 422,
+              "scrollTop": 1
+            }
+          }
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "empty-dark",
+      "scenario": "empty",
+      "theme": "dark",
+      "width": 390,
+      "scale": 1,
+      "captures": [
+        {
+          "file": "empty-dark-top.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-details-name",
+                "x": 120,
+                "y": 350,
+                "width": 254,
+                "height": 34
+              },
+              {
+                "id": "client-financial-overview",
+                "x": 16,
+                "y": 423,
+                "width": 358,
+                "height": 139
+              },
+              {
+                "id": "client-detail-actions",
+                "x": 16,
+                "y": 578,
+                "width": 358,
+                "height": 48
+              }
+            ],
+            "list": {
+              "height": 421,
+              "scrollHeight": 422,
+              "scrollTop": 0
+            }
+          }
+        },
+        {
+          "file": "empty-dark-bottom.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-details-name",
+                "x": 120,
+                "y": 350,
+                "width": 254,
+                "height": 34
+              },
+              {
+                "id": "client-financial-overview",
+                "x": 16,
+                "y": 422,
+                "width": 358,
+                "height": 139
+              },
+              {
+                "id": "client-detail-actions",
+                "x": 16,
+                "y": 577,
+                "width": 358,
+                "height": 48
+              }
+            ],
+            "list": {
+              "height": 421,
+              "scrollHeight": 422,
+              "scrollTop": 1
+            }
+          }
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "archived-dark",
+      "scenario": "archived",
+      "theme": "dark",
+      "width": 390,
+      "scale": 1,
+      "captures": [
+        {
+          "file": "archived-dark-top.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-details-name",
+                "x": 120,
+                "y": 226,
+                "width": 254,
+                "height": 34
+              },
+              {
+                "id": "client-financial-overview",
+                "x": 16,
+                "y": 355,
+                "width": 358,
+                "height": 139
+              },
+              {
+                "id": "client-detail-actions",
+                "x": 16,
+                "y": 510,
+                "width": 358,
+                "height": 48
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 635,
+                "width": 358,
+                "height": 108
+              }
+            ],
+            "list": {
+              "height": 545,
+              "scrollHeight": 546,
+              "scrollTop": 0
+            }
+          }
+        },
+        {
+          "file": "archived-dark-bottom.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-details-name",
+                "x": 120,
+                "y": 226,
+                "width": 254,
+                "height": 34
+              },
+              {
+                "id": "client-financial-overview",
+                "x": 16,
+                "y": 354,
+                "width": 358,
+                "height": 139
+              },
+              {
+                "id": "client-detail-actions",
+                "x": 16,
+                "y": 509,
+                "width": 358,
+                "height": 48
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 634,
+                "width": 358,
+                "height": 108
+              }
+            ],
+            "list": {
+              "height": 545,
+              "scrollHeight": 546,
+              "scrollTop": 1
+            }
+          }
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "archivedEmpty-dark",
+      "scenario": "archivedEmpty",
+      "theme": "dark",
+      "width": 390,
+      "scale": 1,
+      "captures": [
+        {
+          "file": "archivedEmpty-dark-top.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-details-name",
+                "x": 120,
+                "y": 294,
+                "width": 254,
+                "height": 34
+              },
+              {
+                "id": "client-financial-overview",
+                "x": 16,
+                "y": 423,
+                "width": 358,
+                "height": 139
+              },
+              {
+                "id": "client-detail-actions",
+                "x": 16,
+                "y": 578,
+                "width": 358,
+                "height": 48
+              }
+            ],
+            "list": {
+              "height": 477,
+              "scrollHeight": 478,
+              "scrollTop": 0
+            }
+          }
+        },
+        {
+          "file": "archivedEmpty-dark-bottom.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-details-name",
+                "x": 120,
+                "y": 294,
+                "width": 254,
+                "height": 34
+              },
+              {
+                "id": "client-financial-overview",
+                "x": 16,
+                "y": 422,
+                "width": 358,
+                "height": 139
+              },
+              {
+                "id": "client-detail-actions",
+                "x": 16,
+                "y": 577,
+                "width": 358,
+                "height": 48
+              }
+            ],
+            "list": {
+              "height": 477,
+              "scrollHeight": 478,
+              "scrollTop": 1
+            }
+          }
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "many-dark",
+      "scenario": "many",
+      "theme": "dark",
+      "width": 390,
+      "scale": 1,
+      "captures": [
+        {
+          "file": "many-dark-top.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-details-name",
+                "x": 120,
+                "y": 56,
+                "width": 254,
+                "height": 34
+              },
+              {
+                "id": "client-financial-overview",
+                "x": 16,
+                "y": 129,
+                "width": 358,
+                "height": 139
+              },
+              {
+                "id": "client-detail-actions",
+                "x": 16,
+                "y": 284,
+                "width": 358,
+                "height": 48
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 409,
+                "width": 358,
+                "height": 156
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 577,
+                "width": 358,
+                "height": 156
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 745,
+                "width": 358,
+                "height": 156
+              }
+            ],
+            "list": {
+              "height": 715,
+              "scrollHeight": 2826,
+              "scrollTop": 0
+            }
+          }
+        },
+        {
+          "file": "many-dark-bottom.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-details-name",
+                "x": 120,
+                "y": 56,
+                "width": 254,
+                "height": 34
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": -86,
+                "width": 358,
+                "height": 156
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 82,
+                "width": 358,
+                "height": 156
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 250,
+                "width": 358,
+                "height": 156
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 418,
+                "width": 358,
+                "height": 156
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 586,
+                "width": 358,
+                "height": 156
+              }
+            ],
+            "list": {
+              "height": 715,
+              "scrollHeight": 13874,
+              "scrollTop": 13159
+            }
+          }
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "stress-dark",
+      "scenario": "stress",
+      "theme": "dark",
+      "width": 390,
+      "scale": 1,
+      "captures": [
+        {
+          "file": "stress-dark-top.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-details-name",
+                "x": 16,
+                "y": 129,
+                "width": 358,
+                "height": 170
+              },
+              {
+                "id": "client-financial-overview",
+                "x": 16,
+                "y": 315,
+                "width": 358,
+                "height": 258
+              },
+              {
+                "id": "client-detail-actions",
+                "x": 16,
+                "y": 589,
+                "width": 358,
+                "height": 48
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 714,
+                "width": 358,
+                "height": 300
+              }
+            ],
+            "list": {
+              "height": 715,
+              "scrollHeight": 1611,
+              "scrollTop": 0
+            }
+          }
+        },
+        {
+          "file": "stress-dark-bottom.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": -182,
+                "width": 358,
+                "height": 300
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 130,
+                "width": 358,
+                "height": 300
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 442,
+                "width": 358,
+                "height": 300
+              }
+            ],
+            "list": {
+              "height": 715,
+              "scrollHeight": 1611,
+              "scrollTop": 896
+            }
+          }
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "stress-dark-320-1",
+      "scenario": "stress",
+      "theme": "dark",
+      "width": 320,
+      "scale": 1,
+      "captures": [
+        {
+          "file": "stress-dark-320-1-top.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-details-name",
+                "x": 16,
+                "y": 129,
+                "width": 288,
+                "height": 238
+              },
+              {
+                "id": "client-financial-overview",
+                "x": 16,
+                "y": 383,
+                "width": 288,
+                "height": 258
+              },
+              {
+                "id": "client-detail-actions",
+                "x": 16,
+                "y": 657,
+                "width": 288,
+                "height": 104
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 838,
+                "width": 288,
+                "height": 408
+              }
+            ],
+            "list": {
+              "height": 715,
+              "scrollHeight": 2003,
+              "scrollTop": 0
+            }
+          }
+        },
+        {
+          "file": "stress-dark-320-1-bottom.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": -30,
+                "width": 288,
+                "height": 380
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 362,
+                "width": 288,
+                "height": 380
+              }
+            ],
+            "list": {
+              "height": 715,
+              "scrollHeight": 2003,
+              "scrollTop": 1288
+            }
+          }
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "stress-dark-320-2",
+      "scenario": "stress",
+      "theme": "dark",
+      "width": 320,
+      "scale": 2,
+      "captures": [
+        {
+          "file": "stress-dark-320-2-top.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-details-name",
+                "x": 16,
+                "y": 129,
+                "width": 288,
+                "height": 884
+              }
+            ],
+            "list": {
+              "height": 715,
+              "scrollHeight": 5015,
+              "scrollTop": 0
+            }
+          }
+        },
+        {
+          "file": "stress-dark-320-2-bottom.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": -248,
+                "width": 288,
+                "height": 966
+              }
+            ],
+            "list": {
+              "height": 715,
+              "scrollHeight": 5015,
+              "scrollTop": 4300
+            }
+          }
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "stress-dark-390-2",
+      "scenario": "stress",
+      "theme": "dark",
+      "width": 390,
+      "scale": 2,
+      "captures": [
+        {
+          "file": "stress-dark-390-2-top.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-details-name",
+                "x": 16,
+                "y": 129,
+                "width": 358,
+                "height": 748
+              }
+            ],
+            "list": {
+              "height": 715,
+              "scrollHeight": 4123,
+              "scrollTop": 0
+            }
+          }
+        },
+        {
+          "file": "stress-dark-390-2-bottom.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": -48,
+                "width": 358,
+                "height": 766
+              }
+            ],
+            "list": {
+              "height": 715,
+              "scrollHeight": 4123,
+              "scrollTop": 3408
+            }
+          }
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "stress-dark-430-1",
+      "scenario": "stress",
+      "theme": "dark",
+      "width": 430,
+      "scale": 1,
+      "captures": [
+        {
+          "file": "stress-dark-430-1-top.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-details-name",
+                "x": 16,
+                "y": 129,
+                "width": 398,
+                "height": 170
+              },
+              {
+                "id": "client-financial-overview",
+                "x": 16,
+                "y": 315,
+                "width": 398,
+                "height": 258
+              },
+              {
+                "id": "client-detail-actions",
+                "x": 16,
+                "y": 589,
+                "width": 398,
+                "height": 48
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 714,
+                "width": 398,
+                "height": 272
+              }
+            ],
+            "list": {
+              "height": 715,
+              "scrollHeight": 1527,
+              "scrollTop": 0
+            }
+          }
+        },
+        {
+          "file": "stress-dark-430-1-bottom.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": -98,
+                "width": 398,
+                "height": 272
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 186,
+                "width": 398,
+                "height": 272
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 470,
+                "width": 398,
+                "height": 272
+              }
+            ],
+            "list": {
+              "height": 715,
+              "scrollHeight": 1527,
+              "scrollTop": 812
+            }
+          }
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "stress-dark-430-2",
+      "scenario": "stress",
+      "theme": "dark",
+      "width": 430,
+      "scale": 2,
+      "captures": [
+        {
+          "file": "stress-dark-430-2-top.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-details-name",
+                "x": 16,
+                "y": 129,
+                "width": 398,
+                "height": 612
+              },
+              {
+                "id": "client-financial-overview",
+                "x": 16,
+                "y": 757,
+                "width": 398,
+                "height": 566
+              }
+            ],
+            "list": {
+              "height": 715,
+              "scrollHeight": 3819,
+              "scrollTop": 0
+            }
+          }
+        },
+        {
+          "file": "stress-dark-430-2-bottom.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 8,
+                "width": 398,
+                "height": 710
+              }
+            ],
+            "list": {
+              "height": 715,
+              "scrollHeight": 3819,
+              "scrollTop": 3104
+            }
+          }
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "stress-dark-768-1",
+      "scenario": "stress",
+      "theme": "dark",
+      "width": 768,
+      "scale": 1,
+      "captures": [
+        {
+          "file": "stress-dark-768-1-top.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-details-name",
+                "x": 80,
+                "y": 129,
+                "width": 608,
+                "height": 102
+              },
+              {
+                "id": "client-financial-overview",
+                "x": 80,
+                "y": 247,
+                "width": 608,
+                "height": 139
+              },
+              {
+                "id": "client-detail-actions",
+                "x": 80,
+                "y": 402,
+                "width": 608,
+                "height": 48
+              },
+              {
+                "id": "client-open-job",
+                "x": 80,
+                "y": 527,
+                "width": 608,
+                "height": 216
+              },
+              {
+                "id": "client-open-job",
+                "x": 80,
+                "y": 755,
+                "width": 608,
+                "height": 216
+              }
+            ],
+            "list": {
+              "height": 715,
+              "scrollHeight": 1172,
+              "scrollTop": 0
+            }
+          }
+        },
+        {
+          "file": "stress-dark-768-1-bottom.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-open-job",
+                "x": 80,
+                "y": 70,
+                "width": 608,
+                "height": 216
+              },
+              {
+                "id": "client-open-job",
+                "x": 80,
+                "y": 298,
+                "width": 608,
+                "height": 216
+              },
+              {
+                "id": "client-open-job",
+                "x": 80,
+                "y": 526,
+                "width": 608,
+                "height": 216
+              }
+            ],
+            "list": {
+              "height": 715,
+              "scrollHeight": 1172,
+              "scrollTop": 457
+            }
+          }
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "stress-dark-768-2",
+      "scenario": "stress",
+      "theme": "dark",
+      "width": 768,
+      "scale": 2,
+      "captures": [
+        {
+          "file": "stress-dark-768-2-top.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-details-name",
+                "x": 80,
+                "y": 129,
+                "width": 608,
+                "height": 408
+              },
+              {
+                "id": "client-financial-overview",
+                "x": 80,
+                "y": 553,
+                "width": 608,
+                "height": 442
+              }
+            ],
+            "list": {
+              "height": 715,
+              "scrollHeight": 2755,
+              "scrollTop": 0
+            }
+          }
+        },
+        {
+          "file": "stress-dark-768-2-bottom.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-open-job",
+                "x": 80,
+                "y": -282,
+                "width": 608,
+                "height": 494
+              },
+              {
+                "id": "client-open-job",
+                "x": 80,
+                "y": 224,
+                "width": 608,
+                "height": 494
+              }
+            ],
+            "list": {
+              "height": 715,
+              "scrollHeight": 2755,
+              "scrollTop": 2040
+            }
+          }
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "menu-dark",
+      "scenario": "partial",
+      "theme": "dark",
+      "width": 390,
+      "scale": 1,
+      "action": "menu",
+      "captures": [
+        {
+          "file": "menu-dark-top.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-details-name",
+                "x": 120,
+                "y": 56,
+                "width": 254,
+                "height": 34
+              },
+              {
+                "id": "client-financial-overview",
+                "x": 16,
+                "y": 129,
+                "width": 358,
+                "height": 139
+              },
+              {
+                "id": "client-detail-actions",
+                "x": 16,
+                "y": 284,
+                "width": 358,
+                "height": 48
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 409,
+                "width": 358,
+                "height": 156
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 577,
+                "width": 358,
+                "height": 156
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 745,
+                "width": 358,
+                "height": 108
+              }
+            ],
+            "list": {
+              "height": 715,
+              "scrollHeight": 826,
+              "scrollTop": 0
+            }
+          }
+        },
+        {
+          "file": "menu-dark-action.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-details-name",
+                "x": 120,
+                "y": 56,
+                "width": 254,
+                "height": 34
+              },
+              {
+                "id": "client-financial-overview",
+                "x": 16,
+                "y": 129,
+                "width": 358,
+                "height": 139
+              },
+              {
+                "id": "client-detail-actions",
+                "x": 16,
+                "y": 284,
+                "width": 358,
+                "height": 48
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 409,
+                "width": 358,
+                "height": 156
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 577,
+                "width": 358,
+                "height": 156
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 745,
+                "width": 358,
+                "height": 108
+              }
+            ],
+            "list": {
+              "height": 715,
+              "scrollHeight": 826,
+              "scrollTop": 0
+            }
+          }
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "dismiss-dark",
+      "scenario": "partial",
+      "theme": "dark",
+      "width": 390,
+      "scale": 1,
+      "action": "dismiss",
+      "captures": [
+        {
+          "file": "dismiss-dark-top.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-details-name",
+                "x": 120,
+                "y": 56,
+                "width": 254,
+                "height": 34
+              },
+              {
+                "id": "client-financial-overview",
+                "x": 16,
+                "y": 129,
+                "width": 358,
+                "height": 139
+              },
+              {
+                "id": "client-detail-actions",
+                "x": 16,
+                "y": 284,
+                "width": 358,
+                "height": 48
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 409,
+                "width": 358,
+                "height": 156
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 577,
+                "width": 358,
+                "height": 156
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 745,
+                "width": 358,
+                "height": 108
+              }
+            ],
+            "list": {
+              "height": 715,
+              "scrollHeight": 826,
+              "scrollTop": 0
+            }
+          }
+        },
+        {
+          "file": "dismiss-dark-action.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [],
+            "list": null
+          }
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "job-dark",
+      "scenario": "partial",
+      "theme": "dark",
+      "width": 390,
+      "scale": 1,
+      "action": "job",
+      "captures": [
+        {
+          "file": "job-dark-top.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-details-name",
+                "x": 120,
+                "y": 56,
+                "width": 254,
+                "height": 34
+              },
+              {
+                "id": "client-financial-overview",
+                "x": 16,
+                "y": 129,
+                "width": 358,
+                "height": 139
+              },
+              {
+                "id": "client-detail-actions",
+                "x": 16,
+                "y": 284,
+                "width": 358,
+                "height": 48
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 409,
+                "width": 358,
+                "height": 156
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 577,
+                "width": 358,
+                "height": 156
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 745,
+                "width": 358,
+                "height": 108
+              }
+            ],
+            "list": {
+              "height": 715,
+              "scrollHeight": 826,
+              "scrollTop": 0
+            }
+          }
+        },
+        {
+          "file": "job-dark-action.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [],
+            "list": null
+          }
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "payment-dark",
+      "scenario": "partial",
+      "theme": "dark",
+      "width": 390,
+      "scale": 1,
+      "action": "payment",
+      "captures": [
+        {
+          "file": "payment-dark-top.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-details-name",
+                "x": 120,
+                "y": 56,
+                "width": 254,
+                "height": 34
+              },
+              {
+                "id": "client-financial-overview",
+                "x": 16,
+                "y": 129,
+                "width": 358,
+                "height": 139
+              },
+              {
+                "id": "client-detail-actions",
+                "x": 16,
+                "y": 284,
+                "width": 358,
+                "height": 48
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 409,
+                "width": 358,
+                "height": 156
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 577,
+                "width": 358,
+                "height": 156
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 745,
+                "width": 358,
+                "height": 108
+              }
+            ],
+            "list": {
+              "height": 715,
+              "scrollHeight": 826,
+              "scrollTop": 0
+            }
+          }
+        },
+        {
+          "file": "payment-dark-action.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [],
+            "list": null
+          }
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "add-dark",
+      "scenario": "partial",
+      "theme": "dark",
+      "width": 390,
+      "scale": 1,
+      "action": "add",
+      "captures": [
+        {
+          "file": "add-dark-top.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-details-name",
+                "x": 120,
+                "y": 56,
+                "width": 254,
+                "height": 34
+              },
+              {
+                "id": "client-financial-overview",
+                "x": 16,
+                "y": 129,
+                "width": 358,
+                "height": 139
+              },
+              {
+                "id": "client-detail-actions",
+                "x": 16,
+                "y": 284,
+                "width": 358,
+                "height": 48
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 409,
+                "width": 358,
+                "height": 156
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 577,
+                "width": 358,
+                "height": 156
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 745,
+                "width": 358,
+                "height": 108
+              }
+            ],
+            "list": {
+              "height": 715,
+              "scrollHeight": 826,
+              "scrollTop": 0
+            }
+          }
+        },
+        {
+          "file": "add-dark-action.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [],
+            "list": null
+          }
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "history-dark",
+      "scenario": "partial",
+      "theme": "dark",
+      "width": 390,
+      "scale": 1,
+      "action": "history",
+      "captures": [
+        {
+          "file": "history-dark-top.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-details-name",
+                "x": 120,
+                "y": 56,
+                "width": 254,
+                "height": 34
+              },
+              {
+                "id": "client-financial-overview",
+                "x": 16,
+                "y": 129,
+                "width": 358,
+                "height": 139
+              },
+              {
+                "id": "client-detail-actions",
+                "x": 16,
+                "y": 284,
+                "width": 358,
+                "height": 48
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 409,
+                "width": 358,
+                "height": 156
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 577,
+                "width": 358,
+                "height": 156
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 745,
+                "width": 358,
+                "height": 108
+              }
+            ],
+            "list": {
+              "height": 715,
+              "scrollHeight": 826,
+              "scrollTop": 0
+            }
+          }
+        },
+        {
+          "file": "history-dark-action.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [],
+            "list": null
+          }
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "before-dark",
+      "scenario": "populated",
+      "theme": "dark",
+      "width": 390,
+      "scale": 1,
+      "before": true,
+      "captures": [
+        {
+          "file": "before-dark-top.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [],
+            "list": null
+          }
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "populated-light",
+      "scenario": "populated",
+      "theme": "light",
+      "width": 390,
+      "scale": 1,
+      "captures": [
+        {
+          "file": "populated-light-top.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-details-name",
+                "x": 120,
+                "y": 282,
+                "width": 254,
+                "height": 34
+              },
+              {
+                "id": "client-financial-overview",
+                "x": 16,
+                "y": 355,
+                "width": 358,
+                "height": 139
+              },
+              {
+                "id": "client-detail-actions",
+                "x": 16,
+                "y": 510,
+                "width": 358,
+                "height": 48
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 635,
+                "width": 358,
+                "height": 108
+              }
+            ],
+            "list": {
+              "height": 489,
+              "scrollHeight": 490,
+              "scrollTop": 0
+            }
+          }
+        },
+        {
+          "file": "populated-light-bottom.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-details-name",
+                "x": 120,
+                "y": 282,
+                "width": 254,
+                "height": 34
+              },
+              {
+                "id": "client-financial-overview",
+                "x": 16,
+                "y": 354,
+                "width": 358,
+                "height": 139
+              },
+              {
+                "id": "client-detail-actions",
+                "x": 16,
+                "y": 509,
+                "width": 358,
+                "height": 48
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 634,
+                "width": 358,
+                "height": 108
+              }
+            ],
+            "list": {
+              "height": 489,
+              "scrollHeight": 490,
+              "scrollTop": 1
+            }
+          }
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "partial-light",
+      "scenario": "partial",
+      "theme": "light",
+      "width": 390,
+      "scale": 1,
+      "captures": [
+        {
+          "file": "partial-light-top.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-details-name",
+                "x": 120,
+                "y": 56,
+                "width": 254,
+                "height": 34
+              },
+              {
+                "id": "client-financial-overview",
+                "x": 16,
+                "y": 129,
+                "width": 358,
+                "height": 139
+              },
+              {
+                "id": "client-detail-actions",
+                "x": 16,
+                "y": 284,
+                "width": 358,
+                "height": 48
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 409,
+                "width": 358,
+                "height": 156
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 577,
+                "width": 358,
+                "height": 156
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 745,
+                "width": 358,
+                "height": 108
+              }
+            ],
+            "list": {
+              "height": 715,
+              "scrollHeight": 826,
+              "scrollTop": 0
+            }
+          }
+        },
+        {
+          "file": "partial-light-bottom.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-details-name",
+                "x": 120,
+                "y": 56,
+                "width": 254,
+                "height": 34
+              },
+              {
+                "id": "client-financial-overview",
+                "x": 16,
+                "y": 18,
+                "width": 358,
+                "height": 139
+              },
+              {
+                "id": "client-detail-actions",
+                "x": 16,
+                "y": 173,
+                "width": 358,
+                "height": 48
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 298,
+                "width": 358,
+                "height": 156
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 466,
+                "width": 358,
+                "height": 156
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 634,
+                "width": 358,
+                "height": 108
+              }
+            ],
+            "list": {
+              "height": 715,
+              "scrollHeight": 826,
+              "scrollTop": 111
+            }
+          }
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "settled-light",
+      "scenario": "settled",
+      "theme": "light",
+      "width": 390,
+      "scale": 1,
+      "captures": [
+        {
+          "file": "settled-light-top.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-details-name",
+                "x": 120,
+                "y": 350,
+                "width": 254,
+                "height": 34
+              },
+              {
+                "id": "client-financial-overview",
+                "x": 16,
+                "y": 423,
+                "width": 358,
+                "height": 139
+              },
+              {
+                "id": "client-detail-actions",
+                "x": 16,
+                "y": 578,
+                "width": 358,
+                "height": 48
+              }
+            ],
+            "list": {
+              "height": 421,
+              "scrollHeight": 422,
+              "scrollTop": 0
+            }
+          }
+        },
+        {
+          "file": "settled-light-bottom.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-details-name",
+                "x": 120,
+                "y": 350,
+                "width": 254,
+                "height": 34
+              },
+              {
+                "id": "client-financial-overview",
+                "x": 16,
+                "y": 422,
+                "width": 358,
+                "height": 139
+              },
+              {
+                "id": "client-detail-actions",
+                "x": 16,
+                "y": 577,
+                "width": 358,
+                "height": 48
+              }
+            ],
+            "list": {
+              "height": 421,
+              "scrollHeight": 422,
+              "scrollTop": 1
+            }
+          }
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "empty-light",
+      "scenario": "empty",
+      "theme": "light",
+      "width": 390,
+      "scale": 1,
+      "captures": [
+        {
+          "file": "empty-light-top.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-details-name",
+                "x": 120,
+                "y": 350,
+                "width": 254,
+                "height": 34
+              },
+              {
+                "id": "client-financial-overview",
+                "x": 16,
+                "y": 423,
+                "width": 358,
+                "height": 139
+              },
+              {
+                "id": "client-detail-actions",
+                "x": 16,
+                "y": 578,
+                "width": 358,
+                "height": 48
+              }
+            ],
+            "list": {
+              "height": 421,
+              "scrollHeight": 422,
+              "scrollTop": 0
+            }
+          }
+        },
+        {
+          "file": "empty-light-bottom.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-details-name",
+                "x": 120,
+                "y": 350,
+                "width": 254,
+                "height": 34
+              },
+              {
+                "id": "client-financial-overview",
+                "x": 16,
+                "y": 422,
+                "width": 358,
+                "height": 139
+              },
+              {
+                "id": "client-detail-actions",
+                "x": 16,
+                "y": 577,
+                "width": 358,
+                "height": 48
+              }
+            ],
+            "list": {
+              "height": 421,
+              "scrollHeight": 422,
+              "scrollTop": 1
+            }
+          }
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "archived-light",
+      "scenario": "archived",
+      "theme": "light",
+      "width": 390,
+      "scale": 1,
+      "captures": [
+        {
+          "file": "archived-light-top.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-details-name",
+                "x": 120,
+                "y": 226,
+                "width": 254,
+                "height": 34
+              },
+              {
+                "id": "client-financial-overview",
+                "x": 16,
+                "y": 355,
+                "width": 358,
+                "height": 139
+              },
+              {
+                "id": "client-detail-actions",
+                "x": 16,
+                "y": 510,
+                "width": 358,
+                "height": 48
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 635,
+                "width": 358,
+                "height": 108
+              }
+            ],
+            "list": {
+              "height": 545,
+              "scrollHeight": 546,
+              "scrollTop": 0
+            }
+          }
+        },
+        {
+          "file": "archived-light-bottom.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-details-name",
+                "x": 120,
+                "y": 226,
+                "width": 254,
+                "height": 34
+              },
+              {
+                "id": "client-financial-overview",
+                "x": 16,
+                "y": 354,
+                "width": 358,
+                "height": 139
+              },
+              {
+                "id": "client-detail-actions",
+                "x": 16,
+                "y": 509,
+                "width": 358,
+                "height": 48
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 634,
+                "width": 358,
+                "height": 108
+              }
+            ],
+            "list": {
+              "height": 545,
+              "scrollHeight": 546,
+              "scrollTop": 1
+            }
+          }
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "archivedEmpty-light",
+      "scenario": "archivedEmpty",
+      "theme": "light",
+      "width": 390,
+      "scale": 1,
+      "captures": [
+        {
+          "file": "archivedEmpty-light-top.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-details-name",
+                "x": 120,
+                "y": 294,
+                "width": 254,
+                "height": 34
+              },
+              {
+                "id": "client-financial-overview",
+                "x": 16,
+                "y": 423,
+                "width": 358,
+                "height": 139
+              },
+              {
+                "id": "client-detail-actions",
+                "x": 16,
+                "y": 578,
+                "width": 358,
+                "height": 48
+              }
+            ],
+            "list": {
+              "height": 477,
+              "scrollHeight": 478,
+              "scrollTop": 0
+            }
+          }
+        },
+        {
+          "file": "archivedEmpty-light-bottom.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-details-name",
+                "x": 120,
+                "y": 294,
+                "width": 254,
+                "height": 34
+              },
+              {
+                "id": "client-financial-overview",
+                "x": 16,
+                "y": 422,
+                "width": 358,
+                "height": 139
+              },
+              {
+                "id": "client-detail-actions",
+                "x": 16,
+                "y": 577,
+                "width": 358,
+                "height": 48
+              }
+            ],
+            "list": {
+              "height": 477,
+              "scrollHeight": 478,
+              "scrollTop": 1
+            }
+          }
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "many-light",
+      "scenario": "many",
+      "theme": "light",
+      "width": 390,
+      "scale": 1,
+      "captures": [
+        {
+          "file": "many-light-top.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-details-name",
+                "x": 120,
+                "y": 56,
+                "width": 254,
+                "height": 34
+              },
+              {
+                "id": "client-financial-overview",
+                "x": 16,
+                "y": 129,
+                "width": 358,
+                "height": 139
+              },
+              {
+                "id": "client-detail-actions",
+                "x": 16,
+                "y": 284,
+                "width": 358,
+                "height": 48
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 409,
+                "width": 358,
+                "height": 156
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 577,
+                "width": 358,
+                "height": 156
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 745,
+                "width": 358,
+                "height": 156
+              }
+            ],
+            "list": {
+              "height": 715,
+              "scrollHeight": 2826,
+              "scrollTop": 0
+            }
+          }
+        },
+        {
+          "file": "many-light-bottom.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-details-name",
+                "x": 120,
+                "y": 56,
+                "width": 254,
+                "height": 34
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": -86,
+                "width": 358,
+                "height": 156
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 82,
+                "width": 358,
+                "height": 156
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 250,
+                "width": 358,
+                "height": 156
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 418,
+                "width": 358,
+                "height": 156
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 586,
+                "width": 358,
+                "height": 156
+              }
+            ],
+            "list": {
+              "height": 715,
+              "scrollHeight": 13886,
+              "scrollTop": 13171
+            }
+          }
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "stress-light",
+      "scenario": "stress",
+      "theme": "light",
+      "width": 390,
+      "scale": 1,
+      "captures": [
+        {
+          "file": "stress-light-top.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-details-name",
+                "x": 16,
+                "y": 129,
+                "width": 358,
+                "height": 170
+              },
+              {
+                "id": "client-financial-overview",
+                "x": 16,
+                "y": 315,
+                "width": 358,
+                "height": 258
+              },
+              {
+                "id": "client-detail-actions",
+                "x": 16,
+                "y": 589,
+                "width": 358,
+                "height": 48
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 714,
+                "width": 358,
+                "height": 300
+              }
+            ],
+            "list": {
+              "height": 715,
+              "scrollHeight": 1611,
+              "scrollTop": 0
+            }
+          }
+        },
+        {
+          "file": "stress-light-bottom.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": -182,
+                "width": 358,
+                "height": 300
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 130,
+                "width": 358,
+                "height": 300
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 442,
+                "width": 358,
+                "height": 300
+              }
+            ],
+            "list": {
+              "height": 715,
+              "scrollHeight": 1611,
+              "scrollTop": 896
+            }
+          }
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "stress-light-320-1",
+      "scenario": "stress",
+      "theme": "light",
+      "width": 320,
+      "scale": 1,
+      "captures": [
+        {
+          "file": "stress-light-320-1-top.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-details-name",
+                "x": 16,
+                "y": 129,
+                "width": 288,
+                "height": 238
+              },
+              {
+                "id": "client-financial-overview",
+                "x": 16,
+                "y": 383,
+                "width": 288,
+                "height": 258
+              },
+              {
+                "id": "client-detail-actions",
+                "x": 16,
+                "y": 657,
+                "width": 288,
+                "height": 104
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 838,
+                "width": 288,
+                "height": 408
+              }
+            ],
+            "list": {
+              "height": 715,
+              "scrollHeight": 2003,
+              "scrollTop": 0
+            }
+          }
+        },
+        {
+          "file": "stress-light-320-1-bottom.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": -30,
+                "width": 288,
+                "height": 380
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 362,
+                "width": 288,
+                "height": 380
+              }
+            ],
+            "list": {
+              "height": 715,
+              "scrollHeight": 2003,
+              "scrollTop": 1288
+            }
+          }
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "stress-light-320-2",
+      "scenario": "stress",
+      "theme": "light",
+      "width": 320,
+      "scale": 2,
+      "captures": [
+        {
+          "file": "stress-light-320-2-top.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-details-name",
+                "x": 16,
+                "y": 129,
+                "width": 288,
+                "height": 884
+              }
+            ],
+            "list": {
+              "height": 715,
+              "scrollHeight": 5015,
+              "scrollTop": 0
+            }
+          }
+        },
+        {
+          "file": "stress-light-320-2-bottom.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": -248,
+                "width": 288,
+                "height": 966
+              }
+            ],
+            "list": {
+              "height": 715,
+              "scrollHeight": 5015,
+              "scrollTop": 4300
+            }
+          }
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "stress-light-390-2",
+      "scenario": "stress",
+      "theme": "light",
+      "width": 390,
+      "scale": 2,
+      "captures": [
+        {
+          "file": "stress-light-390-2-top.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-details-name",
+                "x": 16,
+                "y": 129,
+                "width": 358,
+                "height": 748
+              }
+            ],
+            "list": {
+              "height": 715,
+              "scrollHeight": 4123,
+              "scrollTop": 0
+            }
+          }
+        },
+        {
+          "file": "stress-light-390-2-bottom.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": -48,
+                "width": 358,
+                "height": 766
+              }
+            ],
+            "list": {
+              "height": 715,
+              "scrollHeight": 4123,
+              "scrollTop": 3408
+            }
+          }
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "stress-light-430-1",
+      "scenario": "stress",
+      "theme": "light",
+      "width": 430,
+      "scale": 1,
+      "captures": [
+        {
+          "file": "stress-light-430-1-top.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-details-name",
+                "x": 16,
+                "y": 129,
+                "width": 398,
+                "height": 170
+              },
+              {
+                "id": "client-financial-overview",
+                "x": 16,
+                "y": 315,
+                "width": 398,
+                "height": 258
+              },
+              {
+                "id": "client-detail-actions",
+                "x": 16,
+                "y": 589,
+                "width": 398,
+                "height": 48
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 714,
+                "width": 398,
+                "height": 272
+              }
+            ],
+            "list": {
+              "height": 715,
+              "scrollHeight": 1527,
+              "scrollTop": 0
+            }
+          }
+        },
+        {
+          "file": "stress-light-430-1-bottom.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": -98,
+                "width": 398,
+                "height": 272
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 186,
+                "width": 398,
+                "height": 272
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 470,
+                "width": 398,
+                "height": 272
+              }
+            ],
+            "list": {
+              "height": 715,
+              "scrollHeight": 1527,
+              "scrollTop": 812
+            }
+          }
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "stress-light-430-2",
+      "scenario": "stress",
+      "theme": "light",
+      "width": 430,
+      "scale": 2,
+      "captures": [
+        {
+          "file": "stress-light-430-2-top.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-details-name",
+                "x": 16,
+                "y": 129,
+                "width": 398,
+                "height": 612
+              },
+              {
+                "id": "client-financial-overview",
+                "x": 16,
+                "y": 757,
+                "width": 398,
+                "height": 566
+              }
+            ],
+            "list": {
+              "height": 715,
+              "scrollHeight": 3819,
+              "scrollTop": 0
+            }
+          }
+        },
+        {
+          "file": "stress-light-430-2-bottom.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 8,
+                "width": 398,
+                "height": 710
+              }
+            ],
+            "list": {
+              "height": 715,
+              "scrollHeight": 3819,
+              "scrollTop": 3104
+            }
+          }
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "stress-light-768-1",
+      "scenario": "stress",
+      "theme": "light",
+      "width": 768,
+      "scale": 1,
+      "captures": [
+        {
+          "file": "stress-light-768-1-top.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-details-name",
+                "x": 80,
+                "y": 129,
+                "width": 608,
+                "height": 102
+              },
+              {
+                "id": "client-financial-overview",
+                "x": 80,
+                "y": 247,
+                "width": 608,
+                "height": 139
+              },
+              {
+                "id": "client-detail-actions",
+                "x": 80,
+                "y": 402,
+                "width": 608,
+                "height": 48
+              },
+              {
+                "id": "client-open-job",
+                "x": 80,
+                "y": 527,
+                "width": 608,
+                "height": 216
+              },
+              {
+                "id": "client-open-job",
+                "x": 80,
+                "y": 755,
+                "width": 608,
+                "height": 216
+              }
+            ],
+            "list": {
+              "height": 715,
+              "scrollHeight": 1172,
+              "scrollTop": 0
+            }
+          }
+        },
+        {
+          "file": "stress-light-768-1-bottom.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-open-job",
+                "x": 80,
+                "y": 70,
+                "width": 608,
+                "height": 216
+              },
+              {
+                "id": "client-open-job",
+                "x": 80,
+                "y": 298,
+                "width": 608,
+                "height": 216
+              },
+              {
+                "id": "client-open-job",
+                "x": 80,
+                "y": 526,
+                "width": 608,
+                "height": 216
+              }
+            ],
+            "list": {
+              "height": 715,
+              "scrollHeight": 1172,
+              "scrollTop": 457
+            }
+          }
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "stress-light-768-2",
+      "scenario": "stress",
+      "theme": "light",
+      "width": 768,
+      "scale": 2,
+      "captures": [
+        {
+          "file": "stress-light-768-2-top.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-details-name",
+                "x": 80,
+                "y": 129,
+                "width": 608,
+                "height": 408
+              },
+              {
+                "id": "client-financial-overview",
+                "x": 80,
+                "y": 553,
+                "width": 608,
+                "height": 442
+              }
+            ],
+            "list": {
+              "height": 715,
+              "scrollHeight": 2755,
+              "scrollTop": 0
+            }
+          }
+        },
+        {
+          "file": "stress-light-768-2-bottom.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-open-job",
+                "x": 80,
+                "y": -282,
+                "width": 608,
+                "height": 494
+              },
+              {
+                "id": "client-open-job",
+                "x": 80,
+                "y": 224,
+                "width": 608,
+                "height": 494
+              }
+            ],
+            "list": {
+              "height": 715,
+              "scrollHeight": 2755,
+              "scrollTop": 2040
+            }
+          }
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "menu-light",
+      "scenario": "partial",
+      "theme": "light",
+      "width": 390,
+      "scale": 1,
+      "action": "menu",
+      "captures": [
+        {
+          "file": "menu-light-top.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-details-name",
+                "x": 120,
+                "y": 56,
+                "width": 254,
+                "height": 34
+              },
+              {
+                "id": "client-financial-overview",
+                "x": 16,
+                "y": 129,
+                "width": 358,
+                "height": 139
+              },
+              {
+                "id": "client-detail-actions",
+                "x": 16,
+                "y": 284,
+                "width": 358,
+                "height": 48
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 409,
+                "width": 358,
+                "height": 156
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 577,
+                "width": 358,
+                "height": 156
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 745,
+                "width": 358,
+                "height": 108
+              }
+            ],
+            "list": {
+              "height": 715,
+              "scrollHeight": 826,
+              "scrollTop": 0
+            }
+          }
+        },
+        {
+          "file": "menu-light-action.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-details-name",
+                "x": 120,
+                "y": 56,
+                "width": 254,
+                "height": 34
+              },
+              {
+                "id": "client-financial-overview",
+                "x": 16,
+                "y": 129,
+                "width": 358,
+                "height": 139
+              },
+              {
+                "id": "client-detail-actions",
+                "x": 16,
+                "y": 284,
+                "width": 358,
+                "height": 48
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 409,
+                "width": 358,
+                "height": 156
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 577,
+                "width": 358,
+                "height": 156
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 745,
+                "width": 358,
+                "height": 108
+              }
+            ],
+            "list": {
+              "height": 715,
+              "scrollHeight": 826,
+              "scrollTop": 0
+            }
+          }
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "dismiss-light",
+      "scenario": "partial",
+      "theme": "light",
+      "width": 390,
+      "scale": 1,
+      "action": "dismiss",
+      "captures": [
+        {
+          "file": "dismiss-light-top.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-details-name",
+                "x": 120,
+                "y": 56,
+                "width": 254,
+                "height": 34
+              },
+              {
+                "id": "client-financial-overview",
+                "x": 16,
+                "y": 129,
+                "width": 358,
+                "height": 139
+              },
+              {
+                "id": "client-detail-actions",
+                "x": 16,
+                "y": 284,
+                "width": 358,
+                "height": 48
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 409,
+                "width": 358,
+                "height": 156
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 577,
+                "width": 358,
+                "height": 156
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 745,
+                "width": 358,
+                "height": 108
+              }
+            ],
+            "list": {
+              "height": 715,
+              "scrollHeight": 826,
+              "scrollTop": 0
+            }
+          }
+        },
+        {
+          "file": "dismiss-light-action.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [],
+            "list": null
+          }
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "job-light",
+      "scenario": "partial",
+      "theme": "light",
+      "width": 390,
+      "scale": 1,
+      "action": "job",
+      "captures": [
+        {
+          "file": "job-light-top.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-details-name",
+                "x": 120,
+                "y": 56,
+                "width": 254,
+                "height": 34
+              },
+              {
+                "id": "client-financial-overview",
+                "x": 16,
+                "y": 129,
+                "width": 358,
+                "height": 139
+              },
+              {
+                "id": "client-detail-actions",
+                "x": 16,
+                "y": 284,
+                "width": 358,
+                "height": 48
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 409,
+                "width": 358,
+                "height": 156
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 577,
+                "width": 358,
+                "height": 156
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 745,
+                "width": 358,
+                "height": 108
+              }
+            ],
+            "list": {
+              "height": 715,
+              "scrollHeight": 826,
+              "scrollTop": 0
+            }
+          }
+        },
+        {
+          "file": "job-light-action.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [],
+            "list": null
+          }
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "payment-light",
+      "scenario": "partial",
+      "theme": "light",
+      "width": 390,
+      "scale": 1,
+      "action": "payment",
+      "captures": [
+        {
+          "file": "payment-light-top.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-details-name",
+                "x": 120,
+                "y": 56,
+                "width": 254,
+                "height": 34
+              },
+              {
+                "id": "client-financial-overview",
+                "x": 16,
+                "y": 129,
+                "width": 358,
+                "height": 139
+              },
+              {
+                "id": "client-detail-actions",
+                "x": 16,
+                "y": 284,
+                "width": 358,
+                "height": 48
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 409,
+                "width": 358,
+                "height": 156
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 577,
+                "width": 358,
+                "height": 156
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 745,
+                "width": 358,
+                "height": 108
+              }
+            ],
+            "list": {
+              "height": 715,
+              "scrollHeight": 826,
+              "scrollTop": 0
+            }
+          }
+        },
+        {
+          "file": "payment-light-action.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [],
+            "list": null
+          }
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "add-light",
+      "scenario": "partial",
+      "theme": "light",
+      "width": 390,
+      "scale": 1,
+      "action": "add",
+      "captures": [
+        {
+          "file": "add-light-top.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-details-name",
+                "x": 120,
+                "y": 56,
+                "width": 254,
+                "height": 34
+              },
+              {
+                "id": "client-financial-overview",
+                "x": 16,
+                "y": 129,
+                "width": 358,
+                "height": 139
+              },
+              {
+                "id": "client-detail-actions",
+                "x": 16,
+                "y": 284,
+                "width": 358,
+                "height": 48
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 409,
+                "width": 358,
+                "height": 156
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 577,
+                "width": 358,
+                "height": 156
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 745,
+                "width": 358,
+                "height": 108
+              }
+            ],
+            "list": {
+              "height": 715,
+              "scrollHeight": 826,
+              "scrollTop": 0
+            }
+          }
+        },
+        {
+          "file": "add-light-action.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [],
+            "list": null
+          }
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "history-light",
+      "scenario": "partial",
+      "theme": "light",
+      "width": 390,
+      "scale": 1,
+      "action": "history",
+      "captures": [
+        {
+          "file": "history-light-top.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [
+              {
+                "id": "client-details-name",
+                "x": 120,
+                "y": 56,
+                "width": 254,
+                "height": 34
+              },
+              {
+                "id": "client-financial-overview",
+                "x": 16,
+                "y": 129,
+                "width": 358,
+                "height": 139
+              },
+              {
+                "id": "client-detail-actions",
+                "x": 16,
+                "y": 284,
+                "width": 358,
+                "height": 48
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 409,
+                "width": 358,
+                "height": 156
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 577,
+                "width": 358,
+                "height": 156
+              },
+              {
+                "id": "client-open-job",
+                "x": 16,
+                "y": 745,
+                "width": 358,
+                "height": 108
+              }
+            ],
+            "list": {
+              "height": 715,
+              "scrollHeight": 826,
+              "scrollTop": 0
+            }
+          }
+        },
+        {
+          "file": "history-light-action.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [],
+            "list": null
+          }
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "before-light",
+      "scenario": "populated",
+      "theme": "light",
+      "width": 390,
+      "scale": 1,
+      "before": true,
+      "captures": [
+        {
+          "file": "before-light-top.png",
+          "geometry": {
+            "overflow": [],
+            "rects": [],
+            "list": null
+          }
+        }
+      ],
+      "errors": []
+    }
+  ],
+  "scope": "RNWeb actual UI; native boundaries substituted; not device certification"
+}

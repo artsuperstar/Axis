@@ -36,7 +36,10 @@ async function initialized(t: TestContext) {
 async function settle() { await act(async () => { await new Promise((resolve) => setTimeout(resolve, 10)); }); }
 async function menu(app: App, trigger: string, action: string) { await app.press(trigger); await app.press(action); await settle(); }
 function rows(app: App, testID: string) { return app.nodes().filter((node) => node.props?.testID === testID); }
-function metric(app: App, label: string) { const matches = rows(app, `work-metric-${label.toLowerCase()}`); return matches.at(-1)!; }
+function metric(app: App, label: string) {
+  const client = rows(app, `client-detail-metric-${label.toLowerCase()}`);
+  return client.at(-1) ?? rows(app, `work-metric-${label.toLowerCase()}`).at(-1)!;
+}
 function assertTotals(app: App, earned: bigint, received: bigint) {
   assert.equal(metric(app, 'Outstanding').props.accessibilityLabel, `Outstanding, ${formatBrlAmount(earned - received)}`);
   assert.equal(metric(app, 'Earned').props.accessibilityLabel, `Earned, ${formatBrlAmount(earned)}`);
@@ -181,7 +184,7 @@ test('pushed Clients keeps dirty creation/search and last-good data through refr
   await app.press('New client'); await app.change('Name *', 'ÁLVARO'); await app.press('Create client'); assert.match(app.find('FormField', 'Name *').props.error as string, /already exists/);
   await app.change('Name *', 'A\u0301lvaro'); await app.press('Create client'); assert.match(app.find('FormField', 'Name *').props.error as string, /already exists/);
   await app.tapSet('Open Álvaro details'); assertTotals(app, 100000n, 0n);
-  assert.equal(rows(app, 'work-entry').length, 1); assert.ok(app.find('FormButton', 'Record payment from Álvaro'));
+  assert.equal(rows(app, 'client-open-job').length, 1); assert.ok(app.find('FormButton', 'Record payment from Álvaro'));
 });
 
 test('global History retains appended rows and receipt disclosure on paging/summary failures; returning preserves the mounted Finance workspace', async (t) => {

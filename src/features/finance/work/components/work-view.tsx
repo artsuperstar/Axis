@@ -1,29 +1,20 @@
 import { router } from 'expo-router';
 import { useEffect, useRef, useState } from 'react';
-import { Alert, StyleSheet, View, useWindowDimensions, type NativeScrollEvent, type NativeSyntheticEvent } from 'react-native';
+import { Alert, StyleSheet, View, type NativeScrollEvent, type NativeSyntheticEvent } from 'react-native';
 
-import { ContextMenu } from '@/components/context-menu';
-import { FormButton, FormError } from '@/components/form-controls';
-import { StatusText } from '@/components/status-text';
-import { ThemedText } from '@/components/themed-text';
-import { ControlSize, Space } from '@/constants/theme';
-
-
-
-import { stackFinanceMetrics } from '../../dashboard-presentation';
 import { financeError } from '../../errors';
 
 import { formatBrlAmount } from '../../money';
 import type { FinanceCategory } from '../../types';
 import type { WorkDataAccess } from '../data';
-import type { WorkItem, WorkOverview, WorkPayment, WorkSnapshot, WorkTotals } from '../types';
+import type { WorkItem, WorkOverview, WorkPayment, WorkSnapshot } from '../types';
 import { WorkEditor, WorkModal, WorkPaymentEditor, WorkSheet } from './work-forms';
 import { WorkHistoryList } from './work-history-list';
 import { WorkHistoryReceiptCard } from './work-history-cards';
-import { WorkRow } from './work-row';
 import { WorkMainList } from './work-main';
 import { WorkJobDetails } from './work-job-details';
 import { WorkClientsList } from './work-clients';
+import { WorkClientDetails } from './work-client-details';
 
 type Dialog = { kind: 'edit'; id: string | null; partyId?: string } | { kind: 'details'; id: string }
   | { kind: 'payment'; id?: string; partyId?: string } | { kind: 'client'; partyId: string }
@@ -118,22 +109,10 @@ export function WorkView({ data, categories, access, mutate, onCreateCategory, i
         onSave={(draft) => mutate(() => dialog.id ? access.edit(dialog.id, draft) : access.create(draft))} />}
       {dialog.kind === 'payment' && <WorkPaymentEditor data={paymentContext ? focusedData ?? data : data} categories={categories} initialCounterpartyId={dialog.partyId} initialItem={current?.outstandingMinor ? current : undefined}
         onCreateCategory={onCreateCategory} onSave={(draft) => mutate(() => access.recordPayment(draft))} onDismiss={() => setDialog(null)} />}
-      {dialog.kind === 'client' && <WorkSheet title={client?.name ?? 'Client details'} onDismiss={() => setDialog(null)}>
-        <FormError message={error} />
-        <WorkSummary totals={clientTotals ?? { earnedMinor: 0n, receivedMinor: 0n, outstandingMinor: 0n }} />
-        {client && client.deletedAt !== null && <StatusText tone="subdued">Archived client · existing money owed remains actionable.</StatusText>}
-        <View style={styles.actions}>
-          {client?.deletedAt === null && <FormButton variant="secondary" label="Add work" accessibilityLabel={`Add work for ${client.name}`} onPress={() => open({ kind: 'edit', id: null, partyId: client.id })} />}
-          {!!openClientItems.length && <FormButton variant="primary" label="Record payment" accessibilityLabel={`Record payment from ${client?.name}`} onPress={() => open({ kind: 'payment', partyId: dialog.partyId })} />}
-          <ContextMenu label={`Client options for ${client?.name}`} actions={[
-            { label: 'History', accessibilityLabel: `History for ${client?.name}`, onPress: () => open({ kind: 'history', partyId: dialog.partyId }) },
-            ...(client?.deletedAt === null ? [{ label: 'Archive', accessibilityLabel: `Archive ${client.name}`, onPress: () => archive(client.id) }] : []),
-          ]} />
-        </View>
-        <ThemedText type="cardTitle" accessibilityRole="header">Open jobs</ThemedText>
-        {!openClientItems.length && <ThemedText type="secondary" themeColor="textSecondary">No open work. History keeps settled entries and receipts.</ThemedText>}
-        {[...openClientItems].sort((a, b) => Number(b.overdue) - Number(a.overdue)).map((item) => <WorkRow key={item.entry.id} item={item} onPress={() => open({ kind: 'details', id: item.entry.id })} />)}
-      </WorkSheet>}
+      {dialog.kind === 'client' && <WorkClientDetails client={client} totals={clientTotals} items={openClientItems} error={error}
+        onDismiss={() => setDialog(null)} onAdd={() => open({ kind: 'edit', id: null, partyId: dialog.partyId })}
+        onPayment={() => open({ kind: 'payment', partyId: dialog.partyId })} onHistory={() => open({ kind: 'history', partyId: dialog.partyId })}
+        onArchive={() => client && archive(client.id)} onOpenJob={item => open({ kind: 'details', id: item.entry.id })} />}
       {dialog.kind === 'details' && <WorkJobDetails item={current} payments={detail?.items.some(item => item.entry.id === dialog.id) ? detail.payments : null}
         categories={categories} error={error} loading={detail === null && !error} expandedReceiptId={receiptId}
         onToggleReceipt={id => setReceiptId(receiptId === id ? null : id)} onDismiss={() => setDialog(null)}
@@ -148,28 +127,6 @@ export function WorkView({ data, categories, access, mutate, onCreateCategory, i
   </View>;
 }
 
-function WorkSummary({ totals }: { totals: WorkTotals }) {
-  const { width, fontScale } = useWindowDimensions();
-  const [measuredWidth, setMeasuredWidth] = useState<number | null>(null);
-  const stack = stackFinanceMetrics(measuredWidth ?? Math.min(width - Space.lg * 2, 640), fontScale, [formatBrlAmount(totals.earnedMinor), formatBrlAmount(totals.receivedMinor)]);
-  function metric(label: string, amount: bigint, primary = false) {
-    return <View testID={`work-metric-${label.toLowerCase()}`} accessible accessibilityLabel={`${label}, ${formatBrlAmount(amount)}`} style={styles.metric}>
-      <ThemedText type="secondary" themeColor="textSecondary">{label}</ThemedText>
-      <ThemedText type={primary ? 'metric' : 'cardTitle'} style={styles.amount}>{formatBrlAmount(amount)}</ThemedText>
-    </View>;
-  }
-  return <View style={styles.section} onLayout={(event) => setMeasuredWidth(event.nativeEvent.layout.width)}>
-    {metric('Outstanding', totals.outstandingMinor, true)}
-    <View testID="work-secondary-metrics" style={[styles.comparison, { flexDirection: stack ? 'column' : 'row' }]}>{metric('Earned', totals.earnedMinor)}{metric('Received', totals.receivedMinor)}</View>
-  </View>;
-}
 const styles = StyleSheet.create({
   main: { flex: 1 },
-  section: { gap: Space.lg }, heading: { flexDirection: 'row', alignItems: 'center', gap: Space.sm },
-  row: { paddingVertical: Space.md, gap: Space.sm, minHeight: ControlSize.touch, borderBottomWidth: 1 },
-  pair: { flexDirection: 'row', flexWrap: 'wrap', gap: Space.sm, alignItems: 'center' },
-  body: { flexGrow: 1, flexShrink: 1, flexBasis: 160, minHeight: ControlSize.touch, gap: Space.sm },
-  name: { flexGrow: 1, flexShrink: 1, flexBasis: 160 }, amount: { flexShrink: 1, fontVariant: ['tabular-nums'] },
-  actions: { flexDirection: 'row', flexWrap: 'wrap', gap: Space.sm, alignItems: 'center' },
-  comparison: { gap: Space.lg }, metric: { flex: 1, minWidth: 0, gap: Space.xs },
 });
