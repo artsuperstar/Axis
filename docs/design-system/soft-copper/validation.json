@@ -1,0 +1,15 @@
+{
+  "sourceHead": "16ebeab46d20e7a943f08fa017928ce0eb884c0e",
+  "initialFilesUnchanged": 2751,
+  "assetsUnchanged": 30,
+  "phase1EvidenceAndSupportPreserved": true,
+  "requiredContrastPairs": 118,
+  "requiredContrastFailures": 0,
+  "tokens": 60,
+  "originalIssuesPreserved": 20,
+  "reclassifications": 0,
+  "checkedLocalLinks": 124,
+  "specimenCases": 8,
+  "nativeAcceptance": false,
+  "scope": "Specification-only review and preservation; no app migration/export acceptance."
+}

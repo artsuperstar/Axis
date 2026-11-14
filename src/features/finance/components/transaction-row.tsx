@@ -1,7 +1,7 @@
 import { StyleSheet, View, useWindowDimensions } from 'react-native';
 
 import { ContextMenu } from '@/components/context-menu';
-import { UiIcon, UiText, useDesignColors } from '@/components/design-system';
+import { UiIcon, UiText, useDesignTheme } from '@/components/design-system';
 import { Shape, TouchTarget } from '@/constants/design-system-v2';
 import { localDateString } from '@/utils/calendar';
 
@@ -19,9 +19,9 @@ export function TransactionRow({ transaction, categories, onEdit, onDelete, onVi
   source?: TransactionSource;
   today?: string;
 }) {
-  const colors = useDesignColors();
+  const { mode, colors } = useDesignTheme();
   const { fontScale } = useWindowDimensions();
-  const finance = overviewColors(colors);
+  const finance = overviewColors(colors, mode);
   const display = transactionPresentation(transaction, categories, today, source);
   const linked = !!source;
   return (

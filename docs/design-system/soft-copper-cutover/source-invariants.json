@@ -1,0 +1,20 @@
+{
+  "initialFiles": 2836,
+  "changedExistingFiles": [
+    "src/components/design-system.tsx",
+    "src/components/floating-add-button.tsx",
+    "src/constants/design-system-v2.ts",
+    "src/features/finance/commitments/components/commitment-history.tsx",
+    "src/features/finance/overview-presentation.ts",
+    "src/features/finance/work/components/work-client-details.tsx",
+    "src/features/finance/work/components/work-history-cards.tsx",
+    "src/features/fitness/components/history-content.tsx",
+    "src/features/tasks/components/floating-add-task.tsx",
+    "src/features/tasks/components/task-list-row.tsx"
+  ],
+  "priorArtifacts": 289,
+  "priorArtifactsUnchanged": true,
+  "homeAssetsUnchanged": true,
+  "geometryTokensUnchanged": true,
+  "changedStyleDefinitions": []
+}

@@ -95,8 +95,8 @@ function HistoryCard({ entry: { occurrence, payment }, data, categories, last, o
   return <View testID="commitment-history-timeline-row" style={styles.timelineRow}>
     <View accessible={false} accessibilityElementsHidden importantForAccessibility="no-hide-descendants" style={styles.rail}>
       {!last && <View testID="commitment-history-connector" style={[styles.connector, { backgroundColor: colors.borderStrong }]} />}
-      <View testID={paid ? 'commitment-history-paid-marker' : 'commitment-history-skipped-marker'} style={[styles.marker, { backgroundColor: paid ? colors.brandSoft : colors.inset, borderColor: paid ? colors.brand : colors.borderStrong }]}>
-        {paid ? <UiIcon name="check" color={colors.brand} size={12} /> : <View style={[styles.minus, { backgroundColor: colors.textSecondary }]} />}
+      <View testID={paid ? 'commitment-history-paid-marker' : 'commitment-history-skipped-marker'} style={[styles.marker, { backgroundColor: paid ? colors.successSoft : colors.inset, borderColor: paid ? colors.success : colors.borderStrong }]}>
+        {paid ? <UiIcon name="check" color={colors.success} size={12} /> : <View style={[styles.minus, { backgroundColor: colors.textSecondary }]} />}
       </View>
     </View>
     <GroupSurface testID="commitment-history-row" style={[styles.card, { borderColor: colors.border }]}>
@@ -104,7 +104,7 @@ function HistoryCard({ entry: { occurrence, payment }, data, categories, last, o
         <View style={[styles.rowIdentity, stacked && styles.full]}>
           <View style={[styles.rowTile, { backgroundColor: colors.brandSoft }]}><UiIcon name={commitmentTypeIcon(data.commitment.kind)} color={colors.brand} size={20} /></View>
           <View style={styles.rowText}>
-            <UiText type="metadata" color={paid ? 'brand' : 'textSecondary'}>{state} · Due {dateLabel(occurrence.dueDate)}{sequence ? ` · ${sequence}` : ''}</UiText>
+            <UiText type="metadata" color={paid ? 'success' : 'textSecondary'}>{state} · Due {dateLabel(occurrence.dueDate)}{sequence ? ` · ${sequence}` : ''}</UiText>
             <UiText type="metadata" color="textSecondary">Expected {expected}</UiText>
             {paid && payment && <>
               <UiText type="numeric">Paid {actual}</UiText>

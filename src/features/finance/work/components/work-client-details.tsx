@@ -134,8 +134,8 @@ function ClientJob({ item, onPress }: { item: WorkItem; onPress: () => void }) {
         {!!item.entry.description.trim() && item.entry.description.trim() !== title && <UiText type="metadata" color="textSecondary" numberOfLines={2}>{item.entry.description}</UiText>}
         <UiText type="metadata" color="textSecondary">Work {dateLabel(item.entry.workDate)}</UiText>
       </View><View style={styles.balance}><ClientMoney value={amount} /></View></View>
-      <View style={styles.statusLine}><View style={[styles.badge, { backgroundColor: item.overdue ? colors.attentionSoft : colors.brandSoft }]}>
-        <UiText type="smallLabel" color={item.overdue ? 'attention' : 'brand'}>{state}</UiText>
+      <View style={styles.statusLine}><View style={[styles.badge, { backgroundColor: item.overdue ? colors.attentionSoft : colors.control }]}>
+        <UiText type="smallLabel" color={item.overdue ? 'overdue' : 'pending'}>{state}</UiText>
       </View>{item.entry.expectedPaymentDate && <UiText type="metadata" color={item.overdue ? 'attention' : 'textSecondary'}>Expected {dateLabel(item.entry.expectedPaymentDate)}</UiText>}</View>
     </View><UiIcon name="forward" size={18} color={colors.textSecondary} />
   </UiPressable>;

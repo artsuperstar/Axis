@@ -13,7 +13,7 @@ export function FloatingAddTask({ disabled, onPress }: { disabled: boolean; onPr
   const [focused, setFocused] = useState(false);
   return <UiPressable scale accessibilityRole="button" accessibilityLabel="Add task" accessibilityState={{ disabled }}
     disabled={disabled} onPress={onPress} onFocus={() => setFocused(true)} onBlur={() => setFocused(false)}
-    style={[styles.button, raisedSurfaceShadow(colors), { backgroundColor: disabled ? colors.inset : colors.brand,
+    style={({ pressed, hovered }) => [styles.button, raisedSurfaceShadow(colors), { backgroundColor: disabled ? colors.inset : pressed || hovered ? colors.brandStrong : colors.brand,
       borderWidth: 2, borderColor: focused ? colors.onBrand : 'transparent' }]}>
     <UiIcon name="plus" size={22} color={disabled ? colors.textMuted : colors.onBrand} />
   </UiPressable>;

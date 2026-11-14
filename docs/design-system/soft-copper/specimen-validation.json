@@ -1,0 +1,92 @@
+{
+  "checks": [
+    {
+      "theme": "dark",
+      "width": 320,
+      "file": "specimen-dark-320.png",
+      "geometry": {
+        "overflow": false,
+        "minimumButton": 48
+      },
+      "errors": [],
+      "scope": "Static HTML proposal; no native chrome, OS scaling or app runtime."
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "file": "specimen-dark-390.png",
+      "geometry": {
+        "overflow": false,
+        "minimumButton": 48
+      },
+      "errors": [],
+      "scope": "Static HTML proposal; no native chrome, OS scaling or app runtime."
+    },
+    {
+      "theme": "dark",
+      "width": 430,
+      "file": "specimen-dark-430.png",
+      "geometry": {
+        "overflow": false,
+        "minimumButton": 48
+      },
+      "errors": [],
+      "scope": "Static HTML proposal; no native chrome, OS scaling or app runtime."
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "file": "specimen-dark-1440.png",
+      "geometry": {
+        "overflow": false,
+        "minimumButton": 48
+      },
+      "errors": [],
+      "scope": "Static HTML proposal; no native chrome, OS scaling or app runtime."
+    },
+    {
+      "theme": "light",
+      "width": 320,
+      "file": "specimen-light-320.png",
+      "geometry": {
+        "overflow": false,
+        "minimumButton": 48
+      },
+      "errors": [],
+      "scope": "Static HTML proposal; no native chrome, OS scaling or app runtime."
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "file": "specimen-light-390.png",
+      "geometry": {
+        "overflow": false,
+        "minimumButton": 48
+      },
+      "errors": [],
+      "scope": "Static HTML proposal; no native chrome, OS scaling or app runtime."
+    },
+    {
+      "theme": "light",
+      "width": 430,
+      "file": "specimen-light-430.png",
+      "geometry": {
+        "overflow": false,
+        "minimumButton": 48
+      },
+      "errors": [],
+      "scope": "Static HTML proposal; no native chrome, OS scaling or app runtime."
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "file": "specimen-light-1440.png",
+      "geometry": {
+        "overflow": false,
+        "minimumButton": 48
+      },
+      "errors": [],
+      "scope": "Static HTML proposal; no native chrome, OS scaling or app runtime."
+    }
+  ]
+}

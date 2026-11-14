@@ -37,7 +37,7 @@ export function WorkHistoryJobCard({ item, onPress }: { item: WorkItem; onPress:
           <View style={[styles.copy, stack && styles.full]}><UiText testID="job-title" type="cardTitle">{title}</UiText>
             <UiText type="secondary" color="textSecondary">{item.counterparty.name}{item.counterparty.deletedAt !== null ? ' · Archived client' : ''}</UiText>
           </View>
-          <View testID="history-job-amount" style={styles.balance}><HistoryMoney value={item.earnedMinor} /><UiText testID="history-job-status" type="metadata" color="brand">Paid</UiText></View>
+          <View testID="history-job-amount" style={styles.balance}><HistoryMoney value={item.earnedMinor} /><UiText testID="history-job-status" type="metadata" color="received">Paid</UiText></View>
         </View>
         {!!entry.description.trim() && entry.description.trim() !== title && <UiText type="metadata" color="textSecondary" numberOfLines={2}>{entry.description}</UiText>}
         <UiText type="metadata" color="textSecondary">Work {dateLabel(entry.workDate)}</UiText>

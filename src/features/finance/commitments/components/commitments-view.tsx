@@ -1,14 +1,13 @@
 import { useState } from 'react';
-import { Alert, Pressable, SectionList, StyleSheet, View, useWindowDimensions, type NativeScrollEvent, type NativeSyntheticEvent } from 'react-native';
+import { Alert, SectionList, StyleSheet, View, useWindowDimensions, type NativeScrollEvent, type NativeSyntheticEvent } from 'react-native';
 
 import { ContextMenu, type ContextMenuAction } from '@/components/context-menu';
 import { FormButton, FormError } from '@/components/form-controls';
 import { BackButton } from '@/components/back-button';
-import { UiText } from '@/components/design-system';
+import { UiPressable, UiText, useDesignColors } from '@/components/design-system';
 import { StatusText } from '@/components/status-text';
-import { ThemedText } from '@/components/themed-text';
-import { ControlSize, Space } from '@/constants/theme';
-import { useTheme } from '@/hooks/use-theme';
+import { Shape, TouchTarget } from '@/constants/design-system-v2';
+import { Space } from '@/constants/theme';
 import { addDays, dateLabel } from '@/utils/calendar';
 
 import { FinanceValidationError, financeError } from '../../errors';
@@ -35,9 +34,10 @@ export function CommitmentsView({ items, categories, access, today, mutate, onCr
   initialDetail?: { data: CommitmentHistory; occurrence: DisplayOccurrence | null };
   scrollOffset?: number; onScroll?: (event: NativeSyntheticEvent<NativeScrollEvent>) => void;
 }) {
-  const colors = useTheme();
+  const colors = useDesignColors();
   const { width, fontScale } = useWindowDimensions();
   const stackCreation = width < 390 && fontScale >= 1.5;
+  const stackManagement = width < 360 || fontScale >= 1.5;
   const [surface, setSurface] = useState<'obligations' | 'manage' | 'history'>('obligations');
   const [dialog, setDialog] = useState<Dialog | null>(() => initialDetail
     ? { kind: 'details', data: initialDetail.data, historyVisible: false, focus: initialDetail.occurrence } : null);
@@ -103,21 +103,21 @@ export function CommitmentsView({ items, categories, access, today, mutate, onCr
   }
   function seriesRow(item: CommitmentItem, historical = false) {
     const name = item.commitment.title;
-    return <View key={item.commitment.id} style={[styles.row, { borderColor: colors.border }]}>
+    return <View key={item.commitment.id} style={[styles.row, { backgroundColor: colors.group, borderColor: colors.border }]}>
       <View style={styles.seriesRow}>
-        <Pressable style={[styles.body, styles.seriesBody]} accessibilityRole="button" accessibilityLabel={`${historical ? 'History for' : 'Manage'} ${name}`}
+        <UiPressable style={[styles.body, styles.seriesBody]} accessibilityRole="button" accessibilityLabel={`${historical ? 'History for' : 'Manage'} ${name}`}
           accessibilityHint={historical ? 'View paid and skipped occurrences' : 'View schedule and series details'} onPress={() => openDetails(item, historical)}>
           <View style={styles.nameAmount}>
-            <ThemedText type="cardTitle" style={styles.name}>{name}</ThemedText>
-            <ThemedText type="secondary" style={styles.amount}>{historical ? `Paid ${formatBrlAmount(item.totalPaidMinor)}` : formatBrlAmount(item.commitment.expectedAmountMinor)}</ThemedText>
+            <UiText type="cardTitle" style={styles.name}>{name}</UiText>
+            <UiText type="secondary" style={styles.amount}>{historical ? `Paid ${formatBrlAmount(item.totalPaidMinor)}` : formatBrlAmount(item.commitment.expectedAmountMinor)}</UiText>
           </View>
-          <StatusText tone="neutral">{commitmentKindLabels[item.commitment.kind]} · {commitmentStatusLabel(item)}</StatusText>
-          <ThemedText type="metadata" themeColor="textSecondary">{historical ? `${item.resolvedCount} paid or skipped` : `Monthly on day ${item.schedule.billingDay} · From ${dateLabel(item.schedule.startDate)}`}</ThemedText>
-          {!historical && !!progress(item) && <ThemedText type="metadata" themeColor="textSecondary">{progress(item)}</ThemedText>}
-        </Pressable>
-        {!historical && <ContextMenu label={`Series options for ${name}`} actions={seriesActions(item)} />}
+          <StatusText appearance="v2" tone="neutral">{commitmentKindLabels[item.commitment.kind]} · {commitmentStatusLabel(item)}</StatusText>
+          <UiText type="metadata" color="textSecondary">{historical ? `${item.resolvedCount} paid or skipped` : `Monthly on day ${item.schedule.billingDay} · From ${dateLabel(item.schedule.startDate)}`}</UiText>
+          {!historical && !!progress(item) && <UiText type="metadata" color="textSecondary">{progress(item)}</UiText>}
+        </UiPressable>
+        {!historical && <ContextMenu appearance="v2" label={`Series options for ${name}`} actions={seriesActions(item)} />}
       </View>
-      {item.commitment.status === 'paused' && item.commitment.kind === 'installment' && !item.canResume && <ThemedText type="secondary" themeColor="textSecondary">All installments already have due dates. Resolve the unpaid occurrences.</ThemedText>}
+      {item.commitment.status === 'paused' && item.commitment.kind === 'installment' && !item.canResume && <UiText type="secondary" color="textSecondary">All installments already have due dates. Resolve the unpaid occurrences.</UiText>}
     </View>;
   }
 
@@ -142,18 +142,18 @@ export function CommitmentsView({ items, categories, access, today, mutate, onCr
         { label: 'Manage commitments', onPress: () => setSurface('manage') }, { label: 'History', onPress: () => setSurface('history') },
       ]} /></View>
     </View> : surface === 'history' ? <CommitmentHistoryIndexHeader onBack={() => { setSurface('obligations'); setError(null); }} /> : <>
-    <View style={styles.heading}>
-      <BackButton accessibilityLabel="Back to Commitments" onPress={() => { setSurface('obligations'); setError(null); }} />
-      <ThemedText type="sectionHeading" accessibilityRole="header" style={styles.title}>{surface === 'manage' ? 'Manage commitments' : 'Commitment History'}</ThemedText>
+    <View style={[styles.heading, stackManagement && styles.headingStack]}>
+      <BackButton appearance="v2" iconOnly accessibilityLabel="Back to Commitments" onPress={() => { setSurface('obligations'); setError(null); }} />
+      <UiText type="sectionHeading" accessibilityRole="header" style={[styles.title, stackManagement && styles.titleStack]}>{surface === 'manage' ? 'Manage commitments' : 'Commitment History'}</UiText>
     </View>
     </>}
-    <FormError appearance={surface !== 'manage' ? 'v2' : undefined} message={error} />
+    <FormError appearance="v2" message={error} />
     </View>}
       ListEmptyComponent={surface === 'obligations' ? <View style={styles.empty}>
         <UiText type="cardTitle">{!items.length ? 'No commitments yet' : 'No obligations to resolve in this preview'}</UiText>
         <UiText type="secondary" color="textSecondary">{!items.length ? 'Add a Bill, Subscription, or Installment. Expenses are recorded when you pay.' : 'Manage commitments to review schedules and statuses.'}</UiText>
       </View> : surface === 'history' ? <UiText type="secondary" color="textSecondary">No paid or skipped occurrences yet.</UiText>
-        : <ThemedText type="secondary" themeColor="textSecondary">No commitment series yet. Return to Commitments to add one.</ThemedText>}
+        : <UiText type="secondary" color="textSecondary">No commitment series yet. Return to Commitments to add one.</UiText>}
       renderSectionHeader={({ section }) => section.title ? <View testID={`commitment-section-${section.title.toLowerCase()}`} style={styles.sectionHeader}>
         <UiText type="editorSection" accessibilityRole="header" color={section.title === 'Overdue' ? 'attention' : 'textPrimary'}>{section.title}{section.title === 'Overdue' ? ` (${section.count})` : ''}</UiText>
       </View> : null}
@@ -204,12 +204,13 @@ export function CommitmentsView({ items, categories, access, today, mutate, onCr
 function CommitmentSeparator() { return <View style={styles.separator} />; }
 
 const styles = StyleSheet.create({
-  section: { gap: Space.lg }, heading: { flexDirection: 'row', alignItems: 'center', gap: Space.sm }, title: { flex: 1, flexShrink: 1 },
+  section: { gap: Space.lg }, heading: { flexDirection: 'row', alignItems: 'center', gap: Space.sm }, title: { flex: 1, flexShrink: 1, minWidth: 0 },
+  headingStack: { flexDirection: 'column', alignItems: 'flex-start' }, titleStack: { flex: 0, alignSelf: 'stretch' },
   container: { flex: 1 }, mainContent: { width: '100%', maxWidth: 640, alignSelf: 'center', padding: Space.lg, paddingTop: Space.sm, paddingBottom: 32, flexGrow: 1 },
   toolbar: { flexDirection: 'row', alignItems: 'flex-start', gap: Space.sm }, creation: { flexGrow: 1, flexShrink: 1, flexBasis: 'auto', minWidth: 0 },
   toolbarStack: { flexDirection: 'column', alignItems: 'stretch' }, creationFull: { flexGrow: 0, flexShrink: 0, flexBasis: 'auto', width: '100%' }, optionsEnd: { alignSelf: 'flex-end' },
   sectionHeader: { paddingTop: 20, paddingBottom: 8 }, separator: { height: 8 }, empty: { paddingVertical: Space.lg, gap: Space.sm },
-  row: { paddingVertical: Space.md, gap: Space.sm, borderBottomWidth: 1 }, body: { minHeight: ControlSize.touch, gap: Space.xs },
+  row: { padding: Space.md, gap: Space.sm, borderWidth: 1, borderRadius: Shape.group }, body: { minHeight: TouchTarget, gap: Space.xs },
   nameAmount: { flexDirection: 'row', flexWrap: 'wrap', gap: Space.sm }, name: { flexGrow: 1, flexShrink: 1, flexBasis: 160 },
   amount: { flexShrink: 1, fontVariant: ['tabular-nums'] }, actions: { flexDirection: 'row', alignItems: 'center', gap: Space.sm },
   seriesRow: { flexDirection: 'row', alignItems: 'flex-start', gap: Space.sm }, seriesBody: { flex: 1, minWidth: 0 },

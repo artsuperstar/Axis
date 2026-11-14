@@ -140,7 +140,7 @@ for (const [name, income, expenses] of [['positive', '4250', '850,50'], ['negati
     ]);
     assert.equal(metric(app, 'Net Flow').props.accessibilityLabel, `Net Flow, ${name}, ${formatBrlAmount(analytics.netFlowMinor)}`);
     const netValue = metric(app, 'Net Flow').childNodes.find((node) => node.props?.type === 'metric')!;
-    const palette = overviewColors(DesignColors.light);
+    const palette = overviewColors(DesignColors.light, 'light');
     assert.equal(flatten(netValue.props.style).color, name === 'negative' ? palette.expenses : name === 'positive' ? palette.income : DesignColors.light.textPrimary);
     assert.ok(app.nodes().indexOf(metric(app, 'Net Flow')) < app.nodes().indexOf(metric(app, 'Income')));
     assert.ok(!app.nodes().some((node) => node.props?.accessibilityRole === 'alert'));

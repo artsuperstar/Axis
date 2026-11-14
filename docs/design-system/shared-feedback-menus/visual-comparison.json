@@ -1,0 +1,356 @@
+{
+  "cases": 50,
+  "identical": 13,
+  "results": [
+    {
+      "file": "feedback-dark-390.png",
+      "before": "e37a9cff7d43b10eb8665cbc36855b3aaf8fda946ec5083907af6e8e08d5dbf2",
+      "after": "85a6091f6b13743d8a01c11c99dc8f450317aaf24c0448620887c84b00417907",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "feedback-light-390.png",
+      "before": "4fbc63ae5db3a0d08252aca10d43e54ffcc11dbc3d84d7b8769cd4fd7f8d3b41",
+      "after": "7cbf78507020caffc16040dd1de39cb28f02fb6d3eb4d8490d7d36b80139de24",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "legacy-feedback-dark-390.png",
+      "before": "9ce36eb06549f82e4227c5826ebd8dc89a6cedf268be0073b2ef66068bee634a",
+      "after": "9ce36eb06549f82e4227c5826ebd8dc89a6cedf268be0073b2ef66068bee634a",
+      "identical": true,
+      "geometryIdentical": true
+    },
+    {
+      "file": "legacy-feedback-light-390.png",
+      "before": "36ddd49c57f0aff4c77520bc24902c2405803ff90948275ffbb968e15d34e0bc",
+      "after": "36ddd49c57f0aff4c77520bc24902c2405803ff90948275ffbb968e15d34e0bc",
+      "identical": true,
+      "geometryIdentical": true
+    },
+    {
+      "file": "refresh-dark-390.png",
+      "before": "36ac3ce35441ca84496b33a9fca0802308339503bcee953135ee7e3acbd63fad",
+      "after": "901d777a12fe41da1f02340315b8ca2367ef1f0af0b432437816a7eb6fd6d96c",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "refresh-light-390.png",
+      "before": "4beb4de5bcdfbf25afaa882c8b4a277d75f71f719961c92b560ddf4754f45b3a",
+      "after": "7287f66e009274e7c40cfbc82024339605f031b7c0acbe3cf3c7f0fb3d3a70e1",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "legacy-refresh-dark-390.png",
+      "before": "1a35e49eb9cbd05f67ea7a691739c01ff9571bbadd6bc323c002c3c2ca7132ba",
+      "after": "1a35e49eb9cbd05f67ea7a691739c01ff9571bbadd6bc323c002c3c2ca7132ba",
+      "identical": true,
+      "geometryIdentical": true
+    },
+    {
+      "file": "legacy-refresh-light-390.png",
+      "before": "150c2ed7f169e6b488cc58f9795cffbf8f986ab331cb7fb3412c3355fe332048",
+      "after": "150c2ed7f169e6b488cc58f9795cffbf8f986ab331cb7fb3412c3355fe332048",
+      "identical": true,
+      "geometryIdentical": true
+    },
+    {
+      "file": "empty-dark-390.png",
+      "before": "3f8419727779dcf63c92a2d591b4be2a23d4c8a20311459842a42e2f13550268",
+      "after": "3f8419727779dcf63c92a2d591b4be2a23d4c8a20311459842a42e2f13550268",
+      "identical": true,
+      "geometryIdentical": true
+    },
+    {
+      "file": "empty-light-390.png",
+      "before": "d1db8d3b943a44bbb6163c80bb6a9d621d597f4fc526ce78581d94efd5f76573",
+      "after": "d1db8d3b943a44bbb6163c80bb6a9d621d597f4fc526ce78581d94efd5f76573",
+      "identical": true,
+      "geometryIdentical": true
+    },
+    {
+      "file": "calendar-dark-390.png",
+      "before": "15dbbf6fb8bad84d84779fd7cb94ec5e5973518c887a536b1c0b739c994f1433",
+      "after": "15dbbf6fb8bad84d84779fd7cb94ec5e5973518c887a536b1c0b739c994f1433",
+      "identical": true,
+      "geometryIdentical": true
+    },
+    {
+      "file": "calendar-light-390.png",
+      "before": "0e8327b368c2d1f72952a04921892e6b2e0ebba557d0e80907ed3ca75331115b",
+      "after": "0e8327b368c2d1f72952a04921892e6b2e0ebba557d0e80907ed3ca75331115b",
+      "identical": true,
+      "geometryIdentical": true
+    },
+    {
+      "file": "menu-dark-390.png",
+      "before": "9dc2fdad9aad0fa6eebc6b6d65871a8d1ebb636f4a7be497a34fe3a96c74d761",
+      "after": "c11d1b0f0f4529f3e8d4a303a94265f8bc91b5c909d1697ddea2884bab4a0b32",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "menu-light-390.png",
+      "before": "8bc14518a7bb9c3e0af36a82d75fec9c60ce5339a02ddc92124d1d5be3ffa1c5",
+      "after": "6c545cf95ec79251a0730f052fc2d40801c2aafbd40ee0d2d5020ef6ae9873a6",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "menu-long-dark-390.png",
+      "before": "4a1515411bcc9a344f89e550131632d696fcac1d6b4d772a986c02e9b429b2c0",
+      "after": "16bfca26d50bedbd0cf094e0107d2bcb47228b8bb139e9359feb01997e464d4c",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "menu-long-light-390.png",
+      "before": "297978236e1dc696d5d861dfcd30f489c8a87e626a00346f171d7b29ed180a92",
+      "after": "626eada554f78ff5335810931d5681ac353d9fccfc493f78a8ab669e338b41c1",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "menu-bottom-dark-390.png",
+      "before": "fd719a74efff64b8135b416fccff9d3f3507ce4b137375cd62144ec7d2f5ae38",
+      "after": "ed4116439c8f23511552fbf5ca159553373860e6b258d70429dcaf9da99d24d7",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "menu-bottom-light-390.png",
+      "before": "b713fb619242fe462b5b537329f33717ec0a97dd7a198d0a3d5cb89239021f3e",
+      "after": "7fea67fe39400f724bfa51e25c7ef5d6a698a04c9159b666b281861f87c7b8fe",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "legacy-menu-dark-390.png",
+      "before": "4bd5e88f861c3b16565657e42aff068d90b8f87bbf015c93574f3197052a802e",
+      "after": "4bd5e88f861c3b16565657e42aff068d90b8f87bbf015c93574f3197052a802e",
+      "identical": true,
+      "geometryIdentical": true
+    },
+    {
+      "file": "legacy-menu-light-390.png",
+      "before": "d8a8b329b5687c3e5952237997fe786943db469dbb5ec8a1fc40c81f15b0b214",
+      "after": "d8a8b329b5687c3e5952237997fe786943db469dbb5ec8a1fc40c81f15b0b214",
+      "identical": true,
+      "geometryIdentical": true
+    },
+    {
+      "file": "tasks-dark-390.png",
+      "before": "e679bbcbb0c40eaab4b9f18793c113df01b933a7c912cb67f9427713b03d046e",
+      "after": "e8a5abb42ace734b69c23bf2b4ed1d14d8ff32bab2a974b46a22dc6fc7934db8",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "tasks-light-390.png",
+      "before": "4aa74ad08187026d0b8a9bd309a73944e941e68ec647aeaa208a9e3b655d788a",
+      "after": "9abf84b99dadb9f1db42b6f683846803044be04a5ca66272d8cd6af47ee74f69",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "finance-dark-390.png",
+      "before": "c0f90b81060f9a68124f37bba31129c9741b9b809e305af6ab59d14a8ae9e45e",
+      "after": "8cc4cefd9511a73b2ea1fc7de187ed2a9bc99a42c2c51dbc1a1de6ce11281b9f",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "finance-light-390.png",
+      "before": "39ad669a3f9279f4feb1246d9b3a2284304077ee2dd5eb4c3f44fda8c97fb422",
+      "after": "e04bc70023e065821b2476a497d8db1a82d69154e1deea852e0176d987e6efe7",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "work-dark-390.png",
+      "before": "a5cc87ff0840446c6a0de582df157f7734c6aff79c7026bace5adda3e00a98f3",
+      "after": "85624bd4baae7de013ddfad3b4deb607890a467769dd5f250555d337134ebd1c",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "work-light-390.png",
+      "before": "bb78f498555403a88daadb471a97b85d126e31ac109c94f4d145c2825d8f72bc",
+      "after": "7c8abbb6c62d7dde78cb619f5d67cfbc45c03a494aa5a96663efa7667f602228",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "fitness-dark-390.png",
+      "before": "ff6f0ab82b83294d514e84e101725cd47ed522e50edfc39e8c93522a1c0bf94a",
+      "after": "a883ac56ceaa532f882305c4a26ace66a4f7627fb1f3947f03555228d1c8ab71",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "fitness-light-390.png",
+      "before": "67ad049dbc7b6ec7a1b7c037b924fc05fb9dffe61711dddbb6e0e3bacb5226e4",
+      "after": "67ad049dbc7b6ec7a1b7c037b924fc05fb9dffe61711dddbb6e0e3bacb5226e4",
+      "identical": true,
+      "geometryIdentical": true
+    },
+    {
+      "file": "journal-dark-390.png",
+      "before": "d6f9bb372453d01b1766b4d1ba8348b6ceb770c20988950f2290eee6ba705902",
+      "after": "cc3eb6092d6ac7140d7474bbf4ced412908251e27565ac6caa97e321ccd5096a",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "journal-light-390.png",
+      "before": "410c4590c28080fb664db41879711d4ff583d5bb662f03753add68ffb219061e",
+      "after": "4188a2c6a99d3f9cb99a4b7729ef93242d10c40e0d3d0f748f5364eed277f413",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "selection-dark-390.png",
+      "before": "19e5f9d3aebecbf9978035acae293a57c25356e6ff88375918b18d4beca1e442",
+      "after": "19e5f9d3aebecbf9978035acae293a57c25356e6ff88375918b18d4beca1e442",
+      "identical": true,
+      "geometryIdentical": true
+    },
+    {
+      "file": "selection-light-390.png",
+      "before": "65ec7c9cfca3e4a068b8c380e5342159249c43517ce58abafb0dbb9a1e21a539",
+      "after": "65ec7c9cfca3e4a068b8c380e5342159249c43517ce58abafb0dbb9a1e21a539",
+      "identical": true,
+      "geometryIdentical": true
+    },
+    {
+      "file": "menu-pressed-dark-390.png",
+      "before": "e083f6608eaee93512561d0b66fb9cb9c6a064f86ba6e89ac47992fe0f4abe3b",
+      "after": "810bbdad69fae5bef7dc59a7221569c1d5ec88d03e9bfd9ce8c6a7347b1ab702",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "menu-pressed-light-390.png",
+      "before": "d979c59c920fc3702d6e899a3c55654cc7af26d0038c3edd90d00130121824a7",
+      "after": "26791bc454d20360488b56aa468c9493a38f5fba0c725cb2ad05691a97434d76",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "menu-focused-dark-390.png",
+      "before": "9a9a05eaafa27012402bce1c7fe82c28f70bb693499ec21b6f798489bb739452",
+      "after": "f66ec5c8c5e3ce5c89f11b69242f729b2e93abc5cc32ebb8a0d8235c300056cd",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "menu-focused-light-390.png",
+      "before": "d7ad349ba04d480f314202e25098ca8d5ebff4cafe8be195a3904f6f6a0afeec",
+      "after": "6ea152b33ccd33769536c7746871db8a5c0c8223f4a5a0b0343803c3d0237c67",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "menu-edges-dark-320.png",
+      "before": "f64c5fd3ab8272ea56409174f7a4a5a9af692e63c0f16ef03ece7dffc657ac83",
+      "after": "16dda8d16d07478104b5c1b0551273eb13eedcef3b6f1f9990cf27393d743b16",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "menu-edges-light-320.png",
+      "before": "89643eaab62038a4e2409d56e11b2e043eaa0c4e786d2368de326c67a2c4d33a",
+      "after": "cf1874760f6ed484e6c9be51c6a079cca0c4e41782c34244a73750b62aa7f4ee",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "menu-edges-dark-430.png",
+      "before": "0e6bd5c6743e877675acf3c93baa15227fec7e22b8480179539f76a2d758e9ff",
+      "after": "d696399880d3433e782f3ad4f296a61c435067c80c2671a998e24a6c6a80804b",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "menu-edges-light-430.png",
+      "before": "e0528cea39d05dbb583c86c55dc31e11b20045b36ccbc5d10ccc5733bb4039b0",
+      "after": "a2de13ec35b8d61fa0bb84c8b0c9b7df2f6eb6f97275475418c5ef5a704c716c",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "menu-large-dark-320.png",
+      "before": "b2575c314e907c73116f07593b56638d00dbd6d287a3f446997980b90d569ecd",
+      "after": "8e1379de08f1fb925edf61ece2b57524957a2416ace2e844884b87e9d051786a",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "menu-large-light-320.png",
+      "before": "0daeb896c6a66f22b8f85b48ed774edb15eeab0d42760409a06c7df695eb31cd",
+      "after": "06688f04392f68fcb98c8ad71e6156c3429365aa8c2ace3550f7daec882f3811",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "menu-large-dark-390.png",
+      "before": "21205b32c2814a8add7d92525e6a99795d17b75237b2acbc181b461d47b8fe00",
+      "after": "8ddf12e96d18d8806283a1d1983704747e2e3c0a2305232ca4ab0ef8f21660c9",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "menu-large-light-390.png",
+      "before": "94c5de68a65ba3ae1359a13e3409efb6c566422569e80c192ed73f8d8eb5e305",
+      "after": "0122a55a5d8f8ec0050dc951c3e0aa574548bff683fe3af841071ed73fc1c4a2",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "menu-large-dark-430.png",
+      "before": "aa8f741715ad3e644b99bf814e2cc68adfa01bd62896a71aa74af8aa280aa512",
+      "after": "5423ab1ab1971cd70eeaf78738afa9474d861e689cb1037719a9dee614db4db7",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "menu-large-light-430.png",
+      "before": "b196d5270da0b912db0cb3ee4090046fd6f7f98cbd314eade9043031840bb4bc",
+      "after": "44c1f411d62231adeae9ad10bd154011837d6d6efb67e4ff4ef02da674803c88",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "feedback-large-dark-320.png",
+      "before": "b8808245b06ec2b25553569e408ffed2bb89978aebd817c1c427bc537eab6eef",
+      "after": "e457d4a614f1fd344a76c9ba0458699657b807eb32d5e34b1770dc7d800ae20d",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "feedback-large-light-320.png",
+      "before": "499122fc570abf4db798a0e914d263bd53eccaf9f457e83880c26952b3d32f66",
+      "after": "8187b587c20feabceea20a17b847ee75baf55eafde3fcae8170e18546d413bf9",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "feedback-large-dark-430.png",
+      "before": "be7e38a46ebbfc2353899d63a09af5ff3f34b01b01b3e129a48a5d20ab8c5d01",
+      "after": "ca02f3f2d5a6ebd56da08081d73566928be7e6244a35ca6c5b1609a9eff926a4",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "feedback-large-light-430.png",
+      "before": "b1a353186cbc057cada226f07bb298fb8623335ad239424d59c78c53d26a2ca0",
+      "after": "f54cd8fd6de4e32174a501c5872daa5f9aace5665e3c1241cde7bc0d28d35e4a",
+      "identical": false,
+      "geometryIdentical": false
+    }
+  ]
+}

@@ -5,9 +5,9 @@ import { readFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { test, type TestContext } from 'node:test';
 import { migrate } from 'drizzle-orm/expo-sqlite/migrator';
-import { act, createElement } from 'react';
+import { act, createElement, useState } from 'react';
 
-import { DesignColors, TouchTarget, interfaceFontStyle, canSlideNavigationIndicator, taskSectionSurface } from '../src/constants/design-system-v2';
+import { DesignColors, TouchTarget, interfaceFontStyle, canSlideNavigationIndicator, taskSectionSurface, type DesignPalette, type DesignTheme } from '../src/constants/design-system-v2';
 import { measurementIcons, workoutSetCells, workoutSetColumns } from '../src/features/fitness/workout-presentation';
 import { createFitnessDataAccess } from '../src/features/fitness/data';
 import { blankSet, blankTargets } from '../src/features/fitness/form';
@@ -37,6 +37,34 @@ function contrast(a: string, b: string) {
 }
 const flatten = (style: unknown): Record<string, unknown> => Object.assign({}, ...[style].flat(Infinity));
 
+test('theme hook follows platform mode, keeps stable identities and color-only UiText keys', async (t) => {
+  const native = require('./helpers/lifecycle-native.cjs').native as { useColorScheme: () => string | null };
+  let scheme: string | null = 'dark';
+  t.mock.method(native, 'useColorScheme', () => scheme);
+  const f = await initialized(t);
+  let redraw!: () => void;
+  let theme!: DesignTheme;
+  let palette!: DesignPalette;
+  const colorKeyContract: 'mode' extends keyof DesignPalette ? false : true = true;
+  assert.equal(colorKeyContract, true);
+  function Probe() {
+    const [, update] = useState(0); redraw = () => update(value => value + 1);
+    theme = design.useDesignTheme(); palette = design.useDesignColors();
+    return createElement(design.UiText, { color: 'taskText' }, 'Palette key');
+  }
+  const app = await mount(createElement(Probe), f.db); t.after(app.unmount);
+  for (const mode of ['dark', 'light'] as const) {
+    scheme = mode; await act(redraw);
+    assert.equal(theme.mode, mode); assert.equal(theme.colors, DesignColors[mode]); assert.equal(palette, theme.colors);
+    assert.equal(flatten(app.find('ThemedText').props.style).color, DesignColors[mode].taskText);
+    assert.deepEqual(Object.keys(palette), Object.keys(DesignColors.light)); assert.ok(!('mode' in palette));
+    const previous = theme; await act(redraw); assert.equal(theme, previous, 'No per-render theme wrapper allocation');
+  }
+  for (const fallback of [null, 'unspecified']) {
+    scheme = fallback; await act(redraw); assert.equal(theme.mode, 'light'); assert.equal(palette, DesignColors.light);
+  }
+});
+
 test('all v2 icons use native-compatible base64 SVG with consistent outline geometry', () => {
   for (const name of Object.keys(icons.iconGeometry) as (keyof typeof icons.iconGeometry)[]) {
     const source = icons.iconSource(name, '#8E4E3F');
@@ -65,11 +93,11 @@ for (const theme of ['light', 'dark'] as const) test(`v2 ${theme} actual text, s
   assert.ok(contrast(c.fitnessText, c.fitnessAccentSoft) >= 4.5);
   assert.ok(contrast(c.attention, c.attentionSoft) >= 4.5, 'Today/past semantic icons');
   assert.ok(contrast(c.taskText, c.taskAccentSoft) >= 4.5, 'Task count badges');
-  for (const section of ['Earlier', 'Today', 'To-do', 'Upcoming']) assert.ok(contrast(c.taskAccent, taskSectionSurface(c, section)) >= 3, 'Indigo completion boundary');
+  for (const section of ['Earlier', 'Today', 'To-do', 'Upcoming']) assert.ok(contrast(c.taskAccent, taskSectionSurface(c, section, theme)) >= 3, 'Indigo completion boundary');
   for (const bg of [c.canvas, c.control, c.surface, c.group, c.groupStrong]) assert.ok(contrast(c.borderStrong, bg) >= 3);
   assert.notEqual(c.brand, c.attention); assert.notEqual(c.taskAccent, c.danger);
-  assert.notEqual(taskSectionSurface(c, 'Today'), taskSectionSurface(c, 'To-do'));
-  assert.notEqual(taskSectionSurface(c, 'Earlier'), taskSectionSurface(c, 'Upcoming'));
+  assert.notEqual(taskSectionSurface(c, 'Today', theme), taskSectionSurface(c, 'To-do', theme));
+  assert.notEqual(taskSectionSurface(c, 'Earlier', theme), taskSectionSurface(c, 'Upcoming', theme));
 });
 
 test('Tasks keeps virtualized section slices, default disclosures and five-item To-do preview', async (t) => {

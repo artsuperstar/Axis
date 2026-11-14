@@ -1,6 +1,7 @@
 import type { ViewStyle } from 'react-native';
 
 import type { ThemePalette } from '@/constants/theme';
+import { Shape, TouchTarget, type DesignPalette } from '@/constants/design-system-v2';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'quiet' | 'destructive' | 'navigation';
 
@@ -36,6 +37,31 @@ export function fieldAppearance(colors: ThemePalette, state: { readOnly?: boolea
     color: state.disabled ? colors.textMuted : colors.textPrimary,
     backgroundColor: state.readOnly || state.disabled ? colors.surfaceMuted : state.focused || state.expanded ? colors.surfaceRaised : colors.surface,
     borderColor: state.invalid ? colors.danger : state.focused || state.expanded ? colors.accent : state.readOnly ? colors.borderStrong : colors.border,
+    opacity: 1,
+  };
+}
+
+/** V2 only. Invalid keeps its boundary while actual focus/open state has a separate ring. */
+export function designFieldAppearance(colors: DesignPalette, state: { readOnly?: boolean; disabled?: boolean; focused?: boolean; expanded?: boolean; invalid?: boolean; pressed?: boolean } = {}) {
+  const focused = !state.disabled && !!(state.focused || state.expanded);
+  return {
+    color: state.disabled ? colors.textDisabled : colors.textPrimary,
+    backgroundColor: state.readOnly || state.disabled ? colors.inset : state.pressed ? colors.controlPressed : colors.surface,
+    borderColor: state.disabled ? colors.border : state.invalid ? colors.danger : focused ? colors.brandFocus : colors.controlBorder,
+    // Keep the native editing rect stable through focus/typing; the focus ring paints outside it.
+    borderWidth: 1,
+    outlineColor: colors.brandFocus, outlineStyle: 'solid' as const, outlineWidth: focused ? 2 : 0, outlineOffset: 2,
+    minHeight: TouchTarget, borderRadius: Shape.control, opacity: 1,
+  };
+}
+
+/** Menu/segment rows reserve their selected outline; standalone weekday controls also need a resting boundary. */
+export function designSelectionAppearance(colors: DesignPalette, state: { selected?: boolean; disabled?: boolean; focused?: boolean; pressed?: boolean } = {}, outlined = false) {
+  return {
+    backgroundColor: state.disabled ? colors.inset : state.selected ? colors.selected : state.pressed ? colors.controlPressed : outlined ? colors.control : 'transparent',
+    borderColor: state.disabled ? colors.border : state.selected ? colors.brandBorder : outlined ? colors.controlBorder : 'transparent',
+    borderWidth: 1, borderRadius: Shape.control, minHeight: TouchTarget, minWidth: TouchTarget,
+    outlineColor: colors.brandFocus, outlineStyle: 'solid' as const, outlineWidth: state.focused && !state.disabled ? 2 : 0, outlineOffset: 2,
     opacity: 1,
   };
 }

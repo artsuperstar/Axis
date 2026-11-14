@@ -1,0 +1,46 @@
+{
+  "previousFullWarningCount": 66,
+  "phaseT1FullWarningCount": 70,
+  "thisPhaseInitialFullWarningCount": 70,
+  "newT1TestsAlone": {
+    "tests": 11,
+    "warnings": 0
+  },
+  "isolatedAB": {
+    "baseline-tests": {
+      "tests": 1552,
+      "warnings": 70
+    },
+    "warning-trace": {
+      "tests": 23,
+      "warnings": 3
+    },
+    "warning-legacy-editor": {
+      "tests": 23,
+      "warnings": 3
+    },
+    "warning-new-tests": {
+      "tests": 11,
+      "warnings": 0
+    },
+    "warning-correction": {
+      "tests": 61,
+      "warnings": 2
+    }
+  },
+  "tracedSource": "src/components/motion.ts:18:89, AccessibilityInfo.isReduceMotionEnabled().then -> setReduced",
+  "traceExamples": [
+    "#     at <anonymous> (C:\\\\Users\\\\Arthur\\\\Documents\\\\Projects\\\\Axis\\\\src\\\\components\\\\motion.ts:18:89)\r",
+    "#     at <anonymous> (C:\\\\Users\\\\Arthur\\\\Documents\\\\Projects\\\\Axis\\\\src\\\\components\\\\motion.ts:18:89)\r",
+    "#     at <anonymous> (C:\\\\Users\\\\Arthur\\\\Documents\\\\Projects\\\\Axis\\\\src\\\\components\\\\motion.ts:18:89)\r"
+  ],
+  "fourAdditionalWarningsAssociatedWith": [
+    "one-time History preserves details editing, checkbox reopen, native Delete/Cancel and refresh to Tasks main",
+    "failed History refresh retains archive, open editor and draft through Retry; Back retains pushed navigation",
+    "History body edit entry point remains unchanged outside Tasks main",
+    "iOS contextual-to-editor handoff waits for native modal dismissal"
+  ],
+  "correction": "Four local editor-opening event calls now remain inside async act until the Reduced Motion preference microtask settles. No assertions, production provider, console output or shared harness changed.",
+  "attributionLimit": "Isolated Tasks-experience legacy/new appearance runs both emit 3 warnings; the four extra sites are identified by comparing ordered full-suite reports. Do not infer the full count from one isolated file.",
+  "runtimeLeakEvidence": "Existing active=false cleanup guard remains unchanged; trace records mounted-provider preference resolution, not proof of a runtime leak."
+}

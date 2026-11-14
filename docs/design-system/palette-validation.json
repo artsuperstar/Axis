@@ -1,0 +1,117 @@
+{
+  "checks": [
+    {
+      "theme": "dark",
+      "width": 1440,
+      "file": "palette-dark-1440.png",
+      "geometry": {
+        "count": 3,
+        "overflow": false,
+        "plates": [
+          {
+            "theme": "dark",
+            "heading": "A · Warm Rose",
+            "buttonHeight": 48
+          },
+          {
+            "theme": "dark",
+            "heading": "B · Editorial Plum",
+            "buttonHeight": 48
+          },
+          {
+            "theme": "dark",
+            "heading": "C · Soft Copper",
+            "buttonHeight": 48
+          }
+        ]
+      },
+      "errors": [],
+      "scope": "HTML color proposal, not native UI"
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "file": "palette-dark-390.png",
+      "geometry": {
+        "count": 3,
+        "overflow": false,
+        "plates": [
+          {
+            "theme": "dark",
+            "heading": "A · Warm Rose",
+            "buttonHeight": 48
+          },
+          {
+            "theme": "dark",
+            "heading": "B · Editorial Plum",
+            "buttonHeight": 48
+          },
+          {
+            "theme": "dark",
+            "heading": "C · Soft Copper",
+            "buttonHeight": 48
+          }
+        ]
+      },
+      "errors": [],
+      "scope": "HTML color proposal, not native UI"
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "file": "palette-light-1440.png",
+      "geometry": {
+        "count": 3,
+        "overflow": false,
+        "plates": [
+          {
+            "theme": "light",
+            "heading": "A · Warm Rose",
+            "buttonHeight": 48
+          },
+          {
+            "theme": "light",
+            "heading": "B · Editorial Plum",
+            "buttonHeight": 48
+          },
+          {
+            "theme": "light",
+            "heading": "C · Soft Copper",
+            "buttonHeight": 48
+          }
+        ]
+      },
+      "errors": [],
+      "scope": "HTML color proposal, not native UI"
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "file": "palette-light-390.png",
+      "geometry": {
+        "count": 3,
+        "overflow": false,
+        "plates": [
+          {
+            "theme": "light",
+            "heading": "A · Warm Rose",
+            "buttonHeight": 48
+          },
+          {
+            "theme": "light",
+            "heading": "B · Editorial Plum",
+            "buttonHeight": 48
+          },
+          {
+            "theme": "light",
+            "heading": "C · Soft Copper",
+            "buttonHeight": 48
+          }
+        ]
+      },
+      "errors": [],
+      "scope": "HTML color proposal, not native UI"
+    }
+  ],
+  "source": "sRGB token pairs; not native rendered certification"
+}

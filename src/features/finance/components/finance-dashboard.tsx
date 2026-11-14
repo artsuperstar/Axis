@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react';
 import { StyleSheet, View, useWindowDimensions } from 'react-native';
 
 import { FormButton, SegmentedControl } from '@/components/form-controls';
-import { UiText, useDesignColors } from '@/components/design-system';
+import { UiText, useDesignTheme } from '@/components/design-system';
 import { Shape } from '@/constants/design-system-v2';
 
 import type { FinanceAnalytics } from '../analytics';
@@ -45,7 +45,7 @@ export function FinanceDashboard({ analytics, spendingExpanded, onToggleSpending
 }
 
 export function FinancialSummary({ analytics }: { analytics: FinanceAnalytics }) {
-  const theme = useDesignColors(); const colors = overviewColors(theme); const { fontScale } = useWindowDimensions();
+  const { mode, colors: theme } = useDesignTheme(); const colors = overviewColors(theme, mode); const { fontScale } = useWindowDimensions();
   const [width, setWidth] = useState(0);
   const [measurements, setMeasurements] = useState<{ signature: string; widths: (number | undefined)[] }>({ signature: '', widths: [] });
   const amounts = [analytics.netFlowMinor, analytics.incomeMinor, analytics.expensesMinor];

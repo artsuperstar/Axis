@@ -84,7 +84,7 @@ test('History body edit entry point remains unchanged outside Tasks main', async
   const app = await mount(createElement(screens.TasksHistoryScreen), f.db); t.after(app.unmount);
   const body = app.nodes().find((node) => node.props?.accessibilityHint === 'Opens the task editor')!;
   assert.equal(body.kind, 'Pressable'); assert.equal(body.props.accessibilityRole, 'button');
-  await app.tapSet(String(body.props.accessibilityLabel)); assert.equal(app.find('FormField', 'Title *').props.value, 'Historical task');
+  await act(async () => { await app.tapSet(String(body.props.accessibilityLabel)); }); assert.equal(app.find('FormField', 'Title *').props.value, 'Historical task');
 });
 
 for (const title of ['Earlier', 'Upcoming']) test(`${title} opens/closes through animated native cells, retains keys and never changes persistence or scroll position imperatively`, async (t) => {

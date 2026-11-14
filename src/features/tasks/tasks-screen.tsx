@@ -136,8 +136,8 @@ export function TasksScreen({ initialTaskId, destination = 'main' }: {
   const ScreenTitle = main ? UiText : ThemedText;
   function backToTasks() { if (router.canGoBack()) router.back(); else router.replace('/(tabs)/tasks'); }
   const notices = <>
-    <TaskError appearance={repeating || history ? 'v2' : undefined} message={error || actionError || (initialEditorOpen && snapshot && !initialTask ? 'This task is no longer available.' : null)} />
-    {!!error && <TaskButton appearance={repeating || history ? 'v2' : undefined} label="Retry" onPress={reload} />}
+    <TaskError appearance="v2" message={error || actionError || (initialEditorOpen && snapshot && !initialTask ? 'This task is no longer available.' : null)} />
+    {!!error && <TaskButton appearance="v2" label="Retry" onPress={reload} />}
   </>;
   const header = repeating ? <RepeatingTasksHeader onBack={backToTasks}>{notices}</RepeatingTasksHeader>
     : history ? <TaskHistoryHeader onBack={backToTasks}>{notices}</TaskHistoryHeader>
@@ -175,7 +175,7 @@ export function TasksScreen({ initialTaskId, destination = 'main' }: {
         onSkip={() => { if (shownActions?.occurrence) perform(() => {
           access.setOccurrenceStatus(shownActions.occurrence!.id, shownActions.occurrence!.status === 'skipped' ? 'pending' : 'skipped'); setActionsOpen(false);
         }); }} onDelete={() => { if (shownActions) deleteTask(shownActions.task); }} />
-      {shownEditor && <TaskEditor task={shownEditor.task} appearance={repeating ? 'v2' : undefined}
+      {shownEditor && <TaskEditor task={shownEditor.task} appearance="v2"
         recurrence={shownEditor.task ? latestRecurrence(recurrences, shownEditor.task.id) : null} categories={categories}
         onSave={(draft) => mutate(() => shownEditor.task ? access.editTask(shownEditor.task.id, draft) : access.createTask(draft))}
         onCreateCategory={(name) => mutate(() => access.createCategory(name))}

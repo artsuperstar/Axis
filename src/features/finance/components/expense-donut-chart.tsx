@@ -3,7 +3,7 @@ import { memo, useMemo, useState } from 'react';
 import { StyleSheet, View, useWindowDimensions } from 'react-native';
 
 import { FormButton } from '@/components/form-controls';
-import { UiText, useDesignColors } from '@/components/design-system';
+import { UiText, useDesignTheme } from '@/components/design-system';
 import { Shape } from '@/constants/design-system-v2';
 
 import type { CategorySpending } from '../analytics';
@@ -19,10 +19,10 @@ export const ExpenseDonutChart = memo(function ExpenseDonutChart({ segments, spe
   segments: readonly ExpenseSegment[]; spending: readonly CategorySpending[]; expensesMinor: bigint; transactionCount: number;
   expanded: boolean; onToggle: () => void;
 }) {
-  const theme = useDesignColors(); const { width, fontScale } = useWindowDimensions();
+  const { mode, colors: theme } = useDesignTheme(); const { width, fontScale } = useWindowDimensions();
   const [contentWidth, setContentWidth] = useState(width - 58);
   const [totalMeasurement, setTotalMeasurement] = useState<{ key: string; width: number } | null>(null);
-  const colors = useMemo(() => overviewColors(theme), [theme]);
+  const colors = useMemo(() => overviewColors(theme, mode), [theme, mode]);
   const source = useMemo(() => expenseDonutSource(segments, expensesMinor, colors), [segments, expensesMinor, colors]);
   const diameter = spendingDonutDiameter(contentWidth);
   const formatted = formatBrlAmount(expensesMinor);

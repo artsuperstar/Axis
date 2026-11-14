@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import { ThemedText } from '@/components/themed-text';
+import { UiText, useDesignColors } from '@/components/design-system';
 import { AdaptiveModal, AdaptiveSheet } from '@/components/adaptive-sheet';
 import { StatusText } from '@/components/status-text';
 import { Space } from '@/constants/theme';
-import { useTheme } from '@/hooks/use-theme';
 
 import { userError } from '../form';
 import { taskRowPresentation } from '../presentation';
@@ -23,7 +22,7 @@ export function OccurrenceHistory({ task, categories, recurrences, readPage, onS
   onDismiss: () => void;
   now: number;
 }) {
-  const colors = useTheme();
+  const colors = useDesignColors();
   const [entries, setEntries] = useState<TaskOccurrence[]>([]);
   const [nextBefore, setNextBefore] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -60,29 +59,29 @@ export function OccurrenceHistory({ task, categories, recurrences, readPage, onS
 
   return (
     <AdaptiveModal onDismiss={onDismiss}>
-      <AdaptiveSheet title={`${task.title} · History`} onDismiss={onDismiss} contentContainerStyle={styles.content}>
-        <TaskError message={error} />
-        {!!error && <TaskButton label="Retry" onPress={older} />}
-        {!entries.length && !error && <ThemedText>No past occurrences yet.</ThemedText>}
+      <AdaptiveSheet appearance="v2" titleRole="operational" title={`${task.title} · History`} onDismiss={onDismiss} contentContainerStyle={styles.content}>
+        <TaskError appearance="v2" message={error} />
+        {!!error && <TaskButton appearance="v2" label="Retry" onPress={older} />}
+        {!entries.length && !error && <UiText type="body">No past occurrences yet.</UiText>}
         {entries.map((entry) => {
           const row = taskRowPresentation(task, entry, recurrences, categories, now);
           return (
             <View key={entry.id} style={[styles.entry, { borderColor: colors.border }]}>
               <View accessible style={styles.metadata} accessibilityLabel={`${row.accessibilityLabel}${entry.deletedAt !== null ? '. Previous schedule' : ''}`}>
-                <ThemedText type="cardTitle" themeColor={row.resolved ? 'textSecondary' : 'textPrimary'}>{row.date}</ThemedText>
-                <StatusText type="metadata" tone={row.attention ? 'attention' : row.resolved || entry.deletedAt !== null ? 'subdued' : 'neutral'}>{row.historyOutcome}{entry.deletedAt !== null ? ' · Previous schedule' : ''}</StatusText>
-                <ThemedText type="metadata" themeColor="textSecondary">{row.recurrence}</ThemedText>
+                <UiText type="cardTitle" color={row.resolved ? 'textSecondary' : 'textPrimary'}>{row.date}</UiText>
+                <StatusText appearance="v2" type="metadata" tone={row.attention ? 'attention' : row.resolved || entry.deletedAt !== null ? 'subdued' : 'neutral'}>{row.historyOutcome}{entry.deletedAt !== null ? ' · Previous schedule' : ''}</StatusText>
+                <UiText type="metadata" color="textSecondary">{row.recurrence}</UiText>
               </View>
               {entry.deletedAt === null && (
                 <View style={styles.buttons}>
-                  <TaskButton variant="quiet" label={entry.status === 'completed' ? 'Reopen' : 'Complete'} accessibilityLabel={`${entry.status === 'completed' ? 'Reopen' : 'Complete'} ${row.actionSubject}`} onPress={() => change(entry, entry.status === 'completed' ? 'pending' : 'completed')} />
-                  {entry.status !== 'completed' && <TaskButton variant="quiet" label={entry.status === 'skipped' ? 'Return to pending' : 'Skip'} accessibilityLabel={`${entry.status === 'skipped' ? 'Return to pending' : 'Skip'} ${row.actionSubject}`} onPress={() => change(entry, entry.status === 'skipped' ? 'pending' : 'skipped')} />}
+                  <TaskButton appearance="v2" variant="quiet" label={entry.status === 'completed' ? 'Reopen' : 'Complete'} accessibilityLabel={`${entry.status === 'completed' ? 'Reopen' : 'Complete'} ${row.actionSubject}`} onPress={() => change(entry, entry.status === 'completed' ? 'pending' : 'completed')} />
+                  {entry.status !== 'completed' && <TaskButton appearance="v2" variant="quiet" label={entry.status === 'skipped' ? 'Return to pending' : 'Skip'} accessibilityLabel={`${entry.status === 'skipped' ? 'Return to pending' : 'Skip'} ${row.actionSubject}`} onPress={() => change(entry, entry.status === 'skipped' ? 'pending' : 'skipped')} />}
                 </View>
               )}
             </View>
           );
         })}
-        {nextBefore && <TaskButton label="Load older history" onPress={older} />}
+        {nextBefore && <TaskButton appearance="v2" label="Load older history" onPress={older} />}
       </AdaptiveSheet>
     </AdaptiveModal>
   );

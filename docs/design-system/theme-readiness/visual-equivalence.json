@@ -1,0 +1,150 @@
+{
+  "cases": 24,
+  "identical": 24,
+  "results": [
+    {
+      "file": "home-dark-390.png",
+      "before": "01961a4dda3133bcaeb8ca958d089597144718fbf8405fa203960147546be68d",
+      "after": "01961a4dda3133bcaeb8ca958d089597144718fbf8405fa203960147546be68d",
+      "identical": true
+    },
+    {
+      "file": "home-light-390.png",
+      "before": "fdae3f5828371a58c9d51ee9ceb6f1142ca0ed972c989cc18d3249819c4fa8fd",
+      "after": "fdae3f5828371a58c9d51ee9ceb6f1142ca0ed972c989cc18d3249819c4fa8fd",
+      "identical": true
+    },
+    {
+      "file": "tasks-dark-320.png",
+      "before": "a53c666f435fc231f33f69365fd9165c4bdc5f47f9ac02619217bcb85dcb8fea",
+      "after": "a53c666f435fc231f33f69365fd9165c4bdc5f47f9ac02619217bcb85dcb8fea",
+      "identical": true
+    },
+    {
+      "file": "tasks-light-320.png",
+      "before": "7edc48e92909bed02bf002e273d45b2e48820c4dd120ce4bd2f43d56e3f54252",
+      "after": "7edc48e92909bed02bf002e273d45b2e48820c4dd120ce4bd2f43d56e3f54252",
+      "identical": true
+    },
+    {
+      "file": "tasks-dark-390.png",
+      "before": "0879aba731806276b11adc0d4dec12742205351cf7ec04b9c02c2eae923e70be",
+      "after": "0879aba731806276b11adc0d4dec12742205351cf7ec04b9c02c2eae923e70be",
+      "identical": true
+    },
+    {
+      "file": "tasks-light-390.png",
+      "before": "fb82bed73f3c998d3dd0e68ce2b67f98acb814917f66301141e4b34ec28c1f23",
+      "after": "fb82bed73f3c998d3dd0e68ce2b67f98acb814917f66301141e4b34ec28c1f23",
+      "identical": true
+    },
+    {
+      "file": "calendar-dark-390.png",
+      "before": "ab3f259ed83ebe374ed67bcfe12dae24f3fb39522193e55ee32b3671a77daee3",
+      "after": "ab3f259ed83ebe374ed67bcfe12dae24f3fb39522193e55ee32b3671a77daee3",
+      "identical": true
+    },
+    {
+      "file": "calendar-light-390.png",
+      "before": "e5bcf6bf770f4fc539441362974946dfec2c8120bad1b6e8d73c329f2c3daff6",
+      "after": "e5bcf6bf770f4fc539441362974946dfec2c8120bad1b6e8d73c329f2c3daff6",
+      "identical": true
+    },
+    {
+      "file": "finance-overview-dark-320.png",
+      "before": "1ae00f71ce228ba57f79e54a0a736f59c40952977873bdf4f52f1f8beeb6b318",
+      "after": "1ae00f71ce228ba57f79e54a0a736f59c40952977873bdf4f52f1f8beeb6b318",
+      "identical": true
+    },
+    {
+      "file": "finance-overview-light-320.png",
+      "before": "9868ac5b653747c6366e6b626161852df716729da9760308d8899735636f1104",
+      "after": "9868ac5b653747c6366e6b626161852df716729da9760308d8899735636f1104",
+      "identical": true
+    },
+    {
+      "file": "finance-overview-dark-390.png",
+      "before": "f1c6a4f3f09e9416a3e6a420735fea5a17ad7b90de62a20c68a02ab2aa71287d",
+      "after": "f1c6a4f3f09e9416a3e6a420735fea5a17ad7b90de62a20c68a02ab2aa71287d",
+      "identical": true
+    },
+    {
+      "file": "finance-overview-light-390.png",
+      "before": "f194f0e3bd6d9c5a5934dff6ffa8aa1c128f9adb6350eaebcfb97deb3830fcd9",
+      "after": "f194f0e3bd6d9c5a5934dff6ffa8aa1c128f9adb6350eaebcfb97deb3830fcd9",
+      "identical": true
+    },
+    {
+      "file": "finance-overview-dark-430.png",
+      "before": "dc12596bd8344b457d6d0a9339e8e895a608ea7bd18981c46527bf769d475ca4",
+      "after": "dc12596bd8344b457d6d0a9339e8e895a608ea7bd18981c46527bf769d475ca4",
+      "identical": true
+    },
+    {
+      "file": "finance-overview-light-430.png",
+      "before": "d30126569a07e13b35980985d666dfed0f5a717ce8705885d4bb586df3993aa4",
+      "after": "d30126569a07e13b35980985d666dfed0f5a717ce8705885d4bb586df3993aa4",
+      "identical": true
+    },
+    {
+      "file": "finance-selected-dark-390.png",
+      "before": "416955c191c01aff247e542a86db573c5ce4a617eec82328d743f7901305babe",
+      "after": "416955c191c01aff247e542a86db573c5ce4a617eec82328d743f7901305babe",
+      "identical": true
+    },
+    {
+      "file": "finance-selected-light-390.png",
+      "before": "57fcb894b3d8be903e3d00eef8d1914dc8177d506dd86aef04f479c4d7c37b89",
+      "after": "57fcb894b3d8be903e3d00eef8d1914dc8177d506dd86aef04f479c4d7c37b89",
+      "identical": true
+    },
+    {
+      "file": "finance-spending-dark-390.png",
+      "before": "f1c6a4f3f09e9416a3e6a420735fea5a17ad7b90de62a20c68a02ab2aa71287d",
+      "after": "f1c6a4f3f09e9416a3e6a420735fea5a17ad7b90de62a20c68a02ab2aa71287d",
+      "identical": true
+    },
+    {
+      "file": "finance-spending-light-390.png",
+      "before": "f194f0e3bd6d9c5a5934dff6ffa8aa1c128f9adb6350eaebcfb97deb3830fcd9",
+      "after": "f194f0e3bd6d9c5a5934dff6ffa8aa1c128f9adb6350eaebcfb97deb3830fcd9",
+      "identical": true
+    },
+    {
+      "file": "finance-form-dark-390.png",
+      "before": "718f07f38438421a3a41bde5979c234db8bca9bcfeeb1be5d2757fe6f67457d1",
+      "after": "718f07f38438421a3a41bde5979c234db8bca9bcfeeb1be5d2757fe6f67457d1",
+      "identical": true
+    },
+    {
+      "file": "finance-form-light-390.png",
+      "before": "8ae889cffd5fdd8b955bc693fef2f0b381458b0b9f3de480ddacd9b6c3e86459",
+      "after": "8ae889cffd5fdd8b955bc693fef2f0b381458b0b9f3de480ddacd9b6c3e86459",
+      "identical": true
+    },
+    {
+      "file": "fitness-dark-390.png",
+      "before": "6b668fdb263705a97ad668dbd5719b5182a7abcd8961608778d14e7f380ae8c6",
+      "after": "6b668fdb263705a97ad668dbd5719b5182a7abcd8961608778d14e7f380ae8c6",
+      "identical": true
+    },
+    {
+      "file": "fitness-light-390.png",
+      "before": "9bd334052c38455fa64768e71d9def75f11889116ef3aaa4b904a25bd7a8cb0c",
+      "after": "9bd334052c38455fa64768e71d9def75f11889116ef3aaa4b904a25bd7a8cb0c",
+      "identical": true
+    },
+    {
+      "file": "journal-dark-390.png",
+      "before": "e111c08782cf1e77744162a609a83a6687e65227bdc58b8157e63765d7547850",
+      "after": "e111c08782cf1e77744162a609a83a6687e65227bdc58b8157e63765d7547850",
+      "identical": true
+    },
+    {
+      "file": "journal-light-390.png",
+      "before": "6a3239453f64a2fffa6df1cefc16504cd6eef7ae027e42cca2f42184a03f87c9",
+      "after": "6a3239453f64a2fffa6df1cefc16504cd6eef7ae027e42cca2f42184a03f87c9",
+      "identical": true
+    }
+  ]
+}

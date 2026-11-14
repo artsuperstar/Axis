@@ -1,0 +1,1265 @@
+{
+  "method": "sRGB relative luminance, unrounded threshold comparison. Opaque pairs only; alpha scrim/shadow not treated as text surfaces.",
+  "contrast": [
+    {
+      "theme": "light",
+      "label": "body / canvas",
+      "foreground": "#241E1C",
+      "background": "#F5F0EA",
+      "ratio": 14.508621858354365,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "label": "secondary / canvas",
+      "foreground": "#6A5E59",
+      "background": "#F5F0EA",
+      "ratio": 5.519266832234576,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "label": "placeholder-supporting / canvas",
+      "foreground": "#746660",
+      "background": "#F5F0EA",
+      "ratio": 4.862110848937048,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "label": "control boundary / canvas",
+      "foreground": "#9B837B",
+      "background": "#F5F0EA",
+      "ratio": 3.127551285496683,
+      "threshold": 3,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "label": "focus / canvas",
+      "foreground": "#874833",
+      "background": "#F5F0EA",
+      "ratio": 6.168077912036521,
+      "threshold": 3,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "label": "invalid boundary / canvas",
+      "foreground": "#9B303E",
+      "background": "#F5F0EA",
+      "ratio": 6.422137728381202,
+      "threshold": 3,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "label": "body / surface",
+      "foreground": "#241E1C",
+      "background": "#FFFCF8",
+      "ratio": 16.07183467732177,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "label": "secondary / surface",
+      "foreground": "#6A5E59",
+      "background": "#FFFCF8",
+      "ratio": 6.113933144974863,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "label": "placeholder-supporting / surface",
+      "foreground": "#746660",
+      "background": "#FFFCF8",
+      "ratio": 5.385972734683444,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "label": "control boundary / surface",
+      "foreground": "#9B837B",
+      "background": "#FFFCF8",
+      "ratio": 3.4645252799392496,
+      "threshold": 3,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "label": "focus / surface",
+      "foreground": "#874833",
+      "background": "#FFFCF8",
+      "ratio": 6.832649540866528,
+      "threshold": 3,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "label": "invalid boundary / surface",
+      "foreground": "#9B303E",
+      "background": "#FFFCF8",
+      "ratio": 7.114082705663724,
+      "threshold": 3,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "label": "body / group",
+      "foreground": "#241E1C",
+      "background": "#FBF5F0",
+      "ratio": 15.202505270782614,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "label": "secondary / group",
+      "foreground": "#6A5E59",
+      "background": "#FBF5F0",
+      "ratio": 5.783229029405478,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "label": "placeholder-supporting / group",
+      "foreground": "#746660",
+      "background": "#FBF5F0",
+      "ratio": 5.094644172942745,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "label": "control boundary / group",
+      "foreground": "#9B837B",
+      "background": "#FBF5F0",
+      "ratio": 3.2771282735601757,
+      "threshold": 3,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "label": "focus / group",
+      "foreground": "#874833",
+      "background": "#FBF5F0",
+      "ratio": 6.463069882432576,
+      "threshold": 3,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "label": "invalid boundary / group",
+      "foreground": "#9B303E",
+      "background": "#FBF5F0",
+      "ratio": 6.72928025959876,
+      "threshold": 3,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "label": "body / groupStrong",
+      "foreground": "#241E1C",
+      "background": "#F7EDE8",
+      "ratio": 14.273091240817553,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "label": "secondary / groupStrong",
+      "foreground": "#6A5E59",
+      "background": "#F7EDE8",
+      "ratio": 5.429667948340714,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "label": "placeholder-supporting / groupStrong",
+      "foreground": "#746660",
+      "background": "#F7EDE8",
+      "ratio": 4.783180128847796,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "label": "control boundary / groupStrong",
+      "foreground": "#9B837B",
+      "background": "#F7EDE8",
+      "ratio": 3.07677912444357,
+      "threshold": 3,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "label": "focus / groupStrong",
+      "foreground": "#874833",
+      "background": "#F7EDE8",
+      "ratio": 6.067946334149915,
+      "threshold": 3,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "label": "invalid boundary / groupStrong",
+      "foreground": "#9B303E",
+      "background": "#F7EDE8",
+      "ratio": 6.3178817845817505,
+      "threshold": 3,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "label": "body / control",
+      "foreground": "#241E1C",
+      "background": "#F8F3EF",
+      "ratio": 14.918248390330204,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "label": "secondary / control",
+      "foreground": "#6A5E59",
+      "background": "#F8F3EF",
+      "ratio": 5.6750940468115205,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "label": "placeholder-supporting / control",
+      "foreground": "#746660",
+      "background": "#F8F3EF",
+      "ratio": 4.99938436978392,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "label": "control boundary / control",
+      "foreground": "#9B837B",
+      "background": "#F8F3EF",
+      "ratio": 3.2158524349209396,
+      "threshold": 3,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "label": "focus / control",
+      "foreground": "#874833",
+      "background": "#F8F3EF",
+      "ratio": 6.342223216031017,
+      "threshold": 3,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "label": "invalid boundary / control",
+      "foreground": "#9B303E",
+      "background": "#F8F3EF",
+      "ratio": 6.603455983914424,
+      "threshold": 3,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "label": "body / surfaceRaised",
+      "foreground": "#241E1C",
+      "background": "#FFFCF8",
+      "ratio": 16.07183467732177,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "label": "secondary / surfaceRaised",
+      "foreground": "#6A5E59",
+      "background": "#FFFCF8",
+      "ratio": 6.113933144974863,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "label": "placeholder-supporting / surfaceRaised",
+      "foreground": "#746660",
+      "background": "#FFFCF8",
+      "ratio": 5.385972734683444,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "label": "control boundary / surfaceRaised",
+      "foreground": "#9B837B",
+      "background": "#FFFCF8",
+      "ratio": 3.4645252799392496,
+      "threshold": 3,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "label": "focus / surfaceRaised",
+      "foreground": "#874833",
+      "background": "#FFFCF8",
+      "ratio": 6.832649540866528,
+      "threshold": 3,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "label": "invalid boundary / surfaceRaised",
+      "foreground": "#9B303E",
+      "background": "#FFFCF8",
+      "ratio": 7.114082705663724,
+      "threshold": 3,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "label": "primary",
+      "foreground": "#FFF8F2",
+      "background": "#874833",
+      "ratio": 6.6427941164816025,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "label": "primary pressed",
+      "foreground": "#FFF8F2",
+      "background": "#713926",
+      "ratio": 8.62109516553185,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "label": "secondary button",
+      "foreground": "#241E1C",
+      "background": "#F8F3EF",
+      "ratio": 14.918248390330204,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "label": "form label",
+      "foreground": "#241E1C",
+      "background": "#FBF5F0",
+      "ratio": 15.202505270782614,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "label": "placeholder",
+      "foreground": "#746660",
+      "background": "#FFFCF8",
+      "ratio": 5.385972734683444,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "label": "selected label",
+      "foreground": "#874833",
+      "background": "#F1DDD3",
+      "ratio": 5.332361322362199,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "label": "success chip",
+      "foreground": "#32664E",
+      "background": "#E4F0E8",
+      "ratio": 5.69835752162001,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "label": "overdue chip",
+      "foreground": "#805619",
+      "background": "#FBEACF",
+      "ratio": 5.446526947408085,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "label": "error chip",
+      "foreground": "#9B303E",
+      "background": "#F6E2E5",
+      "ratio": 5.865635153168047,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "label": "info chip",
+      "foreground": "#3D5E86",
+      "background": "#E6EDF5",
+      "ratio": 5.661010640103363,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "label": "pending chip",
+      "foreground": "#6A5E59",
+      "background": "#F8F3EF",
+      "ratio": 5.6750940468115205,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "label": "expense amount",
+      "foreground": "#94455C",
+      "background": "#FBF5F0",
+      "ratio": 5.9483128269232575,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "label": "disabled text (informational; inactive exempt)",
+      "foreground": "#746660",
+      "background": "#F0E9E5",
+      "ratio": 4.588613621613323,
+      "threshold": 4.5,
+      "required": false,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "label": "task identity text/icon on soft",
+      "foreground": "#505A8A",
+      "background": "#E6E7F3",
+      "ratio": 5.389962228108015,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "label": "task filled tile foreground",
+      "foreground": "#FFFCF8",
+      "background": "#505A8A",
+      "ratio": 6.4757169720810435,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "label": "work identity text/icon on soft",
+      "foreground": "#245C49",
+      "background": "#E9F1E9",
+      "ratio": 6.744243487026223,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "label": "work filled tile foreground",
+      "foreground": "#FFFCF8",
+      "background": "#245C49",
+      "ratio": 7.598451675327968,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "label": "fitness identity text/icon on soft",
+      "foreground": "#2D6651",
+      "background": "#E9F1E9",
+      "ratio": 5.8204472172805914,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "label": "fitness filled tile foreground",
+      "foreground": "#FFFCF8",
+      "background": "#2D6651",
+      "ratio": 6.557649793395094,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "label": "journal identity text/icon on soft",
+      "foreground": "#28634F",
+      "background": "#E4F0E8",
+      "ratio": 6.000300790267988,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "label": "journal filled tile foreground",
+      "foreground": "#FFFCF8",
+      "background": "#28634F",
+      "ratio": 6.871677468988392,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "label": "current resting field boundary",
+      "foreground": "#E4DAD4",
+      "background": "#FFFCF8",
+      "ratio": 1.3438640788652998,
+      "threshold": 3,
+      "required": false,
+      "passes": false
+    },
+    {
+      "theme": "light",
+      "label": "current input fill / group",
+      "foreground": "#FFFCF8",
+      "background": "#FBF5F0",
+      "ratio": 1.0571832991375376,
+      "threshold": 3,
+      "required": false,
+      "passes": false
+    },
+    {
+      "theme": "light",
+      "label": "proposed selected fill alone / control",
+      "foreground": "#F1DDD3",
+      "background": "#F8F3EF",
+      "ratio": 1.1893836206173394,
+      "threshold": 3,
+      "required": false,
+      "passes": false
+    },
+    {
+      "theme": "light",
+      "label": "calendarTask meaningful marker",
+      "foreground": "#2563EB",
+      "background": "#FBF5F0",
+      "ratio": 4.779944951644012,
+      "threshold": 3,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "label": "calendarCommitment meaningful marker",
+      "foreground": "#B45309",
+      "background": "#FBF5F0",
+      "ratio": 4.644068734799749,
+      "threshold": 3,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "label": "calendarWorkPayment meaningful marker",
+      "foreground": "#0F766E",
+      "background": "#FBF5F0",
+      "ratio": 5.061730263117214,
+      "threshold": 3,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "label": "body / canvas",
+      "foreground": "#F6F0ED",
+      "background": "#151315",
+      "ratio": 16.380038064559468,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "label": "secondary / canvas",
+      "foreground": "#C9BDB8",
+      "background": "#151315",
+      "ratio": 10.084555815264721,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "label": "placeholder-supporting / canvas",
+      "foreground": "#AFA39E",
+      "background": "#151315",
+      "ratio": 7.532061776473414,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "label": "control boundary / canvas",
+      "foreground": "#95828E",
+      "background": "#151315",
+      "ratio": 5.160447597952002,
+      "threshold": 3,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "label": "focus / canvas",
+      "foreground": "#E7AA8B",
+      "background": "#151315",
+      "ratio": 9.262109102846619,
+      "threshold": 3,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "label": "invalid boundary / canvas",
+      "foreground": "#F0ABAB",
+      "background": "#151315",
+      "ratio": 9.788387866653473,
+      "threshold": 3,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "label": "body / surface",
+      "foreground": "#F6F0ED",
+      "background": "#1B181A",
+      "ratio": 15.606375403532045,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "label": "secondary / surface",
+      "foreground": "#C9BDB8",
+      "background": "#1B181A",
+      "ratio": 9.608241642088402,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "label": "placeholder-supporting / surface",
+      "foreground": "#AFA39E",
+      "background": "#1B181A",
+      "ratio": 7.176307111310731,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "label": "control boundary / surface",
+      "foreground": "#95828E",
+      "background": "#1B181A",
+      "ratio": 4.916709115477878,
+      "threshold": 3,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "label": "focus / surface",
+      "foreground": "#E7AA8B",
+      "background": "#1B181A",
+      "ratio": 8.824640768097218,
+      "threshold": 3,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "label": "invalid boundary / surface",
+      "foreground": "#F0ABAB",
+      "background": "#1B181A",
+      "ratio": 9.326062310739855,
+      "threshold": 3,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "label": "body / group",
+      "foreground": "#F6F0ED",
+      "background": "#242024",
+      "ratio": 14.234244875711006,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "label": "secondary / group",
+      "foreground": "#C9BDB8",
+      "background": "#242024",
+      "ratio": 8.763473953570088,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "label": "placeholder-supporting / group",
+      "foreground": "#AFA39E",
+      "background": "#242024",
+      "ratio": 6.545357912035407,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "label": "control boundary / group",
+      "foreground": "#95828E",
+      "background": "#242024",
+      "ratio": 4.484426378498712,
+      "threshold": 3,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "label": "focus / group",
+      "foreground": "#E7AA8B",
+      "background": "#242024",
+      "ratio": 8.048768172323324,
+      "threshold": 3,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "label": "invalid boundary / group",
+      "foreground": "#F0ABAB",
+      "background": "#242024",
+      "ratio": 8.506104154534588,
+      "threshold": 3,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "label": "body / groupStrong",
+      "foreground": "#F6F0ED",
+      "background": "#2B2429",
+      "ratio": 13.413343747885252,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "label": "secondary / groupStrong",
+      "foreground": "#C9BDB8",
+      "background": "#2B2429",
+      "ratio": 8.258076883688783,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "label": "placeholder-supporting / groupStrong",
+      "foreground": "#AFA39E",
+      "background": "#2B2429",
+      "ratio": 6.167881499417157,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "label": "control boundary / groupStrong",
+      "foreground": "#95828E",
+      "background": "#2B2429",
+      "ratio": 4.225805657560941,
+      "threshold": 3,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "label": "focus / groupStrong",
+      "foreground": "#E7AA8B",
+      "background": "#2B2429",
+      "ratio": 7.584588798709855,
+      "threshold": 3,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "label": "invalid boundary / groupStrong",
+      "foreground": "#F0ABAB",
+      "background": "#2B2429",
+      "ratio": 8.015549822019496,
+      "threshold": 3,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "label": "body / control",
+      "foreground": "#F6F0ED",
+      "background": "#2B272A",
+      "ratio": 13.04403877249238,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "label": "secondary / control",
+      "foreground": "#C9BDB8",
+      "background": "#2B272A",
+      "ratio": 8.030710095985013,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "label": "placeholder-supporting / control",
+      "foreground": "#AFA39E",
+      "background": "#2B272A",
+      "ratio": 5.998063341604902,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "label": "control boundary / control",
+      "foreground": "#95828E",
+      "background": "#2B272A",
+      "ratio": 4.1094580052742655,
+      "threshold": 3,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "label": "focus / control",
+      "foreground": "#E7AA8B",
+      "background": "#2B272A",
+      "ratio": 7.375764926577732,
+      "threshold": 3,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "label": "invalid boundary / control",
+      "foreground": "#F0ABAB",
+      "background": "#2B272A",
+      "ratio": 7.794860448406153,
+      "threshold": 3,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "label": "body / surfaceRaised",
+      "foreground": "#F6F0ED",
+      "background": "#2B2429",
+      "ratio": 13.413343747885252,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "label": "secondary / surfaceRaised",
+      "foreground": "#C9BDB8",
+      "background": "#2B2429",
+      "ratio": 8.258076883688783,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "label": "placeholder-supporting / surfaceRaised",
+      "foreground": "#AFA39E",
+      "background": "#2B2429",
+      "ratio": 6.167881499417157,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "label": "control boundary / surfaceRaised",
+      "foreground": "#95828E",
+      "background": "#2B2429",
+      "ratio": 4.225805657560941,
+      "threshold": 3,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "label": "focus / surfaceRaised",
+      "foreground": "#E7AA8B",
+      "background": "#2B2429",
+      "ratio": 7.584588798709855,
+      "threshold": 3,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "label": "invalid boundary / surfaceRaised",
+      "foreground": "#F0ABAB",
+      "background": "#2B2429",
+      "ratio": 8.015549822019496,
+      "threshold": 3,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "label": "primary",
+      "foreground": "#291911",
+      "background": "#E7AA8B",
+      "ratio": 8.47449508432702,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "label": "primary pressed",
+      "foreground": "#291911",
+      "background": "#F0BDA3",
+      "ratio": 10.079474318689003,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "label": "secondary button",
+      "foreground": "#F6F0ED",
+      "background": "#2B272A",
+      "ratio": 13.04403877249238,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "label": "form label",
+      "foreground": "#F6F0ED",
+      "background": "#242024",
+      "ratio": 14.234244875711006,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "label": "placeholder",
+      "foreground": "#AFA39E",
+      "background": "#1B181A",
+      "ratio": 7.176307111310731,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "label": "selected label",
+      "foreground": "#E7AA8B",
+      "background": "#462F27",
+      "ratio": 6.201945969406872,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "label": "success chip",
+      "foreground": "#A8D0B7",
+      "background": "#20382D",
+      "ratio": 7.4301906278771135,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "label": "overdue chip",
+      "foreground": "#DFC18B",
+      "background": "#4C3928",
+      "ratio": 6.311591473895293,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "label": "error chip",
+      "foreground": "#F0ABAB",
+      "background": "#432A30",
+      "ratio": 6.894949008814528,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "label": "info chip",
+      "foreground": "#B4CEE8",
+      "background": "#243345",
+      "ratio": 7.913485674734525,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "label": "pending chip",
+      "foreground": "#C9BDB8",
+      "background": "#2B272A",
+      "ratio": 8.030710095985013,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "label": "expense amount",
+      "foreground": "#F1A9B4",
+      "background": "#242024",
+      "ratio": 8.472538778493917,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "label": "disabled text (informational; inactive exempt)",
+      "foreground": "#AFA39E",
+      "background": "#191619",
+      "ratio": 7.311453510280605,
+      "threshold": 4.5,
+      "required": false,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "label": "task identity text/icon on soft",
+      "foreground": "#AEB7E8",
+      "background": "#303247",
+      "ratio": 6.419002073321402,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "label": "task filled tile foreground",
+      "foreground": "#151315",
+      "background": "#AEB7E8",
+      "ratio": 9.453925005189511,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "label": "work identity text/icon on soft",
+      "foreground": "#BCEAD5",
+      "background": "#11291F",
+      "ratio": 11.6609906681696,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "label": "work filled tile foreground",
+      "foreground": "#151315",
+      "background": "#BCEAD5",
+      "ratio": 13.970182897989393,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "label": "fitness identity text/icon on soft",
+      "foreground": "#BCEAD5",
+      "background": "#11291F",
+      "ratio": 11.6609906681696,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "label": "fitness filled tile foreground",
+      "foreground": "#151315",
+      "background": "#BCEAD5",
+      "ratio": 13.970182897989393,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "label": "journal identity text/icon on soft",
+      "foreground": "#9DCAB6",
+      "background": "#263F33",
+      "ratio": 6.276986258525968,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "label": "journal filled tile foreground",
+      "foreground": "#151315",
+      "background": "#9DCAB6",
+      "ratio": 10.174912806695737,
+      "threshold": 4.5,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "label": "current resting field boundary",
+      "foreground": "#3A3337",
+      "background": "#1B181A",
+      "ratio": 1.433187142864226,
+      "threshold": 3,
+      "required": false,
+      "passes": false
+    },
+    {
+      "theme": "dark",
+      "label": "current input fill / group",
+      "foreground": "#1B181A",
+      "background": "#242024",
+      "ratio": 1.096396439698913,
+      "threshold": 3,
+      "required": false,
+      "passes": false
+    },
+    {
+      "theme": "dark",
+      "label": "proposed selected fill alone / control",
+      "foreground": "#462F27",
+      "background": "#2B272A",
+      "ratio": 1.1892662340112452,
+      "threshold": 3,
+      "required": false,
+      "passes": false
+    },
+    {
+      "theme": "dark",
+      "label": "calendarTask meaningful marker",
+      "foreground": "#93C5FD",
+      "background": "#242024",
+      "ratio": 8.90944772496488,
+      "threshold": 3,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "label": "calendarCommitment meaningful marker",
+      "foreground": "#FBBF24",
+      "background": "#242024",
+      "ratio": 9.624134310952998,
+      "threshold": 3,
+      "required": true,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "label": "calendarWorkPayment meaningful marker",
+      "foreground": "#5EEAD4",
+      "background": "#242024",
+      "ratio": 10.860553890532,
+      "threshold": 3,
+      "required": true,
+      "passes": true
+    }
+  ]
+}

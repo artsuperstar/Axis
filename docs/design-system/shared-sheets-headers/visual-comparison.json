@@ -1,0 +1,412 @@
+{
+  "cases": 58,
+  "identical": 2,
+  "results": [
+    {
+      "file": "operational-dark-390.png",
+      "before": "c434636b30dc0b69629f2524561ed830fab8598cfe495fa8498c024e5e8e0b66",
+      "after": "4fd32e1451f46975bebd2c54136aeb2ba2ca358d4341916e823474e82c32e651",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "operational-light-390.png",
+      "before": "14001d5cdd3df13a744d07a555e40ad2737e90802f07860e020c5b10f07f834c",
+      "after": "4c8480556eb9a1c33828be65d1c4ae4cf044de9177e265486f30ef4b688adf03",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "editorial-dark-390.png",
+      "before": "6bd0fc07a33b5d9aff19345501f120872e575d5f74da971600f2bc38f2fc75a5",
+      "after": "3d1c908029a607238250458d58c427d2da3618a8f4dcc41ddc8bfd72c8589ab6",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "editorial-light-390.png",
+      "before": "4559a34291bd931f786c575e6cd7b77d8ac1a9a41c534f9c7f5271fe2e9ef7a7",
+      "after": "9ea8491dc2459faa2a74953f557108a431e7f88c9115a8762bef6993b8167567",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "long-dark-390.png",
+      "before": "3be3d265f2ee3af688d3f3d9bd46848d9869d75d358a1a6d6f55cc0d5f6e078d",
+      "after": "afb94669b47a61ce22ba51371ab48d20d7e4038384f7a3fdb5049cb17616cda6",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "long-light-390.png",
+      "before": "3d7d908778d6d3d89366b2ef1f33a0f2cc94c9f5afd6095cd5faeab1ccc36f39",
+      "after": "994a0ad6a5214b5758601d6bf28174d729484dc452ea381f225fb35eecca6103",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "legacy-dark-390.png",
+      "before": "a684bc8548daac3527c2ecee6ac279d45e58ebcd46298d51be8b33792e1ade0e",
+      "after": "a684bc8548daac3527c2ecee6ac279d45e58ebcd46298d51be8b33792e1ade0e",
+      "identical": true,
+      "geometryIdentical": true
+    },
+    {
+      "file": "legacy-light-390.png",
+      "before": "bfec99935a2b473ce43ab2eebd67976d606b30ce4ee128aea1c4400c73d368c2",
+      "after": "bfec99935a2b473ce43ab2eebd67976d606b30ce4ee128aea1c4400c73d368c2",
+      "identical": true,
+      "geometryIdentical": true
+    },
+    {
+      "file": "history-dark-390.png",
+      "before": "14130d43cbbc934d3db44c9622aac3effbc9ed7c93eed996bf5df9b1e1fbb8ea",
+      "after": "8f1a94638e979e3ec441726ce45b83a595c088c6f05d02f409a984da39732cb1",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "history-light-390.png",
+      "before": "abbadee809e8ea66a264fc8596c5225e739066be43086ee55121a7bb6a1a743a",
+      "after": "654dfb634dcd6d2548d3c30a196148d72ef3f044717104573086498ba9d84b37",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "journal-dark-390.png",
+      "before": "c1ba2fcc23d78725ef92864996f75b7cf96966591f1ff950251246cbcc4866d1",
+      "after": "a72b1541f08b95e76850802e450a74aff5912ccbdceebdc5d625c5ac2175435f",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "journal-light-390.png",
+      "before": "9fdf4759a780b31a1fa76ad90ee47e55705802946a95869bf249502a2ff07d62",
+      "after": "2f1f162827f80ee0cb78e96db1546aa61ef79db8cdf17b6dc1f8f2fd4b7cd23d",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "calendar-dark-390.png",
+      "before": "ead199a5a49f07e430161af4866b8999cc933ff9591062e5dffa2d13648f2090",
+      "after": "bc957168a4d54e6dd3ea2582395e6815c3eba1e786cc90d0ee3a910a51640e13",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "calendar-light-390.png",
+      "before": "3c8612f9b302afe68e543d3a683becf2ea5fcf06c67a9faae951f5ca7bc79b78",
+      "after": "e76c388e714b12e4e45983dcc7107ef8b49822e8167076b355ded2eb4d7058dd",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "fitness-dark-390.png",
+      "before": "c625afe0e0c3d5ecb996fbaa297c5b88d882693a1aa2ce8af872698afe6b480c",
+      "after": "54cbfc49b2ffb89eace660cb8af8b385d6a788f1107025d5cbc32106a1f62567",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "fitness-light-390.png",
+      "before": "50b3d625e3e0b731aaa5ddc182ae32e42074fed1336f283bd8fcbc877d38cb0d",
+      "after": "0b442866ccaa96a1b8296704b56951f53f6aa256dfe92a28b39e81241d68be63",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "task-dark-390.png",
+      "before": "67ecc7666d2938aad24d374ab7ad140087f7666a0a8e1cec5370530e8c478933",
+      "after": "7c20883c128d41e41518b9c15a9cd1e1c356567c6fc9a0f648dfea41cc6cbea7",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "task-light-390.png",
+      "before": "958095432e465d195d88e86714aaa40ed205029f27cb0f81b8cedfc2331d01b0",
+      "after": "8a93aec0f46112803799374c5487574d13129c821f3602c767d553fc5ecedfcf",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "back-pressed-dark-390.png",
+      "before": "1516b4c9a5608498c48cb0c7bf3caa766df7d8a550e5852b74c4c8f6715e1243",
+      "after": "c9f297b15f38202fb09be37d7915bb06346ba6f17338b7d85cbda9b91b3dd1a4",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "back-pressed-light-390.png",
+      "before": "305288f706678b79349ad38c270f0b4cbe7f40f418f4bcc30990038ee3380c75",
+      "after": "073f3af01e0367f9a1bcce531aec1335ff483fba0ef91aa528e59db683c6558e",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "nested-task-dark-390.png",
+      "before": "1e9a57a2fb00d442f1bd91d953fd833879f40c398780f9afdf5230426560a59f",
+      "after": "46dbd856ebc1a1a17c1619ad0b58210da167f0e6b0bfcd8bfc6544c868a6e11f",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "nested-task-light-390.png",
+      "before": "1721a1384acc94466d4a8391466697211a709f28af34ad93483a5286e5eab657",
+      "after": "ca440aebeec83c8876d07a10ab4b6623cd3abb0b7e5c243086f13d7ad5405100",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "task-picker-dark-390.png",
+      "before": "f10c813658d6733cae5d44500f0635df59843554196add63a12f26a11bf1965a",
+      "after": "1263e66c0e807e16885799a9566674e99730110f9b1a7443d0615424f5f2472c",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "task-picker-light-390.png",
+      "before": "4ad7238d33e3225e8665ae9990cd22760271d380ca25f3e07764cb94de403842",
+      "after": "2f168a863fc44d752bf2b9229e83c669cb65a9de52159f2e91f291114c9d681d",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "selector-dark-390.png",
+      "before": "1047788a0622d2f1b4a673b28be4c3002c23d9eb71b1c712cd7b07a89f130e77",
+      "after": "28586d90f60ca72e120cd457b9be066966275429bcfe8e5dc7e8191b6f68b57b",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "selector-light-390.png",
+      "before": "65e8cc91915c6bdc1745cd3d019cb476ec0c5e44015ac93d65ef03825416c0dc",
+      "after": "24e24275e8dd3a7c606b6e34f50a3af441cde741efabeb3e432ba3f757d28d3c",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "inline-dark-390.png",
+      "before": "9151b8f7ca24c90751304371c25aba8cc00054ef2c6cb7c8b850bd9b6703d972",
+      "after": "92221261df32ca91ad545420511c387f634ba35f58f9642d93f32c353b30c770",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "inline-light-390.png",
+      "before": "5029b61dc0d91d943e59523c813b98da3dc759728174158815b2bf800fb12c05",
+      "after": "faae28513fd5770e55a16650ebbcbe7df633aaf1953108e0640f4db3e11503de",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "autocomplete-dark-390.png",
+      "before": "196454fcaabddbcfc63367ea1cdf76b304d324019b35e49fcb090b2504c88ff4",
+      "after": "8ec4f14d9e70a7e44305f8d2e1b811bcc7d1e0f614ffb78a8ec02086c34aa165",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "autocomplete-light-390.png",
+      "before": "9012d297880a1cc12461e7abc29823b3149d6f81030cb265e51957b811fb5d29",
+      "after": "c5f3245b76ac0f6c25bca304936f716a9b68f20ab96e1a4d1c0e4498e0ae16ef",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "empty-dark-390.png",
+      "before": "1e0a1fa3e9624978ce05aa5a4c61de1196ed8dfa0c3b002437f779b0416c7431",
+      "after": "59136404663d6ce57683c1f33c581ab624e5dd918176fbda0fd5a26dc3cb8bc1",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "empty-light-390.png",
+      "before": "99da565e1a31f1f21f753a9f7a34a2a65e58486f3b9e43c271e1583e93ca349f",
+      "after": "6399982c085165101f926f780cf7f4153a90382b23e0b7232a151f564c7f8627",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "picker-dark-390.png",
+      "before": "bb14a3c3c417b226fd4d60ab323b36cc8eb3a0b05bcf38ed060d99ebb6a3a41c",
+      "after": "8dd2b983a768cdada04833867ca16a88401d9d01b4aaee1ba3edec1e8336891e",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "picker-light-390.png",
+      "before": "167184ae474b3a28dbc9eea21e1618d1f4bd9af509ee6d5ece4d3cdd420de48e",
+      "after": "a4a85d605053d980148dab93c4179b61aa172db9905f5d0da93178cd6e961937",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "context-dark-390.png",
+      "before": "3f0b0070c795991442dafe93ae2c4eb55243471caaeafdbc5b755b821f645d0b",
+      "after": "3483ef6889e4ba9c51b103e10bd2a412256845e75d39fbd51f486a2dc1adc9c4",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "context-light-390.png",
+      "before": "db311638a7af1d0eb07669b7af20fb1faf2f048c527463062df7e5988bfc1654",
+      "after": "2c75314037f4bc4594c76211bf6f7b61db80420b56593ff0c702f9b116aeb178",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "long-edges-dark-320.png",
+      "before": "ab266f408d03d20be14982e6e155784f7ba118d1590d4fc077bea0d42cfb36c2",
+      "after": "c90f2a9e659205bed6105eeda2f39dc421bec5b2a6686423cc39b4eb7ed2cd87",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "long-edges-light-320.png",
+      "before": "06b866642f0a3360c79c0a938a69b2e8ae39aa833e801e0c8d5822b228596513",
+      "after": "ba7e191d581aa77a60dea637eeb259d4b22b5b6f5f76c7c0cad7fc39a484ddc6",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "long-edges-dark-430.png",
+      "before": "87db2cf2eadf43d16d8c5a33bed8e71aba3c526b837f8c8235497186c49842a4",
+      "after": "59df1aae43afabdc7a759dd138893467be84d0ccb72b162cbddd92b1bb3a4404",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "long-edges-light-430.png",
+      "before": "57eb045f5d0f4546fee7eb720c63bcdb9c96e5cbea31220fe0890b32d1214ce7",
+      "after": "60fe6c2d8f2318c7bf1db6698ae19cd5a44d8b82f6a2d9cfcda0822c824fa66b",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "long-large-dark-320.png",
+      "before": "7b8a337c73ea8e1d7c052f32a4f693a7d8a381183ea2ecc34219521d416e1c2f",
+      "after": "a31c2d2d2ab432d3cbea3733ba1a071c18f28b8d1a0834aa06ffb4d47697e9e5",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "long-large-light-320.png",
+      "before": "01ef668200f4fe3f928004350dd64c8cfe1e08f3154b6072170701f18d478ef3",
+      "after": "f33e28f606d6636aacab117a882f35235f502721e131188741538fa193032625",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "long-large-dark-390.png",
+      "before": "3f41efe1e4969b199f234ddc40cd9fa497a028d6219a7ed683450e8412f00edb",
+      "after": "a616ebfc917740cd86d0155eb2966339065f7844510844db96b4085059d2145a",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "long-large-light-390.png",
+      "before": "1c58c52a3368b36cfbf4b38957cec80078e0aefc964f28715adea2c86c7abb1c",
+      "after": "aa3ba996e7f4610f76ef3ad89cf8f8ecef7797e753cd341141c6945c519f8604",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "long-large-dark-430.png",
+      "before": "4e25755a37c0e015473f58c2372acb63aadee5aa6276c82cfc6a58483d3113e4",
+      "after": "c6cc04768d895d661ee278a9ad0ebfbeedfc78ce344a6c94b9b68c39403e2192",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "long-large-light-430.png",
+      "before": "30955ec74e61297592b8aff3400970e3dd22528a294e9437dc0a97b95a20c4cc",
+      "after": "ea27ef4601410277373ef95140d9dc1e15ff5c8521412d8a5ee4b0000cbc99ca",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "selector-large-dark-320.png",
+      "before": "0dab70804d15e4fe4d2008dec2c61ebc62b7aaad3f81e229b70d7c7bcf500921",
+      "after": "9b9ca32ac782040bc0e1e65c415266e590b054aada3d34622b5c34145ab608de",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "selector-large-light-320.png",
+      "before": "165503d7951f1e62570c34d2ca1363dfb910e6dc4968d872274273a7e2c888a0",
+      "after": "fcf92d8a654b87c3cbab77879a20e6975119379fb728c6f2e56ee750f179e38b",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "selector-large-dark-430.png",
+      "before": "866c8376755ce24d6df59ee5a7c14a9aeb9c7efd6f3265c8ca74be123efca046",
+      "after": "465945fc1e175926547a614af8a2c8e589001f8243fda1c90a6f6b92c05440a9",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "selector-large-light-430.png",
+      "before": "f1ffce0b894ee7ca17da1529781035616a010d7b539eed8a616b2b7d51d84f9a",
+      "after": "9d1f5004e43c64d4a64d17de528759767c7d03490714bd5697273c4dccb7c923",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "transaction-edit-dark-390.png",
+      "before": "cf219a084e227f71cb893347df88ceecc66fb531ba6057d2b120ab793dab0807",
+      "after": "cd5bdf0cef007fc193452a55d5f22ef4549a969b0225b24d43a4a0f6fab519ab",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "transaction-edit-light-390.png",
+      "before": "6a45a5bade09c35d6823308c25076fb157bca78df65c992061633f65160b58ec",
+      "after": "739985f1a89135d59048cfd5146ee78d00a6e8fe927f5a855754f76cb43d46d7",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "work-edit-dark-390.png",
+      "before": "8927c965a8e7122bf20a2a35697ab393a9511a97ab46b959f2bbafafa36c9765",
+      "after": "5ab46e75516a148575b40dbd2a85d845e8c4300270d7b921739a0ceec111ced5",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "work-edit-light-390.png",
+      "before": "9879af1cff73feb61f234b5eff5eb4a16d206a73fbd3b8cd3d293b9f3241bc8c",
+      "after": "e747504694ff44f76b65f354c1a0c5308b41a5ff13f0e240808a898d19aa341a",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "record-payment-dark-390.png",
+      "before": "12da154ba510756cba473532592dbdaa407be1a3610e906b4d0095e5d8c9f8c3",
+      "after": "830e4832fac51bbe0abb7d3fdc544bfddc1272ac6a87a5c6fc0d47d35077a761",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "record-payment-light-390.png",
+      "before": "526b2a0043d15bf1796ad84fe22a559719ec95d1898d021d0ce325a0a3093295",
+      "after": "af0892bdf204b8dbf7452850f28d4e57db047cf282f4f3f65c6563a7e1ea37f4",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "commitment-editor-dark-390.png",
+      "before": "e393f16c55866ff70b9362f20cec70f25f6c32397ebde31c6bfbe5328260581f",
+      "after": "db9d245da1a3e355ffb58df20bba476dfb3799ccf31b2e66ae91bdc94b38d7e1",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "commitment-editor-light-390.png",
+      "before": "91398e4621f417a6fcc532886a77b5689a3ad66faa18a71769758dad77ab3687",
+      "after": "390d447bc559e411656e62f3ffd5b76516f6c6297e4d700dfa543733a2258779",
+      "identical": false,
+      "geometryIdentical": true
+    }
+  ]
+}

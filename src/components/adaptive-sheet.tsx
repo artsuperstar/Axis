@@ -12,7 +12,8 @@ import { FormFocusContext } from './form-focus';
 import { FormScrollView, FormSelectionHost, useFormSelection, type FormSelectionHandle } from './form-selection-host';
 import { ThemedText } from './themed-text';
 import { SheetRefreshNotice } from './sheet-refresh-notice';
-import { useDesignColors } from './design-system';
+import { UiText, useDesignColors } from './design-system';
+import { Shape } from '@/constants/design-system-v2';
 
 const SheetBounds = createContext<{ height: number; bottomInset: number; leftInset: number; rightInset: number } | null>(null);
 const SheetScrollContext = createContext<(ScrollViewProps & { ref: Ref<ScrollViewInstance> }) | null>(null);
@@ -90,14 +91,18 @@ function SheetViewport({ children, onDismiss }: { children: ReactNode; onDismiss
 }
 
 /** Measure the fixed header and unconstrained scroll content separately, never the clipped body. */
-export function AdaptiveSheet({ title, header, children, onDismiss, action, onConfirm, contentContainerStyle, appearance, scrollBody, fillHeight = false }: {
+export function AdaptiveSheet({ title, header, children, onDismiss, action, onConfirm, contentContainerStyle, appearance, titleRole = 'editorial', scrollBody, fillHeight = false }: {
   title?: string; header?: ReactNode; children?: ReactNode; onDismiss?: () => void; action?: string; onConfirm?: () => void; contentContainerStyle?: StyleProp<ViewStyle>; appearance?: 'v2';
+  /** Only the default v2 header uses this role; custom headers and legacy typography stay owned by their callers. */
+  titleRole?: 'editorial' | 'operational';
   /** Virtualized bodies reuse the same focus/keyboard/selection host without nesting scroll views. */
   scrollBody?: ReactNode; fillHeight?: boolean;
 }) {
   const colors = useTheme();
   const design = useDesignColors();
-  const { height } = useWindowDimensions();
+  const { height, width, fontScale } = useWindowDimensions();
+  const v2 = appearance === 'v2';
+  const stackedHeader = v2 && (width < 360 || fontScale >= 1.5);
   const bounds = useContext(SheetBounds);
   const maximum = bounds?.height ?? height;
   const selection = useFormSelection();
@@ -136,16 +141,20 @@ export function AdaptiveSheet({ title, header, children, onDismiss, action, onCo
     scrollEnabled: fillHeight || !ready || layout.scroll,
     onContentSizeChange: (_width: number, measuredHeight: number) => setContentHeight(Math.ceil(measuredHeight)),
     onScroll: (event: Parameters<NonNullable<ScrollViewProps['onScroll']>>[0]) => { offset.current = event.nativeEvent.contentOffset.y; } };
-  return <View onLayout={selection.reposition} style={[styles.sheet, { backgroundColor: appearance === 'v2' ? design.canvas : colors[SurfaceColors.overlay], borderColor: appearance === 'v2' ? design.border : colors.border, height: fillHeight ? maximum : ready ? layout.height : maximum,
+  const dismissControl = action ? <FormButton appearance={appearance} variant="quiet" label="Cancel" onPress={onDismiss ?? (() => {})} />
+    : <BackButton appearance={appearance} iconOnly={v2} onPress={onDismiss ?? (() => {})} />;
+  const confirmControl = action && onConfirm ? <FormButton appearance={appearance} variant="primary" label={action} onPress={onConfirm} /> : null;
+  const headingStyle = [styles.heading, !action && styles.returnHeading, stackedHeader && styles.standaloneHeading];
+  const heading = v2 ? <UiText type={titleRole === 'operational' ? 'sheetTitle' : 'editorTitle'} accessibilityRole="header" style={headingStyle}>{title}</UiText>
+    : <ThemedText type="sheetTitle" accessibilityRole="header" style={headingStyle}>{title}</ThemedText>;
+  return <View onLayout={selection.reposition} style={[styles.sheet, v2 && { borderTopLeftRadius: Shape.sheet, borderTopRightRadius: Shape.sheet }, { backgroundColor: v2 ? design.canvas : colors[SurfaceColors.overlay], borderColor: v2 ? design.border : colors.border, height: fillHeight ? maximum : ready ? layout.height : maximum,
     paddingBottom: layout.paddingBottom, paddingLeft: bounds?.leftInset ?? 0, paddingRight: bounds?.rightInset ?? 0, opacity: ready ? 1 : 0 }]}>
     <View style={[styles.fixedHeader, styles.inner]} onLayout={(event) => setHeaderHeight(Math.ceil(event.nativeEvent.layout.height))}>
-      {header ?? <View style={styles.header}>
-        {action ? <FormButton variant="quiet" label="Cancel" onPress={onDismiss ?? (() => {})} />
-          : <BackButton onPress={onDismiss ?? (() => {})} />}
-        <ThemedText type="sheetTitle" accessibilityRole="header" style={[styles.heading, !action && styles.returnHeading]}>{title}</ThemedText>
-        {action && onConfirm && <FormButton variant="primary" label={action} onPress={onConfirm} />}
+      {header ?? <View style={[styles.header, v2 && styles.v2Header, stackedHeader && styles.stackedHeader]}>
+        {stackedHeader ? <>{heading}<View style={styles.headerActions}>{dismissControl}{confirmControl}</View></>
+          : <>{dismissControl}{heading}{confirmControl}</>}
       </View>}
-      <SheetRefreshNotice />
+      <SheetRefreshNotice appearance={appearance} />
     </View>
     <FormFocusContext.Provider value={focus}>
       <View ref={bodyViewport} collapsable={false} style={[styles.body, styles.inner]} onLayout={() => { revealFocused(); selection.reposition(); }}>
@@ -165,6 +174,10 @@ const styles = StyleSheet.create({
   fixedHeader: { flexShrink: 0 },
   body: { flex: 1, minHeight: 0 },
   header: { flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', gap: Space.sm, padding: Space.lg },
+  v2Header: { paddingHorizontal: Space.lg, paddingVertical: Space.md },
+  stackedHeader: { flexDirection: 'column', flexWrap: 'nowrap', alignItems: 'stretch' },
+  headerActions: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between', gap: Space.sm },
+  standaloneHeading: { flex: 0, minWidth: 0, textAlign: 'left' },
   heading: { flex: 1, minWidth: 80, textAlign: 'center' },
   returnHeading: { textAlign: 'left' },
   content: { padding: Space.lg, gap: Space.lg },

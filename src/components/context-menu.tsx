@@ -1,8 +1,9 @@
 import { useFocusEffect } from 'expo-router';
 import { useCallback, useEffect, useId, useRef } from 'react';
-import { BackHandler, Platform, type ViewInstance } from 'react-native';
+import { BackHandler, Platform, useWindowDimensions, type ViewInstance } from 'react-native';
 
 import { ControlSize, Space } from '@/constants/theme';
+import { DesignTypography, TouchTarget } from '@/constants/design-system-v2';
 
 import { FormButton } from './form-controls';
 import { FormSelectionHost, useFormSelection } from './form-selection-host';
@@ -17,6 +18,7 @@ export function ContextMenu({ label, actions, disabled = false, onOpen, appearan
   const id = useId();
   const trigger = useRef<ViewInstance>(null);
   const firstAction = useRef<ViewInstance>(null);
+  const { fontScale } = useWindowDimensions();
   const { activeId, open, close } = useFormSelection();
   const expanded = activeId === id;
   // A pushed route or tab switch must never leave an overlay on the retained screen.
@@ -33,10 +35,13 @@ export function ContextMenu({ label, actions, disabled = false, onOpen, appearan
       if (!trigger.current) return;
       onOpen?.();
       open({ id, label, trigger: trigger.current, presentation: 'actions', appearance, align: 'end', preferredWidth: 240,
-        estimatedHeight: actions.length * (ControlSize.touch + Space.xs) + Space.sm * 2 + 2, initialFocus: firstAction,
+        estimatedHeight: appearance === 'v2'
+          ? actions.length * Math.max(TouchTarget, DesignTypography.button.lineHeight * Math.max(1, fontScale) + Space.sm * 2 + 2)
+            + Math.max(0, actions.length - 1) * Space.xs + Space.sm * 2 + 2
+          : actions.length * (ControlSize.touch + Space.xs) + Space.sm * 2 + 2, initialFocus: firstAction,
         content: <>
           {actions.map((action, index) => <FormButton key={action.label} ref={index === 0 ? firstAction : undefined}
-            appearance={appearance} variant={action.variant ?? 'quiet'} disabled={action.disabled} align="start" label={action.label} accessibilityLabel={action.accessibilityLabel} onPress={() => {
+            appearance={appearance} tone={appearance === 'v2' ? 'neutral' : undefined} variant={action.variant ?? 'quiet'} disabled={action.disabled} align="start" label={action.label} accessibilityLabel={action.accessibilityLabel} onPress={() => {
               close(false);
               // Commit overlay dismissal before presenting a native modal or pushing a route.
               requestAnimationFrame(action.onPress);

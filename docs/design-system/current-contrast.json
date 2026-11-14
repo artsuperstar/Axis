@@ -1,0 +1,167 @@
+{
+  "scope": "Opaque sRGB source-token pairs; control-boundary requirement is conditional on boundary identifying the control. No device or whole-app conformance claim.",
+  "rows": [
+    {
+      "theme": "light",
+      "role": "body",
+      "foreground": "#241E1C",
+      "background": "#FBF5F0",
+      "ratio": 15.202505270782614,
+      "threshold": 4.5,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "role": "metadata",
+      "foreground": "#6A5E59",
+      "background": "#FBF5F0",
+      "ratio": 5.783229029405478,
+      "threshold": 4.5,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "role": "muted",
+      "foreground": "#746660",
+      "background": "#FBF5F0",
+      "ratio": 5.094644172942745,
+      "threshold": 4.5,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "role": "primary button",
+      "foreground": "#FFF9FB",
+      "background": "#68344E",
+      "ratio": 9.222348923752199,
+      "threshold": 4.5,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "role": "selected label",
+      "foreground": "#7B425E",
+      "background": "#F1E1E8",
+      "ratio": 5.991677172314046,
+      "threshold": 4.5,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "role": "resting input boundary",
+      "foreground": "#E4DAD4",
+      "background": "#FFFCF8",
+      "ratio": 1.3438640788652998,
+      "threshold": 3,
+      "passes": false
+    },
+    {
+      "theme": "light",
+      "role": "field fill against group",
+      "foreground": "#FFFCF8",
+      "background": "#FBF5F0",
+      "ratio": 1.0571832991375376,
+      "threshold": 3,
+      "passes": false
+    },
+    {
+      "theme": "light",
+      "role": "strong boundary",
+      "foreground": "#9B837B",
+      "background": "#FFFCF8",
+      "ratio": 3.4645252799392496,
+      "threshold": 3,
+      "passes": true
+    },
+    {
+      "theme": "light",
+      "role": "fitness button",
+      "foreground": "#151010",
+      "background": "#B66F5D",
+      "ratio": 4.868370990184958,
+      "threshold": 4.5,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "role": "body",
+      "foreground": "#F6F0ED",
+      "background": "#242024",
+      "ratio": 14.234244875711006,
+      "threshold": 4.5,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "role": "metadata",
+      "foreground": "#C9BDB8",
+      "background": "#242024",
+      "ratio": 8.763473953570088,
+      "threshold": 4.5,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "role": "muted",
+      "foreground": "#AFA39E",
+      "background": "#242024",
+      "ratio": 6.545357912035407,
+      "threshold": 4.5,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "role": "primary button",
+      "foreground": "#2A1720",
+      "background": "#EDBAD0",
+      "ratio": 10.09392787726731,
+      "threshold": 4.5,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "role": "selected label",
+      "foreground": "#DFA6BF",
+      "background": "#3C2B35",
+      "ratio": 6.509634213754017,
+      "threshold": 4.5,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "role": "resting input boundary",
+      "foreground": "#3A3337",
+      "background": "#1B181A",
+      "ratio": 1.433187142864226,
+      "threshold": 3,
+      "passes": false
+    },
+    {
+      "theme": "dark",
+      "role": "field fill against group",
+      "foreground": "#1B181A",
+      "background": "#242024",
+      "ratio": 1.096396439698913,
+      "threshold": 3,
+      "passes": false
+    },
+    {
+      "theme": "dark",
+      "role": "strong boundary",
+      "foreground": "#7F7078",
+      "background": "#1B181A",
+      "ratio": 3.767313745562744,
+      "threshold": 3,
+      "passes": true
+    },
+    {
+      "theme": "dark",
+      "role": "fitness button",
+      "foreground": "#2A1720",
+      "background": "#E2A08F",
+      "ratio": 7.777591174957785,
+      "threshold": 4.5,
+      "passes": true
+    }
+  ]
+}

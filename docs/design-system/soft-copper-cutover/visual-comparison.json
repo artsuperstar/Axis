@@ -1,0 +1,356 @@
+{
+  "cases": 50,
+  "identical": 3,
+  "results": [
+    {
+      "file": "home-dark-390.png",
+      "before": "01961a4dda3133bcaeb8ca958d089597144718fbf8405fa203960147546be68d",
+      "after": "01961a4dda3133bcaeb8ca958d089597144718fbf8405fa203960147546be68d",
+      "identical": true,
+      "geometryIdentical": true
+    },
+    {
+      "file": "home-light-390.png",
+      "before": "fdae3f5828371a58c9d51ee9ceb6f1142ca0ed972c989cc18d3249819c4fa8fd",
+      "after": "fdae3f5828371a58c9d51ee9ceb6f1142ca0ed972c989cc18d3249819c4fa8fd",
+      "identical": true,
+      "geometryIdentical": true
+    },
+    {
+      "file": "tasks-dark-320.png",
+      "before": "a53c666f435fc231f33f69365fd9165c4bdc5f47f9ac02619217bcb85dcb8fea",
+      "after": "2d3e7c174338e8f00c20fb8b5dd42639f840f79d4f54a4bd299a56b2b052d0f6",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "tasks-light-320.png",
+      "before": "7edc48e92909bed02bf002e273d45b2e48820c4dd120ce4bd2f43d56e3f54252",
+      "after": "421b08cde3c8b8c2d3709bddb8a5725227cc763c4ac4b8c2c0049e0e4c6f4436",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "tasks-dark-390.png",
+      "before": "0879aba731806276b11adc0d4dec12742205351cf7ec04b9c02c2eae923e70be",
+      "after": "435e397380d9fc06c4dc11b0ddced9e34fd387713feed0c6ffdc256de77ad3fb",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "tasks-light-390.png",
+      "before": "fb82bed73f3c998d3dd0e68ce2b67f98acb814917f66301141e4b34ec28c1f23",
+      "after": "6dd089a03a7d74ab72f037a2da4fa661727acebdcaaa03849615b1d8e870cd52",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "calendar-dark-390.png",
+      "before": "ab3f259ed83ebe374ed67bcfe12dae24f3fb39522193e55ee32b3671a77daee3",
+      "after": "f5fea790ef21bc667e9e1e19b984c8ea3f75ac33b1e24dff4b0e0a1c2640d4a7",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "calendar-light-390.png",
+      "before": "e5bcf6bf770f4fc539441362974946dfec2c8120bad1b6e8d73c329f2c3daff6",
+      "after": "e5bcf6bf770f4fc539441362974946dfec2c8120bad1b6e8d73c329f2c3daff6",
+      "identical": true,
+      "geometryIdentical": true
+    },
+    {
+      "file": "finance-overview-dark-320.png",
+      "before": "1ae00f71ce228ba57f79e54a0a736f59c40952977873bdf4f52f1f8beeb6b318",
+      "after": "f76592985ef7361f271cacb896a44cc68af7fb6dd89d9f2af2f524c809b8e231",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "finance-overview-light-320.png",
+      "before": "9868ac5b653747c6366e6b626161852df716729da9760308d8899735636f1104",
+      "after": "8415e41b4dcc87fcb3c21ba32c14bc3f6050a064db620297dd57c2e893cdedda",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "finance-overview-dark-390.png",
+      "before": "f1c6a4f3f09e9416a3e6a420735fea5a17ad7b90de62a20c68a02ab2aa71287d",
+      "after": "80960bd9ce2a72c4d27606fe50c997e16781a1119a753ee60dd9068f61b9e4e9",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "finance-overview-light-390.png",
+      "before": "f194f0e3bd6d9c5a5934dff6ffa8aa1c128f9adb6350eaebcfb97deb3830fcd9",
+      "after": "be38470128efbe80a5858617bea96c04a5f6646c4404b222711e43f7ea10c27a",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "finance-overview-dark-430.png",
+      "before": "dc12596bd8344b457d6d0a9339e8e895a608ea7bd18981c46527bf769d475ca4",
+      "after": "b5d709f041be2efc7bbb07d42d16121bff42955e28e1d3d73d83430267d5f9a2",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "finance-overview-light-430.png",
+      "before": "d30126569a07e13b35980985d666dfed0f5a717ce8705885d4bb586df3993aa4",
+      "after": "e12632d3e83d5ee3140d87833816373a758f5450aef6be21e8b6bf05461387b1",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "finance-selected-dark-390.png",
+      "before": "416955c191c01aff247e542a86db573c5ce4a617eec82328d743f7901305babe",
+      "after": "759a73641ff5f4e20c0fcf106061ad5af736c4225a4eda6ea02302de8d22e408",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "finance-selected-light-390.png",
+      "before": "57fcb894b3d8be903e3d00eef8d1914dc8177d506dd86aef04f479c4d7c37b89",
+      "after": "c57b7e5870eae7973198813f390e1b5e92f20fee383a3ae22eedebd2a65a1de5",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "finance-spending-dark-390.png",
+      "before": "343db67d0252b3eb9a372da2dccad527eb96e6c48b42da8cb9c7a1d2e9d393fa",
+      "after": "e50c29d043d801918ab0baac3768dd6de26826721bee2d4738efa0639329b6ad",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "finance-spending-light-390.png",
+      "before": "1c170aed86b50708b03da52df98dfabcc43721f18b703aceed75093d237395be",
+      "after": "5a70377d5eaeaab13990021512b6c3126b6699c15d40d4887d2b673bf1197e99",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "finance-form-dark-390.png",
+      "before": "718f07f38438421a3a41bde5979c234db8bca9bcfeeb1be5d2757fe6f67457d1",
+      "after": "067bbcc428953fd5e46bad844e806277c30dac258a9f8fd5e8dbd76874ab846f",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "finance-form-light-390.png",
+      "before": "8ae889cffd5fdd8b955bc693fef2f0b381458b0b9f3de480ddacd9b6c3e86459",
+      "after": "74df02f1494ddbb1138d91bf588773cb90c637fbcdd1dc0de4d050e26e99e864",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "fitness-dark-390.png",
+      "before": "6b668fdb263705a97ad668dbd5719b5182a7abcd8961608778d14e7f380ae8c6",
+      "after": "df146c88d3756d407658181e2e0cbefe4e402e7402d6a6f8a6749ae97854ea15",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "fitness-light-390.png",
+      "before": "9bd334052c38455fa64768e71d9def75f11889116ef3aaa4b904a25bd7a8cb0c",
+      "after": "5a2c497c8d92b5d225abac2dc408d8d188444aecae25800969da715c5f211686",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "journal-dark-390.png",
+      "before": "e111c08782cf1e77744162a609a83a6687e65227bdc58b8157e63765d7547850",
+      "after": "ad42237417ca038bfeafe58a0df26f8d4300ab048d59b5bf7b0bfa3360db5a81",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "journal-light-390.png",
+      "before": "6a3239453f64a2fffa6df1cefc16504cd6eef7ae027e42cca2f42184a03f87c9",
+      "after": "aba2229d4c466a3cc8416725d9df8a0f5d3195525fbb3a2b9900b66223ed9021",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "transactions-dark-390.png",
+      "before": "a93d91bbf20ab2cb48f7e9f15b227b4d62b734b6023cce1b436bea0bb8d40500",
+      "after": "eb5f7b45931403eb56fbb45b60f0582aeeea959b6a14659ca76db4b6c2583bc1",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "transactions-light-390.png",
+      "before": "1fc31bafdb7e28de47df970fca8656034a91abe13ce8115b5d5c802edcd1ee02",
+      "after": "1dbed2d876168c45d577fbe5baac4aeac78ff27b2127e0d6134d282fd55d8e61",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "work-dark-320.png",
+      "before": "f0bfe4d760cbdc30442ee2dacf212489701bce27318cfba6b520ae98a3725593",
+      "after": "ee00f1f3ad600f9116ab0167e25f2794829246552a33a43c774ac53761a9587a",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "work-light-320.png",
+      "before": "6fb99b96cc6b22a0f0c34669781cf5d473885d90eb9a04fe47383ecd6e3b47a1",
+      "after": "701b7256aadba0fd90b36e2a916987a482b8b8479caff782e0457488e198b0fa",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "work-dark-390.png",
+      "before": "01a003d6354d04bdfbf9029933595dc04e5ee87824428d6d3c09a27887aa4510",
+      "after": "a7e7294464cfc544b82e94a7f119b3335a248810f3f7cb280d600903ccc46a9e",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "work-light-390.png",
+      "before": "7a8fc761b4f613c16a5f8c3daa42a6d4fa7fe661d300d086947012fbc13775e4",
+      "after": "733372410cbbad1913331e1c1ce1058fb6c8e30766fa75bcc8dbfd8af8dd70eb",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "work-dark-430.png",
+      "before": "dac0c1d3c5b564ca0021eb69bdbcfe688069f685a46f4616b8fc6d1ab40a9e55",
+      "after": "c606e9f408e0ac35434e58d836b3536869553fe6eb38073110e95a1725894bea",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "work-light-430.png",
+      "before": "38d19b222a4c32979a079b790c522a596a7b9ae4ec0b6bfba245b9a9b4c1f3f5",
+      "after": "9ea5537d01d99f4f33a2110c353ea9e1224766f8af4b0623dfc6ee4711bcbb87",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "payment-sheet-dark-320.png",
+      "before": "e0644cb44b767ad99ecf7b037995c6299c489a2302054d7412258acaf31b3a61",
+      "after": "097d1aad723d4ad1fd1fbc61b07cc2c979d11c5e1d8df290fca09ef3bf851730",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "payment-sheet-light-320.png",
+      "before": "62b5394b40409c284df8f83bfff318e3da195924008df7fa9bfaaa78a5b27b06",
+      "after": "901bbfc9fd0c00b86b6dc39e73b0a6b355c5da53031d83c06f5669af167213ca",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "payment-sheet-dark-390.png",
+      "before": "f315341b109bcdfe7a15a4eaad475a4d2205a04e4dfea71c3b973a4d5f34a372",
+      "after": "3270ab8415e71f96baf23295733a81f7769cef9ceb595dced7be93e99f86e7bb",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "payment-sheet-light-390.png",
+      "before": "b4cc1c41d6f6463bb9f521393389eded6e60ad7eecb29c5c99b79f82bbe1516a",
+      "after": "fb000b4d5e8bd3bc9843da17494abf68ebbcf34337f1d12ba4439f0e9ae3ebcb",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "payment-sheet-dark-430.png",
+      "before": "400ac86b158e80e21ee2c86e8a9bc233127f75dc503c700fabee62449422984b",
+      "after": "e295391ac683baaf229a290c9a12436586b5df79f44da558eecaf9db3ca9ec2c",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "payment-sheet-light-430.png",
+      "before": "8ecd1c6ba680573e06f095dcc42257c52a8812ddd0af3e39455e503f9684c6a7",
+      "after": "e661f1cd2f8f54aa5b06491af9c4bb81128d4b695c231d0dc376064d3c18f474",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "payment-sheet-large-dark-320.png",
+      "before": "66bce346be11abba0b6ecaeea08909816d223c7d0a6b681bed02a96cebe4d309",
+      "after": "c0d0a9cfa9de61435e5efde8c865ccc8507d4c6f4e81fb93db6b21d2a17f0b48",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "payment-sheet-large-light-320.png",
+      "before": "18eb979c33355d553b0e62814c5688daf768ccb1eafab54e3c4fc0f7d3410579",
+      "after": "1ab8fa4c18f5c22f3c07f05c889450f98d449287669c6468fc41b74b63e3257a",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "payment-sheet-large-dark-430.png",
+      "before": "430642bbcdbde153a76305a8db0369d40c2cf9d93553cd88234ed91119d83e11",
+      "after": "672dc7593bc0352aab1905a9f4c0b8625a8e4e81acc8a8a8b314a582fc81e282",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "payment-sheet-large-light-430.png",
+      "before": "b9da8048c91c548fe2a8ac49c03c4838630b589f996d192a6740418eb43f897f",
+      "after": "10104cd6fc4b7a88ac88a9ba9ef6e29f0c4aff138779a2ac1bc77fa73b483d1b",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "controls-normal-dark-390.png",
+      "before": "85d19dadcf3c3415c0217b0d30d7ae7f04fcf2beeab157d9bc9d09d52734771c",
+      "after": "01ff86b1f49f35a234a9967ca27ebb031e38933d89383ab6a0512193df2961ef",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "controls-normal-light-390.png",
+      "before": "96e33fc8cc87cacfd0e3992409de1496984314264abc770c32e720065da259e7",
+      "after": "cc08b7bfc75bcf169815c0539acf134d19199bbc357b5be2eda13e0d954845d3",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "controls-hover-dark-390.png",
+      "before": "85d19dadcf3c3415c0217b0d30d7ae7f04fcf2beeab157d9bc9d09d52734771c",
+      "after": "34e425bfcd64918180678af26e4360b17a7893b01c1c43a7163f6804d84de27a",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "controls-hover-light-390.png",
+      "before": "96e33fc8cc87cacfd0e3992409de1496984314264abc770c32e720065da259e7",
+      "after": "1a2c70d93c34ea7265fac4884efae9ac8070a42939e520f63bdf95ce57c04ea3",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "controls-pressed-dark-390.png",
+      "before": "9be88dd193949b69a88a73f13b625f0c53e62c4f7e3f113f2d63b751314428be",
+      "after": "b41a719bd8b937439daefdb35003195367e002d9c403b99b21c40c6c86127524",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "controls-pressed-light-390.png",
+      "before": "9e34e95a726d5e6714b1b0069b73f12faa373c7d8a4b1a6ad829caac26a05851",
+      "after": "94b47eb80120c628995d109fe753081f108e2f9ab198d4761e97a6918b619ba3",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "controls-focus-dark-390.png",
+      "before": "9356e64c7c0eafbe00f107db6f934fb426cadc3568f80fbfdcd85a26c819cc6a",
+      "after": "6e6e0704f96b5aa14567b2c76b5f4f73f2264064c9fdc2f1ceb0d8b2a9603042",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "controls-focus-light-390.png",
+      "before": "58108a3245988971852dddb1653a07f88fcb038c6e77304eeaf43c00ac9046e1",
+      "after": "927ccce52925d1a947caac3d4b9e55e6cd12863215b0daed3ea0f414309b153b",
+      "identical": false,
+      "geometryIdentical": true
+    }
+  ]
+}

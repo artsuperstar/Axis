@@ -104,7 +104,7 @@ test('iOS contextual-to-editor handoff waits for native modal dismissal', async 
   const app = await mount(createElement(screens.TasksScreen), f.db); t.after(app.unmount);
   await app.press(`Actions for ${presentation(f, id).actionSubject}`); const closed = app.find('Modal').props.onDismiss as () => void;
   await app.press('Edit task'); assert.ok(!app.nodes().some((node) => node.kind === 'FormField'));
-  await act(closed); assert.ok(app.find('FormField', 'Title *')); assert.equal(app.nodes().filter((node) => node.kind === 'Modal').length, 1);
+  await act(async () => { closed(); }); assert.ok(app.find('FormField', 'Title *')); assert.equal(app.nodes().filter((node) => node.kind === 'Modal').length, 1);
 });
 
 for (const state of ['pending', 'completed', 'skipped', 'missed'] as const) {

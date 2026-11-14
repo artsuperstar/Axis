@@ -1,0 +1,370 @@
+{
+  "cases": 52,
+  "identical": 2,
+  "results": [
+    {
+      "file": "inputs-focus-dark-390.png",
+      "before": "747afa0f9dc52b41d6997e7d19ddb8b02327b5056532e3341ad8fdb5c50ac1e6",
+      "after": "43eb2bf68892a748b55507c8efed419b50e9c006cf0b9b9fead1e78c698e9754",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "inputs-focus-light-390.png",
+      "before": "6f4ee3a0655a0d6c31be8eee19d42c15a9af5086682a3530a684a60f187dab80",
+      "after": "36b977c87bca12560f5b2ca40b901b4b452fec18435a4d01b7671ca9609cd86a",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "inputs-invalid-focus-dark-390.png",
+      "before": "d6ef36aa522f56203b88afabb5f49dc995b111e94b213a6d76f7b93699a2fa33",
+      "after": "1c0cbdcf1becb59740392d011a71907f09cd336bfb507454a02ad7d31e5dcdaf",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "inputs-invalid-focus-light-390.png",
+      "before": "e66b344b102cdb79cb1180d6905da1fdad23c3c40e0b90b03f956a1f934cfc87",
+      "after": "81b0f113462e6675573a09b79a4d6a3572400daeb59ebb33120306676079560f",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "readonly-disabled-dark-390.png",
+      "before": "61087300f3c441a36022a6436cb10f03bf4f490cdcf0e018e780227af2f1cb01",
+      "after": "34155157f44cf6ab17c1332602c2c6aa9667391c1d3990f98e65aa9ac52f6e3d",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "readonly-disabled-light-390.png",
+      "before": "bbf540899653eb49e2b9f41b4c58f9464246d0597b3b0f2564f58ddaa50b3e57",
+      "after": "f45136e5e4572aba810cac6752058e34db83aa11c2a36ab403cc298b5ef2ae78",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "selections-dark-390.png",
+      "before": "ebcd46796c7d88c033ca5a2cc2839a252669ede07f637dfdf22ed075a36dff6f",
+      "after": "2421e668d53b96d3b7e52491df9e36050f7c19cc0a67a67b2ab2a29a8f0b65d7",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "selections-light-390.png",
+      "before": "9295bacbfe8be9a20645e0aa18ef6f37e86fee441a43dc0700c8c7a7d4febd73",
+      "after": "35eb47a91be27c608fd090674d12c3dc28bd2ae2b575258e35d06e4fe4c08a64",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "select-closed-dark-390.png",
+      "before": "6018ed61c2c3e832499d41ccae34a854e5937115342244b7bb4b57e26aa8f004",
+      "after": "deeb10d58fad84207f299980dfd84ecb5a0d901dcfb499e9bdf69f96bf8af265",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "select-closed-light-390.png",
+      "before": "a667d350ec7a2427fe86c53ff292abb96af680f96e2c54cfa5f2d70d72bedf69",
+      "after": "3af6b561425a6d285741eb0194206d9f797433e576e0d7c2564bb14ce6f44a89",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "select-open-dark-390.png",
+      "before": "ed6d44bbe0baf4912dc09e19896caa09cc88f6f289ca401d070ecaff947d5ecc",
+      "after": "a9c98bac10e08bd287591cfd323862849c083bacd6d307075bd17e5bac6a8411",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "select-open-light-390.png",
+      "before": "aa13eb3d1359de45f414611f2403496aaa8ed637819d805a5ddfb63b093569e5",
+      "after": "5e9a2d40e7fbff2f1726ba90ac64ecbedd3c926e3e6bf2b9510a394bda5cc0ed",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "select-inline-dark-390.png",
+      "before": "f91944563a1f67aa6205b30a968110b03ee0c1c606f5bf7954ce9b2aea3dc441",
+      "after": "1a22506b83599c0c861258fd05224a0560f77ecd97ccd6e35014083ce6388cfe",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "select-inline-light-390.png",
+      "before": "98a9e64f93b5b651de286889be13675386cb58ed53e194451e00f93189705ae4",
+      "after": "cc7cb4eeab175ee6ab405e53fbabf04b11290ef601da19fc59af5d6661719020",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "autocomplete-empty-dark-390.png",
+      "before": "2266f5ea0983d9796c210c6c070753d46f9dffa9b0bfe9fe0e41cd36f9fca5f7",
+      "after": "84320515537dcc5f04250025a3af1db3775dc07c89ab0b986577ba8eae3f9b81",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "autocomplete-empty-light-390.png",
+      "before": "29fc8ccc6955cb5de943a03a24538e54680e2e6a668d0b71e3c0567ac7347635",
+      "after": "0eac8ad6fd7ef51da2a0734826c21ed5d63bcf74c3bac34efbdf67e815849612",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "autocomplete-no-matches-dark-390.png",
+      "before": "b2e042a96087e93d90eddaa23036007a669ba0667275f0053f7c23eefca71e03",
+      "after": "340faaf4a2afe5d764382a7406768b9acce5675857c5551addae78aa21d0c342",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "autocomplete-no-matches-light-390.png",
+      "before": "af26ae8bf1c8a91f26be568f0fb6601886423191d44bf397fbcf6e1d036948a6",
+      "after": "247fa846d29e9340707abab15139f1f4da95a4a4ae98ab67890977d56174491e",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "buttons-dark-390.png",
+      "before": "58d1a1bc5dc10ff24d262b4406e8a695658c8144daa4b63be2a8df35ec7014ea",
+      "after": "9d85ad66681c8574be707105a485957085992f7c281ed27660dd657eadb1b64f",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "buttons-light-390.png",
+      "before": "f1eb5ccf2939031c506ce72afea75ec86b784b20a7b2b2900a001602fdcb8b2f",
+      "after": "1bb4a45dcef515a1efa6e275dbcb7d3bc391fbc37f882a26d1205ae24d2898f0",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "buttons-pressed-dark-390.png",
+      "before": "917d0a5dd76f498e55eea509de1985e88533757da54f31d3804800d3a421dca7",
+      "after": "eef0cd62580a165febaa0d5d563619c581ee124cf40be514b01288e576bb4241",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "buttons-pressed-light-390.png",
+      "before": "88bbeb938c945961e6d48a9ffc2a88dd407daeacbc1c9f5d93bd74408c590361",
+      "after": "c1f9b7e2796a09d44cff5731930b40799e91d06b5c04b0281b792cb7384ffd30",
+      "identical": false,
+      "geometryIdentical": true
+    },
+    {
+      "file": "inputs-edges-dark-320.png",
+      "before": "42ae95098fd447f2716cd0f76707be010e6ffa671b41bbc750d659904ef2d27c",
+      "after": "90e268f81f54f71b52021db3b8acd18e7386bb3ce1bf21dd64aaa8662d0b3ee7",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "inputs-edges-light-320.png",
+      "before": "a68190c46f4468ce25c1447415c08ff5680bb0dde8276183da7deeb52c706805",
+      "after": "11acd4e87c61b1cd0b829269184137988ba2859fbc3c4db8c40fa33dd4f7941d",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "inputs-edges-dark-430.png",
+      "before": "148a4a0bc1a838813577b7a7efc04409d1cfa0f08dfcc8722b0b3416e1a430f6",
+      "after": "2d9ae4d7dfa5b0ab938f65deb23029d3e1bf7d05004c27519cafd7139ae33fd2",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "inputs-edges-light-430.png",
+      "before": "e01591129d6b540e19308d1198d69c533e50fdaf751bc8e8c00568ede7b994ec",
+      "after": "b01f7ba73dde564d507c3575f5951baf46d2d90cae687c3ea94a075b700568c7",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "selections-large-dark-320.png",
+      "before": "b38584da458e4be35cb72a9afb88b7e7b56480ed77c2d710b61ce06fe0a551e0",
+      "after": "db1a99e755299de7459376fdc95b0fb4a808c79e3cb406a5740435b8f344731c",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "selections-large-light-320.png",
+      "before": "116964362c977c99fe1c90e30aa10ace7b434a80e6707ce15f0965141fc9f893",
+      "after": "e0593f804c162e115f3d1d8b91ac5de2a87233d86da1b910fc44c39c1c80ced3",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "selections-large-dark-430.png",
+      "before": "a7d5bea144acdd26c193fbcbbf4d1fb6405b024d7e8734c04a1591833f92d168",
+      "after": "f35564f68733747f2a62b0e21cf520967de1a83b68c55e6454ef89b403513907",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "selections-large-light-430.png",
+      "before": "a32c55b2a9074ae10e60a0f727cd00d614e9985856fca8a99ff18b773ea85e20",
+      "after": "7db5716910898073561d5641f5d2ced7af3bd511eb2d5f365c89c2dc2151c8b9",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "task-new-dark-390.png",
+      "before": "05e608dc216ed7e851fae2369917fdefb8bee540a9af96d387e2747ec5bd014e",
+      "after": "67ecc7666d2938aad24d374ab7ad140087f7666a0a8e1cec5370530e8c478933",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "task-new-light-390.png",
+      "before": "c93292e48fc7c73a864ca2417a3d1e6067d821ef58710f5872e89b54b216aa65",
+      "after": "958095432e465d195d88e86714aaa40ed205029f27cb0f81b8cedfc2331d01b0",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "task-edit-dark-390.png",
+      "before": "80fb90431f0bf1595e28a145865a83f02d82e5ffc9b54836d0c4073fb5417131",
+      "after": "6671af7eb81fdd9f9a90bf98f2a5fe1053091bb62b90b4162f51a39e8571bf2b",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "task-edit-light-390.png",
+      "before": "15421e9adda8a8a097a804c3eaa5dab285f0244df1261ac73b2e60fd0ee1c55a",
+      "after": "1772bd8f88f1ac858ea695aac26b67c40fb619adde6f2933904c2ede933a347d",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "fitness-dark-390.png",
+      "before": "be19923fa54e4472cb1b73661f0f4c12218f2bf290617105d9b0578ff8e08565",
+      "after": "6433256376a03785f3cc606dd98fab3d22febecd672b6c875159f209822634cd",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "fitness-light-390.png",
+      "before": "e0f67581bb628d2eb31c0c3aab7034191b1a93c19b1c1ba27c9246f7c4db79ff",
+      "after": "0973d7713c81aa7b603a011509ccc236944d92ce7f7d8062f43b15353146e07f",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "calendar-task-dark-390.png",
+      "before": "7e24e0be6c718e868c92ce07f9f8267116cb2a120de624d191441196e4a1c884",
+      "after": "7e24e0be6c718e868c92ce07f9f8267116cb2a120de624d191441196e4a1c884",
+      "identical": true,
+      "geometryIdentical": true
+    },
+    {
+      "file": "calendar-task-light-390.png",
+      "before": "45ae4d4d37e2460a8c5fb3e06d914e5ca96185816e075b3c4637160502d1784b",
+      "after": "45ae4d4d37e2460a8c5fb3e06d914e5ca96185816e075b3c4637160502d1784b",
+      "identical": true,
+      "geometryIdentical": true
+    },
+    {
+      "file": "transaction-new-dark-390.png",
+      "before": "067bbcc428953fd5e46bad844e806277c30dac258a9f8fd5e8dbd76874ab846f",
+      "after": "f13f9027aba19acf17079ab7df9229e68eedee10f994d9add818c25cfb50c861",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "transaction-new-light-390.png",
+      "before": "74df02f1494ddbb1138d91bf588773cb90c637fbcdd1dc0de4d050e26e99e864",
+      "after": "ce7f2882c08b39a3d2b1f94045dc320b87dd5e7b5abbad1b26e54245ca8dc643",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "transaction-edit-dark-390.png",
+      "before": "5d2cf0780ae2a3d5fa430e5e303f531a6241f349c90614696ae1d9b45c48353b",
+      "after": "cf219a084e227f71cb893347df88ceecc66fb531ba6057d2b120ab793dab0807",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "transaction-edit-light-390.png",
+      "before": "e81a9353430a049c6843b036e342ddf73e35e915f9d6084cbca59ad637ea69e3",
+      "after": "6a45a5bade09c35d6823308c25076fb157bca78df65c992061633f65160b58ec",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "work-new-dark-390.png",
+      "before": "193cd3fea850b984be43539a3b9bbcc7740c31fb4b13e2916c1f657014e80131",
+      "after": "77e26536aa60821e9ea96e39b745923d764135cabb4f5987d274d6bf1dfc6456",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "work-new-light-390.png",
+      "before": "f5eae0d7c5a7dfbedfd7fb8b609ce5905634af9fd950397880b143622fd2a6b0",
+      "after": "1ed11c265aae38802792e1d9591ff2948bc85a26f478100b053e82d80074d64d",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "work-edit-dark-390.png",
+      "before": "503f8115c9e435632f59f408411945318a06365c62749cb3a2e04eccaa54451a",
+      "after": "8927c965a8e7122bf20a2a35697ab393a9511a97ab46b959f2bbafafa36c9765",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "work-edit-light-390.png",
+      "before": "7629eeb467672605a471b6179d089737bc682b9a254cf4fef7c3a34472ab1940",
+      "after": "9879af1cff73feb61f234b5eff5eb4a16d206a73fbd3b8cd3d293b9f3241bc8c",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "record-payment-dark-390.png",
+      "before": "04f9a6a041b0ece041005ac0ae423b33d5be21af1618a0f80091e33a64886a8e",
+      "after": "048f64ed74828da4281eb659a20327ee27b04d7783243f781a9f28bc001ee912",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "record-payment-light-390.png",
+      "before": "0df18cdb17c0d0572563cbabb3fbbcbc78f63a339033a8714abdafb8260faff2",
+      "after": "c280abcc87ba691a3cd72f89061c7380a8e0e6048393a90cc7b2429f2ce5c5bc",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "confirm-payment-dark-390.png",
+      "before": "3270ab8415e71f96baf23295733a81f7769cef9ceb595dced7be93e99f86e7bb",
+      "after": "79d948837a8aa8198b065396e122dffdb86ee6949481c9013733af5911f9bbdc",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "confirm-payment-light-390.png",
+      "before": "fb000b4d5e8bd3bc9843da17494abf68ebbcf34337f1d12ba4439f0e9ae3ebcb",
+      "after": "957aaf94586a076fa9ffe29cf0f958a462ab7410207d6cd5eb595d453e6d66ea",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "commitment-editor-dark-390.png",
+      "before": "c9e2636bfae3eae7e3d0c4594fe40e72047d8a1b7be54ee5475758374bdbe543",
+      "after": "e958968dcf1f9c5308e8e2b18699e52278120bee3d448c24b48c34538bb1949f",
+      "identical": false,
+      "geometryIdentical": false
+    },
+    {
+      "file": "commitment-editor-light-390.png",
+      "before": "c18d0c8775c4c0de2c5fafe767b14c52daa838d03f135eb9a711a17b35e15c69",
+      "after": "b63a33a02a6b7dc94500a611b4df19a247245264e64503e3fa31dfac76ca2d3f",
+      "identical": false,
+      "geometryIdentical": false
+    }
+  ]
+}

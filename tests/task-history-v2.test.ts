@@ -84,7 +84,7 @@ test('recurring History uses the occurrence schedule version rather than the lat
 test('one-time History preserves details editing, checkbox reopen, native Delete/Cancel and refresh to Tasks main', async t => {
   const f = await fixture(t); const id = f.create('Report', { date: today }); f.access.setCompleted(id, true);
   const app = await show(t, f); const display = presentation(f, items(app)[0]);
-  await app.tapSet(display.accessibilityLabel); await app.change('Title *', 'Updated report'); await app.press('Save');
+  await act(async () => { await app.tapSet(display.accessibilityLabel); }); await app.change('Title *', 'Updated report'); await app.press('Save');
   assert.equal(f.access.read().tasks[0].title, 'Updated report');
   const updated = presentation(f, items(app)[0]); await app.press(`Actions for ${updated.actionSubject}`);
   assert.ok(app.find('FormButton', 'Edit task')); assert.ok(app.find('FormButton', 'Delete task')); assert.ok(!app.nodes().some(node => node.props?.label === 'View History'));
@@ -171,7 +171,7 @@ test('History retains its existing snapshot range while per-series History keeps
 
 test('failed History refresh retains archive, open editor and draft through Retry; Back retains pushed navigation', async t => {
   const f = await fixture(t); const id = f.create('Draft'); f.access.setCompleted(id, true); const app = await show(t, f); const list = app.find('SectionList');
-  await app.tapSet(presentation(f, items(app)[0]).accessibilityLabel); await app.change('Title *', 'Unsaved edit'); const field = app.find('FormField', 'Title *');
+  await act(async () => { await app.tapSet(presentation(f, items(app)[0]).accessibilityLabel); }); await app.change('Title *', 'Unsaved edit'); const field = app.find('FormField', 'Title *');
   runtime.fixture.failures.add('tasks.read'); await app.resume(); assert.equal(app.find('SectionList'), list); assert.equal(app.find('FormField', 'Title *'), field); assert.equal(field.props.value, 'Unsaved edit');
   runtime.fixture.failures.clear(); await app.press('Retry'); assert.equal(app.find('FormField', 'Title *'), field); await app.press('Save'); assert.equal(f.access.read().tasks[0].title, 'Unsaved edit');
   await app.press('Back to Tasks'); assert.equal(runtime.fixture.navigation.at(-1)!.method, 'back');

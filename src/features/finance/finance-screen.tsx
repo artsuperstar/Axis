@@ -123,10 +123,10 @@ export function FinanceScreen({ initialView, initialRecordId, initialDueDate }: 
         </View>)}
       </ScrollView>
       {!!error && <View style={styles.notice}>
-        <StatusText tone="attention" accessibilityRole="alert" accessibilityLiveRegion="polite" style={styles.noticeText}>{error}</StatusText>
-        <FormButton variant="quiet" label="Retry" onPress={reload} />
+        <StatusText appearance={v2 ? 'v2' : undefined} tone="attention" accessibilityRole="alert" accessibilityLiveRegion="polite" style={styles.noticeText}>{error}</StatusText>
+        <FormButton appearance={v2 ? 'v2' : undefined} variant="quiet" label="Retry" onPress={reload} />
       </View>}
-      <FormError message={actionError} />
+      <FormError appearance={v2 ? 'v2' : undefined} message={actionError} />
     </View>
     {selection.view === 'transactions' ? <TransactionsContent
       transactions={snapshot?.transactions ?? []} categories={categories} sources={snapshot?.ledger?.sources ?? {}} today={today}

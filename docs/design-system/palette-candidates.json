@@ -1,0 +1,160 @@
+{
+  "scope": "Unapproved Phase 1 specimens only; not app tokens.",
+  "common": {
+    "light": {
+      "canvas": "#F5F0EA",
+      "surface": "#FFFCF8",
+      "group": "#FBF5F0",
+      "control": "#F8F3EF",
+      "text": "#241E1C",
+      "secondary": "#6A5E59",
+      "muted": "#746660",
+      "border": "#9B837B",
+      "divider": "#E4DAD4",
+      "success": "#32664E",
+      "warning": "#805619",
+      "danger": "#9B303E",
+      "info": "#3D5E86"
+    },
+    "dark": {
+      "canvas": "#151315",
+      "surface": "#1B181A",
+      "group": "#242024",
+      "control": "#2B272A",
+      "text": "#F6F0ED",
+      "secondary": "#C9BDB8",
+      "muted": "#AFA39E",
+      "border": "#95828E",
+      "divider": "#3A3337",
+      "success": "#A8D0B7",
+      "warning": "#DFC18B",
+      "danger": "#F0ABAB",
+      "info": "#B4CEE8"
+    }
+  },
+  "features": {
+    "light": {
+      "Tasks": "#505A8A",
+      "Calendar": "#5C587F",
+      "Finance": "#7B425E",
+      "Work": "#245C49",
+      "Fitness": "#2D6651",
+      "Journal": "#69427B"
+    },
+    "dark": {
+      "Tasks": "#AEB7E8",
+      "Calendar": "#C2B9E2",
+      "Finance": "#DFA6BF",
+      "Work": "#BCEAD5",
+      "Fitness": "#BCEAD5",
+      "Journal": "#E9C9F2"
+    }
+  },
+  "candidates": [
+    {
+      "id": "rose",
+      "name": "A · Warm Rose",
+      "rationale": "Closest to today’s shared v2 actions. Keeps the existing rose/plum family while giving the primary role one explicit meaning.",
+      "light": {
+        "brand": "#8A4058",
+        "pressed": "#713248",
+        "soft": "#F1E1E8",
+        "onBrand": "#FFF9FB"
+      },
+      "dark": {
+        "brand": "#E6A4B9",
+        "pressed": "#F0BDD0",
+        "soft": "#422E38",
+        "onBrand": "#2A1720"
+      },
+      "contrast": {
+        "light": {
+          "primaryText": 6.834437816402019,
+          "primaryPressedText": 8.967872351247301,
+          "body": 14.508621858354365,
+          "metadata": 6.113933144974863,
+          "selectedText": 5.643275360681276,
+          "fieldBorder": 3.2771282735601757
+        },
+        "dark": {
+          "primaryText": 8.354653473765225,
+          "primaryPressedText": 10.383512191534146,
+          "body": 16.380038064559468,
+          "metadata": 9.608241642088402,
+          "selectedText": 6.177440991755127,
+          "fieldBorder": 4.484426378498712
+        }
+      }
+    },
+    {
+      "id": "plum",
+      "name": "B · Editorial Plum",
+      "rationale": "A quieter brand layer with more separation from rose expense/category treatments. It leaves Work and Fitness free to retain their own identities.",
+      "light": {
+        "brand": "#654568",
+        "pressed": "#503452",
+        "soft": "#E9DDEA",
+        "onBrand": "#FFF9FB"
+      },
+      "dark": {
+        "brand": "#CEAED7",
+        "pressed": "#E1C9E7",
+        "soft": "#3A2C3E",
+        "onBrand": "#251B29"
+      },
+      "contrast": {
+        "light": {
+          "primaryText": 7.754041608307384,
+          "primaryPressedText": 10.334662611137441,
+          "body": 14.508621858354365,
+          "metadata": 6.113933144974863,
+          "selectedText": 6.141488665609601,
+          "fieldBorder": 3.2771282735601757
+        },
+        "dark": {
+          "primaryText": 8.410587052261205,
+          "primaryPressedText": 10.8170073684375,
+          "body": 16.380038064559468,
+          "metadata": 9.608241642088402,
+          "selectedText": 6.622209350798801,
+          "fieldBorder": 4.484426378498712
+        }
+      }
+    },
+    {
+      "id": "copper",
+      "name": "C · Soft Copper",
+      "rationale": "Draws warmth from the approved Home spending artwork. Copper remains brand, while amber stays reserved for attention and overdue.",
+      "light": {
+        "brand": "#874833",
+        "pressed": "#713926",
+        "soft": "#F1DDD3",
+        "onBrand": "#FFF8F2"
+      },
+      "dark": {
+        "brand": "#E7AA8B",
+        "pressed": "#F0BDA3",
+        "soft": "#462F27",
+        "onBrand": "#291911"
+      },
+      "contrast": {
+        "light": {
+          "primaryText": 6.6427941164816025,
+          "primaryPressedText": 8.62109516553185,
+          "body": 14.508621858354365,
+          "metadata": 6.113933144974863,
+          "selectedText": 5.332361322362199,
+          "fieldBorder": 3.2771282735601757
+        },
+        "dark": {
+          "primaryText": 8.47449508432702,
+          "primaryPressedText": 10.079474318689003,
+          "body": 16.380038064559468,
+          "metadata": 9.608241642088402,
+          "selectedText": 6.201945969406872,
+          "fieldBorder": 4.484426378498712
+        }
+      }
+    }
+  ]
+}

@@ -2,7 +2,7 @@ import { Image } from 'expo-image';
 import { memo, useMemo, useState } from 'react';
 import { StyleSheet, View, useWindowDimensions } from 'react-native';
 
-import { UiPressable, UiText, useDesignColors } from '@/components/design-system';
+import { UiPressable, UiText, useDesignTheme } from '@/components/design-system';
 import { Shape } from '@/constants/design-system-v2';
 
 import { cashFlowSource } from '../chart-presentation';
@@ -13,12 +13,12 @@ import { cashFlowAxisLabel, cashFlowLayout, cashFlowTickLayout, overviewColors }
 export const CashFlowChart = memo(function CashFlowChart({ buckets, periodDescription, transactionCount }: {
   buckets: readonly CashFlowBucket[]; periodDescription: string; transactionCount: number;
 }) {
-  const theme = useDesignColors();
+  const { mode, colors: theme } = useDesignTheme();
   const { width, fontScale } = useWindowDimensions();
   const [plotWidth, setPlotWidth] = useState(Math.max(1, width - 92));
   const [selectedId, setSelectedId] = useState(buckets[0]?.id);
   const selected = buckets.find(bucket => bucket.id === selectedId) ?? buckets[0];
-  const colors = useMemo(() => overviewColors(theme), [theme]);
+  const colors = useMemo(() => overviewColors(theme, mode), [theme, mode]);
   const layout = useMemo(() => cashFlowLayout(buckets.length), [buckets.length]);
   const source = useMemo(() => cashFlowSource(buckets, colors, selected?.id ?? ''), [buckets, colors, selected?.id]);
   const maximum = cashFlowMaximum(buckets);

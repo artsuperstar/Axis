@@ -40,7 +40,7 @@ export function JournalDate({ date, today, onSelect, onDismiss }: { date: string
     try { validateJournalDate(selected); onSelect(selected); }
     catch (cause) { setError(journalError(cause, 'Unable to choose this date.')); }
   }
-  return <AdaptiveSheet appearance="v2" title="Choose journal date" action="Choose" onConfirm={confirm} onDismiss={onDismiss}>
+  return <AdaptiveSheet appearance="v2" titleRole="operational" title="Choose journal date" action="Choose" onConfirm={confirm} onDismiss={onDismiss}>
     <FormError appearance="v2" message={error} />
     {Platform.OS === 'android' ? <FormSelect appearance="v2" label="Date" value={dateLabel(selected)} onPress={() => DateTimePickerAndroid.open({
       value: pickerValue(selected), mode: 'date', maximumDate: pickerValue(today), minimumDate: pickerValue('0001-01-01'),

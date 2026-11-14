@@ -120,7 +120,7 @@ export function WorkView({ data, categories, access, mutate, onCreateCategory, i
         onEdit={() => current && open({ kind: 'edit', id: current.entry.id })}
         onClient={() => current && open({ kind: 'client', partyId: current.counterparty.id })}
         onDelete={() => current && remove(current)} onUndo={undo} />}
-      {dialog.kind === 'history' && <WorkSheet appearance="v2" fillHeight title={client ? client.name + ' · History' : 'Client history'} onDismiss={() => setDialog(null)}
+      {dialog.kind === 'history' && <WorkSheet appearance="v2" titleRole="operational" fillHeight title={client ? client.name + ' · History' : 'Client history'} onDismiss={() => setDialog(null)}
         scrollBody={<WorkHistoryList sheet access={access} refreshToken={data} counterpartyId={dialog.partyId} actionError={error}
           onOpenJob={(item) => open({ kind: 'details', id: item.entry.id })} renderReceipt={paymentRow} />} />}
     </WorkModal>}

@@ -1,0 +1,130 @@
+{
+  "initialFiles": 3508,
+  "preserved": 3507,
+  "changedInitialFiles": [
+    "src/features/finance/commitments/components/commitments-view.tsx"
+  ],
+  "addedFiles": [
+    "docs/design-system/manage-commitments-v2-report.md",
+    "docs/design-system/manage-commitments-v2/after.json",
+    "docs/design-system/manage-commitments-v2/after/editor-dark-390.png",
+    "docs/design-system/manage-commitments-v2/after/editor-light-390.png",
+    "docs/design-system/manage-commitments-v2/after/empty-dark-390.png",
+    "docs/design-system/manage-commitments-v2/after/empty-light-390.png",
+    "docs/design-system/manage-commitments-v2/after/error-dark-390.png",
+    "docs/design-system/manage-commitments-v2/after/error-light-390.png",
+    "docs/design-system/manage-commitments-v2/after/guidance-dark-390.png",
+    "docs/design-system/manage-commitments-v2/after/guidance-light-390.png",
+    "docs/design-system/manage-commitments-v2/after/history-dark-390.png",
+    "docs/design-system/manage-commitments-v2/after/history-light-390.png",
+    "docs/design-system/manage-commitments-v2/after/linked-dark-390.png",
+    "docs/design-system/manage-commitments-v2/after/linked-light-390.png",
+    "docs/design-system/manage-commitments-v2/after/long-dark-320.png",
+    "docs/design-system/manage-commitments-v2/after/long-light-320.png",
+    "docs/design-system/manage-commitments-v2/after/manage-dark-390.png",
+    "docs/design-system/manage-commitments-v2/after/manage-light-390.png",
+    "docs/design-system/manage-commitments-v2/after/menu-dark-390.png",
+    "docs/design-system/manage-commitments-v2/after/menu-light-390.png",
+    "docs/design-system/manage-commitments-v2/after/other-dark-390.png",
+    "docs/design-system/manage-commitments-v2/after/other-light-390.png",
+    "docs/design-system/manage-commitments-v2/after/overview-dark-390.png",
+    "docs/design-system/manage-commitments-v2/after/overview-light-390.png",
+    "docs/design-system/manage-commitments-v2/after/payment-dark-390.png",
+    "docs/design-system/manage-commitments-v2/after/payment-light-390.png",
+    "docs/design-system/manage-commitments-v2/audit.json",
+    "docs/design-system/manage-commitments-v2/before.json",
+    "docs/design-system/manage-commitments-v2/before/editor-dark-390.png",
+    "docs/design-system/manage-commitments-v2/before/editor-light-390.png",
+    "docs/design-system/manage-commitments-v2/before/empty-dark-390.png",
+    "docs/design-system/manage-commitments-v2/before/empty-light-390.png",
+    "docs/design-system/manage-commitments-v2/before/error-dark-390.png",
+    "docs/design-system/manage-commitments-v2/before/error-light-390.png",
+    "docs/design-system/manage-commitments-v2/before/guidance-dark-390.png",
+    "docs/design-system/manage-commitments-v2/before/guidance-light-390.png",
+    "docs/design-system/manage-commitments-v2/before/history-dark-390.png",
+    "docs/design-system/manage-commitments-v2/before/history-light-390.png",
+    "docs/design-system/manage-commitments-v2/before/linked-dark-390.png",
+    "docs/design-system/manage-commitments-v2/before/linked-light-390.png",
+    "docs/design-system/manage-commitments-v2/before/long-dark-320.png",
+    "docs/design-system/manage-commitments-v2/before/long-light-320.png",
+    "docs/design-system/manage-commitments-v2/before/manage-dark-390.png",
+    "docs/design-system/manage-commitments-v2/before/manage-light-390.png",
+    "docs/design-system/manage-commitments-v2/before/menu-dark-390.png",
+    "docs/design-system/manage-commitments-v2/before/menu-light-390.png",
+    "docs/design-system/manage-commitments-v2/before/other-dark-390.png",
+    "docs/design-system/manage-commitments-v2/before/other-light-390.png",
+    "docs/design-system/manage-commitments-v2/before/overview-dark-390.png",
+    "docs/design-system/manage-commitments-v2/before/overview-light-390.png",
+    "docs/design-system/manage-commitments-v2/before/payment-dark-390.png",
+    "docs/design-system/manage-commitments-v2/before/payment-light-390.png",
+    "docs/design-system/manage-commitments-v2/comparison.json",
+    "docs/design-system/manage-commitments-v2/fixture.json",
+    "docs/design-system/manage-commitments-v2/index.html",
+    "docs/design-system/manage-commitments-v2/initial-state.json",
+    "docs/design-system/manage-commitments-v2/interactions.json",
+    "scripts/audit-manage-commitments.cjs",
+    "scripts/check-manage-commitments.cjs",
+    "scripts/preview-manage-commitments.ts",
+    "scripts/review-manage-commitments.cjs",
+    "tests/manage-commitments-v2.test.ts"
+  ],
+  "lifecycleFunctionsAndCallbacksUnchanged": true,
+  "listDataKeysVirtualizationAndOffsetsUnchanged": true,
+  "sharedDomainRoutesAndOtherScreensUnchanged": true,
+  "comparisonPairs": 24,
+  "preservationPairsIdentical": 12,
+  "identicalSourceFixture": true,
+  "contentIdenticalIgnoringReplacedIcons": true,
+  "browserGroups": 22,
+  "contrastPairs": {
+    "dark": {
+      "title": 16.38,
+      "row title and amount": 14.23,
+      "status and metadata": 8.76,
+      "menu action": 13.41,
+      "destructive action": 6.89,
+      "row focus": 8.05
+    },
+    "light": {
+      "title": 14.51,
+      "row title and amount": 15.2,
+      "status and metadata": 5.78,
+      "menu action": 16.07,
+      "destructive action": 5.87,
+      "row focus": 6.46
+    }
+  },
+  "newLintDiagnostics": 0,
+  "validation": {
+    "baseline-tests": {
+      "tests": 1584,
+      "passed": 1584,
+      "failed": 0,
+      "actWarnings": 66
+    },
+    "focused": {
+      "tests": 17,
+      "passed": 17,
+      "failed": 0,
+      "actWarnings": 0
+    },
+    "regressions": {
+      "tests": 732,
+      "passed": 732,
+      "failed": 0,
+      "actWarnings": 45
+    },
+    "after-tests": {
+      "tests": 1601,
+      "passed": 1601,
+      "failed": 0,
+      "actWarnings": 66
+    }
+  },
+  "counts": {
+    "modifiedTracked": 42,
+    "untracked": 1023
+  },
+  "staged": false,
+  "head": "16ebeab46d20e7a943f08fa017928ce0eb884c0e"
+}

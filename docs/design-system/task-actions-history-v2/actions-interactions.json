@@ -1,0 +1,231 @@
+{
+  "scope": "Actual RNWeb components and SQLite-generated fixture; native modal/alert acceptance separate",
+  "checks": [
+    {
+      "theme": "dark",
+      "width": 320,
+      "fontScale": 1,
+      "header": {
+        "x": 16,
+        "y": 409,
+        "width": 48,
+        "height": 48
+      },
+      "last": {
+        "x": 16,
+        "y": 781,
+        "width": 288,
+        "height": 48
+      },
+      "result": "Operational long title reflows; final destructive action reachable; focus visible; original callback reached"
+    },
+    {
+      "theme": "dark",
+      "width": 320,
+      "fontScale": 2,
+      "header": {
+        "x": 16,
+        "y": 365,
+        "width": 48,
+        "height": 48
+      },
+      "last": {
+        "x": 16,
+        "y": 722,
+        "width": 288,
+        "height": 106
+      },
+      "result": "Operational long title reflows; final destructive action reachable; focus visible; original callback reached"
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "fontScale": 1,
+      "header": {
+        "x": 16,
+        "y": 409,
+        "width": 48,
+        "height": 48
+      },
+      "last": {
+        "x": 16,
+        "y": 781,
+        "width": 358,
+        "height": 48
+      },
+      "result": "Operational long title reflows; final destructive action reachable; focus visible; original callback reached"
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "fontScale": 2,
+      "header": {
+        "x": 16,
+        "y": 269,
+        "width": 48,
+        "height": 48
+      },
+      "last": {
+        "x": 16,
+        "y": 771,
+        "width": 358,
+        "height": 62
+      },
+      "result": "Operational long title reflows; final destructive action reachable; focus visible; original callback reached"
+    },
+    {
+      "theme": "dark",
+      "width": 430,
+      "fontScale": 1,
+      "header": {
+        "x": 16,
+        "y": 409,
+        "width": 48,
+        "height": 48
+      },
+      "last": {
+        "x": 16,
+        "y": 781,
+        "width": 398,
+        "height": 48
+      },
+      "result": "Operational long title reflows; final destructive action reachable; focus visible; original callback reached"
+    },
+    {
+      "theme": "dark",
+      "width": 430,
+      "fontScale": 2,
+      "header": {
+        "x": 16,
+        "y": 269,
+        "width": 48,
+        "height": 48
+      },
+      "last": {
+        "x": 16,
+        "y": 771,
+        "width": 398,
+        "height": 62
+      },
+      "result": "Operational long title reflows; final destructive action reachable; focus visible; original callback reached"
+    },
+    {
+      "theme": "light",
+      "width": 320,
+      "fontScale": 1,
+      "header": {
+        "x": 16,
+        "y": 409,
+        "width": 48,
+        "height": 48
+      },
+      "last": {
+        "x": 16,
+        "y": 781,
+        "width": 288,
+        "height": 48
+      },
+      "result": "Operational long title reflows; final destructive action reachable; focus visible; original callback reached"
+    },
+    {
+      "theme": "light",
+      "width": 320,
+      "fontScale": 2,
+      "header": {
+        "x": 16,
+        "y": 365,
+        "width": 48,
+        "height": 48
+      },
+      "last": {
+        "x": 16,
+        "y": 722,
+        "width": 288,
+        "height": 106
+      },
+      "result": "Operational long title reflows; final destructive action reachable; focus visible; original callback reached"
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "fontScale": 1,
+      "header": {
+        "x": 16,
+        "y": 409,
+        "width": 48,
+        "height": 48
+      },
+      "last": {
+        "x": 16,
+        "y": 781,
+        "width": 358,
+        "height": 48
+      },
+      "result": "Operational long title reflows; final destructive action reachable; focus visible; original callback reached"
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "fontScale": 2,
+      "header": {
+        "x": 16,
+        "y": 269,
+        "width": 48,
+        "height": 48
+      },
+      "last": {
+        "x": 16,
+        "y": 771,
+        "width": 358,
+        "height": 62
+      },
+      "result": "Operational long title reflows; final destructive action reachable; focus visible; original callback reached"
+    },
+    {
+      "theme": "light",
+      "width": 430,
+      "fontScale": 1,
+      "header": {
+        "x": 16,
+        "y": 409,
+        "width": 48,
+        "height": 48
+      },
+      "last": {
+        "x": 16,
+        "y": 781,
+        "width": 398,
+        "height": 48
+      },
+      "result": "Operational long title reflows; final destructive action reachable; focus visible; original callback reached"
+    },
+    {
+      "theme": "light",
+      "width": 430,
+      "fontScale": 2,
+      "header": {
+        "x": 16,
+        "y": 269,
+        "width": 48,
+        "height": 48
+      },
+      "last": {
+        "x": 16,
+        "y": 771,
+        "width": 398,
+        "height": 62
+      },
+      "result": "Operational long title reflows; final destructive action reachable; focus visible; original callback reached"
+    },
+    {
+      "theme": "dark",
+      "case": "edit-handoff-cancel",
+      "result": "Original callback/state contract retained"
+    },
+    {
+      "theme": "light",
+      "case": "edit-handoff-cancel",
+      "result": "Original callback/state contract retained"
+    }
+  ]
+}

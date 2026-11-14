@@ -1,0 +1,136 @@
+{
+  "baseline": [
+    {
+      "file": "tests/context-menu.test.ts",
+      "line": 93,
+      "column": 27,
+      "rule": "react/no-children-prop",
+      "severity": 2,
+      "message": "Do not pass children as props. Instead, pass them as additional arguments to React.createElement."
+    },
+    {
+      "file": "tests/context-menu.test.ts",
+      "line": 104,
+      "column": 59,
+      "rule": "react/no-children-prop",
+      "severity": 2,
+      "message": "Do not pass children as props. Instead, pass them as additional arguments to React.createElement."
+    },
+    {
+      "file": "tests/context-menu.test.ts",
+      "line": 115,
+      "column": 27,
+      "rule": "react/no-children-prop",
+      "severity": 2,
+      "message": "Do not pass children as props. Instead, pass them as additional arguments to React.createElement."
+    },
+    {
+      "file": "tests/navigation-conventions.test.ts",
+      "line": 92,
+      "column": 19,
+      "rule": "react/no-children-prop",
+      "severity": 2,
+      "message": "Do not pass children as props. Instead, pass them as additional arguments to React.createElement."
+    },
+    {
+      "file": "tests/navigation-conventions.test.ts",
+      "line": 93,
+      "column": 7,
+      "rule": "react/no-children-prop",
+      "severity": 2,
+      "message": "Do not pass children as props. Instead, pass them as additional arguments to React.createElement."
+    },
+    {
+      "file": "tests/tasks-experience.test.ts",
+      "line": 16,
+      "column": 28,
+      "rule": "@typescript-eslint/no-unused-vars",
+      "severity": 1,
+      "message": "'recurrencePatternSummary' is defined but never used."
+    },
+    {
+      "file": "tests/tasks-experience.test.ts",
+      "line": 114,
+      "column": 11,
+      "rule": "@typescript-eslint/no-unused-vars",
+      "severity": 1,
+      "message": "'id' is assigned a value but never used."
+    },
+    {
+      "file": "tests/transactions-experience.test.ts",
+      "line": 172,
+      "column": 27,
+      "rule": "react/no-children-prop",
+      "severity": 2,
+      "message": "Do not pass children as props. Instead, pass them as additional arguments to React.createElement."
+    }
+  ],
+  "after": [
+    {
+      "file": "tests/context-menu.test.ts",
+      "line": 93,
+      "column": 27,
+      "rule": "react/no-children-prop",
+      "severity": 2,
+      "message": "Do not pass children as props. Instead, pass them as additional arguments to React.createElement."
+    },
+    {
+      "file": "tests/context-menu.test.ts",
+      "line": 104,
+      "column": 59,
+      "rule": "react/no-children-prop",
+      "severity": 2,
+      "message": "Do not pass children as props. Instead, pass them as additional arguments to React.createElement."
+    },
+    {
+      "file": "tests/context-menu.test.ts",
+      "line": 115,
+      "column": 27,
+      "rule": "react/no-children-prop",
+      "severity": 2,
+      "message": "Do not pass children as props. Instead, pass them as additional arguments to React.createElement."
+    },
+    {
+      "file": "tests/navigation-conventions.test.ts",
+      "line": 92,
+      "column": 19,
+      "rule": "react/no-children-prop",
+      "severity": 2,
+      "message": "Do not pass children as props. Instead, pass them as additional arguments to React.createElement."
+    },
+    {
+      "file": "tests/navigation-conventions.test.ts",
+      "line": 93,
+      "column": 7,
+      "rule": "react/no-children-prop",
+      "severity": 2,
+      "message": "Do not pass children as props. Instead, pass them as additional arguments to React.createElement."
+    },
+    {
+      "file": "tests/tasks-experience.test.ts",
+      "line": 16,
+      "column": 28,
+      "rule": "@typescript-eslint/no-unused-vars",
+      "severity": 1,
+      "message": "'recurrencePatternSummary' is defined but never used."
+    },
+    {
+      "file": "tests/tasks-experience.test.ts",
+      "line": 114,
+      "column": 11,
+      "rule": "@typescript-eslint/no-unused-vars",
+      "severity": 1,
+      "message": "'id' is assigned a value but never used."
+    },
+    {
+      "file": "tests/transactions-experience.test.ts",
+      "line": 172,
+      "column": 27,
+      "rule": "react/no-children-prop",
+      "severity": 2,
+      "message": "Do not pass children as props. Instead, pass them as additional arguments to React.createElement."
+    }
+  ],
+  "added": [],
+  "removed": []
+}

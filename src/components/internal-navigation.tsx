@@ -42,14 +42,14 @@ export function InternalNavigation<T extends string>({ value, options, onChange,
     }}>{compact ? <UiPressable accessibilityRole="button" accessibilityLabel={`Go to ${option.label}`}
       accessibilityHint="Scrolls to this section. Keeps its current expanded or collapsed state."
       accessibilityState={{ selected: value === option.value, disabled }} disabled={disabled} onPress={() => onChange(option.value)}
-      style={{ minHeight: 48, paddingHorizontal: Space.xs, paddingVertical: Space.sm, justifyContent: 'center', alignItems: 'center',
-        borderRadius: Shape.control, backgroundColor: value === option.value ? colors.selected : 'transparent' }}>
-      <UiText type="smallLabel" color={value === option.value ? 'taskText' : 'textSecondary'} style={{ fontSize: 13, lineHeight: 19, textAlign: 'center' }}>{option.label}</UiText>
+      style={({ pressed }) => ({ minHeight: 48, minWidth: 48, paddingHorizontal: Space.xs, paddingVertical: Space.sm, justifyContent: 'center', alignItems: 'center',
+        borderRadius: Shape.control, backgroundColor: disabled ? colors.inset : value === option.value ? colors.selected : pressed ? colors.controlPressed : 'transparent' })}>
+      <UiText type="smallLabel" color={disabled ? 'textDisabled' : value === option.value ? 'brand' : 'textSecondary'} style={{ fontSize: 13, lineHeight: 19, textAlign: 'center' }}>{option.label}</UiText>
       {value === option.value && (!sliding || wrapped) && <View pointerEvents="none" accessible={false}
-        style={{ position: 'absolute', bottom: 2, left: 8, right: 8, height: 2, backgroundColor: colors.taskAccent }} />}
+        style={{ position: 'absolute', bottom: 2, left: 8, right: 8, height: 2, backgroundColor: disabled ? colors.textDisabled : colors.brand }} />}
     </UiPressable> : <FormButton appearance="v2" variant="navigation" label={option.label} selected={value === option.value} showIndicator={!sliding}
       onPress={() => onChange(option.value)} />}</View>)}
     {sliding && !wrapped && <Animated.View testID="internal-navigation-indicator" pointerEvents="none" accessible={false}
-      style={[{ position: 'absolute', left: 0, top: 0, height: 2, backgroundColor: compact ? colors.taskAccent : colors.brand }, indicator]} />}
+      style={[{ position: 'absolute', left: 0, top: 0, height: 2, backgroundColor: disabled ? colors.textDisabled : colors.brand }, indicator]} />}
   </View>;
 }

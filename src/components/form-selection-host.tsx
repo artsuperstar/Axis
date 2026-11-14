@@ -6,7 +6,7 @@ import { ThemedText } from '@/components/themed-text';
 import { Radius, Space, SurfaceColors } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
 import { MotionTokens, Shape } from '@/constants/design-system-v2';
-import { ContentInsertion, raisedSurfaceShadow, useDesignColors } from './design-system';
+import { ContentInsertion, UiText, raisedSurfaceShadow, useDesignColors } from './design-system';
 
 import { selectionMenuLayout, selectionOverlayReducer, type SelectionOverlayState } from './form-selection';
 
@@ -189,15 +189,16 @@ export function SelectionOverlay({ label, content, inline, layout, presentation,
   const colors = useTheme();
   const design = useDesignColors();
   const actions = presentation === 'actions' && !inline;
+  const v2Selection = appearance === 'v2' && !actions;
   return <View style={StyleSheet.absoluteFill} role="dialog" aria-label={inline?.title ?? (actions ? label : `${label} choices`)} aria-modal accessibilityViewIsModal onAccessibilityEscape={onClose}>
     <Pressable style={StyleSheet.absoluteFill} accessibilityRole="button" accessibilityLabel={inline ? `Dismiss ${inline.title.toLowerCase()} without saving` : `Close ${label.toLowerCase()}${actions ? '' : ' choices'}`} onPress={onClose} />
     {layout && <View ref={panelRef} style={[styles.menu, { left: layout.left, top: layout.top, width: layout.width, height: layout.height,
       backgroundColor: colors[SurfaceColors.overlay], borderColor: colors.borderStrong }, appearance === 'v2' && {
-      backgroundColor: design.surface, borderColor: design.borderStrong, borderRadius: Shape.menu, elevation: 0, ...raisedSurfaceShadow(design) }]}>
+      backgroundColor: design.surfaceRaised, borderColor: design.controlBorder, borderRadius: Shape.menu, elevation: 0, ...raisedSurfaceShadow(design) }]}>
       <ContentInsertion animate={appearance === 'v2'} duration={MotionTokens.menu} style={styles.container}>
-      {!actions && <View ref={headingRef} accessible tabIndex={-1} accessibilityRole="header" accessibilityLabel={inline?.title ?? `${label} choices`} style={styles.heading}
+      {!actions && <View ref={headingRef} accessible tabIndex={-1} accessibilityRole="header" accessibilityLabel={inline?.title ?? `${label} choices`} style={[styles.heading, v2Selection && { borderBottomWidth: 1, borderColor: design.border }]}
         onLayout={(event) => onHeadingHeight(event.nativeEvent.layout.height)}>
-        <ThemedText type="cardTitle">{inline?.title ?? label}</ThemedText>
+        {v2Selection ? <UiText type="cardTitle">{inline?.title ?? label}</UiText> : <ThemedText type="cardTitle">{inline?.title ?? label}</ThemedText>}
       </View>}
       {inline ? inline.content : <ScrollView keyboardShouldPersistTaps="always" style={styles.container} contentContainerStyle={styles.options}
         onContentSizeChange={(_width, height) => onOptionsHeight(height)}>{content}</ScrollView>}

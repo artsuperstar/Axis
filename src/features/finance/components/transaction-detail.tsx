@@ -1,8 +1,8 @@
 import { StyleSheet, View } from 'react-native';
 
 import { AdaptiveModal, AdaptiveSheet } from '@/components/adaptive-sheet';
+import { UiText } from '@/components/design-system';
 import { FormButton } from '@/components/form-controls';
-import { ThemedText } from '@/components/themed-text';
 import { Space } from '@/constants/theme';
 import { dateLabel } from '@/utils/calendar';
 
@@ -17,25 +17,25 @@ export function TransactionDetail({ transaction, source, categories, today, onDi
   const display = transactionPresentation(transaction, categories, today, source);
   const work = source.kind === 'work';
   return <AdaptiveModal onDismiss={onDismiss} visible={visible} onClosed={onClosed}>
-    <AdaptiveSheet title="Transaction details" onDismiss={onDismiss} contentContainerStyle={styles.content}>
+    <AdaptiveSheet appearance="v2" titleRole="operational" title="Transaction details" onDismiss={onDismiss} contentContainerStyle={styles.content}>
       <View style={styles.summary}>
-        <ThemedText type="cardTitle">{display.title}</ThemedText>
-        {source.kind === 'work' && <ThemedText type="metadata" themeColor="textSecondary">{source.clientName}</ThemedText>}
-        <ThemedText type="metadata" themeColor="textSecondary" accessibilityLabel={`Source: ${work ? 'Work' : 'Commitment'}`}>Source: {work ? 'Work' : 'Commitment'}</ThemedText>
-        <ThemedText type="metric" themeColor={transaction.type === 'income' ? 'success' : 'textPrimary'}>{display.amount}</ThemedText>
-        <ThemedText themeColor="textSecondary">{dateLabel(transaction.transactionDate)}</ThemedText>
-        {!!display.category && <ThemedText type="metadata" themeColor="textSecondary">{display.category}</ThemedText>}
+        <UiText type="cardTitle">{display.title}</UiText>
+        {source.kind === 'work' && <UiText type="metadata" color="textSecondary">{source.clientName}</UiText>}
+        <UiText type="metadata" color="textSecondary" accessibilityLabel={`Source: ${work ? 'Work' : 'Commitment'}`}>Source: {work ? 'Work' : 'Commitment'}</UiText>
+        <UiText type="metric" color={transaction.type === 'income' ? 'financeIncome' : 'financeExpense'}>{display.amount}</UiText>
+        <UiText color="textSecondary">{dateLabel(transaction.transactionDate)}</UiText>
+        {!!display.category && <UiText type="metadata" color="textSecondary">{display.category}</UiText>}
       </View>
       {source.kind === 'work' && source.jobs.length > 1 && <View style={styles.summary}>
-        <ThemedText type="cardTitle" accessibilityRole="header">Covered jobs</ThemedText>
-        {source.jobs.map((job) => <ThemedText key={job.id}>{job.title}</ThemedText>)}
+        <UiText type="cardTitle" accessibilityRole="header">Covered jobs</UiText>
+        {source.jobs.map((job) => <UiText key={job.id}>{job.title}</UiText>)}
       </View>}
       {!!transaction.note && <View style={styles.summary}>
-        <ThemedText type="cardTitle" accessibilityRole="header">Note</ThemedText>
-        <ThemedText>{transaction.note}</ThemedText>
+        <UiText type="cardTitle" accessibilityRole="header">Note</UiText>
+        <UiText>{transaction.note}</UiText>
       </View>}
-      <FormButton variant="primary" label={work ? 'Open Work' : 'Open Commitments'} onPress={onOpenSource} />
-      <FormButton label="Edit details" onPress={onEdit} />
+      <FormButton appearance="v2" variant="primary" label={work ? 'Open Work' : 'Open Commitments'} onPress={onOpenSource} />
+      <FormButton appearance="v2" label="Edit details" onPress={onEdit} />
     </AdaptiveSheet>
   </AdaptiveModal>;
 }

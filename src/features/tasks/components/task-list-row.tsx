@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
 import { FormButton } from '@/components/form-controls';
-import { UiIcon, UiPressable, UiText, useDesignColors } from '@/components/design-system';
+import { UiIcon, UiPressable, UiText, useDesignTheme } from '@/components/design-system';
 import { motionTiming, useReducedMotion } from '@/components/motion';
 import { DesignSpace as Space, MotionTokens, TouchTarget, taskSectionSurface } from '@/constants/design-system-v2';
 
@@ -13,7 +13,7 @@ import type { TaskRowProps } from './task-row';
 export function TaskListRow({ task, onComplete, onActions, section = 'Today', row }: TaskRowProps & {
   section?: string; row: ReturnType<typeof taskRowPresentation>;
 }) {
-  const colors = useDesignColors();
+  const { mode, colors } = useDesignTheme();
   const reduced = useReducedMotion();
   const checked = useSharedValue(row.completed ? 1 : 0);
   const previous = useRef(row.completed);
@@ -23,12 +23,12 @@ export function TaskListRow({ task, onComplete, onActions, section = 'Today', ro
     previous.current = row.completed;
   }, [row.completed, reduced, checked]);
   const checkStyle = useAnimatedStyle(() => ({ opacity: checked.get(), transform: [{ scale: 0.9 + checked.get() * 0.1 }] }));
-  return <View testID={`task-row-${task.id}`} style={[styles.row, { backgroundColor: taskSectionSurface(colors, section), borderColor: colors.border }]}>
+  return <View testID={`task-row-${task.id}`} style={[styles.row, { backgroundColor: taskSectionSurface(colors, section, mode), borderColor: colors.border }]}>
     <UiPressable accessibilityRole="checkbox" accessibilityState={{ checked: row.completed }}
       accessibilityLabel={`${row.completed ? 'Reopen' : 'Complete'} ${row.actionSubject}`} onPress={onComplete} scale
       style={({ pressed }) => [styles.completion, { backgroundColor: pressed ? colors.taskAccentSoft : 'transparent' }]}>
       <View style={[styles.ring, { borderColor: colors.taskAccent, backgroundColor: row.completed ? colors.taskAccent : 'transparent' }]}>
-        <Animated.View style={checkStyle}><UiIcon name="check" size={14} color={colors.onBrand} /></Animated.View>
+        <Animated.View style={checkStyle}><UiIcon name="check" size={14} color={colors.onFeature} /></Animated.View>
       </View>
     </UiPressable>
     <View testID={`task-information-${task.id}`} accessible accessibilityRole="text" accessibilityLabel={row.accessibilityLabel} style={styles.details}>

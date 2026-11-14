@@ -1,0 +1,111 @@
+{
+  "head": "16ebeab46d20e7a943f08fa017928ce0eb884c0e",
+  "initialFiles": 2777,
+  "changedExistingFiles": [
+    "src/components/design-system.tsx",
+    "src/constants/design-system-v2.ts",
+    "src/features/finance/components/cash-flow-chart.tsx",
+    "src/features/finance/components/expense-donut-chart.tsx",
+    "src/features/finance/components/finance-dashboard.tsx",
+    "src/features/finance/components/transaction-row.tsx",
+    "src/features/finance/overview-presentation.ts",
+    "src/features/tasks/components/task-list-row.tsx",
+    "src/features/tasks/components/task-section.tsx",
+    "src/features/tasks/components/task-workspace-list.tsx",
+    "tests/design-system-v2.test.ts",
+    "tests/finance-overview-v2.test.ts",
+    "tests/finance-overview.test.ts"
+  ],
+  "preservedExistingFiles": 2764,
+  "priorDesignFiles": 230,
+  "priorDesignFilesUnchanged": true,
+  "moduleConstants": [
+    {
+      "file": "src/components/design-system.tsx",
+      "existingModuleConstants": [
+        "fonts",
+        "displayFonts",
+        "TypographyContext",
+        "AnimatedPressable",
+        "styles"
+      ],
+      "changedExistingConstants": []
+    },
+    {
+      "file": "src/constants/design-system-v2.ts",
+      "existingModuleConstants": [
+        "DesignColors",
+        "Shape",
+        "DesignSpace",
+        "MotionTokens",
+        "TouchTarget",
+        "DesignTypography"
+      ],
+      "changedExistingConstants": []
+    },
+    {
+      "file": "src/features/finance/components/cash-flow-chart.tsx",
+      "existingModuleConstants": [
+        "CashFlowChart",
+        "styles"
+      ],
+      "changedExistingConstants": [
+        "CashFlowChart"
+      ]
+    },
+    {
+      "file": "src/features/finance/components/expense-donut-chart.tsx",
+      "existingModuleConstants": [
+        "ExpenseDonutChart",
+        "SpendingCategoryRow",
+        "styles"
+      ],
+      "changedExistingConstants": [
+        "ExpenseDonutChart"
+      ]
+    },
+    {
+      "file": "src/features/finance/components/finance-dashboard.tsx",
+      "existingModuleConstants": [
+        "styles"
+      ],
+      "changedExistingConstants": []
+    },
+    {
+      "file": "src/features/finance/components/transaction-row.tsx",
+      "existingModuleConstants": [
+        "styles"
+      ],
+      "changedExistingConstants": []
+    },
+    {
+      "file": "src/features/finance/overview-presentation.ts",
+      "existingModuleConstants": [],
+      "changedExistingConstants": []
+    },
+    {
+      "file": "src/features/tasks/components/task-list-row.tsx",
+      "existingModuleConstants": [
+        "styles"
+      ],
+      "changedExistingConstants": []
+    },
+    {
+      "file": "src/features/tasks/components/task-section.tsx",
+      "existingModuleConstants": [
+        "styles"
+      ],
+      "changedExistingConstants": []
+    },
+    {
+      "file": "src/features/tasks/components/task-workspace-list.tsx",
+      "existingModuleConstants": [
+        "taskSectionDestinations",
+        "options",
+        "viewability",
+        "styles"
+      ],
+      "changedExistingConstants": []
+    }
+  ]
+}

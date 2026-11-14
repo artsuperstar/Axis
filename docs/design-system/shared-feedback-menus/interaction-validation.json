@@ -1,0 +1,1267 @@
+{
+  "scope": "RNWeb actual shared components with synthetic callbacks; native acceptance outstanding",
+  "checks": [
+    {
+      "theme": "dark",
+      "case": "refresh-lifecycle",
+      "result": "One notice/error/retry; original retry called once; source clear removes notice; unsaved draft retained"
+    },
+    {
+      "theme": "dark",
+      "case": "disabled-retry-specimen",
+      "result": "Existing disabled button contract prevents action; this is a component specimen, not a new production retry state"
+    },
+    {
+      "theme": "dark",
+      "case": "menu-actions",
+      "result": "Single menu, initial focus, disabled action rejection, keyboard skips disabled, Escape focus return and original destructive callback passed"
+    },
+    {
+      "theme": "dark",
+      "case": "rapid-dismiss",
+      "result": "Three open/outside-close cycles; no stale action or duplicate menu"
+    },
+    {
+      "theme": "dark",
+      "case": "menu-layout",
+      "width": 320,
+      "fontScale": 1,
+      "kind": "menu-long",
+      "panel": {
+        "x": 64,
+        "y": 68,
+        "width": 240,
+        "height": 206,
+        "border": "rgb(149, 130, 142)",
+        "background": "rgb(43, 36, 41)"
+      },
+      "rows": [
+        {
+          "label": "Close entry options",
+          "width": 320,
+          "height": 844
+        },
+        {
+          "label": "Edit this record with a deliberately long localized action label",
+          "width": 222,
+          "height": 84
+        },
+        {
+          "label": "Unavailable action",
+          "width": 222,
+          "height": 48
+        },
+        {
+          "label": "Delete",
+          "width": 222,
+          "height": 48
+        }
+      ],
+      "last": {
+        "x": 73,
+        "y": 217,
+        "width": 222,
+        "height": 48
+      },
+      "result": "Anchored inside viewport; natural long labels; >=48 targets; final destructive row reachable"
+    },
+    {
+      "theme": "dark",
+      "case": "menu-layout",
+      "width": 320,
+      "fontScale": 1,
+      "kind": "menu-bottom",
+      "panel": {
+        "x": 64,
+        "y": 606,
+        "width": 240,
+        "height": 170,
+        "border": "rgb(149, 130, 142)",
+        "background": "rgb(43, 36, 41)"
+      },
+      "rows": [
+        {
+          "label": "Close entry options",
+          "width": 320,
+          "height": 844
+        },
+        {
+          "label": "Edit",
+          "width": 222,
+          "height": 48
+        },
+        {
+          "label": "Unavailable action",
+          "width": 222,
+          "height": 48
+        },
+        {
+          "label": "Delete",
+          "width": 222,
+          "height": 48
+        }
+      ],
+      "last": {
+        "x": 73,
+        "y": 719,
+        "width": 222,
+        "height": 48
+      },
+      "result": "Anchored inside viewport; natural long labels; >=48 targets; final destructive row reachable"
+    },
+    {
+      "theme": "dark",
+      "case": "menu-layout",
+      "width": 320,
+      "fontScale": 2,
+      "kind": "menu-long",
+      "panel": {
+        "x": 8,
+        "y": 68,
+        "width": 304,
+        "height": 432,
+        "border": "rgb(149, 130, 142)",
+        "background": "rgb(43, 36, 41)"
+      },
+      "rows": [
+        {
+          "label": "Close entry options",
+          "width": 320,
+          "height": 844
+        },
+        {
+          "label": "Edit this record with a deliberately long localized action label",
+          "width": 286,
+          "height": 238
+        },
+        {
+          "label": "Unavailable action",
+          "width": 286,
+          "height": 106
+        },
+        {
+          "label": "Delete",
+          "width": 286,
+          "height": 62
+        }
+      ],
+      "last": {
+        "x": 17,
+        "y": 429,
+        "width": 286,
+        "height": 62
+      },
+      "result": "Anchored inside viewport; natural long labels; >=48 targets; final destructive row reachable"
+    },
+    {
+      "theme": "dark",
+      "case": "menu-layout",
+      "width": 320,
+      "fontScale": 2,
+      "kind": "menu-bottom",
+      "panel": {
+        "x": 8,
+        "y": 520,
+        "width": 304,
+        "height": 256,
+        "border": "rgb(149, 130, 142)",
+        "background": "rgb(43, 36, 41)"
+      },
+      "rows": [
+        {
+          "label": "Close entry options",
+          "width": 320,
+          "height": 844
+        },
+        {
+          "label": "Edit",
+          "width": 286,
+          "height": 62
+        },
+        {
+          "label": "Unavailable action",
+          "width": 286,
+          "height": 106
+        },
+        {
+          "label": "Delete",
+          "width": 286,
+          "height": 62
+        }
+      ],
+      "last": {
+        "x": 17,
+        "y": 705,
+        "width": 286,
+        "height": 62
+      },
+      "result": "Anchored inside viewport; natural long labels; >=48 targets; final destructive row reachable"
+    },
+    {
+      "theme": "dark",
+      "case": "menu-layout",
+      "width": 390,
+      "fontScale": 1,
+      "kind": "menu-long",
+      "panel": {
+        "x": 134,
+        "y": 68,
+        "width": 240,
+        "height": 206,
+        "border": "rgb(149, 130, 142)",
+        "background": "rgb(43, 36, 41)"
+      },
+      "rows": [
+        {
+          "label": "Close entry options",
+          "width": 390,
+          "height": 844
+        },
+        {
+          "label": "Edit this record with a deliberately long localized action label",
+          "width": 222,
+          "height": 84
+        },
+        {
+          "label": "Unavailable action",
+          "width": 222,
+          "height": 48
+        },
+        {
+          "label": "Delete",
+          "width": 222,
+          "height": 48
+        }
+      ],
+      "last": {
+        "x": 143,
+        "y": 217,
+        "width": 222,
+        "height": 48
+      },
+      "result": "Anchored inside viewport; natural long labels; >=48 targets; final destructive row reachable"
+    },
+    {
+      "theme": "dark",
+      "case": "menu-layout",
+      "width": 390,
+      "fontScale": 1,
+      "kind": "menu-bottom",
+      "panel": {
+        "x": 134,
+        "y": 606,
+        "width": 240,
+        "height": 170,
+        "border": "rgb(149, 130, 142)",
+        "background": "rgb(43, 36, 41)"
+      },
+      "rows": [
+        {
+          "label": "Close entry options",
+          "width": 390,
+          "height": 844
+        },
+        {
+          "label": "Edit",
+          "width": 222,
+          "height": 48
+        },
+        {
+          "label": "Unavailable action",
+          "width": 222,
+          "height": 48
+        },
+        {
+          "label": "Delete",
+          "width": 222,
+          "height": 48
+        }
+      ],
+      "last": {
+        "x": 143,
+        "y": 719,
+        "width": 222,
+        "height": 48
+      },
+      "result": "Anchored inside viewport; natural long labels; >=48 targets; final destructive row reachable"
+    },
+    {
+      "theme": "dark",
+      "case": "menu-layout",
+      "width": 390,
+      "fontScale": 2,
+      "kind": "menu-long",
+      "panel": {
+        "x": 8,
+        "y": 68,
+        "width": 374,
+        "height": 300,
+        "border": "rgb(149, 130, 142)",
+        "background": "rgb(43, 36, 41)"
+      },
+      "rows": [
+        {
+          "label": "Close entry options",
+          "width": 390,
+          "height": 844
+        },
+        {
+          "label": "Edit this record with a deliberately long localized action label",
+          "width": 356,
+          "height": 150
+        },
+        {
+          "label": "Unavailable action",
+          "width": 356,
+          "height": 62
+        },
+        {
+          "label": "Delete",
+          "width": 356,
+          "height": 62
+        }
+      ],
+      "last": {
+        "x": 17,
+        "y": 297,
+        "width": 356,
+        "height": 62
+      },
+      "result": "Anchored inside viewport; natural long labels; >=48 targets; final destructive row reachable"
+    },
+    {
+      "theme": "dark",
+      "case": "menu-layout",
+      "width": 390,
+      "fontScale": 2,
+      "kind": "menu-bottom",
+      "panel": {
+        "x": 8,
+        "y": 564,
+        "width": 374,
+        "height": 212,
+        "border": "rgb(149, 130, 142)",
+        "background": "rgb(43, 36, 41)"
+      },
+      "rows": [
+        {
+          "label": "Close entry options",
+          "width": 390,
+          "height": 844
+        },
+        {
+          "label": "Edit",
+          "width": 356,
+          "height": 62
+        },
+        {
+          "label": "Unavailable action",
+          "width": 356,
+          "height": 62
+        },
+        {
+          "label": "Delete",
+          "width": 356,
+          "height": 62
+        }
+      ],
+      "last": {
+        "x": 17,
+        "y": 705,
+        "width": 356,
+        "height": 62
+      },
+      "result": "Anchored inside viewport; natural long labels; >=48 targets; final destructive row reachable"
+    },
+    {
+      "theme": "dark",
+      "case": "menu-layout",
+      "width": 430,
+      "fontScale": 1,
+      "kind": "menu-long",
+      "panel": {
+        "x": 174,
+        "y": 68,
+        "width": 240,
+        "height": 206,
+        "border": "rgb(149, 130, 142)",
+        "background": "rgb(43, 36, 41)"
+      },
+      "rows": [
+        {
+          "label": "Close entry options",
+          "width": 430,
+          "height": 844
+        },
+        {
+          "label": "Edit this record with a deliberately long localized action label",
+          "width": 222,
+          "height": 84
+        },
+        {
+          "label": "Unavailable action",
+          "width": 222,
+          "height": 48
+        },
+        {
+          "label": "Delete",
+          "width": 222,
+          "height": 48
+        }
+      ],
+      "last": {
+        "x": 183,
+        "y": 217,
+        "width": 222,
+        "height": 48
+      },
+      "result": "Anchored inside viewport; natural long labels; >=48 targets; final destructive row reachable"
+    },
+    {
+      "theme": "dark",
+      "case": "menu-layout",
+      "width": 430,
+      "fontScale": 1,
+      "kind": "menu-bottom",
+      "panel": {
+        "x": 174,
+        "y": 606,
+        "width": 240,
+        "height": 170,
+        "border": "rgb(149, 130, 142)",
+        "background": "rgb(43, 36, 41)"
+      },
+      "rows": [
+        {
+          "label": "Close entry options",
+          "width": 430,
+          "height": 844
+        },
+        {
+          "label": "Edit",
+          "width": 222,
+          "height": 48
+        },
+        {
+          "label": "Unavailable action",
+          "width": 222,
+          "height": 48
+        },
+        {
+          "label": "Delete",
+          "width": 222,
+          "height": 48
+        }
+      ],
+      "last": {
+        "x": 183,
+        "y": 719,
+        "width": 222,
+        "height": 48
+      },
+      "result": "Anchored inside viewport; natural long labels; >=48 targets; final destructive row reachable"
+    },
+    {
+      "theme": "dark",
+      "case": "menu-layout",
+      "width": 430,
+      "fontScale": 2,
+      "kind": "menu-long",
+      "panel": {
+        "x": 8,
+        "y": 68,
+        "width": 414,
+        "height": 300,
+        "border": "rgb(149, 130, 142)",
+        "background": "rgb(43, 36, 41)"
+      },
+      "rows": [
+        {
+          "label": "Close entry options",
+          "width": 430,
+          "height": 844
+        },
+        {
+          "label": "Edit this record with a deliberately long localized action label",
+          "width": 396,
+          "height": 150
+        },
+        {
+          "label": "Unavailable action",
+          "width": 396,
+          "height": 62
+        },
+        {
+          "label": "Delete",
+          "width": 396,
+          "height": 62
+        }
+      ],
+      "last": {
+        "x": 17,
+        "y": 297,
+        "width": 396,
+        "height": 62
+      },
+      "result": "Anchored inside viewport; natural long labels; >=48 targets; final destructive row reachable"
+    },
+    {
+      "theme": "dark",
+      "case": "menu-layout",
+      "width": 430,
+      "fontScale": 2,
+      "kind": "menu-bottom",
+      "panel": {
+        "x": 8,
+        "y": 564,
+        "width": 414,
+        "height": 212,
+        "border": "rgb(149, 130, 142)",
+        "background": "rgb(43, 36, 41)"
+      },
+      "rows": [
+        {
+          "label": "Close entry options",
+          "width": 430,
+          "height": 844
+        },
+        {
+          "label": "Edit",
+          "width": 396,
+          "height": 62
+        },
+        {
+          "label": "Unavailable action",
+          "width": 396,
+          "height": 62
+        },
+        {
+          "label": "Delete",
+          "width": 396,
+          "height": 62
+        }
+      ],
+      "last": {
+        "x": 17,
+        "y": 705,
+        "width": 396,
+        "height": 62
+      },
+      "result": "Anchored inside viewport; natural long labels; >=48 targets; final destructive row reachable"
+    },
+    {
+      "theme": "dark",
+      "case": "retry-layout",
+      "width": 320,
+      "fontScale": 1,
+      "rect": {
+        "x": 16,
+        "y": 681,
+        "width": 288,
+        "height": 48
+      },
+      "result": "Retry visible and readable without horizontal overflow"
+    },
+    {
+      "theme": "dark",
+      "case": "retry-layout",
+      "width": 320,
+      "fontScale": 2,
+      "rect": {
+        "x": 16,
+        "y": 647,
+        "width": 288,
+        "height": 62
+      },
+      "result": "Retry visible and readable without horizontal overflow"
+    },
+    {
+      "theme": "dark",
+      "case": "retry-layout",
+      "width": 390,
+      "fontScale": 1,
+      "rect": {
+        "x": 16,
+        "y": 681,
+        "width": 358,
+        "height": 48
+      },
+      "result": "Retry visible and readable without horizontal overflow"
+    },
+    {
+      "theme": "dark",
+      "case": "retry-layout",
+      "width": 390,
+      "fontScale": 2,
+      "rect": {
+        "x": 16,
+        "y": 647,
+        "width": 358,
+        "height": 62
+      },
+      "result": "Retry visible and readable without horizontal overflow"
+    },
+    {
+      "theme": "dark",
+      "case": "retry-layout",
+      "width": 430,
+      "fontScale": 1,
+      "rect": {
+        "x": 16,
+        "y": 681,
+        "width": 398,
+        "height": 48
+      },
+      "result": "Retry visible and readable without horizontal overflow"
+    },
+    {
+      "theme": "dark",
+      "case": "retry-layout",
+      "width": 430,
+      "fontScale": 2,
+      "rect": {
+        "x": 16,
+        "y": 647,
+        "width": 398,
+        "height": 62
+      },
+      "result": "Retry visible and readable without horizontal overflow"
+    },
+    {
+      "theme": "dark",
+      "case": "selection-semantics",
+      "result": "Actual selector checked state and value retained; action menus do not acquire radio/selected semantics"
+    },
+    {
+      "theme": "light",
+      "case": "refresh-lifecycle",
+      "result": "One notice/error/retry; original retry called once; source clear removes notice; unsaved draft retained"
+    },
+    {
+      "theme": "light",
+      "case": "disabled-retry-specimen",
+      "result": "Existing disabled button contract prevents action; this is a component specimen, not a new production retry state"
+    },
+    {
+      "theme": "light",
+      "case": "menu-actions",
+      "result": "Single menu, initial focus, disabled action rejection, keyboard skips disabled, Escape focus return and original destructive callback passed"
+    },
+    {
+      "theme": "light",
+      "case": "rapid-dismiss",
+      "result": "Three open/outside-close cycles; no stale action or duplicate menu"
+    },
+    {
+      "theme": "light",
+      "case": "menu-layout",
+      "width": 320,
+      "fontScale": 1,
+      "kind": "menu-long",
+      "panel": {
+        "x": 64,
+        "y": 68,
+        "width": 240,
+        "height": 206,
+        "border": "rgb(155, 131, 123)",
+        "background": "rgb(255, 252, 248)"
+      },
+      "rows": [
+        {
+          "label": "Close entry options",
+          "width": 320,
+          "height": 844
+        },
+        {
+          "label": "Edit this record with a deliberately long localized action label",
+          "width": 222,
+          "height": 84
+        },
+        {
+          "label": "Unavailable action",
+          "width": 222,
+          "height": 48
+        },
+        {
+          "label": "Delete",
+          "width": 222,
+          "height": 48
+        }
+      ],
+      "last": {
+        "x": 73,
+        "y": 217,
+        "width": 222,
+        "height": 48
+      },
+      "result": "Anchored inside viewport; natural long labels; >=48 targets; final destructive row reachable"
+    },
+    {
+      "theme": "light",
+      "case": "menu-layout",
+      "width": 320,
+      "fontScale": 1,
+      "kind": "menu-bottom",
+      "panel": {
+        "x": 64,
+        "y": 606,
+        "width": 240,
+        "height": 170,
+        "border": "rgb(155, 131, 123)",
+        "background": "rgb(255, 252, 248)"
+      },
+      "rows": [
+        {
+          "label": "Close entry options",
+          "width": 320,
+          "height": 844
+        },
+        {
+          "label": "Edit",
+          "width": 222,
+          "height": 48
+        },
+        {
+          "label": "Unavailable action",
+          "width": 222,
+          "height": 48
+        },
+        {
+          "label": "Delete",
+          "width": 222,
+          "height": 48
+        }
+      ],
+      "last": {
+        "x": 73,
+        "y": 719,
+        "width": 222,
+        "height": 48
+      },
+      "result": "Anchored inside viewport; natural long labels; >=48 targets; final destructive row reachable"
+    },
+    {
+      "theme": "light",
+      "case": "menu-layout",
+      "width": 320,
+      "fontScale": 2,
+      "kind": "menu-long",
+      "panel": {
+        "x": 8,
+        "y": 68,
+        "width": 304,
+        "height": 432,
+        "border": "rgb(155, 131, 123)",
+        "background": "rgb(255, 252, 248)"
+      },
+      "rows": [
+        {
+          "label": "Close entry options",
+          "width": 320,
+          "height": 844
+        },
+        {
+          "label": "Edit this record with a deliberately long localized action label",
+          "width": 286,
+          "height": 238
+        },
+        {
+          "label": "Unavailable action",
+          "width": 286,
+          "height": 106
+        },
+        {
+          "label": "Delete",
+          "width": 286,
+          "height": 62
+        }
+      ],
+      "last": {
+        "x": 17,
+        "y": 429,
+        "width": 286,
+        "height": 62
+      },
+      "result": "Anchored inside viewport; natural long labels; >=48 targets; final destructive row reachable"
+    },
+    {
+      "theme": "light",
+      "case": "menu-layout",
+      "width": 320,
+      "fontScale": 2,
+      "kind": "menu-bottom",
+      "panel": {
+        "x": 8,
+        "y": 520,
+        "width": 304,
+        "height": 256,
+        "border": "rgb(155, 131, 123)",
+        "background": "rgb(255, 252, 248)"
+      },
+      "rows": [
+        {
+          "label": "Close entry options",
+          "width": 320,
+          "height": 844
+        },
+        {
+          "label": "Edit",
+          "width": 286,
+          "height": 62
+        },
+        {
+          "label": "Unavailable action",
+          "width": 286,
+          "height": 106
+        },
+        {
+          "label": "Delete",
+          "width": 286,
+          "height": 62
+        }
+      ],
+      "last": {
+        "x": 17,
+        "y": 705,
+        "width": 286,
+        "height": 62
+      },
+      "result": "Anchored inside viewport; natural long labels; >=48 targets; final destructive row reachable"
+    },
+    {
+      "theme": "light",
+      "case": "menu-layout",
+      "width": 390,
+      "fontScale": 1,
+      "kind": "menu-long",
+      "panel": {
+        "x": 134,
+        "y": 68,
+        "width": 240,
+        "height": 206,
+        "border": "rgb(155, 131, 123)",
+        "background": "rgb(255, 252, 248)"
+      },
+      "rows": [
+        {
+          "label": "Close entry options",
+          "width": 390,
+          "height": 844
+        },
+        {
+          "label": "Edit this record with a deliberately long localized action label",
+          "width": 222,
+          "height": 84
+        },
+        {
+          "label": "Unavailable action",
+          "width": 222,
+          "height": 48
+        },
+        {
+          "label": "Delete",
+          "width": 222,
+          "height": 48
+        }
+      ],
+      "last": {
+        "x": 143,
+        "y": 217,
+        "width": 222,
+        "height": 48
+      },
+      "result": "Anchored inside viewport; natural long labels; >=48 targets; final destructive row reachable"
+    },
+    {
+      "theme": "light",
+      "case": "menu-layout",
+      "width": 390,
+      "fontScale": 1,
+      "kind": "menu-bottom",
+      "panel": {
+        "x": 134,
+        "y": 606,
+        "width": 240,
+        "height": 170,
+        "border": "rgb(155, 131, 123)",
+        "background": "rgb(255, 252, 248)"
+      },
+      "rows": [
+        {
+          "label": "Close entry options",
+          "width": 390,
+          "height": 844
+        },
+        {
+          "label": "Edit",
+          "width": 222,
+          "height": 48
+        },
+        {
+          "label": "Unavailable action",
+          "width": 222,
+          "height": 48
+        },
+        {
+          "label": "Delete",
+          "width": 222,
+          "height": 48
+        }
+      ],
+      "last": {
+        "x": 143,
+        "y": 719,
+        "width": 222,
+        "height": 48
+      },
+      "result": "Anchored inside viewport; natural long labels; >=48 targets; final destructive row reachable"
+    },
+    {
+      "theme": "light",
+      "case": "menu-layout",
+      "width": 390,
+      "fontScale": 2,
+      "kind": "menu-long",
+      "panel": {
+        "x": 8,
+        "y": 68,
+        "width": 374,
+        "height": 300,
+        "border": "rgb(155, 131, 123)",
+        "background": "rgb(255, 252, 248)"
+      },
+      "rows": [
+        {
+          "label": "Close entry options",
+          "width": 390,
+          "height": 844
+        },
+        {
+          "label": "Edit this record with a deliberately long localized action label",
+          "width": 356,
+          "height": 150
+        },
+        {
+          "label": "Unavailable action",
+          "width": 356,
+          "height": 62
+        },
+        {
+          "label": "Delete",
+          "width": 356,
+          "height": 62
+        }
+      ],
+      "last": {
+        "x": 17,
+        "y": 297,
+        "width": 356,
+        "height": 62
+      },
+      "result": "Anchored inside viewport; natural long labels; >=48 targets; final destructive row reachable"
+    },
+    {
+      "theme": "light",
+      "case": "menu-layout",
+      "width": 390,
+      "fontScale": 2,
+      "kind": "menu-bottom",
+      "panel": {
+        "x": 8,
+        "y": 564,
+        "width": 374,
+        "height": 212,
+        "border": "rgb(155, 131, 123)",
+        "background": "rgb(255, 252, 248)"
+      },
+      "rows": [
+        {
+          "label": "Close entry options",
+          "width": 390,
+          "height": 844
+        },
+        {
+          "label": "Edit",
+          "width": 356,
+          "height": 62
+        },
+        {
+          "label": "Unavailable action",
+          "width": 356,
+          "height": 62
+        },
+        {
+          "label": "Delete",
+          "width": 356,
+          "height": 62
+        }
+      ],
+      "last": {
+        "x": 17,
+        "y": 705,
+        "width": 356,
+        "height": 62
+      },
+      "result": "Anchored inside viewport; natural long labels; >=48 targets; final destructive row reachable"
+    },
+    {
+      "theme": "light",
+      "case": "menu-layout",
+      "width": 430,
+      "fontScale": 1,
+      "kind": "menu-long",
+      "panel": {
+        "x": 174,
+        "y": 68,
+        "width": 240,
+        "height": 206,
+        "border": "rgb(155, 131, 123)",
+        "background": "rgb(255, 252, 248)"
+      },
+      "rows": [
+        {
+          "label": "Close entry options",
+          "width": 430,
+          "height": 844
+        },
+        {
+          "label": "Edit this record with a deliberately long localized action label",
+          "width": 222,
+          "height": 84
+        },
+        {
+          "label": "Unavailable action",
+          "width": 222,
+          "height": 48
+        },
+        {
+          "label": "Delete",
+          "width": 222,
+          "height": 48
+        }
+      ],
+      "last": {
+        "x": 183,
+        "y": 217,
+        "width": 222,
+        "height": 48
+      },
+      "result": "Anchored inside viewport; natural long labels; >=48 targets; final destructive row reachable"
+    },
+    {
+      "theme": "light",
+      "case": "menu-layout",
+      "width": 430,
+      "fontScale": 1,
+      "kind": "menu-bottom",
+      "panel": {
+        "x": 174,
+        "y": 606,
+        "width": 240,
+        "height": 170,
+        "border": "rgb(155, 131, 123)",
+        "background": "rgb(255, 252, 248)"
+      },
+      "rows": [
+        {
+          "label": "Close entry options",
+          "width": 430,
+          "height": 844
+        },
+        {
+          "label": "Edit",
+          "width": 222,
+          "height": 48
+        },
+        {
+          "label": "Unavailable action",
+          "width": 222,
+          "height": 48
+        },
+        {
+          "label": "Delete",
+          "width": 222,
+          "height": 48
+        }
+      ],
+      "last": {
+        "x": 183,
+        "y": 719,
+        "width": 222,
+        "height": 48
+      },
+      "result": "Anchored inside viewport; natural long labels; >=48 targets; final destructive row reachable"
+    },
+    {
+      "theme": "light",
+      "case": "menu-layout",
+      "width": 430,
+      "fontScale": 2,
+      "kind": "menu-long",
+      "panel": {
+        "x": 8,
+        "y": 68,
+        "width": 414,
+        "height": 300,
+        "border": "rgb(155, 131, 123)",
+        "background": "rgb(255, 252, 248)"
+      },
+      "rows": [
+        {
+          "label": "Close entry options",
+          "width": 430,
+          "height": 844
+        },
+        {
+          "label": "Edit this record with a deliberately long localized action label",
+          "width": 396,
+          "height": 150
+        },
+        {
+          "label": "Unavailable action",
+          "width": 396,
+          "height": 62
+        },
+        {
+          "label": "Delete",
+          "width": 396,
+          "height": 62
+        }
+      ],
+      "last": {
+        "x": 17,
+        "y": 297,
+        "width": 396,
+        "height": 62
+      },
+      "result": "Anchored inside viewport; natural long labels; >=48 targets; final destructive row reachable"
+    },
+    {
+      "theme": "light",
+      "case": "menu-layout",
+      "width": 430,
+      "fontScale": 2,
+      "kind": "menu-bottom",
+      "panel": {
+        "x": 8,
+        "y": 564,
+        "width": 414,
+        "height": 212,
+        "border": "rgb(155, 131, 123)",
+        "background": "rgb(255, 252, 248)"
+      },
+      "rows": [
+        {
+          "label": "Close entry options",
+          "width": 430,
+          "height": 844
+        },
+        {
+          "label": "Edit",
+          "width": 396,
+          "height": 62
+        },
+        {
+          "label": "Unavailable action",
+          "width": 396,
+          "height": 62
+        },
+        {
+          "label": "Delete",
+          "width": 396,
+          "height": 62
+        }
+      ],
+      "last": {
+        "x": 17,
+        "y": 705,
+        "width": 396,
+        "height": 62
+      },
+      "result": "Anchored inside viewport; natural long labels; >=48 targets; final destructive row reachable"
+    },
+    {
+      "theme": "light",
+      "case": "retry-layout",
+      "width": 320,
+      "fontScale": 1,
+      "rect": {
+        "x": 16,
+        "y": 681,
+        "width": 288,
+        "height": 48
+      },
+      "result": "Retry visible and readable without horizontal overflow"
+    },
+    {
+      "theme": "light",
+      "case": "retry-layout",
+      "width": 320,
+      "fontScale": 2,
+      "rect": {
+        "x": 16,
+        "y": 647,
+        "width": 288,
+        "height": 62
+      },
+      "result": "Retry visible and readable without horizontal overflow"
+    },
+    {
+      "theme": "light",
+      "case": "retry-layout",
+      "width": 390,
+      "fontScale": 1,
+      "rect": {
+        "x": 16,
+        "y": 681,
+        "width": 358,
+        "height": 48
+      },
+      "result": "Retry visible and readable without horizontal overflow"
+    },
+    {
+      "theme": "light",
+      "case": "retry-layout",
+      "width": 390,
+      "fontScale": 2,
+      "rect": {
+        "x": 16,
+        "y": 647,
+        "width": 358,
+        "height": 62
+      },
+      "result": "Retry visible and readable without horizontal overflow"
+    },
+    {
+      "theme": "light",
+      "case": "retry-layout",
+      "width": 430,
+      "fontScale": 1,
+      "rect": {
+        "x": 16,
+        "y": 681,
+        "width": 398,
+        "height": 48
+      },
+      "result": "Retry visible and readable without horizontal overflow"
+    },
+    {
+      "theme": "light",
+      "case": "retry-layout",
+      "width": 430,
+      "fontScale": 2,
+      "rect": {
+        "x": 16,
+        "y": 647,
+        "width": 398,
+        "height": 62
+      },
+      "result": "Retry visible and readable without horizontal overflow"
+    },
+    {
+      "theme": "light",
+      "case": "selection-semantics",
+      "result": "Actual selector checked state and value retained; action menus do not acquire radio/selected semantics"
+    }
+  ]
+}

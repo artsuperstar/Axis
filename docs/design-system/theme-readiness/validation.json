@@ -1,0 +1,151 @@
+{
+  "date": "2026-11-12",
+  "timezone": "America/Sao_Paulo",
+  "baseline": {
+    "tests": 1454,
+    "passed": 1454,
+    "failed": 0,
+    "skipped": 0,
+    "exit": 0
+  },
+  "initialHostTimezone": {
+    "tests": 1454,
+    "passed": 1451,
+    "failed": 3,
+    "skipped": 0,
+    "exit": 1
+  },
+  "focused": {
+    "tests": 268,
+    "passed": 268,
+    "failed": 0,
+    "skipped": 0,
+    "exit": 0
+  },
+  "fullSuite": {
+    "tests": 1462,
+    "passed": 1462,
+    "failed": 0,
+    "skipped": 0,
+    "exit": 0
+  },
+  "typescript": {
+    "before": 0,
+    "after": 0
+  },
+  "eslint": {
+    "changedFilesExit": 0,
+    "fullExit": 1,
+    "baselineErrors": 6,
+    "baselineWarnings": 2,
+    "newDiagnostics": 0,
+    "removedDiagnostics": 0
+  },
+  "exports": {
+    "ios": 0,
+    "android": 0
+  },
+  "visual": {
+    "cases": 24,
+    "identical": 24
+  },
+  "diffCheck": {
+    "exit": 0,
+    "stdout": ""
+  },
+  "preservation": {
+    "initialFiles": 2777,
+    "priorDesignFiles": 230,
+    "priorDesignFilesUnchanged": true
+  },
+  "git": {
+    "head": "16ebeab46d20e7a943f08fa017928ce0eb884c0e",
+    "staged": "",
+    "changedExisting": [
+      "src/components/design-system.tsx",
+      "src/constants/design-system-v2.ts",
+      "src/features/finance/components/cash-flow-chart.tsx",
+      "src/features/finance/components/expense-donut-chart.tsx",
+      "src/features/finance/components/finance-dashboard.tsx",
+      "src/features/finance/components/transaction-row.tsx",
+      "src/features/finance/overview-presentation.ts",
+      "src/features/tasks/components/task-list-row.tsx",
+      "src/features/tasks/components/task-section.tsx",
+      "src/features/tasks/components/task-workspace-list.tsx",
+      "tests/design-system-v2.test.ts",
+      "tests/finance-overview-v2.test.ts",
+      "tests/finance-overview.test.ts"
+    ],
+    "added": [
+      "tests/theme-mode.test.ts",
+      "scripts/review-theme-readiness.cjs",
+      "docs/design-system/theme-readiness-report.md",
+      "docs/design-system/theme-readiness/after.json",
+      "docs/design-system/theme-readiness/before.json",
+      "docs/design-system/theme-readiness/eslint-comparison.json",
+      "docs/design-system/theme-readiness/index.html",
+      "docs/design-system/theme-readiness/initial-state.json",
+      "docs/design-system/theme-readiness/source-invariants.json",
+      "docs/design-system/theme-readiness/visual-equivalence.json",
+      "docs/design-system/theme-readiness/after/calendar-dark-390.png",
+      "docs/design-system/theme-readiness/after/calendar-light-390.png",
+      "docs/design-system/theme-readiness/after/finance-form-dark-390.png",
+      "docs/design-system/theme-readiness/after/finance-form-light-390.png",
+      "docs/design-system/theme-readiness/after/finance-overview-dark-320.png",
+      "docs/design-system/theme-readiness/after/finance-overview-dark-390.png",
+      "docs/design-system/theme-readiness/after/finance-overview-dark-430.png",
+      "docs/design-system/theme-readiness/after/finance-overview-light-320.png",
+      "docs/design-system/theme-readiness/after/finance-overview-light-390.png",
+      "docs/design-system/theme-readiness/after/finance-overview-light-430.png",
+      "docs/design-system/theme-readiness/after/finance-selected-dark-390.png",
+      "docs/design-system/theme-readiness/after/finance-selected-light-390.png",
+      "docs/design-system/theme-readiness/after/finance-spending-dark-390.png",
+      "docs/design-system/theme-readiness/after/finance-spending-light-390.png",
+      "docs/design-system/theme-readiness/after/fitness-dark-390.png",
+      "docs/design-system/theme-readiness/after/fitness-light-390.png",
+      "docs/design-system/theme-readiness/after/home-dark-390.png",
+      "docs/design-system/theme-readiness/after/home-light-390.png",
+      "docs/design-system/theme-readiness/after/journal-dark-390.png",
+      "docs/design-system/theme-readiness/after/journal-light-390.png",
+      "docs/design-system/theme-readiness/after/tasks-dark-320.png",
+      "docs/design-system/theme-readiness/after/tasks-dark-390.png",
+      "docs/design-system/theme-readiness/after/tasks-light-320.png",
+      "docs/design-system/theme-readiness/after/tasks-light-390.png",
+      "docs/design-system/theme-readiness/before/calendar-dark-390.png",
+      "docs/design-system/theme-readiness/before/calendar-light-390.png",
+      "docs/design-system/theme-readiness/before/finance-form-dark-390.png",
+      "docs/design-system/theme-readiness/before/finance-form-light-390.png",
+      "docs/design-system/theme-readiness/before/finance-overview-dark-320.png",
+      "docs/design-system/theme-readiness/before/finance-overview-dark-390.png",
+      "docs/design-system/theme-readiness/before/finance-overview-dark-430.png",
+      "docs/design-system/theme-readiness/before/finance-overview-light-320.png",
+      "docs/design-system/theme-readiness/before/finance-overview-light-390.png",
+      "docs/design-system/theme-readiness/before/finance-overview-light-430.png",
+      "docs/design-system/theme-readiness/before/finance-selected-dark-390.png",
+      "docs/design-system/theme-readiness/before/finance-selected-light-390.png",
+      "docs/design-system/theme-readiness/before/finance-spending-dark-390.png",
+      "docs/design-system/theme-readiness/before/finance-spending-light-390.png",
+      "docs/design-system/theme-readiness/before/fitness-dark-390.png",
+      "docs/design-system/theme-readiness/before/fitness-light-390.png",
+      "docs/design-system/theme-readiness/before/home-dark-390.png",
+      "docs/design-system/theme-readiness/before/home-light-390.png",
+      "docs/design-system/theme-readiness/before/journal-dark-390.png",
+      "docs/design-system/theme-readiness/before/journal-light-390.png",
+      "docs/design-system/theme-readiness/before/tasks-dark-320.png",
+      "docs/design-system/theme-readiness/before/tasks-dark-390.png",
+      "docs/design-system/theme-readiness/before/tasks-light-320.png",
+      "docs/design-system/theme-readiness/before/tasks-light-390.png",
+      "docs/design-system/theme-readiness/validation.json"
+    ]
+  },
+  "commands": {
+    "tests": "$env:TZ='America/Sao_Paulo'; node --import tsx --test --test-concurrency=2 --test-reporter=tap tests/*.test.ts",
+    "typescript": "node node_modules/typescript/bin/tsc --noEmit",
+    "eslint": "node node_modules/eslint/bin/eslint.js . --format json --output-file dist/theme-readiness/after-eslint.json",
+    "changedLint": "node node_modules/eslint/bin/eslint.js <13 modified TS/TSX files> tests/theme-mode.test.ts scripts/review-theme-readiness.cjs",
+    "ios": "node node_modules/expo/bin/cli export --platform ios --output-dir dist/theme-readiness/export-ios",
+    "android": "node node_modules/expo/bin/cli export --platform android --output-dir dist/theme-readiness/export-android",
+    "visual": "node scripts/review-theme-readiness.cjs before / after / compare"
+  },
+  "evidenceLimit": "Source RNWeb fixtures and Metro exports; physical iOS/Android OS theme-switch testing remains outstanding."
+}

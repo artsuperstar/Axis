@@ -37,7 +37,7 @@ function WorkManagementScreen({ destination }: { destination: 'clients' | 'histo
             }} />
             <UiText type="editorTitle" accessibilityRole="header" style={{ flexShrink: 1 }}>{clients ? 'Clients' : 'History'}</UiText>
           </View>
-          {!!error && <View style={styles.notice}><StatusText tone="attention" accessibilityRole="alert">{error}</StatusText><FormButton variant="quiet" label="Retry" onPress={reload} /></View>}
+          {!!error && <View style={styles.notice}><StatusText appearance="v2" tone="attention" accessibilityRole="alert">{error}</StatusText><FormButton appearance="v2" variant="quiet" label="Retry" onPress={reload} /></View>}
         </View>
         <View style={[styles.inner, { flex: 1 }]}>{content}</View>
       </ContextMenuHost>

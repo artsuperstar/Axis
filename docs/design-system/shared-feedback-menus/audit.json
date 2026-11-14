@@ -1,0 +1,1345 @@
+{
+  "initialFiles": 3201,
+  "preserved": 3190,
+  "changedInitialFiles": [
+    "tests/shared-sheets-headers.test.ts",
+    "src/components/adaptive-sheet.tsx",
+    "src/components/context-menu.tsx",
+    "src/components/design-system.tsx",
+    "src/components/form-controls.tsx",
+    "src/components/form-selection-host.tsx",
+    "src/components/sheet-refresh-notice.tsx",
+    "src/components/status-text.tsx",
+    "src/features/finance/finance-screen.tsx",
+    "src/features/finance/work/work-management-screen.tsx",
+    "src/features/tasks/tasks-screen.tsx"
+  ],
+  "addedFiles": [
+    "docs/design-system/shared-feedback-menus-followups.md",
+    "docs/design-system/shared-feedback-menus-report.md",
+    "docs/design-system/shared-feedback-menus/after.json",
+    "docs/design-system/shared-feedback-menus/after/calendar-dark-390.png",
+    "docs/design-system/shared-feedback-menus/after/calendar-light-390.png",
+    "docs/design-system/shared-feedback-menus/after/empty-dark-390.png",
+    "docs/design-system/shared-feedback-menus/after/empty-light-390.png",
+    "docs/design-system/shared-feedback-menus/after/feedback-dark-390.png",
+    "docs/design-system/shared-feedback-menus/after/feedback-large-dark-320.png",
+    "docs/design-system/shared-feedback-menus/after/feedback-large-dark-430.png",
+    "docs/design-system/shared-feedback-menus/after/feedback-large-light-320.png",
+    "docs/design-system/shared-feedback-menus/after/feedback-large-light-430.png",
+    "docs/design-system/shared-feedback-menus/after/feedback-light-390.png",
+    "docs/design-system/shared-feedback-menus/after/finance-dark-390.png",
+    "docs/design-system/shared-feedback-menus/after/finance-light-390.png",
+    "docs/design-system/shared-feedback-menus/after/fitness-dark-390.png",
+    "docs/design-system/shared-feedback-menus/after/fitness-light-390.png",
+    "docs/design-system/shared-feedback-menus/after/journal-dark-390.png",
+    "docs/design-system/shared-feedback-menus/after/journal-light-390.png",
+    "docs/design-system/shared-feedback-menus/after/legacy-feedback-dark-390.png",
+    "docs/design-system/shared-feedback-menus/after/legacy-feedback-light-390.png",
+    "docs/design-system/shared-feedback-menus/after/legacy-menu-dark-390.png",
+    "docs/design-system/shared-feedback-menus/after/legacy-menu-light-390.png",
+    "docs/design-system/shared-feedback-menus/after/legacy-refresh-dark-390.png",
+    "docs/design-system/shared-feedback-menus/after/legacy-refresh-light-390.png",
+    "docs/design-system/shared-feedback-menus/after/menu-bottom-dark-390.png",
+    "docs/design-system/shared-feedback-menus/after/menu-bottom-light-390.png",
+    "docs/design-system/shared-feedback-menus/after/menu-dark-390.png",
+    "docs/design-system/shared-feedback-menus/after/menu-edges-dark-320.png",
+    "docs/design-system/shared-feedback-menus/after/menu-edges-dark-430.png",
+    "docs/design-system/shared-feedback-menus/after/menu-edges-light-320.png",
+    "docs/design-system/shared-feedback-menus/after/menu-edges-light-430.png",
+    "docs/design-system/shared-feedback-menus/after/menu-focused-dark-390.png",
+    "docs/design-system/shared-feedback-menus/after/menu-focused-light-390.png",
+    "docs/design-system/shared-feedback-menus/after/menu-large-dark-320.png",
+    "docs/design-system/shared-feedback-menus/after/menu-large-dark-390.png",
+    "docs/design-system/shared-feedback-menus/after/menu-large-dark-430.png",
+    "docs/design-system/shared-feedback-menus/after/menu-large-light-320.png",
+    "docs/design-system/shared-feedback-menus/after/menu-large-light-390.png",
+    "docs/design-system/shared-feedback-menus/after/menu-large-light-430.png",
+    "docs/design-system/shared-feedback-menus/after/menu-light-390.png",
+    "docs/design-system/shared-feedback-menus/after/menu-long-dark-390.png",
+    "docs/design-system/shared-feedback-menus/after/menu-long-light-390.png",
+    "docs/design-system/shared-feedback-menus/after/menu-pressed-dark-390.png",
+    "docs/design-system/shared-feedback-menus/after/menu-pressed-light-390.png",
+    "docs/design-system/shared-feedback-menus/after/refresh-dark-390.png",
+    "docs/design-system/shared-feedback-menus/after/refresh-light-390.png",
+    "docs/design-system/shared-feedback-menus/after/selection-dark-390.png",
+    "docs/design-system/shared-feedback-menus/after/selection-light-390.png",
+    "docs/design-system/shared-feedback-menus/after/tasks-dark-390.png",
+    "docs/design-system/shared-feedback-menus/after/tasks-light-390.png",
+    "docs/design-system/shared-feedback-menus/after/work-dark-390.png",
+    "docs/design-system/shared-feedback-menus/after/work-light-390.png",
+    "docs/design-system/shared-feedback-menus/audit.json",
+    "docs/design-system/shared-feedback-menus/before.json",
+    "docs/design-system/shared-feedback-menus/before/calendar-dark-390.png",
+    "docs/design-system/shared-feedback-menus/before/calendar-light-390.png",
+    "docs/design-system/shared-feedback-menus/before/empty-dark-390.png",
+    "docs/design-system/shared-feedback-menus/before/empty-light-390.png",
+    "docs/design-system/shared-feedback-menus/before/feedback-dark-390.png",
+    "docs/design-system/shared-feedback-menus/before/feedback-large-dark-320.png",
+    "docs/design-system/shared-feedback-menus/before/feedback-large-dark-430.png",
+    "docs/design-system/shared-feedback-menus/before/feedback-large-light-320.png",
+    "docs/design-system/shared-feedback-menus/before/feedback-large-light-430.png",
+    "docs/design-system/shared-feedback-menus/before/feedback-light-390.png",
+    "docs/design-system/shared-feedback-menus/before/finance-dark-390.png",
+    "docs/design-system/shared-feedback-menus/before/finance-light-390.png",
+    "docs/design-system/shared-feedback-menus/before/fitness-dark-390.png",
+    "docs/design-system/shared-feedback-menus/before/fitness-light-390.png",
+    "docs/design-system/shared-feedback-menus/before/journal-dark-390.png",
+    "docs/design-system/shared-feedback-menus/before/journal-light-390.png",
+    "docs/design-system/shared-feedback-menus/before/legacy-feedback-dark-390.png",
+    "docs/design-system/shared-feedback-menus/before/legacy-feedback-light-390.png",
+    "docs/design-system/shared-feedback-menus/before/legacy-menu-dark-390.png",
+    "docs/design-system/shared-feedback-menus/before/legacy-menu-light-390.png",
+    "docs/design-system/shared-feedback-menus/before/legacy-refresh-dark-390.png",
+    "docs/design-system/shared-feedback-menus/before/legacy-refresh-light-390.png",
+    "docs/design-system/shared-feedback-menus/before/menu-bottom-dark-390.png",
+    "docs/design-system/shared-feedback-menus/before/menu-bottom-light-390.png",
+    "docs/design-system/shared-feedback-menus/before/menu-dark-390.png",
+    "docs/design-system/shared-feedback-menus/before/menu-edges-dark-320.png",
+    "docs/design-system/shared-feedback-menus/before/menu-edges-dark-430.png",
+    "docs/design-system/shared-feedback-menus/before/menu-edges-light-320.png",
+    "docs/design-system/shared-feedback-menus/before/menu-edges-light-430.png",
+    "docs/design-system/shared-feedback-menus/before/menu-focused-dark-390.png",
+    "docs/design-system/shared-feedback-menus/before/menu-focused-light-390.png",
+    "docs/design-system/shared-feedback-menus/before/menu-large-dark-320.png",
+    "docs/design-system/shared-feedback-menus/before/menu-large-dark-390.png",
+    "docs/design-system/shared-feedback-menus/before/menu-large-dark-430.png",
+    "docs/design-system/shared-feedback-menus/before/menu-large-light-320.png",
+    "docs/design-system/shared-feedback-menus/before/menu-large-light-390.png",
+    "docs/design-system/shared-feedback-menus/before/menu-large-light-430.png",
+    "docs/design-system/shared-feedback-menus/before/menu-light-390.png",
+    "docs/design-system/shared-feedback-menus/before/menu-long-dark-390.png",
+    "docs/design-system/shared-feedback-menus/before/menu-long-light-390.png",
+    "docs/design-system/shared-feedback-menus/before/menu-pressed-dark-390.png",
+    "docs/design-system/shared-feedback-menus/before/menu-pressed-light-390.png",
+    "docs/design-system/shared-feedback-menus/before/refresh-dark-390.png",
+    "docs/design-system/shared-feedback-menus/before/refresh-light-390.png",
+    "docs/design-system/shared-feedback-menus/before/selection-dark-390.png",
+    "docs/design-system/shared-feedback-menus/before/selection-light-390.png",
+    "docs/design-system/shared-feedback-menus/before/tasks-dark-390.png",
+    "docs/design-system/shared-feedback-menus/before/tasks-light-390.png",
+    "docs/design-system/shared-feedback-menus/before/work-dark-390.png",
+    "docs/design-system/shared-feedback-menus/before/work-light-390.png",
+    "docs/design-system/shared-feedback-menus/index.html",
+    "docs/design-system/shared-feedback-menus/initial-state.json",
+    "docs/design-system/shared-feedback-menus/interaction-validation.json",
+    "docs/design-system/shared-feedback-menus/visual-comparison.json",
+    "scripts/audit-shared-feedback-menus.cjs",
+    "scripts/check-shared-feedback-menus.cjs",
+    "scripts/preview-shared-feedback-menus.ts",
+    "scripts/review-shared-feedback-menus.cjs",
+    "tests/shared-feedback-menus.test.ts"
+  ],
+  "nativeOwnersUnchanged": true,
+  "headerArchitectureUnchanged": true,
+  "selectionControllerUnchanged": true,
+  "actionCallbacksUnchanged": true,
+  "phase3BIFieldsUnchanged": true,
+  "callers": [
+    {
+      "file": "src/components/adaptive-sheet.tsx",
+      "line": 157,
+      "source": "<SheetRefreshNotice appearance={appearance} />"
+    },
+    {
+      "file": "src/components/autocomplete-field.tsx",
+      "line": 69,
+      "source": "<FormError appearance={appearance} message={error} />"
+    },
+    {
+      "file": "src/components/form-controls.tsx",
+      "line": 146,
+      "source": "<FormError appearance={appearance} message={error} />"
+    },
+    {
+      "file": "src/components/form-controls.tsx",
+      "line": 245,
+      "source": "<FormError appearance={visual} message={error ?? null} nativeID={visual === 'v2' ? errorId : undefined} />"
+    },
+    {
+      "file": "src/components/form-controls.tsx",
+      "line": 355,
+      "source": "<FormError appearance={appearance} message={error ?? null} nativeID={appearance === 'v2' ? errorId : undefined} />"
+    },
+    {
+      "file": "src/components/form-controls.tsx",
+      "line": 363,
+      "source": "return <StatusText tone=\"danger\" accessibilityRole=\"alert\" accessibilityLiveRegion=\"polite\">{message}</StatusText>;"
+    },
+    {
+      "file": "src/components/sheet-refresh-notice.tsx",
+      "line": 15,
+      "source": "<FormError appearance={appearance} message={status.error} />"
+    },
+    {
+      "file": "src/features/calendar/calendar-screen.tsx",
+      "line": 27,
+      "source": "<FormError appearance=\"v2\" message={calendar.error || calendar.actionError} />"
+    },
+    {
+      "file": "src/features/finance/commitments/components/commitment-card.tsx",
+      "line": 52,
+      "source": "{!!actions.length && <ContextMenu appearance=\"v2\" label={`Actions for ${subject}`} actions={actions} />}"
+    },
+    {
+      "file": "src/features/finance/commitments/components/commitment-details.tsx",
+      "line": 39,
+      "source": "<View style={styles.menu}><ContextMenu appearance=\"v2\" label={`Series options for ${props.data.commitment.title}`} actions={props.actions} /></View>"
+    },
+    {
+      "file": "src/features/finance/commitments/components/commitment-details.tsx",
+      "line": 69,
+      "source": "<FormError appearance=\"v2\" message={error} />"
+    },
+    {
+      "file": "src/features/finance/commitments/components/commitment-forms.tsx",
+      "line": 81,
+      "source": "<FormError appearance=\"v2\" message={error} />"
+    },
+    {
+      "file": "src/features/finance/commitments/components/commitment-forms.tsx",
+      "line": 146,
+      "source": "<FormError appearance=\"v2\" message={errorField ? null : error} />"
+    },
+    {
+      "file": "src/features/finance/commitments/components/commitment-forms.tsx",
+      "line": 206,
+      "source": "<FormError appearance=\"v2\" message={dateError ? null : error} />"
+    },
+    {
+      "file": "src/features/finance/commitments/components/commitment-history.tsx",
+      "line": 38,
+      "source": "<View style={styles.menu}><ContextMenu appearance=\"v2\" label={`Series options for ${props.data.commitment.title}`} actions={props.actions} /></View>"
+    },
+    {
+      "file": "src/features/finance/commitments/components/commitment-history.tsx",
+      "line": 56,
+      "source": "<FormError appearance=\"v2\" message={error} />"
+    },
+    {
+      "file": "src/features/finance/commitments/components/commitments-view.tsx",
+      "line": 114,
+      "source": "<StatusText tone=\"neutral\">{commitmentKindLabels[item.commitment.kind]} · {commitmentStatusLabel(item)}</StatusText>"
+    },
+    {
+      "file": "src/features/finance/commitments/components/commitments-view.tsx",
+      "line": 118,
+      "source": "{!historical && <ContextMenu label={`Series options for ${name}`} actions={seriesActions(item)} />}"
+    },
+    {
+      "file": "src/features/finance/commitments/components/commitments-view.tsx",
+      "line": 141,
+      "source": "<View style={stackCreation && styles.optionsEnd}><ContextMenu appearance=\"v2\" label=\"Commitment options\" onOpen={() => setError(null)} actions={["
+    },
+    {
+      "file": "src/features/finance/commitments/components/commitments-view.tsx",
+      "line": 150,
+      "source": "<FormError appearance={surface !== 'manage' ? 'v2' : undefined} message={error} />"
+    },
+    {
+      "file": "src/features/finance/components/category-manager.tsx",
+      "line": 114,
+      "source": "<FormError appearance=\"v2\" message={actionError} />"
+    },
+    {
+      "file": "src/features/finance/components/category-manager.tsx",
+      "line": 135,
+      "source": "{!item.isBuiltIn && item.deletedAt === null && <ContextMenu appearance=\"v2\" label={`Category options for ${item.name}`} actions={["
+    },
+    {
+      "file": "src/features/finance/components/transaction-create.tsx",
+      "line": 30,
+      "source": "return <SheetRefreshContext.Provider value={{ error, onRetry: reload }}>"
+    },
+    {
+      "file": "src/features/finance/components/transaction-create.tsx",
+      "line": 38,
+      "source": "</SheetRefreshContext.Provider>;"
+    },
+    {
+      "file": "src/features/finance/components/transaction-editor.tsx",
+      "line": 89,
+      "source": "<FormError appearance=\"v2\" message={errorField ? null : error} />"
+    },
+    {
+      "file": "src/features/finance/components/transaction-row.tsx",
+      "line": 39,
+      "source": "<ContextMenu appearance=\"v2\" label={`Transaction options for ${display.title}`} actions={linked ? ["
+    },
+    {
+      "file": "src/features/finance/components/transactions-content.tsx",
+      "line": 38,
+      "source": "<ContextMenu appearance=\"v2\" label=\"Transactions options\" disabled={!ready} actions={[{ label: 'Categories', onPress: onCategories }]} />"
+    },
+    {
+      "file": "src/features/finance/finance-screen.tsx",
+      "line": 113,
+      "source": "return <DesignProvider><SheetRefreshContext.Provider value={{ error, onRetry: reload }}>"
+    },
+    {
+      "file": "src/features/finance/finance-screen.tsx",
+      "line": 126,
+      "source": "<StatusText appearance={v2 ? 'v2' : undefined} tone=\"attention\" accessibilityRole=\"alert\" accessibilityLiveRegion=\"polite\" style={styles.noticeText}>{error}</StatusText>"
+    },
+    {
+      "file": "src/features/finance/finance-screen.tsx",
+      "line": 129,
+      "source": "<FormError appearance={v2 ? 'v2' : undefined} message={actionError} />"
+    },
+    {
+      "file": "src/features/finance/finance-screen.tsx",
+      "line": 182,
+      "source": "</SheetRefreshContext.Provider></DesignProvider>;"
+    },
+    {
+      "file": "src/features/finance/work/components/work-client-details.tsx",
+      "line": 60,
+      "source": "<FormError appearance=\"v2\" message={props.error} />"
+    },
+    {
+      "file": "src/features/finance/work/components/work-client-details.tsx",
+      "line": 114,
+      "source": "<ContextMenu appearance=\"v2\" label={`Client options for ${props.client!.name}`} actions={["
+    },
+    {
+      "file": "src/features/finance/work/components/work-clients.tsx",
+      "line": 56,
+      "source": "<FormError appearance=\"v2\" message={error} />"
+    },
+    {
+      "file": "src/features/finance/work/components/work-clients.tsx",
+      "line": 105,
+      "source": "<ContextMenu appearance=\"v2\" label={`Client options for ${client.name}`} actions={["
+    },
+    {
+      "file": "src/features/finance/work/components/work-forms.tsx",
+      "line": 84,
+      "source": "<FormError appearance=\"v2\" message={error} />"
+    },
+    {
+      "file": "src/features/finance/work/components/work-forms.tsx",
+      "line": 203,
+      "source": "<FormError appearance=\"v2\" message={error} />"
+    },
+    {
+      "file": "src/features/finance/work/components/work-history-cards.tsx",
+      "line": 70,
+      "source": "<ContextMenu appearance=\"v2\" label={`Receipt ${position} options for ${subject}`} actions={[{ label: 'Undo payment', accessibilityLabel: `Undo receipt ${position} for ${subject}`, onPress: onUndo }]} />"
+    },
+    {
+      "file": "src/features/finance/work/components/work-history-list.tsx",
+      "line": 66,
+      "source": "ListHeaderComponent: <View><FormError appearance=\"v2\" message={error ?? actionError ?? null} />"
+    },
+    {
+      "file": "src/features/finance/work/components/work-job-details.tsx",
+      "line": 33,
+      "source": "const options = props.item && <ContextMenu appearance=\"v2\" label={`Work options for ${title}`} actions={["
+    },
+    {
+      "file": "src/features/finance/work/components/work-job-details.tsx",
+      "line": 75,
+      "source": "<FormError appearance=\"v2\" message={props.error} />"
+    },
+    {
+      "file": "src/features/finance/work/components/work-job-details.tsx",
+      "line": 196,
+      "source": "<ContextMenu appearance=\"v2\" label={`Receipt ${position} options for ${subject}`} actions={[{ label: 'Undo payment', accessibilityLabel: `Undo receipt for ${subject}`, onPress: onUndo }]} />"
+    },
+    {
+      "file": "src/features/finance/work/components/work-main.tsx",
+      "line": 39,
+      "source": "<FormError appearance=\"v2\" message={error} />"
+    },
+    {
+      "file": "src/features/finance/work/components/work-main.tsx",
+      "line": 86,
+      "source": "<View style={stackPrimary && styles.optionsCorner}><ContextMenu appearance=\"v2\" label=\"Work options\" actions={[{ label: 'Clients', onPress: onClients }, { label: 'History', onPress: onHistory }]} /></View>"
+    },
+    {
+      "file": "src/features/finance/work/components/work-row.tsx",
+      "line": 30,
+      "source": "<StatusText tone={item.overdue ? 'attention' : item.outstandingMinor === 0 ? 'subdued' : 'neutral'}>{state}{entry.expectedPaymentDate ? ` · Expected ${dateLabel(entry.expectedPaymentDate)}` : ''}</StatusText>"
+    },
+    {
+      "file": "src/features/finance/work/work-management-screen.tsx",
+      "line": 30,
+      "source": "return <DesignProvider><SheetRefreshContext.Provider value={{ error, onRetry: reload }}>"
+    },
+    {
+      "file": "src/features/finance/work/work-management-screen.tsx",
+      "line": 40,
+      "source": "{!!error && <View style={styles.notice}><StatusText appearance=\"v2\" tone=\"attention\" accessibilityRole=\"alert\">{error}</StatusText><FormButton appearance=\"v2\" variant=\"quiet\" label=\"Retry\" onPress={reload} /></View>}"
+    },
+    {
+      "file": "src/features/finance/work/work-management-screen.tsx",
+      "line": 45,
+      "source": "</SheetRefreshContext.Provider></DesignProvider>;"
+    },
+    {
+      "file": "src/features/fitness/components/active-workout-header.tsx",
+      "line": 35,
+      "source": "<ContextMenu appearance=\"v2\" label=\"More workout actions\" actions={["
+    },
+    {
+      "file": "src/features/fitness/components/exercises-content.tsx",
+      "line": 36,
+      "source": "{!exercise.isBuiltIn && !archived && <ContextMenu appearance=\"v2\" label={`Options for ${exercise.name}`} actions={["
+    },
+    {
+      "file": "src/features/fitness/components/fitness-forms.tsx",
+      "line": 47,
+      "source": "<FormError appearance={appearance} message={submit.error} />"
+    },
+    {
+      "file": "src/features/fitness/components/fitness-forms.tsx",
+      "line": 150,
+      "source": "{!!submit.error && <View style={styles.saveError}><FormError appearance=\"v2\" message={submit.error} /></View>}</View>}"
+    },
+    {
+      "file": "src/features/fitness/components/fitness-forms.tsx",
+      "line": 188,
+      "source": "<FormError message={submit.error} />"
+    },
+    {
+      "file": "src/features/fitness/components/fitness-forms.tsx",
+      "line": 204,
+      "source": "<FormError message={submit.error || error || null} />"
+    },
+    {
+      "file": "src/features/fitness/components/fitness-forms.tsx",
+      "line": 220,
+      "source": "<FormError message={submit.error} />"
+    },
+    {
+      "file": "src/features/fitness/components/routines-content.tsx",
+      "line": 23,
+      "source": "<ContextMenu appearance=\"v2\" label={`Options for ${routine.name}`} actions={["
+    },
+    {
+      "file": "src/features/fitness/components/workout-content.tsx",
+      "line": 45,
+      "source": "<View style={styles.exerciseMenu}><ContextMenu appearance=\"v2\" label={`More actions for ${exercise.exerciseName}`} actions={["
+    },
+    {
+      "file": "src/features/fitness/components/workout-sheet.tsx",
+      "line": 32,
+      "source": "<FormError appearance=\"v2\" message={error} />"
+    },
+    {
+      "file": "src/features/fitness/fitness-screen.tsx",
+      "line": 148,
+      "source": "return <DesignProvider><SheetRefreshContext.Provider value={{ error: fitness.error, onRetry: fitness.reload }}>"
+    },
+    {
+      "file": "src/features/fitness/fitness-screen.tsx",
+      "line": 153,
+      "source": "<FormError appearance={v2Library ? 'v2' : undefined} message={fitness.error || actionError} />"
+    },
+    {
+      "file": "src/features/fitness/fitness-screen.tsx",
+      "line": 205,
+      "source": "<FormError message={fitness.error} /><FormButton label=\"Close\" onPress={close} /><FormButton label=\"Retry\" onPress={fitness.reload} />"
+    },
+    {
+      "file": "src/features/fitness/fitness-screen.tsx",
+      "line": 208,
+      "source": "</SheetRefreshContext.Provider></DesignProvider>;"
+    },
+    {
+      "file": "src/features/fitness/rotations-screen.tsx",
+      "line": 44,
+      "source": "menu={<ContextMenu appearance=\"v2\" label={`Options for ${rotation.name}`} actions={["
+    },
+    {
+      "file": "src/features/fitness/rotations-screen.tsx",
+      "line": 71,
+      "source": "<FormError message={error} appearance=\"v2\" />{error && <FormButton appearance=\"v2\" variant=\"quiet\" label=\"Retry\" onPress={onRetry} />}"
+    },
+    {
+      "file": "src/features/fitness/rotations-screen.tsx",
+      "line": 148,
+      "source": "<FormError message={error} appearance=\"v2\" />"
+    },
+    {
+      "file": "src/features/fitness/rotations-screen.tsx",
+      "line": 189,
+      "source": "<View style={[styles.inner, { paddingHorizontal: Space.md }]}><FormError message={fitness.error} appearance=\"v2\" />"
+    },
+    {
+      "file": "src/features/fitness/rotations-screen.tsx",
+      "line": 193,
+      "source": ": id && !rotation ? <FormError message=\"This rotation is no longer available.\" />"
+    },
+    {
+      "file": "src/features/home/home-screen.tsx",
+      "line": 31,
+      "source": "<FormError appearance=\"v2\" message={home.error || home.actionError} />"
+    },
+    {
+      "file": "src/features/journal/components/journal-context.tsx",
+      "line": 42,
+      "source": "<FormError appearance=\"v2\" message={error} />"
+    },
+    {
+      "file": "src/features/journal/components/journal-date.tsx",
+      "line": 44,
+      "source": "<FormError appearance=\"v2\" message={error} />"
+    },
+    {
+      "file": "src/features/journal/components/journal-editor.tsx",
+      "line": 24,
+      "source": "<FormError appearance=\"v2\" message={state.error} />"
+    },
+    {
+      "file": "src/features/journal/components/journal-editor.tsx",
+      "line": 25,
+      "source": "<FormError appearance=\"v2\" message={state.recoveryError} />"
+    },
+    {
+      "file": "src/features/journal/components/journal-history.tsx",
+      "line": 19,
+      "source": "<FormError appearance=\"v2\" message={error} />"
+    },
+    {
+      "file": "src/features/journal/journal-screen.tsx",
+      "line": 85,
+      "source": "options={<ContextMenu appearance=\"v2\" label=\"Journal options\" actions={["
+    },
+    {
+      "file": "src/features/journal/journal-screen.tsx",
+      "line": 97,
+      "source": "<FormError appearance=\"v2\" message={journal.state.error} />"
+    },
+    {
+      "file": "src/features/source-screen.tsx",
+      "line": 12,
+      "source": "if (!request) return <FormError message={`This ${origin} item is no longer available.`} />;"
+    },
+    {
+      "file": "src/features/tasks/components/category-manager.tsx",
+      "line": 42,
+      "source": "<ContextMenu appearance=\"v2\" label={`Actions for category ${category.name}`} actions={["
+    },
+    {
+      "file": "src/features/tasks/components/occurrence-history.tsx",
+      "line": 73,
+      "source": "<StatusText type=\"metadata\" tone={row.attention ? 'attention' : row.resolved || entry.deletedAt !== null ? 'subdued' : 'neutral'}>{row.historyOutcome}{entry.deletedAt !== null ? ' · Previous schedule' : ''}</StatusText>"
+    },
+    {
+      "file": "src/features/tasks/components/recurring-tasks.tsx",
+      "line": 71,
+      "source": "<ContextMenu appearance=\"v2\" label={`Options for repeating task ${task.title}`} actions={["
+    },
+    {
+      "file": "src/features/tasks/components/task-actions.tsx",
+      "line": 20,
+      "source": "<FormError message={error} />"
+    },
+    {
+      "file": "src/features/tasks/components/task-actions.tsx",
+      "line": 24,
+      "source": "<StatusText tone={row.attention ? 'attention' : row.resolved ? 'subdued' : 'neutral'}>{row.outcome}</StatusText>"
+    },
+    {
+      "file": "src/features/tasks/components/task-history-list.tsx",
+      "line": 59,
+      "source": "<ContextMenu appearance=\"v2\" label={`Actions for ${row.actionSubject}`} actions={["
+    },
+    {
+      "file": "src/features/tasks/components/task-options.tsx",
+      "line": 10,
+      "source": "return <View style={{ borderRadius: 24, backgroundColor: colors.control }}><ContextMenu label=\"Task options\" appearance=\"v2\" disabled={disabled} onOpen={onOpen} actions={["
+    },
+    {
+      "file": "src/features/tasks/components/task-row.tsx",
+      "line": 43,
+      "source": "{!!row.statusLabel && <StatusText type=\"metadata\" tone={row.attention ? 'attention' : 'subdued'}>{row.statusLabel}</StatusText>}"
+    },
+    {
+      "file": "src/features/tasks/tasks-screen.tsx",
+      "line": 153,
+      "source": "return <DesignProvider><SheetRefreshContext.Provider value={{ error, onRetry: reload }}>"
+    },
+    {
+      "file": "src/features/tasks/tasks-screen.tsx",
+      "line": 189,
+      "source": "</SheetRefreshContext.Provider></DesignProvider>;"
+    }
+  ],
+  "contrasts": [
+    {
+      "mode": "dark",
+      "foreground": "textPrimary",
+      "background": "surfaceRaised",
+      "foregroundHex": "#F6F0ED",
+      "backgroundHex": "#2B2429",
+      "ratio": 13.413343747885252,
+      "min": 4.5
+    },
+    {
+      "mode": "dark",
+      "foreground": "textSecondary",
+      "background": "canvas",
+      "foregroundHex": "#C9BDB8",
+      "backgroundHex": "#151315",
+      "ratio": 10.084555815264721,
+      "min": 4.5
+    },
+    {
+      "mode": "dark",
+      "foreground": "textMuted",
+      "background": "canvas",
+      "foregroundHex": "#AFA39E",
+      "backgroundHex": "#151315",
+      "ratio": 7.532061776473414,
+      "min": 4.5
+    },
+    {
+      "mode": "dark",
+      "foreground": "success",
+      "background": "canvas",
+      "foregroundHex": "#A8D0B7",
+      "backgroundHex": "#151315",
+      "ratio": 10.891358390773972,
+      "min": 4.5
+    },
+    {
+      "mode": "dark",
+      "foreground": "attention",
+      "background": "canvas",
+      "foregroundHex": "#DFC18B",
+      "backgroundHex": "#151315",
+      "ratio": 10.68649313441178,
+      "min": 4.5
+    },
+    {
+      "mode": "dark",
+      "foreground": "danger",
+      "background": "canvas",
+      "foregroundHex": "#F0ABAB",
+      "backgroundHex": "#151315",
+      "ratio": 9.788387866653473,
+      "min": 4.5
+    },
+    {
+      "mode": "dark",
+      "foreground": "info",
+      "background": "canvas",
+      "foregroundHex": "#B4CEE8",
+      "backgroundHex": "#151315",
+      "ratio": 11.387303280705531,
+      "min": 4.5
+    },
+    {
+      "mode": "dark",
+      "foreground": "danger",
+      "background": "dangerSoft",
+      "foregroundHex": "#F0ABAB",
+      "backgroundHex": "#432A30",
+      "ratio": 6.894949008814528,
+      "min": 4.5
+    },
+    {
+      "mode": "dark",
+      "foreground": "textDisabled",
+      "background": "inset",
+      "foregroundHex": "#AFA39E",
+      "backgroundHex": "#191619",
+      "ratio": 7.311453510280605,
+      "min": 4.5
+    },
+    {
+      "mode": "dark",
+      "foreground": "brandFocus",
+      "background": "surfaceRaised",
+      "foregroundHex": "#E7AA8B",
+      "backgroundHex": "#2B2429",
+      "ratio": 7.584588798709855,
+      "min": 3
+    },
+    {
+      "mode": "dark",
+      "foreground": "controlBorder",
+      "background": "surfaceRaised",
+      "foregroundHex": "#95828E",
+      "backgroundHex": "#2B2429",
+      "ratio": 4.225805657560941,
+      "min": 3
+    },
+    {
+      "mode": "light",
+      "foreground": "textPrimary",
+      "background": "surfaceRaised",
+      "foregroundHex": "#241E1C",
+      "backgroundHex": "#FFFCF8",
+      "ratio": 16.07183467732177,
+      "min": 4.5
+    },
+    {
+      "mode": "light",
+      "foreground": "textSecondary",
+      "background": "canvas",
+      "foregroundHex": "#6A5E59",
+      "backgroundHex": "#F5F0EA",
+      "ratio": 5.519266832234576,
+      "min": 4.5
+    },
+    {
+      "mode": "light",
+      "foreground": "textMuted",
+      "background": "canvas",
+      "foregroundHex": "#746660",
+      "backgroundHex": "#F5F0EA",
+      "ratio": 4.862110848937048,
+      "min": 4.5
+    },
+    {
+      "mode": "light",
+      "foreground": "success",
+      "background": "canvas",
+      "foregroundHex": "#32664E",
+      "backgroundHex": "#F5F0EA",
+      "ratio": 5.891150864821416,
+      "min": 4.5
+    },
+    {
+      "mode": "light",
+      "foreground": "attention",
+      "background": "canvas",
+      "foregroundHex": "#805619",
+      "backgroundHex": "#F5F0EA",
+      "ratio": 5.680257609330442,
+      "min": 4.5
+    },
+    {
+      "mode": "light",
+      "foreground": "danger",
+      "background": "canvas",
+      "foregroundHex": "#9B303E",
+      "backgroundHex": "#F5F0EA",
+      "ratio": 6.422137728381202,
+      "min": 4.5
+    },
+    {
+      "mode": "light",
+      "foreground": "info",
+      "background": "canvas",
+      "foregroundHex": "#3D5E86",
+      "backgroundHex": "#F5F0EA",
+      "ratio": 5.895713132207064,
+      "min": 4.5
+    },
+    {
+      "mode": "light",
+      "foreground": "danger",
+      "background": "dangerSoft",
+      "foregroundHex": "#9B303E",
+      "backgroundHex": "#F6E2E5",
+      "ratio": 5.865635153168047,
+      "min": 4.5
+    },
+    {
+      "mode": "light",
+      "foreground": "textDisabled",
+      "background": "inset",
+      "foregroundHex": "#746660",
+      "backgroundHex": "#F0E9E5",
+      "ratio": 4.588613621613323,
+      "min": 4.5
+    },
+    {
+      "mode": "light",
+      "foreground": "brandFocus",
+      "background": "surfaceRaised",
+      "foregroundHex": "#874833",
+      "backgroundHex": "#FFFCF8",
+      "ratio": 6.832649540866528,
+      "min": 3
+    },
+    {
+      "mode": "light",
+      "foreground": "controlBorder",
+      "background": "surfaceRaised",
+      "foregroundHex": "#9B837B",
+      "backgroundHex": "#FFFCF8",
+      "ratio": 3.4645252799392496,
+      "min": 3
+    }
+  ],
+  "geometry": [
+    {
+      "phase": "before",
+      "capture": "refresh-dark-390.png",
+      "action": {
+        "x": 16,
+        "y": 685,
+        "width": 358,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "color": "rgb(237, 243, 239)"
+      },
+      "panel": null
+    },
+    {
+      "phase": "before",
+      "capture": "refresh-light-390.png",
+      "action": {
+        "x": 16,
+        "y": 685,
+        "width": 358,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "color": "rgb(23, 33, 29)"
+      },
+      "panel": null
+    },
+    {
+      "phase": "before",
+      "capture": "menu-dark-390.png",
+      "action": {
+        "x": 143,
+        "y": 181,
+        "width": 222,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "color": "rgb(240, 171, 171)"
+      },
+      "panel": {
+        "x": 134,
+        "y": 68,
+        "width": 240,
+        "height": 170,
+        "background": "rgb(27, 24, 26)",
+        "border": "rgb(149, 130, 142)"
+      }
+    },
+    {
+      "phase": "before",
+      "capture": "menu-light-390.png",
+      "action": {
+        "x": 143,
+        "y": 181,
+        "width": 222,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "color": "rgb(155, 48, 62)"
+      },
+      "panel": {
+        "x": 134,
+        "y": 68,
+        "width": 240,
+        "height": 170,
+        "background": "rgb(255, 252, 248)",
+        "border": "rgb(155, 131, 123)"
+      }
+    },
+    {
+      "phase": "before",
+      "capture": "legacy-menu-dark-390.png",
+      "action": {
+        "x": 143,
+        "y": 169,
+        "width": 222,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "color": "rgb(240, 171, 171)"
+      },
+      "panel": {
+        "x": 134,
+        "y": 64,
+        "width": 240,
+        "height": 158,
+        "background": "rgb(40, 49, 45)",
+        "border": "rgb(129, 150, 138)"
+      }
+    },
+    {
+      "phase": "before",
+      "capture": "legacy-menu-light-390.png",
+      "action": {
+        "x": 143,
+        "y": 169,
+        "width": 222,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "color": "rgb(165, 53, 53)"
+      },
+      "panel": {
+        "x": 134,
+        "y": 64,
+        "width": 240,
+        "height": 158,
+        "background": "rgb(255, 255, 255)",
+        "border": "rgb(119, 133, 124)"
+      }
+    },
+    {
+      "phase": "before",
+      "capture": "menu-large-dark-320.png",
+      "action": {
+        "x": 17,
+        "y": 429,
+        "width": 286,
+        "height": 62,
+        "font": "AxisManrope-SemiBold",
+        "color": "rgb(240, 171, 171)"
+      },
+      "panel": {
+        "x": 8,
+        "y": 68,
+        "width": 304,
+        "height": 432,
+        "background": "rgb(27, 24, 26)",
+        "border": "rgb(149, 130, 142)"
+      }
+    },
+    {
+      "phase": "before",
+      "capture": "menu-large-light-320.png",
+      "action": {
+        "x": 17,
+        "y": 429,
+        "width": 286,
+        "height": 62,
+        "font": "AxisManrope-SemiBold",
+        "color": "rgb(155, 48, 62)"
+      },
+      "panel": {
+        "x": 8,
+        "y": 68,
+        "width": 304,
+        "height": 432,
+        "background": "rgb(255, 252, 248)",
+        "border": "rgb(155, 131, 123)"
+      }
+    },
+    {
+      "phase": "before",
+      "capture": "menu-large-dark-390.png",
+      "action": {
+        "x": 17,
+        "y": 297,
+        "width": 356,
+        "height": 62,
+        "font": "AxisManrope-SemiBold",
+        "color": "rgb(240, 171, 171)"
+      },
+      "panel": {
+        "x": 8,
+        "y": 68,
+        "width": 374,
+        "height": 300,
+        "background": "rgb(27, 24, 26)",
+        "border": "rgb(149, 130, 142)"
+      }
+    },
+    {
+      "phase": "before",
+      "capture": "menu-large-light-390.png",
+      "action": {
+        "x": 17,
+        "y": 297,
+        "width": 356,
+        "height": 62,
+        "font": "AxisManrope-SemiBold",
+        "color": "rgb(155, 48, 62)"
+      },
+      "panel": {
+        "x": 8,
+        "y": 68,
+        "width": 374,
+        "height": 300,
+        "background": "rgb(255, 252, 248)",
+        "border": "rgb(155, 131, 123)"
+      }
+    },
+    {
+      "phase": "before",
+      "capture": "menu-large-dark-430.png",
+      "action": {
+        "x": 17,
+        "y": 297,
+        "width": 396,
+        "height": 62,
+        "font": "AxisManrope-SemiBold",
+        "color": "rgb(240, 171, 171)"
+      },
+      "panel": {
+        "x": 8,
+        "y": 68,
+        "width": 414,
+        "height": 300,
+        "background": "rgb(27, 24, 26)",
+        "border": "rgb(149, 130, 142)"
+      }
+    },
+    {
+      "phase": "before",
+      "capture": "menu-large-light-430.png",
+      "action": {
+        "x": 17,
+        "y": 297,
+        "width": 396,
+        "height": 62,
+        "font": "AxisManrope-SemiBold",
+        "color": "rgb(155, 48, 62)"
+      },
+      "panel": {
+        "x": 8,
+        "y": 68,
+        "width": 414,
+        "height": 300,
+        "background": "rgb(255, 252, 248)",
+        "border": "rgb(155, 131, 123)"
+      }
+    },
+    {
+      "phase": "after",
+      "capture": "refresh-dark-390.png",
+      "action": {
+        "x": 16,
+        "y": 681,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "color": "rgb(246, 240, 237)"
+      },
+      "panel": null
+    },
+    {
+      "phase": "after",
+      "capture": "refresh-light-390.png",
+      "action": {
+        "x": 16,
+        "y": 681,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "color": "rgb(36, 30, 28)"
+      },
+      "panel": null
+    },
+    {
+      "phase": "after",
+      "capture": "menu-dark-390.png",
+      "action": {
+        "x": 143,
+        "y": 181,
+        "width": 222,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "color": "rgb(240, 171, 171)"
+      },
+      "panel": {
+        "x": 134,
+        "y": 68,
+        "width": 240,
+        "height": 170,
+        "background": "rgb(43, 36, 41)",
+        "border": "rgb(149, 130, 142)"
+      }
+    },
+    {
+      "phase": "after",
+      "capture": "menu-light-390.png",
+      "action": {
+        "x": 143,
+        "y": 181,
+        "width": 222,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "color": "rgb(155, 48, 62)"
+      },
+      "panel": {
+        "x": 134,
+        "y": 68,
+        "width": 240,
+        "height": 170,
+        "background": "rgb(255, 252, 248)",
+        "border": "rgb(155, 131, 123)"
+      }
+    },
+    {
+      "phase": "after",
+      "capture": "legacy-menu-dark-390.png",
+      "action": {
+        "x": 143,
+        "y": 169,
+        "width": 222,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "color": "rgb(240, 171, 171)"
+      },
+      "panel": {
+        "x": 134,
+        "y": 64,
+        "width": 240,
+        "height": 158,
+        "background": "rgb(40, 49, 45)",
+        "border": "rgb(129, 150, 138)"
+      }
+    },
+    {
+      "phase": "after",
+      "capture": "legacy-menu-light-390.png",
+      "action": {
+        "x": 143,
+        "y": 169,
+        "width": 222,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "color": "rgb(165, 53, 53)"
+      },
+      "panel": {
+        "x": 134,
+        "y": 64,
+        "width": 240,
+        "height": 158,
+        "background": "rgb(255, 255, 255)",
+        "border": "rgb(119, 133, 124)"
+      }
+    },
+    {
+      "phase": "after",
+      "capture": "menu-large-dark-320.png",
+      "action": {
+        "x": 17,
+        "y": 429,
+        "width": 286,
+        "height": 62,
+        "font": "AxisManrope-SemiBold",
+        "color": "rgb(240, 171, 171)"
+      },
+      "panel": {
+        "x": 8,
+        "y": 68,
+        "width": 304,
+        "height": 432,
+        "background": "rgb(43, 36, 41)",
+        "border": "rgb(149, 130, 142)"
+      }
+    },
+    {
+      "phase": "after",
+      "capture": "menu-large-light-320.png",
+      "action": {
+        "x": 17,
+        "y": 429,
+        "width": 286,
+        "height": 62,
+        "font": "AxisManrope-SemiBold",
+        "color": "rgb(155, 48, 62)"
+      },
+      "panel": {
+        "x": 8,
+        "y": 68,
+        "width": 304,
+        "height": 432,
+        "background": "rgb(255, 252, 248)",
+        "border": "rgb(155, 131, 123)"
+      }
+    },
+    {
+      "phase": "after",
+      "capture": "menu-large-dark-390.png",
+      "action": {
+        "x": 17,
+        "y": 297,
+        "width": 356,
+        "height": 62,
+        "font": "AxisManrope-SemiBold",
+        "color": "rgb(240, 171, 171)"
+      },
+      "panel": {
+        "x": 8,
+        "y": 68,
+        "width": 374,
+        "height": 300,
+        "background": "rgb(43, 36, 41)",
+        "border": "rgb(149, 130, 142)"
+      }
+    },
+    {
+      "phase": "after",
+      "capture": "menu-large-light-390.png",
+      "action": {
+        "x": 17,
+        "y": 297,
+        "width": 356,
+        "height": 62,
+        "font": "AxisManrope-SemiBold",
+        "color": "rgb(155, 48, 62)"
+      },
+      "panel": {
+        "x": 8,
+        "y": 68,
+        "width": 374,
+        "height": 300,
+        "background": "rgb(255, 252, 248)",
+        "border": "rgb(155, 131, 123)"
+      }
+    },
+    {
+      "phase": "after",
+      "capture": "menu-large-dark-430.png",
+      "action": {
+        "x": 17,
+        "y": 297,
+        "width": 396,
+        "height": 62,
+        "font": "AxisManrope-SemiBold",
+        "color": "rgb(240, 171, 171)"
+      },
+      "panel": {
+        "x": 8,
+        "y": 68,
+        "width": 414,
+        "height": 300,
+        "background": "rgb(43, 36, 41)",
+        "border": "rgb(149, 130, 142)"
+      }
+    },
+    {
+      "phase": "after",
+      "capture": "menu-large-light-430.png",
+      "action": {
+        "x": 17,
+        "y": 297,
+        "width": 396,
+        "height": 62,
+        "font": "AxisManrope-SemiBold",
+        "color": "rgb(155, 48, 62)"
+      },
+      "panel": {
+        "x": 8,
+        "y": 68,
+        "width": 414,
+        "height": 300,
+        "background": "rgb(255, 252, 248)",
+        "border": "rgb(155, 131, 123)"
+      }
+    }
+  ],
+  "eslint": {
+    "baseline": [
+      {
+        "file": "tests\\context-menu.test.ts",
+        "rule": "react/no-children-prop",
+        "line": 93,
+        "severity": 2,
+        "message": "Do not pass children as props. Instead, pass them as additional arguments to React.createElement."
+      },
+      {
+        "file": "tests\\context-menu.test.ts",
+        "rule": "react/no-children-prop",
+        "line": 104,
+        "severity": 2,
+        "message": "Do not pass children as props. Instead, pass them as additional arguments to React.createElement."
+      },
+      {
+        "file": "tests\\context-menu.test.ts",
+        "rule": "react/no-children-prop",
+        "line": 115,
+        "severity": 2,
+        "message": "Do not pass children as props. Instead, pass them as additional arguments to React.createElement."
+      },
+      {
+        "file": "tests\\navigation-conventions.test.ts",
+        "rule": "react/no-children-prop",
+        "line": 92,
+        "severity": 2,
+        "message": "Do not pass children as props. Instead, pass them as additional arguments to React.createElement."
+      },
+      {
+        "file": "tests\\navigation-conventions.test.ts",
+        "rule": "react/no-children-prop",
+        "line": 93,
+        "severity": 2,
+        "message": "Do not pass children as props. Instead, pass them as additional arguments to React.createElement."
+      },
+      {
+        "file": "tests\\tasks-experience.test.ts",
+        "rule": "@typescript-eslint/no-unused-vars",
+        "line": 16,
+        "severity": 1,
+        "message": "'recurrencePatternSummary' is defined but never used."
+      },
+      {
+        "file": "tests\\tasks-experience.test.ts",
+        "rule": "@typescript-eslint/no-unused-vars",
+        "line": 114,
+        "severity": 1,
+        "message": "'id' is assigned a value but never used."
+      },
+      {
+        "file": "tests\\transactions-experience.test.ts",
+        "rule": "react/no-children-prop",
+        "line": 172,
+        "severity": 2,
+        "message": "Do not pass children as props. Instead, pass them as additional arguments to React.createElement."
+      }
+    ],
+    "final": [
+      {
+        "file": "tests\\context-menu.test.ts",
+        "rule": "react/no-children-prop",
+        "line": 93,
+        "severity": 2,
+        "message": "Do not pass children as props. Instead, pass them as additional arguments to React.createElement."
+      },
+      {
+        "file": "tests\\context-menu.test.ts",
+        "rule": "react/no-children-prop",
+        "line": 104,
+        "severity": 2,
+        "message": "Do not pass children as props. Instead, pass them as additional arguments to React.createElement."
+      },
+      {
+        "file": "tests\\context-menu.test.ts",
+        "rule": "react/no-children-prop",
+        "line": 115,
+        "severity": 2,
+        "message": "Do not pass children as props. Instead, pass them as additional arguments to React.createElement."
+      },
+      {
+        "file": "tests\\navigation-conventions.test.ts",
+        "rule": "react/no-children-prop",
+        "line": 92,
+        "severity": 2,
+        "message": "Do not pass children as props. Instead, pass them as additional arguments to React.createElement."
+      },
+      {
+        "file": "tests\\navigation-conventions.test.ts",
+        "rule": "react/no-children-prop",
+        "line": 93,
+        "severity": 2,
+        "message": "Do not pass children as props. Instead, pass them as additional arguments to React.createElement."
+      },
+      {
+        "file": "tests\\tasks-experience.test.ts",
+        "rule": "@typescript-eslint/no-unused-vars",
+        "line": 16,
+        "severity": 1,
+        "message": "'recurrencePatternSummary' is defined but never used."
+      },
+      {
+        "file": "tests\\tasks-experience.test.ts",
+        "rule": "@typescript-eslint/no-unused-vars",
+        "line": 114,
+        "severity": 1,
+        "message": "'id' is assigned a value but never used."
+      },
+      {
+        "file": "tests\\transactions-experience.test.ts",
+        "rule": "react/no-children-prop",
+        "line": 172,
+        "severity": 2,
+        "message": "Do not pass children as props. Instead, pass them as additional arguments to React.createElement."
+      }
+    ],
+    "newDiagnostics": 0
+  },
+  "staged": "",
+  "gitStatus": " M src/components/adaptive-sheet.tsx\n M src/components/context-menu.tsx\n M src/components/control-appearance.ts\n M src/components/design-system.tsx\n M src/components/floating-add-button.tsx\n M src/components/form-controls.tsx\n M src/components/form-selection-host.tsx\n M src/components/internal-navigation.tsx\n M src/components/sheet-refresh-notice.tsx\n M src/components/status-text.tsx\n M src/constants/design-system-v2.ts\n M src/features/calendar/components/month-chooser.tsx\n M src/features/finance/commitments/components/commitment-history.tsx\n M src/features/finance/components/cash-flow-chart.tsx\n M src/features/finance/components/expense-donut-chart.tsx\n M src/features/finance/components/finance-dashboard.tsx\n M src/features/finance/components/transaction-row.tsx\n M src/features/finance/finance-screen.tsx\n M src/features/finance/overview-presentation.ts\n M src/features/finance/work/components/work-client-details.tsx\n M src/features/finance/work/components/work-history-cards.tsx\n M src/features/finance/work/components/work-view.tsx\n M src/features/finance/work/work-management-screen.tsx\n M src/features/fitness/components/history-content.tsx\n M src/features/journal/components/journal-date.tsx\n M src/features/journal/components/journal-leave.tsx\n M src/features/tasks/components/floating-add-task.tsx\n M src/features/tasks/components/task-editor.tsx\n M src/features/tasks/components/task-list-row.tsx\n M src/features/tasks/components/task-section.tsx\n M src/features/tasks/components/task-workspace-list.tsx\n M src/features/tasks/tasks-screen.tsx\n M tests/design-system-v2.test.ts\n M tests/finance-overview-v2.test.ts\n M tests/finance-overview.test.ts\n?? docs/design-system/\n?? scripts/audit-shared-controls-inputs.cjs\n?? scripts/audit-shared-feedback-menus.cjs\n?? scripts/audit-shared-sheets-headers.cjs\n?? scripts/audit-soft-copper-cutover.ts\n?? scripts/audit-visual-unification.cjs\n?? scripts/build-palette-specimens.cjs\n?? scripts/build-soft-copper-specification.cjs\n?? scripts/capture-visual-audit.cjs\n?? scripts/check-shared-controls-inputs.cjs\n?? scripts/check-shared-feedback-menus.cjs\n?? scripts/check-shared-sheets-headers.cjs\n?? scripts/preview-shared-controls-inputs.ts\n?? scripts/preview-shared-feedback-menus.ts\n?? scripts/preview-shared-sheets-headers.ts\n?? scripts/preview-soft-copper-controls.ts\n?? scripts/preview-visual-audit-auxiliary.ts\n?? scripts/review-shared-controls-inputs.cjs\n?? scripts/review-shared-feedback-menus.cjs\n?? scripts/review-shared-sheets-headers.cjs\n?? scripts/review-soft-copper-cutover.cjs\n?? scripts/review-theme-readiness.cjs\n?? tests/helpers/soft-copper-contrast.ts\n?? tests/shared-controls-inputs.test.ts\n?? tests/shared-feedback-menus.test.ts\n?? tests/shared-sheets-headers.test.ts\n?? tests/soft-copper-buttons.test.ts\n?? tests/soft-copper-semantics.test.ts\n?? tests/soft-copper-tokens.test.ts\n?? tests/theme-mode.test.ts\n"
+}

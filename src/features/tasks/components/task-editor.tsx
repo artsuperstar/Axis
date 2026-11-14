@@ -176,7 +176,7 @@ export function TaskEditor({ task, recurrence, categories, onSave, onCreateCateg
     </View>
   </View>;
   const pickerControls = picker && Platform.OS === 'ios' ? <>
-    <PickerBackHeader appearance={editingRecurrence ? appearance : undefined} title={picker === 'end' ? 'End date' : picker === 'date' ? 'Date' : 'Time'} onBack={() => setPicker(null)} />
+    <PickerBackHeader appearance={appearance} title={picker === 'end' ? 'End date' : picker === 'date' ? 'Date' : 'Time'} onBack={() => setPicker(null)} />
     <DateTimePicker value={picker === 'end' ? pickerValue(draft.recurrence?.endDate || draft.date) : pickerValue(draft.date, draft.time)}
       mode={picker === 'end' ? 'date' : picker} display="spinner" themeVariant={scheme === 'dark' ? 'dark' : 'light'}
       onValueChange={(_event, selected) => pickerChange(picker, selected)} />

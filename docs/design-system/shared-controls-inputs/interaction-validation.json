@@ -1,0 +1,3483 @@
+{
+  "scope": "RNWeb actual shared components; synthetic data; native keyboard and assistive technology still require devices",
+  "checks": [
+    {
+      "theme": "dark",
+      "family": "inputs",
+      "result": "Editable typing, linked error, simultaneous focus/invalid and textarea minimum passed",
+      "invalidState": {
+        "invalid": "true",
+        "error": "Review this value.",
+        "border": "rgb(240, 171, 171)",
+        "outline": "2px"
+      }
+    },
+    {
+      "theme": "dark",
+      "family": "readonly",
+      "result": "Actual values retained; read-only and disabled semantics remain different"
+    },
+    {
+      "theme": "dark",
+      "family": "select",
+      "result": "One owner; arrows/End/Tab loop, Escape focus return, saved long value, inline create and cancel passed"
+    },
+    {
+      "theme": "dark",
+      "family": "autocomplete",
+      "result": "Empty search, no matches, create, existing selection, one overlay, dismissal and focus return passed; fixture callbacks only",
+      "inputEscapeCloses": false,
+      "limitation": "RNWeb TextInput stops key propagation; existing host document listener does not receive Escape while typing. Host and autocomplete interaction code are unchanged. Revisit in 3B-S."
+    },
+    {
+      "theme": "dark",
+      "family": "selection",
+      "result": "Focus does not select; Enter activates; weekday full accessible names and checked state retained"
+    },
+    {
+      "theme": "dark",
+      "family": "layout",
+      "width": 320,
+      "fontScale": 1,
+      "result": "No horizontal document overflow; every selection/navigation target >=48x48",
+      "targets": [
+        {
+          "label": "Commitment type: Bill",
+          "width": 90,
+          "height": 62
+        },
+        {
+          "label": "Commitment type: Subscription",
+          "width": 90,
+          "height": 62
+        },
+        {
+          "label": "Commitment type: Installment",
+          "width": 90,
+          "height": 62
+        },
+        {
+          "label": "Selected choice",
+          "width": 288,
+          "height": 48
+        },
+        {
+          "label": "Other choice",
+          "width": 288,
+          "height": 48
+        },
+        {
+          "label": "Monday",
+          "width": 85.125,
+          "height": 48
+        },
+        {
+          "label": "Tuesday",
+          "width": 60.484375,
+          "height": 48
+        },
+        {
+          "label": "Wednesday",
+          "width": 65.625,
+          "height": 48
+        },
+        {
+          "label": "Thursday",
+          "width": 61.515625,
+          "height": 48
+        },
+        {
+          "label": "Friday",
+          "width": 51.515625,
+          "height": 48
+        },
+        {
+          "label": "Saturday",
+          "width": 58.546875,
+          "height": 48
+        },
+        {
+          "label": "Sunday",
+          "width": 62.109375,
+          "height": 48
+        },
+        {
+          "label": "Go to Earlier",
+          "width": 67,
+          "height": 48
+        },
+        {
+          "label": "Go to Today",
+          "width": 67,
+          "height": 48
+        },
+        {
+          "label": "Go to To-do",
+          "width": 67,
+          "height": 48
+        },
+        {
+          "label": "Go to Upcoming",
+          "width": 67,
+          "height": 48
+        }
+      ]
+    },
+    {
+      "theme": "dark",
+      "family": "inputs-layout",
+      "width": 320,
+      "fontScale": 1,
+      "result": "No document overflow; field/select/menu targets >=48x48; saved values retained",
+      "targets": [
+        {
+          "label": "Resting input",
+          "width": 288,
+          "height": 48
+        },
+        {
+          "label": "Focused input",
+          "width": 288,
+          "height": 48
+        },
+        {
+          "label": "Invalid input",
+          "width": 288,
+          "height": 48
+        },
+        {
+          "label": "Amount",
+          "width": 288,
+          "height": 48
+        },
+        {
+          "label": "Multiline notes",
+          "width": 288,
+          "height": 96
+        }
+      ]
+    },
+    {
+      "theme": "dark",
+      "family": "readonly-layout",
+      "width": 320,
+      "fontScale": 1,
+      "result": "No document overflow; field/select/menu targets >=48x48; saved values retained",
+      "targets": [
+        {
+          "label": "Read-only value",
+          "width": 288,
+          "height": 48
+        },
+        {
+          "label": "Disabled value",
+          "width": 288,
+          "height": 48
+        },
+        {
+          "label": "Long filled value",
+          "width": 288,
+          "height": 48
+        },
+        {
+          "label": "Long selection",
+          "width": 288,
+          "height": 114
+        }
+      ]
+    },
+    {
+      "theme": "dark",
+      "family": "select-layout",
+      "width": 320,
+      "fontScale": 1,
+      "result": "No document overflow; field/select/menu targets >=48x48; saved values retained",
+      "targets": [
+        {
+          "label": "Category",
+          "width": 288,
+          "height": 48
+        },
+        {
+          "label": "Close category choices",
+          "width": 320,
+          "height": 844
+        },
+        {
+          "label": "Personal",
+          "width": 270,
+          "height": 48
+        },
+        {
+          "label": "Studio and independent creative services with a deliberately long saved category name",
+          "width": 270,
+          "height": 114
+        },
+        {
+          "label": "Create category",
+          "width": 270,
+          "height": 48
+        }
+      ]
+    },
+    {
+      "theme": "dark",
+      "family": "layout",
+      "width": 320,
+      "fontScale": 2,
+      "result": "No horizontal document overflow; every selection/navigation target >=48x48",
+      "targets": [
+        {
+          "label": "Commitment type: Bill",
+          "width": 278,
+          "height": 62
+        },
+        {
+          "label": "Commitment type: Subscription",
+          "width": 278,
+          "height": 62
+        },
+        {
+          "label": "Commitment type: Installment",
+          "width": 278,
+          "height": 62
+        },
+        {
+          "label": "Selected choice",
+          "width": 288,
+          "height": 114
+        },
+        {
+          "label": "Other choice",
+          "width": 288,
+          "height": 66
+        },
+        {
+          "label": "Monday",
+          "width": 116.25,
+          "height": 62
+        },
+        {
+          "label": "Tuesday",
+          "width": 86.953125,
+          "height": 62
+        },
+        {
+          "label": "Wednesday",
+          "width": 97.234375,
+          "height": 62
+        },
+        {
+          "label": "Thursday",
+          "width": 89.015625,
+          "height": 62
+        },
+        {
+          "label": "Friday",
+          "width": 69.03125,
+          "height": 62
+        },
+        {
+          "label": "Saturday",
+          "width": 83.078125,
+          "height": 62
+        },
+        {
+          "label": "Sunday",
+          "width": 90.21875,
+          "height": 62
+        },
+        {
+          "label": "Go to Earlier",
+          "width": 138,
+          "height": 54
+        },
+        {
+          "label": "Go to Today",
+          "width": 138,
+          "height": 54
+        },
+        {
+          "label": "Go to To-do",
+          "width": 138,
+          "height": 54
+        },
+        {
+          "label": "Go to Upcoming",
+          "width": 138,
+          "height": 54
+        }
+      ]
+    },
+    {
+      "theme": "dark",
+      "family": "inputs-layout",
+      "width": 320,
+      "fontScale": 2,
+      "result": "No document overflow; field/select/menu targets >=48x48; saved values retained",
+      "targets": [
+        {
+          "label": "Resting input",
+          "width": 288,
+          "height": 48
+        },
+        {
+          "label": "Focused input",
+          "width": 288,
+          "height": 48
+        },
+        {
+          "label": "Invalid input",
+          "width": 288,
+          "height": 48
+        },
+        {
+          "label": "Amount",
+          "width": 288,
+          "height": 48
+        },
+        {
+          "label": "Multiline notes",
+          "width": 288,
+          "height": 114
+        }
+      ]
+    },
+    {
+      "theme": "dark",
+      "family": "readonly-layout",
+      "width": 320,
+      "fontScale": 2,
+      "result": "No document overflow; field/select/menu targets >=48x48; saved values retained",
+      "targets": [
+        {
+          "label": "Read-only value",
+          "width": 288,
+          "height": 48
+        },
+        {
+          "label": "Disabled value",
+          "width": 288,
+          "height": 48
+        },
+        {
+          "label": "Long filled value",
+          "width": 288,
+          "height": 48
+        },
+        {
+          "label": "Long selection",
+          "width": 288,
+          "height": 354
+        }
+      ]
+    },
+    {
+      "theme": "dark",
+      "family": "select-layout",
+      "width": 320,
+      "fontScale": 2,
+      "result": "No document overflow; field/select/menu targets >=48x48; saved values retained",
+      "targets": [
+        {
+          "label": "Category",
+          "width": 288,
+          "height": 66
+        },
+        {
+          "label": "Close category choices",
+          "width": 320,
+          "height": 844
+        },
+        {
+          "label": "Personal",
+          "width": 270,
+          "height": 66
+        },
+        {
+          "label": "Studio and independent creative services with a deliberately long saved category name",
+          "width": 270,
+          "height": 402
+        },
+        {
+          "label": "Create category",
+          "width": 270,
+          "height": 62
+        }
+      ]
+    },
+    {
+      "theme": "dark",
+      "family": "layout",
+      "width": 390,
+      "fontScale": 1,
+      "result": "No horizontal document overflow; every selection/navigation target >=48x48",
+      "targets": [
+        {
+          "label": "Commitment type: Bill",
+          "width": 113.328125,
+          "height": 48
+        },
+        {
+          "label": "Commitment type: Subscription",
+          "width": 113.34375,
+          "height": 48
+        },
+        {
+          "label": "Commitment type: Installment",
+          "width": 113.328125,
+          "height": 48
+        },
+        {
+          "label": "Selected choice",
+          "width": 358,
+          "height": 48
+        },
+        {
+          "label": "Other choice",
+          "width": 358,
+          "height": 48
+        },
+        {
+          "label": "Monday",
+          "width": 85.125,
+          "height": 48
+        },
+        {
+          "label": "Tuesday",
+          "width": 60.484375,
+          "height": 48
+        },
+        {
+          "label": "Wednesday",
+          "width": 65.625,
+          "height": 48
+        },
+        {
+          "label": "Thursday",
+          "width": 61.515625,
+          "height": 48
+        },
+        {
+          "label": "Friday",
+          "width": 51.515625,
+          "height": 48
+        },
+        {
+          "label": "Saturday",
+          "width": 58.546875,
+          "height": 48
+        },
+        {
+          "label": "Sunday",
+          "width": 62.109375,
+          "height": 48
+        },
+        {
+          "label": "Go to Earlier",
+          "width": 84.5,
+          "height": 48
+        },
+        {
+          "label": "Go to Today",
+          "width": 84.5,
+          "height": 48
+        },
+        {
+          "label": "Go to To-do",
+          "width": 84.5,
+          "height": 48
+        },
+        {
+          "label": "Go to Upcoming",
+          "width": 84.5,
+          "height": 48
+        }
+      ]
+    },
+    {
+      "theme": "dark",
+      "family": "inputs-layout",
+      "width": 390,
+      "fontScale": 1,
+      "result": "No document overflow; field/select/menu targets >=48x48; saved values retained",
+      "targets": [
+        {
+          "label": "Resting input",
+          "width": 358,
+          "height": 48
+        },
+        {
+          "label": "Focused input",
+          "width": 358,
+          "height": 48
+        },
+        {
+          "label": "Invalid input",
+          "width": 358,
+          "height": 48
+        },
+        {
+          "label": "Amount",
+          "width": 358,
+          "height": 48
+        },
+        {
+          "label": "Multiline notes",
+          "width": 358,
+          "height": 96
+        }
+      ]
+    },
+    {
+      "theme": "dark",
+      "family": "readonly-layout",
+      "width": 390,
+      "fontScale": 1,
+      "result": "No document overflow; field/select/menu targets >=48x48; saved values retained",
+      "targets": [
+        {
+          "label": "Read-only value",
+          "width": 358,
+          "height": 48
+        },
+        {
+          "label": "Disabled value",
+          "width": 358,
+          "height": 48
+        },
+        {
+          "label": "Long filled value",
+          "width": 358,
+          "height": 48
+        },
+        {
+          "label": "Long selection",
+          "width": 358,
+          "height": 90
+        }
+      ]
+    },
+    {
+      "theme": "dark",
+      "family": "select-layout",
+      "width": 390,
+      "fontScale": 1,
+      "result": "No document overflow; field/select/menu targets >=48x48; saved values retained",
+      "targets": [
+        {
+          "label": "Category",
+          "width": 358,
+          "height": 48
+        },
+        {
+          "label": "Close category choices",
+          "width": 390,
+          "height": 844
+        },
+        {
+          "label": "Personal",
+          "width": 340,
+          "height": 48
+        },
+        {
+          "label": "Studio and independent creative services with a deliberately long saved category name",
+          "width": 340,
+          "height": 90
+        },
+        {
+          "label": "Create category",
+          "width": 340,
+          "height": 48
+        }
+      ]
+    },
+    {
+      "theme": "dark",
+      "family": "layout",
+      "width": 390,
+      "fontScale": 2,
+      "result": "No horizontal document overflow; every selection/navigation target >=48x48",
+      "targets": [
+        {
+          "label": "Commitment type: Bill",
+          "width": 348,
+          "height": 62
+        },
+        {
+          "label": "Commitment type: Subscription",
+          "width": 348,
+          "height": 62
+        },
+        {
+          "label": "Commitment type: Installment",
+          "width": 348,
+          "height": 62
+        },
+        {
+          "label": "Selected choice",
+          "width": 358,
+          "height": 66
+        },
+        {
+          "label": "Other choice",
+          "width": 358,
+          "height": 66
+        },
+        {
+          "label": "Monday",
+          "width": 116.25,
+          "height": 62
+        },
+        {
+          "label": "Tuesday",
+          "width": 86.953125,
+          "height": 62
+        },
+        {
+          "label": "Wednesday",
+          "width": 97.234375,
+          "height": 62
+        },
+        {
+          "label": "Thursday",
+          "width": 89.015625,
+          "height": 62
+        },
+        {
+          "label": "Friday",
+          "width": 69.03125,
+          "height": 62
+        },
+        {
+          "label": "Saturday",
+          "width": 83.078125,
+          "height": 62
+        },
+        {
+          "label": "Sunday",
+          "width": 90.21875,
+          "height": 62
+        },
+        {
+          "label": "Go to Earlier",
+          "width": 173,
+          "height": 54
+        },
+        {
+          "label": "Go to Today",
+          "width": 173,
+          "height": 54
+        },
+        {
+          "label": "Go to To-do",
+          "width": 173,
+          "height": 54
+        },
+        {
+          "label": "Go to Upcoming",
+          "width": 173,
+          "height": 54
+        }
+      ]
+    },
+    {
+      "theme": "dark",
+      "family": "inputs-layout",
+      "width": 390,
+      "fontScale": 2,
+      "result": "No document overflow; field/select/menu targets >=48x48; saved values retained",
+      "targets": [
+        {
+          "label": "Resting input",
+          "width": 358,
+          "height": 48
+        },
+        {
+          "label": "Focused input",
+          "width": 358,
+          "height": 48
+        },
+        {
+          "label": "Invalid input",
+          "width": 358,
+          "height": 48
+        },
+        {
+          "label": "Amount",
+          "width": 358,
+          "height": 48
+        },
+        {
+          "label": "Multiline notes",
+          "width": 358,
+          "height": 114
+        }
+      ]
+    },
+    {
+      "theme": "dark",
+      "family": "readonly-layout",
+      "width": 390,
+      "fontScale": 2,
+      "result": "No document overflow; field/select/menu targets >=48x48; saved values retained",
+      "targets": [
+        {
+          "label": "Read-only value",
+          "width": 358,
+          "height": 48
+        },
+        {
+          "label": "Disabled value",
+          "width": 358,
+          "height": 48
+        },
+        {
+          "label": "Long filled value",
+          "width": 358,
+          "height": 48
+        },
+        {
+          "label": "Long selection",
+          "width": 358,
+          "height": 306
+        }
+      ]
+    },
+    {
+      "theme": "dark",
+      "family": "select-layout",
+      "width": 390,
+      "fontScale": 2,
+      "result": "No document overflow; field/select/menu targets >=48x48; saved values retained",
+      "targets": [
+        {
+          "label": "Category",
+          "width": 358,
+          "height": 66
+        },
+        {
+          "label": "Close category choices",
+          "width": 390,
+          "height": 844
+        },
+        {
+          "label": "Personal",
+          "width": 340,
+          "height": 66
+        },
+        {
+          "label": "Studio and independent creative services with a deliberately long saved category name",
+          "width": 340,
+          "height": 306
+        },
+        {
+          "label": "Create category",
+          "width": 340,
+          "height": 62
+        }
+      ]
+    },
+    {
+      "theme": "dark",
+      "family": "layout",
+      "width": 430,
+      "fontScale": 1,
+      "result": "No horizontal document overflow; every selection/navigation target >=48x48",
+      "targets": [
+        {
+          "label": "Commitment type: Bill",
+          "width": 126.65625,
+          "height": 48
+        },
+        {
+          "label": "Commitment type: Subscription",
+          "width": 126.671875,
+          "height": 48
+        },
+        {
+          "label": "Commitment type: Installment",
+          "width": 126.671875,
+          "height": 48
+        },
+        {
+          "label": "Selected choice",
+          "width": 398,
+          "height": 48
+        },
+        {
+          "label": "Other choice",
+          "width": 398,
+          "height": 48
+        },
+        {
+          "label": "Monday",
+          "width": 85.125,
+          "height": 48
+        },
+        {
+          "label": "Tuesday",
+          "width": 60.484375,
+          "height": 48
+        },
+        {
+          "label": "Wednesday",
+          "width": 65.625,
+          "height": 48
+        },
+        {
+          "label": "Thursday",
+          "width": 61.515625,
+          "height": 48
+        },
+        {
+          "label": "Friday",
+          "width": 51.515625,
+          "height": 48
+        },
+        {
+          "label": "Saturday",
+          "width": 58.546875,
+          "height": 48
+        },
+        {
+          "label": "Sunday",
+          "width": 62.109375,
+          "height": 48
+        },
+        {
+          "label": "Go to Earlier",
+          "width": 94.5,
+          "height": 48
+        },
+        {
+          "label": "Go to Today",
+          "width": 94.5,
+          "height": 48
+        },
+        {
+          "label": "Go to To-do",
+          "width": 94.5,
+          "height": 48
+        },
+        {
+          "label": "Go to Upcoming",
+          "width": 94.5,
+          "height": 48
+        }
+      ]
+    },
+    {
+      "theme": "dark",
+      "family": "inputs-layout",
+      "width": 430,
+      "fontScale": 1,
+      "result": "No document overflow; field/select/menu targets >=48x48; saved values retained",
+      "targets": [
+        {
+          "label": "Resting input",
+          "width": 398,
+          "height": 48
+        },
+        {
+          "label": "Focused input",
+          "width": 398,
+          "height": 48
+        },
+        {
+          "label": "Invalid input",
+          "width": 398,
+          "height": 48
+        },
+        {
+          "label": "Amount",
+          "width": 398,
+          "height": 48
+        },
+        {
+          "label": "Multiline notes",
+          "width": 398,
+          "height": 96
+        }
+      ]
+    },
+    {
+      "theme": "dark",
+      "family": "readonly-layout",
+      "width": 430,
+      "fontScale": 1,
+      "result": "No document overflow; field/select/menu targets >=48x48; saved values retained",
+      "targets": [
+        {
+          "label": "Read-only value",
+          "width": 398,
+          "height": 48
+        },
+        {
+          "label": "Disabled value",
+          "width": 398,
+          "height": 48
+        },
+        {
+          "label": "Long filled value",
+          "width": 398,
+          "height": 48
+        },
+        {
+          "label": "Long selection",
+          "width": 398,
+          "height": 66
+        }
+      ]
+    },
+    {
+      "theme": "dark",
+      "family": "select-layout",
+      "width": 430,
+      "fontScale": 1,
+      "result": "No document overflow; field/select/menu targets >=48x48; saved values retained",
+      "targets": [
+        {
+          "label": "Category",
+          "width": 398,
+          "height": 48
+        },
+        {
+          "label": "Close category choices",
+          "width": 430,
+          "height": 844
+        },
+        {
+          "label": "Personal",
+          "width": 380,
+          "height": 48
+        },
+        {
+          "label": "Studio and independent creative services with a deliberately long saved category name",
+          "width": 380,
+          "height": 90
+        },
+        {
+          "label": "Create category",
+          "width": 380,
+          "height": 48
+        }
+      ]
+    },
+    {
+      "theme": "dark",
+      "family": "layout",
+      "width": 430,
+      "fontScale": 2,
+      "result": "No horizontal document overflow; every selection/navigation target >=48x48",
+      "targets": [
+        {
+          "label": "Commitment type: Bill",
+          "width": 388,
+          "height": 62
+        },
+        {
+          "label": "Commitment type: Subscription",
+          "width": 388,
+          "height": 62
+        },
+        {
+          "label": "Commitment type: Installment",
+          "width": 388,
+          "height": 62
+        },
+        {
+          "label": "Selected choice",
+          "width": 398,
+          "height": 66
+        },
+        {
+          "label": "Other choice",
+          "width": 398,
+          "height": 66
+        },
+        {
+          "label": "Monday",
+          "width": 116.25,
+          "height": 62
+        },
+        {
+          "label": "Tuesday",
+          "width": 86.953125,
+          "height": 62
+        },
+        {
+          "label": "Wednesday",
+          "width": 97.234375,
+          "height": 62
+        },
+        {
+          "label": "Thursday",
+          "width": 89.015625,
+          "height": 62
+        },
+        {
+          "label": "Friday",
+          "width": 69.03125,
+          "height": 62
+        },
+        {
+          "label": "Saturday",
+          "width": 83.078125,
+          "height": 62
+        },
+        {
+          "label": "Sunday",
+          "width": 90.21875,
+          "height": 62
+        },
+        {
+          "label": "Go to Earlier",
+          "width": 193,
+          "height": 54
+        },
+        {
+          "label": "Go to Today",
+          "width": 193,
+          "height": 54
+        },
+        {
+          "label": "Go to To-do",
+          "width": 193,
+          "height": 54
+        },
+        {
+          "label": "Go to Upcoming",
+          "width": 193,
+          "height": 54
+        }
+      ]
+    },
+    {
+      "theme": "dark",
+      "family": "inputs-layout",
+      "width": 430,
+      "fontScale": 2,
+      "result": "No document overflow; field/select/menu targets >=48x48; saved values retained",
+      "targets": [
+        {
+          "label": "Resting input",
+          "width": 398,
+          "height": 48
+        },
+        {
+          "label": "Focused input",
+          "width": 398,
+          "height": 48
+        },
+        {
+          "label": "Invalid input",
+          "width": 398,
+          "height": 48
+        },
+        {
+          "label": "Amount",
+          "width": 398,
+          "height": 48
+        },
+        {
+          "label": "Multiline notes",
+          "width": 398,
+          "height": 114
+        }
+      ]
+    },
+    {
+      "theme": "dark",
+      "family": "readonly-layout",
+      "width": 430,
+      "fontScale": 2,
+      "result": "No document overflow; field/select/menu targets >=48x48; saved values retained",
+      "targets": [
+        {
+          "label": "Read-only value",
+          "width": 398,
+          "height": 48
+        },
+        {
+          "label": "Disabled value",
+          "width": 398,
+          "height": 48
+        },
+        {
+          "label": "Long filled value",
+          "width": 398,
+          "height": 48
+        },
+        {
+          "label": "Long selection",
+          "width": 398,
+          "height": 258
+        }
+      ]
+    },
+    {
+      "theme": "dark",
+      "family": "select-layout",
+      "width": 430,
+      "fontScale": 2,
+      "result": "No document overflow; field/select/menu targets >=48x48; saved values retained",
+      "targets": [
+        {
+          "label": "Category",
+          "width": 398,
+          "height": 66
+        },
+        {
+          "label": "Close category choices",
+          "width": 430,
+          "height": 844
+        },
+        {
+          "label": "Personal",
+          "width": 380,
+          "height": 66
+        },
+        {
+          "label": "Studio and independent creative services with a deliberately long saved category name",
+          "width": 380,
+          "height": 258
+        },
+        {
+          "label": "Create category",
+          "width": 380,
+          "height": 62
+        }
+      ]
+    },
+    {
+      "theme": "light",
+      "family": "inputs",
+      "result": "Editable typing, linked error, simultaneous focus/invalid and textarea minimum passed",
+      "invalidState": {
+        "invalid": "true",
+        "error": "Review this value.",
+        "border": "rgb(155, 48, 62)",
+        "outline": "2px"
+      }
+    },
+    {
+      "theme": "light",
+      "family": "readonly",
+      "result": "Actual values retained; read-only and disabled semantics remain different"
+    },
+    {
+      "theme": "light",
+      "family": "select",
+      "result": "One owner; arrows/End/Tab loop, Escape focus return, saved long value, inline create and cancel passed"
+    },
+    {
+      "theme": "light",
+      "family": "autocomplete",
+      "result": "Empty search, no matches, create, existing selection, one overlay, dismissal and focus return passed; fixture callbacks only",
+      "inputEscapeCloses": false,
+      "limitation": "RNWeb TextInput stops key propagation; existing host document listener does not receive Escape while typing. Host and autocomplete interaction code are unchanged. Revisit in 3B-S."
+    },
+    {
+      "theme": "light",
+      "family": "selection",
+      "result": "Focus does not select; Enter activates; weekday full accessible names and checked state retained"
+    },
+    {
+      "theme": "light",
+      "family": "layout",
+      "width": 320,
+      "fontScale": 1,
+      "result": "No horizontal document overflow; every selection/navigation target >=48x48",
+      "targets": [
+        {
+          "label": "Commitment type: Bill",
+          "width": 90,
+          "height": 62
+        },
+        {
+          "label": "Commitment type: Subscription",
+          "width": 90,
+          "height": 62
+        },
+        {
+          "label": "Commitment type: Installment",
+          "width": 90,
+          "height": 62
+        },
+        {
+          "label": "Selected choice",
+          "width": 288,
+          "height": 48
+        },
+        {
+          "label": "Other choice",
+          "width": 288,
+          "height": 48
+        },
+        {
+          "label": "Monday",
+          "width": 85.125,
+          "height": 48
+        },
+        {
+          "label": "Tuesday",
+          "width": 60.484375,
+          "height": 48
+        },
+        {
+          "label": "Wednesday",
+          "width": 65.625,
+          "height": 48
+        },
+        {
+          "label": "Thursday",
+          "width": 61.515625,
+          "height": 48
+        },
+        {
+          "label": "Friday",
+          "width": 51.515625,
+          "height": 48
+        },
+        {
+          "label": "Saturday",
+          "width": 58.546875,
+          "height": 48
+        },
+        {
+          "label": "Sunday",
+          "width": 62.109375,
+          "height": 48
+        },
+        {
+          "label": "Go to Earlier",
+          "width": 67,
+          "height": 48
+        },
+        {
+          "label": "Go to Today",
+          "width": 67,
+          "height": 48
+        },
+        {
+          "label": "Go to To-do",
+          "width": 67,
+          "height": 48
+        },
+        {
+          "label": "Go to Upcoming",
+          "width": 67,
+          "height": 48
+        }
+      ]
+    },
+    {
+      "theme": "light",
+      "family": "inputs-layout",
+      "width": 320,
+      "fontScale": 1,
+      "result": "No document overflow; field/select/menu targets >=48x48; saved values retained",
+      "targets": [
+        {
+          "label": "Resting input",
+          "width": 288,
+          "height": 48
+        },
+        {
+          "label": "Focused input",
+          "width": 288,
+          "height": 48
+        },
+        {
+          "label": "Invalid input",
+          "width": 288,
+          "height": 48
+        },
+        {
+          "label": "Amount",
+          "width": 288,
+          "height": 48
+        },
+        {
+          "label": "Multiline notes",
+          "width": 288,
+          "height": 96
+        }
+      ]
+    },
+    {
+      "theme": "light",
+      "family": "readonly-layout",
+      "width": 320,
+      "fontScale": 1,
+      "result": "No document overflow; field/select/menu targets >=48x48; saved values retained",
+      "targets": [
+        {
+          "label": "Read-only value",
+          "width": 288,
+          "height": 48
+        },
+        {
+          "label": "Disabled value",
+          "width": 288,
+          "height": 48
+        },
+        {
+          "label": "Long filled value",
+          "width": 288,
+          "height": 48
+        },
+        {
+          "label": "Long selection",
+          "width": 288,
+          "height": 114
+        }
+      ]
+    },
+    {
+      "theme": "light",
+      "family": "select-layout",
+      "width": 320,
+      "fontScale": 1,
+      "result": "No document overflow; field/select/menu targets >=48x48; saved values retained",
+      "targets": [
+        {
+          "label": "Category",
+          "width": 288,
+          "height": 48
+        },
+        {
+          "label": "Close category choices",
+          "width": 320,
+          "height": 844
+        },
+        {
+          "label": "Personal",
+          "width": 270,
+          "height": 48
+        },
+        {
+          "label": "Studio and independent creative services with a deliberately long saved category name",
+          "width": 270,
+          "height": 114
+        },
+        {
+          "label": "Create category",
+          "width": 270,
+          "height": 48
+        }
+      ]
+    },
+    {
+      "theme": "light",
+      "family": "layout",
+      "width": 320,
+      "fontScale": 2,
+      "result": "No horizontal document overflow; every selection/navigation target >=48x48",
+      "targets": [
+        {
+          "label": "Commitment type: Bill",
+          "width": 278,
+          "height": 62
+        },
+        {
+          "label": "Commitment type: Subscription",
+          "width": 278,
+          "height": 62
+        },
+        {
+          "label": "Commitment type: Installment",
+          "width": 278,
+          "height": 62
+        },
+        {
+          "label": "Selected choice",
+          "width": 288,
+          "height": 114
+        },
+        {
+          "label": "Other choice",
+          "width": 288,
+          "height": 66
+        },
+        {
+          "label": "Monday",
+          "width": 116.25,
+          "height": 62
+        },
+        {
+          "label": "Tuesday",
+          "width": 86.953125,
+          "height": 62
+        },
+        {
+          "label": "Wednesday",
+          "width": 97.234375,
+          "height": 62
+        },
+        {
+          "label": "Thursday",
+          "width": 89.015625,
+          "height": 62
+        },
+        {
+          "label": "Friday",
+          "width": 69.03125,
+          "height": 62
+        },
+        {
+          "label": "Saturday",
+          "width": 83.078125,
+          "height": 62
+        },
+        {
+          "label": "Sunday",
+          "width": 90.21875,
+          "height": 62
+        },
+        {
+          "label": "Go to Earlier",
+          "width": 138,
+          "height": 54
+        },
+        {
+          "label": "Go to Today",
+          "width": 138,
+          "height": 54
+        },
+        {
+          "label": "Go to To-do",
+          "width": 138,
+          "height": 54
+        },
+        {
+          "label": "Go to Upcoming",
+          "width": 138,
+          "height": 54
+        }
+      ]
+    },
+    {
+      "theme": "light",
+      "family": "inputs-layout",
+      "width": 320,
+      "fontScale": 2,
+      "result": "No document overflow; field/select/menu targets >=48x48; saved values retained",
+      "targets": [
+        {
+          "label": "Resting input",
+          "width": 288,
+          "height": 48
+        },
+        {
+          "label": "Focused input",
+          "width": 288,
+          "height": 48
+        },
+        {
+          "label": "Invalid input",
+          "width": 288,
+          "height": 48
+        },
+        {
+          "label": "Amount",
+          "width": 288,
+          "height": 48
+        },
+        {
+          "label": "Multiline notes",
+          "width": 288,
+          "height": 114
+        }
+      ]
+    },
+    {
+      "theme": "light",
+      "family": "readonly-layout",
+      "width": 320,
+      "fontScale": 2,
+      "result": "No document overflow; field/select/menu targets >=48x48; saved values retained",
+      "targets": [
+        {
+          "label": "Read-only value",
+          "width": 288,
+          "height": 48
+        },
+        {
+          "label": "Disabled value",
+          "width": 288,
+          "height": 48
+        },
+        {
+          "label": "Long filled value",
+          "width": 288,
+          "height": 48
+        },
+        {
+          "label": "Long selection",
+          "width": 288,
+          "height": 354
+        }
+      ]
+    },
+    {
+      "theme": "light",
+      "family": "select-layout",
+      "width": 320,
+      "fontScale": 2,
+      "result": "No document overflow; field/select/menu targets >=48x48; saved values retained",
+      "targets": [
+        {
+          "label": "Category",
+          "width": 288,
+          "height": 66
+        },
+        {
+          "label": "Close category choices",
+          "width": 320,
+          "height": 844
+        },
+        {
+          "label": "Personal",
+          "width": 270,
+          "height": 66
+        },
+        {
+          "label": "Studio and independent creative services with a deliberately long saved category name",
+          "width": 270,
+          "height": 402
+        },
+        {
+          "label": "Create category",
+          "width": 270,
+          "height": 62
+        }
+      ]
+    },
+    {
+      "theme": "light",
+      "family": "layout",
+      "width": 390,
+      "fontScale": 1,
+      "result": "No horizontal document overflow; every selection/navigation target >=48x48",
+      "targets": [
+        {
+          "label": "Commitment type: Bill",
+          "width": 113.328125,
+          "height": 48
+        },
+        {
+          "label": "Commitment type: Subscription",
+          "width": 113.34375,
+          "height": 48
+        },
+        {
+          "label": "Commitment type: Installment",
+          "width": 113.328125,
+          "height": 48
+        },
+        {
+          "label": "Selected choice",
+          "width": 358,
+          "height": 48
+        },
+        {
+          "label": "Other choice",
+          "width": 358,
+          "height": 48
+        },
+        {
+          "label": "Monday",
+          "width": 85.125,
+          "height": 48
+        },
+        {
+          "label": "Tuesday",
+          "width": 60.484375,
+          "height": 48
+        },
+        {
+          "label": "Wednesday",
+          "width": 65.625,
+          "height": 48
+        },
+        {
+          "label": "Thursday",
+          "width": 61.515625,
+          "height": 48
+        },
+        {
+          "label": "Friday",
+          "width": 51.515625,
+          "height": 48
+        },
+        {
+          "label": "Saturday",
+          "width": 58.546875,
+          "height": 48
+        },
+        {
+          "label": "Sunday",
+          "width": 62.109375,
+          "height": 48
+        },
+        {
+          "label": "Go to Earlier",
+          "width": 84.5,
+          "height": 48
+        },
+        {
+          "label": "Go to Today",
+          "width": 84.5,
+          "height": 48
+        },
+        {
+          "label": "Go to To-do",
+          "width": 84.5,
+          "height": 48
+        },
+        {
+          "label": "Go to Upcoming",
+          "width": 84.5,
+          "height": 48
+        }
+      ]
+    },
+    {
+      "theme": "light",
+      "family": "inputs-layout",
+      "width": 390,
+      "fontScale": 1,
+      "result": "No document overflow; field/select/menu targets >=48x48; saved values retained",
+      "targets": [
+        {
+          "label": "Resting input",
+          "width": 358,
+          "height": 48
+        },
+        {
+          "label": "Focused input",
+          "width": 358,
+          "height": 48
+        },
+        {
+          "label": "Invalid input",
+          "width": 358,
+          "height": 48
+        },
+        {
+          "label": "Amount",
+          "width": 358,
+          "height": 48
+        },
+        {
+          "label": "Multiline notes",
+          "width": 358,
+          "height": 96
+        }
+      ]
+    },
+    {
+      "theme": "light",
+      "family": "readonly-layout",
+      "width": 390,
+      "fontScale": 1,
+      "result": "No document overflow; field/select/menu targets >=48x48; saved values retained",
+      "targets": [
+        {
+          "label": "Read-only value",
+          "width": 358,
+          "height": 48
+        },
+        {
+          "label": "Disabled value",
+          "width": 358,
+          "height": 48
+        },
+        {
+          "label": "Long filled value",
+          "width": 358,
+          "height": 48
+        },
+        {
+          "label": "Long selection",
+          "width": 358,
+          "height": 90
+        }
+      ]
+    },
+    {
+      "theme": "light",
+      "family": "select-layout",
+      "width": 390,
+      "fontScale": 1,
+      "result": "No document overflow; field/select/menu targets >=48x48; saved values retained",
+      "targets": [
+        {
+          "label": "Category",
+          "width": 358,
+          "height": 48
+        },
+        {
+          "label": "Close category choices",
+          "width": 390,
+          "height": 844
+        },
+        {
+          "label": "Personal",
+          "width": 340,
+          "height": 48
+        },
+        {
+          "label": "Studio and independent creative services with a deliberately long saved category name",
+          "width": 340,
+          "height": 90
+        },
+        {
+          "label": "Create category",
+          "width": 340,
+          "height": 48
+        }
+      ]
+    },
+    {
+      "theme": "light",
+      "family": "layout",
+      "width": 390,
+      "fontScale": 2,
+      "result": "No horizontal document overflow; every selection/navigation target >=48x48",
+      "targets": [
+        {
+          "label": "Commitment type: Bill",
+          "width": 348,
+          "height": 62
+        },
+        {
+          "label": "Commitment type: Subscription",
+          "width": 348,
+          "height": 62
+        },
+        {
+          "label": "Commitment type: Installment",
+          "width": 348,
+          "height": 62
+        },
+        {
+          "label": "Selected choice",
+          "width": 358,
+          "height": 66
+        },
+        {
+          "label": "Other choice",
+          "width": 358,
+          "height": 66
+        },
+        {
+          "label": "Monday",
+          "width": 116.25,
+          "height": 62
+        },
+        {
+          "label": "Tuesday",
+          "width": 86.953125,
+          "height": 62
+        },
+        {
+          "label": "Wednesday",
+          "width": 97.234375,
+          "height": 62
+        },
+        {
+          "label": "Thursday",
+          "width": 89.015625,
+          "height": 62
+        },
+        {
+          "label": "Friday",
+          "width": 69.03125,
+          "height": 62
+        },
+        {
+          "label": "Saturday",
+          "width": 83.078125,
+          "height": 62
+        },
+        {
+          "label": "Sunday",
+          "width": 90.21875,
+          "height": 62
+        },
+        {
+          "label": "Go to Earlier",
+          "width": 173,
+          "height": 54
+        },
+        {
+          "label": "Go to Today",
+          "width": 173,
+          "height": 54
+        },
+        {
+          "label": "Go to To-do",
+          "width": 173,
+          "height": 54
+        },
+        {
+          "label": "Go to Upcoming",
+          "width": 173,
+          "height": 54
+        }
+      ]
+    },
+    {
+      "theme": "light",
+      "family": "inputs-layout",
+      "width": 390,
+      "fontScale": 2,
+      "result": "No document overflow; field/select/menu targets >=48x48; saved values retained",
+      "targets": [
+        {
+          "label": "Resting input",
+          "width": 358,
+          "height": 48
+        },
+        {
+          "label": "Focused input",
+          "width": 358,
+          "height": 48
+        },
+        {
+          "label": "Invalid input",
+          "width": 358,
+          "height": 48
+        },
+        {
+          "label": "Amount",
+          "width": 358,
+          "height": 48
+        },
+        {
+          "label": "Multiline notes",
+          "width": 358,
+          "height": 114
+        }
+      ]
+    },
+    {
+      "theme": "light",
+      "family": "readonly-layout",
+      "width": 390,
+      "fontScale": 2,
+      "result": "No document overflow; field/select/menu targets >=48x48; saved values retained",
+      "targets": [
+        {
+          "label": "Read-only value",
+          "width": 358,
+          "height": 48
+        },
+        {
+          "label": "Disabled value",
+          "width": 358,
+          "height": 48
+        },
+        {
+          "label": "Long filled value",
+          "width": 358,
+          "height": 48
+        },
+        {
+          "label": "Long selection",
+          "width": 358,
+          "height": 306
+        }
+      ]
+    },
+    {
+      "theme": "light",
+      "family": "select-layout",
+      "width": 390,
+      "fontScale": 2,
+      "result": "No document overflow; field/select/menu targets >=48x48; saved values retained",
+      "targets": [
+        {
+          "label": "Category",
+          "width": 358,
+          "height": 66
+        },
+        {
+          "label": "Close category choices",
+          "width": 390,
+          "height": 844
+        },
+        {
+          "label": "Personal",
+          "width": 340,
+          "height": 66
+        },
+        {
+          "label": "Studio and independent creative services with a deliberately long saved category name",
+          "width": 340,
+          "height": 306
+        },
+        {
+          "label": "Create category",
+          "width": 340,
+          "height": 62
+        }
+      ]
+    },
+    {
+      "theme": "light",
+      "family": "layout",
+      "width": 430,
+      "fontScale": 1,
+      "result": "No horizontal document overflow; every selection/navigation target >=48x48",
+      "targets": [
+        {
+          "label": "Commitment type: Bill",
+          "width": 126.65625,
+          "height": 48
+        },
+        {
+          "label": "Commitment type: Subscription",
+          "width": 126.671875,
+          "height": 48
+        },
+        {
+          "label": "Commitment type: Installment",
+          "width": 126.671875,
+          "height": 48
+        },
+        {
+          "label": "Selected choice",
+          "width": 398,
+          "height": 48
+        },
+        {
+          "label": "Other choice",
+          "width": 398,
+          "height": 48
+        },
+        {
+          "label": "Monday",
+          "width": 85.125,
+          "height": 48
+        },
+        {
+          "label": "Tuesday",
+          "width": 60.484375,
+          "height": 48
+        },
+        {
+          "label": "Wednesday",
+          "width": 65.625,
+          "height": 48
+        },
+        {
+          "label": "Thursday",
+          "width": 61.515625,
+          "height": 48
+        },
+        {
+          "label": "Friday",
+          "width": 51.515625,
+          "height": 48
+        },
+        {
+          "label": "Saturday",
+          "width": 58.546875,
+          "height": 48
+        },
+        {
+          "label": "Sunday",
+          "width": 62.109375,
+          "height": 48
+        },
+        {
+          "label": "Go to Earlier",
+          "width": 94.5,
+          "height": 48
+        },
+        {
+          "label": "Go to Today",
+          "width": 94.5,
+          "height": 48
+        },
+        {
+          "label": "Go to To-do",
+          "width": 94.5,
+          "height": 48
+        },
+        {
+          "label": "Go to Upcoming",
+          "width": 94.5,
+          "height": 48
+        }
+      ]
+    },
+    {
+      "theme": "light",
+      "family": "inputs-layout",
+      "width": 430,
+      "fontScale": 1,
+      "result": "No document overflow; field/select/menu targets >=48x48; saved values retained",
+      "targets": [
+        {
+          "label": "Resting input",
+          "width": 398,
+          "height": 48
+        },
+        {
+          "label": "Focused input",
+          "width": 398,
+          "height": 48
+        },
+        {
+          "label": "Invalid input",
+          "width": 398,
+          "height": 48
+        },
+        {
+          "label": "Amount",
+          "width": 398,
+          "height": 48
+        },
+        {
+          "label": "Multiline notes",
+          "width": 398,
+          "height": 96
+        }
+      ]
+    },
+    {
+      "theme": "light",
+      "family": "readonly-layout",
+      "width": 430,
+      "fontScale": 1,
+      "result": "No document overflow; field/select/menu targets >=48x48; saved values retained",
+      "targets": [
+        {
+          "label": "Read-only value",
+          "width": 398,
+          "height": 48
+        },
+        {
+          "label": "Disabled value",
+          "width": 398,
+          "height": 48
+        },
+        {
+          "label": "Long filled value",
+          "width": 398,
+          "height": 48
+        },
+        {
+          "label": "Long selection",
+          "width": 398,
+          "height": 66
+        }
+      ]
+    },
+    {
+      "theme": "light",
+      "family": "select-layout",
+      "width": 430,
+      "fontScale": 1,
+      "result": "No document overflow; field/select/menu targets >=48x48; saved values retained",
+      "targets": [
+        {
+          "label": "Category",
+          "width": 398,
+          "height": 48
+        },
+        {
+          "label": "Close category choices",
+          "width": 430,
+          "height": 844
+        },
+        {
+          "label": "Personal",
+          "width": 380,
+          "height": 48
+        },
+        {
+          "label": "Studio and independent creative services with a deliberately long saved category name",
+          "width": 380,
+          "height": 90
+        },
+        {
+          "label": "Create category",
+          "width": 380,
+          "height": 48
+        }
+      ]
+    },
+    {
+      "theme": "light",
+      "family": "layout",
+      "width": 430,
+      "fontScale": 2,
+      "result": "No horizontal document overflow; every selection/navigation target >=48x48",
+      "targets": [
+        {
+          "label": "Commitment type: Bill",
+          "width": 388,
+          "height": 62
+        },
+        {
+          "label": "Commitment type: Subscription",
+          "width": 388,
+          "height": 62
+        },
+        {
+          "label": "Commitment type: Installment",
+          "width": 388,
+          "height": 62
+        },
+        {
+          "label": "Selected choice",
+          "width": 398,
+          "height": 66
+        },
+        {
+          "label": "Other choice",
+          "width": 398,
+          "height": 66
+        },
+        {
+          "label": "Monday",
+          "width": 116.25,
+          "height": 62
+        },
+        {
+          "label": "Tuesday",
+          "width": 86.953125,
+          "height": 62
+        },
+        {
+          "label": "Wednesday",
+          "width": 97.234375,
+          "height": 62
+        },
+        {
+          "label": "Thursday",
+          "width": 89.015625,
+          "height": 62
+        },
+        {
+          "label": "Friday",
+          "width": 69.03125,
+          "height": 62
+        },
+        {
+          "label": "Saturday",
+          "width": 83.078125,
+          "height": 62
+        },
+        {
+          "label": "Sunday",
+          "width": 90.21875,
+          "height": 62
+        },
+        {
+          "label": "Go to Earlier",
+          "width": 193,
+          "height": 54
+        },
+        {
+          "label": "Go to Today",
+          "width": 193,
+          "height": 54
+        },
+        {
+          "label": "Go to To-do",
+          "width": 193,
+          "height": 54
+        },
+        {
+          "label": "Go to Upcoming",
+          "width": 193,
+          "height": 54
+        }
+      ]
+    },
+    {
+      "theme": "light",
+      "family": "inputs-layout",
+      "width": 430,
+      "fontScale": 2,
+      "result": "No document overflow; field/select/menu targets >=48x48; saved values retained",
+      "targets": [
+        {
+          "label": "Resting input",
+          "width": 398,
+          "height": 48
+        },
+        {
+          "label": "Focused input",
+          "width": 398,
+          "height": 48
+        },
+        {
+          "label": "Invalid input",
+          "width": 398,
+          "height": 48
+        },
+        {
+          "label": "Amount",
+          "width": 398,
+          "height": 48
+        },
+        {
+          "label": "Multiline notes",
+          "width": 398,
+          "height": 114
+        }
+      ]
+    },
+    {
+      "theme": "light",
+      "family": "readonly-layout",
+      "width": 430,
+      "fontScale": 2,
+      "result": "No document overflow; field/select/menu targets >=48x48; saved values retained",
+      "targets": [
+        {
+          "label": "Read-only value",
+          "width": 398,
+          "height": 48
+        },
+        {
+          "label": "Disabled value",
+          "width": 398,
+          "height": 48
+        },
+        {
+          "label": "Long filled value",
+          "width": 398,
+          "height": 48
+        },
+        {
+          "label": "Long selection",
+          "width": 398,
+          "height": 258
+        }
+      ]
+    },
+    {
+      "theme": "light",
+      "family": "select-layout",
+      "width": 430,
+      "fontScale": 2,
+      "result": "No document overflow; field/select/menu targets >=48x48; saved values retained",
+      "targets": [
+        {
+          "label": "Category",
+          "width": 398,
+          "height": 66
+        },
+        {
+          "label": "Close category choices",
+          "width": 430,
+          "height": 844
+        },
+        {
+          "label": "Personal",
+          "width": 380,
+          "height": 66
+        },
+        {
+          "label": "Studio and independent creative services with a deliberately long saved category name",
+          "width": 380,
+          "height": 258
+        },
+        {
+          "label": "Create category",
+          "width": 380,
+          "height": 62
+        }
+      ]
+    }
+  ],
+  "renderedContrasts": [
+    {
+      "capture": "task-new-dark-390.png",
+      "fields": [
+        {
+          "label": "Title, required",
+          "inside": "rgb(27, 24, 26)",
+          "outside": "rgb(27, 24, 26)",
+          "border": "rgb(231, 170, 139)",
+          "text": "rgb(246, 240, 237)",
+          "inactive": false,
+          "boundaryInside": 8.824640768097218,
+          "boundaryOutside": 8.824640768097218,
+          "textContrast": 15.606375403532045
+        },
+        {
+          "label": "Description",
+          "inside": "rgb(27, 24, 26)",
+          "outside": "rgb(27, 24, 26)",
+          "border": "rgb(149, 130, 142)",
+          "text": "rgb(246, 240, 237)",
+          "inactive": false,
+          "boundaryInside": 4.916709115477878,
+          "boundaryOutside": 4.916709115477878,
+          "textContrast": 15.606375403532045
+        },
+        {
+          "label": "Date",
+          "inside": "rgb(27, 24, 26)",
+          "outside": "rgb(27, 24, 26)",
+          "border": "rgb(149, 130, 142)",
+          "text": "rgb(246, 240, 237)",
+          "inactive": false,
+          "boundaryInside": 4.916709115477878,
+          "boundaryOutside": 4.916709115477878,
+          "textContrast": 15.606375403532045
+        },
+        {
+          "label": "Time",
+          "inside": "rgb(25, 22, 25)",
+          "outside": "rgb(27, 24, 26)",
+          "border": "rgb(58, 51, 55)",
+          "text": "rgb(175, 163, 158)",
+          "inactive": true,
+          "boundaryInside": 1.4601773591974625,
+          "boundaryOutside": 1.433187142864226,
+          "textContrast": 7.311453510280605
+        },
+        {
+          "label": "Priority",
+          "inside": "rgb(27, 24, 26)",
+          "outside": "rgb(27, 24, 26)",
+          "border": "rgb(149, 130, 142)",
+          "text": "rgb(246, 240, 237)",
+          "inactive": false,
+          "boundaryInside": 4.916709115477878,
+          "boundaryOutside": 4.916709115477878,
+          "textContrast": 15.606375403532045
+        },
+        {
+          "label": "Category",
+          "inside": "rgb(27, 24, 26)",
+          "outside": "rgb(27, 24, 26)",
+          "border": "rgb(149, 130, 142)",
+          "text": "rgb(246, 240, 237)",
+          "inactive": false,
+          "boundaryInside": 4.916709115477878,
+          "boundaryOutside": 4.916709115477878,
+          "textContrast": 15.606375403532045
+        }
+      ]
+    },
+    {
+      "capture": "task-new-light-390.png",
+      "fields": [
+        {
+          "label": "Title, required",
+          "inside": "rgb(255, 252, 248)",
+          "outside": "rgb(255, 252, 248)",
+          "border": "rgb(135, 72, 51)",
+          "text": "rgb(36, 30, 28)",
+          "inactive": false,
+          "boundaryInside": 6.832649540866528,
+          "boundaryOutside": 6.832649540866528,
+          "textContrast": 16.07183467732177
+        },
+        {
+          "label": "Description",
+          "inside": "rgb(255, 252, 248)",
+          "outside": "rgb(255, 252, 248)",
+          "border": "rgb(155, 131, 123)",
+          "text": "rgb(36, 30, 28)",
+          "inactive": false,
+          "boundaryInside": 3.4645252799392496,
+          "boundaryOutside": 3.4645252799392496,
+          "textContrast": 16.07183467732177
+        },
+        {
+          "label": "Date",
+          "inside": "rgb(255, 252, 248)",
+          "outside": "rgb(255, 252, 248)",
+          "border": "rgb(155, 131, 123)",
+          "text": "rgb(36, 30, 28)",
+          "inactive": false,
+          "boundaryInside": 3.4645252799392496,
+          "boundaryOutside": 3.4645252799392496,
+          "textContrast": 16.07183467732177
+        },
+        {
+          "label": "Time",
+          "inside": "rgb(240, 233, 229)",
+          "outside": "rgb(255, 252, 248)",
+          "border": "rgb(228, 218, 212)",
+          "text": "rgb(116, 102, 96)",
+          "inactive": true,
+          "boundaryInside": 1.1449135228941307,
+          "boundaryOutside": 1.3438640788652998,
+          "textContrast": 4.588613621613323
+        },
+        {
+          "label": "Priority",
+          "inside": "rgb(255, 252, 248)",
+          "outside": "rgb(255, 252, 248)",
+          "border": "rgb(155, 131, 123)",
+          "text": "rgb(36, 30, 28)",
+          "inactive": false,
+          "boundaryInside": 3.4645252799392496,
+          "boundaryOutside": 3.4645252799392496,
+          "textContrast": 16.07183467732177
+        },
+        {
+          "label": "Category",
+          "inside": "rgb(255, 252, 248)",
+          "outside": "rgb(255, 252, 248)",
+          "border": "rgb(155, 131, 123)",
+          "text": "rgb(36, 30, 28)",
+          "inactive": false,
+          "boundaryInside": 3.4645252799392496,
+          "boundaryOutside": 3.4645252799392496,
+          "textContrast": 16.07183467732177
+        }
+      ]
+    },
+    {
+      "capture": "task-edit-dark-390.png",
+      "fields": [
+        {
+          "label": "Title, required",
+          "inside": "rgb(27, 24, 26)",
+          "outside": "rgb(27, 24, 26)",
+          "border": "rgb(231, 170, 139)",
+          "text": "rgb(246, 240, 237)",
+          "inactive": false,
+          "boundaryInside": 8.824640768097218,
+          "boundaryOutside": 8.824640768097218,
+          "textContrast": 15.606375403532045
+        },
+        {
+          "label": "Description",
+          "inside": "rgb(27, 24, 26)",
+          "outside": "rgb(27, 24, 26)",
+          "border": "rgb(149, 130, 142)",
+          "text": "rgb(246, 240, 237)",
+          "inactive": false,
+          "boundaryInside": 4.916709115477878,
+          "boundaryOutside": 4.916709115477878,
+          "textContrast": 15.606375403532045
+        },
+        {
+          "label": "Date",
+          "inside": "rgb(27, 24, 26)",
+          "outside": "rgb(27, 24, 26)",
+          "border": "rgb(149, 130, 142)",
+          "text": "rgb(246, 240, 237)",
+          "inactive": false,
+          "boundaryInside": 4.916709115477878,
+          "boundaryOutside": 4.916709115477878,
+          "textContrast": 15.606375403532045
+        },
+        {
+          "label": "Time",
+          "inside": "rgb(27, 24, 26)",
+          "outside": "rgb(27, 24, 26)",
+          "border": "rgb(149, 130, 142)",
+          "text": "rgb(246, 240, 237)",
+          "inactive": false,
+          "boundaryInside": 4.916709115477878,
+          "boundaryOutside": 4.916709115477878,
+          "textContrast": 15.606375403532045
+        },
+        {
+          "label": "Priority",
+          "inside": "rgb(27, 24, 26)",
+          "outside": "rgb(27, 24, 26)",
+          "border": "rgb(149, 130, 142)",
+          "text": "rgb(246, 240, 237)",
+          "inactive": false,
+          "boundaryInside": 4.916709115477878,
+          "boundaryOutside": 4.916709115477878,
+          "textContrast": 15.606375403532045
+        },
+        {
+          "label": "Category",
+          "inside": "rgb(27, 24, 26)",
+          "outside": "rgb(27, 24, 26)",
+          "border": "rgb(149, 130, 142)",
+          "text": "rgb(246, 240, 237)",
+          "inactive": false,
+          "boundaryInside": 4.916709115477878,
+          "boundaryOutside": 4.916709115477878,
+          "textContrast": 15.606375403532045
+        }
+      ]
+    },
+    {
+      "capture": "task-edit-light-390.png",
+      "fields": [
+        {
+          "label": "Title, required",
+          "inside": "rgb(255, 252, 248)",
+          "outside": "rgb(255, 252, 248)",
+          "border": "rgb(135, 72, 51)",
+          "text": "rgb(36, 30, 28)",
+          "inactive": false,
+          "boundaryInside": 6.832649540866528,
+          "boundaryOutside": 6.832649540866528,
+          "textContrast": 16.07183467732177
+        },
+        {
+          "label": "Description",
+          "inside": "rgb(255, 252, 248)",
+          "outside": "rgb(255, 252, 248)",
+          "border": "rgb(155, 131, 123)",
+          "text": "rgb(36, 30, 28)",
+          "inactive": false,
+          "boundaryInside": 3.4645252799392496,
+          "boundaryOutside": 3.4645252799392496,
+          "textContrast": 16.07183467732177
+        },
+        {
+          "label": "Date",
+          "inside": "rgb(255, 252, 248)",
+          "outside": "rgb(255, 252, 248)",
+          "border": "rgb(155, 131, 123)",
+          "text": "rgb(36, 30, 28)",
+          "inactive": false,
+          "boundaryInside": 3.4645252799392496,
+          "boundaryOutside": 3.4645252799392496,
+          "textContrast": 16.07183467732177
+        },
+        {
+          "label": "Time",
+          "inside": "rgb(255, 252, 248)",
+          "outside": "rgb(255, 252, 248)",
+          "border": "rgb(155, 131, 123)",
+          "text": "rgb(36, 30, 28)",
+          "inactive": false,
+          "boundaryInside": 3.4645252799392496,
+          "boundaryOutside": 3.4645252799392496,
+          "textContrast": 16.07183467732177
+        },
+        {
+          "label": "Priority",
+          "inside": "rgb(255, 252, 248)",
+          "outside": "rgb(255, 252, 248)",
+          "border": "rgb(155, 131, 123)",
+          "text": "rgb(36, 30, 28)",
+          "inactive": false,
+          "boundaryInside": 3.4645252799392496,
+          "boundaryOutside": 3.4645252799392496,
+          "textContrast": 16.07183467732177
+        },
+        {
+          "label": "Category",
+          "inside": "rgb(255, 252, 248)",
+          "outside": "rgb(255, 252, 248)",
+          "border": "rgb(155, 131, 123)",
+          "text": "rgb(36, 30, 28)",
+          "inactive": false,
+          "boundaryInside": 3.4645252799392496,
+          "boundaryOutside": 3.4645252799392496,
+          "textContrast": 16.07183467732177
+        }
+      ]
+    },
+    {
+      "capture": "fitness-dark-390.png",
+      "fields": [
+        {
+          "label": "Name *",
+          "inside": "rgb(27, 24, 26)",
+          "outside": "rgb(36, 32, 36)",
+          "border": "rgb(231, 170, 139)",
+          "text": "rgb(246, 240, 237)",
+          "inactive": false,
+          "boundaryInside": 8.824640768097218,
+          "boundaryOutside": 8.048768172323324,
+          "textContrast": 15.606375403532045
+        },
+        {
+          "label": "Measurement type *",
+          "inside": "rgb(27, 24, 26)",
+          "outside": "rgb(36, 32, 36)",
+          "border": "rgb(149, 130, 142)",
+          "text": "rgb(246, 240, 237)",
+          "inactive": false,
+          "boundaryInside": 4.916709115477878,
+          "boundaryOutside": 4.484426378498712,
+          "textContrast": 15.606375403532045
+        }
+      ]
+    },
+    {
+      "capture": "fitness-light-390.png",
+      "fields": [
+        {
+          "label": "Name *",
+          "inside": "rgb(255, 252, 248)",
+          "outside": "rgb(251, 245, 240)",
+          "border": "rgb(135, 72, 51)",
+          "text": "rgb(36, 30, 28)",
+          "inactive": false,
+          "boundaryInside": 6.832649540866528,
+          "boundaryOutside": 6.463069882432576,
+          "textContrast": 16.07183467732177
+        },
+        {
+          "label": "Measurement type *",
+          "inside": "rgb(255, 252, 248)",
+          "outside": "rgb(251, 245, 240)",
+          "border": "rgb(155, 131, 123)",
+          "text": "rgb(36, 30, 28)",
+          "inactive": false,
+          "boundaryInside": 3.4645252799392496,
+          "boundaryOutside": 3.2771282735601757,
+          "textContrast": 16.07183467732177
+        }
+      ]
+    },
+    {
+      "capture": "transaction-new-dark-390.png",
+      "fields": [
+        {
+          "label": "Amount in reais, required",
+          "inside": "rgb(27, 24, 26)",
+          "outside": "rgb(36, 32, 36)",
+          "border": "rgb(231, 170, 139)",
+          "text": "rgb(246, 240, 237)",
+          "inactive": false,
+          "boundaryInside": 8.824640768097218,
+          "boundaryOutside": 8.048768172323324,
+          "textContrast": 15.606375403532045
+        },
+        {
+          "label": "Description, required",
+          "inside": "rgb(27, 24, 26)",
+          "outside": "rgb(36, 32, 36)",
+          "border": "rgb(149, 130, 142)",
+          "text": "rgb(246, 240, 237)",
+          "inactive": false,
+          "boundaryInside": 4.916709115477878,
+          "boundaryOutside": 4.484426378498712,
+          "textContrast": 15.606375403532045
+        },
+        {
+          "label": "Category",
+          "inside": "rgb(27, 24, 26)",
+          "outside": "rgb(36, 32, 36)",
+          "border": "rgb(149, 130, 142)",
+          "text": "rgb(246, 240, 237)",
+          "inactive": false,
+          "boundaryInside": 4.916709115477878,
+          "boundaryOutside": 4.484426378498712,
+          "textContrast": 15.606375403532045
+        },
+        {
+          "label": "Note",
+          "inside": "rgb(27, 24, 26)",
+          "outside": "rgb(36, 32, 36)",
+          "border": "rgb(149, 130, 142)",
+          "text": "rgb(246, 240, 237)",
+          "inactive": false,
+          "boundaryInside": 4.916709115477878,
+          "boundaryOutside": 4.484426378498712,
+          "textContrast": 15.606375403532045
+        },
+        {
+          "label": "Date *",
+          "inside": "rgb(27, 24, 26)",
+          "outside": "rgb(36, 32, 36)",
+          "border": "rgb(149, 130, 142)",
+          "text": "rgb(246, 240, 237)",
+          "inactive": false,
+          "boundaryInside": 4.916709115477878,
+          "boundaryOutside": 4.484426378498712,
+          "textContrast": 15.606375403532045
+        }
+      ]
+    },
+    {
+      "capture": "transaction-new-light-390.png",
+      "fields": [
+        {
+          "label": "Amount in reais, required",
+          "inside": "rgb(255, 252, 248)",
+          "outside": "rgb(251, 245, 240)",
+          "border": "rgb(135, 72, 51)",
+          "text": "rgb(36, 30, 28)",
+          "inactive": false,
+          "boundaryInside": 6.832649540866528,
+          "boundaryOutside": 6.463069882432576,
+          "textContrast": 16.07183467732177
+        },
+        {
+          "label": "Description, required",
+          "inside": "rgb(255, 252, 248)",
+          "outside": "rgb(251, 245, 240)",
+          "border": "rgb(155, 131, 123)",
+          "text": "rgb(36, 30, 28)",
+          "inactive": false,
+          "boundaryInside": 3.4645252799392496,
+          "boundaryOutside": 3.2771282735601757,
+          "textContrast": 16.07183467732177
+        },
+        {
+          "label": "Category",
+          "inside": "rgb(255, 252, 248)",
+          "outside": "rgb(251, 245, 240)",
+          "border": "rgb(155, 131, 123)",
+          "text": "rgb(36, 30, 28)",
+          "inactive": false,
+          "boundaryInside": 3.4645252799392496,
+          "boundaryOutside": 3.2771282735601757,
+          "textContrast": 16.07183467732177
+        },
+        {
+          "label": "Note",
+          "inside": "rgb(255, 252, 248)",
+          "outside": "rgb(251, 245, 240)",
+          "border": "rgb(155, 131, 123)",
+          "text": "rgb(36, 30, 28)",
+          "inactive": false,
+          "boundaryInside": 3.4645252799392496,
+          "boundaryOutside": 3.2771282735601757,
+          "textContrast": 16.07183467732177
+        },
+        {
+          "label": "Date *",
+          "inside": "rgb(255, 252, 248)",
+          "outside": "rgb(251, 245, 240)",
+          "border": "rgb(155, 131, 123)",
+          "text": "rgb(36, 30, 28)",
+          "inactive": false,
+          "boundaryInside": 3.4645252799392496,
+          "boundaryOutside": 3.2771282735601757,
+          "textContrast": 16.07183467732177
+        }
+      ]
+    },
+    {
+      "capture": "transaction-edit-dark-390.png",
+      "fields": [
+        {
+          "label": "Amount in reais, required",
+          "inside": "rgb(27, 24, 26)",
+          "outside": "rgb(36, 32, 36)",
+          "border": "rgb(231, 170, 139)",
+          "text": "rgb(246, 240, 237)",
+          "inactive": false,
+          "boundaryInside": 8.824640768097218,
+          "boundaryOutside": 8.048768172323324,
+          "textContrast": 15.606375403532045
+        },
+        {
+          "label": "Description, required",
+          "inside": "rgb(27, 24, 26)",
+          "outside": "rgb(36, 32, 36)",
+          "border": "rgb(149, 130, 142)",
+          "text": "rgb(246, 240, 237)",
+          "inactive": false,
+          "boundaryInside": 4.916709115477878,
+          "boundaryOutside": 4.484426378498712,
+          "textContrast": 15.606375403532045
+        },
+        {
+          "label": "Category",
+          "inside": "rgb(27, 24, 26)",
+          "outside": "rgb(36, 32, 36)",
+          "border": "rgb(149, 130, 142)",
+          "text": "rgb(246, 240, 237)",
+          "inactive": false,
+          "boundaryInside": 4.916709115477878,
+          "boundaryOutside": 4.484426378498712,
+          "textContrast": 15.606375403532045
+        },
+        {
+          "label": "Note",
+          "inside": "rgb(27, 24, 26)",
+          "outside": "rgb(36, 32, 36)",
+          "border": "rgb(149, 130, 142)",
+          "text": "rgb(246, 240, 237)",
+          "inactive": false,
+          "boundaryInside": 4.916709115477878,
+          "boundaryOutside": 4.484426378498712,
+          "textContrast": 15.606375403532045
+        },
+        {
+          "label": "Date *",
+          "inside": "rgb(27, 24, 26)",
+          "outside": "rgb(36, 32, 36)",
+          "border": "rgb(149, 130, 142)",
+          "text": "rgb(246, 240, 237)",
+          "inactive": false,
+          "boundaryInside": 4.916709115477878,
+          "boundaryOutside": 4.484426378498712,
+          "textContrast": 15.606375403532045
+        }
+      ]
+    },
+    {
+      "capture": "transaction-edit-light-390.png",
+      "fields": [
+        {
+          "label": "Amount in reais, required",
+          "inside": "rgb(255, 252, 248)",
+          "outside": "rgb(251, 245, 240)",
+          "border": "rgb(135, 72, 51)",
+          "text": "rgb(36, 30, 28)",
+          "inactive": false,
+          "boundaryInside": 6.832649540866528,
+          "boundaryOutside": 6.463069882432576,
+          "textContrast": 16.07183467732177
+        },
+        {
+          "label": "Description, required",
+          "inside": "rgb(255, 252, 248)",
+          "outside": "rgb(251, 245, 240)",
+          "border": "rgb(155, 131, 123)",
+          "text": "rgb(36, 30, 28)",
+          "inactive": false,
+          "boundaryInside": 3.4645252799392496,
+          "boundaryOutside": 3.2771282735601757,
+          "textContrast": 16.07183467732177
+        },
+        {
+          "label": "Category",
+          "inside": "rgb(255, 252, 248)",
+          "outside": "rgb(251, 245, 240)",
+          "border": "rgb(155, 131, 123)",
+          "text": "rgb(36, 30, 28)",
+          "inactive": false,
+          "boundaryInside": 3.4645252799392496,
+          "boundaryOutside": 3.2771282735601757,
+          "textContrast": 16.07183467732177
+        },
+        {
+          "label": "Note",
+          "inside": "rgb(255, 252, 248)",
+          "outside": "rgb(251, 245, 240)",
+          "border": "rgb(155, 131, 123)",
+          "text": "rgb(36, 30, 28)",
+          "inactive": false,
+          "boundaryInside": 3.4645252799392496,
+          "boundaryOutside": 3.2771282735601757,
+          "textContrast": 16.07183467732177
+        },
+        {
+          "label": "Date *",
+          "inside": "rgb(255, 252, 248)",
+          "outside": "rgb(251, 245, 240)",
+          "border": "rgb(155, 131, 123)",
+          "text": "rgb(36, 30, 28)",
+          "inactive": false,
+          "boundaryInside": 3.4645252799392496,
+          "boundaryOutside": 3.2771282735601757,
+          "textContrast": 16.07183467732177
+        }
+      ]
+    },
+    {
+      "capture": "work-new-dark-390.png",
+      "fields": [
+        {
+          "label": "Job title *",
+          "inside": "rgb(27, 24, 26)",
+          "outside": "rgb(36, 32, 36)",
+          "border": "rgb(231, 170, 139)",
+          "text": "rgb(246, 240, 237)",
+          "inactive": false,
+          "boundaryInside": 8.824640768097218,
+          "boundaryOutside": 8.048768172323324,
+          "textContrast": 15.606375403532045
+        },
+        {
+          "label": "Client *",
+          "inside": "rgb(27, 24, 26)",
+          "outside": "rgb(36, 32, 36)",
+          "border": "rgb(149, 130, 142)",
+          "text": "rgb(246, 240, 237)",
+          "inactive": false,
+          "boundaryInside": 4.916709115477878,
+          "boundaryOutside": 4.484426378498712,
+          "textContrast": 15.606375403532045
+        },
+        {
+          "label": "Description",
+          "inside": "rgb(27, 24, 26)",
+          "outside": "rgb(36, 32, 36)",
+          "border": "rgb(149, 130, 142)",
+          "text": "rgb(246, 240, 237)",
+          "inactive": false,
+          "boundaryInside": 4.916709115477878,
+          "boundaryOutside": 4.484426378498712,
+          "textContrast": 15.606375403532045
+        },
+        {
+          "label": "Work date *",
+          "inside": "rgb(27, 24, 26)",
+          "outside": "rgb(36, 32, 36)",
+          "border": "rgb(149, 130, 142)",
+          "text": "rgb(246, 240, 237)",
+          "inactive": false,
+          "boundaryInside": 4.916709115477878,
+          "boundaryOutside": 4.484426378498712,
+          "textContrast": 15.606375403532045
+        },
+        {
+          "label": "Duration, whole hours",
+          "inside": "rgb(27, 24, 26)",
+          "outside": "rgb(36, 32, 36)",
+          "border": "rgb(149, 130, 142)",
+          "text": "rgb(246, 240, 237)",
+          "inactive": false,
+          "boundaryInside": 4.916709115477878,
+          "boundaryOutside": 4.484426378498712,
+          "textContrast": 15.606375403532045
+        },
+        {
+          "label": "Duration, minutes from 0 to 59",
+          "inside": "rgb(27, 24, 26)",
+          "outside": "rgb(36, 32, 36)",
+          "border": "rgb(149, 130, 142)",
+          "text": "rgb(246, 240, 237)",
+          "inactive": false,
+          "boundaryInside": 4.916709115477878,
+          "boundaryOutside": 4.484426378498712,
+          "textContrast": 15.606375403532045
+        },
+        {
+          "label": "Hourly rate in reais, required",
+          "inside": "rgb(27, 24, 26)",
+          "outside": "rgb(36, 32, 36)",
+          "border": "rgb(149, 130, 142)",
+          "text": "rgb(246, 240, 237)",
+          "inactive": false,
+          "boundaryInside": 4.916709115477878,
+          "boundaryOutside": 4.484426378498712,
+          "textContrast": 15.606375403532045
+        },
+        {
+          "label": "Expected payment date",
+          "inside": "rgb(27, 24, 26)",
+          "outside": "rgb(36, 32, 36)",
+          "border": "rgb(149, 130, 142)",
+          "text": "rgb(246, 240, 237)",
+          "inactive": false,
+          "boundaryInside": 4.916709115477878,
+          "boundaryOutside": 4.484426378498712,
+          "textContrast": 15.606375403532045
+        }
+      ]
+    },
+    {
+      "capture": "work-new-light-390.png",
+      "fields": [
+        {
+          "label": "Job title *",
+          "inside": "rgb(255, 252, 248)",
+          "outside": "rgb(251, 245, 240)",
+          "border": "rgb(135, 72, 51)",
+          "text": "rgb(36, 30, 28)",
+          "inactive": false,
+          "boundaryInside": 6.832649540866528,
+          "boundaryOutside": 6.463069882432576,
+          "textContrast": 16.07183467732177
+        },
+        {
+          "label": "Client *",
+          "inside": "rgb(255, 252, 248)",
+          "outside": "rgb(251, 245, 240)",
+          "border": "rgb(155, 131, 123)",
+          "text": "rgb(36, 30, 28)",
+          "inactive": false,
+          "boundaryInside": 3.4645252799392496,
+          "boundaryOutside": 3.2771282735601757,
+          "textContrast": 16.07183467732177
+        },
+        {
+          "label": "Description",
+          "inside": "rgb(255, 252, 248)",
+          "outside": "rgb(251, 245, 240)",
+          "border": "rgb(155, 131, 123)",
+          "text": "rgb(36, 30, 28)",
+          "inactive": false,
+          "boundaryInside": 3.4645252799392496,
+          "boundaryOutside": 3.2771282735601757,
+          "textContrast": 16.07183467732177
+        },
+        {
+          "label": "Work date *",
+          "inside": "rgb(255, 252, 248)",
+          "outside": "rgb(251, 245, 240)",
+          "border": "rgb(155, 131, 123)",
+          "text": "rgb(36, 30, 28)",
+          "inactive": false,
+          "boundaryInside": 3.4645252799392496,
+          "boundaryOutside": 3.2771282735601757,
+          "textContrast": 16.07183467732177
+        },
+        {
+          "label": "Duration, whole hours",
+          "inside": "rgb(255, 252, 248)",
+          "outside": "rgb(251, 245, 240)",
+          "border": "rgb(155, 131, 123)",
+          "text": "rgb(36, 30, 28)",
+          "inactive": false,
+          "boundaryInside": 3.4645252799392496,
+          "boundaryOutside": 3.2771282735601757,
+          "textContrast": 16.07183467732177
+        },
+        {
+          "label": "Duration, minutes from 0 to 59",
+          "inside": "rgb(255, 252, 248)",
+          "outside": "rgb(251, 245, 240)",
+          "border": "rgb(155, 131, 123)",
+          "text": "rgb(36, 30, 28)",
+          "inactive": false,
+          "boundaryInside": 3.4645252799392496,
+          "boundaryOutside": 3.2771282735601757,
+          "textContrast": 16.07183467732177
+        },
+        {
+          "label": "Hourly rate in reais, required",
+          "inside": "rgb(255, 252, 248)",
+          "outside": "rgb(251, 245, 240)",
+          "border": "rgb(155, 131, 123)",
+          "text": "rgb(36, 30, 28)",
+          "inactive": false,
+          "boundaryInside": 3.4645252799392496,
+          "boundaryOutside": 3.2771282735601757,
+          "textContrast": 16.07183467732177
+        },
+        {
+          "label": "Expected payment date",
+          "inside": "rgb(255, 252, 248)",
+          "outside": "rgb(251, 245, 240)",
+          "border": "rgb(155, 131, 123)",
+          "text": "rgb(36, 30, 28)",
+          "inactive": false,
+          "boundaryInside": 3.4645252799392496,
+          "boundaryOutside": 3.2771282735601757,
+          "textContrast": 16.07183467732177
+        }
+      ]
+    },
+    {
+      "capture": "work-edit-dark-390.png",
+      "fields": [
+        {
+          "label": "Job title *",
+          "inside": "rgb(27, 24, 26)",
+          "outside": "rgb(36, 32, 36)",
+          "border": "rgb(231, 170, 139)",
+          "text": "rgb(246, 240, 237)",
+          "inactive": false,
+          "boundaryInside": 8.824640768097218,
+          "boundaryOutside": 8.048768172323324,
+          "textContrast": 15.606375403532045
+        },
+        {
+          "label": "Client *",
+          "inside": "rgb(27, 24, 26)",
+          "outside": "rgb(36, 32, 36)",
+          "border": "rgb(149, 130, 142)",
+          "text": "rgb(246, 240, 237)",
+          "inactive": false,
+          "boundaryInside": 4.916709115477878,
+          "boundaryOutside": 4.484426378498712,
+          "textContrast": 15.606375403532045
+        },
+        {
+          "label": "Description",
+          "inside": "rgb(27, 24, 26)",
+          "outside": "rgb(36, 32, 36)",
+          "border": "rgb(149, 130, 142)",
+          "text": "rgb(246, 240, 237)",
+          "inactive": false,
+          "boundaryInside": 4.916709115477878,
+          "boundaryOutside": 4.484426378498712,
+          "textContrast": 15.606375403532045
+        },
+        {
+          "label": "Work date *",
+          "inside": "rgb(27, 24, 26)",
+          "outside": "rgb(36, 32, 36)",
+          "border": "rgb(149, 130, 142)",
+          "text": "rgb(246, 240, 237)",
+          "inactive": false,
+          "boundaryInside": 4.916709115477878,
+          "boundaryOutside": 4.484426378498712,
+          "textContrast": 15.606375403532045
+        },
+        {
+          "label": "Duration, whole hours",
+          "inside": "rgb(27, 24, 26)",
+          "outside": "rgb(36, 32, 36)",
+          "border": "rgb(149, 130, 142)",
+          "text": "rgb(246, 240, 237)",
+          "inactive": false,
+          "boundaryInside": 4.916709115477878,
+          "boundaryOutside": 4.484426378498712,
+          "textContrast": 15.606375403532045
+        },
+        {
+          "label": "Duration, minutes from 0 to 59",
+          "inside": "rgb(27, 24, 26)",
+          "outside": "rgb(36, 32, 36)",
+          "border": "rgb(149, 130, 142)",
+          "text": "rgb(246, 240, 237)",
+          "inactive": false,
+          "boundaryInside": 4.916709115477878,
+          "boundaryOutside": 4.484426378498712,
+          "textContrast": 15.606375403532045
+        },
+        {
+          "label": "Hourly rate in reais, required",
+          "inside": "rgb(27, 24, 26)",
+          "outside": "rgb(36, 32, 36)",
+          "border": "rgb(149, 130, 142)",
+          "text": "rgb(246, 240, 237)",
+          "inactive": false,
+          "boundaryInside": 4.916709115477878,
+          "boundaryOutside": 4.484426378498712,
+          "textContrast": 15.606375403532045
+        },
+        {
+          "label": "Expected payment date",
+          "inside": "rgb(27, 24, 26)",
+          "outside": "rgb(36, 32, 36)",
+          "border": "rgb(149, 130, 142)",
+          "text": "rgb(246, 240, 237)",
+          "inactive": false,
+          "boundaryInside": 4.916709115477878,
+          "boundaryOutside": 4.484426378498712,
+          "textContrast": 15.606375403532045
+        }
+      ]
+    },
+    {
+      "capture": "work-edit-light-390.png",
+      "fields": [
+        {
+          "label": "Job title *",
+          "inside": "rgb(255, 252, 248)",
+          "outside": "rgb(251, 245, 240)",
+          "border": "rgb(135, 72, 51)",
+          "text": "rgb(36, 30, 28)",
+          "inactive": false,
+          "boundaryInside": 6.832649540866528,
+          "boundaryOutside": 6.463069882432576,
+          "textContrast": 16.07183467732177
+        },
+        {
+          "label": "Client *",
+          "inside": "rgb(255, 252, 248)",
+          "outside": "rgb(251, 245, 240)",
+          "border": "rgb(155, 131, 123)",
+          "text": "rgb(36, 30, 28)",
+          "inactive": false,
+          "boundaryInside": 3.4645252799392496,
+          "boundaryOutside": 3.2771282735601757,
+          "textContrast": 16.07183467732177
+        },
+        {
+          "label": "Description",
+          "inside": "rgb(255, 252, 248)",
+          "outside": "rgb(251, 245, 240)",
+          "border": "rgb(155, 131, 123)",
+          "text": "rgb(36, 30, 28)",
+          "inactive": false,
+          "boundaryInside": 3.4645252799392496,
+          "boundaryOutside": 3.2771282735601757,
+          "textContrast": 16.07183467732177
+        },
+        {
+          "label": "Work date *",
+          "inside": "rgb(255, 252, 248)",
+          "outside": "rgb(251, 245, 240)",
+          "border": "rgb(155, 131, 123)",
+          "text": "rgb(36, 30, 28)",
+          "inactive": false,
+          "boundaryInside": 3.4645252799392496,
+          "boundaryOutside": 3.2771282735601757,
+          "textContrast": 16.07183467732177
+        },
+        {
+          "label": "Duration, whole hours",
+          "inside": "rgb(255, 252, 248)",
+          "outside": "rgb(251, 245, 240)",
+          "border": "rgb(155, 131, 123)",
+          "text": "rgb(36, 30, 28)",
+          "inactive": false,
+          "boundaryInside": 3.4645252799392496,
+          "boundaryOutside": 3.2771282735601757,
+          "textContrast": 16.07183467732177
+        },
+        {
+          "label": "Duration, minutes from 0 to 59",
+          "inside": "rgb(255, 252, 248)",
+          "outside": "rgb(251, 245, 240)",
+          "border": "rgb(155, 131, 123)",
+          "text": "rgb(36, 30, 28)",
+          "inactive": false,
+          "boundaryInside": 3.4645252799392496,
+          "boundaryOutside": 3.2771282735601757,
+          "textContrast": 16.07183467732177
+        },
+        {
+          "label": "Hourly rate in reais, required",
+          "inside": "rgb(255, 252, 248)",
+          "outside": "rgb(251, 245, 240)",
+          "border": "rgb(155, 131, 123)",
+          "text": "rgb(36, 30, 28)",
+          "inactive": false,
+          "boundaryInside": 3.4645252799392496,
+          "boundaryOutside": 3.2771282735601757,
+          "textContrast": 16.07183467732177
+        },
+        {
+          "label": "Expected payment date",
+          "inside": "rgb(255, 252, 248)",
+          "outside": "rgb(251, 245, 240)",
+          "border": "rgb(155, 131, 123)",
+          "text": "rgb(36, 30, 28)",
+          "inactive": false,
+          "boundaryInside": 3.4645252799392496,
+          "boundaryOutside": 3.2771282735601757,
+          "textContrast": 16.07183467732177
+        }
+      ]
+    },
+    {
+      "capture": "record-payment-dark-390.png",
+      "fields": [
+        {
+          "label": "Client *",
+          "inside": "rgb(27, 24, 26)",
+          "outside": "rgb(36, 32, 36)",
+          "border": "rgb(149, 130, 142)",
+          "text": "rgb(246, 240, 237)",
+          "inactive": false,
+          "boundaryInside": 4.916709115477878,
+          "boundaryOutside": 4.484426378498712,
+          "textContrast": 15.606375403532045
+        },
+        {
+          "label": "Payment date *",
+          "inside": "rgb(27, 24, 26)",
+          "outside": "rgb(36, 32, 36)",
+          "border": "rgb(149, 130, 142)",
+          "text": "rgb(246, 240, 237)",
+          "inactive": false,
+          "boundaryInside": 4.916709115477878,
+          "boundaryOutside": 4.484426378498712,
+          "textContrast": 15.606375403532045
+        },
+        {
+          "label": "Income category",
+          "inside": "rgb(27, 24, 26)",
+          "outside": "rgb(36, 32, 36)",
+          "border": "rgb(149, 130, 142)",
+          "text": "rgb(246, 240, 237)",
+          "inactive": false,
+          "boundaryInside": 4.916709115477878,
+          "boundaryOutside": 4.484426378498712,
+          "textContrast": 15.606375403532045
+        }
+      ]
+    },
+    {
+      "capture": "record-payment-light-390.png",
+      "fields": [
+        {
+          "label": "Client *",
+          "inside": "rgb(255, 252, 248)",
+          "outside": "rgb(251, 245, 240)",
+          "border": "rgb(155, 131, 123)",
+          "text": "rgb(36, 30, 28)",
+          "inactive": false,
+          "boundaryInside": 3.4645252799392496,
+          "boundaryOutside": 3.2771282735601757,
+          "textContrast": 16.07183467732177
+        },
+        {
+          "label": "Payment date *",
+          "inside": "rgb(255, 252, 248)",
+          "outside": "rgb(251, 245, 240)",
+          "border": "rgb(155, 131, 123)",
+          "text": "rgb(36, 30, 28)",
+          "inactive": false,
+          "boundaryInside": 3.4645252799392496,
+          "boundaryOutside": 3.2771282735601757,
+          "textContrast": 16.07183467732177
+        },
+        {
+          "label": "Income category",
+          "inside": "rgb(255, 252, 248)",
+          "outside": "rgb(251, 245, 240)",
+          "border": "rgb(155, 131, 123)",
+          "text": "rgb(36, 30, 28)",
+          "inactive": false,
+          "boundaryInside": 3.4645252799392496,
+          "boundaryOutside": 3.2771282735601757,
+          "textContrast": 16.07183467732177
+        }
+      ]
+    },
+    {
+      "capture": "confirm-payment-dark-390.png",
+      "fields": [
+        {
+          "label": "Actual amount paid *",
+          "inside": "rgb(27, 24, 26)",
+          "outside": "rgb(21, 19, 21)",
+          "border": "rgb(231, 170, 139)",
+          "text": "rgb(246, 240, 237)",
+          "inactive": false,
+          "boundaryInside": 8.824640768097218,
+          "boundaryOutside": 9.262109102846619,
+          "textContrast": 15.606375403532045
+        },
+        {
+          "label": "Payment date *",
+          "inside": "rgb(27, 24, 26)",
+          "outside": "rgb(21, 19, 21)",
+          "border": "rgb(149, 130, 142)",
+          "text": "rgb(246, 240, 237)",
+          "inactive": false,
+          "boundaryInside": 4.916709115477878,
+          "boundaryOutside": 5.160447597952002,
+          "textContrast": 15.606375403532045
+        }
+      ]
+    },
+    {
+      "capture": "confirm-payment-light-390.png",
+      "fields": [
+        {
+          "label": "Actual amount paid *",
+          "inside": "rgb(255, 252, 248)",
+          "outside": "rgb(245, 240, 234)",
+          "border": "rgb(135, 72, 51)",
+          "text": "rgb(36, 30, 28)",
+          "inactive": false,
+          "boundaryInside": 6.832649540866528,
+          "boundaryOutside": 6.168077912036521,
+          "textContrast": 16.07183467732177
+        },
+        {
+          "label": "Payment date *",
+          "inside": "rgb(255, 252, 248)",
+          "outside": "rgb(245, 240, 234)",
+          "border": "rgb(155, 131, 123)",
+          "text": "rgb(36, 30, 28)",
+          "inactive": false,
+          "boundaryInside": 3.4645252799392496,
+          "boundaryOutside": 3.127551285496683,
+          "textContrast": 16.07183467732177
+        }
+      ]
+    },
+    {
+      "capture": "commitment-editor-dark-390.png",
+      "fields": [
+        {
+          "label": "Title, required",
+          "inside": "rgb(27, 24, 26)",
+          "outside": "rgb(36, 32, 36)",
+          "border": "rgb(231, 170, 139)",
+          "text": "rgb(246, 240, 237)",
+          "inactive": false,
+          "boundaryInside": 8.824640768097218,
+          "boundaryOutside": 8.048768172323324,
+          "textContrast": 15.606375403532045
+        },
+        {
+          "label": "Expected amount *",
+          "inside": "rgb(27, 24, 26)",
+          "outside": "rgb(36, 32, 36)",
+          "border": "rgb(149, 130, 142)",
+          "text": "rgb(246, 240, 237)",
+          "inactive": false,
+          "boundaryInside": 4.916709115477878,
+          "boundaryOutside": 4.484426378498712,
+          "textContrast": 15.606375403532045
+        },
+        {
+          "label": "First due date *",
+          "inside": "rgb(27, 24, 26)",
+          "outside": "rgb(36, 32, 36)",
+          "border": "rgb(149, 130, 142)",
+          "text": "rgb(246, 240, 237)",
+          "inactive": false,
+          "boundaryInside": 4.916709115477878,
+          "boundaryOutside": 4.484426378498712,
+          "textContrast": 15.606375403532045
+        },
+        {
+          "label": "Category",
+          "inside": "rgb(27, 24, 26)",
+          "outside": "rgb(36, 32, 36)",
+          "border": "rgb(149, 130, 142)",
+          "text": "rgb(246, 240, 237)",
+          "inactive": false,
+          "boundaryInside": 4.916709115477878,
+          "boundaryOutside": 4.484426378498712,
+          "textContrast": 15.606375403532045
+        }
+      ]
+    },
+    {
+      "capture": "commitment-editor-light-390.png",
+      "fields": [
+        {
+          "label": "Title, required",
+          "inside": "rgb(255, 252, 248)",
+          "outside": "rgb(251, 245, 240)",
+          "border": "rgb(135, 72, 51)",
+          "text": "rgb(36, 30, 28)",
+          "inactive": false,
+          "boundaryInside": 6.832649540866528,
+          "boundaryOutside": 6.463069882432576,
+          "textContrast": 16.07183467732177
+        },
+        {
+          "label": "Expected amount *",
+          "inside": "rgb(255, 252, 248)",
+          "outside": "rgb(251, 245, 240)",
+          "border": "rgb(155, 131, 123)",
+          "text": "rgb(36, 30, 28)",
+          "inactive": false,
+          "boundaryInside": 3.4645252799392496,
+          "boundaryOutside": 3.2771282735601757,
+          "textContrast": 16.07183467732177
+        },
+        {
+          "label": "First due date *",
+          "inside": "rgb(255, 252, 248)",
+          "outside": "rgb(251, 245, 240)",
+          "border": "rgb(155, 131, 123)",
+          "text": "rgb(36, 30, 28)",
+          "inactive": false,
+          "boundaryInside": 3.4645252799392496,
+          "boundaryOutside": 3.2771282735601757,
+          "textContrast": 16.07183467732177
+        },
+        {
+          "label": "Category",
+          "inside": "rgb(255, 252, 248)",
+          "outside": "rgb(251, 245, 240)",
+          "border": "rgb(155, 131, 123)",
+          "text": "rgb(36, 30, 28)",
+          "inactive": false,
+          "boundaryInside": 3.4645252799392496,
+          "boundaryOutside": 3.2771282735601757,
+          "textContrast": 16.07183467732177
+        }
+      ]
+    }
+  ]
+}

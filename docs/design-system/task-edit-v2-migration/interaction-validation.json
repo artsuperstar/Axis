@@ -1,0 +1,479 @@
+{
+  "scope": "Actual components on RNWeb with native boundaries and synthetic callbacks",
+  "checks": [
+    {
+      "theme": "dark",
+      "width": 320,
+      "fontScale": 1,
+      "actionGeometry": [
+        {
+          "x": 247.375,
+          "y": 21,
+          "width": 60.625,
+          "height": 48
+        },
+        {
+          "x": 12,
+          "y": 21,
+          "width": 103.859375,
+          "height": 48
+        }
+      ],
+      "last": {
+        "x": 25,
+        "y": 771,
+        "width": 270,
+        "height": 48
+      },
+      "resting": {
+        "border": "rgb(149, 130, 142)",
+        "background": "rgb(27, 24, 26)",
+        "font": "AxisManrope-Regular"
+      },
+      "focus": {
+        "border": "rgb(231, 170, 139)",
+        "outline": "rgb(231, 170, 139)",
+        "outlineWidth": "2px"
+      },
+      "result": "Save/Cancel visible; native-boundary return and selectors retain draft; validation blocks Save; original saved values and chosen options reach callback; last action reachable"
+    },
+    {
+      "theme": "dark",
+      "width": 320,
+      "fontScale": 2,
+      "actionGeometry": [
+        {
+          "x": 212.765625,
+          "y": 89,
+          "width": 95.234375,
+          "height": 62
+        },
+        {
+          "x": 12,
+          "y": 89,
+          "width": 153.703125,
+          "height": 62
+        }
+      ],
+      "last": {
+        "x": 25,
+        "y": 738,
+        "width": 270,
+        "height": 106
+      },
+      "resting": {
+        "border": "rgb(149, 130, 142)",
+        "background": "rgb(27, 24, 26)",
+        "font": "AxisManrope-Regular"
+      },
+      "focus": {
+        "border": "rgb(231, 170, 139)",
+        "outline": "rgb(231, 170, 139)",
+        "outlineWidth": "2px"
+      },
+      "result": "Save/Cancel visible; native-boundary return and selectors retain draft; validation blocks Save; original saved values and chosen options reach callback; last action reachable"
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "fontScale": 1,
+      "actionGeometry": [
+        {
+          "x": 317.375,
+          "y": 21,
+          "width": 60.625,
+          "height": 48
+        },
+        {
+          "x": 12,
+          "y": 21,
+          "width": 103.859375,
+          "height": 48
+        }
+      ],
+      "last": {
+        "x": 25,
+        "y": 771,
+        "width": 340,
+        "height": 48
+      },
+      "resting": {
+        "border": "rgb(149, 130, 142)",
+        "background": "rgb(27, 24, 26)",
+        "font": "AxisManrope-Regular"
+      },
+      "focus": {
+        "border": "rgb(231, 170, 139)",
+        "outline": "rgb(231, 170, 139)",
+        "outlineWidth": "2px"
+      },
+      "result": "Save/Cancel visible; native-boundary return and selectors retain draft; validation blocks Save; original saved values and chosen options reach callback; last action reachable"
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "fontScale": 2,
+      "actionGeometry": [
+        {
+          "x": 282.765625,
+          "y": 97,
+          "width": 95.234375,
+          "height": 62
+        },
+        {
+          "x": 12,
+          "y": 97,
+          "width": 153.703125,
+          "height": 62
+        }
+      ],
+      "last": {
+        "x": 25,
+        "y": 757,
+        "width": 340,
+        "height": 62
+      },
+      "resting": {
+        "border": "rgb(149, 130, 142)",
+        "background": "rgb(27, 24, 26)",
+        "font": "AxisManrope-Regular"
+      },
+      "focus": {
+        "border": "rgb(231, 170, 139)",
+        "outline": "rgb(231, 170, 139)",
+        "outlineWidth": "2px"
+      },
+      "result": "Save/Cancel visible; native-boundary return and selectors retain draft; validation blocks Save; original saved values and chosen options reach callback; last action reachable"
+    },
+    {
+      "theme": "dark",
+      "width": 430,
+      "fontScale": 1,
+      "actionGeometry": [
+        {
+          "x": 357.375,
+          "y": 21,
+          "width": 60.625,
+          "height": 48
+        },
+        {
+          "x": 12,
+          "y": 21,
+          "width": 103.859375,
+          "height": 48
+        }
+      ],
+      "last": {
+        "x": 25,
+        "y": 771,
+        "width": 380,
+        "height": 48
+      },
+      "resting": {
+        "border": "rgb(149, 130, 142)",
+        "background": "rgb(27, 24, 26)",
+        "font": "AxisManrope-Regular"
+      },
+      "focus": {
+        "border": "rgb(231, 170, 139)",
+        "outline": "rgb(231, 170, 139)",
+        "outlineWidth": "2px"
+      },
+      "result": "Save/Cancel visible; native-boundary return and selectors retain draft; validation blocks Save; original saved values and chosen options reach callback; last action reachable"
+    },
+    {
+      "theme": "dark",
+      "width": 430,
+      "fontScale": 2,
+      "actionGeometry": [
+        {
+          "x": 322.765625,
+          "y": 97,
+          "width": 95.234375,
+          "height": 62
+        },
+        {
+          "x": 12,
+          "y": 97,
+          "width": 153.703125,
+          "height": 62
+        }
+      ],
+      "last": {
+        "x": 25,
+        "y": 757,
+        "width": 380,
+        "height": 62
+      },
+      "resting": {
+        "border": "rgb(149, 130, 142)",
+        "background": "rgb(27, 24, 26)",
+        "font": "AxisManrope-Regular"
+      },
+      "focus": {
+        "border": "rgb(231, 170, 139)",
+        "outline": "rgb(231, 170, 139)",
+        "outlineWidth": "2px"
+      },
+      "result": "Save/Cancel visible; native-boundary return and selectors retain draft; validation blocks Save; original saved values and chosen options reach callback; last action reachable"
+    },
+    {
+      "theme": "light",
+      "width": 320,
+      "fontScale": 1,
+      "actionGeometry": [
+        {
+          "x": 247.375,
+          "y": 21,
+          "width": 60.625,
+          "height": 48
+        },
+        {
+          "x": 12,
+          "y": 21,
+          "width": 103.859375,
+          "height": 48
+        }
+      ],
+      "last": {
+        "x": 25,
+        "y": 771,
+        "width": 270,
+        "height": 48
+      },
+      "resting": {
+        "border": "rgb(155, 131, 123)",
+        "background": "rgb(255, 252, 248)",
+        "font": "AxisManrope-Regular"
+      },
+      "focus": {
+        "border": "rgb(135, 72, 51)",
+        "outline": "rgb(135, 72, 51)",
+        "outlineWidth": "2px"
+      },
+      "result": "Save/Cancel visible; native-boundary return and selectors retain draft; validation blocks Save; original saved values and chosen options reach callback; last action reachable"
+    },
+    {
+      "theme": "light",
+      "width": 320,
+      "fontScale": 2,
+      "actionGeometry": [
+        {
+          "x": 212.765625,
+          "y": 89,
+          "width": 95.234375,
+          "height": 62
+        },
+        {
+          "x": 12,
+          "y": 89,
+          "width": 153.703125,
+          "height": 62
+        }
+      ],
+      "last": {
+        "x": 25,
+        "y": 738,
+        "width": 270,
+        "height": 106
+      },
+      "resting": {
+        "border": "rgb(155, 131, 123)",
+        "background": "rgb(255, 252, 248)",
+        "font": "AxisManrope-Regular"
+      },
+      "focus": {
+        "border": "rgb(135, 72, 51)",
+        "outline": "rgb(135, 72, 51)",
+        "outlineWidth": "2px"
+      },
+      "result": "Save/Cancel visible; native-boundary return and selectors retain draft; validation blocks Save; original saved values and chosen options reach callback; last action reachable"
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "fontScale": 1,
+      "actionGeometry": [
+        {
+          "x": 317.375,
+          "y": 21,
+          "width": 60.625,
+          "height": 48
+        },
+        {
+          "x": 12,
+          "y": 21,
+          "width": 103.859375,
+          "height": 48
+        }
+      ],
+      "last": {
+        "x": 25,
+        "y": 771,
+        "width": 340,
+        "height": 48
+      },
+      "resting": {
+        "border": "rgb(155, 131, 123)",
+        "background": "rgb(255, 252, 248)",
+        "font": "AxisManrope-Regular"
+      },
+      "focus": {
+        "border": "rgb(135, 72, 51)",
+        "outline": "rgb(135, 72, 51)",
+        "outlineWidth": "2px"
+      },
+      "result": "Save/Cancel visible; native-boundary return and selectors retain draft; validation blocks Save; original saved values and chosen options reach callback; last action reachable"
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "fontScale": 2,
+      "actionGeometry": [
+        {
+          "x": 282.765625,
+          "y": 97,
+          "width": 95.234375,
+          "height": 62
+        },
+        {
+          "x": 12,
+          "y": 97,
+          "width": 153.703125,
+          "height": 62
+        }
+      ],
+      "last": {
+        "x": 25,
+        "y": 757,
+        "width": 340,
+        "height": 62
+      },
+      "resting": {
+        "border": "rgb(155, 131, 123)",
+        "background": "rgb(255, 252, 248)",
+        "font": "AxisManrope-Regular"
+      },
+      "focus": {
+        "border": "rgb(135, 72, 51)",
+        "outline": "rgb(135, 72, 51)",
+        "outlineWidth": "2px"
+      },
+      "result": "Save/Cancel visible; native-boundary return and selectors retain draft; validation blocks Save; original saved values and chosen options reach callback; last action reachable"
+    },
+    {
+      "theme": "light",
+      "width": 430,
+      "fontScale": 1,
+      "actionGeometry": [
+        {
+          "x": 357.375,
+          "y": 21,
+          "width": 60.625,
+          "height": 48
+        },
+        {
+          "x": 12,
+          "y": 21,
+          "width": 103.859375,
+          "height": 48
+        }
+      ],
+      "last": {
+        "x": 25,
+        "y": 771,
+        "width": 380,
+        "height": 48
+      },
+      "resting": {
+        "border": "rgb(155, 131, 123)",
+        "background": "rgb(255, 252, 248)",
+        "font": "AxisManrope-Regular"
+      },
+      "focus": {
+        "border": "rgb(135, 72, 51)",
+        "outline": "rgb(135, 72, 51)",
+        "outlineWidth": "2px"
+      },
+      "result": "Save/Cancel visible; native-boundary return and selectors retain draft; validation blocks Save; original saved values and chosen options reach callback; last action reachable"
+    },
+    {
+      "theme": "light",
+      "width": 430,
+      "fontScale": 2,
+      "actionGeometry": [
+        {
+          "x": 322.765625,
+          "y": 97,
+          "width": 95.234375,
+          "height": 62
+        },
+        {
+          "x": 12,
+          "y": 97,
+          "width": 153.703125,
+          "height": 62
+        }
+      ],
+      "last": {
+        "x": 25,
+        "y": 757,
+        "width": 380,
+        "height": 62
+      },
+      "resting": {
+        "border": "rgb(155, 131, 123)",
+        "background": "rgb(255, 252, 248)",
+        "font": "AxisManrope-Regular"
+      },
+      "focus": {
+        "border": "rgb(135, 72, 51)",
+        "outline": "rgb(135, 72, 51)",
+        "outlineWidth": "2px"
+      },
+      "result": "Save/Cancel visible; native-boundary return and selectors retain draft; validation blocks Save; original saved values and chosen options reach callback; last action reachable"
+    },
+    {
+      "theme": "dark",
+      "width": 320,
+      "fontScale": 2,
+      "keyboardTop": 520,
+      "action": {
+        "x": 212.765625,
+        "y": 89,
+        "width": 95.234375,
+        "height": 62
+      },
+      "last": {
+        "x": 25,
+        "y": 389,
+        "width": 270,
+        "height": 106
+      },
+      "result": "Real short Edit task header/actions and scrolled final control remain above simulated keyboard; no claim about extreme synthetic long header"
+    },
+    {
+      "theme": "light",
+      "width": 320,
+      "fontScale": 2,
+      "keyboardTop": 520,
+      "action": {
+        "x": 212.765625,
+        "y": 89,
+        "width": 95.234375,
+        "height": 62
+      },
+      "last": {
+        "x": 25,
+        "y": 389,
+        "width": 270,
+        "height": 106
+      },
+      "result": "Real short Edit task header/actions and scrolled final control remain above simulated keyboard; no claim about extreme synthetic long header"
+    },
+    {
+      "case": "mounted-theme-and-cancel",
+      "result": "OS appearance proxy changes resolved colors while retaining draft; Cancel does not invoke Save"
+    }
+  ]
+}

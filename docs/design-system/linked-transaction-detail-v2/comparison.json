@@ -1,0 +1,3230 @@
+[
+  {
+    "file": "work-dark-390.png",
+    "identical": false,
+    "contentIdentical": false,
+    "contentIgnoringReplacedBackGlyphIdentical": true,
+    "fixtureIdentical": true,
+    "sheetBefore": {
+      "x": 0,
+      "y": 312,
+      "width": 390,
+      "height": 532,
+      "background": "rgb(40, 49, 45)"
+    },
+    "sheetAfter": {
+      "x": 0,
+      "y": 306,
+      "width": 390,
+      "height": 538,
+      "background": "rgb(21, 19, 21)"
+    },
+    "before": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0.48)"
+      },
+      {
+        "label": "Back",
+        "x": 16,
+        "y": 329,
+        "width": 46.09375,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(237, 243, 239)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Transaction details",
+        "x": 70.09375,
+        "y": 339,
+        "width": 303.90625,
+        "height": 24,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "18px",
+        "color": "rgb(237, 243, 239)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Note",
+        "x": 16,
+        "y": 613,
+        "width": 358,
+        "height": 24,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(237, 243, 239)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Open Work",
+        "x": 16,
+        "y": 717,
+        "width": 358,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(18, 35, 27)",
+        "background": "rgb(157, 202, 182)"
+      },
+      {
+        "label": "Edit details",
+        "x": 16,
+        "y": 785,
+        "width": 358,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(237, 243, 239)",
+        "background": "rgb(29, 36, 33)"
+      }
+    ],
+    "after": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0.48)"
+      },
+      {
+        "label": "Back",
+        "x": 16,
+        "y": 319,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Transaction details",
+        "x": 72,
+        "y": 331,
+        "width": 302,
+        "height": 24,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "18px",
+        "color": "rgb(246, 240, 237)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Note",
+        "x": 16,
+        "y": 605,
+        "width": 358,
+        "height": 24,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Open Work",
+        "x": 16,
+        "y": 709,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(41, 25, 17)",
+        "background": "rgb(231, 170, 139)"
+      },
+      {
+        "label": "Edit details",
+        "x": 16,
+        "y": 781,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(246, 240, 237)",
+        "background": "rgb(43, 39, 42)"
+      }
+    ]
+  },
+  {
+    "file": "commitment-dark-390.png",
+    "identical": false,
+    "contentIdentical": false,
+    "contentIgnoringReplacedBackGlyphIdentical": true,
+    "fixtureIdentical": true,
+    "sheetBefore": {
+      "x": 0,
+      "y": 444,
+      "width": 390,
+      "height": 400,
+      "background": "rgb(40, 49, 45)"
+    },
+    "sheetAfter": {
+      "x": 0,
+      "y": 438,
+      "width": 390,
+      "height": 406,
+      "background": "rgb(21, 19, 21)"
+    },
+    "before": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0.48)"
+      },
+      {
+        "label": "Back",
+        "x": 16,
+        "y": 461,
+        "width": 46.09375,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(237, 243, 239)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Transaction details",
+        "x": 70.09375,
+        "y": 471,
+        "width": 303.90625,
+        "height": 24,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "18px",
+        "color": "rgb(237, 243, 239)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Open Commitments",
+        "x": 16,
+        "y": 717,
+        "width": 358,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(18, 35, 27)",
+        "background": "rgb(157, 202, 182)"
+      },
+      {
+        "label": "Edit details",
+        "x": 16,
+        "y": 785,
+        "width": 358,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(237, 243, 239)",
+        "background": "rgb(29, 36, 33)"
+      }
+    ],
+    "after": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0.48)"
+      },
+      {
+        "label": "Back",
+        "x": 16,
+        "y": 451,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Transaction details",
+        "x": 72,
+        "y": 463,
+        "width": 302,
+        "height": 24,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "18px",
+        "color": "rgb(246, 240, 237)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Open Commitments",
+        "x": 16,
+        "y": 709,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(41, 25, 17)",
+        "background": "rgb(231, 170, 139)"
+      },
+      {
+        "label": "Edit details",
+        "x": 16,
+        "y": 781,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(246, 240, 237)",
+        "background": "rgb(43, 39, 42)"
+      }
+    ]
+  },
+  {
+    "file": "multi-dark-390.png",
+    "identical": false,
+    "contentIdentical": false,
+    "contentIgnoringReplacedBackGlyphIdentical": true,
+    "fixtureIdentical": true,
+    "sheetBefore": {
+      "x": 0,
+      "y": 200,
+      "width": 390,
+      "height": 644,
+      "background": "rgb(40, 49, 45)"
+    },
+    "sheetAfter": {
+      "x": 0,
+      "y": 194,
+      "width": 390,
+      "height": 650,
+      "background": "rgb(21, 19, 21)"
+    },
+    "before": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0.48)"
+      },
+      {
+        "label": "Back",
+        "x": 16,
+        "y": 217,
+        "width": 46.09375,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(237, 243, 239)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Transaction details",
+        "x": 70.09375,
+        "y": 227,
+        "width": 303.90625,
+        "height": 24,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "18px",
+        "color": "rgb(237, 243, 239)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Covered jobs",
+        "x": 16,
+        "y": 501,
+        "width": 358,
+        "height": 24,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(237, 243, 239)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Note",
+        "x": 16,
+        "y": 613,
+        "width": 358,
+        "height": 24,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(237, 243, 239)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Open Work",
+        "x": 16,
+        "y": 717,
+        "width": 358,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(18, 35, 27)",
+        "background": "rgb(157, 202, 182)"
+      },
+      {
+        "label": "Edit details",
+        "x": 16,
+        "y": 785,
+        "width": 358,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(237, 243, 239)",
+        "background": "rgb(29, 36, 33)"
+      }
+    ],
+    "after": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0.48)"
+      },
+      {
+        "label": "Back",
+        "x": 16,
+        "y": 207,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Transaction details",
+        "x": 72,
+        "y": 219,
+        "width": 302,
+        "height": 24,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "18px",
+        "color": "rgb(246, 240, 237)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Covered jobs",
+        "x": 16,
+        "y": 493,
+        "width": 358,
+        "height": 24,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Note",
+        "x": 16,
+        "y": 605,
+        "width": 358,
+        "height": 24,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Open Work",
+        "x": 16,
+        "y": 709,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(41, 25, 17)",
+        "background": "rgb(231, 170, 139)"
+      },
+      {
+        "label": "Edit details",
+        "x": 16,
+        "y": 781,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(246, 240, 237)",
+        "background": "rgb(43, 39, 42)"
+      }
+    ]
+  },
+  {
+    "file": "long-dark-320.png",
+    "identical": false,
+    "contentIdentical": false,
+    "contentIgnoringReplacedBackGlyphIdentical": true,
+    "fixtureIdentical": true,
+    "sheetBefore": {
+      "x": 0,
+      "y": 8,
+      "width": 320,
+      "height": 836,
+      "background": "rgb(40, 49, 45)"
+    },
+    "sheetAfter": {
+      "x": 0,
+      "y": 8,
+      "width": 320,
+      "height": 836,
+      "background": "rgb(21, 19, 21)"
+    },
+    "before": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0.48)"
+      },
+      {
+        "label": "Back",
+        "x": 16,
+        "y": 44,
+        "width": 58.171875,
+        "height": 58,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "28px",
+        "color": "rgb(237, 243, 239)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Transaction details",
+        "x": 82.171875,
+        "y": 25,
+        "width": 221.828125,
+        "height": 96,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "36px",
+        "color": "rgb(237, 243, 239)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Covered jobs",
+        "x": 16,
+        "y": 905,
+        "width": 288,
+        "height": 48,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "32px",
+        "color": "rgb(237, 243, 239)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Note",
+        "x": 16,
+        "y": 1473,
+        "width": 288,
+        "height": 48,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "32px",
+        "color": "rgb(237, 243, 239)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Open Work",
+        "x": 16,
+        "y": 2369,
+        "width": 288,
+        "height": 58,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "28px",
+        "color": "rgb(18, 35, 27)",
+        "background": "rgb(157, 202, 182)"
+      },
+      {
+        "label": "Edit details",
+        "x": 16,
+        "y": 2451,
+        "width": 288,
+        "height": 58,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "28px",
+        "color": "rgb(237, 243, 239)",
+        "background": "rgb(29, 36, 33)"
+      }
+    ],
+    "after": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0.48)"
+      },
+      {
+        "label": "Transaction details",
+        "x": 16,
+        "y": 21,
+        "width": 288,
+        "height": 96,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "36px",
+        "color": "rgb(246, 240, 237)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Back",
+        "x": 16,
+        "y": 125,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Covered jobs",
+        "x": 16,
+        "y": 1033,
+        "width": 288,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "32px",
+        "color": "rgb(246, 240, 237)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Note",
+        "x": 16,
+        "y": 1601,
+        "width": 288,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "32px",
+        "color": "rgb(246, 240, 237)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Open Work",
+        "x": 16,
+        "y": 2497,
+        "width": 288,
+        "height": 62,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "30px",
+        "color": "rgb(41, 25, 17)",
+        "background": "rgb(231, 170, 139)"
+      },
+      {
+        "label": "Edit details",
+        "x": 16,
+        "y": 2583,
+        "width": 288,
+        "height": 62,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "30px",
+        "color": "rgb(246, 240, 237)",
+        "background": "rgb(43, 39, 42)"
+      }
+    ]
+  },
+  {
+    "file": "large-dark-430.png",
+    "identical": false,
+    "contentIdentical": false,
+    "contentIgnoringReplacedBackGlyphIdentical": true,
+    "fixtureIdentical": true,
+    "sheetBefore": {
+      "x": 0,
+      "y": 312,
+      "width": 430,
+      "height": 532,
+      "background": "rgb(40, 49, 45)"
+    },
+    "sheetAfter": {
+      "x": 0,
+      "y": 306,
+      "width": 430,
+      "height": 538,
+      "background": "rgb(21, 19, 21)"
+    },
+    "before": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 430,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0.48)"
+      },
+      {
+        "label": "Back",
+        "x": 16,
+        "y": 329,
+        "width": 46.09375,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(237, 243, 239)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Transaction details",
+        "x": 70.09375,
+        "y": 339,
+        "width": 343.90625,
+        "height": 24,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "18px",
+        "color": "rgb(237, 243, 239)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Note",
+        "x": 16,
+        "y": 613,
+        "width": 398,
+        "height": 24,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(237, 243, 239)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Open Work",
+        "x": 16,
+        "y": 717,
+        "width": 398,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(18, 35, 27)",
+        "background": "rgb(157, 202, 182)"
+      },
+      {
+        "label": "Edit details",
+        "x": 16,
+        "y": 785,
+        "width": 398,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(237, 243, 239)",
+        "background": "rgb(29, 36, 33)"
+      }
+    ],
+    "after": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 430,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0.48)"
+      },
+      {
+        "label": "Back",
+        "x": 16,
+        "y": 319,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Transaction details",
+        "x": 72,
+        "y": 331,
+        "width": 342,
+        "height": 24,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "18px",
+        "color": "rgb(246, 240, 237)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Note",
+        "x": 16,
+        "y": 605,
+        "width": 398,
+        "height": 24,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Open Work",
+        "x": 16,
+        "y": 709,
+        "width": 398,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(41, 25, 17)",
+        "background": "rgb(231, 170, 139)"
+      },
+      {
+        "label": "Edit details",
+        "x": 16,
+        "y": 781,
+        "width": 398,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(246, 240, 237)",
+        "background": "rgb(43, 39, 42)"
+      }
+    ]
+  },
+  {
+    "file": "refresh-dark-390.png",
+    "identical": false,
+    "contentIdentical": false,
+    "contentIgnoringReplacedBackGlyphIdentical": true,
+    "fixtureIdentical": true,
+    "sheetBefore": {
+      "x": 0,
+      "y": 236,
+      "width": 390,
+      "height": 608,
+      "background": "rgb(40, 49, 45)"
+    },
+    "sheetAfter": {
+      "x": 0,
+      "y": 226,
+      "width": 390,
+      "height": 618,
+      "background": "rgb(21, 19, 21)"
+    },
+    "before": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0.48)"
+      },
+      {
+        "label": "Back",
+        "x": 16,
+        "y": 253,
+        "width": 46.09375,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(237, 243, 239)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Transaction details",
+        "x": 70.09375,
+        "y": 263,
+        "width": 303.90625,
+        "height": 24,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "18px",
+        "color": "rgb(237, 243, 239)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Retry refresh",
+        "x": 16,
+        "y": 337,
+        "width": 358,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(237, 243, 239)",
+        "background": "rgb(29, 36, 33)"
+      },
+      {
+        "label": "Note",
+        "x": 16,
+        "y": 613,
+        "width": 358,
+        "height": 24,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(237, 243, 239)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Open Work",
+        "x": 16,
+        "y": 717,
+        "width": 358,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(18, 35, 27)",
+        "background": "rgb(157, 202, 182)"
+      },
+      {
+        "label": "Edit details",
+        "x": 16,
+        "y": 785,
+        "width": 358,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(237, 243, 239)",
+        "background": "rgb(29, 36, 33)"
+      }
+    ],
+    "after": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0.48)"
+      },
+      {
+        "label": "Back",
+        "x": 16,
+        "y": 239,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Transaction details",
+        "x": 72,
+        "y": 251,
+        "width": 302,
+        "height": 24,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "18px",
+        "color": "rgb(246, 240, 237)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Retry refresh",
+        "x": 16,
+        "y": 323,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(246, 240, 237)",
+        "background": "rgb(43, 39, 42)"
+      },
+      {
+        "label": "Note",
+        "x": 16,
+        "y": 605,
+        "width": 358,
+        "height": 24,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Open Work",
+        "x": 16,
+        "y": 709,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(41, 25, 17)",
+        "background": "rgb(231, 170, 139)"
+      },
+      {
+        "label": "Edit details",
+        "x": 16,
+        "y": 781,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(246, 240, 237)",
+        "background": "rgb(43, 39, 42)"
+      }
+    ]
+  },
+  {
+    "file": "manual-dark-390.png",
+    "identical": true,
+    "contentIdentical": true,
+    "contentIgnoringReplacedBackGlyphIdentical": true,
+    "fixtureIdentical": true,
+    "sheetBefore": {
+      "x": 0,
+      "y": 8,
+      "width": 390,
+      "height": 836,
+      "background": "rgb(21, 19, 21)"
+    },
+    "sheetAfter": {
+      "x": 0,
+      "y": 8,
+      "width": 390,
+      "height": 836,
+      "background": "rgb(21, 19, 21)"
+    },
+    "before": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0.48)"
+      },
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 37,
+        "width": 91.859375,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(231, 170, 139)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Edit transaction",
+        "x": 111.859375,
+        "y": 46,
+        "width": 197.515625,
+        "height": 30,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "22px",
+        "color": "rgb(246, 240, 237)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Save",
+        "x": 317.375,
+        "y": 37,
+        "width": 60.625,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(41, 25, 17)",
+        "background": "rgb(231, 170, 139)"
+      },
+      {
+        "label": "Transaction",
+        "x": 73,
+        "y": 126,
+        "width": 292,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(246, 240, 237)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Details",
+        "x": 73,
+        "y": 418,
+        "width": 292,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(246, 240, 237)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Date",
+        "x": 73,
+        "y": 840,
+        "width": 292,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(246, 240, 237)",
+        "background": "rgba(0, 0, 0, 0)"
+      }
+    ],
+    "after": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0.48)"
+      },
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 37,
+        "width": 91.859375,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(231, 170, 139)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Edit transaction",
+        "x": 111.859375,
+        "y": 46,
+        "width": 197.515625,
+        "height": 30,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "22px",
+        "color": "rgb(246, 240, 237)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Save",
+        "x": 317.375,
+        "y": 37,
+        "width": 60.625,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(41, 25, 17)",
+        "background": "rgb(231, 170, 139)"
+      },
+      {
+        "label": "Transaction",
+        "x": 73,
+        "y": 126,
+        "width": 292,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(246, 240, 237)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Details",
+        "x": 73,
+        "y": 418,
+        "width": 292,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(246, 240, 237)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Date",
+        "x": 73,
+        "y": 840,
+        "width": 292,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(246, 240, 237)",
+        "background": "rgba(0, 0, 0, 0)"
+      }
+    ]
+  },
+  {
+    "file": "editor-dark-390.png",
+    "identical": true,
+    "contentIdentical": true,
+    "contentIgnoringReplacedBackGlyphIdentical": true,
+    "fixtureIdentical": true,
+    "sheetBefore": {
+      "x": 0,
+      "y": 8,
+      "width": 390,
+      "height": 836,
+      "background": "rgb(21, 19, 21)"
+    },
+    "sheetAfter": {
+      "x": 0,
+      "y": 8,
+      "width": 390,
+      "height": 836,
+      "background": "rgb(21, 19, 21)"
+    },
+    "before": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0.48)"
+      },
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 37,
+        "width": 91.859375,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(231, 170, 139)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Edit transaction",
+        "x": 111.859375,
+        "y": 46,
+        "width": 197.515625,
+        "height": 30,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "22px",
+        "color": "rgb(246, 240, 237)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Save",
+        "x": 317.375,
+        "y": 37,
+        "width": 60.625,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(41, 25, 17)",
+        "background": "rgb(231, 170, 139)"
+      },
+      {
+        "label": "Transaction",
+        "x": 73,
+        "y": 126,
+        "width": 292,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(246, 240, 237)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Details",
+        "x": 73,
+        "y": 470,
+        "width": 292,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(246, 240, 237)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Date",
+        "x": 73,
+        "y": 892,
+        "width": 292,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(246, 240, 237)",
+        "background": "rgba(0, 0, 0, 0)"
+      }
+    ],
+    "after": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0.48)"
+      },
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 37,
+        "width": 91.859375,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(231, 170, 139)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Edit transaction",
+        "x": 111.859375,
+        "y": 46,
+        "width": 197.515625,
+        "height": 30,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "22px",
+        "color": "rgb(246, 240, 237)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Save",
+        "x": 317.375,
+        "y": 37,
+        "width": 60.625,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(41, 25, 17)",
+        "background": "rgb(231, 170, 139)"
+      },
+      {
+        "label": "Transaction",
+        "x": 73,
+        "y": 126,
+        "width": 292,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(246, 240, 237)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Details",
+        "x": 73,
+        "y": 470,
+        "width": 292,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(246, 240, 237)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Date",
+        "x": 73,
+        "y": 892,
+        "width": 292,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(246, 240, 237)",
+        "background": "rgba(0, 0, 0, 0)"
+      }
+    ]
+  },
+  {
+    "file": "work-source-dark-390.png",
+    "identical": true,
+    "contentIdentical": true,
+    "contentIgnoringReplacedBackGlyphIdentical": true,
+    "fixtureIdentical": true,
+    "sheetBefore": {
+      "x": 0,
+      "y": 0,
+      "width": 390,
+      "height": 377,
+      "background": "rgb(36, 32, 36)"
+    },
+    "sheetAfter": {
+      "x": 0,
+      "y": 0,
+      "width": 390,
+      "height": 377,
+      "background": "rgb(36, 32, 36)"
+    },
+    "before": [
+      {
+        "label": "Work options",
+        "x": 329,
+        "y": 13,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Add work",
+        "x": 13,
+        "y": 316,
+        "width": 156,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(246, 240, 237)",
+        "background": "rgb(43, 39, 42)"
+      },
+      {
+        "label": "Record payment",
+        "x": 177,
+        "y": 316,
+        "width": 200,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(41, 25, 17)",
+        "background": "rgb(231, 170, 139)"
+      }
+    ],
+    "after": [
+      {
+        "label": "Work options",
+        "x": 329,
+        "y": 13,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Add work",
+        "x": 13,
+        "y": 316,
+        "width": 156,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(246, 240, 237)",
+        "background": "rgb(43, 39, 42)"
+      },
+      {
+        "label": "Record payment",
+        "x": 177,
+        "y": 316,
+        "width": 200,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(41, 25, 17)",
+        "background": "rgb(231, 170, 139)"
+      }
+    ]
+  },
+  {
+    "file": "commitment-source-dark-390.png",
+    "identical": true,
+    "contentIdentical": true,
+    "contentIgnoringReplacedBackGlyphIdentical": true,
+    "fixtureIdentical": true,
+    "sheetBefore": {
+      "x": 0,
+      "y": 8,
+      "width": 390,
+      "height": 836,
+      "background": "rgb(21, 19, 21)"
+    },
+    "sheetAfter": {
+      "x": 0,
+      "y": 8,
+      "width": 390,
+      "height": 836,
+      "background": "rgb(21, 19, 21)"
+    },
+    "before": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0.48)"
+      },
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Commitment details",
+        "x": 68,
+        "y": 42,
+        "width": 254,
+        "height": 30,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "22px",
+        "color": "rgb(246, 240, 237)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Series options for Internet",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Schedules",
+        "x": 12,
+        "y": 367,
+        "width": 366,
+        "height": 64,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(246, 240, 237)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Unpaid occurrences",
+        "x": 12,
+        "y": 529,
+        "width": 366,
+        "height": 64,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(246, 240, 237)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "View history",
+        "x": 12,
+        "y": 629,
+        "width": 366,
+        "height": 56,
+        "font": "AxisManrope-Regular",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)",
+        "background": "rgb(36, 32, 36)"
+      }
+    ],
+    "after": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0.48)"
+      },
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Commitment details",
+        "x": 68,
+        "y": 42,
+        "width": 254,
+        "height": 30,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "22px",
+        "color": "rgb(246, 240, 237)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Series options for Internet",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Schedules",
+        "x": 12,
+        "y": 367,
+        "width": 366,
+        "height": 64,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(246, 240, 237)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Unpaid occurrences",
+        "x": 12,
+        "y": 529,
+        "width": 366,
+        "height": 64,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(246, 240, 237)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "View history",
+        "x": 12,
+        "y": 629,
+        "width": 366,
+        "height": 56,
+        "font": "AxisManrope-Regular",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)",
+        "background": "rgb(36, 32, 36)"
+      }
+    ]
+  },
+  {
+    "file": "work-light-390.png",
+    "identical": false,
+    "contentIdentical": false,
+    "contentIgnoringReplacedBackGlyphIdentical": true,
+    "fixtureIdentical": true,
+    "sheetBefore": {
+      "x": 0,
+      "y": 312,
+      "width": 390,
+      "height": 532,
+      "background": "rgb(255, 255, 255)"
+    },
+    "sheetAfter": {
+      "x": 0,
+      "y": 306,
+      "width": 390,
+      "height": 538,
+      "background": "rgb(245, 240, 234)"
+    },
+    "before": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(16, 24, 20, 0.28)"
+      },
+      {
+        "label": "Back",
+        "x": 16,
+        "y": 329,
+        "width": 46.09375,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(23, 33, 29)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Transaction details",
+        "x": 70.09375,
+        "y": 339,
+        "width": 303.90625,
+        "height": 24,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "18px",
+        "color": "rgb(23, 33, 29)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Note",
+        "x": 16,
+        "y": 613,
+        "width": 358,
+        "height": 24,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(23, 33, 29)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Open Work",
+        "x": 16,
+        "y": 717,
+        "width": 358,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(40, 99, 79)"
+      },
+      {
+        "label": "Edit details",
+        "x": 16,
+        "y": 785,
+        "width": 358,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(23, 33, 29)",
+        "background": "rgb(241, 243, 241)"
+      }
+    ],
+    "after": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(16, 24, 20, 0.28)"
+      },
+      {
+        "label": "Back",
+        "x": 16,
+        "y": 319,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Transaction details",
+        "x": 72,
+        "y": 331,
+        "width": 302,
+        "height": 24,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "18px",
+        "color": "rgb(36, 30, 28)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Note",
+        "x": 16,
+        "y": 605,
+        "width": 358,
+        "height": 24,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Open Work",
+        "x": 16,
+        "y": 709,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(255, 248, 242)",
+        "background": "rgb(135, 72, 51)"
+      },
+      {
+        "label": "Edit details",
+        "x": 16,
+        "y": 781,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(36, 30, 28)",
+        "background": "rgb(248, 243, 239)"
+      }
+    ]
+  },
+  {
+    "file": "commitment-light-390.png",
+    "identical": false,
+    "contentIdentical": false,
+    "contentIgnoringReplacedBackGlyphIdentical": true,
+    "fixtureIdentical": true,
+    "sheetBefore": {
+      "x": 0,
+      "y": 444,
+      "width": 390,
+      "height": 400,
+      "background": "rgb(255, 255, 255)"
+    },
+    "sheetAfter": {
+      "x": 0,
+      "y": 438,
+      "width": 390,
+      "height": 406,
+      "background": "rgb(245, 240, 234)"
+    },
+    "before": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(16, 24, 20, 0.28)"
+      },
+      {
+        "label": "Back",
+        "x": 16,
+        "y": 461,
+        "width": 46.09375,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(23, 33, 29)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Transaction details",
+        "x": 70.09375,
+        "y": 471,
+        "width": 303.90625,
+        "height": 24,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "18px",
+        "color": "rgb(23, 33, 29)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Open Commitments",
+        "x": 16,
+        "y": 717,
+        "width": 358,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(40, 99, 79)"
+      },
+      {
+        "label": "Edit details",
+        "x": 16,
+        "y": 785,
+        "width": 358,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(23, 33, 29)",
+        "background": "rgb(241, 243, 241)"
+      }
+    ],
+    "after": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(16, 24, 20, 0.28)"
+      },
+      {
+        "label": "Back",
+        "x": 16,
+        "y": 451,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Transaction details",
+        "x": 72,
+        "y": 463,
+        "width": 302,
+        "height": 24,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "18px",
+        "color": "rgb(36, 30, 28)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Open Commitments",
+        "x": 16,
+        "y": 709,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(255, 248, 242)",
+        "background": "rgb(135, 72, 51)"
+      },
+      {
+        "label": "Edit details",
+        "x": 16,
+        "y": 781,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(36, 30, 28)",
+        "background": "rgb(248, 243, 239)"
+      }
+    ]
+  },
+  {
+    "file": "multi-light-390.png",
+    "identical": false,
+    "contentIdentical": false,
+    "contentIgnoringReplacedBackGlyphIdentical": true,
+    "fixtureIdentical": true,
+    "sheetBefore": {
+      "x": 0,
+      "y": 200,
+      "width": 390,
+      "height": 644,
+      "background": "rgb(255, 255, 255)"
+    },
+    "sheetAfter": {
+      "x": 0,
+      "y": 194,
+      "width": 390,
+      "height": 650,
+      "background": "rgb(245, 240, 234)"
+    },
+    "before": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(16, 24, 20, 0.28)"
+      },
+      {
+        "label": "Back",
+        "x": 16,
+        "y": 217,
+        "width": 46.09375,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(23, 33, 29)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Transaction details",
+        "x": 70.09375,
+        "y": 227,
+        "width": 303.90625,
+        "height": 24,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "18px",
+        "color": "rgb(23, 33, 29)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Covered jobs",
+        "x": 16,
+        "y": 501,
+        "width": 358,
+        "height": 24,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(23, 33, 29)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Note",
+        "x": 16,
+        "y": 613,
+        "width": 358,
+        "height": 24,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(23, 33, 29)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Open Work",
+        "x": 16,
+        "y": 717,
+        "width": 358,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(40, 99, 79)"
+      },
+      {
+        "label": "Edit details",
+        "x": 16,
+        "y": 785,
+        "width": 358,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(23, 33, 29)",
+        "background": "rgb(241, 243, 241)"
+      }
+    ],
+    "after": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(16, 24, 20, 0.28)"
+      },
+      {
+        "label": "Back",
+        "x": 16,
+        "y": 207,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Transaction details",
+        "x": 72,
+        "y": 219,
+        "width": 302,
+        "height": 24,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "18px",
+        "color": "rgb(36, 30, 28)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Covered jobs",
+        "x": 16,
+        "y": 493,
+        "width": 358,
+        "height": 24,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Note",
+        "x": 16,
+        "y": 605,
+        "width": 358,
+        "height": 24,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Open Work",
+        "x": 16,
+        "y": 709,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(255, 248, 242)",
+        "background": "rgb(135, 72, 51)"
+      },
+      {
+        "label": "Edit details",
+        "x": 16,
+        "y": 781,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(36, 30, 28)",
+        "background": "rgb(248, 243, 239)"
+      }
+    ]
+  },
+  {
+    "file": "long-light-320.png",
+    "identical": false,
+    "contentIdentical": false,
+    "contentIgnoringReplacedBackGlyphIdentical": true,
+    "fixtureIdentical": true,
+    "sheetBefore": {
+      "x": 0,
+      "y": 8,
+      "width": 320,
+      "height": 836,
+      "background": "rgb(255, 255, 255)"
+    },
+    "sheetAfter": {
+      "x": 0,
+      "y": 8,
+      "width": 320,
+      "height": 836,
+      "background": "rgb(245, 240, 234)"
+    },
+    "before": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(16, 24, 20, 0.28)"
+      },
+      {
+        "label": "Back",
+        "x": 16,
+        "y": 44,
+        "width": 58.171875,
+        "height": 58,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "28px",
+        "color": "rgb(23, 33, 29)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Transaction details",
+        "x": 82.171875,
+        "y": 25,
+        "width": 221.828125,
+        "height": 96,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "36px",
+        "color": "rgb(23, 33, 29)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Covered jobs",
+        "x": 16,
+        "y": 905,
+        "width": 288,
+        "height": 48,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "32px",
+        "color": "rgb(23, 33, 29)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Note",
+        "x": 16,
+        "y": 1473,
+        "width": 288,
+        "height": 48,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "32px",
+        "color": "rgb(23, 33, 29)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Open Work",
+        "x": 16,
+        "y": 2369,
+        "width": 288,
+        "height": 58,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "28px",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(40, 99, 79)"
+      },
+      {
+        "label": "Edit details",
+        "x": 16,
+        "y": 2451,
+        "width": 288,
+        "height": 58,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "28px",
+        "color": "rgb(23, 33, 29)",
+        "background": "rgb(241, 243, 241)"
+      }
+    ],
+    "after": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(16, 24, 20, 0.28)"
+      },
+      {
+        "label": "Transaction details",
+        "x": 16,
+        "y": 21,
+        "width": 288,
+        "height": 96,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "36px",
+        "color": "rgb(36, 30, 28)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Back",
+        "x": 16,
+        "y": 125,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Covered jobs",
+        "x": 16,
+        "y": 1033,
+        "width": 288,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "32px",
+        "color": "rgb(36, 30, 28)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Note",
+        "x": 16,
+        "y": 1601,
+        "width": 288,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "32px",
+        "color": "rgb(36, 30, 28)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Open Work",
+        "x": 16,
+        "y": 2497,
+        "width": 288,
+        "height": 62,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "30px",
+        "color": "rgb(255, 248, 242)",
+        "background": "rgb(135, 72, 51)"
+      },
+      {
+        "label": "Edit details",
+        "x": 16,
+        "y": 2583,
+        "width": 288,
+        "height": 62,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "30px",
+        "color": "rgb(36, 30, 28)",
+        "background": "rgb(248, 243, 239)"
+      }
+    ]
+  },
+  {
+    "file": "large-light-430.png",
+    "identical": false,
+    "contentIdentical": false,
+    "contentIgnoringReplacedBackGlyphIdentical": true,
+    "fixtureIdentical": true,
+    "sheetBefore": {
+      "x": 0,
+      "y": 312,
+      "width": 430,
+      "height": 532,
+      "background": "rgb(255, 255, 255)"
+    },
+    "sheetAfter": {
+      "x": 0,
+      "y": 306,
+      "width": 430,
+      "height": 538,
+      "background": "rgb(245, 240, 234)"
+    },
+    "before": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 430,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(16, 24, 20, 0.28)"
+      },
+      {
+        "label": "Back",
+        "x": 16,
+        "y": 329,
+        "width": 46.09375,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(23, 33, 29)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Transaction details",
+        "x": 70.09375,
+        "y": 339,
+        "width": 343.90625,
+        "height": 24,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "18px",
+        "color": "rgb(23, 33, 29)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Note",
+        "x": 16,
+        "y": 613,
+        "width": 398,
+        "height": 24,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(23, 33, 29)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Open Work",
+        "x": 16,
+        "y": 717,
+        "width": 398,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(40, 99, 79)"
+      },
+      {
+        "label": "Edit details",
+        "x": 16,
+        "y": 785,
+        "width": 398,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(23, 33, 29)",
+        "background": "rgb(241, 243, 241)"
+      }
+    ],
+    "after": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 430,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(16, 24, 20, 0.28)"
+      },
+      {
+        "label": "Back",
+        "x": 16,
+        "y": 319,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Transaction details",
+        "x": 72,
+        "y": 331,
+        "width": 342,
+        "height": 24,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "18px",
+        "color": "rgb(36, 30, 28)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Note",
+        "x": 16,
+        "y": 605,
+        "width": 398,
+        "height": 24,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Open Work",
+        "x": 16,
+        "y": 709,
+        "width": 398,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(255, 248, 242)",
+        "background": "rgb(135, 72, 51)"
+      },
+      {
+        "label": "Edit details",
+        "x": 16,
+        "y": 781,
+        "width": 398,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(36, 30, 28)",
+        "background": "rgb(248, 243, 239)"
+      }
+    ]
+  },
+  {
+    "file": "refresh-light-390.png",
+    "identical": false,
+    "contentIdentical": false,
+    "contentIgnoringReplacedBackGlyphIdentical": true,
+    "fixtureIdentical": true,
+    "sheetBefore": {
+      "x": 0,
+      "y": 236,
+      "width": 390,
+      "height": 608,
+      "background": "rgb(255, 255, 255)"
+    },
+    "sheetAfter": {
+      "x": 0,
+      "y": 226,
+      "width": 390,
+      "height": 618,
+      "background": "rgb(245, 240, 234)"
+    },
+    "before": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(16, 24, 20, 0.28)"
+      },
+      {
+        "label": "Back",
+        "x": 16,
+        "y": 253,
+        "width": 46.09375,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(23, 33, 29)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Transaction details",
+        "x": 70.09375,
+        "y": 263,
+        "width": 303.90625,
+        "height": 24,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "18px",
+        "color": "rgb(23, 33, 29)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Retry refresh",
+        "x": 16,
+        "y": 337,
+        "width": 358,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(23, 33, 29)",
+        "background": "rgb(241, 243, 241)"
+      },
+      {
+        "label": "Note",
+        "x": 16,
+        "y": 613,
+        "width": 358,
+        "height": 24,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(23, 33, 29)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Open Work",
+        "x": 16,
+        "y": 717,
+        "width": 358,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(40, 99, 79)"
+      },
+      {
+        "label": "Edit details",
+        "x": 16,
+        "y": 785,
+        "width": 358,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(23, 33, 29)",
+        "background": "rgb(241, 243, 241)"
+      }
+    ],
+    "after": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(16, 24, 20, 0.28)"
+      },
+      {
+        "label": "Back",
+        "x": 16,
+        "y": 239,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Transaction details",
+        "x": 72,
+        "y": 251,
+        "width": 302,
+        "height": 24,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "18px",
+        "color": "rgb(36, 30, 28)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Retry refresh",
+        "x": 16,
+        "y": 323,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(36, 30, 28)",
+        "background": "rgb(248, 243, 239)"
+      },
+      {
+        "label": "Note",
+        "x": 16,
+        "y": 605,
+        "width": 358,
+        "height": 24,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Open Work",
+        "x": 16,
+        "y": 709,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(255, 248, 242)",
+        "background": "rgb(135, 72, 51)"
+      },
+      {
+        "label": "Edit details",
+        "x": 16,
+        "y": 781,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(36, 30, 28)",
+        "background": "rgb(248, 243, 239)"
+      }
+    ]
+  },
+  {
+    "file": "manual-light-390.png",
+    "identical": true,
+    "contentIdentical": true,
+    "contentIgnoringReplacedBackGlyphIdentical": true,
+    "fixtureIdentical": true,
+    "sheetBefore": {
+      "x": 0,
+      "y": 8,
+      "width": 390,
+      "height": 836,
+      "background": "rgb(245, 240, 234)"
+    },
+    "sheetAfter": {
+      "x": 0,
+      "y": 8,
+      "width": 390,
+      "height": 836,
+      "background": "rgb(245, 240, 234)"
+    },
+    "before": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(16, 24, 20, 0.28)"
+      },
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 37,
+        "width": 91.859375,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(135, 72, 51)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Edit transaction",
+        "x": 111.859375,
+        "y": 46,
+        "width": 197.515625,
+        "height": 30,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "22px",
+        "color": "rgb(36, 30, 28)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Save",
+        "x": 317.375,
+        "y": 37,
+        "width": 60.625,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(255, 248, 242)",
+        "background": "rgb(135, 72, 51)"
+      },
+      {
+        "label": "Transaction",
+        "x": 73,
+        "y": 126,
+        "width": 292,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(36, 30, 28)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Details",
+        "x": 73,
+        "y": 418,
+        "width": 292,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(36, 30, 28)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Date",
+        "x": 73,
+        "y": 840,
+        "width": 292,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(36, 30, 28)",
+        "background": "rgba(0, 0, 0, 0)"
+      }
+    ],
+    "after": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(16, 24, 20, 0.28)"
+      },
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 37,
+        "width": 91.859375,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(135, 72, 51)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Edit transaction",
+        "x": 111.859375,
+        "y": 46,
+        "width": 197.515625,
+        "height": 30,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "22px",
+        "color": "rgb(36, 30, 28)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Save",
+        "x": 317.375,
+        "y": 37,
+        "width": 60.625,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(255, 248, 242)",
+        "background": "rgb(135, 72, 51)"
+      },
+      {
+        "label": "Transaction",
+        "x": 73,
+        "y": 126,
+        "width": 292,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(36, 30, 28)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Details",
+        "x": 73,
+        "y": 418,
+        "width": 292,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(36, 30, 28)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Date",
+        "x": 73,
+        "y": 840,
+        "width": 292,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(36, 30, 28)",
+        "background": "rgba(0, 0, 0, 0)"
+      }
+    ]
+  },
+  {
+    "file": "editor-light-390.png",
+    "identical": true,
+    "contentIdentical": true,
+    "contentIgnoringReplacedBackGlyphIdentical": true,
+    "fixtureIdentical": true,
+    "sheetBefore": {
+      "x": 0,
+      "y": 8,
+      "width": 390,
+      "height": 836,
+      "background": "rgb(245, 240, 234)"
+    },
+    "sheetAfter": {
+      "x": 0,
+      "y": 8,
+      "width": 390,
+      "height": 836,
+      "background": "rgb(245, 240, 234)"
+    },
+    "before": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(16, 24, 20, 0.28)"
+      },
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 37,
+        "width": 91.859375,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(135, 72, 51)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Edit transaction",
+        "x": 111.859375,
+        "y": 46,
+        "width": 197.515625,
+        "height": 30,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "22px",
+        "color": "rgb(36, 30, 28)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Save",
+        "x": 317.375,
+        "y": 37,
+        "width": 60.625,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(255, 248, 242)",
+        "background": "rgb(135, 72, 51)"
+      },
+      {
+        "label": "Transaction",
+        "x": 73,
+        "y": 126,
+        "width": 292,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(36, 30, 28)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Details",
+        "x": 73,
+        "y": 470,
+        "width": 292,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(36, 30, 28)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Date",
+        "x": 73,
+        "y": 892,
+        "width": 292,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(36, 30, 28)",
+        "background": "rgba(0, 0, 0, 0)"
+      }
+    ],
+    "after": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(16, 24, 20, 0.28)"
+      },
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 37,
+        "width": 91.859375,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(135, 72, 51)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Edit transaction",
+        "x": 111.859375,
+        "y": 46,
+        "width": 197.515625,
+        "height": 30,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "22px",
+        "color": "rgb(36, 30, 28)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Save",
+        "x": 317.375,
+        "y": 37,
+        "width": 60.625,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(255, 248, 242)",
+        "background": "rgb(135, 72, 51)"
+      },
+      {
+        "label": "Transaction",
+        "x": 73,
+        "y": 126,
+        "width": 292,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(36, 30, 28)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Details",
+        "x": 73,
+        "y": 470,
+        "width": 292,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(36, 30, 28)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Date",
+        "x": 73,
+        "y": 892,
+        "width": 292,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(36, 30, 28)",
+        "background": "rgba(0, 0, 0, 0)"
+      }
+    ]
+  },
+  {
+    "file": "work-source-light-390.png",
+    "identical": true,
+    "contentIdentical": true,
+    "contentIgnoringReplacedBackGlyphIdentical": true,
+    "fixtureIdentical": true,
+    "sheetBefore": {
+      "x": 0,
+      "y": 0,
+      "width": 390,
+      "height": 377,
+      "background": "rgb(251, 245, 240)"
+    },
+    "sheetAfter": {
+      "x": 0,
+      "y": 0,
+      "width": 390,
+      "height": 377,
+      "background": "rgb(251, 245, 240)"
+    },
+    "before": [
+      {
+        "label": "Work options",
+        "x": 329,
+        "y": 13,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Add work",
+        "x": 13,
+        "y": 316,
+        "width": 156,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(36, 30, 28)",
+        "background": "rgb(248, 243, 239)"
+      },
+      {
+        "label": "Record payment",
+        "x": 177,
+        "y": 316,
+        "width": 200,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(255, 248, 242)",
+        "background": "rgb(135, 72, 51)"
+      }
+    ],
+    "after": [
+      {
+        "label": "Work options",
+        "x": 329,
+        "y": 13,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Add work",
+        "x": 13,
+        "y": 316,
+        "width": 156,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(36, 30, 28)",
+        "background": "rgb(248, 243, 239)"
+      },
+      {
+        "label": "Record payment",
+        "x": 177,
+        "y": 316,
+        "width": 200,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(255, 248, 242)",
+        "background": "rgb(135, 72, 51)"
+      }
+    ]
+  },
+  {
+    "file": "commitment-source-light-390.png",
+    "identical": true,
+    "contentIdentical": true,
+    "contentIgnoringReplacedBackGlyphIdentical": true,
+    "fixtureIdentical": true,
+    "sheetBefore": {
+      "x": 0,
+      "y": 8,
+      "width": 390,
+      "height": 836,
+      "background": "rgb(245, 240, 234)"
+    },
+    "sheetAfter": {
+      "x": 0,
+      "y": 8,
+      "width": 390,
+      "height": 836,
+      "background": "rgb(245, 240, 234)"
+    },
+    "before": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(16, 24, 20, 0.28)"
+      },
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Commitment details",
+        "x": 68,
+        "y": 42,
+        "width": 254,
+        "height": 30,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "22px",
+        "color": "rgb(36, 30, 28)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Series options for Internet",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Schedules",
+        "x": 12,
+        "y": 367,
+        "width": 366,
+        "height": 64,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(36, 30, 28)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Unpaid occurrences",
+        "x": 12,
+        "y": 529,
+        "width": 366,
+        "height": 64,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(36, 30, 28)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "View history",
+        "x": 12,
+        "y": 629,
+        "width": 366,
+        "height": 56,
+        "font": "AxisManrope-Regular",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)",
+        "background": "rgb(251, 245, 240)"
+      }
+    ],
+    "after": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(16, 24, 20, 0.28)"
+      },
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Commitment details",
+        "x": 68,
+        "y": 42,
+        "width": 254,
+        "height": 30,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "22px",
+        "color": "rgb(36, 30, 28)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Series options for Internet",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Schedules",
+        "x": 12,
+        "y": 367,
+        "width": 366,
+        "height": 64,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(36, 30, 28)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "Unpaid occurrences",
+        "x": 12,
+        "y": 529,
+        "width": 366,
+        "height": 64,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(36, 30, 28)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "label": "View history",
+        "x": 12,
+        "y": 629,
+        "width": 366,
+        "height": 56,
+        "font": "AxisManrope-Regular",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)",
+        "background": "rgb(251, 245, 240)"
+      }
+    ]
+  }
+]

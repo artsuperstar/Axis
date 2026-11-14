@@ -1,0 +1,17 @@
+{
+  "tests": 87,
+  "failed": 0,
+  "browserGroups": 14,
+  "themeCaptures": 10,
+  "historyUnchangedAtCheckpoint": true,
+  "taskActionsSha256": "e3e289668f078cde3344d995dfde185866730994cd69e9a70e4750ceee1d40a2",
+  "checks": [
+    "Exact action order and callbacks",
+    "Semantic destructive action",
+    "iOS modal handoff before editor",
+    "Save/Cancel original ID",
+    "Native request-close",
+    "320/390/430 widths, 1x/2x",
+    "Final action reachability and focus"
+  ]
+}

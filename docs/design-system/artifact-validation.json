@@ -1,0 +1,15 @@
+{
+  "sourceHead": "16ebeab46d20e7a943f08fa017928ce0eb884c0e",
+  "captures": 154,
+  "themes": {
+    "dark": 77,
+    "light": 77
+  },
+  "runtimeErrors": 0,
+  "freshHtmlAndBundleHashes": true,
+  "incumbentBuilders": 30,
+  "checkedLocalLinks": 751,
+  "baselineFilesUnchanged": 2232,
+  "failures": [],
+  "scope": "Audit artifacts/source preservation only; not native acceptance or application regression testing."
+}

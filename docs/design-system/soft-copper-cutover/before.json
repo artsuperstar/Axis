@@ -1,0 +1,5846 @@
+[
+  {
+    "id": "home",
+    "dir": "home-v2-preview",
+    "file": "home-dark-390.png",
+    "query": "",
+    "width": 390,
+    "theme": "dark",
+    "geometry": [
+      {
+        "role": "heading",
+        "label": "Home",
+        "x": 16,
+        "y": 40,
+        "width": 358,
+        "height": 46
+      },
+      {
+        "role": "button",
+        "label": "Add transaction",
+        "x": 313,
+        "y": 146,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Today. 1 items. Daily. 1 task",
+        "x": 16,
+        "y": 226,
+        "width": 173,
+        "height": 224
+      },
+      {
+        "role": "button",
+        "label": "Needs attention. 5 items. 4 tasks · 1 overdue work",
+        "x": 201,
+        "y": 226,
+        "width": 173,
+        "height": 224
+      },
+      {
+        "role": "button",
+        "label": "Fitness. Biceps, Back. Workout in progress. 5 exercises · 0 sets. Opens Fitness",
+        "x": 16,
+        "y": 462,
+        "width": 173,
+        "height": 200
+      },
+      {
+        "role": "button",
+        "label": "Journal. Today. Not written yet. Opens Journal",
+        "x": 201,
+        "y": 462,
+        "width": 173,
+        "height": 200
+      }
+    ],
+    "entry": "C:\\Users\\Arthur\\Documents\\Projects\\Axis\\dist\\soft-copper-cutover\\before\\home-v2-preview\\index.html",
+    "entryHash": "0dff48a4f4fb5e7f0f794046a92c06ba6ccd1ff1f1c85e2fa123b25cf761843b",
+    "bundleHash": "a4dc7064bf18734bfc29426f6b8a19c1f2b734f915e4e20e7c4b95b24eeaf2d4",
+    "errors": [],
+    "scope": "Current source RNWeb preview, synthetic fixtures/native boundaries; no native tabs/hardware acceptance. Animation/caret suppression identical before/after."
+  },
+  {
+    "id": "home",
+    "dir": "home-v2-preview",
+    "file": "home-light-390.png",
+    "query": "",
+    "width": 390,
+    "theme": "light",
+    "geometry": [
+      {
+        "role": "heading",
+        "label": "Home",
+        "x": 16,
+        "y": 40,
+        "width": 358,
+        "height": 46
+      },
+      {
+        "role": "button",
+        "label": "Add transaction",
+        "x": 313,
+        "y": 146,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Today. 1 items. Daily. 1 task",
+        "x": 16,
+        "y": 226,
+        "width": 173,
+        "height": 224
+      },
+      {
+        "role": "button",
+        "label": "Needs attention. 5 items. 4 tasks · 1 overdue work",
+        "x": 201,
+        "y": 226,
+        "width": 173,
+        "height": 224
+      },
+      {
+        "role": "button",
+        "label": "Fitness. Biceps, Back. Workout in progress. 5 exercises · 0 sets. Opens Fitness",
+        "x": 16,
+        "y": 462,
+        "width": 173,
+        "height": 200
+      },
+      {
+        "role": "button",
+        "label": "Journal. Today. Not written yet. Opens Journal",
+        "x": 201,
+        "y": 462,
+        "width": 173,
+        "height": 200
+      }
+    ],
+    "entry": "C:\\Users\\Arthur\\Documents\\Projects\\Axis\\dist\\soft-copper-cutover\\before\\home-v2-preview\\index.html",
+    "entryHash": "0dff48a4f4fb5e7f0f794046a92c06ba6ccd1ff1f1c85e2fa123b25cf761843b",
+    "bundleHash": "a4dc7064bf18734bfc29426f6b8a19c1f2b734f915e4e20e7c4b95b24eeaf2d4",
+    "errors": [],
+    "scope": "Current source RNWeb preview, synthetic fixtures/native boundaries; no native tabs/hardware acceptance. Animation/caret suppression identical before/after."
+  },
+  {
+    "id": "tasks",
+    "dir": "tasks-fidelity-after",
+    "file": "tasks-dark-320.png",
+    "query": "",
+    "width": 320,
+    "theme": "dark",
+    "geometry": [
+      {
+        "role": "heading",
+        "label": "Tasks",
+        "x": 20,
+        "y": 12,
+        "width": 224,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Task options",
+        "x": 252,
+        "y": 12,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Go to Earlier",
+        "x": 24,
+        "y": 76,
+        "width": 65,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Go to Today",
+        "x": 93,
+        "y": 76,
+        "width": 65,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Go to To-do",
+        "x": 162,
+        "y": 76,
+        "width": 65,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Go to Upcoming",
+        "x": 231,
+        "y": 76,
+        "width": 65,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Earlier, 19 tasks",
+        "x": 20,
+        "y": 144,
+        "width": 280,
+        "height": 71
+      },
+      {
+        "role": "heading",
+        "label": "Earlier",
+        "x": 81,
+        "y": 157,
+        "width": 166,
+        "height": 24
+      },
+      {
+        "role": "heading",
+        "label": "Today",
+        "x": 85,
+        "y": 248,
+        "width": 146,
+        "height": 28
+      },
+      {
+        "role": "button",
+        "label": "Actions for Weekly yep on 14 de out. de 2026",
+        "x": 243,
+        "y": 357,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Actions for Daily on 14 de out. de 2026",
+        "x": 243,
+        "y": 427,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "heading",
+        "label": "To-do",
+        "x": 85,
+        "y": 551,
+        "width": 162,
+        "height": 24
+      },
+      {
+        "role": "button",
+        "label": "Actions for Once",
+        "x": 243,
+        "y": 603,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Upcoming, 2 tasks",
+        "x": 20,
+        "y": 688,
+        "width": 280,
+        "height": 71
+      },
+      {
+        "role": "heading",
+        "label": "Upcoming",
+        "x": 81,
+        "y": 701,
+        "width": 166,
+        "height": 24
+      },
+      {
+        "role": "button",
+        "label": "Add task",
+        "x": 248,
+        "y": 828,
+        "width": 52,
+        "height": 52
+      }
+    ],
+    "entry": "C:\\Users\\Arthur\\Documents\\Projects\\Axis\\dist\\soft-copper-cutover\\before\\tasks-fidelity-after\\tasks-dark-320-normal.html",
+    "entryHash": "04483ed76c03eff193be19bad0acb788dcbd99a507032e82c8ed520e50747e41",
+    "errors": [],
+    "scope": "Current source RNWeb preview, synthetic fixtures/native boundaries; no native tabs/hardware acceptance. Animation/caret suppression identical before/after."
+  },
+  {
+    "id": "tasks",
+    "dir": "tasks-fidelity-after",
+    "file": "tasks-light-320.png",
+    "query": "",
+    "width": 320,
+    "theme": "light",
+    "geometry": [
+      {
+        "role": "heading",
+        "label": "Tasks",
+        "x": 20,
+        "y": 12,
+        "width": 224,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Task options",
+        "x": 252,
+        "y": 12,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Go to Earlier",
+        "x": 24,
+        "y": 76,
+        "width": 65,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Go to Today",
+        "x": 93,
+        "y": 76,
+        "width": 65,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Go to To-do",
+        "x": 162,
+        "y": 76,
+        "width": 65,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Go to Upcoming",
+        "x": 231,
+        "y": 76,
+        "width": 65,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Earlier, 19 tasks",
+        "x": 20,
+        "y": 144,
+        "width": 280,
+        "height": 71
+      },
+      {
+        "role": "heading",
+        "label": "Earlier",
+        "x": 81,
+        "y": 157,
+        "width": 166,
+        "height": 24
+      },
+      {
+        "role": "heading",
+        "label": "Today",
+        "x": 85,
+        "y": 248,
+        "width": 146,
+        "height": 28
+      },
+      {
+        "role": "button",
+        "label": "Actions for Weekly yep on 14 de out. de 2026",
+        "x": 243,
+        "y": 357,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Actions for Daily on 14 de out. de 2026",
+        "x": 243,
+        "y": 427,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "heading",
+        "label": "To-do",
+        "x": 85,
+        "y": 551,
+        "width": 162,
+        "height": 24
+      },
+      {
+        "role": "button",
+        "label": "Actions for Once",
+        "x": 243,
+        "y": 603,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Upcoming, 2 tasks",
+        "x": 20,
+        "y": 688,
+        "width": 280,
+        "height": 71
+      },
+      {
+        "role": "heading",
+        "label": "Upcoming",
+        "x": 81,
+        "y": 701,
+        "width": 166,
+        "height": 24
+      },
+      {
+        "role": "button",
+        "label": "Add task",
+        "x": 248,
+        "y": 828,
+        "width": 52,
+        "height": 52
+      }
+    ],
+    "entry": "C:\\Users\\Arthur\\Documents\\Projects\\Axis\\dist\\soft-copper-cutover\\before\\tasks-fidelity-after\\tasks-light-320-normal.html",
+    "entryHash": "8ef28fbe4411ac820c28b6fc449567c0e166fc628eb116af1d617b82fdfddf51",
+    "errors": [],
+    "scope": "Current source RNWeb preview, synthetic fixtures/native boundaries; no native tabs/hardware acceptance. Animation/caret suppression identical before/after."
+  },
+  {
+    "id": "tasks",
+    "dir": "tasks-fidelity-after",
+    "file": "tasks-dark-390.png",
+    "query": "",
+    "width": 390,
+    "theme": "dark",
+    "geometry": [
+      {
+        "role": "heading",
+        "label": "Tasks",
+        "x": 20,
+        "y": 12,
+        "width": 294,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Task options",
+        "x": 322,
+        "y": 12,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Go to Earlier",
+        "x": 24,
+        "y": 76,
+        "width": 82.5,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Go to Today",
+        "x": 110.5,
+        "y": 76,
+        "width": 82.5,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Go to To-do",
+        "x": 197,
+        "y": 76,
+        "width": 82.5,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Go to Upcoming",
+        "x": 283.5,
+        "y": 76,
+        "width": 82.5,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Earlier, 19 tasks",
+        "x": 20,
+        "y": 144,
+        "width": 350,
+        "height": 71
+      },
+      {
+        "role": "heading",
+        "label": "Earlier",
+        "x": 81,
+        "y": 157,
+        "width": 236,
+        "height": 24
+      },
+      {
+        "role": "heading",
+        "label": "Today",
+        "x": 85,
+        "y": 248,
+        "width": 216,
+        "height": 28
+      },
+      {
+        "role": "button",
+        "label": "Actions for Weekly yep on 14 de out. de 2026",
+        "x": 313,
+        "y": 338,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Actions for Daily on 14 de out. de 2026",
+        "x": 313,
+        "y": 408,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "heading",
+        "label": "To-do",
+        "x": 85,
+        "y": 532,
+        "width": 232,
+        "height": 24
+      },
+      {
+        "role": "button",
+        "label": "Actions for Once",
+        "x": 313,
+        "y": 584,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Upcoming, 2 tasks",
+        "x": 20,
+        "y": 669,
+        "width": 350,
+        "height": 71
+      },
+      {
+        "role": "heading",
+        "label": "Upcoming",
+        "x": 81,
+        "y": 682,
+        "width": 236,
+        "height": 24
+      },
+      {
+        "role": "button",
+        "label": "Add task",
+        "x": 318,
+        "y": 828,
+        "width": 52,
+        "height": 52
+      }
+    ],
+    "entry": "C:\\Users\\Arthur\\Documents\\Projects\\Axis\\dist\\soft-copper-cutover\\before\\tasks-fidelity-after\\tasks-dark-390-normal.html",
+    "entryHash": "883e3a93e144e18fa2dc5bf6a7958f1876b946f185ea36b24672f004c87159f5",
+    "errors": [],
+    "scope": "Current source RNWeb preview, synthetic fixtures/native boundaries; no native tabs/hardware acceptance. Animation/caret suppression identical before/after."
+  },
+  {
+    "id": "tasks",
+    "dir": "tasks-fidelity-after",
+    "file": "tasks-light-390.png",
+    "query": "",
+    "width": 390,
+    "theme": "light",
+    "geometry": [
+      {
+        "role": "heading",
+        "label": "Tasks",
+        "x": 20,
+        "y": 12,
+        "width": 294,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Task options",
+        "x": 322,
+        "y": 12,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Go to Earlier",
+        "x": 24,
+        "y": 76,
+        "width": 82.5,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Go to Today",
+        "x": 110.5,
+        "y": 76,
+        "width": 82.5,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Go to To-do",
+        "x": 197,
+        "y": 76,
+        "width": 82.5,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Go to Upcoming",
+        "x": 283.5,
+        "y": 76,
+        "width": 82.5,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Earlier, 19 tasks",
+        "x": 20,
+        "y": 144,
+        "width": 350,
+        "height": 71
+      },
+      {
+        "role": "heading",
+        "label": "Earlier",
+        "x": 81,
+        "y": 157,
+        "width": 236,
+        "height": 24
+      },
+      {
+        "role": "heading",
+        "label": "Today",
+        "x": 85,
+        "y": 248,
+        "width": 216,
+        "height": 28
+      },
+      {
+        "role": "button",
+        "label": "Actions for Weekly yep on 14 de out. de 2026",
+        "x": 313,
+        "y": 338,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Actions for Daily on 14 de out. de 2026",
+        "x": 313,
+        "y": 408,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "heading",
+        "label": "To-do",
+        "x": 85,
+        "y": 532,
+        "width": 232,
+        "height": 24
+      },
+      {
+        "role": "button",
+        "label": "Actions for Once",
+        "x": 313,
+        "y": 584,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Upcoming, 2 tasks",
+        "x": 20,
+        "y": 669,
+        "width": 350,
+        "height": 71
+      },
+      {
+        "role": "heading",
+        "label": "Upcoming",
+        "x": 81,
+        "y": 682,
+        "width": 236,
+        "height": 24
+      },
+      {
+        "role": "button",
+        "label": "Add task",
+        "x": 318,
+        "y": 828,
+        "width": 52,
+        "height": 52
+      }
+    ],
+    "entry": "C:\\Users\\Arthur\\Documents\\Projects\\Axis\\dist\\soft-copper-cutover\\before\\tasks-fidelity-after\\tasks-light-390-normal.html",
+    "entryHash": "2318247083e0bd721bca44428158358cbea7e58106cd0c7953da34c33bf70dc1",
+    "errors": [],
+    "scope": "Current source RNWeb preview, synthetic fixtures/native boundaries; no native tabs/hardware acceptance. Animation/caret suppression identical before/after."
+  },
+  {
+    "id": "calendar",
+    "dir": "calendar-review",
+    "file": "calendar-dark-390.png",
+    "query": "",
+    "width": 390,
+    "theme": "dark",
+    "geometry": [
+      {
+        "role": "heading",
+        "label": "Calendar",
+        "x": 16,
+        "y": 16,
+        "width": 358,
+        "height": 46
+      },
+      {
+        "role": "button",
+        "label": "Previous month",
+        "x": 21,
+        "y": 87,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "outubro de 2026, choose month and year",
+        "x": 73,
+        "y": 83,
+        "width": 165.546875,
+        "height": 56
+      },
+      {
+        "role": "heading",
+        "label": "outubro de 2026",
+        "x": 73,
+        "y": 83,
+        "width": 143.546875,
+        "height": 56
+      },
+      {
+        "role": "button",
+        "label": "Next month",
+        "x": 242.546875,
+        "y": 87,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Today",
+        "x": 303.546875,
+        "y": 87,
+        "width": 70.453125,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "segunda-feira, 28 de setembro de 2026, adjacent month, No scheduled activity",
+        "x": 17,
+        "y": 175,
+        "width": 50.84375,
+        "height": 54
+      },
+      {
+        "role": "button",
+        "label": "terça-feira, 29 de setembro de 2026, adjacent month, No scheduled activity",
+        "x": 67.84375,
+        "y": 175,
+        "width": 50.859375,
+        "height": 54
+      },
+      {
+        "role": "button",
+        "label": "quarta-feira, 30 de setembro de 2026, adjacent month, No scheduled activity",
+        "x": 118.703125,
+        "y": 175,
+        "width": 50.859375,
+        "height": 54
+      },
+      {
+        "role": "button",
+        "label": "quinta-feira, 1 de outubro de 2026, 2 tasks",
+        "x": 169.5625,
+        "y": 175,
+        "width": 50.859375,
+        "height": 54
+      },
+      {
+        "role": "button",
+        "label": "sexta-feira, 2 de outubro de 2026, 1 task",
+        "x": 220.421875,
+        "y": 175,
+        "width": 50.859375,
+        "height": 54
+      },
+      {
+        "role": "button",
+        "label": "sábado, 3 de outubro de 2026, 1 task",
+        "x": 271.28125,
+        "y": 175,
+        "width": 50.859375,
+        "height": 54
+      },
+      {
+        "role": "button",
+        "label": "domingo, 4 de outubro de 2026, 2 tasks",
+        "x": 322.140625,
+        "y": 175,
+        "width": 50.859375,
+        "height": 54
+      },
+      {
+        "role": "button",
+        "label": "segunda-feira, 5 de outubro de 2026, 1 task",
+        "x": 17,
+        "y": 233,
+        "width": 50.84375,
+        "height": 54
+      },
+      {
+        "role": "button",
+        "label": "terça-feira, 6 de outubro de 2026, 2 tasks",
+        "x": 67.84375,
+        "y": 233,
+        "width": 50.859375,
+        "height": 54
+      },
+      {
+        "role": "button",
+        "label": "quarta-feira, 7 de outubro de 2026, 1 task",
+        "x": 118.703125,
+        "y": 233,
+        "width": 50.859375,
+        "height": 54
+      },
+      {
+        "role": "button",
+        "label": "quinta-feira, 8 de outubro de 2026, 2 tasks",
+        "x": 169.5625,
+        "y": 233,
+        "width": 50.859375,
+        "height": 54
+      },
+      {
+        "role": "button",
+        "label": "sexta-feira, 9 de outubro de 2026, 1 task",
+        "x": 220.421875,
+        "y": 233,
+        "width": 50.859375,
+        "height": 54
+      },
+      {
+        "role": "button",
+        "label": "sábado, 10 de outubro de 2026, 1 task",
+        "x": 271.28125,
+        "y": 233,
+        "width": 50.859375,
+        "height": 54
+      },
+      {
+        "role": "button",
+        "label": "domingo, 11 de outubro de 2026, 2 tasks",
+        "x": 322.140625,
+        "y": 233,
+        "width": 50.859375,
+        "height": 54
+      },
+      {
+        "role": "button",
+        "label": "segunda-feira, 12 de outubro de 2026, 1 task",
+        "x": 17,
+        "y": 291,
+        "width": 50.84375,
+        "height": 54
+      },
+      {
+        "role": "button",
+        "label": "terça-feira, 13 de outubro de 2026, 2 tasks",
+        "x": 67.84375,
+        "y": 291,
+        "width": 50.859375,
+        "height": 54
+      },
+      {
+        "role": "button",
+        "label": "quarta-feira, 14 de outubro de 2026, 1 task",
+        "x": 118.703125,
+        "y": 291,
+        "width": 50.859375,
+        "height": 54
+      },
+      {
+        "role": "button",
+        "label": "quinta-feira, 15 de outubro de 2026, 2 tasks",
+        "x": 169.5625,
+        "y": 291,
+        "width": 50.859375,
+        "height": 54
+      },
+      {
+        "role": "button",
+        "label": "sexta-feira, 16 de outubro de 2026, 1 task",
+        "x": 220.421875,
+        "y": 291,
+        "width": 50.859375,
+        "height": 54
+      },
+      {
+        "role": "button",
+        "label": "sábado, 17 de outubro de 2026, 1 task",
+        "x": 271.28125,
+        "y": 291,
+        "width": 50.859375,
+        "height": 54
+      },
+      {
+        "role": "button",
+        "label": "domingo, 18 de outubro de 2026, 2 tasks",
+        "x": 322.140625,
+        "y": 291,
+        "width": 50.859375,
+        "height": 54
+      },
+      {
+        "role": "button",
+        "label": "segunda-feira, 19 de outubro de 2026, 1 task",
+        "x": 17,
+        "y": 349,
+        "width": 50.84375,
+        "height": 56
+      },
+      {
+        "role": "button",
+        "label": "terça-feira, 20 de outubro de 2026, 2 tasks",
+        "x": 67.84375,
+        "y": 349,
+        "width": 50.859375,
+        "height": 56
+      },
+      {
+        "role": "button",
+        "label": "quarta-feira, 21 de outubro de 2026, today, selected, 2 tasks, 1 commitment, 1 Work item",
+        "x": 118.703125,
+        "y": 349,
+        "width": 50.859375,
+        "height": 56
+      },
+      {
+        "role": "button",
+        "label": "quinta-feira, 22 de outubro de 2026, 2 tasks",
+        "x": 169.5625,
+        "y": 349,
+        "width": 50.859375,
+        "height": 56
+      },
+      {
+        "role": "button",
+        "label": "sexta-feira, 23 de outubro de 2026, 1 task",
+        "x": 220.421875,
+        "y": 349,
+        "width": 50.859375,
+        "height": 56
+      },
+      {
+        "role": "button",
+        "label": "sábado, 24 de outubro de 2026, 1 task",
+        "x": 271.28125,
+        "y": 349,
+        "width": 50.859375,
+        "height": 56
+      },
+      {
+        "role": "button",
+        "label": "domingo, 25 de outubro de 2026, 2 tasks",
+        "x": 322.140625,
+        "y": 349,
+        "width": 50.859375,
+        "height": 56
+      },
+      {
+        "role": "button",
+        "label": "segunda-feira, 26 de outubro de 2026, 1 task",
+        "x": 17,
+        "y": 409,
+        "width": 50.84375,
+        "height": 54
+      },
+      {
+        "role": "button",
+        "label": "terça-feira, 27 de outubro de 2026, 2 tasks",
+        "x": 67.84375,
+        "y": 409,
+        "width": 50.859375,
+        "height": 54
+      },
+      {
+        "role": "button",
+        "label": "quarta-feira, 28 de outubro de 2026, 1 task",
+        "x": 118.703125,
+        "y": 409,
+        "width": 50.859375,
+        "height": 54
+      },
+      {
+        "role": "button",
+        "label": "quinta-feira, 29 de outubro de 2026, 2 tasks",
+        "x": 169.5625,
+        "y": 409,
+        "width": 50.859375,
+        "height": 54
+      },
+      {
+        "role": "button",
+        "label": "sexta-feira, 30 de outubro de 2026, 1 task",
+        "x": 220.421875,
+        "y": 409,
+        "width": 50.859375,
+        "height": 54
+      },
+      {
+        "role": "button",
+        "label": "sábado, 31 de outubro de 2026, 1 task",
+        "x": 271.28125,
+        "y": 409,
+        "width": 50.859375,
+        "height": 54
+      },
+      {
+        "role": "button",
+        "label": "domingo, 1 de novembro de 2026, adjacent month, No scheduled activity",
+        "x": 322.140625,
+        "y": 409,
+        "width": 50.859375,
+        "height": 54
+      },
+      {
+        "role": "heading",
+        "label": "quarta-feira, 21 de outubro de 2026",
+        "x": 16,
+        "y": 524,
+        "width": 358,
+        "height": 28
+      },
+      {
+        "role": "button",
+        "label": "Open Prepare the quarterly report with supporting details for next week, 18:00, Task",
+        "x": 85,
+        "y": 601,
+        "width": 276,
+        "height": 96
+      },
+      {
+        "role": "button",
+        "label": "Open Daily, Completed, Task · Every day",
+        "x": 85,
+        "y": 731,
+        "width": 276,
+        "height": 78
+      },
+      {
+        "role": "button",
+        "label": "Open Internet, R$ 99,90, Due today, Commitment",
+        "x": 85,
+        "y": 843,
+        "width": 276,
+        "height": 106
+      },
+      {
+        "role": "button",
+        "label": "Open Inventory software, R$ 600,00 expected, Expected payment, João Inglês · Work",
+        "x": 85,
+        "y": 983,
+        "width": 276,
+        "height": 76
+      }
+    ],
+    "entry": "C:\\Users\\Arthur\\Documents\\Projects\\Axis\\dist\\soft-copper-cutover\\before\\calendar-review\\index.html",
+    "entryHash": "822401abb17d3469e61a967297ee0751bfd6419975bddbf1fddb2069cf790a62",
+    "bundleHash": "ae89707c53d0a23617c6456c771a23c91848b0ea55d12b5fdd960707fe6906bd",
+    "errors": [],
+    "scope": "Current source RNWeb preview, synthetic fixtures/native boundaries; no native tabs/hardware acceptance. Animation/caret suppression identical before/after."
+  },
+  {
+    "id": "calendar",
+    "dir": "calendar-review",
+    "file": "calendar-light-390.png",
+    "query": "",
+    "width": 390,
+    "theme": "light",
+    "geometry": [
+      {
+        "role": "heading",
+        "label": "Calendar",
+        "x": 16,
+        "y": 16,
+        "width": 358,
+        "height": 46
+      },
+      {
+        "role": "button",
+        "label": "Previous month",
+        "x": 21,
+        "y": 87,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "outubro de 2026, choose month and year",
+        "x": 73,
+        "y": 83,
+        "width": 165.546875,
+        "height": 56
+      },
+      {
+        "role": "heading",
+        "label": "outubro de 2026",
+        "x": 73,
+        "y": 83,
+        "width": 143.546875,
+        "height": 56
+      },
+      {
+        "role": "button",
+        "label": "Next month",
+        "x": 242.546875,
+        "y": 87,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Today",
+        "x": 303.546875,
+        "y": 87,
+        "width": 70.453125,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "segunda-feira, 28 de setembro de 2026, adjacent month, No scheduled activity",
+        "x": 17,
+        "y": 175,
+        "width": 50.84375,
+        "height": 54
+      },
+      {
+        "role": "button",
+        "label": "terça-feira, 29 de setembro de 2026, adjacent month, No scheduled activity",
+        "x": 67.84375,
+        "y": 175,
+        "width": 50.859375,
+        "height": 54
+      },
+      {
+        "role": "button",
+        "label": "quarta-feira, 30 de setembro de 2026, adjacent month, No scheduled activity",
+        "x": 118.703125,
+        "y": 175,
+        "width": 50.859375,
+        "height": 54
+      },
+      {
+        "role": "button",
+        "label": "quinta-feira, 1 de outubro de 2026, 2 tasks",
+        "x": 169.5625,
+        "y": 175,
+        "width": 50.859375,
+        "height": 54
+      },
+      {
+        "role": "button",
+        "label": "sexta-feira, 2 de outubro de 2026, 1 task",
+        "x": 220.421875,
+        "y": 175,
+        "width": 50.859375,
+        "height": 54
+      },
+      {
+        "role": "button",
+        "label": "sábado, 3 de outubro de 2026, 1 task",
+        "x": 271.28125,
+        "y": 175,
+        "width": 50.859375,
+        "height": 54
+      },
+      {
+        "role": "button",
+        "label": "domingo, 4 de outubro de 2026, 2 tasks",
+        "x": 322.140625,
+        "y": 175,
+        "width": 50.859375,
+        "height": 54
+      },
+      {
+        "role": "button",
+        "label": "segunda-feira, 5 de outubro de 2026, 1 task",
+        "x": 17,
+        "y": 233,
+        "width": 50.84375,
+        "height": 54
+      },
+      {
+        "role": "button",
+        "label": "terça-feira, 6 de outubro de 2026, 2 tasks",
+        "x": 67.84375,
+        "y": 233,
+        "width": 50.859375,
+        "height": 54
+      },
+      {
+        "role": "button",
+        "label": "quarta-feira, 7 de outubro de 2026, 1 task",
+        "x": 118.703125,
+        "y": 233,
+        "width": 50.859375,
+        "height": 54
+      },
+      {
+        "role": "button",
+        "label": "quinta-feira, 8 de outubro de 2026, 2 tasks",
+        "x": 169.5625,
+        "y": 233,
+        "width": 50.859375,
+        "height": 54
+      },
+      {
+        "role": "button",
+        "label": "sexta-feira, 9 de outubro de 2026, 1 task",
+        "x": 220.421875,
+        "y": 233,
+        "width": 50.859375,
+        "height": 54
+      },
+      {
+        "role": "button",
+        "label": "sábado, 10 de outubro de 2026, 1 task",
+        "x": 271.28125,
+        "y": 233,
+        "width": 50.859375,
+        "height": 54
+      },
+      {
+        "role": "button",
+        "label": "domingo, 11 de outubro de 2026, 2 tasks",
+        "x": 322.140625,
+        "y": 233,
+        "width": 50.859375,
+        "height": 54
+      },
+      {
+        "role": "button",
+        "label": "segunda-feira, 12 de outubro de 2026, 1 task",
+        "x": 17,
+        "y": 291,
+        "width": 50.84375,
+        "height": 54
+      },
+      {
+        "role": "button",
+        "label": "terça-feira, 13 de outubro de 2026, 2 tasks",
+        "x": 67.84375,
+        "y": 291,
+        "width": 50.859375,
+        "height": 54
+      },
+      {
+        "role": "button",
+        "label": "quarta-feira, 14 de outubro de 2026, 1 task",
+        "x": 118.703125,
+        "y": 291,
+        "width": 50.859375,
+        "height": 54
+      },
+      {
+        "role": "button",
+        "label": "quinta-feira, 15 de outubro de 2026, 2 tasks",
+        "x": 169.5625,
+        "y": 291,
+        "width": 50.859375,
+        "height": 54
+      },
+      {
+        "role": "button",
+        "label": "sexta-feira, 16 de outubro de 2026, 1 task",
+        "x": 220.421875,
+        "y": 291,
+        "width": 50.859375,
+        "height": 54
+      },
+      {
+        "role": "button",
+        "label": "sábado, 17 de outubro de 2026, 1 task",
+        "x": 271.28125,
+        "y": 291,
+        "width": 50.859375,
+        "height": 54
+      },
+      {
+        "role": "button",
+        "label": "domingo, 18 de outubro de 2026, 2 tasks",
+        "x": 322.140625,
+        "y": 291,
+        "width": 50.859375,
+        "height": 54
+      },
+      {
+        "role": "button",
+        "label": "segunda-feira, 19 de outubro de 2026, 1 task",
+        "x": 17,
+        "y": 349,
+        "width": 50.84375,
+        "height": 56
+      },
+      {
+        "role": "button",
+        "label": "terça-feira, 20 de outubro de 2026, 2 tasks",
+        "x": 67.84375,
+        "y": 349,
+        "width": 50.859375,
+        "height": 56
+      },
+      {
+        "role": "button",
+        "label": "quarta-feira, 21 de outubro de 2026, today, selected, 2 tasks, 1 commitment, 1 Work item",
+        "x": 118.703125,
+        "y": 349,
+        "width": 50.859375,
+        "height": 56
+      },
+      {
+        "role": "button",
+        "label": "quinta-feira, 22 de outubro de 2026, 2 tasks",
+        "x": 169.5625,
+        "y": 349,
+        "width": 50.859375,
+        "height": 56
+      },
+      {
+        "role": "button",
+        "label": "sexta-feira, 23 de outubro de 2026, 1 task",
+        "x": 220.421875,
+        "y": 349,
+        "width": 50.859375,
+        "height": 56
+      },
+      {
+        "role": "button",
+        "label": "sábado, 24 de outubro de 2026, 1 task",
+        "x": 271.28125,
+        "y": 349,
+        "width": 50.859375,
+        "height": 56
+      },
+      {
+        "role": "button",
+        "label": "domingo, 25 de outubro de 2026, 2 tasks",
+        "x": 322.140625,
+        "y": 349,
+        "width": 50.859375,
+        "height": 56
+      },
+      {
+        "role": "button",
+        "label": "segunda-feira, 26 de outubro de 2026, 1 task",
+        "x": 17,
+        "y": 409,
+        "width": 50.84375,
+        "height": 54
+      },
+      {
+        "role": "button",
+        "label": "terça-feira, 27 de outubro de 2026, 2 tasks",
+        "x": 67.84375,
+        "y": 409,
+        "width": 50.859375,
+        "height": 54
+      },
+      {
+        "role": "button",
+        "label": "quarta-feira, 28 de outubro de 2026, 1 task",
+        "x": 118.703125,
+        "y": 409,
+        "width": 50.859375,
+        "height": 54
+      },
+      {
+        "role": "button",
+        "label": "quinta-feira, 29 de outubro de 2026, 2 tasks",
+        "x": 169.5625,
+        "y": 409,
+        "width": 50.859375,
+        "height": 54
+      },
+      {
+        "role": "button",
+        "label": "sexta-feira, 30 de outubro de 2026, 1 task",
+        "x": 220.421875,
+        "y": 409,
+        "width": 50.859375,
+        "height": 54
+      },
+      {
+        "role": "button",
+        "label": "sábado, 31 de outubro de 2026, 1 task",
+        "x": 271.28125,
+        "y": 409,
+        "width": 50.859375,
+        "height": 54
+      },
+      {
+        "role": "button",
+        "label": "domingo, 1 de novembro de 2026, adjacent month, No scheduled activity",
+        "x": 322.140625,
+        "y": 409,
+        "width": 50.859375,
+        "height": 54
+      },
+      {
+        "role": "heading",
+        "label": "quarta-feira, 21 de outubro de 2026",
+        "x": 16,
+        "y": 524,
+        "width": 358,
+        "height": 28
+      },
+      {
+        "role": "button",
+        "label": "Open Prepare the quarterly report with supporting details for next week, 18:00, Task",
+        "x": 85,
+        "y": 601,
+        "width": 276,
+        "height": 96
+      },
+      {
+        "role": "button",
+        "label": "Open Daily, Completed, Task · Every day",
+        "x": 85,
+        "y": 731,
+        "width": 276,
+        "height": 78
+      },
+      {
+        "role": "button",
+        "label": "Open Internet, R$ 99,90, Due today, Commitment",
+        "x": 85,
+        "y": 843,
+        "width": 276,
+        "height": 106
+      },
+      {
+        "role": "button",
+        "label": "Open Inventory software, R$ 600,00 expected, Expected payment, João Inglês · Work",
+        "x": 85,
+        "y": 983,
+        "width": 276,
+        "height": 76
+      }
+    ],
+    "entry": "C:\\Users\\Arthur\\Documents\\Projects\\Axis\\dist\\soft-copper-cutover\\before\\calendar-review\\index.html",
+    "entryHash": "822401abb17d3469e61a967297ee0751bfd6419975bddbf1fddb2069cf790a62",
+    "bundleHash": "ae89707c53d0a23617c6456c771a23c91848b0ea55d12b5fdd960707fe6906bd",
+    "errors": [],
+    "scope": "Current source RNWeb preview, synthetic fixtures/native boundaries; no native tabs/hardware acceptance. Animation/caret suppression identical before/after."
+  },
+  {
+    "id": "finance-overview",
+    "dir": "finance-overview-v2-review",
+    "file": "finance-overview-dark-320.png",
+    "query": "",
+    "width": 320,
+    "theme": "dark",
+    "geometry": [
+      {
+        "role": "heading",
+        "label": "Finance",
+        "x": 16,
+        "y": 16,
+        "width": 288,
+        "height": 46
+      },
+      {
+        "role": "button",
+        "label": "Overview",
+        "x": 16,
+        "y": 70,
+        "width": 74.171875,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Transactions",
+        "x": 90.171875,
+        "y": 70,
+        "width": 101.46875,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Commitments",
+        "x": 191.640625,
+        "y": 70,
+        "width": 110.328125,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Work",
+        "x": 301.96875,
+        "y": 70,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "heading",
+        "label": "outubro de 2026",
+        "x": 16,
+        "y": 226,
+        "width": 178,
+        "height": 24
+      },
+      {
+        "role": "button",
+        "label": "Previous month",
+        "x": 202,
+        "y": 214,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Next month",
+        "x": 256,
+        "y": 214,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "heading",
+        "label": "Cash Flow",
+        "x": 29,
+        "y": 437,
+        "width": 96.25,
+        "height": 28
+      },
+      {
+        "role": "button",
+        "label": "1 de out. de 2026 – 4 de out. de 2026, Income R$ 800,00, Expenses R$ 199,25",
+        "x": 61,
+        "y": 507,
+        "width": 46,
+        "height": 188
+      },
+      {
+        "role": "button",
+        "label": "5 de out. de 2026 – 11 de out. de 2026, Income R$ 0,00, Expenses R$ 771,25",
+        "x": 107,
+        "y": 507,
+        "width": 46,
+        "height": 188
+      },
+      {
+        "role": "button",
+        "label": "12 de out. de 2026 – 18 de out. de 2026, Income R$ 0,00, Expenses R$ 1.113,50",
+        "x": 153,
+        "y": 507,
+        "width": 46,
+        "height": 188
+      },
+      {
+        "role": "button",
+        "label": "19 de out. de 2026 – 25 de out. de 2026, Income R$ 4.250,00, Expenses R$ 3.514,00",
+        "x": 199,
+        "y": 507,
+        "width": 46,
+        "height": 188
+      },
+      {
+        "role": "button",
+        "label": "26 de out. de 2026 – 31 de out. de 2026, Income R$ 0,00, Expenses R$ 0,00",
+        "x": 245,
+        "y": 507,
+        "width": 46,
+        "height": 188
+      },
+      {
+        "role": "heading",
+        "label": "Spending",
+        "x": 29,
+        "y": 875,
+        "width": 262,
+        "height": 28
+      },
+      {
+        "role": "button",
+        "label": "View all 8 spending categories",
+        "x": 29,
+        "y": 1351.59375,
+        "width": 262,
+        "height": 48
+      }
+    ],
+    "entry": "C:\\Users\\Arthur\\Documents\\Projects\\Axis\\dist\\soft-copper-cutover\\before\\finance-overview-v2-review\\index.html",
+    "entryHash": "822401abb17d3469e61a967297ee0751bfd6419975bddbf1fddb2069cf790a62",
+    "bundleHash": "cb6c9c87d5650b3effba065dbe8e82f23f76010fb61ff38fc4bee775784b38f7",
+    "errors": [],
+    "scope": "Current source RNWeb preview, synthetic fixtures/native boundaries; no native tabs/hardware acceptance. Animation/caret suppression identical before/after."
+  },
+  {
+    "id": "finance-overview",
+    "dir": "finance-overview-v2-review",
+    "file": "finance-overview-light-320.png",
+    "query": "",
+    "width": 320,
+    "theme": "light",
+    "geometry": [
+      {
+        "role": "heading",
+        "label": "Finance",
+        "x": 16,
+        "y": 16,
+        "width": 288,
+        "height": 46
+      },
+      {
+        "role": "button",
+        "label": "Overview",
+        "x": 16,
+        "y": 70,
+        "width": 74.171875,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Transactions",
+        "x": 90.171875,
+        "y": 70,
+        "width": 101.46875,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Commitments",
+        "x": 191.640625,
+        "y": 70,
+        "width": 110.328125,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Work",
+        "x": 301.96875,
+        "y": 70,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "heading",
+        "label": "outubro de 2026",
+        "x": 16,
+        "y": 226,
+        "width": 178,
+        "height": 24
+      },
+      {
+        "role": "button",
+        "label": "Previous month",
+        "x": 202,
+        "y": 214,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Next month",
+        "x": 256,
+        "y": 214,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "heading",
+        "label": "Cash Flow",
+        "x": 29,
+        "y": 437,
+        "width": 96.25,
+        "height": 28
+      },
+      {
+        "role": "button",
+        "label": "1 de out. de 2026 – 4 de out. de 2026, Income R$ 800,00, Expenses R$ 199,25",
+        "x": 61,
+        "y": 507,
+        "width": 46,
+        "height": 188
+      },
+      {
+        "role": "button",
+        "label": "5 de out. de 2026 – 11 de out. de 2026, Income R$ 0,00, Expenses R$ 771,25",
+        "x": 107,
+        "y": 507,
+        "width": 46,
+        "height": 188
+      },
+      {
+        "role": "button",
+        "label": "12 de out. de 2026 – 18 de out. de 2026, Income R$ 0,00, Expenses R$ 1.113,50",
+        "x": 153,
+        "y": 507,
+        "width": 46,
+        "height": 188
+      },
+      {
+        "role": "button",
+        "label": "19 de out. de 2026 – 25 de out. de 2026, Income R$ 4.250,00, Expenses R$ 3.514,00",
+        "x": 199,
+        "y": 507,
+        "width": 46,
+        "height": 188
+      },
+      {
+        "role": "button",
+        "label": "26 de out. de 2026 – 31 de out. de 2026, Income R$ 0,00, Expenses R$ 0,00",
+        "x": 245,
+        "y": 507,
+        "width": 46,
+        "height": 188
+      },
+      {
+        "role": "heading",
+        "label": "Spending",
+        "x": 29,
+        "y": 875,
+        "width": 262,
+        "height": 28
+      },
+      {
+        "role": "button",
+        "label": "View all 8 spending categories",
+        "x": 29,
+        "y": 1351.59375,
+        "width": 262,
+        "height": 48
+      }
+    ],
+    "entry": "C:\\Users\\Arthur\\Documents\\Projects\\Axis\\dist\\soft-copper-cutover\\before\\finance-overview-v2-review\\index.html",
+    "entryHash": "822401abb17d3469e61a967297ee0751bfd6419975bddbf1fddb2069cf790a62",
+    "bundleHash": "cb6c9c87d5650b3effba065dbe8e82f23f76010fb61ff38fc4bee775784b38f7",
+    "errors": [],
+    "scope": "Current source RNWeb preview, synthetic fixtures/native boundaries; no native tabs/hardware acceptance. Animation/caret suppression identical before/after."
+  },
+  {
+    "id": "finance-overview",
+    "dir": "finance-overview-v2-review",
+    "file": "finance-overview-dark-390.png",
+    "query": "",
+    "width": 390,
+    "theme": "dark",
+    "geometry": [
+      {
+        "role": "heading",
+        "label": "Finance",
+        "x": 16,
+        "y": 16,
+        "width": 358,
+        "height": 46
+      },
+      {
+        "role": "button",
+        "label": "Overview",
+        "x": 16,
+        "y": 70,
+        "width": 80.171875,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Transactions",
+        "x": 96.171875,
+        "y": 70,
+        "width": 107.484375,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Commitments",
+        "x": 203.65625,
+        "y": 70,
+        "width": 116.328125,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Work",
+        "x": 319.984375,
+        "y": 70,
+        "width": 54.015625,
+        "height": 48
+      },
+      {
+        "role": "heading",
+        "label": "outubro de 2026",
+        "x": 16,
+        "y": 212,
+        "width": 248,
+        "height": 24
+      },
+      {
+        "role": "button",
+        "label": "Previous month",
+        "x": 272,
+        "y": 200,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Next month",
+        "x": 326,
+        "y": 200,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "heading",
+        "label": "Cash Flow",
+        "x": 29,
+        "y": 361,
+        "width": 96.25,
+        "height": 28
+      },
+      {
+        "role": "button",
+        "label": "1 de out. de 2026 – 4 de out. de 2026, Income R$ 800,00, Expenses R$ 199,25",
+        "x": 61,
+        "y": 431,
+        "width": 60,
+        "height": 188
+      },
+      {
+        "role": "button",
+        "label": "5 de out. de 2026 – 11 de out. de 2026, Income R$ 0,00, Expenses R$ 771,25",
+        "x": 121,
+        "y": 431,
+        "width": 60,
+        "height": 188
+      },
+      {
+        "role": "button",
+        "label": "12 de out. de 2026 – 18 de out. de 2026, Income R$ 0,00, Expenses R$ 1.113,50",
+        "x": 181,
+        "y": 431,
+        "width": 60,
+        "height": 188
+      },
+      {
+        "role": "button",
+        "label": "19 de out. de 2026 – 25 de out. de 2026, Income R$ 4.250,00, Expenses R$ 3.514,00",
+        "x": 241,
+        "y": 431,
+        "width": 60,
+        "height": 188
+      },
+      {
+        "role": "button",
+        "label": "26 de out. de 2026 – 31 de out. de 2026, Income R$ 0,00, Expenses R$ 0,00",
+        "x": 301,
+        "y": 431,
+        "width": 60,
+        "height": 188
+      },
+      {
+        "role": "heading",
+        "label": "Spending",
+        "x": 29,
+        "y": 775,
+        "width": 332,
+        "height": 28
+      },
+      {
+        "role": "button",
+        "label": "View all 8 spending categories",
+        "x": 29,
+        "y": 1272.59375,
+        "width": 332,
+        "height": 48
+      }
+    ],
+    "entry": "C:\\Users\\Arthur\\Documents\\Projects\\Axis\\dist\\soft-copper-cutover\\before\\finance-overview-v2-review\\index.html",
+    "entryHash": "822401abb17d3469e61a967297ee0751bfd6419975bddbf1fddb2069cf790a62",
+    "bundleHash": "cb6c9c87d5650b3effba065dbe8e82f23f76010fb61ff38fc4bee775784b38f7",
+    "errors": [],
+    "scope": "Current source RNWeb preview, synthetic fixtures/native boundaries; no native tabs/hardware acceptance. Animation/caret suppression identical before/after."
+  },
+  {
+    "id": "finance-overview",
+    "dir": "finance-overview-v2-review",
+    "file": "finance-overview-light-390.png",
+    "query": "",
+    "width": 390,
+    "theme": "light",
+    "geometry": [
+      {
+        "role": "heading",
+        "label": "Finance",
+        "x": 16,
+        "y": 16,
+        "width": 358,
+        "height": 46
+      },
+      {
+        "role": "button",
+        "label": "Overview",
+        "x": 16,
+        "y": 70,
+        "width": 80.171875,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Transactions",
+        "x": 96.171875,
+        "y": 70,
+        "width": 107.484375,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Commitments",
+        "x": 203.65625,
+        "y": 70,
+        "width": 116.328125,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Work",
+        "x": 319.984375,
+        "y": 70,
+        "width": 54.015625,
+        "height": 48
+      },
+      {
+        "role": "heading",
+        "label": "outubro de 2026",
+        "x": 16,
+        "y": 212,
+        "width": 248,
+        "height": 24
+      },
+      {
+        "role": "button",
+        "label": "Previous month",
+        "x": 272,
+        "y": 200,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Next month",
+        "x": 326,
+        "y": 200,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "heading",
+        "label": "Cash Flow",
+        "x": 29,
+        "y": 361,
+        "width": 96.25,
+        "height": 28
+      },
+      {
+        "role": "button",
+        "label": "1 de out. de 2026 – 4 de out. de 2026, Income R$ 800,00, Expenses R$ 199,25",
+        "x": 61,
+        "y": 431,
+        "width": 60,
+        "height": 188
+      },
+      {
+        "role": "button",
+        "label": "5 de out. de 2026 – 11 de out. de 2026, Income R$ 0,00, Expenses R$ 771,25",
+        "x": 121,
+        "y": 431,
+        "width": 60,
+        "height": 188
+      },
+      {
+        "role": "button",
+        "label": "12 de out. de 2026 – 18 de out. de 2026, Income R$ 0,00, Expenses R$ 1.113,50",
+        "x": 181,
+        "y": 431,
+        "width": 60,
+        "height": 188
+      },
+      {
+        "role": "button",
+        "label": "19 de out. de 2026 – 25 de out. de 2026, Income R$ 4.250,00, Expenses R$ 3.514,00",
+        "x": 241,
+        "y": 431,
+        "width": 60,
+        "height": 188
+      },
+      {
+        "role": "button",
+        "label": "26 de out. de 2026 – 31 de out. de 2026, Income R$ 0,00, Expenses R$ 0,00",
+        "x": 301,
+        "y": 431,
+        "width": 60,
+        "height": 188
+      },
+      {
+        "role": "heading",
+        "label": "Spending",
+        "x": 29,
+        "y": 775,
+        "width": 332,
+        "height": 28
+      },
+      {
+        "role": "button",
+        "label": "View all 8 spending categories",
+        "x": 29,
+        "y": 1272.59375,
+        "width": 332,
+        "height": 48
+      }
+    ],
+    "entry": "C:\\Users\\Arthur\\Documents\\Projects\\Axis\\dist\\soft-copper-cutover\\before\\finance-overview-v2-review\\index.html",
+    "entryHash": "822401abb17d3469e61a967297ee0751bfd6419975bddbf1fddb2069cf790a62",
+    "bundleHash": "cb6c9c87d5650b3effba065dbe8e82f23f76010fb61ff38fc4bee775784b38f7",
+    "errors": [],
+    "scope": "Current source RNWeb preview, synthetic fixtures/native boundaries; no native tabs/hardware acceptance. Animation/caret suppression identical before/after."
+  },
+  {
+    "id": "finance-overview",
+    "dir": "finance-overview-v2-review",
+    "file": "finance-overview-dark-430.png",
+    "query": "",
+    "width": 430,
+    "theme": "dark",
+    "geometry": [
+      {
+        "role": "heading",
+        "label": "Finance",
+        "x": 16,
+        "y": 16,
+        "width": 398,
+        "height": 46
+      },
+      {
+        "role": "button",
+        "label": "Overview",
+        "x": 16,
+        "y": 70,
+        "width": 90.171875,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Transactions",
+        "x": 106.171875,
+        "y": 70,
+        "width": 117.484375,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Commitments",
+        "x": 223.65625,
+        "y": 70,
+        "width": 126.328125,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Work",
+        "x": 349.984375,
+        "y": 70,
+        "width": 64.015625,
+        "height": 48
+      },
+      {
+        "role": "heading",
+        "label": "outubro de 2026",
+        "x": 16,
+        "y": 212,
+        "width": 288,
+        "height": 24
+      },
+      {
+        "role": "button",
+        "label": "Previous month",
+        "x": 312,
+        "y": 200,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Next month",
+        "x": 366,
+        "y": 200,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "heading",
+        "label": "Cash Flow",
+        "x": 29,
+        "y": 361,
+        "width": 96.25,
+        "height": 28
+      },
+      {
+        "role": "button",
+        "label": "1 de out. de 2026 – 4 de out. de 2026, Income R$ 800,00, Expenses R$ 199,25",
+        "x": 61,
+        "y": 431,
+        "width": 68,
+        "height": 188
+      },
+      {
+        "role": "button",
+        "label": "5 de out. de 2026 – 11 de out. de 2026, Income R$ 0,00, Expenses R$ 771,25",
+        "x": 129,
+        "y": 431,
+        "width": 68,
+        "height": 188
+      },
+      {
+        "role": "button",
+        "label": "12 de out. de 2026 – 18 de out. de 2026, Income R$ 0,00, Expenses R$ 1.113,50",
+        "x": 197,
+        "y": 431,
+        "width": 68,
+        "height": 188
+      },
+      {
+        "role": "button",
+        "label": "19 de out. de 2026 – 25 de out. de 2026, Income R$ 4.250,00, Expenses R$ 3.514,00",
+        "x": 265,
+        "y": 431,
+        "width": 68,
+        "height": 188
+      },
+      {
+        "role": "button",
+        "label": "26 de out. de 2026 – 31 de out. de 2026, Income R$ 0,00, Expenses R$ 0,00",
+        "x": 333,
+        "y": 431,
+        "width": 68,
+        "height": 188
+      },
+      {
+        "role": "heading",
+        "label": "Spending",
+        "x": 29,
+        "y": 775,
+        "width": 372,
+        "height": 28
+      },
+      {
+        "role": "button",
+        "label": "View all 8 spending categories",
+        "x": 29,
+        "y": 1277,
+        "width": 372,
+        "height": 48
+      }
+    ],
+    "entry": "C:\\Users\\Arthur\\Documents\\Projects\\Axis\\dist\\soft-copper-cutover\\before\\finance-overview-v2-review\\index.html",
+    "entryHash": "822401abb17d3469e61a967297ee0751bfd6419975bddbf1fddb2069cf790a62",
+    "bundleHash": "cb6c9c87d5650b3effba065dbe8e82f23f76010fb61ff38fc4bee775784b38f7",
+    "errors": [],
+    "scope": "Current source RNWeb preview, synthetic fixtures/native boundaries; no native tabs/hardware acceptance. Animation/caret suppression identical before/after."
+  },
+  {
+    "id": "finance-overview",
+    "dir": "finance-overview-v2-review",
+    "file": "finance-overview-light-430.png",
+    "query": "",
+    "width": 430,
+    "theme": "light",
+    "geometry": [
+      {
+        "role": "heading",
+        "label": "Finance",
+        "x": 16,
+        "y": 16,
+        "width": 398,
+        "height": 46
+      },
+      {
+        "role": "button",
+        "label": "Overview",
+        "x": 16,
+        "y": 70,
+        "width": 90.171875,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Transactions",
+        "x": 106.171875,
+        "y": 70,
+        "width": 117.484375,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Commitments",
+        "x": 223.65625,
+        "y": 70,
+        "width": 126.328125,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Work",
+        "x": 349.984375,
+        "y": 70,
+        "width": 64.015625,
+        "height": 48
+      },
+      {
+        "role": "heading",
+        "label": "outubro de 2026",
+        "x": 16,
+        "y": 212,
+        "width": 288,
+        "height": 24
+      },
+      {
+        "role": "button",
+        "label": "Previous month",
+        "x": 312,
+        "y": 200,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Next month",
+        "x": 366,
+        "y": 200,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "heading",
+        "label": "Cash Flow",
+        "x": 29,
+        "y": 361,
+        "width": 96.25,
+        "height": 28
+      },
+      {
+        "role": "button",
+        "label": "1 de out. de 2026 – 4 de out. de 2026, Income R$ 800,00, Expenses R$ 199,25",
+        "x": 61,
+        "y": 431,
+        "width": 68,
+        "height": 188
+      },
+      {
+        "role": "button",
+        "label": "5 de out. de 2026 – 11 de out. de 2026, Income R$ 0,00, Expenses R$ 771,25",
+        "x": 129,
+        "y": 431,
+        "width": 68,
+        "height": 188
+      },
+      {
+        "role": "button",
+        "label": "12 de out. de 2026 – 18 de out. de 2026, Income R$ 0,00, Expenses R$ 1.113,50",
+        "x": 197,
+        "y": 431,
+        "width": 68,
+        "height": 188
+      },
+      {
+        "role": "button",
+        "label": "19 de out. de 2026 – 25 de out. de 2026, Income R$ 4.250,00, Expenses R$ 3.514,00",
+        "x": 265,
+        "y": 431,
+        "width": 68,
+        "height": 188
+      },
+      {
+        "role": "button",
+        "label": "26 de out. de 2026 – 31 de out. de 2026, Income R$ 0,00, Expenses R$ 0,00",
+        "x": 333,
+        "y": 431,
+        "width": 68,
+        "height": 188
+      },
+      {
+        "role": "heading",
+        "label": "Spending",
+        "x": 29,
+        "y": 775,
+        "width": 372,
+        "height": 28
+      },
+      {
+        "role": "button",
+        "label": "View all 8 spending categories",
+        "x": 29,
+        "y": 1277,
+        "width": 372,
+        "height": 48
+      }
+    ],
+    "entry": "C:\\Users\\Arthur\\Documents\\Projects\\Axis\\dist\\soft-copper-cutover\\before\\finance-overview-v2-review\\index.html",
+    "entryHash": "822401abb17d3469e61a967297ee0751bfd6419975bddbf1fddb2069cf790a62",
+    "bundleHash": "cb6c9c87d5650b3effba065dbe8e82f23f76010fb61ff38fc4bee775784b38f7",
+    "errors": [],
+    "scope": "Current source RNWeb preview, synthetic fixtures/native boundaries; no native tabs/hardware acceptance. Animation/caret suppression identical before/after."
+  },
+  {
+    "id": "finance-selected",
+    "dir": "finance-overview-v2-review",
+    "file": "finance-selected-dark-390.png",
+    "query": "",
+    "width": 390,
+    "theme": "dark",
+    "action": "select-bucket",
+    "geometry": [
+      {
+        "role": "heading",
+        "label": "Finance",
+        "x": 16,
+        "y": 16,
+        "width": 358,
+        "height": 46
+      },
+      {
+        "role": "button",
+        "label": "Overview",
+        "x": 16,
+        "y": 70,
+        "width": 80.171875,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Transactions",
+        "x": 96.171875,
+        "y": 70,
+        "width": 107.484375,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Commitments",
+        "x": 203.65625,
+        "y": 70,
+        "width": 116.328125,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Work",
+        "x": 319.984375,
+        "y": 70,
+        "width": 54.015625,
+        "height": 48
+      },
+      {
+        "role": "heading",
+        "label": "outubro de 2026",
+        "x": 16,
+        "y": 212,
+        "width": 248,
+        "height": 24
+      },
+      {
+        "role": "button",
+        "label": "Previous month",
+        "x": 272,
+        "y": 200,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Next month",
+        "x": 326,
+        "y": 200,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "heading",
+        "label": "Cash Flow",
+        "x": 29,
+        "y": 361,
+        "width": 96.25,
+        "height": 28
+      },
+      {
+        "role": "button",
+        "label": "1 de out. de 2026 – 4 de out. de 2026, Income R$ 800,00, Expenses R$ 199,25",
+        "x": 61,
+        "y": 431,
+        "width": 60,
+        "height": 188
+      },
+      {
+        "role": "button",
+        "label": "5 de out. de 2026 – 11 de out. de 2026, Income R$ 0,00, Expenses R$ 771,25",
+        "x": 121,
+        "y": 431,
+        "width": 60,
+        "height": 188
+      },
+      {
+        "role": "button",
+        "label": "12 de out. de 2026 – 18 de out. de 2026, Income R$ 0,00, Expenses R$ 1.113,50",
+        "x": 181,
+        "y": 431,
+        "width": 60,
+        "height": 188
+      },
+      {
+        "role": "button",
+        "label": "19 de out. de 2026 – 25 de out. de 2026, Income R$ 4.250,00, Expenses R$ 3.514,00",
+        "x": 241,
+        "y": 431,
+        "width": 60,
+        "height": 188
+      },
+      {
+        "role": "button",
+        "label": "26 de out. de 2026 – 31 de out. de 2026, Income R$ 0,00, Expenses R$ 0,00",
+        "x": 301,
+        "y": 431,
+        "width": 60,
+        "height": 188
+      },
+      {
+        "role": "heading",
+        "label": "Spending",
+        "x": 29,
+        "y": 775,
+        "width": 332,
+        "height": 28
+      },
+      {
+        "role": "button",
+        "label": "View all 8 spending categories",
+        "x": 29,
+        "y": 1272.59375,
+        "width": 332,
+        "height": 48
+      }
+    ],
+    "entry": "C:\\Users\\Arthur\\Documents\\Projects\\Axis\\dist\\soft-copper-cutover\\before\\finance-overview-v2-review\\index.html",
+    "entryHash": "822401abb17d3469e61a967297ee0751bfd6419975bddbf1fddb2069cf790a62",
+    "bundleHash": "cb6c9c87d5650b3effba065dbe8e82f23f76010fb61ff38fc4bee775784b38f7",
+    "errors": [],
+    "scope": "Current source RNWeb preview, synthetic fixtures/native boundaries; no native tabs/hardware acceptance. Animation/caret suppression identical before/after."
+  },
+  {
+    "id": "finance-selected",
+    "dir": "finance-overview-v2-review",
+    "file": "finance-selected-light-390.png",
+    "query": "",
+    "width": 390,
+    "theme": "light",
+    "action": "select-bucket",
+    "geometry": [
+      {
+        "role": "heading",
+        "label": "Finance",
+        "x": 16,
+        "y": 16,
+        "width": 358,
+        "height": 46
+      },
+      {
+        "role": "button",
+        "label": "Overview",
+        "x": 16,
+        "y": 70,
+        "width": 80.171875,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Transactions",
+        "x": 96.171875,
+        "y": 70,
+        "width": 107.484375,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Commitments",
+        "x": 203.65625,
+        "y": 70,
+        "width": 116.328125,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Work",
+        "x": 319.984375,
+        "y": 70,
+        "width": 54.015625,
+        "height": 48
+      },
+      {
+        "role": "heading",
+        "label": "outubro de 2026",
+        "x": 16,
+        "y": 212,
+        "width": 248,
+        "height": 24
+      },
+      {
+        "role": "button",
+        "label": "Previous month",
+        "x": 272,
+        "y": 200,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Next month",
+        "x": 326,
+        "y": 200,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "heading",
+        "label": "Cash Flow",
+        "x": 29,
+        "y": 361,
+        "width": 96.25,
+        "height": 28
+      },
+      {
+        "role": "button",
+        "label": "1 de out. de 2026 – 4 de out. de 2026, Income R$ 800,00, Expenses R$ 199,25",
+        "x": 61,
+        "y": 431,
+        "width": 60,
+        "height": 188
+      },
+      {
+        "role": "button",
+        "label": "5 de out. de 2026 – 11 de out. de 2026, Income R$ 0,00, Expenses R$ 771,25",
+        "x": 121,
+        "y": 431,
+        "width": 60,
+        "height": 188
+      },
+      {
+        "role": "button",
+        "label": "12 de out. de 2026 – 18 de out. de 2026, Income R$ 0,00, Expenses R$ 1.113,50",
+        "x": 181,
+        "y": 431,
+        "width": 60,
+        "height": 188
+      },
+      {
+        "role": "button",
+        "label": "19 de out. de 2026 – 25 de out. de 2026, Income R$ 4.250,00, Expenses R$ 3.514,00",
+        "x": 241,
+        "y": 431,
+        "width": 60,
+        "height": 188
+      },
+      {
+        "role": "button",
+        "label": "26 de out. de 2026 – 31 de out. de 2026, Income R$ 0,00, Expenses R$ 0,00",
+        "x": 301,
+        "y": 431,
+        "width": 60,
+        "height": 188
+      },
+      {
+        "role": "heading",
+        "label": "Spending",
+        "x": 29,
+        "y": 775,
+        "width": 332,
+        "height": 28
+      },
+      {
+        "role": "button",
+        "label": "View all 8 spending categories",
+        "x": 29,
+        "y": 1272.59375,
+        "width": 332,
+        "height": 48
+      }
+    ],
+    "entry": "C:\\Users\\Arthur\\Documents\\Projects\\Axis\\dist\\soft-copper-cutover\\before\\finance-overview-v2-review\\index.html",
+    "entryHash": "822401abb17d3469e61a967297ee0751bfd6419975bddbf1fddb2069cf790a62",
+    "bundleHash": "cb6c9c87d5650b3effba065dbe8e82f23f76010fb61ff38fc4bee775784b38f7",
+    "errors": [],
+    "scope": "Current source RNWeb preview, synthetic fixtures/native boundaries; no native tabs/hardware acceptance. Animation/caret suppression identical before/after."
+  },
+  {
+    "id": "finance-spending",
+    "dir": "finance-overview-v2-review",
+    "file": "finance-spending-dark-390.png",
+    "query": "",
+    "width": 390,
+    "theme": "dark",
+    "action": "spending",
+    "geometry": [
+      {
+        "role": "heading",
+        "label": "Finance",
+        "x": 16,
+        "y": 16,
+        "width": 358,
+        "height": 46
+      },
+      {
+        "role": "button",
+        "label": "Overview",
+        "x": 16,
+        "y": 70,
+        "width": 80.171875,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Transactions",
+        "x": 96.171875,
+        "y": 70,
+        "width": 107.484375,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Commitments",
+        "x": 203.65625,
+        "y": 70,
+        "width": 116.328125,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Work",
+        "x": 319.984375,
+        "y": 70,
+        "width": 54.015625,
+        "height": 48
+      },
+      {
+        "role": "heading",
+        "label": "outubro de 2026",
+        "x": 16,
+        "y": -318,
+        "width": 248,
+        "height": 24
+      },
+      {
+        "role": "button",
+        "label": "Previous month",
+        "x": 272,
+        "y": -330,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Next month",
+        "x": 326,
+        "y": -330,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "heading",
+        "label": "Cash Flow",
+        "x": 29,
+        "y": -169,
+        "width": 96.25,
+        "height": 28
+      },
+      {
+        "role": "button",
+        "label": "1 de out. de 2026 – 4 de out. de 2026, Income R$ 800,00, Expenses R$ 199,25",
+        "x": 61,
+        "y": -99,
+        "width": 60,
+        "height": 188
+      },
+      {
+        "role": "button",
+        "label": "5 de out. de 2026 – 11 de out. de 2026, Income R$ 0,00, Expenses R$ 771,25",
+        "x": 121,
+        "y": -99,
+        "width": 60,
+        "height": 188
+      },
+      {
+        "role": "button",
+        "label": "12 de out. de 2026 – 18 de out. de 2026, Income R$ 0,00, Expenses R$ 1.113,50",
+        "x": 181,
+        "y": -99,
+        "width": 60,
+        "height": 188
+      },
+      {
+        "role": "button",
+        "label": "19 de out. de 2026 – 25 de out. de 2026, Income R$ 4.250,00, Expenses R$ 3.514,00",
+        "x": 241,
+        "y": -99,
+        "width": 60,
+        "height": 188
+      },
+      {
+        "role": "button",
+        "label": "26 de out. de 2026 – 31 de out. de 2026, Income R$ 0,00, Expenses R$ 0,00",
+        "x": 301,
+        "y": -99,
+        "width": 60,
+        "height": 188
+      },
+      {
+        "role": "heading",
+        "label": "Spending",
+        "x": 29,
+        "y": 245,
+        "width": 332,
+        "height": 28
+      },
+      {
+        "role": "button",
+        "label": "View all 8 spending categories",
+        "x": 29,
+        "y": 742.59375,
+        "width": 332,
+        "height": 48
+      }
+    ],
+    "entry": "C:\\Users\\Arthur\\Documents\\Projects\\Axis\\dist\\soft-copper-cutover\\before\\finance-overview-v2-review\\index.html",
+    "entryHash": "822401abb17d3469e61a967297ee0751bfd6419975bddbf1fddb2069cf790a62",
+    "bundleHash": "cb6c9c87d5650b3effba065dbe8e82f23f76010fb61ff38fc4bee775784b38f7",
+    "errors": [],
+    "scope": "Current source RNWeb preview, synthetic fixtures/native boundaries; no native tabs/hardware acceptance. Animation/caret suppression identical before/after."
+  },
+  {
+    "id": "finance-spending",
+    "dir": "finance-overview-v2-review",
+    "file": "finance-spending-light-390.png",
+    "query": "",
+    "width": 390,
+    "theme": "light",
+    "action": "spending",
+    "geometry": [
+      {
+        "role": "heading",
+        "label": "Finance",
+        "x": 16,
+        "y": 16,
+        "width": 358,
+        "height": 46
+      },
+      {
+        "role": "button",
+        "label": "Overview",
+        "x": 16,
+        "y": 70,
+        "width": 80.171875,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Transactions",
+        "x": 96.171875,
+        "y": 70,
+        "width": 107.484375,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Commitments",
+        "x": 203.65625,
+        "y": 70,
+        "width": 116.328125,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Work",
+        "x": 319.984375,
+        "y": 70,
+        "width": 54.015625,
+        "height": 48
+      },
+      {
+        "role": "heading",
+        "label": "outubro de 2026",
+        "x": 16,
+        "y": -318,
+        "width": 248,
+        "height": 24
+      },
+      {
+        "role": "button",
+        "label": "Previous month",
+        "x": 272,
+        "y": -330,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Next month",
+        "x": 326,
+        "y": -330,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "heading",
+        "label": "Cash Flow",
+        "x": 29,
+        "y": -169,
+        "width": 96.25,
+        "height": 28
+      },
+      {
+        "role": "button",
+        "label": "1 de out. de 2026 – 4 de out. de 2026, Income R$ 800,00, Expenses R$ 199,25",
+        "x": 61,
+        "y": -99,
+        "width": 60,
+        "height": 188
+      },
+      {
+        "role": "button",
+        "label": "5 de out. de 2026 – 11 de out. de 2026, Income R$ 0,00, Expenses R$ 771,25",
+        "x": 121,
+        "y": -99,
+        "width": 60,
+        "height": 188
+      },
+      {
+        "role": "button",
+        "label": "12 de out. de 2026 – 18 de out. de 2026, Income R$ 0,00, Expenses R$ 1.113,50",
+        "x": 181,
+        "y": -99,
+        "width": 60,
+        "height": 188
+      },
+      {
+        "role": "button",
+        "label": "19 de out. de 2026 – 25 de out. de 2026, Income R$ 4.250,00, Expenses R$ 3.514,00",
+        "x": 241,
+        "y": -99,
+        "width": 60,
+        "height": 188
+      },
+      {
+        "role": "button",
+        "label": "26 de out. de 2026 – 31 de out. de 2026, Income R$ 0,00, Expenses R$ 0,00",
+        "x": 301,
+        "y": -99,
+        "width": 60,
+        "height": 188
+      },
+      {
+        "role": "heading",
+        "label": "Spending",
+        "x": 29,
+        "y": 245,
+        "width": 332,
+        "height": 28
+      },
+      {
+        "role": "button",
+        "label": "View all 8 spending categories",
+        "x": 29,
+        "y": 742.59375,
+        "width": 332,
+        "height": 48
+      }
+    ],
+    "entry": "C:\\Users\\Arthur\\Documents\\Projects\\Axis\\dist\\soft-copper-cutover\\before\\finance-overview-v2-review\\index.html",
+    "entryHash": "822401abb17d3469e61a967297ee0751bfd6419975bddbf1fddb2069cf790a62",
+    "bundleHash": "cb6c9c87d5650b3effba065dbe8e82f23f76010fb61ff38fc4bee775784b38f7",
+    "errors": [],
+    "scope": "Current source RNWeb preview, synthetic fixtures/native boundaries; no native tabs/hardware acceptance. Animation/caret suppression identical before/after."
+  },
+  {
+    "id": "finance-form",
+    "dir": "transaction-editor-v2-preview",
+    "file": "finance-form-dark-390.png",
+    "query": "",
+    "width": 390,
+    "theme": "dark",
+    "geometry": [
+      {
+        "role": "button",
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844
+      },
+      {
+        "role": "button",
+        "label": "Cancel",
+        "x": 12,
+        "y": 37,
+        "width": 93.859375,
+        "height": 48
+      },
+      {
+        "role": "heading",
+        "label": "New transaction",
+        "x": 113.859375,
+        "y": 46,
+        "width": 193.515625,
+        "height": 30
+      },
+      {
+        "role": "button",
+        "label": "Save",
+        "x": 315.375,
+        "y": 37,
+        "width": 62.625,
+        "height": 48
+      },
+      {
+        "role": "heading",
+        "label": "Transaction",
+        "x": 73,
+        "y": 126,
+        "width": 292,
+        "height": 28
+      },
+      {
+        "role": "INPUT",
+        "label": "Amount in reais, required",
+        "x": 25,
+        "y": 292,
+        "width": 340,
+        "height": 56
+      },
+      {
+        "role": "heading",
+        "label": "Details",
+        "x": 73,
+        "y": 418,
+        "width": 292,
+        "height": 28
+      },
+      {
+        "role": "TEXTAREA",
+        "label": "Description, required",
+        "x": 25,
+        "y": 490,
+        "width": 340,
+        "height": 52
+      },
+      {
+        "role": "TEXTAREA",
+        "label": "Note",
+        "x": 25,
+        "y": 702,
+        "width": 340,
+        "height": 96
+      },
+      {
+        "role": "heading",
+        "label": "Date",
+        "x": 73,
+        "y": 840,
+        "width": 292,
+        "height": 28
+      }
+    ],
+    "entry": "C:\\Users\\Arthur\\Documents\\Projects\\Axis\\dist\\soft-copper-cutover\\before\\transaction-editor-v2-preview\\index.html",
+    "entryHash": "5164bc6a7f9e6046ae6321f989c17d79fff6027ffa761a058bf82c6480315868",
+    "bundleHash": "fa15dc9e0ca62103a2aa3cec324bba4186665472ee9412cd49a041287c67436e",
+    "errors": [],
+    "scope": "Current source RNWeb preview, synthetic fixtures/native boundaries; no native tabs/hardware acceptance. Animation/caret suppression identical before/after."
+  },
+  {
+    "id": "finance-form",
+    "dir": "transaction-editor-v2-preview",
+    "file": "finance-form-light-390.png",
+    "query": "",
+    "width": 390,
+    "theme": "light",
+    "geometry": [
+      {
+        "role": "button",
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844
+      },
+      {
+        "role": "button",
+        "label": "Cancel",
+        "x": 12,
+        "y": 37,
+        "width": 93.859375,
+        "height": 48
+      },
+      {
+        "role": "heading",
+        "label": "New transaction",
+        "x": 113.859375,
+        "y": 46,
+        "width": 193.515625,
+        "height": 30
+      },
+      {
+        "role": "button",
+        "label": "Save",
+        "x": 315.375,
+        "y": 37,
+        "width": 62.625,
+        "height": 48
+      },
+      {
+        "role": "heading",
+        "label": "Transaction",
+        "x": 73,
+        "y": 126,
+        "width": 292,
+        "height": 28
+      },
+      {
+        "role": "INPUT",
+        "label": "Amount in reais, required",
+        "x": 25,
+        "y": 292,
+        "width": 340,
+        "height": 56
+      },
+      {
+        "role": "heading",
+        "label": "Details",
+        "x": 73,
+        "y": 418,
+        "width": 292,
+        "height": 28
+      },
+      {
+        "role": "TEXTAREA",
+        "label": "Description, required",
+        "x": 25,
+        "y": 490,
+        "width": 340,
+        "height": 52
+      },
+      {
+        "role": "TEXTAREA",
+        "label": "Note",
+        "x": 25,
+        "y": 702,
+        "width": 340,
+        "height": 96
+      },
+      {
+        "role": "heading",
+        "label": "Date",
+        "x": 73,
+        "y": 840,
+        "width": 292,
+        "height": 28
+      }
+    ],
+    "entry": "C:\\Users\\Arthur\\Documents\\Projects\\Axis\\dist\\soft-copper-cutover\\before\\transaction-editor-v2-preview\\index.html",
+    "entryHash": "5164bc6a7f9e6046ae6321f989c17d79fff6027ffa761a058bf82c6480315868",
+    "bundleHash": "fa15dc9e0ca62103a2aa3cec324bba4186665472ee9412cd49a041287c67436e",
+    "errors": [],
+    "scope": "Current source RNWeb preview, synthetic fixtures/native boundaries; no native tabs/hardware acceptance. Animation/caret suppression identical before/after."
+  },
+  {
+    "id": "fitness",
+    "dir": "workout-review",
+    "file": "fitness-dark-390.png",
+    "query": "",
+    "width": 390,
+    "theme": "dark",
+    "geometry": [
+      {
+        "role": "heading",
+        "label": "Fitness",
+        "x": 16,
+        "y": 16,
+        "width": 358,
+        "height": 46
+      },
+      {
+        "role": "button",
+        "label": "Workout",
+        "x": 20,
+        "y": 82,
+        "width": 80.90625,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Routines",
+        "x": 104.90625,
+        "y": 82,
+        "width": 84.546875,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Exercises",
+        "x": 193.453125,
+        "y": 82,
+        "width": 88.46875,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "History",
+        "x": 285.921875,
+        "y": 82,
+        "width": 71.578125,
+        "height": 48
+      },
+      {
+        "role": "heading",
+        "label": "Pull Day",
+        "x": 108,
+        "y": 174,
+        "width": 250,
+        "height": 34
+      },
+      {
+        "role": "button",
+        "label": "Start Pull Day",
+        "x": 32,
+        "y": 272,
+        "width": 326,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Last workout: Push Day, domingo, 4 de outubro",
+        "x": 32,
+        "y": 336,
+        "width": 326,
+        "height": 57
+      },
+      {
+        "role": "heading",
+        "label": "Choose a routine",
+        "x": 28,
+        "y": 447,
+        "width": 244.921875,
+        "height": 28
+      },
+      {
+        "role": "button",
+        "label": "View all routines",
+        "x": 280.921875,
+        "y": 437,
+        "width": 81.078125,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Start Empty Workout",
+        "x": 16,
+        "y": 849,
+        "width": 358,
+        "height": 48
+      }
+    ],
+    "entry": "C:\\Users\\Arthur\\Documents\\Projects\\Axis\\dist\\soft-copper-cutover\\before\\workout-review\\landing-dark-390.html",
+    "entryHash": "9785fd3b3bfe755d9371d09d3cde3564c9275931746d56d367d5c82d16f92217",
+    "errors": [],
+    "scope": "Current source RNWeb preview, synthetic fixtures/native boundaries; no native tabs/hardware acceptance. Animation/caret suppression identical before/after."
+  },
+  {
+    "id": "fitness",
+    "dir": "workout-review",
+    "file": "fitness-light-390.png",
+    "query": "",
+    "width": 390,
+    "theme": "light",
+    "geometry": [
+      {
+        "role": "heading",
+        "label": "Fitness",
+        "x": 16,
+        "y": 16,
+        "width": 358,
+        "height": 46
+      },
+      {
+        "role": "button",
+        "label": "Workout",
+        "x": 20,
+        "y": 82,
+        "width": 80.90625,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Routines",
+        "x": 104.90625,
+        "y": 82,
+        "width": 84.546875,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Exercises",
+        "x": 193.453125,
+        "y": 82,
+        "width": 88.46875,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "History",
+        "x": 285.921875,
+        "y": 82,
+        "width": 71.578125,
+        "height": 48
+      },
+      {
+        "role": "heading",
+        "label": "Pull Day",
+        "x": 108,
+        "y": 174,
+        "width": 250,
+        "height": 34
+      },
+      {
+        "role": "button",
+        "label": "Start Pull Day",
+        "x": 32,
+        "y": 272,
+        "width": 326,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Last workout: Push Day, domingo, 4 de outubro",
+        "x": 32,
+        "y": 336,
+        "width": 326,
+        "height": 57
+      },
+      {
+        "role": "heading",
+        "label": "Choose a routine",
+        "x": 28,
+        "y": 447,
+        "width": 244.921875,
+        "height": 28
+      },
+      {
+        "role": "button",
+        "label": "View all routines",
+        "x": 280.921875,
+        "y": 437,
+        "width": 81.078125,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Start Empty Workout",
+        "x": 16,
+        "y": 849,
+        "width": 358,
+        "height": 48
+      }
+    ],
+    "entry": "C:\\Users\\Arthur\\Documents\\Projects\\Axis\\dist\\soft-copper-cutover\\before\\workout-review\\landing-light-390.html",
+    "entryHash": "daec1bee1dd8b7e4946f6ff3cce6b82d7b9044cc8479a9995167ef3988c96b4b",
+    "errors": [],
+    "scope": "Current source RNWeb preview, synthetic fixtures/native boundaries; no native tabs/hardware acceptance. Animation/caret suppression identical before/after."
+  },
+  {
+    "id": "journal",
+    "dir": "journal-review",
+    "file": "journal-dark-390.png",
+    "query": "selected",
+    "width": 390,
+    "theme": "dark",
+    "geometry": [
+      {
+        "role": "button",
+        "label": "Back from journal",
+        "x": 16,
+        "y": 16,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "heading",
+        "label": "Journal",
+        "x": 72,
+        "y": 23,
+        "width": 246,
+        "height": 34
+      },
+      {
+        "role": "button",
+        "label": "Journal options",
+        "x": 326,
+        "y": 16,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "quarta-feira, 21 de outubro de 2026",
+        "x": 33,
+        "y": 113,
+        "width": 324,
+        "height": 48
+      },
+      {
+        "role": "heading",
+        "label": "quarta-feira, 21 de outubro de 2026",
+        "x": 81,
+        "y": 125,
+        "width": 276,
+        "height": 24
+      },
+      {
+        "role": "button",
+        "label": "Previous day",
+        "x": 33,
+        "y": 177,
+        "width": 158,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Next day",
+        "x": 199,
+        "y": 177,
+        "width": 158,
+        "height": 48
+      },
+      {
+        "role": "heading",
+        "label": "How was your day?",
+        "x": 85,
+        "y": 343,
+        "width": 272,
+        "height": 24
+      },
+      {
+        "role": "button",
+        "label": "Great, mood",
+        "x": 33,
+        "y": 407,
+        "width": 58.390625,
+        "height": 66
+      },
+      {
+        "role": "button",
+        "label": "Good, mood",
+        "x": 99.390625,
+        "y": 407,
+        "width": 58.40625,
+        "height": 66
+      },
+      {
+        "role": "button",
+        "label": "Okay, mood",
+        "x": 165.796875,
+        "y": 407,
+        "width": 58.390625,
+        "height": 66
+      },
+      {
+        "role": "button",
+        "label": "Low, mood",
+        "x": 232.1875,
+        "y": 407,
+        "width": 58.40625,
+        "height": 66
+      },
+      {
+        "role": "button",
+        "label": "Bad, mood",
+        "x": 298.59375,
+        "y": 407,
+        "width": 58.40625,
+        "height": 66
+      },
+      {
+        "role": "heading",
+        "label": "Entry",
+        "x": 85,
+        "y": 523,
+        "width": 272,
+        "height": 24
+      },
+      {
+        "role": "TEXTAREA",
+        "label": "Journal entry for quarta-feira, 21 de outubro de 2026",
+        "x": 33,
+        "y": 587,
+        "width": 324,
+        "height": 400
+      },
+      {
+        "role": "button",
+        "label": "Save entry journal for quarta-feira, 21 de outubro de 2026",
+        "x": 16,
+        "y": 784,
+        "width": 358,
+        "height": 48
+      }
+    ],
+    "entry": "C:\\Users\\Arthur\\Documents\\Projects\\Axis\\dist\\soft-copper-cutover\\before\\journal-review\\index.html",
+    "entryHash": "822401abb17d3469e61a967297ee0751bfd6419975bddbf1fddb2069cf790a62",
+    "bundleHash": "69b6222c3ca3d37c02ae4ddb8fa000578dc271a8f93bd01559fd9df21765c284",
+    "errors": [],
+    "scope": "Current source RNWeb preview, synthetic fixtures/native boundaries; no native tabs/hardware acceptance. Animation/caret suppression identical before/after."
+  },
+  {
+    "id": "journal",
+    "dir": "journal-review",
+    "file": "journal-light-390.png",
+    "query": "selected",
+    "width": 390,
+    "theme": "light",
+    "geometry": [
+      {
+        "role": "button",
+        "label": "Back from journal",
+        "x": 16,
+        "y": 16,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "heading",
+        "label": "Journal",
+        "x": 72,
+        "y": 23,
+        "width": 246,
+        "height": 34
+      },
+      {
+        "role": "button",
+        "label": "Journal options",
+        "x": 326,
+        "y": 16,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "quarta-feira, 21 de outubro de 2026",
+        "x": 33,
+        "y": 113,
+        "width": 324,
+        "height": 48
+      },
+      {
+        "role": "heading",
+        "label": "quarta-feira, 21 de outubro de 2026",
+        "x": 81,
+        "y": 125,
+        "width": 276,
+        "height": 24
+      },
+      {
+        "role": "button",
+        "label": "Previous day",
+        "x": 33,
+        "y": 177,
+        "width": 158,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Next day",
+        "x": 199,
+        "y": 177,
+        "width": 158,
+        "height": 48
+      },
+      {
+        "role": "heading",
+        "label": "How was your day?",
+        "x": 85,
+        "y": 343,
+        "width": 272,
+        "height": 24
+      },
+      {
+        "role": "button",
+        "label": "Great, mood",
+        "x": 33,
+        "y": 407,
+        "width": 58.390625,
+        "height": 66
+      },
+      {
+        "role": "button",
+        "label": "Good, mood",
+        "x": 99.390625,
+        "y": 407,
+        "width": 58.40625,
+        "height": 66
+      },
+      {
+        "role": "button",
+        "label": "Okay, mood",
+        "x": 165.796875,
+        "y": 407,
+        "width": 58.390625,
+        "height": 66
+      },
+      {
+        "role": "button",
+        "label": "Low, mood",
+        "x": 232.1875,
+        "y": 407,
+        "width": 58.40625,
+        "height": 66
+      },
+      {
+        "role": "button",
+        "label": "Bad, mood",
+        "x": 298.59375,
+        "y": 407,
+        "width": 58.40625,
+        "height": 66
+      },
+      {
+        "role": "heading",
+        "label": "Entry",
+        "x": 85,
+        "y": 523,
+        "width": 272,
+        "height": 24
+      },
+      {
+        "role": "TEXTAREA",
+        "label": "Journal entry for quarta-feira, 21 de outubro de 2026",
+        "x": 33,
+        "y": 587,
+        "width": 324,
+        "height": 400
+      },
+      {
+        "role": "button",
+        "label": "Save entry journal for quarta-feira, 21 de outubro de 2026",
+        "x": 16,
+        "y": 784,
+        "width": 358,
+        "height": 48
+      }
+    ],
+    "entry": "C:\\Users\\Arthur\\Documents\\Projects\\Axis\\dist\\soft-copper-cutover\\before\\journal-review\\index.html",
+    "entryHash": "822401abb17d3469e61a967297ee0751bfd6419975bddbf1fddb2069cf790a62",
+    "bundleHash": "69b6222c3ca3d37c02ae4ddb8fa000578dc271a8f93bd01559fd9df21765c284",
+    "errors": [],
+    "scope": "Current source RNWeb preview, synthetic fixtures/native boundaries; no native tabs/hardware acceptance. Animation/caret suppression identical before/after."
+  },
+  {
+    "id": "transactions",
+    "dir": "transactions-v22-preview",
+    "file": "transactions-dark-390.png",
+    "query": "",
+    "width": 390,
+    "theme": "dark",
+    "geometry": [
+      {
+        "role": "heading",
+        "label": "Finance",
+        "x": 16,
+        "y": 16,
+        "width": 358,
+        "height": 46
+      },
+      {
+        "role": "button",
+        "label": "Overview",
+        "x": 16,
+        "y": 70,
+        "width": 80.171875,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Transactions",
+        "x": 96.171875,
+        "y": 70,
+        "width": 107.484375,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Commitments",
+        "x": 203.65625,
+        "y": 70,
+        "width": 116.328125,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Work",
+        "x": 319.984375,
+        "y": 70,
+        "width": 54.015625,
+        "height": 48
+      },
+      {
+        "role": "INPUT",
+        "label": "Search transactions",
+        "x": 29,
+        "y": 225,
+        "width": 276,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Transactions options",
+        "x": 313,
+        "y": 225,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "heading",
+        "label": "Yesterday",
+        "x": 16,
+        "y": 286,
+        "width": 358,
+        "height": 46
+      },
+      {
+        "role": "button",
+        "label": "Transaction options for Training payment",
+        "x": 313,
+        "y": 345,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "heading",
+        "label": "21 de out.",
+        "x": 16,
+        "y": 406,
+        "width": 358,
+        "height": 46
+      },
+      {
+        "role": "button",
+        "label": "Transaction options for ChatGPT",
+        "x": 313,
+        "y": 465,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Transaction options for Internet",
+        "x": 313,
+        "y": 547,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "heading",
+        "label": "13 de out.",
+        "x": 16,
+        "y": 608,
+        "width": 358,
+        "height": 46
+      },
+      {
+        "role": "button",
+        "label": "Transaction options for Água",
+        "x": 313,
+        "y": 667,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Transaction options for Popeyes",
+        "x": 313,
+        "y": 749,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "heading",
+        "label": "4 de out.",
+        "x": 16,
+        "y": 810,
+        "width": 358,
+        "height": 46
+      },
+      {
+        "role": "button",
+        "label": "Transaction options for Salary received",
+        "x": 313,
+        "y": 869,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Transaction options for Uncategorized receipt",
+        "x": 313,
+        "y": 951,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "New transaction",
+        "x": 318,
+        "y": 772,
+        "width": 56,
+        "height": 56
+      }
+    ],
+    "entry": "C:\\Users\\Arthur\\Documents\\Projects\\Axis\\dist\\soft-copper-cutover\\before\\transactions-v22-preview\\index.html",
+    "entryHash": "822401abb17d3469e61a967297ee0751bfd6419975bddbf1fddb2069cf790a62",
+    "bundleHash": "b6e1c8bcdcf72819bcb19fc5f775a716967c86475faf899b386b74d4ba0eec36",
+    "errors": [],
+    "scope": "Current source RNWeb preview, synthetic fixtures/native boundaries; no native tabs/hardware acceptance. Animation/caret suppression identical before/after."
+  },
+  {
+    "id": "transactions",
+    "dir": "transactions-v22-preview",
+    "file": "transactions-light-390.png",
+    "query": "",
+    "width": 390,
+    "theme": "light",
+    "geometry": [
+      {
+        "role": "heading",
+        "label": "Finance",
+        "x": 16,
+        "y": 16,
+        "width": 358,
+        "height": 46
+      },
+      {
+        "role": "button",
+        "label": "Overview",
+        "x": 16,
+        "y": 70,
+        "width": 80.171875,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Transactions",
+        "x": 96.171875,
+        "y": 70,
+        "width": 107.484375,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Commitments",
+        "x": 203.65625,
+        "y": 70,
+        "width": 116.328125,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Work",
+        "x": 319.984375,
+        "y": 70,
+        "width": 54.015625,
+        "height": 48
+      },
+      {
+        "role": "INPUT",
+        "label": "Search transactions",
+        "x": 29,
+        "y": 225,
+        "width": 276,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Transactions options",
+        "x": 313,
+        "y": 225,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "heading",
+        "label": "Yesterday",
+        "x": 16,
+        "y": 286,
+        "width": 358,
+        "height": 46
+      },
+      {
+        "role": "button",
+        "label": "Transaction options for Training payment",
+        "x": 313,
+        "y": 345,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "heading",
+        "label": "21 de out.",
+        "x": 16,
+        "y": 406,
+        "width": 358,
+        "height": 46
+      },
+      {
+        "role": "button",
+        "label": "Transaction options for ChatGPT",
+        "x": 313,
+        "y": 465,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Transaction options for Internet",
+        "x": 313,
+        "y": 547,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "heading",
+        "label": "13 de out.",
+        "x": 16,
+        "y": 608,
+        "width": 358,
+        "height": 46
+      },
+      {
+        "role": "button",
+        "label": "Transaction options for Água",
+        "x": 313,
+        "y": 667,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Transaction options for Popeyes",
+        "x": 313,
+        "y": 749,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "heading",
+        "label": "4 de out.",
+        "x": 16,
+        "y": 810,
+        "width": 358,
+        "height": 46
+      },
+      {
+        "role": "button",
+        "label": "Transaction options for Salary received",
+        "x": 313,
+        "y": 869,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Transaction options for Uncategorized receipt",
+        "x": 313,
+        "y": 951,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "New transaction",
+        "x": 318,
+        "y": 772,
+        "width": 56,
+        "height": 56
+      }
+    ],
+    "entry": "C:\\Users\\Arthur\\Documents\\Projects\\Axis\\dist\\soft-copper-cutover\\before\\transactions-v22-preview\\index.html",
+    "entryHash": "822401abb17d3469e61a967297ee0751bfd6419975bddbf1fddb2069cf790a62",
+    "bundleHash": "b6e1c8bcdcf72819bcb19fc5f775a716967c86475faf899b386b74d4ba0eec36",
+    "errors": [],
+    "scope": "Current source RNWeb preview, synthetic fixtures/native boundaries; no native tabs/hardware acceptance. Animation/caret suppression identical before/after."
+  },
+  {
+    "id": "work",
+    "dir": "work-v2-preview",
+    "file": "work-dark-320.png",
+    "query": "",
+    "width": 320,
+    "theme": "dark",
+    "geometry": [
+      {
+        "role": "button",
+        "label": "Overview",
+        "x": 16,
+        "y": 70,
+        "width": 74.171875,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Transactions",
+        "x": 94.171875,
+        "y": 70,
+        "width": 101.46875,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Commitments",
+        "x": 199.640625,
+        "y": 70,
+        "width": 110.328125,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Work",
+        "x": 313.96875,
+        "y": 70,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Work options",
+        "x": 243,
+        "y": 147,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Add work",
+        "x": 29,
+        "y": 502,
+        "width": 262,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Record payment",
+        "x": 29,
+        "y": 558,
+        "width": 262,
+        "height": 48
+      },
+      {
+        "role": "heading",
+        "label": "Needs attention (2)",
+        "x": 16,
+        "y": 639,
+        "width": 288,
+        "height": 28
+      },
+      {
+        "role": "button",
+        "label": "Quarterly stocktake, Independent studio, earned R$ 180,00, outstanding R$ 180,00, Overdue, expected 23 de out. de 2026, work 25 de out. de 2026, received R$ 0,00",
+        "x": 16,
+        "y": 679,
+        "width": 288,
+        "height": 218
+      },
+      {
+        "role": "button",
+        "label": "Project handover, Independent studio, earned R$ 600,00, outstanding R$ 450,00, Overdue, expected 26 de out. de 2026, work 24 de out. de 2026, received R$ 150,00",
+        "x": 16,
+        "y": 905,
+        "width": 288,
+        "height": 282
+      },
+      {
+        "role": "heading",
+        "label": "Jobs",
+        "x": 16,
+        "y": 1207,
+        "width": 288,
+        "height": 28
+      },
+      {
+        "role": "button",
+        "label": "Current assignment, Independent studio, earned R$ 312,50, outstanding R$ 312,50, Outstanding, expected 31 de out. de 2026, work 26 de out. de 2026, received R$ 0,00",
+        "x": 16,
+        "y": 1247,
+        "width": 288,
+        "height": 218
+      }
+    ],
+    "entry": "C:\\Users\\Arthur\\Documents\\Projects\\Axis\\dist\\soft-copper-cutover\\before\\work-v2-preview\\index.html",
+    "entryHash": "fdd68940cda6aa696f43a2f7e393e67a5a96fe8bc612a1ca2d4ffed440de2c0b",
+    "bundleHash": "1a395acd5bd269d18208c9259a90fc042dee284360b79b7a679577d0eb5a2407",
+    "errors": [],
+    "scope": "Current source RNWeb preview, synthetic fixtures/native boundaries; no native tabs/hardware acceptance. Animation/caret suppression identical before/after."
+  },
+  {
+    "id": "work",
+    "dir": "work-v2-preview",
+    "file": "work-light-320.png",
+    "query": "",
+    "width": 320,
+    "theme": "light",
+    "geometry": [
+      {
+        "role": "button",
+        "label": "Overview",
+        "x": 16,
+        "y": 70,
+        "width": 74.171875,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Transactions",
+        "x": 94.171875,
+        "y": 70,
+        "width": 101.46875,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Commitments",
+        "x": 199.640625,
+        "y": 70,
+        "width": 110.328125,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Work",
+        "x": 313.96875,
+        "y": 70,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Work options",
+        "x": 243,
+        "y": 147,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Add work",
+        "x": 29,
+        "y": 502,
+        "width": 262,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Record payment",
+        "x": 29,
+        "y": 558,
+        "width": 262,
+        "height": 48
+      },
+      {
+        "role": "heading",
+        "label": "Needs attention (2)",
+        "x": 16,
+        "y": 639,
+        "width": 288,
+        "height": 28
+      },
+      {
+        "role": "button",
+        "label": "Quarterly stocktake, Independent studio, earned R$ 180,00, outstanding R$ 180,00, Overdue, expected 23 de out. de 2026, work 25 de out. de 2026, received R$ 0,00",
+        "x": 16,
+        "y": 679,
+        "width": 288,
+        "height": 218
+      },
+      {
+        "role": "button",
+        "label": "Project handover, Independent studio, earned R$ 600,00, outstanding R$ 450,00, Overdue, expected 26 de out. de 2026, work 24 de out. de 2026, received R$ 150,00",
+        "x": 16,
+        "y": 905,
+        "width": 288,
+        "height": 282
+      },
+      {
+        "role": "heading",
+        "label": "Jobs",
+        "x": 16,
+        "y": 1207,
+        "width": 288,
+        "height": 28
+      },
+      {
+        "role": "button",
+        "label": "Current assignment, Independent studio, earned R$ 312,50, outstanding R$ 312,50, Outstanding, expected 31 de out. de 2026, work 26 de out. de 2026, received R$ 0,00",
+        "x": 16,
+        "y": 1247,
+        "width": 288,
+        "height": 218
+      }
+    ],
+    "entry": "C:\\Users\\Arthur\\Documents\\Projects\\Axis\\dist\\soft-copper-cutover\\before\\work-v2-preview\\index.html",
+    "entryHash": "fdd68940cda6aa696f43a2f7e393e67a5a96fe8bc612a1ca2d4ffed440de2c0b",
+    "bundleHash": "1a395acd5bd269d18208c9259a90fc042dee284360b79b7a679577d0eb5a2407",
+    "errors": [],
+    "scope": "Current source RNWeb preview, synthetic fixtures/native boundaries; no native tabs/hardware acceptance. Animation/caret suppression identical before/after."
+  },
+  {
+    "id": "work",
+    "dir": "work-v2-preview",
+    "file": "work-dark-390.png",
+    "query": "",
+    "width": 390,
+    "theme": "dark",
+    "geometry": [
+      {
+        "role": "button",
+        "label": "Overview",
+        "x": 16,
+        "y": 70,
+        "width": 74.171875,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Transactions",
+        "x": 94.171875,
+        "y": 70,
+        "width": 101.46875,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Commitments",
+        "x": 199.640625,
+        "y": 70,
+        "width": 110.328125,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Work",
+        "x": 313.96875,
+        "y": 70,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Work options",
+        "x": 313,
+        "y": 147,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Add work",
+        "x": 29,
+        "y": 382,
+        "width": 140,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Record payment",
+        "x": 177,
+        "y": 382,
+        "width": 184,
+        "height": 48
+      },
+      {
+        "role": "heading",
+        "label": "Needs attention (2)",
+        "x": 16,
+        "y": 463,
+        "width": 358,
+        "height": 28
+      },
+      {
+        "role": "button",
+        "label": "Quarterly stocktake, Independent studio, earned R$ 180,00, outstanding R$ 180,00, Overdue, expected 23 de out. de 2026, work 25 de out. de 2026, received R$ 0,00",
+        "x": 16,
+        "y": 503,
+        "width": 358,
+        "height": 166
+      },
+      {
+        "role": "button",
+        "label": "Project handover, Independent studio, earned R$ 600,00, outstanding R$ 450,00, Overdue, expected 26 de out. de 2026, work 24 de out. de 2026, received R$ 150,00",
+        "x": 16,
+        "y": 677,
+        "width": 358,
+        "height": 230
+      },
+      {
+        "role": "heading",
+        "label": "Jobs",
+        "x": 16,
+        "y": 927,
+        "width": 358,
+        "height": 28
+      },
+      {
+        "role": "button",
+        "label": "Current assignment, Independent studio, earned R$ 312,50, outstanding R$ 312,50, Outstanding, expected 31 de out. de 2026, work 26 de out. de 2026, received R$ 0,00",
+        "x": 16,
+        "y": 967,
+        "width": 358,
+        "height": 166
+      }
+    ],
+    "entry": "C:\\Users\\Arthur\\Documents\\Projects\\Axis\\dist\\soft-copper-cutover\\before\\work-v2-preview\\index.html",
+    "entryHash": "fdd68940cda6aa696f43a2f7e393e67a5a96fe8bc612a1ca2d4ffed440de2c0b",
+    "bundleHash": "1a395acd5bd269d18208c9259a90fc042dee284360b79b7a679577d0eb5a2407",
+    "errors": [],
+    "scope": "Current source RNWeb preview, synthetic fixtures/native boundaries; no native tabs/hardware acceptance. Animation/caret suppression identical before/after."
+  },
+  {
+    "id": "work",
+    "dir": "work-v2-preview",
+    "file": "work-light-390.png",
+    "query": "",
+    "width": 390,
+    "theme": "light",
+    "geometry": [
+      {
+        "role": "button",
+        "label": "Overview",
+        "x": 16,
+        "y": 70,
+        "width": 74.171875,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Transactions",
+        "x": 94.171875,
+        "y": 70,
+        "width": 101.46875,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Commitments",
+        "x": 199.640625,
+        "y": 70,
+        "width": 110.328125,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Work",
+        "x": 313.96875,
+        "y": 70,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Work options",
+        "x": 313,
+        "y": 147,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Add work",
+        "x": 29,
+        "y": 382,
+        "width": 140,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Record payment",
+        "x": 177,
+        "y": 382,
+        "width": 184,
+        "height": 48
+      },
+      {
+        "role": "heading",
+        "label": "Needs attention (2)",
+        "x": 16,
+        "y": 463,
+        "width": 358,
+        "height": 28
+      },
+      {
+        "role": "button",
+        "label": "Quarterly stocktake, Independent studio, earned R$ 180,00, outstanding R$ 180,00, Overdue, expected 23 de out. de 2026, work 25 de out. de 2026, received R$ 0,00",
+        "x": 16,
+        "y": 503,
+        "width": 358,
+        "height": 166
+      },
+      {
+        "role": "button",
+        "label": "Project handover, Independent studio, earned R$ 600,00, outstanding R$ 450,00, Overdue, expected 26 de out. de 2026, work 24 de out. de 2026, received R$ 150,00",
+        "x": 16,
+        "y": 677,
+        "width": 358,
+        "height": 230
+      },
+      {
+        "role": "heading",
+        "label": "Jobs",
+        "x": 16,
+        "y": 927,
+        "width": 358,
+        "height": 28
+      },
+      {
+        "role": "button",
+        "label": "Current assignment, Independent studio, earned R$ 312,50, outstanding R$ 312,50, Outstanding, expected 31 de out. de 2026, work 26 de out. de 2026, received R$ 0,00",
+        "x": 16,
+        "y": 967,
+        "width": 358,
+        "height": 166
+      }
+    ],
+    "entry": "C:\\Users\\Arthur\\Documents\\Projects\\Axis\\dist\\soft-copper-cutover\\before\\work-v2-preview\\index.html",
+    "entryHash": "fdd68940cda6aa696f43a2f7e393e67a5a96fe8bc612a1ca2d4ffed440de2c0b",
+    "bundleHash": "1a395acd5bd269d18208c9259a90fc042dee284360b79b7a679577d0eb5a2407",
+    "errors": [],
+    "scope": "Current source RNWeb preview, synthetic fixtures/native boundaries; no native tabs/hardware acceptance. Animation/caret suppression identical before/after."
+  },
+  {
+    "id": "work",
+    "dir": "work-v2-preview",
+    "file": "work-dark-430.png",
+    "query": "",
+    "width": 430,
+    "theme": "dark",
+    "geometry": [
+      {
+        "role": "button",
+        "label": "Overview",
+        "x": 16,
+        "y": 70,
+        "width": 74.171875,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Transactions",
+        "x": 94.171875,
+        "y": 70,
+        "width": 101.46875,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Commitments",
+        "x": 199.640625,
+        "y": 70,
+        "width": 110.328125,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Work",
+        "x": 313.96875,
+        "y": 70,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Work options",
+        "x": 353,
+        "y": 147,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Add work",
+        "x": 29,
+        "y": 362,
+        "width": 160,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Record payment",
+        "x": 197,
+        "y": 362,
+        "width": 204,
+        "height": 48
+      },
+      {
+        "role": "heading",
+        "label": "Needs attention (2)",
+        "x": 16,
+        "y": 443,
+        "width": 398,
+        "height": 28
+      },
+      {
+        "role": "button",
+        "label": "Quarterly stocktake, Independent studio, earned R$ 180,00, outstanding R$ 180,00, Overdue, expected 23 de out. de 2026, work 25 de out. de 2026, received R$ 0,00",
+        "x": 16,
+        "y": 483,
+        "width": 398,
+        "height": 166
+      },
+      {
+        "role": "button",
+        "label": "Project handover, Independent studio, earned R$ 600,00, outstanding R$ 450,00, Overdue, expected 26 de out. de 2026, work 24 de out. de 2026, received R$ 150,00",
+        "x": 16,
+        "y": 657,
+        "width": 398,
+        "height": 230
+      },
+      {
+        "role": "heading",
+        "label": "Jobs",
+        "x": 16,
+        "y": 907,
+        "width": 398,
+        "height": 28
+      },
+      {
+        "role": "button",
+        "label": "Current assignment, Independent studio, earned R$ 312,50, outstanding R$ 312,50, Outstanding, expected 31 de out. de 2026, work 26 de out. de 2026, received R$ 0,00",
+        "x": 16,
+        "y": 947,
+        "width": 398,
+        "height": 166
+      }
+    ],
+    "entry": "C:\\Users\\Arthur\\Documents\\Projects\\Axis\\dist\\soft-copper-cutover\\before\\work-v2-preview\\index.html",
+    "entryHash": "fdd68940cda6aa696f43a2f7e393e67a5a96fe8bc612a1ca2d4ffed440de2c0b",
+    "bundleHash": "1a395acd5bd269d18208c9259a90fc042dee284360b79b7a679577d0eb5a2407",
+    "errors": [],
+    "scope": "Current source RNWeb preview, synthetic fixtures/native boundaries; no native tabs/hardware acceptance. Animation/caret suppression identical before/after."
+  },
+  {
+    "id": "work",
+    "dir": "work-v2-preview",
+    "file": "work-light-430.png",
+    "query": "",
+    "width": 430,
+    "theme": "light",
+    "geometry": [
+      {
+        "role": "button",
+        "label": "Overview",
+        "x": 16,
+        "y": 70,
+        "width": 74.171875,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Transactions",
+        "x": 94.171875,
+        "y": 70,
+        "width": 101.46875,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Commitments",
+        "x": 199.640625,
+        "y": 70,
+        "width": 110.328125,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Work",
+        "x": 313.96875,
+        "y": 70,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Work options",
+        "x": 353,
+        "y": 147,
+        "width": 48,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Add work",
+        "x": 29,
+        "y": 362,
+        "width": 160,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Record payment",
+        "x": 197,
+        "y": 362,
+        "width": 204,
+        "height": 48
+      },
+      {
+        "role": "heading",
+        "label": "Needs attention (2)",
+        "x": 16,
+        "y": 443,
+        "width": 398,
+        "height": 28
+      },
+      {
+        "role": "button",
+        "label": "Quarterly stocktake, Independent studio, earned R$ 180,00, outstanding R$ 180,00, Overdue, expected 23 de out. de 2026, work 25 de out. de 2026, received R$ 0,00",
+        "x": 16,
+        "y": 483,
+        "width": 398,
+        "height": 166
+      },
+      {
+        "role": "button",
+        "label": "Project handover, Independent studio, earned R$ 600,00, outstanding R$ 450,00, Overdue, expected 26 de out. de 2026, work 24 de out. de 2026, received R$ 150,00",
+        "x": 16,
+        "y": 657,
+        "width": 398,
+        "height": 230
+      },
+      {
+        "role": "heading",
+        "label": "Jobs",
+        "x": 16,
+        "y": 907,
+        "width": 398,
+        "height": 28
+      },
+      {
+        "role": "button",
+        "label": "Current assignment, Independent studio, earned R$ 312,50, outstanding R$ 312,50, Outstanding, expected 31 de out. de 2026, work 26 de out. de 2026, received R$ 0,00",
+        "x": 16,
+        "y": 947,
+        "width": 398,
+        "height": 166
+      }
+    ],
+    "entry": "C:\\Users\\Arthur\\Documents\\Projects\\Axis\\dist\\soft-copper-cutover\\before\\work-v2-preview\\index.html",
+    "entryHash": "fdd68940cda6aa696f43a2f7e393e67a5a96fe8bc612a1ca2d4ffed440de2c0b",
+    "bundleHash": "1a395acd5bd269d18208c9259a90fc042dee284360b79b7a679577d0eb5a2407",
+    "errors": [],
+    "scope": "Current source RNWeb preview, synthetic fixtures/native boundaries; no native tabs/hardware acceptance. Animation/caret suppression identical before/after."
+  },
+  {
+    "id": "payment-sheet",
+    "dir": "commitment-payment-v2-preview",
+    "file": "payment-sheet-dark-320.png",
+    "query": "",
+    "width": 320,
+    "theme": "dark",
+    "geometry": [
+      {
+        "role": "button",
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 844
+      },
+      {
+        "role": "heading",
+        "label": "Pay commitment",
+        "x": 12,
+        "y": 252,
+        "width": 296,
+        "height": 30
+      },
+      {
+        "role": "button",
+        "label": "Cancel",
+        "x": 12,
+        "y": 290,
+        "width": 69.859375,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Confirm",
+        "x": 221.890625,
+        "y": 290,
+        "width": 86.109375,
+        "height": 48
+      },
+      {
+        "role": "heading",
+        "label": "Payment",
+        "x": 12,
+        "y": 545,
+        "width": 296,
+        "height": 28
+      },
+      {
+        "role": "INPUT",
+        "label": "Actual amount paid *",
+        "x": 12,
+        "y": 617,
+        "width": 296,
+        "height": 48
+      }
+    ],
+    "entry": "C:\\Users\\Arthur\\Documents\\Projects\\Axis\\dist\\soft-copper-cutover\\before\\commitment-payment-v2-preview\\index.html",
+    "entryHash": "26d8c37cdcec6a25f946374dbc0c2036f7936b3817c2a13c7057bad99da3e400",
+    "bundleHash": "791ee76df5f59a5e6c69bbb6aea54ff7ed1566e15148170dec2db4e285ed84ef",
+    "errors": [],
+    "scope": "Current source RNWeb preview, synthetic fixtures/native boundaries; no native tabs/hardware acceptance. Animation/caret suppression identical before/after."
+  },
+  {
+    "id": "payment-sheet",
+    "dir": "commitment-payment-v2-preview",
+    "file": "payment-sheet-light-320.png",
+    "query": "",
+    "width": 320,
+    "theme": "light",
+    "geometry": [
+      {
+        "role": "button",
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 844
+      },
+      {
+        "role": "heading",
+        "label": "Pay commitment",
+        "x": 12,
+        "y": 252,
+        "width": 296,
+        "height": 30
+      },
+      {
+        "role": "button",
+        "label": "Cancel",
+        "x": 12,
+        "y": 290,
+        "width": 69.859375,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Confirm",
+        "x": 221.890625,
+        "y": 290,
+        "width": 86.109375,
+        "height": 48
+      },
+      {
+        "role": "heading",
+        "label": "Payment",
+        "x": 12,
+        "y": 545,
+        "width": 296,
+        "height": 28
+      },
+      {
+        "role": "INPUT",
+        "label": "Actual amount paid *",
+        "x": 12,
+        "y": 617,
+        "width": 296,
+        "height": 48
+      }
+    ],
+    "entry": "C:\\Users\\Arthur\\Documents\\Projects\\Axis\\dist\\soft-copper-cutover\\before\\commitment-payment-v2-preview\\index.html",
+    "entryHash": "26d8c37cdcec6a25f946374dbc0c2036f7936b3817c2a13c7057bad99da3e400",
+    "bundleHash": "791ee76df5f59a5e6c69bbb6aea54ff7ed1566e15148170dec2db4e285ed84ef",
+    "errors": [],
+    "scope": "Current source RNWeb preview, synthetic fixtures/native boundaries; no native tabs/hardware acceptance. Animation/caret suppression identical before/after."
+  },
+  {
+    "id": "payment-sheet",
+    "dir": "commitment-payment-v2-preview",
+    "file": "payment-sheet-dark-390.png",
+    "query": "",
+    "width": 390,
+    "theme": "dark",
+    "geometry": [
+      {
+        "role": "button",
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844
+      },
+      {
+        "role": "button",
+        "label": "Cancel",
+        "x": 12,
+        "y": 330,
+        "width": 69.859375,
+        "height": 48
+      },
+      {
+        "role": "heading",
+        "label": "Pay commitment",
+        "x": 89.859375,
+        "y": 339,
+        "width": 194.03125,
+        "height": 30
+      },
+      {
+        "role": "button",
+        "label": "Confirm",
+        "x": 291.890625,
+        "y": 330,
+        "width": 86.109375,
+        "height": 48
+      },
+      {
+        "role": "heading",
+        "label": "Payment",
+        "x": 12,
+        "y": 565,
+        "width": 366,
+        "height": 28
+      },
+      {
+        "role": "INPUT",
+        "label": "Actual amount paid *",
+        "x": 12,
+        "y": 637,
+        "width": 366,
+        "height": 48
+      }
+    ],
+    "entry": "C:\\Users\\Arthur\\Documents\\Projects\\Axis\\dist\\soft-copper-cutover\\before\\commitment-payment-v2-preview\\index.html",
+    "entryHash": "26d8c37cdcec6a25f946374dbc0c2036f7936b3817c2a13c7057bad99da3e400",
+    "bundleHash": "791ee76df5f59a5e6c69bbb6aea54ff7ed1566e15148170dec2db4e285ed84ef",
+    "errors": [],
+    "scope": "Current source RNWeb preview, synthetic fixtures/native boundaries; no native tabs/hardware acceptance. Animation/caret suppression identical before/after."
+  },
+  {
+    "id": "payment-sheet",
+    "dir": "commitment-payment-v2-preview",
+    "file": "payment-sheet-light-390.png",
+    "query": "",
+    "width": 390,
+    "theme": "light",
+    "geometry": [
+      {
+        "role": "button",
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844
+      },
+      {
+        "role": "button",
+        "label": "Cancel",
+        "x": 12,
+        "y": 330,
+        "width": 69.859375,
+        "height": 48
+      },
+      {
+        "role": "heading",
+        "label": "Pay commitment",
+        "x": 89.859375,
+        "y": 339,
+        "width": 194.03125,
+        "height": 30
+      },
+      {
+        "role": "button",
+        "label": "Confirm",
+        "x": 291.890625,
+        "y": 330,
+        "width": 86.109375,
+        "height": 48
+      },
+      {
+        "role": "heading",
+        "label": "Payment",
+        "x": 12,
+        "y": 565,
+        "width": 366,
+        "height": 28
+      },
+      {
+        "role": "INPUT",
+        "label": "Actual amount paid *",
+        "x": 12,
+        "y": 637,
+        "width": 366,
+        "height": 48
+      }
+    ],
+    "entry": "C:\\Users\\Arthur\\Documents\\Projects\\Axis\\dist\\soft-copper-cutover\\before\\commitment-payment-v2-preview\\index.html",
+    "entryHash": "26d8c37cdcec6a25f946374dbc0c2036f7936b3817c2a13c7057bad99da3e400",
+    "bundleHash": "791ee76df5f59a5e6c69bbb6aea54ff7ed1566e15148170dec2db4e285ed84ef",
+    "errors": [],
+    "scope": "Current source RNWeb preview, synthetic fixtures/native boundaries; no native tabs/hardware acceptance. Animation/caret suppression identical before/after."
+  },
+  {
+    "id": "payment-sheet",
+    "dir": "commitment-payment-v2-preview",
+    "file": "payment-sheet-dark-430.png",
+    "query": "",
+    "width": 430,
+    "theme": "dark",
+    "geometry": [
+      {
+        "role": "button",
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 430,
+        "height": 844
+      },
+      {
+        "role": "button",
+        "label": "Cancel",
+        "x": 12,
+        "y": 330,
+        "width": 69.859375,
+        "height": 48
+      },
+      {
+        "role": "heading",
+        "label": "Pay commitment",
+        "x": 89.859375,
+        "y": 339,
+        "width": 234.03125,
+        "height": 30
+      },
+      {
+        "role": "button",
+        "label": "Confirm",
+        "x": 331.890625,
+        "y": 330,
+        "width": 86.109375,
+        "height": 48
+      },
+      {
+        "role": "heading",
+        "label": "Payment",
+        "x": 12,
+        "y": 565,
+        "width": 406,
+        "height": 28
+      },
+      {
+        "role": "INPUT",
+        "label": "Actual amount paid *",
+        "x": 12,
+        "y": 637,
+        "width": 406,
+        "height": 48
+      }
+    ],
+    "entry": "C:\\Users\\Arthur\\Documents\\Projects\\Axis\\dist\\soft-copper-cutover\\before\\commitment-payment-v2-preview\\index.html",
+    "entryHash": "26d8c37cdcec6a25f946374dbc0c2036f7936b3817c2a13c7057bad99da3e400",
+    "bundleHash": "791ee76df5f59a5e6c69bbb6aea54ff7ed1566e15148170dec2db4e285ed84ef",
+    "errors": [],
+    "scope": "Current source RNWeb preview, synthetic fixtures/native boundaries; no native tabs/hardware acceptance. Animation/caret suppression identical before/after."
+  },
+  {
+    "id": "payment-sheet",
+    "dir": "commitment-payment-v2-preview",
+    "file": "payment-sheet-light-430.png",
+    "query": "",
+    "width": 430,
+    "theme": "light",
+    "geometry": [
+      {
+        "role": "button",
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 430,
+        "height": 844
+      },
+      {
+        "role": "button",
+        "label": "Cancel",
+        "x": 12,
+        "y": 330,
+        "width": 69.859375,
+        "height": 48
+      },
+      {
+        "role": "heading",
+        "label": "Pay commitment",
+        "x": 89.859375,
+        "y": 339,
+        "width": 234.03125,
+        "height": 30
+      },
+      {
+        "role": "button",
+        "label": "Confirm",
+        "x": 331.890625,
+        "y": 330,
+        "width": 86.109375,
+        "height": 48
+      },
+      {
+        "role": "heading",
+        "label": "Payment",
+        "x": 12,
+        "y": 565,
+        "width": 406,
+        "height": 28
+      },
+      {
+        "role": "INPUT",
+        "label": "Actual amount paid *",
+        "x": 12,
+        "y": 637,
+        "width": 406,
+        "height": 48
+      }
+    ],
+    "entry": "C:\\Users\\Arthur\\Documents\\Projects\\Axis\\dist\\soft-copper-cutover\\before\\commitment-payment-v2-preview\\index.html",
+    "entryHash": "26d8c37cdcec6a25f946374dbc0c2036f7936b3817c2a13c7057bad99da3e400",
+    "bundleHash": "791ee76df5f59a5e6c69bbb6aea54ff7ed1566e15148170dec2db4e285ed84ef",
+    "errors": [],
+    "scope": "Current source RNWeb preview, synthetic fixtures/native boundaries; no native tabs/hardware acceptance. Animation/caret suppression identical before/after."
+  },
+  {
+    "id": "payment-sheet-large",
+    "dir": "commitment-payment-v2-preview",
+    "file": "payment-sheet-large-dark-320.png",
+    "query": "large",
+    "width": 320,
+    "theme": "dark",
+    "geometry": [
+      {
+        "role": "button",
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 844
+      },
+      {
+        "role": "heading",
+        "label": "Pay commitment",
+        "x": 12,
+        "y": 37,
+        "width": 296,
+        "height": 120
+      },
+      {
+        "role": "button",
+        "label": "Cancel",
+        "x": 12,
+        "y": 165,
+        "width": 119.703125,
+        "height": 64
+      },
+      {
+        "role": "button",
+        "label": "Confirm",
+        "x": 163.78125,
+        "y": 165,
+        "width": 144.21875,
+        "height": 64
+      },
+      {
+        "role": "heading",
+        "label": "Payment",
+        "x": 12,
+        "y": 672,
+        "width": 296,
+        "height": 56
+      },
+      {
+        "role": "INPUT",
+        "label": "Actual amount paid *",
+        "x": 12,
+        "y": 792,
+        "width": 296,
+        "height": 48
+      }
+    ],
+    "entry": "C:\\Users\\Arthur\\Documents\\Projects\\Axis\\dist\\soft-copper-cutover\\before\\commitment-payment-v2-preview\\index.html",
+    "entryHash": "26d8c37cdcec6a25f946374dbc0c2036f7936b3817c2a13c7057bad99da3e400",
+    "bundleHash": "791ee76df5f59a5e6c69bbb6aea54ff7ed1566e15148170dec2db4e285ed84ef",
+    "errors": [],
+    "scope": "Current source RNWeb preview, synthetic fixtures/native boundaries; no native tabs/hardware acceptance. Animation/caret suppression identical before/after."
+  },
+  {
+    "id": "payment-sheet-large",
+    "dir": "commitment-payment-v2-preview",
+    "file": "payment-sheet-large-light-320.png",
+    "query": "large",
+    "width": 320,
+    "theme": "light",
+    "geometry": [
+      {
+        "role": "button",
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 844
+      },
+      {
+        "role": "heading",
+        "label": "Pay commitment",
+        "x": 12,
+        "y": 37,
+        "width": 296,
+        "height": 120
+      },
+      {
+        "role": "button",
+        "label": "Cancel",
+        "x": 12,
+        "y": 165,
+        "width": 119.703125,
+        "height": 64
+      },
+      {
+        "role": "button",
+        "label": "Confirm",
+        "x": 163.78125,
+        "y": 165,
+        "width": 144.21875,
+        "height": 64
+      },
+      {
+        "role": "heading",
+        "label": "Payment",
+        "x": 12,
+        "y": 672,
+        "width": 296,
+        "height": 56
+      },
+      {
+        "role": "INPUT",
+        "label": "Actual amount paid *",
+        "x": 12,
+        "y": 792,
+        "width": 296,
+        "height": 48
+      }
+    ],
+    "entry": "C:\\Users\\Arthur\\Documents\\Projects\\Axis\\dist\\soft-copper-cutover\\before\\commitment-payment-v2-preview\\index.html",
+    "entryHash": "26d8c37cdcec6a25f946374dbc0c2036f7936b3817c2a13c7057bad99da3e400",
+    "bundleHash": "791ee76df5f59a5e6c69bbb6aea54ff7ed1566e15148170dec2db4e285ed84ef",
+    "errors": [],
+    "scope": "Current source RNWeb preview, synthetic fixtures/native boundaries; no native tabs/hardware acceptance. Animation/caret suppression identical before/after."
+  },
+  {
+    "id": "payment-sheet-large",
+    "dir": "commitment-payment-v2-preview",
+    "file": "payment-sheet-large-dark-430.png",
+    "query": "large",
+    "width": 430,
+    "theme": "dark",
+    "geometry": [
+      {
+        "role": "button",
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 430,
+        "height": 844
+      },
+      {
+        "role": "heading",
+        "label": "Pay commitment",
+        "x": 12,
+        "y": 37,
+        "width": 406,
+        "height": 60
+      },
+      {
+        "role": "button",
+        "label": "Cancel",
+        "x": 12,
+        "y": 105,
+        "width": 119.703125,
+        "height": 64
+      },
+      {
+        "role": "button",
+        "label": "Confirm",
+        "x": 273.78125,
+        "y": 105,
+        "width": 144.21875,
+        "height": 64
+      },
+      {
+        "role": "heading",
+        "label": "Payment",
+        "x": 12,
+        "y": 572,
+        "width": 406,
+        "height": 56
+      },
+      {
+        "role": "INPUT",
+        "label": "Actual amount paid *",
+        "x": 12,
+        "y": 692,
+        "width": 406,
+        "height": 48
+      }
+    ],
+    "entry": "C:\\Users\\Arthur\\Documents\\Projects\\Axis\\dist\\soft-copper-cutover\\before\\commitment-payment-v2-preview\\index.html",
+    "entryHash": "26d8c37cdcec6a25f946374dbc0c2036f7936b3817c2a13c7057bad99da3e400",
+    "bundleHash": "791ee76df5f59a5e6c69bbb6aea54ff7ed1566e15148170dec2db4e285ed84ef",
+    "errors": [],
+    "scope": "Current source RNWeb preview, synthetic fixtures/native boundaries; no native tabs/hardware acceptance. Animation/caret suppression identical before/after."
+  },
+  {
+    "id": "payment-sheet-large",
+    "dir": "commitment-payment-v2-preview",
+    "file": "payment-sheet-large-light-430.png",
+    "query": "large",
+    "width": 430,
+    "theme": "light",
+    "geometry": [
+      {
+        "role": "button",
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 430,
+        "height": 844
+      },
+      {
+        "role": "heading",
+        "label": "Pay commitment",
+        "x": 12,
+        "y": 37,
+        "width": 406,
+        "height": 60
+      },
+      {
+        "role": "button",
+        "label": "Cancel",
+        "x": 12,
+        "y": 105,
+        "width": 119.703125,
+        "height": 64
+      },
+      {
+        "role": "button",
+        "label": "Confirm",
+        "x": 273.78125,
+        "y": 105,
+        "width": 144.21875,
+        "height": 64
+      },
+      {
+        "role": "heading",
+        "label": "Payment",
+        "x": 12,
+        "y": 572,
+        "width": 406,
+        "height": 56
+      },
+      {
+        "role": "INPUT",
+        "label": "Actual amount paid *",
+        "x": 12,
+        "y": 692,
+        "width": 406,
+        "height": 48
+      }
+    ],
+    "entry": "C:\\Users\\Arthur\\Documents\\Projects\\Axis\\dist\\soft-copper-cutover\\before\\commitment-payment-v2-preview\\index.html",
+    "entryHash": "26d8c37cdcec6a25f946374dbc0c2036f7936b3817c2a13c7057bad99da3e400",
+    "bundleHash": "791ee76df5f59a5e6c69bbb6aea54ff7ed1566e15148170dec2db4e285ed84ef",
+    "errors": [],
+    "scope": "Current source RNWeb preview, synthetic fixtures/native boundaries; no native tabs/hardware acceptance. Animation/caret suppression identical before/after."
+  },
+  {
+    "id": "controls-normal",
+    "dir": "soft-copper-controls-preview",
+    "file": "controls-normal-dark-390.png",
+    "query": "",
+    "width": 390,
+    "theme": "dark",
+    "action": "normal",
+    "geometry": [
+      {
+        "role": "button",
+        "label": "Shared primary",
+        "x": 16,
+        "y": 62,
+        "width": 358,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "V2 form primary",
+        "x": 16,
+        "y": 122,
+        "width": 358,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Fitness shared primary",
+        "x": 16,
+        "y": 182,
+        "width": 358,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Disabled primary",
+        "x": 16,
+        "y": 242,
+        "width": 358,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Busy primary",
+        "x": 16,
+        "y": 302,
+        "width": 358,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Secondary action",
+        "x": 16,
+        "y": 362,
+        "width": 358,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Selected destination",
+        "x": 16,
+        "y": 422,
+        "width": 358,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Create transaction",
+        "x": 302,
+        "y": 498,
+        "width": 56,
+        "height": 56
+      }
+    ],
+    "entry": "C:\\Users\\Arthur\\Documents\\Projects\\Axis\\dist\\soft-copper-cutover\\before\\soft-copper-controls-preview\\index.html",
+    "entryHash": "0bd8fbce0c64f240377e6ded6a97a7a5b47b326a9ef61e7374b72701ee35decf",
+    "bundleHash": "961a7ee9dc2726563d55b1fdd5af2c7e124fd3ac0b0205499c45f68dd9faf860",
+    "errors": [],
+    "scope": "Current source RNWeb preview, synthetic fixtures/native boundaries; no native tabs/hardware acceptance. Animation/caret suppression identical before/after."
+  },
+  {
+    "id": "controls-normal",
+    "dir": "soft-copper-controls-preview",
+    "file": "controls-normal-light-390.png",
+    "query": "",
+    "width": 390,
+    "theme": "light",
+    "action": "normal",
+    "geometry": [
+      {
+        "role": "button",
+        "label": "Shared primary",
+        "x": 16,
+        "y": 62,
+        "width": 358,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "V2 form primary",
+        "x": 16,
+        "y": 122,
+        "width": 358,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Fitness shared primary",
+        "x": 16,
+        "y": 182,
+        "width": 358,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Disabled primary",
+        "x": 16,
+        "y": 242,
+        "width": 358,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Busy primary",
+        "x": 16,
+        "y": 302,
+        "width": 358,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Secondary action",
+        "x": 16,
+        "y": 362,
+        "width": 358,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Selected destination",
+        "x": 16,
+        "y": 422,
+        "width": 358,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Create transaction",
+        "x": 302,
+        "y": 498,
+        "width": 56,
+        "height": 56
+      }
+    ],
+    "entry": "C:\\Users\\Arthur\\Documents\\Projects\\Axis\\dist\\soft-copper-cutover\\before\\soft-copper-controls-preview\\index.html",
+    "entryHash": "0bd8fbce0c64f240377e6ded6a97a7a5b47b326a9ef61e7374b72701ee35decf",
+    "bundleHash": "961a7ee9dc2726563d55b1fdd5af2c7e124fd3ac0b0205499c45f68dd9faf860",
+    "errors": [],
+    "scope": "Current source RNWeb preview, synthetic fixtures/native boundaries; no native tabs/hardware acceptance. Animation/caret suppression identical before/after."
+  },
+  {
+    "id": "controls-hover",
+    "dir": "soft-copper-controls-preview",
+    "file": "controls-hover-dark-390.png",
+    "query": "",
+    "width": 390,
+    "theme": "dark",
+    "action": "hover",
+    "geometry": [
+      {
+        "role": "button",
+        "label": "Shared primary",
+        "x": 16,
+        "y": 62,
+        "width": 358,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "V2 form primary",
+        "x": 16,
+        "y": 122,
+        "width": 358,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Fitness shared primary",
+        "x": 16,
+        "y": 182,
+        "width": 358,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Disabled primary",
+        "x": 16,
+        "y": 242,
+        "width": 358,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Busy primary",
+        "x": 16,
+        "y": 302,
+        "width": 358,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Secondary action",
+        "x": 16,
+        "y": 362,
+        "width": 358,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Selected destination",
+        "x": 16,
+        "y": 422,
+        "width": 358,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Create transaction",
+        "x": 302,
+        "y": 498,
+        "width": 56,
+        "height": 56
+      }
+    ],
+    "entry": "C:\\Users\\Arthur\\Documents\\Projects\\Axis\\dist\\soft-copper-cutover\\before\\soft-copper-controls-preview\\index.html",
+    "entryHash": "0bd8fbce0c64f240377e6ded6a97a7a5b47b326a9ef61e7374b72701ee35decf",
+    "bundleHash": "961a7ee9dc2726563d55b1fdd5af2c7e124fd3ac0b0205499c45f68dd9faf860",
+    "errors": [],
+    "scope": "Current source RNWeb preview, synthetic fixtures/native boundaries; no native tabs/hardware acceptance. Animation/caret suppression identical before/after."
+  },
+  {
+    "id": "controls-hover",
+    "dir": "soft-copper-controls-preview",
+    "file": "controls-hover-light-390.png",
+    "query": "",
+    "width": 390,
+    "theme": "light",
+    "action": "hover",
+    "geometry": [
+      {
+        "role": "button",
+        "label": "Shared primary",
+        "x": 16,
+        "y": 62,
+        "width": 358,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "V2 form primary",
+        "x": 16,
+        "y": 122,
+        "width": 358,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Fitness shared primary",
+        "x": 16,
+        "y": 182,
+        "width": 358,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Disabled primary",
+        "x": 16,
+        "y": 242,
+        "width": 358,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Busy primary",
+        "x": 16,
+        "y": 302,
+        "width": 358,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Secondary action",
+        "x": 16,
+        "y": 362,
+        "width": 358,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Selected destination",
+        "x": 16,
+        "y": 422,
+        "width": 358,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Create transaction",
+        "x": 302,
+        "y": 498,
+        "width": 56,
+        "height": 56
+      }
+    ],
+    "entry": "C:\\Users\\Arthur\\Documents\\Projects\\Axis\\dist\\soft-copper-cutover\\before\\soft-copper-controls-preview\\index.html",
+    "entryHash": "0bd8fbce0c64f240377e6ded6a97a7a5b47b326a9ef61e7374b72701ee35decf",
+    "bundleHash": "961a7ee9dc2726563d55b1fdd5af2c7e124fd3ac0b0205499c45f68dd9faf860",
+    "errors": [],
+    "scope": "Current source RNWeb preview, synthetic fixtures/native boundaries; no native tabs/hardware acceptance. Animation/caret suppression identical before/after."
+  },
+  {
+    "id": "controls-pressed",
+    "dir": "soft-copper-controls-preview",
+    "file": "controls-pressed-dark-390.png",
+    "query": "",
+    "width": 390,
+    "theme": "dark",
+    "action": "pressed",
+    "geometry": [
+      {
+        "role": "button",
+        "label": "Shared primary",
+        "x": 16,
+        "y": 62,
+        "width": 358,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "V2 form primary",
+        "x": 16,
+        "y": 122,
+        "width": 358,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Fitness shared primary",
+        "x": 16,
+        "y": 182,
+        "width": 358,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Disabled primary",
+        "x": 16,
+        "y": 242,
+        "width": 358,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Busy primary",
+        "x": 16,
+        "y": 302,
+        "width": 358,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Secondary action",
+        "x": 16,
+        "y": 362,
+        "width": 358,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Selected destination",
+        "x": 16,
+        "y": 422,
+        "width": 358,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Create transaction",
+        "x": 302,
+        "y": 498,
+        "width": 56,
+        "height": 56
+      }
+    ],
+    "entry": "C:\\Users\\Arthur\\Documents\\Projects\\Axis\\dist\\soft-copper-cutover\\before\\soft-copper-controls-preview\\index.html",
+    "entryHash": "0bd8fbce0c64f240377e6ded6a97a7a5b47b326a9ef61e7374b72701ee35decf",
+    "bundleHash": "961a7ee9dc2726563d55b1fdd5af2c7e124fd3ac0b0205499c45f68dd9faf860",
+    "errors": [],
+    "scope": "Current source RNWeb preview, synthetic fixtures/native boundaries; no native tabs/hardware acceptance. Animation/caret suppression identical before/after."
+  },
+  {
+    "id": "controls-pressed",
+    "dir": "soft-copper-controls-preview",
+    "file": "controls-pressed-light-390.png",
+    "query": "",
+    "width": 390,
+    "theme": "light",
+    "action": "pressed",
+    "geometry": [
+      {
+        "role": "button",
+        "label": "Shared primary",
+        "x": 16,
+        "y": 62,
+        "width": 358,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "V2 form primary",
+        "x": 16,
+        "y": 122,
+        "width": 358,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Fitness shared primary",
+        "x": 16,
+        "y": 182,
+        "width": 358,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Disabled primary",
+        "x": 16,
+        "y": 242,
+        "width": 358,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Busy primary",
+        "x": 16,
+        "y": 302,
+        "width": 358,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Secondary action",
+        "x": 16,
+        "y": 362,
+        "width": 358,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Selected destination",
+        "x": 16,
+        "y": 422,
+        "width": 358,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Create transaction",
+        "x": 302,
+        "y": 498,
+        "width": 56,
+        "height": 56
+      }
+    ],
+    "entry": "C:\\Users\\Arthur\\Documents\\Projects\\Axis\\dist\\soft-copper-cutover\\before\\soft-copper-controls-preview\\index.html",
+    "entryHash": "0bd8fbce0c64f240377e6ded6a97a7a5b47b326a9ef61e7374b72701ee35decf",
+    "bundleHash": "961a7ee9dc2726563d55b1fdd5af2c7e124fd3ac0b0205499c45f68dd9faf860",
+    "errors": [],
+    "scope": "Current source RNWeb preview, synthetic fixtures/native boundaries; no native tabs/hardware acceptance. Animation/caret suppression identical before/after."
+  },
+  {
+    "id": "controls-focus",
+    "dir": "soft-copper-controls-preview",
+    "file": "controls-focus-dark-390.png",
+    "query": "",
+    "width": 390,
+    "theme": "dark",
+    "action": "focus",
+    "geometry": [
+      {
+        "role": "button",
+        "label": "Shared primary",
+        "x": 16,
+        "y": 62,
+        "width": 358,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "V2 form primary",
+        "x": 16,
+        "y": 122,
+        "width": 358,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Fitness shared primary",
+        "x": 16,
+        "y": 182,
+        "width": 358,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Disabled primary",
+        "x": 16,
+        "y": 242,
+        "width": 358,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Busy primary",
+        "x": 16,
+        "y": 302,
+        "width": 358,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Secondary action",
+        "x": 16,
+        "y": 362,
+        "width": 358,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Selected destination",
+        "x": 16,
+        "y": 422,
+        "width": 358,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Create transaction",
+        "x": 302,
+        "y": 498,
+        "width": 56,
+        "height": 56
+      }
+    ],
+    "entry": "C:\\Users\\Arthur\\Documents\\Projects\\Axis\\dist\\soft-copper-cutover\\before\\soft-copper-controls-preview\\index.html",
+    "entryHash": "0bd8fbce0c64f240377e6ded6a97a7a5b47b326a9ef61e7374b72701ee35decf",
+    "bundleHash": "961a7ee9dc2726563d55b1fdd5af2c7e124fd3ac0b0205499c45f68dd9faf860",
+    "errors": [],
+    "scope": "Current source RNWeb preview, synthetic fixtures/native boundaries; no native tabs/hardware acceptance. Animation/caret suppression identical before/after."
+  },
+  {
+    "id": "controls-focus",
+    "dir": "soft-copper-controls-preview",
+    "file": "controls-focus-light-390.png",
+    "query": "",
+    "width": 390,
+    "theme": "light",
+    "action": "focus",
+    "geometry": [
+      {
+        "role": "button",
+        "label": "Shared primary",
+        "x": 16,
+        "y": 62,
+        "width": 358,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "V2 form primary",
+        "x": 16,
+        "y": 122,
+        "width": 358,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Fitness shared primary",
+        "x": 16,
+        "y": 182,
+        "width": 358,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Disabled primary",
+        "x": 16,
+        "y": 242,
+        "width": 358,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Busy primary",
+        "x": 16,
+        "y": 302,
+        "width": 358,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Secondary action",
+        "x": 16,
+        "y": 362,
+        "width": 358,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Selected destination",
+        "x": 16,
+        "y": 422,
+        "width": 358,
+        "height": 48
+      },
+      {
+        "role": "button",
+        "label": "Create transaction",
+        "x": 302,
+        "y": 498,
+        "width": 56,
+        "height": 56
+      }
+    ],
+    "entry": "C:\\Users\\Arthur\\Documents\\Projects\\Axis\\dist\\soft-copper-cutover\\before\\soft-copper-controls-preview\\index.html",
+    "entryHash": "0bd8fbce0c64f240377e6ded6a97a7a5b47b326a9ef61e7374b72701ee35decf",
+    "bundleHash": "961a7ee9dc2726563d55b1fdd5af2c7e124fd3ac0b0205499c45f68dd9faf860",
+    "errors": [],
+    "scope": "Current source RNWeb preview, synthetic fixtures/native boundaries; no native tabs/hardware acceptance. Animation/caret suppression identical before/after."
+  }
+]

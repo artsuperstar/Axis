@@ -3,7 +3,7 @@ import { createContext, useContext, useEffect, useRef, useState, type ReactNode,
 import { ActivityIndicator, Pressable, StyleSheet, View, type PressableProps, type ViewProps, type ViewStyle, type ViewInstance } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
-import { DesignColors, DesignTypography, MotionTokens, Shape, TouchTarget, displayFontStyle, interfaceFontStyle, type DesignPalette, type DesignTextRole } from '@/constants/design-system-v2';
+import { DesignColors, DesignTypography, MotionTokens, Shape, TouchTarget, displayFontStyle, interfaceFontStyle, type DesignPalette, type DesignTextRole, type DesignTheme } from '@/constants/design-system-v2';
 import { DesignSpace as Space } from '@/constants/design-system-v2';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 
@@ -29,8 +29,18 @@ export function DesignProvider({ children, system = false }: { children?: ReactN
   return <ReducedMotionContext.Provider value={reduced}><TypographyContext.Provider value={{ loaded: loaded && !error, displayLoaded: displayLoaded && !displayError, system }}>{children}</TypographyContext.Provider></ReducedMotionContext.Provider>;
 }
 
+const designThemes: Record<'light' | 'dark', DesignTheme> = {
+  light: { mode: 'light', colors: DesignColors.light },
+  dark: { mode: 'dark', colors: DesignColors.dark },
+};
+
+/** Mode comes from the existing platform hook, independently of palette values. */
+export function useDesignTheme(): DesignTheme {
+  return designThemes[useColorScheme() === 'dark' ? 'dark' : 'light'];
+}
+
 export function useDesignColors(): DesignPalette {
-  return DesignColors[useColorScheme() === 'dark' ? 'dark' : 'light'];
+  return useDesignTheme().colors;
 }
 
 /** Native inputs share the local interface font and its readable load-failure fallback. */
@@ -58,11 +68,11 @@ export function UiPressable({ style, onPressIn, onPressOut, onHoverIn, onHoverOu
   const [hovered, setHovered] = useState(false);
   const [focused, setFocused] = useState(false);
   useEffect(() => { if (reduced) progress.set(0); }, [reduced, progress]);
-  const feedback = useAnimatedStyle(() => ({ opacity: 1 - progress.get() * 0.08,
-    transform: [{ scale: scale ? 1 - progress.get() * 0.015 : 1 }] }));
+  const feedback = useAnimatedStyle(() => ({ opacity: props.disabled ? 1 : 1 - progress.get() * 0.08,
+    transform: [{ scale: scale && !props.disabled ? 1 - progress.get() * 0.015 : 1 }] }));
   // Keep animated styles directly on the animated host, not hidden inside Pressable's style callback.
   return <AnimatedPressable {...props} ref={ref} style={[typeof style === 'function' ? style({ pressed, hovered }) : style, feedback,
-    focused && { outlineColor: colors.brand, outlineWidth: 2, outlineOffset: 2 }]}
+    focused && !props.disabled && { outlineColor: colors.brandFocus, outlineWidth: 2, outlineOffset: 2 }]}
     onFocus={(event) => { setFocused(true); onFocus?.(event); }} onBlur={(event) => { setFocused(false); onBlur?.(event); }}
     onHoverIn={(event) => { setHovered(true); onHoverIn?.(event); }} onHoverOut={(event) => { setHovered(false); onHoverOut?.(event); }}
     onPressIn={(event) => { setPressed(true); if (!reduced && !props.disabled) progress.set(withTiming(1, motionTiming(MotionTokens.press))); onPressIn?.(event); }}
@@ -75,7 +85,7 @@ export function UiButton({ label, onPress, disabled = false, busy = false, selec
   leadingIcon?: UiIconName; trailingIcon?: UiIconName; accessibilityHint?: string;
   showIndicator?: boolean;
   feature?: 'fitness' | 'tasks';
-  tone?: 'brand';
+  tone?: 'brand' | 'neutral';
   compact?: boolean;
   compactNavigation?: boolean;
   busy?: boolean;
@@ -84,17 +94,17 @@ export function UiButton({ label, onPress, disabled = false, busy = false, selec
   const [focused, setFocused] = useState(false);
   const unavailable = disabled || busy;
   const primary = variant === 'primary' && !unavailable;
-  const textColor = unavailable ? 'textMuted' : primary ? feature === 'fitness' ? 'onFitness' : 'onBrand'
-    : variant === 'destructive' ? 'danger' : selected || tone === 'brand' ? 'brand' : feature === 'fitness' && variant === 'secondary' ? 'fitnessText' : 'textPrimary';
+  const textColor = unavailable ? 'textDisabled' : primary ? 'onBrand'
+    : variant === 'destructive' ? 'danger' : selected || tone === 'brand' || (variant === 'quiet' && tone !== 'neutral') ? 'brand' : feature === 'fitness' && variant === 'secondary' ? 'fitnessText' : 'textPrimary';
   return <UiPressable ref={ref} scale accessibilityRole="button" accessibilityLabel={accessibilityLabel ?? label}
     accessibilityHint={accessibilityHint}
     accessibilityState={{ disabled: unavailable, selected, ...(busy ? { busy: true } : {}), ...(expanded === undefined ? {} : { expanded }) }} aria-expanded={expanded} aria-busy={busy || undefined}
     disabled={unavailable} onPress={onPress} onFocus={() => setFocused(true)} onBlur={() => setFocused(false)}
-    style={({ pressed }) => [styles.button, { alignItems: align === 'start' ? 'flex-start' : 'center',
+    style={({ pressed, hovered }) => [styles.button, { alignItems: align === 'start' ? 'flex-start' : 'center',
       paddingHorizontal: compactNavigation && variant === 'navigation' ? 2 : compact || variant === 'navigation' ? Space.sm : Space.md,
-      backgroundColor: unavailable ? colors.inset : primary ? feature === 'fitness' ? colors.fitnessAccent : colors.brandStrong : pressed || selected ? colors.selected
-        : variant === 'quiet' || variant === 'navigation' ? 'transparent' : tone === 'brand' ? colors.brandSoft : feature === 'fitness' ? colors.fitnessAccentSoft : colors.control,
-      borderColor: focused ? primary ? colors[textColor] : colors.brand : 'transparent' },
+      backgroundColor: unavailable ? colors.inset : primary ? pressed || hovered ? colors.brandStrong : colors.brand : selected ? colors.selected : pressed || hovered ? colors.controlPressed
+        : variant === 'quiet' || variant === 'navigation' ? 'transparent' : variant === 'destructive' ? colors.dangerSoft : tone === 'brand' ? colors.brandSoft : feature === 'fitness' ? colors.fitnessAccentSoft : colors.control,
+      borderColor: unavailable ? colors.border : focused ? primary ? colors[textColor] : colors.brandFocus : selected ? colors.brandBorder : variant === 'secondary' ? colors.controlBorder : variant === 'destructive' ? colors.danger : 'transparent' },
       (busy || leadingIcon || trailingIcon) && { flexDirection: 'row', justifyContent: 'center', gap: compact ? Space.xs : Space.sm }]}>
     {busy && <ActivityIndicator accessible={false} size="small" color={colors[textColor]} />}
     {icon ? <UiIcon name={icon} color={colors[textColor]} /> : <>
@@ -130,11 +140,11 @@ export function ContentInsertion({ animate, duration = MotionTokens.insertion, c
 }
 
 export function raisedSurfaceShadow(colors: DesignPalette): ViewStyle {
-  return colors.shadow === 'none' ? {} : { boxShadow: [{ offsetX: 0, offsetY: 3, blurRadius: 10, color: colors.shadow }] };
+  return colors.shadowColor === '#00000000' ? {} : { boxShadow: [{ offsetX: 0, offsetY: 3, blurRadius: 10, color: colors.shadowColor }] };
 }
 
 const styles = StyleSheet.create({
   button: { minWidth: TouchTarget, minHeight: TouchTarget, paddingHorizontal: Space.md, paddingVertical: Space.sm,
-    borderRadius: Shape.control, borderWidth: 2, justifyContent: 'center' },
+    borderRadius: Shape.control, borderWidth: 1, justifyContent: 'center' },
   group: { borderRadius: Shape.group, borderCurve: 'continuous', padding: Space.md, gap: Space.sm },
 });

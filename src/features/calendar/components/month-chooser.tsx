@@ -20,7 +20,7 @@ export function MonthChooser({ month, visible, onSelect, onDismiss, onClosed }: 
       name: pickerValue(date).toLocaleDateString(undefined, { month: 'long', year: 'numeric' }) };
   });
   return <AdaptiveModal visible={visible} onDismiss={onDismiss} onClosed={onClosed}>
-    <AdaptiveSheet appearance="v2" title="Choose month" onDismiss={onDismiss} contentContainerStyle={styles.content}>
+    <AdaptiveSheet appearance="v2" titleRole="operational" title="Choose month" onDismiss={onDismiss} contentContainerStyle={styles.content}>
       <View style={styles.yearNavigation}>
         <FormButton appearance="v2" variant="quiet" label="Previous year" icon="back" accessibilityLabel="Previous year" disabled={year === 1} onPress={() => setYear((current) => Math.max(1, current - 1))} />
         <UiText type="editorSection" accessibilityRole="header" style={styles.year}>{String(year).padStart(4, '0')}</UiText>

@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useImperativeHandle, useRef, useState, type ComponentRef, type ReactElement, type Ref } from 'react';
 import { SectionList, StyleSheet, View, type SectionListProps } from 'react-native';
 
-import { UiText, useDesignColors } from '@/components/design-system';
+import { UiText, useDesignTheme } from '@/components/design-system';
 import { InternalNavigation } from '@/components/internal-navigation';
 import { useReducedMotion } from '@/components/motion';
 import { DesignSpace as Space, taskSectionSurface } from '@/constants/design-system-v2';
@@ -29,7 +29,7 @@ export function TaskWorkspaceList({ ref, sections, disabled, loading, renderRow,
   renderHeader: (section: TaskWorkspaceSection, beforeToggle: () => void) => ReactElement;
   renderFooter: (section: TaskWorkspaceSection) => ReactElement | null;
 }) {
-  const colors = useDesignColors();
+  const { mode, colors } = useDesignTheme();
   const reduced = useReducedMotion();
   const disclosureMotion = useTaskDisclosureMotion(sections);
   useImperativeHandle(ref, () => ({ cancelDisclosure: disclosureMotion.cancel }), [disclosureMotion.cancel]);
@@ -89,7 +89,7 @@ export function TaskWorkspaceList({ ref, sections, disabled, loading, renderRow,
       renderSectionHeader={({ section }) => renderHeader(section, () => disclosureMotion.begin(section))} renderSectionFooter={({ section }) => renderFooter(section)}
       renderItem={({ item, index, section }) => <>
         {section.title === 'Today' && index === section.completedStartIndex && <View testID="completed-today-label"
-          style={[styles.completed, { backgroundColor: taskSectionSurface(colors, 'Today'), borderColor: colors.border }]}>
+          style={[styles.completed, { backgroundColor: taskSectionSurface(colors, 'Today', mode), borderColor: colors.border }]}>
           <UiText type="smallLabel" color="textSecondary">Completed today</UiText>
         </View>}
         {renderRow(item, section.title)}

@@ -1,0 +1,3322 @@
+[
+  {
+    "kind": "strength",
+    "theme": "dark",
+    "width": 390,
+    "file": "strength-dark-390.png",
+    "errors": [],
+    "fixtureSha256": "8739b998e20e7a81c20c423366b15fa227c750fbbc4016a14e526eaef7b24f69",
+    "text": "Cancel\nEdit set\nSave\nBench Press\nPerformance details are optional. Empty fields stay empty.\nWeight (kg, optional)\nReps (optional)\nDelete set",
+    "overflow": false,
+    "fields": [
+      {
+        "label": "Weight (kg, optional)",
+        "value": "25.125",
+        "x": 16,
+        "y": 625,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-Regular",
+        "fontSize": "16px",
+        "border": "rgb(231, 170, 139)",
+        "background": "rgb(27, 24, 26)",
+        "outline": "rgb(231, 170, 139)",
+        "ariaInvalid": "false"
+      },
+      {
+        "label": "Reps (optional)",
+        "value": "12",
+        "x": 16,
+        "y": 717,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-Regular",
+        "fontSize": "16px",
+        "border": "rgb(149, 130, 142)",
+        "background": "rgb(27, 24, 26)",
+        "outline": "rgb(231, 170, 139)",
+        "ariaInvalid": "false"
+      }
+    ],
+    "controls": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Cancel",
+        "x": 16,
+        "y": 425,
+        "width": 75.859375,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(231, 170, 139)"
+      },
+      {
+        "label": "Edit set",
+        "x": 99.859375,
+        "y": 437,
+        "width": 205.515625,
+        "height": 24,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "18px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Save",
+        "x": 313.375,
+        "y": 425,
+        "width": 60.625,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(41, 25, 17)"
+      },
+      {
+        "label": "Delete set for Bench Press",
+        "x": 16,
+        "y": 781,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(240, 171, 171)"
+      }
+    ]
+  },
+  {
+    "kind": "bodyweight",
+    "theme": "dark",
+    "width": 390,
+    "file": "bodyweight-dark-390.png",
+    "errors": [],
+    "fixtureSha256": "8739b998e20e7a81c20c423366b15fa227c750fbbc4016a14e526eaef7b24f69",
+    "text": "Cancel\nEdit set\nSave\nDip\nPerformance details are optional. Empty fields stay empty.\nReps (optional)\nAdded weight (kg, optional)\nDelete set",
+    "overflow": false,
+    "fields": [
+      {
+        "label": "Reps (optional)",
+        "value": "10",
+        "x": 16,
+        "y": 625,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-Regular",
+        "fontSize": "16px",
+        "border": "rgb(231, 170, 139)",
+        "background": "rgb(27, 24, 26)",
+        "outline": "rgb(231, 170, 139)",
+        "ariaInvalid": "false"
+      },
+      {
+        "label": "Added weight (kg, optional)",
+        "value": "2.5",
+        "x": 16,
+        "y": 717,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-Regular",
+        "fontSize": "16px",
+        "border": "rgb(149, 130, 142)",
+        "background": "rgb(27, 24, 26)",
+        "outline": "rgb(231, 170, 139)",
+        "ariaInvalid": "false"
+      }
+    ],
+    "controls": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Cancel",
+        "x": 16,
+        "y": 425,
+        "width": 75.859375,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(231, 170, 139)"
+      },
+      {
+        "label": "Edit set",
+        "x": 99.859375,
+        "y": 437,
+        "width": 205.515625,
+        "height": 24,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "18px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Save",
+        "x": 313.375,
+        "y": 425,
+        "width": 60.625,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(41, 25, 17)"
+      },
+      {
+        "label": "Delete set for Dip",
+        "x": 16,
+        "y": 781,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(240, 171, 171)"
+      }
+    ]
+  },
+  {
+    "kind": "duration",
+    "theme": "dark",
+    "width": 390,
+    "file": "duration-dark-390.png",
+    "errors": [],
+    "fixtureSha256": "8739b998e20e7a81c20c423366b15fa227c750fbbc4016a14e526eaef7b24f69",
+    "text": "Cancel\nEdit set\nSave\nPlank\nPerformance details are optional. Empty fields stay empty.\nDuration (optional) · Seconds: 0–59\nMinutes (optional)\nSeconds\nDelete set",
+    "overflow": false,
+    "fields": [
+      {
+        "label": "Minutes (optional)",
+        "value": "1",
+        "x": 16,
+        "y": 717,
+        "width": 173,
+        "height": 48,
+        "font": "AxisManrope-Regular",
+        "fontSize": "16px",
+        "border": "rgb(231, 170, 139)",
+        "background": "rgb(27, 24, 26)",
+        "outline": "rgb(231, 170, 139)",
+        "ariaInvalid": "false"
+      },
+      {
+        "label": "Seconds",
+        "value": "30",
+        "x": 201,
+        "y": 717,
+        "width": 173,
+        "height": 48,
+        "font": "AxisManrope-Regular",
+        "fontSize": "16px",
+        "border": "rgb(149, 130, 142)",
+        "background": "rgb(27, 24, 26)",
+        "outline": "rgb(231, 170, 139)",
+        "ariaInvalid": "false"
+      }
+    ],
+    "controls": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Cancel",
+        "x": 16,
+        "y": 489,
+        "width": 75.859375,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(231, 170, 139)"
+      },
+      {
+        "label": "Edit set",
+        "x": 99.859375,
+        "y": 501,
+        "width": 205.515625,
+        "height": 24,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "18px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Save",
+        "x": 313.375,
+        "y": 489,
+        "width": 60.625,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(41, 25, 17)"
+      },
+      {
+        "label": "Delete set for Plank",
+        "x": 16,
+        "y": 781,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(240, 171, 171)"
+      }
+    ]
+  },
+  {
+    "kind": "distance",
+    "theme": "dark",
+    "width": 390,
+    "file": "distance-dark-390.png",
+    "errors": [],
+    "fixtureSha256": "8739b998e20e7a81c20c423366b15fa227c750fbbc4016a14e526eaef7b24f69",
+    "text": "Cancel\nEdit set\nSave\nCycling\nPerformance details are optional. Empty fields stay empty.\nDistance unit\nkm\nm\nDistance (km)\nDuration (optional) · Seconds: 0–59\nMinutes (optional)\nSeconds\nDelete set",
+    "overflow": false,
+    "fields": [
+      {
+        "label": "Distance (km)",
+        "value": "2.5",
+        "x": 16,
+        "y": 597,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-Regular",
+        "fontSize": "16px",
+        "border": "rgb(231, 170, 139)",
+        "background": "rgb(27, 24, 26)",
+        "outline": "rgb(231, 170, 139)",
+        "ariaInvalid": "false"
+      },
+      {
+        "label": "Minutes (optional)",
+        "value": "14",
+        "x": 16,
+        "y": 717,
+        "width": 173,
+        "height": 48,
+        "font": "AxisManrope-Regular",
+        "fontSize": "16px",
+        "border": "rgb(149, 130, 142)",
+        "background": "rgb(27, 24, 26)",
+        "outline": "rgb(231, 170, 139)",
+        "ariaInvalid": "false"
+      },
+      {
+        "label": "Seconds",
+        "value": "32",
+        "x": 201,
+        "y": 717,
+        "width": 173,
+        "height": 48,
+        "font": "AxisManrope-Regular",
+        "fontSize": "16px",
+        "border": "rgb(149, 130, 142)",
+        "background": "rgb(27, 24, 26)",
+        "outline": "rgb(231, 170, 139)",
+        "ariaInvalid": "false"
+      }
+    ],
+    "controls": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Cancel",
+        "x": 16,
+        "y": 307,
+        "width": 75.859375,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(231, 170, 139)"
+      },
+      {
+        "label": "Edit set",
+        "x": 99.859375,
+        "y": 319,
+        "width": 205.515625,
+        "height": 24,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "18px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Save",
+        "x": 313.375,
+        "y": 307,
+        "width": 60.625,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(41, 25, 17)"
+      },
+      {
+        "label": "Delete set for Cycling",
+        "x": 16,
+        "y": 781,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(240, 171, 171)"
+      }
+    ]
+  },
+  {
+    "kind": "blank",
+    "theme": "dark",
+    "width": 390,
+    "file": "blank-dark-390.png",
+    "errors": [],
+    "fixtureSha256": "8739b998e20e7a81c20c423366b15fa227c750fbbc4016a14e526eaef7b24f69",
+    "text": "Cancel\nEdit set\nSave\nBench Press\nPerformance details are optional. Empty fields stay empty.\nWeight (kg, optional)\nReps (optional)\nDelete set",
+    "overflow": false,
+    "fields": [
+      {
+        "label": "Weight (kg, optional)",
+        "value": "",
+        "x": 16,
+        "y": 625,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-Regular",
+        "fontSize": "16px",
+        "border": "rgb(231, 170, 139)",
+        "background": "rgb(27, 24, 26)",
+        "outline": "rgb(231, 170, 139)",
+        "ariaInvalid": "false"
+      },
+      {
+        "label": "Reps (optional)",
+        "value": "",
+        "x": 16,
+        "y": 717,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-Regular",
+        "fontSize": "16px",
+        "border": "rgb(149, 130, 142)",
+        "background": "rgb(27, 24, 26)",
+        "outline": "rgb(231, 170, 139)",
+        "ariaInvalid": "false"
+      }
+    ],
+    "controls": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Cancel",
+        "x": 16,
+        "y": 425,
+        "width": 75.859375,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(231, 170, 139)"
+      },
+      {
+        "label": "Edit set",
+        "x": 99.859375,
+        "y": 437,
+        "width": 205.515625,
+        "height": 24,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "18px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Save",
+        "x": 313.375,
+        "y": 425,
+        "width": 60.625,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(41, 25, 17)"
+      },
+      {
+        "label": "Delete set for Bench Press",
+        "x": 16,
+        "y": 781,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(240, 171, 171)"
+      }
+    ]
+  },
+  {
+    "kind": "zero",
+    "theme": "dark",
+    "width": 390,
+    "file": "zero-dark-390.png",
+    "errors": [],
+    "fixtureSha256": "8739b998e20e7a81c20c423366b15fa227c750fbbc4016a14e526eaef7b24f69",
+    "text": "Cancel\nEdit set\nSave\nBench Press\nPerformance details are optional. Empty fields stay empty.\nWeight (kg, optional)\nReps (optional)\nDelete set",
+    "overflow": false,
+    "fields": [
+      {
+        "label": "Weight (kg, optional)",
+        "value": "0",
+        "x": 16,
+        "y": 625,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-Regular",
+        "fontSize": "16px",
+        "border": "rgb(231, 170, 139)",
+        "background": "rgb(27, 24, 26)",
+        "outline": "rgb(231, 170, 139)",
+        "ariaInvalid": "false"
+      },
+      {
+        "label": "Reps (optional)",
+        "value": "",
+        "x": 16,
+        "y": 717,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-Regular",
+        "fontSize": "16px",
+        "border": "rgb(149, 130, 142)",
+        "background": "rgb(27, 24, 26)",
+        "outline": "rgb(231, 170, 139)",
+        "ariaInvalid": "false"
+      }
+    ],
+    "controls": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Cancel",
+        "x": 16,
+        "y": 425,
+        "width": 75.859375,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(231, 170, 139)"
+      },
+      {
+        "label": "Edit set",
+        "x": 99.859375,
+        "y": 437,
+        "width": 205.515625,
+        "height": 24,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "18px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Save",
+        "x": 313.375,
+        "y": 425,
+        "width": 60.625,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(41, 25, 17)"
+      },
+      {
+        "label": "Delete set for Bench Press",
+        "x": 16,
+        "y": 781,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(240, 171, 171)"
+      }
+    ]
+  },
+  {
+    "kind": "invalid",
+    "theme": "dark",
+    "width": 390,
+    "file": "invalid-dark-390.png",
+    "errors": [],
+    "fixtureSha256": "8739b998e20e7a81c20c423366b15fa227c750fbbc4016a14e526eaef7b24f69",
+    "text": "Cancel\nEdit set\nSave\nEnter weight with up to 3 decimal places.\nBench Press\nPerformance details are optional. Empty fields stay empty.\nWeight (kg, optional)\nReps (optional)\nDelete set",
+    "overflow": false,
+    "fields": [
+      {
+        "label": "Weight (kg, optional)",
+        "value": "1.2345",
+        "x": 16,
+        "y": 625,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-Regular",
+        "fontSize": "16px",
+        "border": "rgb(231, 170, 139)",
+        "background": "rgb(27, 24, 26)",
+        "outline": "rgb(231, 170, 139)",
+        "ariaInvalid": "false"
+      },
+      {
+        "label": "Reps (optional)",
+        "value": "12",
+        "x": 16,
+        "y": 717,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-Regular",
+        "fontSize": "16px",
+        "border": "rgb(149, 130, 142)",
+        "background": "rgb(27, 24, 26)",
+        "outline": "rgb(231, 170, 139)",
+        "ariaInvalid": "false"
+      }
+    ],
+    "controls": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Cancel",
+        "x": 16,
+        "y": 389,
+        "width": 75.859375,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(231, 170, 139)"
+      },
+      {
+        "label": "Edit set",
+        "x": 99.859375,
+        "y": 401,
+        "width": 205.515625,
+        "height": 24,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "18px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Save",
+        "x": 313.375,
+        "y": 389,
+        "width": 60.625,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(41, 25, 17)"
+      },
+      {
+        "label": "Delete set for Bench Press",
+        "x": 16,
+        "y": 781,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(240, 171, 171)"
+      }
+    ]
+  },
+  {
+    "kind": "keyboard",
+    "theme": "dark",
+    "width": 320,
+    "file": "keyboard-dark-320.png",
+    "errors": [],
+    "fixtureSha256": "8739b998e20e7a81c20c423366b15fa227c750fbbc4016a14e526eaef7b24f69",
+    "text": "Edit set\nCancel\nSave\nExtensão controlada e contração excêntrica — acompanhamento de desempenho com amplitude confortável\nPerformance details are optional. Empty fields stay empty.\nDistance unit\nkm\nm\nDistance (km)\nDuration (optional) · Seconds: 0–59\nMinutes (optional)\nSeconds\nDelete set",
+    "overflow": false,
+    "fields": [
+      {
+        "label": "Distance (km)",
+        "value": "0.001",
+        "x": 16,
+        "y": 941,
+        "width": 288,
+        "height": 48,
+        "font": "AxisManrope-Regular",
+        "fontSize": "32px",
+        "border": "rgb(231, 170, 139)",
+        "background": "rgb(27, 24, 26)",
+        "outline": "rgb(231, 170, 139)",
+        "ariaInvalid": "false"
+      },
+      {
+        "label": "Minutes (optional)",
+        "value": "",
+        "x": 16,
+        "y": 1141,
+        "width": 288,
+        "height": 48,
+        "font": "AxisManrope-Regular",
+        "fontSize": "32px",
+        "border": "rgb(149, 130, 142)",
+        "background": "rgb(27, 24, 26)",
+        "outline": "rgb(231, 170, 139)",
+        "ariaInvalid": "false"
+      },
+      {
+        "label": "Seconds",
+        "value": "",
+        "x": 16,
+        "y": 1249,
+        "width": 288,
+        "height": 48,
+        "font": "AxisManrope-Regular",
+        "fontSize": "32px",
+        "border": "rgb(149, 130, 142)",
+        "background": "rgb(27, 24, 26)",
+        "outline": "rgb(231, 170, 139)",
+        "ariaInvalid": "false"
+      }
+    ],
+    "controls": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Edit set",
+        "x": 16,
+        "y": 21,
+        "width": 288,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "36px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Cancel",
+        "x": 16,
+        "y": 77,
+        "width": 125.703125,
+        "height": 62,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "30px",
+        "color": "rgb(231, 170, 139)"
+      },
+      {
+        "label": "Save",
+        "x": 208.765625,
+        "y": 77,
+        "width": 95.234375,
+        "height": 62,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "30px",
+        "color": "rgb(41, 25, 17)"
+      },
+      {
+        "label": "Delete set for Extensão controlada e contração excêntrica — acompanhamento de desempenho com amplitude confortável",
+        "x": 16,
+        "y": 1313,
+        "width": 288,
+        "height": 62,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "30px",
+        "color": "rgb(240, 171, 171)"
+      }
+    ]
+  },
+  {
+    "kind": "workout",
+    "theme": "dark",
+    "width": 390,
+    "file": "workout-dark-390.png",
+    "errors": [],
+    "fixtureSha256": "8739b998e20e7a81c20c423366b15fa227c750fbbc4016a14e526eaef7b24f69",
+    "text": "Current Workout\nPerformance review\n1 of 5 exercises\nBench Press\nTarget: 2 planned sets\nExercise complete · 3 of 2 sets completed\nSet Complete\nSet\nWeight\nReps\n1\n25.125 kg\n12\n2\n—\n—\n3\n0 kg\n—\nDip\nTarget: 2 planned sets\n1\n1 of 2 sets completed\nSet Complete\nSet\nReps\nAdded weight\n1\n10\n+2.5 kg\nPlank\nNo set target\nComplete Exercise\nSet\nDuration\n1\n1:30\n+ Add set\nCycling\nNo set target\nComplete Exercise\nSet\nDistance\nTime\n1\n2.5 km\n14:32\n+ Add set\nExtensão controlada e contração excêntrica — acompanhamento de desempenho com amplitude confortável\nNo set target\nComplete Exercise\nSet\nDistance\n1\n1 m\n+ Add set\n+ Add exercise",
+    "overflow": false,
+    "fields": [],
+    "controls": [
+      {
+        "label": "Performance review",
+        "x": 68,
+        "y": 30,
+        "width": 210,
+        "height": 24,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "18px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "More workout actions",
+        "x": 330,
+        "y": 19,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Bench Press",
+        "x": 64,
+        "y": 124,
+        "width": 190,
+        "height": 24,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "More actions for Bench Press",
+        "x": 330,
+        "y": 122,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Complete set for Bench Press",
+        "x": 12,
+        "y": 210,
+        "width": 366,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(41, 25, 17)"
+      },
+      {
+        "label": "Bench Press, set 1. 25.125 kg, 12 reps",
+        "x": 12,
+        "y": 314,
+        "width": 366,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(201, 189, 184)"
+      },
+      {
+        "label": "Bench Press, set 2. Set complete. No performance details",
+        "x": 12,
+        "y": 362,
+        "width": 366,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(201, 189, 184)"
+      },
+      {
+        "label": "Bench Press, set 3. 0 kg, reps not entered",
+        "x": 12,
+        "y": 410,
+        "width": 366,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(201, 189, 184)"
+      },
+      {
+        "label": "Dip",
+        "x": 64,
+        "y": 508,
+        "width": 190,
+        "height": 24,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "More actions for Dip",
+        "x": 330,
+        "y": 506,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Complete set for Dip",
+        "x": 12,
+        "y": 594,
+        "width": 366,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(41, 25, 17)"
+      },
+      {
+        "label": "Dip, set 1. 10 reps, added weight +2.5 kg",
+        "x": 12,
+        "y": 698,
+        "width": 366,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(201, 189, 184)"
+      },
+      {
+        "label": "Plank",
+        "x": 64,
+        "y": 794,
+        "width": 254,
+        "height": 24,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "More actions for Plank",
+        "x": 330,
+        "y": 794,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Complete exercise Plank",
+        "x": 12,
+        "y": 850,
+        "width": 366,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(41, 25, 17)"
+      },
+      {
+        "label": "Plank, set 1. 1 min 30 sec",
+        "x": 12,
+        "y": 954,
+        "width": 366,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(201, 189, 184)"
+      },
+      {
+        "label": "Log set for Plank",
+        "x": 12,
+        "y": 1002,
+        "width": 366,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(231, 170, 139)"
+      },
+      {
+        "label": "Cycling",
+        "x": 64,
+        "y": 1098,
+        "width": 254,
+        "height": 24,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "More actions for Cycling",
+        "x": 330,
+        "y": 1098,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Complete exercise Cycling",
+        "x": 12,
+        "y": 1154,
+        "width": 366,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(41, 25, 17)"
+      },
+      {
+        "label": "Cycling, set 1. 2.5 km, 14 min 32 sec",
+        "x": 12,
+        "y": 1258,
+        "width": 366,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(201, 189, 184)"
+      },
+      {
+        "label": "Log set for Cycling",
+        "x": 12,
+        "y": 1306,
+        "width": 366,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(231, 170, 139)"
+      },
+      {
+        "label": "Extensão controlada e contração excêntrica — acompanhamento de desempenho com amplitude confortável",
+        "x": 64,
+        "y": 1402,
+        "width": 254,
+        "height": 96,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "More actions for Extensão controlada e contração excêntrica — acompanhamento de desempenho com amplitude confortável",
+        "x": 330,
+        "y": 1402,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Complete exercise Extensão controlada e contração excêntrica — acompanhamento de desempenho com amplitude confortável",
+        "x": 12,
+        "y": 1530,
+        "width": 366,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(41, 25, 17)"
+      },
+      {
+        "label": "Extensão controlada e contração excêntrica — acompanhamento de desempenho com amplitude confortável, set 1. 1 m",
+        "x": 12,
+        "y": 1634,
+        "width": 366,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(201, 189, 184)"
+      },
+      {
+        "label": "Log set for Extensão controlada e contração excêntrica — acompanhamento de desempenho com amplitude confortável",
+        "x": 12,
+        "y": 1682,
+        "width": 366,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(231, 170, 139)"
+      },
+      {
+        "label": "+ Add exercise",
+        "x": 0,
+        "y": 1766,
+        "width": 390,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(226, 160, 143)"
+      }
+    ]
+  },
+  {
+    "kind": "header",
+    "theme": "dark",
+    "width": 390,
+    "file": "header-dark-390.png",
+    "errors": [],
+    "fixtureSha256": "8739b998e20e7a81c20c423366b15fa227c750fbbc4016a14e526eaef7b24f69",
+    "text": "Current Workout\nPerformance review\n1 of 5 exercises",
+    "overflow": false,
+    "fields": [],
+    "controls": [
+      {
+        "label": "Performance review",
+        "x": 68,
+        "y": 30,
+        "width": 210,
+        "height": 24,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "18px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "More workout actions",
+        "x": 330,
+        "y": 19,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      }
+    ]
+  },
+  {
+    "kind": "routine",
+    "theme": "dark",
+    "width": 390,
+    "file": "routine-dark-390.png",
+    "errors": [],
+    "fixtureSha256": "8739b998e20e7a81c20c423366b15fa227c750fbbc4016a14e526eaef7b24f69",
+    "text": "Cancel\nEdit routine\nSave\nRoutine\nRoutine name *\nExercises\n4 exercises\nAdd exercise\n1. Bench Press\nStrength · Weight + reps\n2 planned sets\nTargets\nRemove\n2. Dip\nBodyweight · Reps · optional added weight\n2 planned sets\nTargets\nRemove\n3. Plank\nDuration · Time\nNo targets\nTargets\nRemove\n4. Cycling\nDistance · Distance + optional time\nNo targets\nTargets\nRemove",
+    "overflow": false,
+    "fields": [
+      {
+        "label": "Routine name *",
+        "value": "Performance review",
+        "x": 25,
+        "y": 170,
+        "width": 340,
+        "height": 48,
+        "font": "AxisManrope-Regular",
+        "fontSize": "16px",
+        "border": "rgb(149, 130, 142)",
+        "background": "rgb(27, 24, 26)",
+        "outline": "rgb(231, 170, 139)",
+        "ariaInvalid": "false"
+      }
+    ],
+    "controls": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 21,
+        "width": 91.859375,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(231, 170, 139)"
+      },
+      {
+        "label": "Edit routine",
+        "x": 111.859375,
+        "y": 28,
+        "width": 197.515625,
+        "height": 34,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "26px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Save",
+        "x": 317.375,
+        "y": 21,
+        "width": 60.625,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(41, 25, 17)"
+      },
+      {
+        "label": "Routine",
+        "x": 73,
+        "y": 98,
+        "width": 292,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Exercises",
+        "x": 69,
+        "y": 256,
+        "width": 142.484375,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Add exercise",
+        "x": 219.484375,
+        "y": 258,
+        "width": 145.515625,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(231, 170, 139)"
+      },
+      {
+        "label": "1. Bench Press",
+        "x": 82,
+        "y": 329,
+        "width": 278,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Configure targets for Bench Press",
+        "x": 30,
+        "y": 422,
+        "width": 96.5,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Move Bench Press up",
+        "x": 130.5,
+        "y": 422,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgba(16, 16, 16, 0.3)"
+      },
+      {
+        "label": "Move Bench Press down",
+        "x": 182.5,
+        "y": 422,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Remove Bench Press from routine",
+        "x": 234.5,
+        "y": 422,
+        "width": 99.1875,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(240, 171, 171)"
+      },
+      {
+        "label": "2. Dip",
+        "x": 82,
+        "y": 496,
+        "width": 278,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Configure targets for Dip",
+        "x": 30,
+        "y": 589,
+        "width": 96.5,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Move Dip up",
+        "x": 130.5,
+        "y": 589,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Move Dip down",
+        "x": 182.5,
+        "y": 589,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Remove Dip from routine",
+        "x": 234.5,
+        "y": 589,
+        "width": 99.1875,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(240, 171, 171)"
+      },
+      {
+        "label": "3. Plank",
+        "x": 82,
+        "y": 663,
+        "width": 278,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Configure targets for Plank",
+        "x": 30,
+        "y": 756,
+        "width": 96.5,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Move Plank up",
+        "x": 130.5,
+        "y": 756,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Move Plank down",
+        "x": 182.5,
+        "y": 756,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Remove Plank from routine",
+        "x": 234.5,
+        "y": 756,
+        "width": 99.1875,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(240, 171, 171)"
+      },
+      {
+        "label": "4. Cycling",
+        "x": 82,
+        "y": 830,
+        "width": 278,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Configure targets for Cycling",
+        "x": 30,
+        "y": 923,
+        "width": 96.5,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Move Cycling up",
+        "x": 130.5,
+        "y": 923,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Move Cycling down",
+        "x": 182.5,
+        "y": 923,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgba(16, 16, 16, 0.3)"
+      },
+      {
+        "label": "Remove Cycling from routine",
+        "x": 234.5,
+        "y": 923,
+        "width": 99.1875,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(240, 171, 171)"
+      }
+    ]
+  },
+  {
+    "kind": "exercise",
+    "theme": "dark",
+    "width": 390,
+    "file": "exercise-dark-390.png",
+    "errors": [],
+    "fixtureSha256": "8739b998e20e7a81c20c423366b15fa227c750fbbc4016a14e526eaef7b24f69",
+    "text": "Cancel\nNew exercise\nCreate\nExercise\nName *\nMeasurement\nMeasurement type *\nStrength\nWeight in kg and reps.",
+    "overflow": false,
+    "fields": [
+      {
+        "label": "Name *",
+        "value": "Controlled exercise",
+        "x": 29,
+        "y": 570,
+        "width": 332,
+        "height": 48,
+        "font": "AxisManrope-Regular",
+        "fontSize": "16px",
+        "border": "rgb(231, 170, 139)",
+        "background": "rgb(27, 24, 26)",
+        "outline": "rgb(231, 170, 139)",
+        "ariaInvalid": "false"
+      }
+    ],
+    "controls": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 405,
+        "width": 91.859375,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(231, 170, 139)"
+      },
+      {
+        "label": "New exercise",
+        "x": 111.859375,
+        "y": 412,
+        "width": 183.28125,
+        "height": 34,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "26px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Create",
+        "x": 303.140625,
+        "y": 405,
+        "width": 74.859375,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(41, 25, 17)"
+      },
+      {
+        "label": "Exercise",
+        "x": 77,
+        "y": 498,
+        "width": 284,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Measurement",
+        "x": 77,
+        "y": 666,
+        "width": 284,
+        "height": 24,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      }
+    ]
+  },
+  {
+    "kind": "history",
+    "theme": "dark",
+    "width": 390,
+    "file": "history-dark-390.png",
+    "errors": [],
+    "fixtureSha256": "8739b998e20e7a81c20c423366b15fa227c750fbbc4016a14e526eaef7b24f69",
+    "text": "Workout details\nFree workout\nToday\nCompleted 13/11/2026, 12:00:00\nStarted 13/11/2026, 12:00:00 · Read-only\nBench Press\nStrength\nNot marked complete · No set target\nSet 1\n25.125 kg × 12",
+    "overflow": false,
+    "fields": [],
+    "controls": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 21,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Workout details",
+        "x": 68,
+        "y": 28,
+        "width": 310,
+        "height": 34,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "26px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Free workout",
+        "x": 29,
+        "y": 110,
+        "width": 332,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Today",
+        "x": 29,
+        "y": 146,
+        "width": 332,
+        "height": 24,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Bench Press",
+        "x": 81,
+        "y": 264,
+        "width": 280,
+        "height": 24,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      }
+    ]
+  },
+  {
+    "kind": "note",
+    "theme": "dark",
+    "width": 390,
+    "file": "note-dark-390.png",
+    "errors": [],
+    "fixtureSha256": "8739b998e20e7a81c20c423366b15fa227c750fbbc4016a14e526eaef7b24f69",
+    "text": "Cancel\nWorkout note\nSave\nNote (optional)",
+    "overflow": false,
+    "fields": [
+      {
+        "label": "Note (optional)",
+        "value": "Steady session. Keep the next set comfortable.",
+        "x": 16,
+        "y": 763,
+        "width": 358,
+        "height": 66,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "border": "rgb(157, 202, 182)",
+        "background": "rgb(40, 49, 45)",
+        "outline": "rgb(16, 16, 16)",
+        "ariaInvalid": "false"
+      }
+    ],
+    "controls": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Cancel",
+        "x": 16,
+        "y": 659,
+        "width": 75.859375,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Workout note",
+        "x": 99.859375,
+        "y": 669,
+        "width": 202.765625,
+        "height": 24,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "18px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Save",
+        "x": 310.625,
+        "y": 659,
+        "width": 63.375,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(18, 35, 27)"
+      }
+    ]
+  },
+  {
+    "kind": "add",
+    "theme": "dark",
+    "width": 390,
+    "file": "add-dark-390.png",
+    "errors": [],
+    "fixtureSha256": "8739b998e20e7a81c20c423366b15fa227c750fbbc4016a14e526eaef7b24f69",
+    "text": "←\nAdd exercise\nExercise\nSearch exercises\n▾",
+    "overflow": false,
+    "fields": [],
+    "controls": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Back",
+        "x": 16,
+        "y": 677,
+        "width": 46.09375,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Add exercise",
+        "x": 70.09375,
+        "y": 687,
+        "width": 303.90625,
+        "height": 24,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "18px",
+        "color": "rgb(237, 243, 239)"
+      }
+    ]
+  },
+  {
+    "kind": "strength",
+    "theme": "light",
+    "width": 390,
+    "file": "strength-light-390.png",
+    "errors": [],
+    "fixtureSha256": "8739b998e20e7a81c20c423366b15fa227c750fbbc4016a14e526eaef7b24f69",
+    "text": "Cancel\nEdit set\nSave\nBench Press\nPerformance details are optional. Empty fields stay empty.\nWeight (kg, optional)\nReps (optional)\nDelete set",
+    "overflow": false,
+    "fields": [
+      {
+        "label": "Weight (kg, optional)",
+        "value": "25.125",
+        "x": 16,
+        "y": 625,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-Regular",
+        "fontSize": "16px",
+        "border": "rgb(135, 72, 51)",
+        "background": "rgb(255, 252, 248)",
+        "outline": "rgb(135, 72, 51)",
+        "ariaInvalid": "false"
+      },
+      {
+        "label": "Reps (optional)",
+        "value": "12",
+        "x": 16,
+        "y": 717,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-Regular",
+        "fontSize": "16px",
+        "border": "rgb(155, 131, 123)",
+        "background": "rgb(255, 252, 248)",
+        "outline": "rgb(135, 72, 51)",
+        "ariaInvalid": "false"
+      }
+    ],
+    "controls": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Cancel",
+        "x": 16,
+        "y": 425,
+        "width": 75.859375,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(135, 72, 51)"
+      },
+      {
+        "label": "Edit set",
+        "x": 99.859375,
+        "y": 437,
+        "width": 205.515625,
+        "height": 24,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "18px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Save",
+        "x": 313.375,
+        "y": 425,
+        "width": 60.625,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(255, 248, 242)"
+      },
+      {
+        "label": "Delete set for Bench Press",
+        "x": 16,
+        "y": 781,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(155, 48, 62)"
+      }
+    ]
+  },
+  {
+    "kind": "bodyweight",
+    "theme": "light",
+    "width": 390,
+    "file": "bodyweight-light-390.png",
+    "errors": [],
+    "fixtureSha256": "8739b998e20e7a81c20c423366b15fa227c750fbbc4016a14e526eaef7b24f69",
+    "text": "Cancel\nEdit set\nSave\nDip\nPerformance details are optional. Empty fields stay empty.\nReps (optional)\nAdded weight (kg, optional)\nDelete set",
+    "overflow": false,
+    "fields": [
+      {
+        "label": "Reps (optional)",
+        "value": "10",
+        "x": 16,
+        "y": 625,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-Regular",
+        "fontSize": "16px",
+        "border": "rgb(135, 72, 51)",
+        "background": "rgb(255, 252, 248)",
+        "outline": "rgb(135, 72, 51)",
+        "ariaInvalid": "false"
+      },
+      {
+        "label": "Added weight (kg, optional)",
+        "value": "2.5",
+        "x": 16,
+        "y": 717,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-Regular",
+        "fontSize": "16px",
+        "border": "rgb(155, 131, 123)",
+        "background": "rgb(255, 252, 248)",
+        "outline": "rgb(135, 72, 51)",
+        "ariaInvalid": "false"
+      }
+    ],
+    "controls": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Cancel",
+        "x": 16,
+        "y": 425,
+        "width": 75.859375,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(135, 72, 51)"
+      },
+      {
+        "label": "Edit set",
+        "x": 99.859375,
+        "y": 437,
+        "width": 205.515625,
+        "height": 24,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "18px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Save",
+        "x": 313.375,
+        "y": 425,
+        "width": 60.625,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(255, 248, 242)"
+      },
+      {
+        "label": "Delete set for Dip",
+        "x": 16,
+        "y": 781,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(155, 48, 62)"
+      }
+    ]
+  },
+  {
+    "kind": "duration",
+    "theme": "light",
+    "width": 390,
+    "file": "duration-light-390.png",
+    "errors": [],
+    "fixtureSha256": "8739b998e20e7a81c20c423366b15fa227c750fbbc4016a14e526eaef7b24f69",
+    "text": "Cancel\nEdit set\nSave\nPlank\nPerformance details are optional. Empty fields stay empty.\nDuration (optional) · Seconds: 0–59\nMinutes (optional)\nSeconds\nDelete set",
+    "overflow": false,
+    "fields": [
+      {
+        "label": "Minutes (optional)",
+        "value": "1",
+        "x": 16,
+        "y": 717,
+        "width": 173,
+        "height": 48,
+        "font": "AxisManrope-Regular",
+        "fontSize": "16px",
+        "border": "rgb(135, 72, 51)",
+        "background": "rgb(255, 252, 248)",
+        "outline": "rgb(135, 72, 51)",
+        "ariaInvalid": "false"
+      },
+      {
+        "label": "Seconds",
+        "value": "30",
+        "x": 201,
+        "y": 717,
+        "width": 173,
+        "height": 48,
+        "font": "AxisManrope-Regular",
+        "fontSize": "16px",
+        "border": "rgb(155, 131, 123)",
+        "background": "rgb(255, 252, 248)",
+        "outline": "rgb(135, 72, 51)",
+        "ariaInvalid": "false"
+      }
+    ],
+    "controls": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Cancel",
+        "x": 16,
+        "y": 489,
+        "width": 75.859375,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(135, 72, 51)"
+      },
+      {
+        "label": "Edit set",
+        "x": 99.859375,
+        "y": 501,
+        "width": 205.515625,
+        "height": 24,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "18px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Save",
+        "x": 313.375,
+        "y": 489,
+        "width": 60.625,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(255, 248, 242)"
+      },
+      {
+        "label": "Delete set for Plank",
+        "x": 16,
+        "y": 781,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(155, 48, 62)"
+      }
+    ]
+  },
+  {
+    "kind": "distance",
+    "theme": "light",
+    "width": 390,
+    "file": "distance-light-390.png",
+    "errors": [],
+    "fixtureSha256": "8739b998e20e7a81c20c423366b15fa227c750fbbc4016a14e526eaef7b24f69",
+    "text": "Cancel\nEdit set\nSave\nCycling\nPerformance details are optional. Empty fields stay empty.\nDistance unit\nkm\nm\nDistance (km)\nDuration (optional) · Seconds: 0–59\nMinutes (optional)\nSeconds\nDelete set",
+    "overflow": false,
+    "fields": [
+      {
+        "label": "Distance (km)",
+        "value": "2.5",
+        "x": 16,
+        "y": 597,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-Regular",
+        "fontSize": "16px",
+        "border": "rgb(135, 72, 51)",
+        "background": "rgb(255, 252, 248)",
+        "outline": "rgb(135, 72, 51)",
+        "ariaInvalid": "false"
+      },
+      {
+        "label": "Minutes (optional)",
+        "value": "14",
+        "x": 16,
+        "y": 717,
+        "width": 173,
+        "height": 48,
+        "font": "AxisManrope-Regular",
+        "fontSize": "16px",
+        "border": "rgb(155, 131, 123)",
+        "background": "rgb(255, 252, 248)",
+        "outline": "rgb(135, 72, 51)",
+        "ariaInvalid": "false"
+      },
+      {
+        "label": "Seconds",
+        "value": "32",
+        "x": 201,
+        "y": 717,
+        "width": 173,
+        "height": 48,
+        "font": "AxisManrope-Regular",
+        "fontSize": "16px",
+        "border": "rgb(155, 131, 123)",
+        "background": "rgb(255, 252, 248)",
+        "outline": "rgb(135, 72, 51)",
+        "ariaInvalid": "false"
+      }
+    ],
+    "controls": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Cancel",
+        "x": 16,
+        "y": 307,
+        "width": 75.859375,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(135, 72, 51)"
+      },
+      {
+        "label": "Edit set",
+        "x": 99.859375,
+        "y": 319,
+        "width": 205.515625,
+        "height": 24,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "18px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Save",
+        "x": 313.375,
+        "y": 307,
+        "width": 60.625,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(255, 248, 242)"
+      },
+      {
+        "label": "Delete set for Cycling",
+        "x": 16,
+        "y": 781,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(155, 48, 62)"
+      }
+    ]
+  },
+  {
+    "kind": "blank",
+    "theme": "light",
+    "width": 390,
+    "file": "blank-light-390.png",
+    "errors": [],
+    "fixtureSha256": "8739b998e20e7a81c20c423366b15fa227c750fbbc4016a14e526eaef7b24f69",
+    "text": "Cancel\nEdit set\nSave\nBench Press\nPerformance details are optional. Empty fields stay empty.\nWeight (kg, optional)\nReps (optional)\nDelete set",
+    "overflow": false,
+    "fields": [
+      {
+        "label": "Weight (kg, optional)",
+        "value": "",
+        "x": 16,
+        "y": 625,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-Regular",
+        "fontSize": "16px",
+        "border": "rgb(135, 72, 51)",
+        "background": "rgb(255, 252, 248)",
+        "outline": "rgb(135, 72, 51)",
+        "ariaInvalid": "false"
+      },
+      {
+        "label": "Reps (optional)",
+        "value": "",
+        "x": 16,
+        "y": 717,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-Regular",
+        "fontSize": "16px",
+        "border": "rgb(155, 131, 123)",
+        "background": "rgb(255, 252, 248)",
+        "outline": "rgb(135, 72, 51)",
+        "ariaInvalid": "false"
+      }
+    ],
+    "controls": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Cancel",
+        "x": 16,
+        "y": 425,
+        "width": 75.859375,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(135, 72, 51)"
+      },
+      {
+        "label": "Edit set",
+        "x": 99.859375,
+        "y": 437,
+        "width": 205.515625,
+        "height": 24,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "18px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Save",
+        "x": 313.375,
+        "y": 425,
+        "width": 60.625,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(255, 248, 242)"
+      },
+      {
+        "label": "Delete set for Bench Press",
+        "x": 16,
+        "y": 781,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(155, 48, 62)"
+      }
+    ]
+  },
+  {
+    "kind": "zero",
+    "theme": "light",
+    "width": 390,
+    "file": "zero-light-390.png",
+    "errors": [],
+    "fixtureSha256": "8739b998e20e7a81c20c423366b15fa227c750fbbc4016a14e526eaef7b24f69",
+    "text": "Cancel\nEdit set\nSave\nBench Press\nPerformance details are optional. Empty fields stay empty.\nWeight (kg, optional)\nReps (optional)\nDelete set",
+    "overflow": false,
+    "fields": [
+      {
+        "label": "Weight (kg, optional)",
+        "value": "0",
+        "x": 16,
+        "y": 625,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-Regular",
+        "fontSize": "16px",
+        "border": "rgb(135, 72, 51)",
+        "background": "rgb(255, 252, 248)",
+        "outline": "rgb(135, 72, 51)",
+        "ariaInvalid": "false"
+      },
+      {
+        "label": "Reps (optional)",
+        "value": "",
+        "x": 16,
+        "y": 717,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-Regular",
+        "fontSize": "16px",
+        "border": "rgb(155, 131, 123)",
+        "background": "rgb(255, 252, 248)",
+        "outline": "rgb(135, 72, 51)",
+        "ariaInvalid": "false"
+      }
+    ],
+    "controls": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Cancel",
+        "x": 16,
+        "y": 425,
+        "width": 75.859375,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(135, 72, 51)"
+      },
+      {
+        "label": "Edit set",
+        "x": 99.859375,
+        "y": 437,
+        "width": 205.515625,
+        "height": 24,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "18px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Save",
+        "x": 313.375,
+        "y": 425,
+        "width": 60.625,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(255, 248, 242)"
+      },
+      {
+        "label": "Delete set for Bench Press",
+        "x": 16,
+        "y": 781,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(155, 48, 62)"
+      }
+    ]
+  },
+  {
+    "kind": "invalid",
+    "theme": "light",
+    "width": 390,
+    "file": "invalid-light-390.png",
+    "errors": [],
+    "fixtureSha256": "8739b998e20e7a81c20c423366b15fa227c750fbbc4016a14e526eaef7b24f69",
+    "text": "Cancel\nEdit set\nSave\nEnter weight with up to 3 decimal places.\nBench Press\nPerformance details are optional. Empty fields stay empty.\nWeight (kg, optional)\nReps (optional)\nDelete set",
+    "overflow": false,
+    "fields": [
+      {
+        "label": "Weight (kg, optional)",
+        "value": "1.2345",
+        "x": 16,
+        "y": 625,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-Regular",
+        "fontSize": "16px",
+        "border": "rgb(135, 72, 51)",
+        "background": "rgb(255, 252, 248)",
+        "outline": "rgb(135, 72, 51)",
+        "ariaInvalid": "false"
+      },
+      {
+        "label": "Reps (optional)",
+        "value": "12",
+        "x": 16,
+        "y": 717,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-Regular",
+        "fontSize": "16px",
+        "border": "rgb(155, 131, 123)",
+        "background": "rgb(255, 252, 248)",
+        "outline": "rgb(135, 72, 51)",
+        "ariaInvalid": "false"
+      }
+    ],
+    "controls": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Cancel",
+        "x": 16,
+        "y": 389,
+        "width": 75.859375,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(135, 72, 51)"
+      },
+      {
+        "label": "Edit set",
+        "x": 99.859375,
+        "y": 401,
+        "width": 205.515625,
+        "height": 24,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "18px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Save",
+        "x": 313.375,
+        "y": 389,
+        "width": 60.625,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(255, 248, 242)"
+      },
+      {
+        "label": "Delete set for Bench Press",
+        "x": 16,
+        "y": 781,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(155, 48, 62)"
+      }
+    ]
+  },
+  {
+    "kind": "keyboard",
+    "theme": "light",
+    "width": 320,
+    "file": "keyboard-light-320.png",
+    "errors": [],
+    "fixtureSha256": "8739b998e20e7a81c20c423366b15fa227c750fbbc4016a14e526eaef7b24f69",
+    "text": "Edit set\nCancel\nSave\nExtensão controlada e contração excêntrica — acompanhamento de desempenho com amplitude confortável\nPerformance details are optional. Empty fields stay empty.\nDistance unit\nkm\nm\nDistance (km)\nDuration (optional) · Seconds: 0–59\nMinutes (optional)\nSeconds\nDelete set",
+    "overflow": false,
+    "fields": [
+      {
+        "label": "Distance (km)",
+        "value": "0.001",
+        "x": 16,
+        "y": 941,
+        "width": 288,
+        "height": 48,
+        "font": "AxisManrope-Regular",
+        "fontSize": "32px",
+        "border": "rgb(135, 72, 51)",
+        "background": "rgb(255, 252, 248)",
+        "outline": "rgb(135, 72, 51)",
+        "ariaInvalid": "false"
+      },
+      {
+        "label": "Minutes (optional)",
+        "value": "",
+        "x": 16,
+        "y": 1141,
+        "width": 288,
+        "height": 48,
+        "font": "AxisManrope-Regular",
+        "fontSize": "32px",
+        "border": "rgb(155, 131, 123)",
+        "background": "rgb(255, 252, 248)",
+        "outline": "rgb(135, 72, 51)",
+        "ariaInvalid": "false"
+      },
+      {
+        "label": "Seconds",
+        "value": "",
+        "x": 16,
+        "y": 1249,
+        "width": 288,
+        "height": 48,
+        "font": "AxisManrope-Regular",
+        "fontSize": "32px",
+        "border": "rgb(155, 131, 123)",
+        "background": "rgb(255, 252, 248)",
+        "outline": "rgb(135, 72, 51)",
+        "ariaInvalid": "false"
+      }
+    ],
+    "controls": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Edit set",
+        "x": 16,
+        "y": 21,
+        "width": 288,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "36px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Cancel",
+        "x": 16,
+        "y": 77,
+        "width": 125.703125,
+        "height": 62,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "30px",
+        "color": "rgb(135, 72, 51)"
+      },
+      {
+        "label": "Save",
+        "x": 208.765625,
+        "y": 77,
+        "width": 95.234375,
+        "height": 62,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "30px",
+        "color": "rgb(255, 248, 242)"
+      },
+      {
+        "label": "Delete set for Extensão controlada e contração excêntrica — acompanhamento de desempenho com amplitude confortável",
+        "x": 16,
+        "y": 1313,
+        "width": 288,
+        "height": 62,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "30px",
+        "color": "rgb(155, 48, 62)"
+      }
+    ]
+  },
+  {
+    "kind": "workout",
+    "theme": "light",
+    "width": 390,
+    "file": "workout-light-390.png",
+    "errors": [],
+    "fixtureSha256": "8739b998e20e7a81c20c423366b15fa227c750fbbc4016a14e526eaef7b24f69",
+    "text": "Current Workout\nPerformance review\n1 of 5 exercises\nBench Press\nTarget: 2 planned sets\nExercise complete · 3 of 2 sets completed\nSet Complete\nSet\nWeight\nReps\n1\n25.125 kg\n12\n2\n—\n—\n3\n0 kg\n—\nDip\nTarget: 2 planned sets\n1\n1 of 2 sets completed\nSet Complete\nSet\nReps\nAdded weight\n1\n10\n+2.5 kg\nPlank\nNo set target\nComplete Exercise\nSet\nDuration\n1\n1:30\n+ Add set\nCycling\nNo set target\nComplete Exercise\nSet\nDistance\nTime\n1\n2.5 km\n14:32\n+ Add set\nExtensão controlada e contração excêntrica — acompanhamento de desempenho com amplitude confortável\nNo set target\nComplete Exercise\nSet\nDistance\n1\n1 m\n+ Add set\n+ Add exercise",
+    "overflow": false,
+    "fields": [],
+    "controls": [
+      {
+        "label": "Performance review",
+        "x": 68,
+        "y": 30,
+        "width": 210,
+        "height": 24,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "18px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "More workout actions",
+        "x": 330,
+        "y": 19,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Bench Press",
+        "x": 64,
+        "y": 124,
+        "width": 190,
+        "height": 24,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "More actions for Bench Press",
+        "x": 330,
+        "y": 122,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Complete set for Bench Press",
+        "x": 12,
+        "y": 210,
+        "width": 366,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(255, 248, 242)"
+      },
+      {
+        "label": "Bench Press, set 1. 25.125 kg, 12 reps",
+        "x": 12,
+        "y": 314,
+        "width": 366,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(106, 94, 89)"
+      },
+      {
+        "label": "Bench Press, set 2. Set complete. No performance details",
+        "x": 12,
+        "y": 362,
+        "width": 366,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(106, 94, 89)"
+      },
+      {
+        "label": "Bench Press, set 3. 0 kg, reps not entered",
+        "x": 12,
+        "y": 410,
+        "width": 366,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(106, 94, 89)"
+      },
+      {
+        "label": "Dip",
+        "x": 64,
+        "y": 508,
+        "width": 190,
+        "height": 24,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "More actions for Dip",
+        "x": 330,
+        "y": 506,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Complete set for Dip",
+        "x": 12,
+        "y": 594,
+        "width": 366,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(255, 248, 242)"
+      },
+      {
+        "label": "Dip, set 1. 10 reps, added weight +2.5 kg",
+        "x": 12,
+        "y": 698,
+        "width": 366,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(106, 94, 89)"
+      },
+      {
+        "label": "Plank",
+        "x": 64,
+        "y": 794,
+        "width": 254,
+        "height": 24,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "More actions for Plank",
+        "x": 330,
+        "y": 794,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Complete exercise Plank",
+        "x": 12,
+        "y": 850,
+        "width": 366,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(255, 248, 242)"
+      },
+      {
+        "label": "Plank, set 1. 1 min 30 sec",
+        "x": 12,
+        "y": 954,
+        "width": 366,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(106, 94, 89)"
+      },
+      {
+        "label": "Log set for Plank",
+        "x": 12,
+        "y": 1002,
+        "width": 366,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(135, 72, 51)"
+      },
+      {
+        "label": "Cycling",
+        "x": 64,
+        "y": 1098,
+        "width": 254,
+        "height": 24,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "More actions for Cycling",
+        "x": 330,
+        "y": 1098,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Complete exercise Cycling",
+        "x": 12,
+        "y": 1154,
+        "width": 366,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(255, 248, 242)"
+      },
+      {
+        "label": "Cycling, set 1. 2.5 km, 14 min 32 sec",
+        "x": 12,
+        "y": 1258,
+        "width": 366,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(106, 94, 89)"
+      },
+      {
+        "label": "Log set for Cycling",
+        "x": 12,
+        "y": 1306,
+        "width": 366,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(135, 72, 51)"
+      },
+      {
+        "label": "Extensão controlada e contração excêntrica — acompanhamento de desempenho com amplitude confortável",
+        "x": 64,
+        "y": 1402,
+        "width": 254,
+        "height": 96,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "More actions for Extensão controlada e contração excêntrica — acompanhamento de desempenho com amplitude confortável",
+        "x": 330,
+        "y": 1402,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Complete exercise Extensão controlada e contração excêntrica — acompanhamento de desempenho com amplitude confortável",
+        "x": 12,
+        "y": 1530,
+        "width": 366,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(255, 248, 242)"
+      },
+      {
+        "label": "Extensão controlada e contração excêntrica — acompanhamento de desempenho com amplitude confortável, set 1. 1 m",
+        "x": 12,
+        "y": 1634,
+        "width": 366,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(106, 94, 89)"
+      },
+      {
+        "label": "Log set for Extensão controlada e contração excêntrica — acompanhamento de desempenho com amplitude confortável",
+        "x": 12,
+        "y": 1682,
+        "width": 366,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(135, 72, 51)"
+      },
+      {
+        "label": "+ Add exercise",
+        "x": 0,
+        "y": 1766,
+        "width": 390,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(142, 78, 63)"
+      }
+    ]
+  },
+  {
+    "kind": "header",
+    "theme": "light",
+    "width": 390,
+    "file": "header-light-390.png",
+    "errors": [],
+    "fixtureSha256": "8739b998e20e7a81c20c423366b15fa227c750fbbc4016a14e526eaef7b24f69",
+    "text": "Current Workout\nPerformance review\n1 of 5 exercises",
+    "overflow": false,
+    "fields": [],
+    "controls": [
+      {
+        "label": "Performance review",
+        "x": 68,
+        "y": 30,
+        "width": 210,
+        "height": 24,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "18px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "More workout actions",
+        "x": 330,
+        "y": 19,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      }
+    ]
+  },
+  {
+    "kind": "routine",
+    "theme": "light",
+    "width": 390,
+    "file": "routine-light-390.png",
+    "errors": [],
+    "fixtureSha256": "8739b998e20e7a81c20c423366b15fa227c750fbbc4016a14e526eaef7b24f69",
+    "text": "Cancel\nEdit routine\nSave\nRoutine\nRoutine name *\nExercises\n4 exercises\nAdd exercise\n1. Bench Press\nStrength · Weight + reps\n2 planned sets\nTargets\nRemove\n2. Dip\nBodyweight · Reps · optional added weight\n2 planned sets\nTargets\nRemove\n3. Plank\nDuration · Time\nNo targets\nTargets\nRemove\n4. Cycling\nDistance · Distance + optional time\nNo targets\nTargets\nRemove",
+    "overflow": false,
+    "fields": [
+      {
+        "label": "Routine name *",
+        "value": "Performance review",
+        "x": 25,
+        "y": 170,
+        "width": 340,
+        "height": 48,
+        "font": "AxisManrope-Regular",
+        "fontSize": "16px",
+        "border": "rgb(155, 131, 123)",
+        "background": "rgb(255, 252, 248)",
+        "outline": "rgb(135, 72, 51)",
+        "ariaInvalid": "false"
+      }
+    ],
+    "controls": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 21,
+        "width": 91.859375,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(135, 72, 51)"
+      },
+      {
+        "label": "Edit routine",
+        "x": 111.859375,
+        "y": 28,
+        "width": 197.515625,
+        "height": 34,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "26px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Save",
+        "x": 317.375,
+        "y": 21,
+        "width": 60.625,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(255, 248, 242)"
+      },
+      {
+        "label": "Routine",
+        "x": 73,
+        "y": 98,
+        "width": 292,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Exercises",
+        "x": 69,
+        "y": 256,
+        "width": 142.484375,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Add exercise",
+        "x": 219.484375,
+        "y": 258,
+        "width": 145.515625,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(135, 72, 51)"
+      },
+      {
+        "label": "1. Bench Press",
+        "x": 82,
+        "y": 329,
+        "width": 278,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Configure targets for Bench Press",
+        "x": 30,
+        "y": 422,
+        "width": 96.5,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Move Bench Press up",
+        "x": 130.5,
+        "y": 422,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgba(16, 16, 16, 0.3)"
+      },
+      {
+        "label": "Move Bench Press down",
+        "x": 182.5,
+        "y": 422,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Remove Bench Press from routine",
+        "x": 234.5,
+        "y": 422,
+        "width": 99.1875,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(155, 48, 62)"
+      },
+      {
+        "label": "2. Dip",
+        "x": 82,
+        "y": 496,
+        "width": 278,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Configure targets for Dip",
+        "x": 30,
+        "y": 589,
+        "width": 96.5,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Move Dip up",
+        "x": 130.5,
+        "y": 589,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Move Dip down",
+        "x": 182.5,
+        "y": 589,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Remove Dip from routine",
+        "x": 234.5,
+        "y": 589,
+        "width": 99.1875,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(155, 48, 62)"
+      },
+      {
+        "label": "3. Plank",
+        "x": 82,
+        "y": 663,
+        "width": 278,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Configure targets for Plank",
+        "x": 30,
+        "y": 756,
+        "width": 96.5,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Move Plank up",
+        "x": 130.5,
+        "y": 756,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Move Plank down",
+        "x": 182.5,
+        "y": 756,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Remove Plank from routine",
+        "x": 234.5,
+        "y": 756,
+        "width": 99.1875,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(155, 48, 62)"
+      },
+      {
+        "label": "4. Cycling",
+        "x": 82,
+        "y": 830,
+        "width": 278,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Configure targets for Cycling",
+        "x": 30,
+        "y": 923,
+        "width": 96.5,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Move Cycling up",
+        "x": 130.5,
+        "y": 923,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Move Cycling down",
+        "x": 182.5,
+        "y": 923,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgba(16, 16, 16, 0.3)"
+      },
+      {
+        "label": "Remove Cycling from routine",
+        "x": 234.5,
+        "y": 923,
+        "width": 99.1875,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(155, 48, 62)"
+      }
+    ]
+  },
+  {
+    "kind": "exercise",
+    "theme": "light",
+    "width": 390,
+    "file": "exercise-light-390.png",
+    "errors": [],
+    "fixtureSha256": "8739b998e20e7a81c20c423366b15fa227c750fbbc4016a14e526eaef7b24f69",
+    "text": "Cancel\nNew exercise\nCreate\nExercise\nName *\nMeasurement\nMeasurement type *\nStrength\nWeight in kg and reps.",
+    "overflow": false,
+    "fields": [
+      {
+        "label": "Name *",
+        "value": "Controlled exercise",
+        "x": 29,
+        "y": 570,
+        "width": 332,
+        "height": 48,
+        "font": "AxisManrope-Regular",
+        "fontSize": "16px",
+        "border": "rgb(135, 72, 51)",
+        "background": "rgb(255, 252, 248)",
+        "outline": "rgb(135, 72, 51)",
+        "ariaInvalid": "false"
+      }
+    ],
+    "controls": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 405,
+        "width": 91.859375,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(135, 72, 51)"
+      },
+      {
+        "label": "New exercise",
+        "x": 111.859375,
+        "y": 412,
+        "width": 183.28125,
+        "height": 34,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "26px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Create",
+        "x": 303.140625,
+        "y": 405,
+        "width": 74.859375,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(255, 248, 242)"
+      },
+      {
+        "label": "Exercise",
+        "x": 77,
+        "y": 498,
+        "width": 284,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Measurement",
+        "x": 77,
+        "y": 666,
+        "width": 284,
+        "height": 24,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      }
+    ]
+  },
+  {
+    "kind": "history",
+    "theme": "light",
+    "width": 390,
+    "file": "history-light-390.png",
+    "errors": [],
+    "fixtureSha256": "8739b998e20e7a81c20c423366b15fa227c750fbbc4016a14e526eaef7b24f69",
+    "text": "Workout details\nFree workout\nToday\nCompleted 13/11/2026, 12:00:00\nStarted 13/11/2026, 12:00:00 · Read-only\nBench Press\nStrength\nNot marked complete · No set target\nSet 1\n25.125 kg × 12",
+    "overflow": false,
+    "fields": [],
+    "controls": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 21,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Workout details",
+        "x": 68,
+        "y": 28,
+        "width": 310,
+        "height": 34,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "26px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Free workout",
+        "x": 29,
+        "y": 110,
+        "width": 332,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Today",
+        "x": 29,
+        "y": 146,
+        "width": 332,
+        "height": 24,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Bench Press",
+        "x": 81,
+        "y": 264,
+        "width": 280,
+        "height": 24,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      }
+    ]
+  },
+  {
+    "kind": "note",
+    "theme": "light",
+    "width": 390,
+    "file": "note-light-390.png",
+    "errors": [],
+    "fixtureSha256": "8739b998e20e7a81c20c423366b15fa227c750fbbc4016a14e526eaef7b24f69",
+    "text": "Cancel\nWorkout note\nSave\nNote (optional)",
+    "overflow": false,
+    "fields": [
+      {
+        "label": "Note (optional)",
+        "value": "Steady session. Keep the next set comfortable.",
+        "x": 16,
+        "y": 763,
+        "width": 358,
+        "height": 66,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "border": "rgb(40, 99, 79)",
+        "background": "rgb(255, 255, 255)",
+        "outline": "rgb(16, 16, 16)",
+        "ariaInvalid": "false"
+      }
+    ],
+    "controls": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Cancel",
+        "x": 16,
+        "y": 659,
+        "width": 75.859375,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Workout note",
+        "x": 99.859375,
+        "y": 669,
+        "width": 202.765625,
+        "height": 24,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "18px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Save",
+        "x": 310.625,
+        "y": 659,
+        "width": 63.375,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(255, 255, 255)"
+      }
+    ]
+  },
+  {
+    "kind": "add",
+    "theme": "light",
+    "width": 390,
+    "file": "add-light-390.png",
+    "errors": [],
+    "fixtureSha256": "8739b998e20e7a81c20c423366b15fa227c750fbbc4016a14e526eaef7b24f69",
+    "text": "←\nAdd exercise\nExercise\nSearch exercises\n▾",
+    "overflow": false,
+    "fields": [],
+    "controls": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Back",
+        "x": 16,
+        "y": 677,
+        "width": 46.09375,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Add exercise",
+        "x": 70.09375,
+        "y": 687,
+        "width": 303.90625,
+        "height": 24,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "18px",
+        "color": "rgb(23, 33, 29)"
+      }
+    ]
+  }
+]

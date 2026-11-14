@@ -1,0 +1,279 @@
+{
+  "scope": "Actual RNWeb components and SQLite-generated fixture; native modal/alert acceptance separate",
+  "checks": [
+    {
+      "theme": "dark",
+      "width": 320,
+      "fontScale": 1,
+      "header": {
+        "x": 16,
+        "y": 53,
+        "width": 48,
+        "height": 48
+      },
+      "last": {
+        "x": 120.28125,
+        "y": 763,
+        "width": 56.609375,
+        "height": 48
+      },
+      "reads": [
+        null,
+        "2026-10-15"
+      ],
+      "result": "Source paging and status callback retained; previous-version labels visible; last mutable action reachable"
+    },
+    {
+      "theme": "dark",
+      "width": 320,
+      "fontScale": 2,
+      "header": {
+        "x": 16,
+        "y": 173,
+        "width": 48,
+        "height": 48
+      },
+      "last": {
+        "x": 190.5625,
+        "y": 749,
+        "width": 87.203125,
+        "height": 62
+      },
+      "reads": [
+        null,
+        "2026-10-15"
+      ],
+      "result": "Source paging and status callback retained; previous-version labels visible; last mutable action reachable"
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "fontScale": 1,
+      "header": {
+        "x": 16,
+        "y": 21,
+        "width": 48,
+        "height": 48
+      },
+      "last": {
+        "x": 120.28125,
+        "y": 763,
+        "width": 56.609375,
+        "height": 48
+      },
+      "reads": [
+        null,
+        "2026-10-15"
+      ],
+      "result": "Source paging and status callback retained; previous-version labels visible; last mutable action reachable"
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "fontScale": 2,
+      "header": {
+        "x": 16,
+        "y": 125,
+        "width": 48,
+        "height": 48
+      },
+      "last": {
+        "x": 190.5625,
+        "y": 749,
+        "width": 87.203125,
+        "height": 62
+      },
+      "reads": [
+        null,
+        "2026-10-15"
+      ],
+      "result": "Source paging and status callback retained; previous-version labels visible; last mutable action reachable"
+    },
+    {
+      "theme": "dark",
+      "width": 430,
+      "fontScale": 1,
+      "header": {
+        "x": 16,
+        "y": 21,
+        "width": 48,
+        "height": 48
+      },
+      "last": {
+        "x": 120.28125,
+        "y": 763,
+        "width": 56.609375,
+        "height": 48
+      },
+      "reads": [
+        null,
+        "2026-10-15"
+      ],
+      "result": "Source paging and status callback retained; previous-version labels visible; last mutable action reachable"
+    },
+    {
+      "theme": "dark",
+      "width": 430,
+      "fontScale": 2,
+      "header": {
+        "x": 16,
+        "y": 125,
+        "width": 48,
+        "height": 48
+      },
+      "last": {
+        "x": 190.5625,
+        "y": 749,
+        "width": 87.203125,
+        "height": 62
+      },
+      "reads": [
+        null,
+        "2026-10-15"
+      ],
+      "result": "Source paging and status callback retained; previous-version labels visible; last mutable action reachable"
+    },
+    {
+      "theme": "light",
+      "width": 320,
+      "fontScale": 1,
+      "header": {
+        "x": 16,
+        "y": 53,
+        "width": 48,
+        "height": 48
+      },
+      "last": {
+        "x": 120.28125,
+        "y": 763,
+        "width": 56.609375,
+        "height": 48
+      },
+      "reads": [
+        null,
+        "2026-10-15"
+      ],
+      "result": "Source paging and status callback retained; previous-version labels visible; last mutable action reachable"
+    },
+    {
+      "theme": "light",
+      "width": 320,
+      "fontScale": 2,
+      "header": {
+        "x": 16,
+        "y": 173,
+        "width": 48,
+        "height": 48
+      },
+      "last": {
+        "x": 190.5625,
+        "y": 749,
+        "width": 87.203125,
+        "height": 62
+      },
+      "reads": [
+        null,
+        "2026-10-15"
+      ],
+      "result": "Source paging and status callback retained; previous-version labels visible; last mutable action reachable"
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "fontScale": 1,
+      "header": {
+        "x": 16,
+        "y": 21,
+        "width": 48,
+        "height": 48
+      },
+      "last": {
+        "x": 120.28125,
+        "y": 763,
+        "width": 56.609375,
+        "height": 48
+      },
+      "reads": [
+        null,
+        "2026-10-15"
+      ],
+      "result": "Source paging and status callback retained; previous-version labels visible; last mutable action reachable"
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "fontScale": 2,
+      "header": {
+        "x": 16,
+        "y": 125,
+        "width": 48,
+        "height": 48
+      },
+      "last": {
+        "x": 190.5625,
+        "y": 749,
+        "width": 87.203125,
+        "height": 62
+      },
+      "reads": [
+        null,
+        "2026-10-15"
+      ],
+      "result": "Source paging and status callback retained; previous-version labels visible; last mutable action reachable"
+    },
+    {
+      "theme": "light",
+      "width": 430,
+      "fontScale": 1,
+      "header": {
+        "x": 16,
+        "y": 21,
+        "width": 48,
+        "height": 48
+      },
+      "last": {
+        "x": 120.28125,
+        "y": 763,
+        "width": 56.609375,
+        "height": 48
+      },
+      "reads": [
+        null,
+        "2026-10-15"
+      ],
+      "result": "Source paging and status callback retained; previous-version labels visible; last mutable action reachable"
+    },
+    {
+      "theme": "light",
+      "width": 430,
+      "fontScale": 2,
+      "header": {
+        "x": 16,
+        "y": 125,
+        "width": 48,
+        "height": 48
+      },
+      "last": {
+        "x": 190.5625,
+        "y": 749,
+        "width": 87.203125,
+        "height": 62
+      },
+      "reads": [
+        null,
+        "2026-10-15"
+      ],
+      "result": "Source paging and status callback retained; previous-version labels visible; last mutable action reachable"
+    },
+    {
+      "theme": "dark",
+      "case": "history-retry",
+      "result": "Original callback/state contract retained"
+    },
+    {
+      "theme": "light",
+      "case": "history-retry",
+      "result": "Original callback/state contract retained"
+    }
+  ]
+}

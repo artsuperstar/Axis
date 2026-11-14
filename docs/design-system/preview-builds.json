@@ -1,0 +1,122 @@
+[
+  {
+    "name": "home-v2",
+    "code": 0
+  },
+  {
+    "name": "tasks-fidelity",
+    "code": 0
+  },
+  {
+    "name": "new-task",
+    "code": 0
+  },
+  {
+    "name": "calendar",
+    "code": 0
+  },
+  {
+    "name": "finance-charts",
+    "code": 0
+  },
+  {
+    "name": "transaction-editor-v2",
+    "code": 0
+  },
+  {
+    "name": "finance-transactions",
+    "code": 0
+  },
+  {
+    "name": "finance-categories",
+    "code": 0
+  },
+  {
+    "name": "finance-commitments",
+    "code": 0
+  },
+  {
+    "name": "commitment-editor-v2",
+    "code": 0
+  },
+  {
+    "name": "commitment-payment-v2",
+    "code": 0
+  },
+  {
+    "name": "commitment-resume-v2",
+    "code": 0
+  },
+  {
+    "name": "commitment-details-v2",
+    "code": 0
+  },
+  {
+    "name": "commitment-history-v2",
+    "code": 0
+  },
+  {
+    "name": "commitment-history-index-v2",
+    "code": 0
+  },
+  {
+    "name": "work-main-v2",
+    "code": 0
+  },
+  {
+    "name": "work-editor-v2",
+    "code": 0
+  },
+  {
+    "name": "work-payment-v2",
+    "code": 0
+  },
+  {
+    "name": "job-details-v2",
+    "code": 0
+  },
+  {
+    "name": "clients-v2",
+    "code": 0
+  },
+  {
+    "name": "client-details-v2",
+    "code": 0
+  },
+  {
+    "name": "work-history-v2",
+    "code": 0
+  },
+  {
+    "name": "routines",
+    "code": 0
+  },
+  {
+    "name": "workout",
+    "code": 0
+  },
+  {
+    "name": "routine-editor",
+    "code": 0
+  },
+  {
+    "name": "routine-picker",
+    "code": 0
+  },
+  {
+    "name": "exercises",
+    "code": 0
+  },
+  {
+    "name": "fitness-history",
+    "code": 0
+  },
+  {
+    "name": "workout-rotations",
+    "code": 0
+  },
+  {
+    "name": "journal",
+    "code": 0
+  }
+]

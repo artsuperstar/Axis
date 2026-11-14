@@ -1,0 +1,6402 @@
+[
+  {
+    "file": "manage-dark-390.png",
+    "identical": false,
+    "contentIdentical": false,
+    "fixtureIdentical": true,
+    "before": [
+      {
+        "label": "Back to Commitments",
+        "x": 16,
+        "y": 86,
+        "width": 46.09375,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Manage commitments",
+        "x": 70.09375,
+        "y": 94,
+        "width": 303.90625,
+        "height": 28,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "20px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Manage Active bill",
+        "x": 16,
+        "y": 142,
+        "width": 303.71875,
+        "height": 72,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Series options for Active bill",
+        "x": 327.71875,
+        "y": 142,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Manage Active subscription",
+        "x": 16,
+        "y": 247,
+        "width": 303.71875,
+        "height": 72,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Series options for Active subscription",
+        "x": 327.71875,
+        "y": 247,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Manage Completed installment",
+        "x": 16,
+        "y": 352,
+        "width": 303.71875,
+        "height": 96,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Series options for Completed installment",
+        "x": 327.71875,
+        "y": 352,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Manage Ended subscription",
+        "x": 16,
+        "y": 481,
+        "width": 303.71875,
+        "height": 72,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Series options for Ended subscription",
+        "x": 327.71875,
+        "y": 481,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Manage Installment remaining",
+        "x": 16,
+        "y": 586,
+        "width": 303.71875,
+        "height": 96,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Series options for Installment remaining",
+        "x": 327.71875,
+        "y": 586,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Manage Long commitment title for regional services and supporting accessibility documentation retained without truncation",
+        "x": 16,
+        "y": 715,
+        "width": 303.71875,
+        "height": 172,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Series options for Long commitment title for regional services and supporting accessibility documentation retained without truncation",
+        "x": 327.71875,
+        "y": 715,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Manage Paused bill",
+        "x": 16,
+        "y": 920,
+        "width": 303.71875,
+        "height": 72,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Series options for Paused bill",
+        "x": 327.71875,
+        "y": 920,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Manage Paused installment assigned",
+        "x": 16,
+        "y": 1025,
+        "width": 303.71875,
+        "height": 96,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Series options for Paused installment assigned",
+        "x": 327.71875,
+        "y": 1025,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Manage Paused installment eligible",
+        "x": 16,
+        "y": 1202,
+        "width": 303.71875,
+        "height": 96,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Series options for Paused installment eligible",
+        "x": 327.71875,
+        "y": 1202,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(237, 243, 239)"
+      }
+    ],
+    "after": [
+      {
+        "label": "Back to Commitments",
+        "x": 16,
+        "y": 86,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage commitments",
+        "x": 72,
+        "y": 96,
+        "width": 302,
+        "height": 28,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Manage Active bill",
+        "x": 29,
+        "y": 147,
+        "width": 276,
+        "height": 72,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Series options for Active bill",
+        "x": 313,
+        "y": 147,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Active subscription",
+        "x": 29,
+        "y": 253,
+        "width": 276,
+        "height": 92,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Series options for Active subscription",
+        "x": 313,
+        "y": 253,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Completed installment",
+        "x": 29,
+        "y": 379,
+        "width": 276,
+        "height": 96,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Series options for Completed installment",
+        "x": 313,
+        "y": 379,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Ended subscription",
+        "x": 29,
+        "y": 509,
+        "width": 276,
+        "height": 72,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Series options for Ended subscription",
+        "x": 313,
+        "y": 509,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Installment remaining",
+        "x": 29,
+        "y": 615,
+        "width": 276,
+        "height": 96,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Series options for Installment remaining",
+        "x": 313,
+        "y": 615,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Long commitment title for regional services and supporting accessibility documentation retained without truncation",
+        "x": 29,
+        "y": 745,
+        "width": 276,
+        "height": 172,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Series options for Long commitment title for regional services and supporting accessibility documentation retained without truncation",
+        "x": 313,
+        "y": 745,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Paused bill",
+        "x": 29,
+        "y": 951,
+        "width": 276,
+        "height": 72,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Series options for Paused bill",
+        "x": 313,
+        "y": 951,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Paused installment assigned",
+        "x": 29,
+        "y": 1057,
+        "width": 276,
+        "height": 120,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Series options for Paused installment assigned",
+        "x": 313,
+        "y": 1057,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Paused installment eligible",
+        "x": 29,
+        "y": 1259,
+        "width": 276,
+        "height": 120,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Series options for Paused installment eligible",
+        "x": 313,
+        "y": 1259,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      }
+    ]
+  },
+  {
+    "file": "menu-dark-390.png",
+    "identical": false,
+    "contentIdentical": false,
+    "fixtureIdentical": true,
+    "before": [
+      {
+        "label": "Back to Commitments",
+        "x": 16,
+        "y": 86,
+        "width": 46.09375,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Manage commitments",
+        "x": 70.09375,
+        "y": 94,
+        "width": 303.90625,
+        "height": 28,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "20px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Manage Active bill",
+        "x": 16,
+        "y": 142,
+        "width": 303.71875,
+        "height": 72,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Series options for Active bill",
+        "x": 327.71875,
+        "y": 142,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Manage Active subscription",
+        "x": 16,
+        "y": 247,
+        "width": 303.71875,
+        "height": 72,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Series options for Active subscription",
+        "x": 327.71875,
+        "y": 247,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Manage Completed installment",
+        "x": 16,
+        "y": 352,
+        "width": 303.71875,
+        "height": 96,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Series options for Completed installment",
+        "x": 327.71875,
+        "y": 352,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Manage Ended subscription",
+        "x": 16,
+        "y": 481,
+        "width": 303.71875,
+        "height": 72,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Series options for Ended subscription",
+        "x": 327.71875,
+        "y": 481,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Manage Installment remaining",
+        "x": 16,
+        "y": 586,
+        "width": 303.71875,
+        "height": 96,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Series options for Installment remaining",
+        "x": 327.71875,
+        "y": 586,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Manage Long commitment title for regional services and supporting accessibility documentation retained without truncation",
+        "x": 16,
+        "y": 715,
+        "width": 303.71875,
+        "height": 172,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Series options for Long commitment title for regional services and supporting accessibility documentation retained without truncation",
+        "x": 327.71875,
+        "y": 715,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Manage Paused bill",
+        "x": 16,
+        "y": 920,
+        "width": 303.71875,
+        "height": 72,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Series options for Paused bill",
+        "x": 327.71875,
+        "y": 920,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Manage Paused installment assigned",
+        "x": 16,
+        "y": 1025,
+        "width": 303.71875,
+        "height": 96,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Series options for Paused installment assigned",
+        "x": 327.71875,
+        "y": 1025,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Manage Paused installment eligible",
+        "x": 16,
+        "y": 1202,
+        "width": 303.71875,
+        "height": 96,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Series options for Paused installment eligible",
+        "x": 327.71875,
+        "y": 1202,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Close series options for active bill",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Edit Active bill",
+        "x": 143,
+        "y": 199,
+        "width": 222,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Pause Active bill",
+        "x": 143,
+        "y": 247,
+        "width": 222,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "End Active bill",
+        "x": 143,
+        "y": 295,
+        "width": 222,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(240, 171, 171)"
+      },
+      {
+        "label": "History for Active bill",
+        "x": 143,
+        "y": 343,
+        "width": 222,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(237, 243, 239)"
+      }
+    ],
+    "after": [
+      {
+        "label": "Back to Commitments",
+        "x": 16,
+        "y": 86,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage commitments",
+        "x": 72,
+        "y": 96,
+        "width": 302,
+        "height": 28,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Manage Active bill",
+        "x": 29,
+        "y": 147,
+        "width": 276,
+        "height": 72,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Series options for Active bill",
+        "x": 313,
+        "y": 147,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Active subscription",
+        "x": 29,
+        "y": 253,
+        "width": 276,
+        "height": 92,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Series options for Active subscription",
+        "x": 313,
+        "y": 253,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Completed installment",
+        "x": 29,
+        "y": 379,
+        "width": 276,
+        "height": 96,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Series options for Completed installment",
+        "x": 313,
+        "y": 379,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Ended subscription",
+        "x": 29,
+        "y": 509,
+        "width": 276,
+        "height": 72,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Series options for Ended subscription",
+        "x": 313,
+        "y": 509,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Installment remaining",
+        "x": 29,
+        "y": 615,
+        "width": 276,
+        "height": 96,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Series options for Installment remaining",
+        "x": 313,
+        "y": 615,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Long commitment title for regional services and supporting accessibility documentation retained without truncation",
+        "x": 29,
+        "y": 745,
+        "width": 276,
+        "height": 172,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Series options for Long commitment title for regional services and supporting accessibility documentation retained without truncation",
+        "x": 313,
+        "y": 745,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Paused bill",
+        "x": 29,
+        "y": 951,
+        "width": 276,
+        "height": 72,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Series options for Paused bill",
+        "x": 313,
+        "y": 951,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Paused installment assigned",
+        "x": 29,
+        "y": 1057,
+        "width": 276,
+        "height": 120,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Series options for Paused installment assigned",
+        "x": 313,
+        "y": 1057,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Paused installment eligible",
+        "x": 29,
+        "y": 1259,
+        "width": 276,
+        "height": 120,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Series options for Paused installment eligible",
+        "x": 313,
+        "y": 1259,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Close series options for active bill",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Edit Active bill",
+        "x": 130,
+        "y": 208,
+        "width": 222,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Pause Active bill",
+        "x": 130,
+        "y": 260,
+        "width": 222,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "End Active bill",
+        "x": 130,
+        "y": 312,
+        "width": 222,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(240, 171, 171)"
+      },
+      {
+        "label": "History for Active bill",
+        "x": 130,
+        "y": 364,
+        "width": 222,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(246, 240, 237)"
+      }
+    ]
+  },
+  {
+    "file": "guidance-dark-390.png",
+    "identical": false,
+    "contentIdentical": false,
+    "fixtureIdentical": true,
+    "before": [
+      {
+        "label": "Back to Commitments",
+        "x": 16,
+        "y": -413,
+        "width": 46.09375,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Manage commitments",
+        "x": 70.09375,
+        "y": -405,
+        "width": 303.90625,
+        "height": 28,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "20px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Manage Active bill",
+        "x": 16,
+        "y": -357,
+        "width": 303.71875,
+        "height": 72,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Series options for Active bill",
+        "x": 327.71875,
+        "y": -357,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Manage Active subscription",
+        "x": 16,
+        "y": -252,
+        "width": 303.71875,
+        "height": 72,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Series options for Active subscription",
+        "x": 327.71875,
+        "y": -252,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Manage Completed installment",
+        "x": 16,
+        "y": -147,
+        "width": 303.71875,
+        "height": 96,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Series options for Completed installment",
+        "x": 327.71875,
+        "y": -147,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Manage Ended subscription",
+        "x": 16,
+        "y": -18,
+        "width": 303.71875,
+        "height": 72,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Series options for Ended subscription",
+        "x": 327.71875,
+        "y": -18,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Manage Installment remaining",
+        "x": 16,
+        "y": 87,
+        "width": 303.71875,
+        "height": 96,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Series options for Installment remaining",
+        "x": 327.71875,
+        "y": 87,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Manage Long commitment title for regional services and supporting accessibility documentation retained without truncation",
+        "x": 16,
+        "y": 216,
+        "width": 303.71875,
+        "height": 172,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Series options for Long commitment title for regional services and supporting accessibility documentation retained without truncation",
+        "x": 327.71875,
+        "y": 216,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Manage Paused bill",
+        "x": 16,
+        "y": 421,
+        "width": 303.71875,
+        "height": 72,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Series options for Paused bill",
+        "x": 327.71875,
+        "y": 421,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Manage Paused installment assigned",
+        "x": 16,
+        "y": 526,
+        "width": 303.71875,
+        "height": 96,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Series options for Paused installment assigned",
+        "x": 327.71875,
+        "y": 526,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Manage Paused installment eligible",
+        "x": 16,
+        "y": 703,
+        "width": 303.71875,
+        "height": 96,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Series options for Paused installment eligible",
+        "x": 327.71875,
+        "y": 703,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(237, 243, 239)"
+      }
+    ],
+    "after": [
+      {
+        "label": "Back to Commitments",
+        "x": 16,
+        "y": -494,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage commitments",
+        "x": 72,
+        "y": -484,
+        "width": 302,
+        "height": 28,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Manage Active bill",
+        "x": 29,
+        "y": -433,
+        "width": 276,
+        "height": 72,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Series options for Active bill",
+        "x": 313,
+        "y": -433,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Active subscription",
+        "x": 29,
+        "y": -327,
+        "width": 276,
+        "height": 92,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Series options for Active subscription",
+        "x": 313,
+        "y": -327,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Completed installment",
+        "x": 29,
+        "y": -201,
+        "width": 276,
+        "height": 96,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Series options for Completed installment",
+        "x": 313,
+        "y": -201,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Ended subscription",
+        "x": 29,
+        "y": -71,
+        "width": 276,
+        "height": 72,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Series options for Ended subscription",
+        "x": 313,
+        "y": -71,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Installment remaining",
+        "x": 29,
+        "y": 35,
+        "width": 276,
+        "height": 96,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Series options for Installment remaining",
+        "x": 313,
+        "y": 35,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Long commitment title for regional services and supporting accessibility documentation retained without truncation",
+        "x": 29,
+        "y": 165,
+        "width": 276,
+        "height": 172,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Series options for Long commitment title for regional services and supporting accessibility documentation retained without truncation",
+        "x": 313,
+        "y": 165,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Paused bill",
+        "x": 29,
+        "y": 371,
+        "width": 276,
+        "height": 72,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Series options for Paused bill",
+        "x": 313,
+        "y": 371,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Paused installment assigned",
+        "x": 29,
+        "y": 477,
+        "width": 276,
+        "height": 120,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Series options for Paused installment assigned",
+        "x": 313,
+        "y": 477,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Paused installment eligible",
+        "x": 29,
+        "y": 679,
+        "width": 276,
+        "height": 120,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Series options for Paused installment eligible",
+        "x": 313,
+        "y": 679,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      }
+    ]
+  },
+  {
+    "file": "long-dark-320.png",
+    "identical": false,
+    "contentIdentical": false,
+    "fixtureIdentical": true,
+    "before": [
+      {
+        "label": "Back to Commitments",
+        "x": 16,
+        "y": 159,
+        "width": 58.171875,
+        "height": 58,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "28px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Manage commitments",
+        "x": 82.171875,
+        "y": 132,
+        "width": 250.171875,
+        "height": 112,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "40px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Manage Long commitment title for regional services and supporting accessibility documentation retained without truncation",
+        "x": 16,
+        "y": 256,
+        "width": 221.453125,
+        "height": 784,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "32px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Series options for Long commitment title for regional services and supporting accessibility documentation retained without truncation",
+        "x": 245.453125,
+        "y": 256,
+        "width": 58.546875,
+        "height": 58,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "28px",
+        "color": "rgb(237, 243, 239)"
+      }
+    ],
+    "after": [
+      {
+        "label": "Back to Commitments",
+        "x": 16,
+        "y": 132,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage commitments",
+        "x": 16,
+        "y": 188,
+        "width": 288,
+        "height": 112,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "40px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Manage Long commitment title for regional services and supporting accessibility documentation retained without truncation",
+        "x": 29,
+        "y": 313,
+        "width": 206,
+        "height": 784,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "32px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Series options for Long commitment title for regional services and supporting accessibility documentation retained without truncation",
+        "x": 243,
+        "y": 313,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      }
+    ]
+  },
+  {
+    "file": "empty-dark-390.png",
+    "identical": false,
+    "contentIdentical": false,
+    "fixtureIdentical": true,
+    "before": [
+      {
+        "label": "Back to Commitments",
+        "x": 16,
+        "y": 86,
+        "width": 46.09375,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Manage commitments",
+        "x": 70.09375,
+        "y": 94,
+        "width": 303.90625,
+        "height": 28,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "20px",
+        "color": "rgb(237, 243, 239)"
+      }
+    ],
+    "after": [
+      {
+        "label": "Back to Commitments",
+        "x": 16,
+        "y": 86,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage commitments",
+        "x": 72,
+        "y": 96,
+        "width": 302,
+        "height": 28,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(246, 240, 237)"
+      }
+    ]
+  },
+  {
+    "file": "error-dark-390.png",
+    "identical": false,
+    "contentIdentical": false,
+    "fixtureIdentical": true,
+    "before": [
+      {
+        "label": "Back to Commitments",
+        "x": 16,
+        "y": 86,
+        "width": 46.09375,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Manage commitments",
+        "x": 70.09375,
+        "y": 94,
+        "width": 303.90625,
+        "height": 28,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "20px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Manage Active bill",
+        "x": 16,
+        "y": 178,
+        "width": 303.71875,
+        "height": 72,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Series options for Active bill",
+        "x": 327.71875,
+        "y": 178,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Manage Active subscription",
+        "x": 16,
+        "y": 283,
+        "width": 303.71875,
+        "height": 72,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Series options for Active subscription",
+        "x": 327.71875,
+        "y": 283,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Manage Completed installment",
+        "x": 16,
+        "y": 388,
+        "width": 303.71875,
+        "height": 96,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Series options for Completed installment",
+        "x": 327.71875,
+        "y": 388,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Manage Ended subscription",
+        "x": 16,
+        "y": 517,
+        "width": 303.71875,
+        "height": 72,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Series options for Ended subscription",
+        "x": 327.71875,
+        "y": 517,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Manage Installment remaining",
+        "x": 16,
+        "y": 622,
+        "width": 303.71875,
+        "height": 96,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Series options for Installment remaining",
+        "x": 327.71875,
+        "y": 622,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Manage Long commitment title for regional services and supporting accessibility documentation retained without truncation",
+        "x": 16,
+        "y": 751,
+        "width": 303.71875,
+        "height": 172,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Series options for Long commitment title for regional services and supporting accessibility documentation retained without truncation",
+        "x": 327.71875,
+        "y": 751,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Manage Paused bill",
+        "x": 16,
+        "y": 956,
+        "width": 303.71875,
+        "height": 72,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Series options for Paused bill",
+        "x": 327.71875,
+        "y": 956,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Manage Paused installment assigned",
+        "x": 16,
+        "y": 1061,
+        "width": 303.71875,
+        "height": 96,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Series options for Paused installment assigned",
+        "x": 327.71875,
+        "y": 1061,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Manage Paused installment eligible",
+        "x": 16,
+        "y": 1238,
+        "width": 303.71875,
+        "height": 96,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(237, 243, 239)"
+      },
+      {
+        "label": "Series options for Paused installment eligible",
+        "x": 327.71875,
+        "y": 1238,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(237, 243, 239)"
+      }
+    ],
+    "after": [
+      {
+        "label": "Back to Commitments",
+        "x": 16,
+        "y": 86,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage commitments",
+        "x": 72,
+        "y": 96,
+        "width": 302,
+        "height": 28,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Manage Active bill",
+        "x": 29,
+        "y": 183,
+        "width": 276,
+        "height": 72,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Series options for Active bill",
+        "x": 313,
+        "y": 183,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Active subscription",
+        "x": 29,
+        "y": 289,
+        "width": 276,
+        "height": 92,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Series options for Active subscription",
+        "x": 313,
+        "y": 289,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Completed installment",
+        "x": 29,
+        "y": 415,
+        "width": 276,
+        "height": 96,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Series options for Completed installment",
+        "x": 313,
+        "y": 415,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Ended subscription",
+        "x": 29,
+        "y": 545,
+        "width": 276,
+        "height": 72,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Series options for Ended subscription",
+        "x": 313,
+        "y": 545,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Installment remaining",
+        "x": 29,
+        "y": 651,
+        "width": 276,
+        "height": 96,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Series options for Installment remaining",
+        "x": 313,
+        "y": 651,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Long commitment title for regional services and supporting accessibility documentation retained without truncation",
+        "x": 29,
+        "y": 781,
+        "width": 276,
+        "height": 172,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Series options for Long commitment title for regional services and supporting accessibility documentation retained without truncation",
+        "x": 313,
+        "y": 781,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Paused bill",
+        "x": 29,
+        "y": 987,
+        "width": 276,
+        "height": 72,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Series options for Paused bill",
+        "x": 313,
+        "y": 987,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Paused installment assigned",
+        "x": 29,
+        "y": 1093,
+        "width": 276,
+        "height": 120,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Series options for Paused installment assigned",
+        "x": 313,
+        "y": 1093,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Paused installment eligible",
+        "x": 29,
+        "y": 1295,
+        "width": 276,
+        "height": 120,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Series options for Paused installment eligible",
+        "x": 313,
+        "y": 1295,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      }
+    ]
+  },
+  {
+    "file": "overview-dark-390.png",
+    "identical": true,
+    "contentIdentical": true,
+    "fixtureIdentical": true,
+    "before": [
+      {
+        "label": "Add commitment",
+        "x": 16,
+        "y": 86,
+        "width": 302,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(41, 25, 17)"
+      },
+      {
+        "label": "Commitment options",
+        "x": 326,
+        "y": 86,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Overdue (4)",
+        "x": 16,
+        "y": 154,
+        "width": 358,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(223, 193, 139)"
+      },
+      {
+        "label": "Ended subscription, expected R$ 150,00, Overdue, due 1 de nov. de 2026, Subscription, category Management review utilities, commitment ended",
+        "x": 77,
+        "y": 203,
+        "width": 172,
+        "height": 154,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Pay Ended subscription, due 1 de nov. de 2026",
+        "x": 257,
+        "y": 235,
+        "width": 48,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(41, 25, 17)"
+      },
+      {
+        "label": "Actions for Ended subscription, due 1 de nov. de 2026",
+        "x": 313,
+        "y": 235,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Long commitment title for regional services and supporting accessibility documentation retained without truncation, expected R$ 90.071.992.547.409,91, Overdue, due 1 de nov. de 2026, Bill, category Management review utilities",
+        "x": 77,
+        "y": 391,
+        "width": 284,
+        "height": 144,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Pay Long commitment title for regional services and supporting accessibility documentation retained without truncation, due 1 de nov. de 2026",
+        "x": 257,
+        "y": 575,
+        "width": 48,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(41, 25, 17)"
+      },
+      {
+        "label": "Actions for Long commitment title for regional services and supporting accessibility documentation retained without truncation, due 1 de nov. de 2026",
+        "x": 313,
+        "y": 575,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Paused bill, expected R$ 150,00, Overdue, due 1 de nov. de 2026, Bill, category Management review utilities, commitment paused",
+        "x": 77,
+        "y": 657,
+        "width": 172,
+        "height": 134,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Pay Paused bill, due 1 de nov. de 2026",
+        "x": 257,
+        "y": 689,
+        "width": 48,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(41, 25, 17)"
+      },
+      {
+        "label": "Actions for Paused bill, due 1 de nov. de 2026",
+        "x": 313,
+        "y": 689,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Paused installment assigned, expected R$ 150,00, Overdue, due 1 de nov. de 2026, installment 1 of 1, Installment, category Management review utilities, commitment paused",
+        "x": 77,
+        "y": 825,
+        "width": 172,
+        "height": 158,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Pay Paused installment assigned, due 1 de nov. de 2026",
+        "x": 257,
+        "y": 857,
+        "width": 48,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(41, 25, 17)"
+      },
+      {
+        "label": "Actions for Paused installment assigned, due 1 de nov. de 2026",
+        "x": 313,
+        "y": 857,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Today",
+        "x": 16,
+        "y": 1016,
+        "width": 358,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Active bill, expected R$ 150,00, Due today, due 13 de nov. de 2026, Bill, category Management review utilities",
+        "x": 77,
+        "y": 1065,
+        "width": 172,
+        "height": 92,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Pay Active bill, due 13 de nov. de 2026",
+        "x": 257,
+        "y": 1097,
+        "width": 48,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(41, 25, 17)"
+      },
+      {
+        "label": "Actions for Active bill, due 13 de nov. de 2026",
+        "x": 313,
+        "y": 1097,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Upcoming",
+        "x": 16,
+        "y": 1190,
+        "width": 358,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Active subscription, expected R$ 150,00, Upcoming, due 20 de nov. de 2026, Subscription, category Management review utilities",
+        "x": 77,
+        "y": 1239,
+        "width": 172,
+        "height": 112,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Pay Active subscription, due 20 de nov. de 2026",
+        "x": 257,
+        "y": 1271,
+        "width": 48,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(41, 25, 17)"
+      },
+      {
+        "label": "Actions for Active subscription, due 20 de nov. de 2026",
+        "x": 313,
+        "y": 1271,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Installment remaining, expected R$ 43,50, Upcoming, due 1 de dez. de 2026, installment 2 of 3, Installment, category Management review utilities",
+        "x": 77,
+        "y": 1385,
+        "width": 172,
+        "height": 112,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Pay Installment remaining, due 1 de dez. de 2026",
+        "x": 257,
+        "y": 1417,
+        "width": 48,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(41, 25, 17)"
+      },
+      {
+        "label": "Actions for Installment remaining, due 1 de dez. de 2026",
+        "x": 313,
+        "y": 1417,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Long commitment title for regional services and supporting accessibility documentation retained without truncation, expected R$ 90.071.992.547.409,91, Upcoming, due 1 de dez. de 2026, Bill, category Management review utilities",
+        "x": 77,
+        "y": 1531,
+        "width": 284,
+        "height": 144,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Pay Long commitment title for regional services and supporting accessibility documentation retained without truncation, due 1 de dez. de 2026",
+        "x": 257,
+        "y": 1715,
+        "width": 48,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(41, 25, 17)"
+      },
+      {
+        "label": "Actions for Long commitment title for regional services and supporting accessibility documentation retained without truncation, due 1 de dez. de 2026",
+        "x": 313,
+        "y": 1715,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Active bill, expected R$ 150,00, Upcoming, due 13 de dez. de 2026, Bill, category Management review utilities",
+        "x": 77,
+        "y": 1797,
+        "width": 172,
+        "height": 92,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Pay Active bill, due 13 de dez. de 2026",
+        "x": 257,
+        "y": 1829,
+        "width": 48,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(41, 25, 17)"
+      },
+      {
+        "label": "Actions for Active bill, due 13 de dez. de 2026",
+        "x": 313,
+        "y": 1829,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      }
+    ],
+    "after": [
+      {
+        "label": "Add commitment",
+        "x": 16,
+        "y": 86,
+        "width": 302,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(41, 25, 17)"
+      },
+      {
+        "label": "Commitment options",
+        "x": 326,
+        "y": 86,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Overdue (4)",
+        "x": 16,
+        "y": 154,
+        "width": 358,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(223, 193, 139)"
+      },
+      {
+        "label": "Ended subscription, expected R$ 150,00, Overdue, due 1 de nov. de 2026, Subscription, category Management review utilities, commitment ended",
+        "x": 77,
+        "y": 203,
+        "width": 172,
+        "height": 154,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Pay Ended subscription, due 1 de nov. de 2026",
+        "x": 257,
+        "y": 235,
+        "width": 48,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(41, 25, 17)"
+      },
+      {
+        "label": "Actions for Ended subscription, due 1 de nov. de 2026",
+        "x": 313,
+        "y": 235,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Long commitment title for regional services and supporting accessibility documentation retained without truncation, expected R$ 90.071.992.547.409,91, Overdue, due 1 de nov. de 2026, Bill, category Management review utilities",
+        "x": 77,
+        "y": 391,
+        "width": 284,
+        "height": 144,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Pay Long commitment title for regional services and supporting accessibility documentation retained without truncation, due 1 de nov. de 2026",
+        "x": 257,
+        "y": 575,
+        "width": 48,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(41, 25, 17)"
+      },
+      {
+        "label": "Actions for Long commitment title for regional services and supporting accessibility documentation retained without truncation, due 1 de nov. de 2026",
+        "x": 313,
+        "y": 575,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Paused bill, expected R$ 150,00, Overdue, due 1 de nov. de 2026, Bill, category Management review utilities, commitment paused",
+        "x": 77,
+        "y": 657,
+        "width": 172,
+        "height": 134,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Pay Paused bill, due 1 de nov. de 2026",
+        "x": 257,
+        "y": 689,
+        "width": 48,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(41, 25, 17)"
+      },
+      {
+        "label": "Actions for Paused bill, due 1 de nov. de 2026",
+        "x": 313,
+        "y": 689,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Paused installment assigned, expected R$ 150,00, Overdue, due 1 de nov. de 2026, installment 1 of 1, Installment, category Management review utilities, commitment paused",
+        "x": 77,
+        "y": 825,
+        "width": 172,
+        "height": 158,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Pay Paused installment assigned, due 1 de nov. de 2026",
+        "x": 257,
+        "y": 857,
+        "width": 48,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(41, 25, 17)"
+      },
+      {
+        "label": "Actions for Paused installment assigned, due 1 de nov. de 2026",
+        "x": 313,
+        "y": 857,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Today",
+        "x": 16,
+        "y": 1016,
+        "width": 358,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Active bill, expected R$ 150,00, Due today, due 13 de nov. de 2026, Bill, category Management review utilities",
+        "x": 77,
+        "y": 1065,
+        "width": 172,
+        "height": 92,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Pay Active bill, due 13 de nov. de 2026",
+        "x": 257,
+        "y": 1097,
+        "width": 48,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(41, 25, 17)"
+      },
+      {
+        "label": "Actions for Active bill, due 13 de nov. de 2026",
+        "x": 313,
+        "y": 1097,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Upcoming",
+        "x": 16,
+        "y": 1190,
+        "width": 358,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Active subscription, expected R$ 150,00, Upcoming, due 20 de nov. de 2026, Subscription, category Management review utilities",
+        "x": 77,
+        "y": 1239,
+        "width": 172,
+        "height": 112,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Pay Active subscription, due 20 de nov. de 2026",
+        "x": 257,
+        "y": 1271,
+        "width": 48,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(41, 25, 17)"
+      },
+      {
+        "label": "Actions for Active subscription, due 20 de nov. de 2026",
+        "x": 313,
+        "y": 1271,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Installment remaining, expected R$ 43,50, Upcoming, due 1 de dez. de 2026, installment 2 of 3, Installment, category Management review utilities",
+        "x": 77,
+        "y": 1385,
+        "width": 172,
+        "height": 112,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Pay Installment remaining, due 1 de dez. de 2026",
+        "x": 257,
+        "y": 1417,
+        "width": 48,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(41, 25, 17)"
+      },
+      {
+        "label": "Actions for Installment remaining, due 1 de dez. de 2026",
+        "x": 313,
+        "y": 1417,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Long commitment title for regional services and supporting accessibility documentation retained without truncation, expected R$ 90.071.992.547.409,91, Upcoming, due 1 de dez. de 2026, Bill, category Management review utilities",
+        "x": 77,
+        "y": 1531,
+        "width": 284,
+        "height": 144,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Pay Long commitment title for regional services and supporting accessibility documentation retained without truncation, due 1 de dez. de 2026",
+        "x": 257,
+        "y": 1715,
+        "width": 48,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(41, 25, 17)"
+      },
+      {
+        "label": "Actions for Long commitment title for regional services and supporting accessibility documentation retained without truncation, due 1 de dez. de 2026",
+        "x": 313,
+        "y": 1715,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Active bill, expected R$ 150,00, Upcoming, due 13 de dez. de 2026, Bill, category Management review utilities",
+        "x": 77,
+        "y": 1797,
+        "width": 172,
+        "height": 92,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Pay Active bill, due 13 de dez. de 2026",
+        "x": 257,
+        "y": 1829,
+        "width": 48,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(41, 25, 17)"
+      },
+      {
+        "label": "Actions for Active bill, due 13 de dez. de 2026",
+        "x": 313,
+        "y": 1829,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      }
+    ]
+  },
+  {
+    "file": "editor-dark-390.png",
+    "identical": true,
+    "contentIdentical": true,
+    "fixtureIdentical": true,
+    "before": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 37,
+        "width": 67.859375,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(231, 170, 139)"
+      },
+      {
+        "label": "Edit commitment",
+        "x": 87.859375,
+        "y": 46,
+        "width": 221.515625,
+        "height": 30,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "22px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Save",
+        "x": 317.375,
+        "y": 37,
+        "width": 60.625,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(41, 25, 17)"
+      },
+      {
+        "label": "Commitment",
+        "x": 73,
+        "y": 122,
+        "width": 292,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Schedule",
+        "x": 73,
+        "y": 482,
+        "width": 292,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Details",
+        "x": 73,
+        "y": 660,
+        "width": 292,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(246, 240, 237)"
+      }
+    ],
+    "after": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 37,
+        "width": 67.859375,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(231, 170, 139)"
+      },
+      {
+        "label": "Edit commitment",
+        "x": 87.859375,
+        "y": 46,
+        "width": 221.515625,
+        "height": 30,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "22px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Save",
+        "x": 317.375,
+        "y": 37,
+        "width": 60.625,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(41, 25, 17)"
+      },
+      {
+        "label": "Commitment",
+        "x": 73,
+        "y": 122,
+        "width": 292,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Schedule",
+        "x": 73,
+        "y": 482,
+        "width": 292,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Details",
+        "x": 73,
+        "y": 660,
+        "width": 292,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(246, 240, 237)"
+      }
+    ]
+  },
+  {
+    "file": "payment-dark-390.png",
+    "identical": true,
+    "contentIdentical": true,
+    "fixtureIdentical": true,
+    "before": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 310,
+        "width": 67.859375,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(231, 170, 139)"
+      },
+      {
+        "label": "Pay commitment",
+        "x": 87.859375,
+        "y": 319,
+        "width": 198.03125,
+        "height": 30,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "22px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Confirm",
+        "x": 293.890625,
+        "y": 310,
+        "width": 84.109375,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(41, 25, 17)"
+      },
+      {
+        "label": "Payment",
+        "x": 12,
+        "y": 565,
+        "width": 366,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(246, 240, 237)"
+      }
+    ],
+    "after": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 310,
+        "width": 67.859375,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(231, 170, 139)"
+      },
+      {
+        "label": "Pay commitment",
+        "x": 87.859375,
+        "y": 319,
+        "width": 198.03125,
+        "height": 30,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "22px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Confirm",
+        "x": 293.890625,
+        "y": 310,
+        "width": 84.109375,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(41, 25, 17)"
+      },
+      {
+        "label": "Payment",
+        "x": 12,
+        "y": 565,
+        "width": 366,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(246, 240, 237)"
+      }
+    ]
+  },
+  {
+    "file": "history-dark-390.png",
+    "identical": true,
+    "contentIdentical": true,
+    "fixtureIdentical": true,
+    "before": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Commitment history",
+        "x": 68,
+        "y": 42,
+        "width": 254,
+        "height": 30,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "22px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Series options for Completed installment",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Paid and skipped",
+        "x": 12,
+        "y": 299,
+        "width": 366,
+        "height": 64,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Undo payment for Completed installment, due 1 de nov. de 2026",
+        "x": 243.03125,
+        "y": 376,
+        "width": 121.96875,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "View commitment",
+        "x": 12,
+        "y": 607,
+        "width": 366,
+        "height": 56,
+        "font": "AxisManrope-Regular",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      }
+    ],
+    "after": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Commitment history",
+        "x": 68,
+        "y": 42,
+        "width": 254,
+        "height": 30,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "22px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Series options for Completed installment",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Paid and skipped",
+        "x": 12,
+        "y": 299,
+        "width": 366,
+        "height": 64,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Undo payment for Completed installment, due 1 de nov. de 2026",
+        "x": 243.03125,
+        "y": 376,
+        "width": 121.96875,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "View commitment",
+        "x": 12,
+        "y": 607,
+        "width": 366,
+        "height": 56,
+        "font": "AxisManrope-Regular",
+        "fontSize": "16px",
+        "color": "rgb(246, 240, 237)"
+      }
+    ]
+  },
+  {
+    "file": "linked-dark-390.png",
+    "identical": true,
+    "contentIdentical": true,
+    "fixtureIdentical": true,
+    "before": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Back",
+        "x": 16,
+        "y": 451,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Transaction details",
+        "x": 72,
+        "y": 463,
+        "width": 302,
+        "height": 24,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "18px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Open Commitments",
+        "x": 16,
+        "y": 709,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(41, 25, 17)"
+      },
+      {
+        "label": "Edit details",
+        "x": 16,
+        "y": 781,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(246, 240, 237)"
+      }
+    ],
+    "after": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Back",
+        "x": 16,
+        "y": 451,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Transaction details",
+        "x": 72,
+        "y": 463,
+        "width": 302,
+        "height": 24,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "18px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Open Commitments",
+        "x": 16,
+        "y": 709,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(41, 25, 17)"
+      },
+      {
+        "label": "Edit details",
+        "x": 16,
+        "y": 781,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(246, 240, 237)"
+      }
+    ]
+  },
+  {
+    "file": "other-dark-390.png",
+    "identical": true,
+    "contentIdentical": true,
+    "fixtureIdentical": true,
+    "before": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 37,
+        "width": 91.859375,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(231, 170, 139)"
+      },
+      {
+        "label": "Edit transaction",
+        "x": 111.859375,
+        "y": 46,
+        "width": 197.515625,
+        "height": 30,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "22px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Save",
+        "x": 317.375,
+        "y": 37,
+        "width": 60.625,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(41, 25, 17)"
+      },
+      {
+        "label": "Transaction",
+        "x": 73,
+        "y": 126,
+        "width": 292,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Details",
+        "x": 73,
+        "y": 490,
+        "width": 292,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Date",
+        "x": 73,
+        "y": 912,
+        "width": 292,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(246, 240, 237)"
+      }
+    ],
+    "after": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 37,
+        "width": 91.859375,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(231, 170, 139)"
+      },
+      {
+        "label": "Edit transaction",
+        "x": 111.859375,
+        "y": 46,
+        "width": 197.515625,
+        "height": 30,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "22px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Save",
+        "x": 317.375,
+        "y": 37,
+        "width": 60.625,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(41, 25, 17)"
+      },
+      {
+        "label": "Transaction",
+        "x": 73,
+        "y": 126,
+        "width": 292,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Details",
+        "x": 73,
+        "y": 490,
+        "width": 292,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(246, 240, 237)"
+      },
+      {
+        "label": "Date",
+        "x": 73,
+        "y": 912,
+        "width": 292,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(246, 240, 237)"
+      }
+    ]
+  },
+  {
+    "file": "manage-light-390.png",
+    "identical": false,
+    "contentIdentical": false,
+    "fixtureIdentical": true,
+    "before": [
+      {
+        "label": "Back to Commitments",
+        "x": 16,
+        "y": 86,
+        "width": 46.09375,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Manage commitments",
+        "x": 70.09375,
+        "y": 94,
+        "width": 303.90625,
+        "height": 28,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "20px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Manage Active bill",
+        "x": 16,
+        "y": 142,
+        "width": 303.71875,
+        "height": 72,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Series options for Active bill",
+        "x": 327.71875,
+        "y": 142,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Manage Active subscription",
+        "x": 16,
+        "y": 247,
+        "width": 303.71875,
+        "height": 72,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Series options for Active subscription",
+        "x": 327.71875,
+        "y": 247,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Manage Completed installment",
+        "x": 16,
+        "y": 352,
+        "width": 303.71875,
+        "height": 96,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Series options for Completed installment",
+        "x": 327.71875,
+        "y": 352,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Manage Ended subscription",
+        "x": 16,
+        "y": 481,
+        "width": 303.71875,
+        "height": 72,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Series options for Ended subscription",
+        "x": 327.71875,
+        "y": 481,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Manage Installment remaining",
+        "x": 16,
+        "y": 586,
+        "width": 303.71875,
+        "height": 96,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Series options for Installment remaining",
+        "x": 327.71875,
+        "y": 586,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Manage Long commitment title for regional services and supporting accessibility documentation retained without truncation",
+        "x": 16,
+        "y": 715,
+        "width": 303.71875,
+        "height": 172,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Series options for Long commitment title for regional services and supporting accessibility documentation retained without truncation",
+        "x": 327.71875,
+        "y": 715,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Manage Paused bill",
+        "x": 16,
+        "y": 920,
+        "width": 303.71875,
+        "height": 72,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Series options for Paused bill",
+        "x": 327.71875,
+        "y": 920,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Manage Paused installment assigned",
+        "x": 16,
+        "y": 1025,
+        "width": 303.71875,
+        "height": 96,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Series options for Paused installment assigned",
+        "x": 327.71875,
+        "y": 1025,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Manage Paused installment eligible",
+        "x": 16,
+        "y": 1202,
+        "width": 303.71875,
+        "height": 96,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Series options for Paused installment eligible",
+        "x": 327.71875,
+        "y": 1202,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(23, 33, 29)"
+      }
+    ],
+    "after": [
+      {
+        "label": "Back to Commitments",
+        "x": 16,
+        "y": 86,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage commitments",
+        "x": 72,
+        "y": 96,
+        "width": 302,
+        "height": 28,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Manage Active bill",
+        "x": 29,
+        "y": 147,
+        "width": 276,
+        "height": 72,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Series options for Active bill",
+        "x": 313,
+        "y": 147,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Active subscription",
+        "x": 29,
+        "y": 253,
+        "width": 276,
+        "height": 92,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Series options for Active subscription",
+        "x": 313,
+        "y": 253,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Completed installment",
+        "x": 29,
+        "y": 379,
+        "width": 276,
+        "height": 96,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Series options for Completed installment",
+        "x": 313,
+        "y": 379,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Ended subscription",
+        "x": 29,
+        "y": 509,
+        "width": 276,
+        "height": 72,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Series options for Ended subscription",
+        "x": 313,
+        "y": 509,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Installment remaining",
+        "x": 29,
+        "y": 615,
+        "width": 276,
+        "height": 96,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Series options for Installment remaining",
+        "x": 313,
+        "y": 615,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Long commitment title for regional services and supporting accessibility documentation retained without truncation",
+        "x": 29,
+        "y": 745,
+        "width": 276,
+        "height": 172,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Series options for Long commitment title for regional services and supporting accessibility documentation retained without truncation",
+        "x": 313,
+        "y": 745,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Paused bill",
+        "x": 29,
+        "y": 951,
+        "width": 276,
+        "height": 72,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Series options for Paused bill",
+        "x": 313,
+        "y": 951,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Paused installment assigned",
+        "x": 29,
+        "y": 1057,
+        "width": 276,
+        "height": 120,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Series options for Paused installment assigned",
+        "x": 313,
+        "y": 1057,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Paused installment eligible",
+        "x": 29,
+        "y": 1259,
+        "width": 276,
+        "height": 120,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Series options for Paused installment eligible",
+        "x": 313,
+        "y": 1259,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      }
+    ]
+  },
+  {
+    "file": "menu-light-390.png",
+    "identical": false,
+    "contentIdentical": false,
+    "fixtureIdentical": true,
+    "before": [
+      {
+        "label": "Back to Commitments",
+        "x": 16,
+        "y": 86,
+        "width": 46.09375,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Manage commitments",
+        "x": 70.09375,
+        "y": 94,
+        "width": 303.90625,
+        "height": 28,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "20px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Manage Active bill",
+        "x": 16,
+        "y": 142,
+        "width": 303.71875,
+        "height": 72,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Series options for Active bill",
+        "x": 327.71875,
+        "y": 142,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Manage Active subscription",
+        "x": 16,
+        "y": 247,
+        "width": 303.71875,
+        "height": 72,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Series options for Active subscription",
+        "x": 327.71875,
+        "y": 247,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Manage Completed installment",
+        "x": 16,
+        "y": 352,
+        "width": 303.71875,
+        "height": 96,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Series options for Completed installment",
+        "x": 327.71875,
+        "y": 352,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Manage Ended subscription",
+        "x": 16,
+        "y": 481,
+        "width": 303.71875,
+        "height": 72,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Series options for Ended subscription",
+        "x": 327.71875,
+        "y": 481,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Manage Installment remaining",
+        "x": 16,
+        "y": 586,
+        "width": 303.71875,
+        "height": 96,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Series options for Installment remaining",
+        "x": 327.71875,
+        "y": 586,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Manage Long commitment title for regional services and supporting accessibility documentation retained without truncation",
+        "x": 16,
+        "y": 715,
+        "width": 303.71875,
+        "height": 172,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Series options for Long commitment title for regional services and supporting accessibility documentation retained without truncation",
+        "x": 327.71875,
+        "y": 715,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Manage Paused bill",
+        "x": 16,
+        "y": 920,
+        "width": 303.71875,
+        "height": 72,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Series options for Paused bill",
+        "x": 327.71875,
+        "y": 920,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Manage Paused installment assigned",
+        "x": 16,
+        "y": 1025,
+        "width": 303.71875,
+        "height": 96,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Series options for Paused installment assigned",
+        "x": 327.71875,
+        "y": 1025,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Manage Paused installment eligible",
+        "x": 16,
+        "y": 1202,
+        "width": 303.71875,
+        "height": 96,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Series options for Paused installment eligible",
+        "x": 327.71875,
+        "y": 1202,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Close series options for active bill",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Edit Active bill",
+        "x": 143,
+        "y": 199,
+        "width": 222,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Pause Active bill",
+        "x": 143,
+        "y": 247,
+        "width": 222,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "End Active bill",
+        "x": 143,
+        "y": 295,
+        "width": 222,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(165, 53, 53)"
+      },
+      {
+        "label": "History for Active bill",
+        "x": 143,
+        "y": 343,
+        "width": 222,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(23, 33, 29)"
+      }
+    ],
+    "after": [
+      {
+        "label": "Back to Commitments",
+        "x": 16,
+        "y": 86,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage commitments",
+        "x": 72,
+        "y": 96,
+        "width": 302,
+        "height": 28,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Manage Active bill",
+        "x": 29,
+        "y": 147,
+        "width": 276,
+        "height": 72,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Series options for Active bill",
+        "x": 313,
+        "y": 147,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Active subscription",
+        "x": 29,
+        "y": 253,
+        "width": 276,
+        "height": 92,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Series options for Active subscription",
+        "x": 313,
+        "y": 253,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Completed installment",
+        "x": 29,
+        "y": 379,
+        "width": 276,
+        "height": 96,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Series options for Completed installment",
+        "x": 313,
+        "y": 379,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Ended subscription",
+        "x": 29,
+        "y": 509,
+        "width": 276,
+        "height": 72,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Series options for Ended subscription",
+        "x": 313,
+        "y": 509,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Installment remaining",
+        "x": 29,
+        "y": 615,
+        "width": 276,
+        "height": 96,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Series options for Installment remaining",
+        "x": 313,
+        "y": 615,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Long commitment title for regional services and supporting accessibility documentation retained without truncation",
+        "x": 29,
+        "y": 745,
+        "width": 276,
+        "height": 172,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Series options for Long commitment title for regional services and supporting accessibility documentation retained without truncation",
+        "x": 313,
+        "y": 745,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Paused bill",
+        "x": 29,
+        "y": 951,
+        "width": 276,
+        "height": 72,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Series options for Paused bill",
+        "x": 313,
+        "y": 951,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Paused installment assigned",
+        "x": 29,
+        "y": 1057,
+        "width": 276,
+        "height": 120,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Series options for Paused installment assigned",
+        "x": 313,
+        "y": 1057,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Paused installment eligible",
+        "x": 29,
+        "y": 1259,
+        "width": 276,
+        "height": 120,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Series options for Paused installment eligible",
+        "x": 313,
+        "y": 1259,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Close series options for active bill",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Edit Active bill",
+        "x": 130,
+        "y": 208,
+        "width": 222,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Pause Active bill",
+        "x": 130,
+        "y": 260,
+        "width": 222,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "End Active bill",
+        "x": 130,
+        "y": 312,
+        "width": 222,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(155, 48, 62)"
+      },
+      {
+        "label": "History for Active bill",
+        "x": 130,
+        "y": 364,
+        "width": 222,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(36, 30, 28)"
+      }
+    ]
+  },
+  {
+    "file": "guidance-light-390.png",
+    "identical": false,
+    "contentIdentical": false,
+    "fixtureIdentical": true,
+    "before": [
+      {
+        "label": "Back to Commitments",
+        "x": 16,
+        "y": -413,
+        "width": 46.09375,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Manage commitments",
+        "x": 70.09375,
+        "y": -405,
+        "width": 303.90625,
+        "height": 28,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "20px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Manage Active bill",
+        "x": 16,
+        "y": -357,
+        "width": 303.71875,
+        "height": 72,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Series options for Active bill",
+        "x": 327.71875,
+        "y": -357,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Manage Active subscription",
+        "x": 16,
+        "y": -252,
+        "width": 303.71875,
+        "height": 72,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Series options for Active subscription",
+        "x": 327.71875,
+        "y": -252,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Manage Completed installment",
+        "x": 16,
+        "y": -147,
+        "width": 303.71875,
+        "height": 96,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Series options for Completed installment",
+        "x": 327.71875,
+        "y": -147,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Manage Ended subscription",
+        "x": 16,
+        "y": -18,
+        "width": 303.71875,
+        "height": 72,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Series options for Ended subscription",
+        "x": 327.71875,
+        "y": -18,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Manage Installment remaining",
+        "x": 16,
+        "y": 87,
+        "width": 303.71875,
+        "height": 96,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Series options for Installment remaining",
+        "x": 327.71875,
+        "y": 87,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Manage Long commitment title for regional services and supporting accessibility documentation retained without truncation",
+        "x": 16,
+        "y": 216,
+        "width": 303.71875,
+        "height": 172,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Series options for Long commitment title for regional services and supporting accessibility documentation retained without truncation",
+        "x": 327.71875,
+        "y": 216,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Manage Paused bill",
+        "x": 16,
+        "y": 421,
+        "width": 303.71875,
+        "height": 72,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Series options for Paused bill",
+        "x": 327.71875,
+        "y": 421,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Manage Paused installment assigned",
+        "x": 16,
+        "y": 526,
+        "width": 303.71875,
+        "height": 96,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Series options for Paused installment assigned",
+        "x": 327.71875,
+        "y": 526,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Manage Paused installment eligible",
+        "x": 16,
+        "y": 703,
+        "width": 303.71875,
+        "height": 96,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Series options for Paused installment eligible",
+        "x": 327.71875,
+        "y": 703,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(23, 33, 29)"
+      }
+    ],
+    "after": [
+      {
+        "label": "Back to Commitments",
+        "x": 16,
+        "y": -494,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage commitments",
+        "x": 72,
+        "y": -484,
+        "width": 302,
+        "height": 28,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Manage Active bill",
+        "x": 29,
+        "y": -433,
+        "width": 276,
+        "height": 72,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Series options for Active bill",
+        "x": 313,
+        "y": -433,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Active subscription",
+        "x": 29,
+        "y": -327,
+        "width": 276,
+        "height": 92,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Series options for Active subscription",
+        "x": 313,
+        "y": -327,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Completed installment",
+        "x": 29,
+        "y": -201,
+        "width": 276,
+        "height": 96,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Series options for Completed installment",
+        "x": 313,
+        "y": -201,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Ended subscription",
+        "x": 29,
+        "y": -71,
+        "width": 276,
+        "height": 72,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Series options for Ended subscription",
+        "x": 313,
+        "y": -71,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Installment remaining",
+        "x": 29,
+        "y": 35,
+        "width": 276,
+        "height": 96,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Series options for Installment remaining",
+        "x": 313,
+        "y": 35,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Long commitment title for regional services and supporting accessibility documentation retained without truncation",
+        "x": 29,
+        "y": 165,
+        "width": 276,
+        "height": 172,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Series options for Long commitment title for regional services and supporting accessibility documentation retained without truncation",
+        "x": 313,
+        "y": 165,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Paused bill",
+        "x": 29,
+        "y": 371,
+        "width": 276,
+        "height": 72,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Series options for Paused bill",
+        "x": 313,
+        "y": 371,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Paused installment assigned",
+        "x": 29,
+        "y": 477,
+        "width": 276,
+        "height": 120,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Series options for Paused installment assigned",
+        "x": 313,
+        "y": 477,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Paused installment eligible",
+        "x": 29,
+        "y": 679,
+        "width": 276,
+        "height": 120,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Series options for Paused installment eligible",
+        "x": 313,
+        "y": 679,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      }
+    ]
+  },
+  {
+    "file": "long-light-320.png",
+    "identical": false,
+    "contentIdentical": false,
+    "fixtureIdentical": true,
+    "before": [
+      {
+        "label": "Back to Commitments",
+        "x": 16,
+        "y": 159,
+        "width": 58.171875,
+        "height": 58,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "28px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Manage commitments",
+        "x": 82.171875,
+        "y": 132,
+        "width": 250.171875,
+        "height": 112,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "40px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Manage Long commitment title for regional services and supporting accessibility documentation retained without truncation",
+        "x": 16,
+        "y": 256,
+        "width": 221.453125,
+        "height": 784,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "32px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Series options for Long commitment title for regional services and supporting accessibility documentation retained without truncation",
+        "x": 245.453125,
+        "y": 256,
+        "width": 58.546875,
+        "height": 58,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "28px",
+        "color": "rgb(23, 33, 29)"
+      }
+    ],
+    "after": [
+      {
+        "label": "Back to Commitments",
+        "x": 16,
+        "y": 132,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage commitments",
+        "x": 16,
+        "y": 188,
+        "width": 288,
+        "height": 112,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "40px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Manage Long commitment title for regional services and supporting accessibility documentation retained without truncation",
+        "x": 29,
+        "y": 313,
+        "width": 206,
+        "height": 784,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "32px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Series options for Long commitment title for regional services and supporting accessibility documentation retained without truncation",
+        "x": 243,
+        "y": 313,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      }
+    ]
+  },
+  {
+    "file": "empty-light-390.png",
+    "identical": false,
+    "contentIdentical": false,
+    "fixtureIdentical": true,
+    "before": [
+      {
+        "label": "Back to Commitments",
+        "x": 16,
+        "y": 86,
+        "width": 46.09375,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Manage commitments",
+        "x": 70.09375,
+        "y": 94,
+        "width": 303.90625,
+        "height": 28,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "20px",
+        "color": "rgb(23, 33, 29)"
+      }
+    ],
+    "after": [
+      {
+        "label": "Back to Commitments",
+        "x": 16,
+        "y": 86,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage commitments",
+        "x": 72,
+        "y": 96,
+        "width": 302,
+        "height": 28,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(36, 30, 28)"
+      }
+    ]
+  },
+  {
+    "file": "error-light-390.png",
+    "identical": false,
+    "contentIdentical": false,
+    "fixtureIdentical": true,
+    "before": [
+      {
+        "label": "Back to Commitments",
+        "x": 16,
+        "y": 86,
+        "width": 46.09375,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Manage commitments",
+        "x": 70.09375,
+        "y": 94,
+        "width": 303.90625,
+        "height": 28,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "20px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Manage Active bill",
+        "x": 16,
+        "y": 178,
+        "width": 303.71875,
+        "height": 72,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Series options for Active bill",
+        "x": 327.71875,
+        "y": 178,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Manage Active subscription",
+        "x": 16,
+        "y": 283,
+        "width": 303.71875,
+        "height": 72,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Series options for Active subscription",
+        "x": 327.71875,
+        "y": 283,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Manage Completed installment",
+        "x": 16,
+        "y": 388,
+        "width": 303.71875,
+        "height": 96,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Series options for Completed installment",
+        "x": 327.71875,
+        "y": 388,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Manage Ended subscription",
+        "x": 16,
+        "y": 517,
+        "width": 303.71875,
+        "height": 72,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Series options for Ended subscription",
+        "x": 327.71875,
+        "y": 517,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Manage Installment remaining",
+        "x": 16,
+        "y": 622,
+        "width": 303.71875,
+        "height": 96,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Series options for Installment remaining",
+        "x": 327.71875,
+        "y": 622,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Manage Long commitment title for regional services and supporting accessibility documentation retained without truncation",
+        "x": 16,
+        "y": 751,
+        "width": 303.71875,
+        "height": 172,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Series options for Long commitment title for regional services and supporting accessibility documentation retained without truncation",
+        "x": 327.71875,
+        "y": 751,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Manage Paused bill",
+        "x": 16,
+        "y": 956,
+        "width": 303.71875,
+        "height": 72,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Series options for Paused bill",
+        "x": 327.71875,
+        "y": 956,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Manage Paused installment assigned",
+        "x": 16,
+        "y": 1061,
+        "width": 303.71875,
+        "height": 96,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Series options for Paused installment assigned",
+        "x": 327.71875,
+        "y": 1061,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Manage Paused installment eligible",
+        "x": 16,
+        "y": 1238,
+        "width": 303.71875,
+        "height": 96,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "color": "rgb(23, 33, 29)"
+      },
+      {
+        "label": "Series options for Paused installment eligible",
+        "x": 327.71875,
+        "y": 1238,
+        "width": 46.28125,
+        "height": 44,
+        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(23, 33, 29)"
+      }
+    ],
+    "after": [
+      {
+        "label": "Back to Commitments",
+        "x": 16,
+        "y": 86,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage commitments",
+        "x": 72,
+        "y": 96,
+        "width": 302,
+        "height": 28,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Manage Active bill",
+        "x": 29,
+        "y": 183,
+        "width": 276,
+        "height": 72,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Series options for Active bill",
+        "x": 313,
+        "y": 183,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Active subscription",
+        "x": 29,
+        "y": 289,
+        "width": 276,
+        "height": 92,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Series options for Active subscription",
+        "x": 313,
+        "y": 289,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Completed installment",
+        "x": 29,
+        "y": 415,
+        "width": 276,
+        "height": 96,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Series options for Completed installment",
+        "x": 313,
+        "y": 415,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Ended subscription",
+        "x": 29,
+        "y": 545,
+        "width": 276,
+        "height": 72,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Series options for Ended subscription",
+        "x": 313,
+        "y": 545,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Installment remaining",
+        "x": 29,
+        "y": 651,
+        "width": 276,
+        "height": 96,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Series options for Installment remaining",
+        "x": 313,
+        "y": 651,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Long commitment title for regional services and supporting accessibility documentation retained without truncation",
+        "x": 29,
+        "y": 781,
+        "width": 276,
+        "height": 172,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Series options for Long commitment title for regional services and supporting accessibility documentation retained without truncation",
+        "x": 313,
+        "y": 781,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Paused bill",
+        "x": 29,
+        "y": 987,
+        "width": 276,
+        "height": 72,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Series options for Paused bill",
+        "x": 313,
+        "y": 987,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Paused installment assigned",
+        "x": 29,
+        "y": 1093,
+        "width": 276,
+        "height": 120,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Series options for Paused installment assigned",
+        "x": 313,
+        "y": 1093,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Manage Paused installment eligible",
+        "x": 29,
+        "y": 1295,
+        "width": 276,
+        "height": 120,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Series options for Paused installment eligible",
+        "x": 313,
+        "y": 1295,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      }
+    ]
+  },
+  {
+    "file": "overview-light-390.png",
+    "identical": true,
+    "contentIdentical": true,
+    "fixtureIdentical": true,
+    "before": [
+      {
+        "label": "Add commitment",
+        "x": 16,
+        "y": 86,
+        "width": 302,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(255, 248, 242)"
+      },
+      {
+        "label": "Commitment options",
+        "x": 326,
+        "y": 86,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Overdue (4)",
+        "x": 16,
+        "y": 154,
+        "width": 358,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(128, 86, 25)"
+      },
+      {
+        "label": "Ended subscription, expected R$ 150,00, Overdue, due 1 de nov. de 2026, Subscription, category Management review utilities, commitment ended",
+        "x": 77,
+        "y": 203,
+        "width": 172,
+        "height": 154,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Pay Ended subscription, due 1 de nov. de 2026",
+        "x": 257,
+        "y": 235,
+        "width": 48,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(255, 248, 242)"
+      },
+      {
+        "label": "Actions for Ended subscription, due 1 de nov. de 2026",
+        "x": 313,
+        "y": 235,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Long commitment title for regional services and supporting accessibility documentation retained without truncation, expected R$ 90.071.992.547.409,91, Overdue, due 1 de nov. de 2026, Bill, category Management review utilities",
+        "x": 77,
+        "y": 391,
+        "width": 284,
+        "height": 144,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Pay Long commitment title for regional services and supporting accessibility documentation retained without truncation, due 1 de nov. de 2026",
+        "x": 257,
+        "y": 575,
+        "width": 48,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(255, 248, 242)"
+      },
+      {
+        "label": "Actions for Long commitment title for regional services and supporting accessibility documentation retained without truncation, due 1 de nov. de 2026",
+        "x": 313,
+        "y": 575,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Paused bill, expected R$ 150,00, Overdue, due 1 de nov. de 2026, Bill, category Management review utilities, commitment paused",
+        "x": 77,
+        "y": 657,
+        "width": 172,
+        "height": 134,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Pay Paused bill, due 1 de nov. de 2026",
+        "x": 257,
+        "y": 689,
+        "width": 48,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(255, 248, 242)"
+      },
+      {
+        "label": "Actions for Paused bill, due 1 de nov. de 2026",
+        "x": 313,
+        "y": 689,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Paused installment assigned, expected R$ 150,00, Overdue, due 1 de nov. de 2026, installment 1 of 1, Installment, category Management review utilities, commitment paused",
+        "x": 77,
+        "y": 825,
+        "width": 172,
+        "height": 158,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Pay Paused installment assigned, due 1 de nov. de 2026",
+        "x": 257,
+        "y": 857,
+        "width": 48,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(255, 248, 242)"
+      },
+      {
+        "label": "Actions for Paused installment assigned, due 1 de nov. de 2026",
+        "x": 313,
+        "y": 857,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Today",
+        "x": 16,
+        "y": 1016,
+        "width": 358,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Active bill, expected R$ 150,00, Due today, due 13 de nov. de 2026, Bill, category Management review utilities",
+        "x": 77,
+        "y": 1065,
+        "width": 172,
+        "height": 92,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Pay Active bill, due 13 de nov. de 2026",
+        "x": 257,
+        "y": 1097,
+        "width": 48,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(255, 248, 242)"
+      },
+      {
+        "label": "Actions for Active bill, due 13 de nov. de 2026",
+        "x": 313,
+        "y": 1097,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Upcoming",
+        "x": 16,
+        "y": 1190,
+        "width": 358,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Active subscription, expected R$ 150,00, Upcoming, due 20 de nov. de 2026, Subscription, category Management review utilities",
+        "x": 77,
+        "y": 1239,
+        "width": 172,
+        "height": 112,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Pay Active subscription, due 20 de nov. de 2026",
+        "x": 257,
+        "y": 1271,
+        "width": 48,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(255, 248, 242)"
+      },
+      {
+        "label": "Actions for Active subscription, due 20 de nov. de 2026",
+        "x": 313,
+        "y": 1271,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Installment remaining, expected R$ 43,50, Upcoming, due 1 de dez. de 2026, installment 2 of 3, Installment, category Management review utilities",
+        "x": 77,
+        "y": 1385,
+        "width": 172,
+        "height": 112,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Pay Installment remaining, due 1 de dez. de 2026",
+        "x": 257,
+        "y": 1417,
+        "width": 48,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(255, 248, 242)"
+      },
+      {
+        "label": "Actions for Installment remaining, due 1 de dez. de 2026",
+        "x": 313,
+        "y": 1417,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Long commitment title for regional services and supporting accessibility documentation retained without truncation, expected R$ 90.071.992.547.409,91, Upcoming, due 1 de dez. de 2026, Bill, category Management review utilities",
+        "x": 77,
+        "y": 1531,
+        "width": 284,
+        "height": 144,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Pay Long commitment title for regional services and supporting accessibility documentation retained without truncation, due 1 de dez. de 2026",
+        "x": 257,
+        "y": 1715,
+        "width": 48,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(255, 248, 242)"
+      },
+      {
+        "label": "Actions for Long commitment title for regional services and supporting accessibility documentation retained without truncation, due 1 de dez. de 2026",
+        "x": 313,
+        "y": 1715,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Active bill, expected R$ 150,00, Upcoming, due 13 de dez. de 2026, Bill, category Management review utilities",
+        "x": 77,
+        "y": 1797,
+        "width": 172,
+        "height": 92,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Pay Active bill, due 13 de dez. de 2026",
+        "x": 257,
+        "y": 1829,
+        "width": 48,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(255, 248, 242)"
+      },
+      {
+        "label": "Actions for Active bill, due 13 de dez. de 2026",
+        "x": 313,
+        "y": 1829,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      }
+    ],
+    "after": [
+      {
+        "label": "Add commitment",
+        "x": 16,
+        "y": 86,
+        "width": 302,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(255, 248, 242)"
+      },
+      {
+        "label": "Commitment options",
+        "x": 326,
+        "y": 86,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Overdue (4)",
+        "x": 16,
+        "y": 154,
+        "width": 358,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(128, 86, 25)"
+      },
+      {
+        "label": "Ended subscription, expected R$ 150,00, Overdue, due 1 de nov. de 2026, Subscription, category Management review utilities, commitment ended",
+        "x": 77,
+        "y": 203,
+        "width": 172,
+        "height": 154,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Pay Ended subscription, due 1 de nov. de 2026",
+        "x": 257,
+        "y": 235,
+        "width": 48,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(255, 248, 242)"
+      },
+      {
+        "label": "Actions for Ended subscription, due 1 de nov. de 2026",
+        "x": 313,
+        "y": 235,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Long commitment title for regional services and supporting accessibility documentation retained without truncation, expected R$ 90.071.992.547.409,91, Overdue, due 1 de nov. de 2026, Bill, category Management review utilities",
+        "x": 77,
+        "y": 391,
+        "width": 284,
+        "height": 144,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Pay Long commitment title for regional services and supporting accessibility documentation retained without truncation, due 1 de nov. de 2026",
+        "x": 257,
+        "y": 575,
+        "width": 48,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(255, 248, 242)"
+      },
+      {
+        "label": "Actions for Long commitment title for regional services and supporting accessibility documentation retained without truncation, due 1 de nov. de 2026",
+        "x": 313,
+        "y": 575,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Paused bill, expected R$ 150,00, Overdue, due 1 de nov. de 2026, Bill, category Management review utilities, commitment paused",
+        "x": 77,
+        "y": 657,
+        "width": 172,
+        "height": 134,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Pay Paused bill, due 1 de nov. de 2026",
+        "x": 257,
+        "y": 689,
+        "width": 48,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(255, 248, 242)"
+      },
+      {
+        "label": "Actions for Paused bill, due 1 de nov. de 2026",
+        "x": 313,
+        "y": 689,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Paused installment assigned, expected R$ 150,00, Overdue, due 1 de nov. de 2026, installment 1 of 1, Installment, category Management review utilities, commitment paused",
+        "x": 77,
+        "y": 825,
+        "width": 172,
+        "height": 158,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Pay Paused installment assigned, due 1 de nov. de 2026",
+        "x": 257,
+        "y": 857,
+        "width": 48,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(255, 248, 242)"
+      },
+      {
+        "label": "Actions for Paused installment assigned, due 1 de nov. de 2026",
+        "x": 313,
+        "y": 857,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Today",
+        "x": 16,
+        "y": 1016,
+        "width": 358,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Active bill, expected R$ 150,00, Due today, due 13 de nov. de 2026, Bill, category Management review utilities",
+        "x": 77,
+        "y": 1065,
+        "width": 172,
+        "height": 92,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Pay Active bill, due 13 de nov. de 2026",
+        "x": 257,
+        "y": 1097,
+        "width": 48,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(255, 248, 242)"
+      },
+      {
+        "label": "Actions for Active bill, due 13 de nov. de 2026",
+        "x": 313,
+        "y": 1097,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Upcoming",
+        "x": 16,
+        "y": 1190,
+        "width": 358,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Active subscription, expected R$ 150,00, Upcoming, due 20 de nov. de 2026, Subscription, category Management review utilities",
+        "x": 77,
+        "y": 1239,
+        "width": 172,
+        "height": 112,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Pay Active subscription, due 20 de nov. de 2026",
+        "x": 257,
+        "y": 1271,
+        "width": 48,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(255, 248, 242)"
+      },
+      {
+        "label": "Actions for Active subscription, due 20 de nov. de 2026",
+        "x": 313,
+        "y": 1271,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Installment remaining, expected R$ 43,50, Upcoming, due 1 de dez. de 2026, installment 2 of 3, Installment, category Management review utilities",
+        "x": 77,
+        "y": 1385,
+        "width": 172,
+        "height": 112,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Pay Installment remaining, due 1 de dez. de 2026",
+        "x": 257,
+        "y": 1417,
+        "width": 48,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(255, 248, 242)"
+      },
+      {
+        "label": "Actions for Installment remaining, due 1 de dez. de 2026",
+        "x": 313,
+        "y": 1417,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Long commitment title for regional services and supporting accessibility documentation retained without truncation, expected R$ 90.071.992.547.409,91, Upcoming, due 1 de dez. de 2026, Bill, category Management review utilities",
+        "x": 77,
+        "y": 1531,
+        "width": 284,
+        "height": 144,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Pay Long commitment title for regional services and supporting accessibility documentation retained without truncation, due 1 de dez. de 2026",
+        "x": 257,
+        "y": 1715,
+        "width": 48,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(255, 248, 242)"
+      },
+      {
+        "label": "Actions for Long commitment title for regional services and supporting accessibility documentation retained without truncation, due 1 de dez. de 2026",
+        "x": 313,
+        "y": 1715,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Active bill, expected R$ 150,00, Upcoming, due 13 de dez. de 2026, Bill, category Management review utilities",
+        "x": 77,
+        "y": 1797,
+        "width": 172,
+        "height": 92,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Pay Active bill, due 13 de dez. de 2026",
+        "x": 257,
+        "y": 1829,
+        "width": 48,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(255, 248, 242)"
+      },
+      {
+        "label": "Actions for Active bill, due 13 de dez. de 2026",
+        "x": 313,
+        "y": 1829,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      }
+    ]
+  },
+  {
+    "file": "editor-light-390.png",
+    "identical": true,
+    "contentIdentical": true,
+    "fixtureIdentical": true,
+    "before": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 37,
+        "width": 67.859375,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(135, 72, 51)"
+      },
+      {
+        "label": "Edit commitment",
+        "x": 87.859375,
+        "y": 46,
+        "width": 221.515625,
+        "height": 30,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "22px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Save",
+        "x": 317.375,
+        "y": 37,
+        "width": 60.625,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(255, 248, 242)"
+      },
+      {
+        "label": "Commitment",
+        "x": 73,
+        "y": 122,
+        "width": 292,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Schedule",
+        "x": 73,
+        "y": 482,
+        "width": 292,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Details",
+        "x": 73,
+        "y": 660,
+        "width": 292,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(36, 30, 28)"
+      }
+    ],
+    "after": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 37,
+        "width": 67.859375,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(135, 72, 51)"
+      },
+      {
+        "label": "Edit commitment",
+        "x": 87.859375,
+        "y": 46,
+        "width": 221.515625,
+        "height": 30,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "22px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Save",
+        "x": 317.375,
+        "y": 37,
+        "width": 60.625,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(255, 248, 242)"
+      },
+      {
+        "label": "Commitment",
+        "x": 73,
+        "y": 122,
+        "width": 292,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Schedule",
+        "x": 73,
+        "y": 482,
+        "width": 292,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Details",
+        "x": 73,
+        "y": 660,
+        "width": 292,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(36, 30, 28)"
+      }
+    ]
+  },
+  {
+    "file": "payment-light-390.png",
+    "identical": true,
+    "contentIdentical": true,
+    "fixtureIdentical": true,
+    "before": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 310,
+        "width": 67.859375,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(135, 72, 51)"
+      },
+      {
+        "label": "Pay commitment",
+        "x": 87.859375,
+        "y": 319,
+        "width": 198.03125,
+        "height": 30,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "22px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Confirm",
+        "x": 293.890625,
+        "y": 310,
+        "width": 84.109375,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(255, 248, 242)"
+      },
+      {
+        "label": "Payment",
+        "x": 12,
+        "y": 565,
+        "width": 366,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(36, 30, 28)"
+      }
+    ],
+    "after": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 310,
+        "width": 67.859375,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(135, 72, 51)"
+      },
+      {
+        "label": "Pay commitment",
+        "x": 87.859375,
+        "y": 319,
+        "width": 198.03125,
+        "height": 30,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "22px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Confirm",
+        "x": 293.890625,
+        "y": 310,
+        "width": 84.109375,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(255, 248, 242)"
+      },
+      {
+        "label": "Payment",
+        "x": 12,
+        "y": 565,
+        "width": 366,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(36, 30, 28)"
+      }
+    ]
+  },
+  {
+    "file": "history-light-390.png",
+    "identical": true,
+    "contentIdentical": true,
+    "fixtureIdentical": true,
+    "before": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Commitment history",
+        "x": 68,
+        "y": 42,
+        "width": 254,
+        "height": 30,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "22px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Series options for Completed installment",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Paid and skipped",
+        "x": 12,
+        "y": 299,
+        "width": 366,
+        "height": 64,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Undo payment for Completed installment, due 1 de nov. de 2026",
+        "x": 243.03125,
+        "y": 376,
+        "width": 121.96875,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "View commitment",
+        "x": 12,
+        "y": 607,
+        "width": 366,
+        "height": 56,
+        "font": "AxisManrope-Regular",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      }
+    ],
+    "after": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Back",
+        "x": 12,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Commitment history",
+        "x": 68,
+        "y": 42,
+        "width": 254,
+        "height": 30,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "22px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Series options for Completed installment",
+        "x": 330,
+        "y": 33,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Paid and skipped",
+        "x": 12,
+        "y": 299,
+        "width": 366,
+        "height": 64,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Undo payment for Completed installment, due 1 de nov. de 2026",
+        "x": 243.03125,
+        "y": 376,
+        "width": 121.96875,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "View commitment",
+        "x": 12,
+        "y": 607,
+        "width": 366,
+        "height": 56,
+        "font": "AxisManrope-Regular",
+        "fontSize": "16px",
+        "color": "rgb(36, 30, 28)"
+      }
+    ]
+  },
+  {
+    "file": "linked-light-390.png",
+    "identical": true,
+    "contentIdentical": true,
+    "fixtureIdentical": true,
+    "before": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Back",
+        "x": 16,
+        "y": 451,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Transaction details",
+        "x": 72,
+        "y": 463,
+        "width": 302,
+        "height": 24,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "18px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Open Commitments",
+        "x": 16,
+        "y": 709,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(255, 248, 242)"
+      },
+      {
+        "label": "Edit details",
+        "x": 16,
+        "y": 781,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(36, 30, 28)"
+      }
+    ],
+    "after": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Back",
+        "x": 16,
+        "y": 451,
+        "width": 48,
+        "height": 48,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Transaction details",
+        "x": 72,
+        "y": 463,
+        "width": 302,
+        "height": 24,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "18px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Open Commitments",
+        "x": 16,
+        "y": 709,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(255, 248, 242)"
+      },
+      {
+        "label": "Edit details",
+        "x": 16,
+        "y": 781,
+        "width": 358,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(36, 30, 28)"
+      }
+    ]
+  },
+  {
+    "file": "other-light-390.png",
+    "identical": true,
+    "contentIdentical": true,
+    "fixtureIdentical": true,
+    "before": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 37,
+        "width": 91.859375,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(135, 72, 51)"
+      },
+      {
+        "label": "Edit transaction",
+        "x": 111.859375,
+        "y": 46,
+        "width": 197.515625,
+        "height": 30,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "22px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Save",
+        "x": 317.375,
+        "y": 37,
+        "width": 60.625,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(255, 248, 242)"
+      },
+      {
+        "label": "Transaction",
+        "x": 73,
+        "y": 126,
+        "width": 292,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Details",
+        "x": 73,
+        "y": 490,
+        "width": 292,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Date",
+        "x": 73,
+        "y": 912,
+        "width": 292,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(36, 30, 28)"
+      }
+    ],
+    "after": [
+      {
+        "label": "Close sheet",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "font": "Arial",
+        "fontSize": "13.3333px",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "label": "Cancel",
+        "x": 12,
+        "y": 37,
+        "width": 91.859375,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(135, 72, 51)"
+      },
+      {
+        "label": "Edit transaction",
+        "x": 111.859375,
+        "y": 46,
+        "width": 197.515625,
+        "height": 30,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "22px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Save",
+        "x": 317.375,
+        "y": 37,
+        "width": 60.625,
+        "height": 48,
+        "font": "AxisManrope-SemiBold",
+        "fontSize": "15px",
+        "color": "rgb(255, 248, 242)"
+      },
+      {
+        "label": "Transaction",
+        "x": 73,
+        "y": 126,
+        "width": 292,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Details",
+        "x": 73,
+        "y": 490,
+        "width": 292,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(36, 30, 28)"
+      },
+      {
+        "label": "Date",
+        "x": 73,
+        "y": 912,
+        "width": 292,
+        "height": 28,
+        "font": "AxisLora-SemiBold",
+        "fontSize": "20px",
+        "color": "rgb(36, 30, 28)"
+      }
+    ]
+  }
+]

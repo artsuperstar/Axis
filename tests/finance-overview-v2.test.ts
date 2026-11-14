@@ -54,8 +54,8 @@ test('large selected tick never overlaps another label footprint', () => {
 
 test('selected SVG band follows the shared geometry even when every amount is zero', () => {
   const buckets = cashFlowBuckets(periodBounds('month', '2026-10-22'));
-  const plain = cashFlowSource(buckets, overviewColors(DesignColors.dark), buckets[0].id);
-  const selected = cashFlowSource(buckets, overviewColors(DesignColors.dark), buckets[3].id);
+  const plain = cashFlowSource(buckets, overviewColors(DesignColors.dark, 'dark'), buckets[0].id);
+  const selected = cashFlowSource(buckets, overviewColors(DesignColors.dark, 'dark'), buckets[3].id);
   assert.notEqual(plain.uri, selected.uri);
   const svg = Buffer.from(selected.uri.split(',')[1], 'base64').toString('ascii');
   assert.ok(svg.includes('stroke-dasharray')); assert.ok(svg.includes('rx="5"'));

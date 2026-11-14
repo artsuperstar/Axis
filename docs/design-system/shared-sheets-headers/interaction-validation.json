@@ -1,0 +1,817 @@
+{
+  "scope": "Actual RNWeb components and synthetic callbacks/keyboard metrics; no native acceptance",
+  "checks": [
+    {
+      "theme": "dark",
+      "case": "sheet-open-close",
+      "result": "Back retains parent callback; four open/close cycles leave no stale sheet"
+    },
+    {
+      "theme": "dark",
+      "case": "default-actions",
+      "result": "Original confirm/cancel callbacks and field draft retained"
+    },
+    {
+      "theme": "dark",
+      "case": "unsaved-journal",
+      "result": "Actual JournalLeave keep-editing decision is unchanged"
+    },
+    {
+      "theme": "dark",
+      "case": "selector-inline",
+      "result": "One menu; existing selection/reopen, inline creation/cancel, dismissal and focus return passed"
+    },
+    {
+      "theme": "dark",
+      "case": "picker-adjacent",
+      "result": "Owned picker Back closes the picker subsection; native widget/value remain device-owned"
+    },
+    {
+      "theme": "dark",
+      "case": "nested-task",
+      "result": "Actual nested recurrence returns to the same editor"
+    },
+    {
+      "theme": "dark",
+      "case": "layout",
+      "width": 320,
+      "fontScale": 1,
+      "kind": "operational",
+      "actions": [
+        {
+          "label": "Back",
+          "x": 16,
+          "y": 537,
+          "width": 48,
+          "height": 48
+        }
+      ],
+      "result": "Actions >=48 and inside viewport; last input scrolls into view; operational keyboard-open bounds respected"
+    },
+    {
+      "theme": "dark",
+      "case": "layout",
+      "width": 320,
+      "fontScale": 1,
+      "kind": "long",
+      "actions": [
+        {
+          "label": "Cancel",
+          "x": 16,
+          "y": 537,
+          "width": 75.859375,
+          "height": 48
+        },
+        {
+          "label": "Save",
+          "x": 243.375,
+          "y": 537,
+          "width": 60.625,
+          "height": 48
+        }
+      ],
+      "result": "Actions >=48 and inside viewport; last input scrolls into view; operational keyboard-open bounds respected"
+    },
+    {
+      "theme": "dark",
+      "case": "layout",
+      "width": 320,
+      "fontScale": 1,
+      "kind": "history",
+      "actions": [
+        {
+          "label": "Back",
+          "x": 16,
+          "y": 601,
+          "width": 48,
+          "height": 48
+        }
+      ],
+      "result": "Actions >=48 and inside viewport; last input scrolls into view; operational keyboard-open bounds respected"
+    },
+    {
+      "theme": "dark",
+      "case": "layout",
+      "width": 320,
+      "fontScale": 2,
+      "kind": "operational",
+      "actions": [
+        {
+          "label": "Back",
+          "x": 16,
+          "y": 479,
+          "width": 48,
+          "height": 48
+        }
+      ],
+      "result": "Actions >=48 and inside viewport; last input scrolls into view; operational keyboard-open bounds respected"
+    },
+    {
+      "theme": "dark",
+      "case": "layout",
+      "width": 320,
+      "fontScale": 2,
+      "kind": "long",
+      "actions": [
+        {
+          "label": "Cancel",
+          "x": 16,
+          "y": 641,
+          "width": 125.703125,
+          "height": 62
+        },
+        {
+          "label": "Save",
+          "x": 208.765625,
+          "y": 641,
+          "width": 95.234375,
+          "height": 62
+        }
+      ],
+      "result": "Actions >=48 and inside viewport; last input scrolls into view; operational keyboard-open bounds respected"
+    },
+    {
+      "theme": "dark",
+      "case": "layout",
+      "width": 320,
+      "fontScale": 2,
+      "kind": "history",
+      "actions": [
+        {
+          "label": "Back",
+          "x": 16,
+          "y": 401,
+          "width": 48,
+          "height": 48
+        }
+      ],
+      "result": "Actions >=48 and inside viewport; last input scrolls into view; operational keyboard-open bounds respected"
+    },
+    {
+      "theme": "dark",
+      "case": "layout",
+      "width": 390,
+      "fontScale": 1,
+      "kind": "operational",
+      "actions": [
+        {
+          "label": "Back",
+          "x": 16,
+          "y": 537,
+          "width": 48,
+          "height": 48
+        }
+      ],
+      "result": "Actions >=48 and inside viewport; last input scrolls into view; operational keyboard-open bounds respected"
+    },
+    {
+      "theme": "dark",
+      "case": "layout",
+      "width": 390,
+      "fontScale": 1,
+      "kind": "long",
+      "actions": [
+        {
+          "label": "Cancel",
+          "x": 16,
+          "y": 459,
+          "width": 75.859375,
+          "height": 48
+        },
+        {
+          "label": "Save",
+          "x": 313.375,
+          "y": 459,
+          "width": 60.625,
+          "height": 48
+        }
+      ],
+      "result": "Actions >=48 and inside viewport; last input scrolls into view; operational keyboard-open bounds respected"
+    },
+    {
+      "theme": "dark",
+      "case": "layout",
+      "width": 390,
+      "fontScale": 1,
+      "kind": "history",
+      "actions": [
+        {
+          "label": "Back",
+          "x": 16,
+          "y": 601,
+          "width": 48,
+          "height": 48
+        }
+      ],
+      "result": "Actions >=48 and inside viewport; last input scrolls into view; operational keyboard-open bounds respected"
+    },
+    {
+      "theme": "dark",
+      "case": "layout",
+      "width": 390,
+      "fontScale": 2,
+      "kind": "operational",
+      "actions": [
+        {
+          "label": "Back",
+          "x": 16,
+          "y": 479,
+          "width": 48,
+          "height": 48
+        }
+      ],
+      "result": "Actions >=48 and inside viewport; last input scrolls into view; operational keyboard-open bounds respected"
+    },
+    {
+      "theme": "dark",
+      "case": "layout",
+      "width": 390,
+      "fontScale": 2,
+      "kind": "long",
+      "actions": [
+        {
+          "label": "Cancel",
+          "x": 16,
+          "y": 465,
+          "width": 125.703125,
+          "height": 62
+        },
+        {
+          "label": "Save",
+          "x": 278.765625,
+          "y": 465,
+          "width": 95.234375,
+          "height": 62
+        }
+      ],
+      "result": "Actions >=48 and inside viewport; last input scrolls into view; operational keyboard-open bounds respected"
+    },
+    {
+      "theme": "dark",
+      "case": "layout",
+      "width": 390,
+      "fontScale": 2,
+      "kind": "history",
+      "actions": [
+        {
+          "label": "Back",
+          "x": 16,
+          "y": 449,
+          "width": 48,
+          "height": 48
+        }
+      ],
+      "result": "Actions >=48 and inside viewport; last input scrolls into view; operational keyboard-open bounds respected"
+    },
+    {
+      "theme": "dark",
+      "case": "layout",
+      "width": 430,
+      "fontScale": 1,
+      "kind": "operational",
+      "actions": [
+        {
+          "label": "Back",
+          "x": 16,
+          "y": 537,
+          "width": 48,
+          "height": 48
+        }
+      ],
+      "result": "Actions >=48 and inside viewport; last input scrolls into view; operational keyboard-open bounds respected"
+    },
+    {
+      "theme": "dark",
+      "case": "layout",
+      "width": 430,
+      "fontScale": 1,
+      "kind": "long",
+      "actions": [
+        {
+          "label": "Cancel",
+          "x": 16,
+          "y": 493,
+          "width": 75.859375,
+          "height": 48
+        },
+        {
+          "label": "Save",
+          "x": 353.375,
+          "y": 493,
+          "width": 60.625,
+          "height": 48
+        }
+      ],
+      "result": "Actions >=48 and inside viewport; last input scrolls into view; operational keyboard-open bounds respected"
+    },
+    {
+      "theme": "dark",
+      "case": "layout",
+      "width": 430,
+      "fontScale": 1,
+      "kind": "history",
+      "actions": [
+        {
+          "label": "Back",
+          "x": 16,
+          "y": 601,
+          "width": 48,
+          "height": 48
+        }
+      ],
+      "result": "Actions >=48 and inside viewport; last input scrolls into view; operational keyboard-open bounds respected"
+    },
+    {
+      "theme": "dark",
+      "case": "layout",
+      "width": 430,
+      "fontScale": 2,
+      "kind": "operational",
+      "actions": [
+        {
+          "label": "Back",
+          "x": 16,
+          "y": 479,
+          "width": 48,
+          "height": 48
+        }
+      ],
+      "result": "Actions >=48 and inside viewport; last input scrolls into view; operational keyboard-open bounds respected"
+    },
+    {
+      "theme": "dark",
+      "case": "layout",
+      "width": 430,
+      "fontScale": 2,
+      "kind": "long",
+      "actions": [
+        {
+          "label": "Cancel",
+          "x": 16,
+          "y": 465,
+          "width": 125.703125,
+          "height": 62
+        },
+        {
+          "label": "Save",
+          "x": 318.765625,
+          "y": 465,
+          "width": 95.234375,
+          "height": 62
+        }
+      ],
+      "result": "Actions >=48 and inside viewport; last input scrolls into view; operational keyboard-open bounds respected"
+    },
+    {
+      "theme": "dark",
+      "case": "layout",
+      "width": 430,
+      "fontScale": 2,
+      "kind": "history",
+      "actions": [
+        {
+          "label": "Back",
+          "x": 16,
+          "y": 497,
+          "width": 48,
+          "height": 48
+        }
+      ],
+      "result": "Actions >=48 and inside viewport; last input scrolls into view; operational keyboard-open bounds respected"
+    },
+    {
+      "theme": "light",
+      "case": "sheet-open-close",
+      "result": "Back retains parent callback; four open/close cycles leave no stale sheet"
+    },
+    {
+      "theme": "light",
+      "case": "default-actions",
+      "result": "Original confirm/cancel callbacks and field draft retained"
+    },
+    {
+      "theme": "light",
+      "case": "unsaved-journal",
+      "result": "Actual JournalLeave keep-editing decision is unchanged"
+    },
+    {
+      "theme": "light",
+      "case": "selector-inline",
+      "result": "One menu; existing selection/reopen, inline creation/cancel, dismissal and focus return passed"
+    },
+    {
+      "theme": "light",
+      "case": "picker-adjacent",
+      "result": "Owned picker Back closes the picker subsection; native widget/value remain device-owned"
+    },
+    {
+      "theme": "light",
+      "case": "nested-task",
+      "result": "Actual nested recurrence returns to the same editor"
+    },
+    {
+      "theme": "light",
+      "case": "layout",
+      "width": 320,
+      "fontScale": 1,
+      "kind": "operational",
+      "actions": [
+        {
+          "label": "Back",
+          "x": 16,
+          "y": 537,
+          "width": 48,
+          "height": 48
+        }
+      ],
+      "result": "Actions >=48 and inside viewport; last input scrolls into view; operational keyboard-open bounds respected"
+    },
+    {
+      "theme": "light",
+      "case": "layout",
+      "width": 320,
+      "fontScale": 1,
+      "kind": "long",
+      "actions": [
+        {
+          "label": "Cancel",
+          "x": 16,
+          "y": 537,
+          "width": 75.859375,
+          "height": 48
+        },
+        {
+          "label": "Save",
+          "x": 243.375,
+          "y": 537,
+          "width": 60.625,
+          "height": 48
+        }
+      ],
+      "result": "Actions >=48 and inside viewport; last input scrolls into view; operational keyboard-open bounds respected"
+    },
+    {
+      "theme": "light",
+      "case": "layout",
+      "width": 320,
+      "fontScale": 1,
+      "kind": "history",
+      "actions": [
+        {
+          "label": "Back",
+          "x": 16,
+          "y": 601,
+          "width": 48,
+          "height": 48
+        }
+      ],
+      "result": "Actions >=48 and inside viewport; last input scrolls into view; operational keyboard-open bounds respected"
+    },
+    {
+      "theme": "light",
+      "case": "layout",
+      "width": 320,
+      "fontScale": 2,
+      "kind": "operational",
+      "actions": [
+        {
+          "label": "Back",
+          "x": 16,
+          "y": 479,
+          "width": 48,
+          "height": 48
+        }
+      ],
+      "result": "Actions >=48 and inside viewport; last input scrolls into view; operational keyboard-open bounds respected"
+    },
+    {
+      "theme": "light",
+      "case": "layout",
+      "width": 320,
+      "fontScale": 2,
+      "kind": "long",
+      "actions": [
+        {
+          "label": "Cancel",
+          "x": 16,
+          "y": 641,
+          "width": 125.703125,
+          "height": 62
+        },
+        {
+          "label": "Save",
+          "x": 208.765625,
+          "y": 641,
+          "width": 95.234375,
+          "height": 62
+        }
+      ],
+      "result": "Actions >=48 and inside viewport; last input scrolls into view; operational keyboard-open bounds respected"
+    },
+    {
+      "theme": "light",
+      "case": "layout",
+      "width": 320,
+      "fontScale": 2,
+      "kind": "history",
+      "actions": [
+        {
+          "label": "Back",
+          "x": 16,
+          "y": 401,
+          "width": 48,
+          "height": 48
+        }
+      ],
+      "result": "Actions >=48 and inside viewport; last input scrolls into view; operational keyboard-open bounds respected"
+    },
+    {
+      "theme": "light",
+      "case": "layout",
+      "width": 390,
+      "fontScale": 1,
+      "kind": "operational",
+      "actions": [
+        {
+          "label": "Back",
+          "x": 16,
+          "y": 537,
+          "width": 48,
+          "height": 48
+        }
+      ],
+      "result": "Actions >=48 and inside viewport; last input scrolls into view; operational keyboard-open bounds respected"
+    },
+    {
+      "theme": "light",
+      "case": "layout",
+      "width": 390,
+      "fontScale": 1,
+      "kind": "long",
+      "actions": [
+        {
+          "label": "Cancel",
+          "x": 16,
+          "y": 459,
+          "width": 75.859375,
+          "height": 48
+        },
+        {
+          "label": "Save",
+          "x": 313.375,
+          "y": 459,
+          "width": 60.625,
+          "height": 48
+        }
+      ],
+      "result": "Actions >=48 and inside viewport; last input scrolls into view; operational keyboard-open bounds respected"
+    },
+    {
+      "theme": "light",
+      "case": "layout",
+      "width": 390,
+      "fontScale": 1,
+      "kind": "history",
+      "actions": [
+        {
+          "label": "Back",
+          "x": 16,
+          "y": 601,
+          "width": 48,
+          "height": 48
+        }
+      ],
+      "result": "Actions >=48 and inside viewport; last input scrolls into view; operational keyboard-open bounds respected"
+    },
+    {
+      "theme": "light",
+      "case": "layout",
+      "width": 390,
+      "fontScale": 2,
+      "kind": "operational",
+      "actions": [
+        {
+          "label": "Back",
+          "x": 16,
+          "y": 479,
+          "width": 48,
+          "height": 48
+        }
+      ],
+      "result": "Actions >=48 and inside viewport; last input scrolls into view; operational keyboard-open bounds respected"
+    },
+    {
+      "theme": "light",
+      "case": "layout",
+      "width": 390,
+      "fontScale": 2,
+      "kind": "long",
+      "actions": [
+        {
+          "label": "Cancel",
+          "x": 16,
+          "y": 465,
+          "width": 125.703125,
+          "height": 62
+        },
+        {
+          "label": "Save",
+          "x": 278.765625,
+          "y": 465,
+          "width": 95.234375,
+          "height": 62
+        }
+      ],
+      "result": "Actions >=48 and inside viewport; last input scrolls into view; operational keyboard-open bounds respected"
+    },
+    {
+      "theme": "light",
+      "case": "layout",
+      "width": 390,
+      "fontScale": 2,
+      "kind": "history",
+      "actions": [
+        {
+          "label": "Back",
+          "x": 16,
+          "y": 449,
+          "width": 48,
+          "height": 48
+        }
+      ],
+      "result": "Actions >=48 and inside viewport; last input scrolls into view; operational keyboard-open bounds respected"
+    },
+    {
+      "theme": "light",
+      "case": "layout",
+      "width": 430,
+      "fontScale": 1,
+      "kind": "operational",
+      "actions": [
+        {
+          "label": "Back",
+          "x": 16,
+          "y": 537,
+          "width": 48,
+          "height": 48
+        }
+      ],
+      "result": "Actions >=48 and inside viewport; last input scrolls into view; operational keyboard-open bounds respected"
+    },
+    {
+      "theme": "light",
+      "case": "layout",
+      "width": 430,
+      "fontScale": 1,
+      "kind": "long",
+      "actions": [
+        {
+          "label": "Cancel",
+          "x": 16,
+          "y": 493,
+          "width": 75.859375,
+          "height": 48
+        },
+        {
+          "label": "Save",
+          "x": 353.375,
+          "y": 493,
+          "width": 60.625,
+          "height": 48
+        }
+      ],
+      "result": "Actions >=48 and inside viewport; last input scrolls into view; operational keyboard-open bounds respected"
+    },
+    {
+      "theme": "light",
+      "case": "layout",
+      "width": 430,
+      "fontScale": 1,
+      "kind": "history",
+      "actions": [
+        {
+          "label": "Back",
+          "x": 16,
+          "y": 601,
+          "width": 48,
+          "height": 48
+        }
+      ],
+      "result": "Actions >=48 and inside viewport; last input scrolls into view; operational keyboard-open bounds respected"
+    },
+    {
+      "theme": "light",
+      "case": "layout",
+      "width": 430,
+      "fontScale": 2,
+      "kind": "operational",
+      "actions": [
+        {
+          "label": "Back",
+          "x": 16,
+          "y": 479,
+          "width": 48,
+          "height": 48
+        }
+      ],
+      "result": "Actions >=48 and inside viewport; last input scrolls into view; operational keyboard-open bounds respected"
+    },
+    {
+      "theme": "light",
+      "case": "layout",
+      "width": 430,
+      "fontScale": 2,
+      "kind": "long",
+      "actions": [
+        {
+          "label": "Cancel",
+          "x": 16,
+          "y": 465,
+          "width": 125.703125,
+          "height": 62
+        },
+        {
+          "label": "Save",
+          "x": 318.765625,
+          "y": 465,
+          "width": 95.234375,
+          "height": 62
+        }
+      ],
+      "result": "Actions >=48 and inside viewport; last input scrolls into view; operational keyboard-open bounds respected"
+    },
+    {
+      "theme": "light",
+      "case": "layout",
+      "width": 430,
+      "fontScale": 2,
+      "kind": "history",
+      "actions": [
+        {
+          "label": "Back",
+          "x": 16,
+          "y": 497,
+          "width": 48,
+          "height": 48
+        }
+      ],
+      "result": "Actions >=48 and inside viewport; last input scrolls into view; operational keyboard-open bounds respected"
+    }
+  ],
+  "escape": [
+    {
+      "phase": "before",
+      "kind": "host-escape",
+      "typingEscapeCloses": false,
+      "explicitDismissRestoresFocus": true
+    },
+    {
+      "phase": "before",
+      "kind": "autocomplete",
+      "typingEscapeCloses": true,
+      "explicitDismissRestoresFocus": true
+    },
+    {
+      "phase": "after",
+      "kind": "host-escape",
+      "typingEscapeCloses": false,
+      "explicitDismissRestoresFocus": true
+    },
+    {
+      "phase": "after",
+      "kind": "autocomplete",
+      "typingEscapeCloses": true,
+      "explicitDismissRestoresFocus": true
+    }
+  ],
+  "constraints": [
+    {
+      "phase": "before",
+      "case": "synthetic long editorial title + doubled text + keyboard",
+      "width": 320,
+      "keyboardTop": 520,
+      "save": {
+        "x": 16,
+        "y": 513,
+        "width": 92.734375,
+        "height": 58
+      },
+      "saveFullyAboveKeyboard": false,
+      "scope": "Synthetic arbitrary editorial title; real long Client History uses operational typography. Requires native reproduction and a separately scoped constrained-height header treatment."
+    },
+    {
+      "phase": "after",
+      "case": "synthetic long editorial title + doubled text + keyboard",
+      "width": 320,
+      "keyboardTop": 520,
+      "save": {
+        "x": 208.765625,
+        "y": 641,
+        "width": 95.234375,
+        "height": 62
+      },
+      "saveFullyAboveKeyboard": false,
+      "scope": "Synthetic arbitrary editorial title; real long Client History uses operational typography. Requires native reproduction and a separately scoped constrained-height header treatment."
+    }
+  ]
+}

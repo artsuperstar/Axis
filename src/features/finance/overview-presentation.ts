@@ -1,9 +1,10 @@
-import type { DesignPalette } from '@/constants/design-system-v2';
+import { DesignColors, type DesignMode, type DesignPalette } from '@/constants/design-system-v2';
 
-/** Scoped provisional Finance colors; no app-wide palette change. */
-export function overviewColors(colors: DesignPalette) {
-  const dark = colors.canvas === '#151315';
-  return { income: dark ? '#A8D0B7' : '#32664E', expenses: dark ? '#F1A9B4' : '#94455C',
+/** Canonical financial series; category colors retain their scoped identity and order. */
+export function overviewColors(colors: DesignPalette, mode: DesignMode) {
+  const dark = mode === 'dark';
+  const series = DesignColors[mode];
+  return { income: series.financeIncome, expenses: series.financeExpense,
     axis: colors.textMuted, grid: colors.border, selected: colors.selected, separator: colors.group,
     categories: dark ? ['#F1A9B4', '#B6C1B5', '#E4C28E', '#A9C9EA', '#9BCBB5', '#9A9999']
       : ['#94455C', '#667260', '#92703A', '#4D729A', '#40765D', '#797371'] };

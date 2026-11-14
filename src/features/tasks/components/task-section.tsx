@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import { StyleSheet, View, useWindowDimensions } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
-import { UiIcon, UiPressable, UiText, useDesignColors } from '@/components/design-system';
+import { UiIcon, UiPressable, UiText, useDesignTheme } from '@/components/design-system';
 import { motionTiming, useReducedMotion } from '@/components/motion';
 import { DesignSpace as Space, Shape, TouchTarget, taskSectionSurface } from '@/constants/design-system-v2';
 
@@ -15,7 +15,7 @@ import { taskDisclosureDuration } from './task-disclosure-motion';
 export function TaskSectionHeader({ section, now, disabled, onToggle }: {
   section: TaskWorkspaceSection; now: number; disabled: boolean; onToggle: () => void;
 }) {
-  const colors = useDesignColors();
+  const { mode, colors } = useDesignTheme();
   const { fontScale } = useWindowDimensions();
   const reduced = useReducedMotion();
   const rotation = useSharedValue(section.expanded ? 180 : 0);
@@ -32,7 +32,7 @@ export function TaskSectionHeader({ section, now, disabled, onToggle }: {
   const tone = section.title === 'Earlier' || today ? 'attention' : 'taskText';
   const icon = today ? 'sun' : section.title === 'Earlier' ? 'clock' : section.title === 'Upcoming' ? 'calendar' : 'list';
   const radius = today ? Shape.raised : Shape.group;
-  const style = [styles.header, { backgroundColor: taskSectionSurface(colors, section.title), borderColor: colors.border,
+  const style = [styles.header, { backgroundColor: taskSectionSurface(colors, section.title, mode), borderColor: colors.border,
     borderTopLeftRadius: radius, borderTopRightRadius: radius },
     disclosure && styles.disclosure, largeToday && { flexWrap: 'wrap' as const },
     !section.expanded && { borderBottomWidth: 1, borderBottomLeftRadius: radius, borderBottomRightRadius: radius }];
@@ -65,10 +65,10 @@ export function TaskSectionHeader({ section, now, disabled, onToggle }: {
 }
 
 export function TaskSectionFooter({ section, children }: { section: TaskWorkspaceSection; children?: React.ReactNode }) {
-  const colors = useDesignColors();
+  const { mode, colors } = useDesignTheme();
   if (!section.expanded) return null;
   const radius = section.title === 'Today' ? Shape.raised : Shape.group;
-  return <View testID={`task-section-${section.title}-footer`} style={[styles.footer, { backgroundColor: taskSectionSurface(colors, section.title), borderColor: colors.border,
+  return <View testID={`task-section-${section.title}-footer`} style={[styles.footer, { backgroundColor: taskSectionSurface(colors, section.title, mode), borderColor: colors.border,
     borderBottomLeftRadius: radius, borderBottomRightRadius: radius }, !section.total && styles.empty]}>{children}</View>;
 }
 

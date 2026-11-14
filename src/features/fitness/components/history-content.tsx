@@ -10,8 +10,8 @@ import type { SessionSummary } from '../types';
 
 function CompletedStatus() {
   const colors = useDesignColors();
-  return <View accessibilityElementsHidden importantForAccessibility="no-hide-descendants" style={[styles.status, { backgroundColor: colors.brandSoft }]}>
-    <UiIcon name="check" color={colors.brand} size={14} /><UiText type="smallLabel" color="brand">Completed</UiText>
+  return <View accessibilityElementsHidden importantForAccessibility="no-hide-descendants" style={[styles.status, { backgroundColor: colors.successSoft }]}>
+    <UiIcon name="check" color={colors.completed} size={14} /><UiText type="smallLabel" color="completed">Completed</UiText>
   </View>;
 }
 

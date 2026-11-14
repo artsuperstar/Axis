@@ -10,7 +10,7 @@ export const floatingAddClearance = floatingAddSize + Space.lg * 2;
 export function FloatingAddButton({ label, disabled = false, onPress }: { label: string; disabled?: boolean; onPress: () => void }) {
   const colors = useDesignColors();
   return <UiPressable accessibilityRole="button" accessibilityLabel={label} accessibilityState={{ disabled }} disabled={disabled}
-    onPress={onPress} style={[styles.button, { backgroundColor: disabled ? colors.control : colors.brandStrong, borderColor: colors.borderStrong }]}>
+    onPress={onPress} style={({ pressed, hovered }) => [styles.button, { backgroundColor: disabled ? colors.control : pressed || hovered ? colors.brandStrong : colors.brand, borderColor: colors.borderStrong }]}>
     <UiIcon name="plus" color={disabled ? colors.textMuted : colors.onBrand} size={28} />
   </UiPressable>;
 }

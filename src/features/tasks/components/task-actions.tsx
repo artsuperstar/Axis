@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import { AdaptiveModal, AdaptiveSheet } from '@/components/adaptive-sheet';
 import { FormButton, FormError } from '@/components/form-controls';
 import { StatusText } from '@/components/status-text';
-import { ThemedText } from '@/components/themed-text';
+import { UiText } from '@/components/design-system';
 import { Space } from '@/constants/theme';
 
 import { taskRowPresentation } from '../presentation';
@@ -16,21 +16,21 @@ export function TaskActions({ item, recurrences, categories, now, visible, error
 }) {
   const row = item ? taskRowPresentation(item.task, item.occurrence, recurrences, categories, now) : null;
   return <AdaptiveModal visible={visible} onDismiss={onDismiss} onClosed={onClosed}>
-    <AdaptiveSheet title={item?.task.title ?? 'Task actions'} onDismiss={onDismiss}>
-      <FormError message={error} />
+    <AdaptiveSheet appearance="v2" titleRole="operational" title={item?.task.title ?? 'Task actions'} onDismiss={onDismiss}>
+      <FormError appearance="v2" message={error} />
       {row && item?.occurrence && <View style={styles.group}>
-        <ThemedText type="cardTitle" accessibilityRole="header">Occurrence</ThemedText>
-        <ThemedText type="secondary" themeColor="textSecondary">{row.date}</ThemedText>
-        <StatusText tone={row.attention ? 'attention' : row.resolved ? 'subdued' : 'neutral'}>{row.outcome}</StatusText>
-        {item.occurrence.status !== 'completed' && <FormButton variant="quiet"
+        <UiText type="cardTitle" accessibilityRole="header">Occurrence</UiText>
+        <UiText type="secondary" color="textSecondary">{row.date}</UiText>
+        <StatusText appearance="v2" tone={row.attention ? 'attention' : row.resolved ? 'subdued' : 'neutral'}>{row.outcome}</StatusText>
+        {item.occurrence.status !== 'completed' && <FormButton appearance="v2" variant="quiet"
           label={item.occurrence.status === 'skipped' ? 'Return to pending' : 'Skip occurrence'}
           accessibilityLabel={`${item.occurrence.status === 'skipped' ? 'Return to pending' : 'Skip'} ${row.actionSubject}`} onPress={onSkip} />}
       </View>}
       {item && <View style={styles.group}>
-        <ThemedText type="cardTitle" accessibilityRole="header">{item.occurrence ? 'Recurring task' : 'Task'}</ThemedText>
-        <FormButton label={item.occurrence ? 'Edit recurring task' : 'Edit task'} accessibilityLabel={`Edit ${item.occurrence ? 'recurring task' : 'task'} ${item.task.title}`} onPress={onEdit} />
-        {item.occurrence && <FormButton variant="quiet" label="View History" accessibilityLabel={`History for ${item.task.title}`} onPress={onHistory} />}
-        <FormButton variant="destructive" label={item.occurrence ? 'Delete recurring task' : 'Delete task'} accessibilityLabel={`Delete ${item.occurrence ? 'recurring task' : 'task'} ${item.task.title}`} onPress={onDelete} />
+        <UiText type="cardTitle" accessibilityRole="header">{item.occurrence ? 'Recurring task' : 'Task'}</UiText>
+        <FormButton appearance="v2" label={item.occurrence ? 'Edit recurring task' : 'Edit task'} accessibilityLabel={`Edit ${item.occurrence ? 'recurring task' : 'task'} ${item.task.title}`} onPress={onEdit} />
+        {item.occurrence && <FormButton appearance="v2" variant="quiet" label="View History" accessibilityLabel={`History for ${item.task.title}`} onPress={onHistory} />}
+        <FormButton appearance="v2" variant="destructive" label={item.occurrence ? 'Delete recurring task' : 'Delete task'} accessibilityLabel={`Delete ${item.occurrence ? 'recurring task' : 'task'} ${item.task.title}`} onPress={onDelete} />
       </View>}
     </AdaptiveSheet>
   </AdaptiveModal>;
